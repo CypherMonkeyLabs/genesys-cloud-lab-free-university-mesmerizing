@@ -3,7 +3,30 @@ import { mountMascot } from "./mascot.js";
 const SETTINGS_KEY = "gccx-settings";
 const PROGRESS_KEY = "gccx-progress";
 const THEMES = ["futuristic", "gaming", "neon", "light", "night", "paper", "harbor", "contrast"];
-const EXTRA = ["atlas", "ports", "game", "map", "sandbox", "daily", "badges", "cheat", "roadmap", "security", "career", "whats-new", "playbooks", "deploy", "architecture", "reporting"];
+const EXTRA = ["atlas", "ports", "game", "map", "sandbox", "daily", "badges", "cheat", "downloads", "flows", "charts", "play", "roadmap", "security", "career", "whats-new", "playbooks", "deploy", "architecture", "reporting"];
+const CRUMB = {
+  atlas: "Diagrams",
+  flows: "Flows",
+  charts: "Charts",
+  cheat: "Cheat Codes",
+  downloads: "Downloads",
+  play: "Play",
+  career: "Careers",
+  ecosystem: "Ecosystem",
+  ports: "Ports",
+  game: "Play",
+  map: "Flows",
+  sandbox: "Play",
+  daily: "Play",
+  badges: "Play",
+  roadmap: "Roadmap",
+  security: "Security",
+  "whats-new": "What’s new",
+  playbooks: "Playbooks",
+  deploy: "Deployment",
+  architecture: "Architecture",
+  reporting: "Reporting"
+};
 
 const state = {
   manifest: null,
@@ -188,6 +211,25 @@ function bindChrome() {
   });
   const offline = $("#offline-sky");
   if (offline) offline.addEventListener("click", () => cacheAll());
+  const themeSwitch = $("#theme-switch");
+  if (themeSwitch) {
+    themeSwitch.value = state.settings.theme || "futuristic";
+    themeSwitch.addEventListener("change", () => {
+      state.settings.theme = themeSwitch.value;
+      saveSettings();
+    });
+  }
+  document.addEventListener("keydown", (ev) => {
+    if (ev.key !== "ArrowRight" && ev.key !== "ArrowLeft") return;
+    const nav = ev.target.closest?.(".primary-nav");
+    if (!nav) return;
+    const links = [...nav.querySelectorAll("a")];
+    const index = links.indexOf(document.activeElement);
+    if (index < 0) return;
+    ev.preventDefault();
+    const next = ev.key === "ArrowRight" ? (index + 1) % links.length : (index + links.length - 1) % links.length;
+    links[next].focus();
+  });
   const eggClose = $("#egg-close");
   if (eggClose) eggClose.addEventListener("click", () => { $("#egg").hidden = true; });
   const konami = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "b", "a"];
@@ -217,12 +259,20 @@ function parseRoute() {
 }
 
 function setCurrent(hashPrefix) {
-  document.querySelectorAll(".bottom-nav a, .rail a").forEach((a) => {
+  document.querySelectorAll(".bottom-nav a, .rail a, .primary-nav a").forEach((a) => {
     const href = a.getAttribute("href") || "";
     const on = hashPrefix && href === hashPrefix;
     if (on) a.setAttribute("aria-current", "page");
     else a.removeAttribute("aria-current");
   });
+}
+
+function crumbs(parts) {
+  const bits = parts.map((part, index) => {
+    if (index === parts.length - 1) return `<span aria-current="page">${esc(part[1])}</span>`;
+    return `<a href="${part[0]}">${esc(part[1])}</a>`;
+  });
+  return `<nav class="crumbs" aria-label="Breadcrumb">${bits.join('<span aria-hidden="true">/</span>')}</nav>`;
 }
 
 async function render() {
@@ -279,11 +329,76 @@ function showHome() {
     <div class="grid">${studioCards()}</div>
     <h2>Tracks</h2>
     <div class="grid">${state.manifest.tracks.map(trackCard).join("")}</div>`;
+  mountHomeViz();
   status("Home");
 }
 
+async function mountHomeViz() {
+  if (homeEl.hidden) return;
+  paintIcons($("#home-icons"), null);
+  try {
+    const { DIAGRAMS, renderDiagram } = await import("./diagrams.js");
+    if (homeEl.hidden) return;
+    const flowCount = DIAGRAMS.filter((item) => item.flow).length;
+    paintIcons($("#home-icons"), null, { diagrams: DIAGRAMS.length, flows: flowCount, charts: 6, sheets: 13 });
+    const picks = DIAGRAMS.filter((item) => item.flow).slice(0, 3);
+    const flows = $("#home-flows");
+    if (flows) {
+      flows.innerHTML = `<h2>Flows</h2>
+        <p class="muted"><a href="#/flows">All ${DIAGRAMS.filter((item) => item.flow).length} animated flows</a> · <a href="#/atlas">${DIAGRAMS.length} diagrams</a> · <a href="#/cheat">Cheat codes</a></p>
+        <div class="flow-strip">${picks.map((spec) => `<article class="card">${renderDiagram(spec)}<h3>${esc(spec.title)}</h3></article>`).join("")}</div>`;
+    }
+    const charts = $("#home-charts");
+    if (charts) {
+      charts.innerHTML = `<h2>Charts</h2><div id="home-chart-root"></div>`;
+      const mod = await import("./floorviz.js");
+      if (!homeEl.hidden) await mod.mountFloor($("#home-chart-root"), state.manifest, null);
+    }
+  } catch (err) {
+    status(err.message || "Charts did not draw");
+  }
+  import("./hero3d.js").then((mod) => mod.mountHero($("#hero-canvas"), state.settings.reduce)).catch(() => {});
+}
+
+function paintIcons(host, track, counts = {}) {
+  if (!host || !state.manifest) return;
+  const lessons = track ? track.lessons : state.manifest.tracks.flatMap((item) => item.lessons);
+  const minutes = lessons.reduce((sum, lesson) => sum + (lesson.minutes || 0), 0);
+  const done = track
+    ? track.lessons.filter((lesson) => state.progress.lessons[lesson.id]?.done).length
+    : Object.values(state.progress.lessons).filter((item) => item.done).length;
+  const tiles = [
+    ["#/atlas", "Diagrams", String(counts.diagrams ?? "—"), diagramMark(), "Atlas"],
+    ["#/flows", "Flows", String(counts.flows ?? "—"), flowMark(), "Animated"],
+    ["#/charts", "Charts", String(counts.charts ?? 6), chartMark(), "From this lab"],
+    ["#/cheat", "Cheat codes", String(counts.sheets ?? 13), sheetMark(), "HTML PDF PNG"],
+    ["#/tracks", track ? track.title : "Lessons", String(lessons.length), bookMark(), `${minutes} min`],
+    ["#/tracks", "Finished", String(done), starMark(), track ? "This track" : "This browser"]
+  ];
+  host.innerHTML = tiles.map(([href, label, num, icon, note]) => `<a class="icon-tile" href="${href}">${icon}<b>${esc(num)}</b><span>${esc(label)}</span><span>${esc(note)}</span></a>`).join("");
+}
+
+function diagramMark() {
+  return `<svg viewBox="0 0 36 36" aria-hidden="true"><rect x="4" y="8" width="12" height="8" rx="2" fill="#ff5a36"/><rect x="20" y="8" width="12" height="8" rx="2" fill="#8fd4ff"/><rect x="12" y="20" width="12" height="8" rx="2" fill="#d6f25c"/><path d="M10 16 V20 H18 M26 16 V20 H18" fill="none" stroke="currentColor"/></svg>`;
+}
+function flowMark() {
+  return `<svg viewBox="0 0 36 36" aria-hidden="true"><path d="M6 10 H30 M6 18 H30 M6 26 H30" stroke="#8fd4ff" stroke-width="2"/><circle cx="12" cy="10" r="3" fill="#ff5a36"/><circle cx="22" cy="18" r="3" fill="#d6f25c"/><circle cx="16" cy="26" r="3" fill="#b3a6ff"/></svg>`;
+}
+function chartMark() {
+  return `<svg viewBox="0 0 36 36" aria-hidden="true"><rect x="6" y="18" width="6" height="12" fill="#ff5a36"/><rect x="15" y="10" width="6" height="20" fill="#8fd4ff"/><rect x="24" y="14" width="6" height="16" fill="#d6f25c"/></svg>`;
+}
+function sheetMark() {
+  return `<svg viewBox="0 0 36 36" aria-hidden="true"><path d="M10 6 H22 L28 12 V30 H10 Z" fill="none" stroke="#ff5a36" stroke-width="2"/><path d="M14 16 H24 M14 21 H24 M14 26 H20" stroke="currentColor"/></svg>`;
+}
+function bookMark() {
+  return `<svg viewBox="0 0 36 36" aria-hidden="true"><path d="M8 8 H18 V28 H8 Z M18 8 H28 V28 H18 Z" fill="none" stroke="#b3a6ff" stroke-width="2"/></svg>`;
+}
+function starMark() {
+  return `<svg viewBox="0 0 36 36" aria-hidden="true"><path d="M18 6 L21 14 H30 L23 19 L26 28 L18 23 L10 28 L13 19 L6 14 H15 Z" fill="#d6f25c"/></svg>`;
+}
+
 function showTracks() {
-  mount(`<p class="kicker">Curriculum</p><h1>Tracks</h1><p>${state.manifest.tracks.length} paths from organization setup through Predictive Engagement and migration. Open one track at a time.</p><div class="grid">${state.manifest.tracks.map(trackCard).join("")}</div>`);
+  mount(`${crumbs([["#/", "Home"], ["#/tracks", "Tracks"]])}<p class="kicker">Curriculum</p><h1>Tracks</h1><p>${state.manifest.tracks.length} paths from organization setup through Predictive Engagement and migration. Open one track at a time.</p><div class="grid">${state.manifest.tracks.map(trackCard).join("")}</div>`);
   setCurrent("#/tracks");
 }
 
@@ -295,7 +410,22 @@ async function showTrack(id) {
     const mark = prog && prog.done ? "Finished" : "Open";
     return `<a class="card" href="#/lesson/${lesson.id}"><div class="stripe a${track.accent}"></div><p class="kicker">${track.title} · ${index + 1}</p><h3>${esc(lesson.title)}</h3><p>${esc(lesson.summary)}</p><p class="muted">${esc(lesson.level)} · ${lesson.minutes} min · ${mark}</p></a>`;
   }).join("");
-  mount(`<p class="kicker">${esc(track.kicker)}</p><h1>${esc(track.title)}</h1><p>${esc(track.summary)}</p><div class="grid">${items}</div>`);
+  mount(`${crumbs([["#/", "Home"], ["#/tracks", "Tracks"], ["#/track/" + id, track.title]])}
+    <p class="kicker">${esc(track.kicker)}</p><h1>${esc(track.title)}</h1><p>${esc(track.summary)}</p>
+    <div id="track-icons" class="icon-parade" aria-label="Track counters"></div>
+    <p class="spot-links"><a class="btn" href="#track-charts">Charts</a><a class="btn" href="#/flows">Flows</a><a class="btn" href="#/cheat">Cheat codes</a><a class="btn" href="#/atlas">Diagrams</a></p>
+    <div class="grid">${items}</div>
+    <h2 id="track-charts">Charts</h2>
+    <div id="track-chart-root"></div>`);
+  const { DIAGRAMS } = await import("./diagrams.js");
+  paintIcons($("#track-icons"), track, {
+    diagrams: DIAGRAMS.length,
+    flows: DIAGRAMS.filter((item) => item.flow).length,
+    charts: 6,
+    sheets: 13
+  });
+  const viz = await import("./floorviz.js");
+  await viz.mountFloor($("#track-chart-root"), state.manifest, id);
   document.title = track.title + " · Genesys Cloud CX Lab";
   setCurrent("#/track/" + id);
 }
@@ -317,6 +447,7 @@ function renderLesson(track, lesson) {
   const paras = lesson.paras.map((p) => `<p>${esc(p)}</p>`).join("");
   const uncertainty = lesson.uncertainty ? `<aside class="uncertainty"><strong>Confirm on the vendor page. </strong>${esc(lesson.uncertainty)}</aside>` : "";
   return `
+    ${crumbs([["#/", "Home"], ["#/tracks", "Tracks"], ["#/track/" + track.id, track.title], ["#/lesson/" + lesson.id, lesson.title]])}
     <div class="read-layout">
       <article>
         <p class="kicker"><a href="#/track/${track.id}">${esc(track.title)}</a> · ${esc(lesson.level)} · ${lesson.minutes} min</p>
@@ -448,7 +579,15 @@ function wireLesson(lesson) {
         if (qIndex + 1 === quiz.length) {
           const prog = lessonProg(lesson.id);
           prog.best = Math.max(prog.best || 0, correct);
-          if (correct >= 5) prog.done = true;
+          if (correct >= 5) {
+            prog.done = true;
+            if (!state.settings.reduce) {
+              import("../vendor/confetti.js").then((mod) => {
+                const fire = mod.default;
+                if (typeof fire === "function") fire({ particleCount: 90, spread: 70, origin: { y: 0.65 }, disableForReducedMotion: true });
+              }).catch(() => {});
+            }
+          }
           saveProgress();
           host.innerHTML = `<h3>${correct} of ${quiz.length}</h3><p>${correct >= 5 ? "This lesson counts as finished." : "Five correct marks the lesson finished. You can retake it."}</p><button class="btn" type="button" id="quiz-retry">Retry</button>`;
           $("#quiz-retry", host).addEventListener("click", () => { qIndex = 0; correct = 0; drawQ(); });
@@ -545,8 +684,10 @@ async function showCerts() {
 
 function showEcosystem() {
   const tracks = state.manifest.tracks.map((track) => `<a class="card" href="#/track/${track.id}"><div class="stripe a${track.accent}"></div><h3>${esc(track.title)}</h3><p>${esc(track.summary)}</p></a>`).join("");
-  mount(`<p class="kicker">Map</p><h1>Ecosystem</h1>
+  mount(`${crumbs([["#/", "Home"], ["#/ecosystem", "Ecosystem"]])}<p class="kicker">Map</p><h1>Ecosystem</h1>
     <p>Genesys Cloud CX is the conversation platform. WEM, recording, emergency calling, CRM, and bots sit on documented edges of that platform.</p>
+    <h2>Mind map</h2>
+    <div class="markmap-host"><svg id="eco-map" role="img" aria-label="Mind map of the tracks"></svg></div>
     <div class="toolbar">
       <a class="btn" href="#/glossary">Glossary</a>
       <a class="btn" href="#/certs">Certifications</a>
@@ -561,6 +702,27 @@ function showEcosystem() {
     <h2>Sister systems inside the tracks</h2>
     <div class="grid">${tracks}</div>`);
   document.title = "Ecosystem · Genesys Cloud CX Lab";
+  setCurrent("#/ecosystem");
+  mountMindmap();
+}
+
+async function mountMindmap() {
+  const svg = $("#eco-map");
+  if (!svg) return;
+  try {
+    const { Transformer, Markmap } = await import("../vendor/markmap.js");
+    const lines = ["# Genesys Cloud CX"];
+    state.manifest.tracks.forEach((track) => {
+      lines.push(`## ${track.title.replace(/[#>`]/g, "")}`);
+      track.lessons.slice(0, 4).forEach((lesson) => {
+        lines.push(`- ${lesson.title.replace(/[#>`]/g, "")}`);
+      });
+    });
+    const { root } = new Transformer().transform(lines.join("\n"));
+    Markmap.create(svg, { duration: state.settings.reduce ? 0 : 400 }, root);
+  } catch (err) {
+    svg.insertAdjacentHTML("afterend", `<p class="uncertainty">The mind map did not draw in this browser. The track cards are the same map.</p>`);
+  }
 }
 
 async function showBoss(id) {
@@ -660,8 +822,8 @@ function showSettings() {
 async function cacheAll() {
   if (!("caches" in window)) return status("Cache API unavailable");
   try {
-  const cache = await caches.open("gccx-lab-v2");
-  const urls = ["index.html", "assets/app.js", "assets/studios.js", "assets/topology.js", "assets/routing-model.js", "assets/university.css", "assets/mascot.js", "assets/diagrams.js", "assets/pages.js", "data/manifest.json", "data/reference.json", "manifest.webmanifest", "downloads/catalog.json", "downloads/flashcards.json", "downloads/flashcards.html"];
+  const cache = await caches.open("gccx-lab-v3");
+  const urls = ["index.html", "assets/app.js", "assets/studios.js", "assets/topology.js", "assets/routing-model.js", "assets/university.css", "assets/mascot.js", "assets/diagrams.js", "assets/pages.js", "assets/floorviz.js", "assets/hero3d.js", "vendor/d3.js", "vendor/anime.js", "vendor/rough.js", "vendor/confetti.js", "data/manifest.json", "data/reference.json", "manifest.webmanifest", "downloads/catalog.json", "downloads/flashcards.json", "downloads/flashcards.html"];
   state.manifest.tracks.forEach((track) => urls.push(track.file));
   await cache.addAll(urls.map((url) => new URL(url, location.href).toString()));
   state.progress.offlineSaved = true;
@@ -685,7 +847,7 @@ async function showSearch(q) {
   const terms = ref.glossary.filter((item) => !needle || (item.term + " " + item.def).toLowerCase().includes(needle)).slice(0, 12);
   const cards = hits.slice(0, 40).map(({ track, lesson }) => `<a class="card" href="#/lesson/${lesson.id}"><p class="kicker">${esc(track.title)}</p><h3>${esc(lesson.title)}</h3><p>${esc(lesson.summary)}</p></a>`).join("");
   const gloss = terms.map((item) => `<article class="card"><h3>${esc(item.term)}</h3><p>${esc(item.def)}</p><p><a href="${esc(item.url)}">${esc(item.source)}</a></p></article>`).join("");
-  mount(`<p class="kicker">Search</p><h1>${needle ? "Results" : "Browse"}</h1><p>${hits.length} lesson${hits.length === 1 ? "" : "s"}${needle ? " for “" + esc(q) + "”" : ""}. ${terms.length} glossary hits.</p><div class="grid">${cards || "<p>No lesson title or summary uses that phrase.</p>"}</div><h2>Glossary</h2><div class="grid">${gloss}</div>`);
+  mount(`${crumbs([["#/", "Home"], ["#/search", "Search"]])}<p class="kicker">Search</p><h1>${needle ? "Results" : "Browse"}</h1><p>${hits.length} lesson${hits.length === 1 ? "" : "s"}${needle ? " for “" + esc(q) + "”" : ""}. ${terms.length} glossary hits.</p><div class="grid">${cards || "<p>No lesson title or summary uses that phrase.</p>"}</div><h2>Glossary</h2><div class="grid">${gloss}</div>`);
   document.title = "Search · Genesys Cloud CX Lab";
 }
 
@@ -702,6 +864,8 @@ async function showExtra(name) {
       status,
       setTitle: (title) => { document.title = title + " · Genesys Cloud CX Lab"; }
     });
+    const label = CRUMB[name] || name;
+    $("#extra-root")?.insertAdjacentHTML("afterbegin", crumbs([["#/", "Home"], ["#/" + name, label]]));
     setCurrent("#/" + name);
   } catch (err) {
     showFatal(err);

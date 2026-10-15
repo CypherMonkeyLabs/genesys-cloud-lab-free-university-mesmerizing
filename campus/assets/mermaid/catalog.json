@@ -1,0 +1,32 @@
+[
+  {
+    "id": "sip-sequence",
+    "title": "SIP success path",
+    "caption": "Teaching sketch of a call that is answered. Real traces also use 183 and PRACK. RTP is not a SIP response."
+  },
+  {
+    "id": "acd-flow",
+    "title": "ACD eligibility",
+    "caption": "Teaching sketch. On Queue, utilization, and skills decide who can be alerted. Bullseye can widen later."
+  },
+  {
+    "id": "deploy-flow",
+    "title": "Deployment order",
+    "caption": "Teaching checklist. Region and roles, then trunk or Edge, then a published flow and a queue."
+  },
+  {
+    "id": "cutover-flow",
+    "title": "Cutover",
+    "caption": "Teaching sequence. One number, then the queue, then the people. Keep a rollback if media fails."
+  },
+  {
+    "id": "trouble-flow",
+    "title": "No-audio branch",
+    "caption": "Teaching tree. A flow that runs with silence is a media problem. An unpublished flow never starts."
+  },
+  {
+    "id": "data-flow",
+    "title": "Data action",
+    "caption": "Teaching sketch. A data action leaves the flow. Participant data can carry a value to the agent."
+  }
+]

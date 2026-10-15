@@ -47,9 +47,17 @@ const C = {
   certs: ["Genesys Cloud exams", "https://education.genesys.com/certification/cloud"]
 };
 
+const FLOW_IDS = new Set([
+  "sip-ladder", "sip-rtp", "srtp-lock", "dtmf", "voice-path", "digital-path",
+  "byoc-cloud", "byoc-prem", "edge-fail", "inqueue", "data-action", "bullseye",
+  "preferred", "acd-gate", "emergency", "wfm-loop", "sta-pipe", "bot-escape",
+  "pe-journey", "pe-qualify", "cutover", "migration", "firewall", "recording",
+  "trouble-tree", "deploy-tree"
+]);
+
 function row(id, title, caption, citeKey, kind, data) {
   const cite = C[citeKey];
-  return { id, title, caption, cite: cite[0], url: cite[1], kind, data };
+  return { id, title, caption, cite: cite[0], url: cite[1], kind, data, flow: FLOW_IDS.has(id) };
 }
 
 export const DIAGRAMS = [
@@ -97,7 +105,9 @@ export const DIAGRAMS = [
   row("cutover", "One number, then the queue, then the people", "A weekend big-bang is how an untested emergency route meets a full staff.", "emerg", "chain", ["One DID", "Queue", "People", "Next number"]),
   row("migration", "Rebuild, do not hope for a converter", "Engage, PureConnect, and UCCE become flows, queues, and trunks you draw again.", "arch", "chain", ["Old behavior", "Read it", "New flow", "Published"]),
   row("certs-path", "Two named codes, then specialist names", "GC-GCP and GC-GCD are catalog codes. Specialist rows are names.", "certs", "stack", ["GC-GCP", "GC-GCD", "Architect", "WFM", "QM"]),
-  row("firewall", "Open signaling and outbound media", "TCP 5061 for TLS trunks. UDP 16384-65535 outbound for RTP. Read the firewall set before you add a port from memory.", "fw", "split", { left: "Signaling", right: "Media", leftItems: ["TCP 5061 TLS", "TCP/UDP 5060"], rightItems: ["UDP 16384-65535", "Outbound"] })
+  row("firewall", "Open signaling and outbound media", "TCP 5061 for TLS trunks. UDP 16384-65535 outbound for RTP. Read the firewall set before you add a port from memory.", "fw", "split", { left: "Signaling", right: "Media", leftItems: ["TCP 5061 TLS", "TCP/UDP 5060"], rightItems: ["UDP 16384-65535", "Outbound"] }),
+  row("trouble-tree", "Troubleshooting tree", "Start with the symptom. A healthy Architect run with no audio is media. An empty Live Now view is tracking.", "fw", "tree", { root: "Symptom", left: "No audio", right: "No offer", leftKids: ["Flow ran?", "RTP outbound"], rightKids: ["Live Now", "Schedule group"] }),
+  row("deploy-tree", "Deployment order", "Region and roles, then the trunk or Edge, then a published flow and a queue. Emergency has an owner before the DID.", "byoc", "tree", { root: "First week", left: "Telephony", right: "Experience", leftKids: ["Location", "Trunk"], rightKids: ["Publish", "Queue"] })
 ];
 
 export const PORTS = [
@@ -231,7 +241,20 @@ function orbit(spec) {
   return frame(spec.id, d, spec.title);
 }
 
-const DRAW = { chain, stack, rings, split, ladder, orbit };
+function tree(spec) {
+  const { root, left, right, leftKids, rightKids } = spec.data;
+  const kid = (x, labels) => labels.map((label, i) => chip(x, 168 + i * 48, label, i ? "#8fd4ff" : "#d6f25c")).join("");
+  const inner = chip(360, 48, root, "#ff5a36")
+    + chip(180, 112, left, "#b3a6ff")
+    + chip(540, 112, right, "#ff7ad9")
+    + kid(180, leftKids)
+    + kid(540, rightKids)
+    + `<path d="M360 68 V90 H180 V92 M360 90 H540 V92 M180 132 V148 M540 132 V148" fill="none" stroke="#fff" stroke-width="2" class="dash" stroke-dasharray="6 6"/>`
+    + packet("M360,70 V100 H180 V150", "5s");
+  return frame(spec.id, inner, spec.title);
+}
+
+const DRAW = { chain, stack, rings, split, ladder, orbit, tree };
 
 export function renderDiagram(spec) {
   const draw = DRAW[spec.kind];

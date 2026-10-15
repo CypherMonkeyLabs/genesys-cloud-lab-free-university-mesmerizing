@@ -1,0 +1,10 @@
+Vendored for offline use. Do not load these from a CDN.
+
+- three.js r186 (campus/vendor/three.module.js, three.core.js) — MIT
+- d3 7.9.0 (campus/vendor/d3.js) — ISC
+- anime.js 4.5.0 (campus/vendor/anime.js) — MIT
+- rough.js 4.6.6 (campus/vendor/rough.js) — MIT
+- canvas-confetti 1.9.3 (campus/vendor/confetti.js) — ISC
+- markmap-lib and markmap-view 0.18.12, bundled with d3 (campus/vendor/markmap.js) — MIT
+
+Mermaid 11.12.0 is MIT and is used only at build time. The site ships the generated SVGs in campus/assets/mermaid/. GSAP is not vendored.

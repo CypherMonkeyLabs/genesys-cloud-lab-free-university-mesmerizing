@@ -272,11 +272,10 @@ th, td { border-bottom: 1px solid var(--cc-line); text-align: left; padding: 8px
 }
 @media (max-width: 640px) {
   .bottom-nav { display: block; }
-  .search { display: none; }
   .topbar .desk-only { display: none; }
   main { padding: 14px 12px 108px; }
   .step { grid-template-columns: 1fr; }
-  h1 { font-size: 2rem; }
+  h1 { font-size: 1.7rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   .pulse { animation: none; }
@@ -305,56 +304,96 @@ th, td { border-bottom: 1px solid var(--cc-line); text-align: left; padding: 8px
     <label class="skip" for="q">Search lessons</label>
     <input id="q" name="q" type="search" placeholder="Search lessons, faults, APIs" autocomplete="off">
   </form>
+  <label class="theme-label">Theme
+    <select id="theme-switch" class="theme-switch" aria-label="Theme">
+      <option value="futuristic">futuristic</option>
+      <option value="gaming">gaming</option>
+      <option value="neon">neon</option>
+      <option value="light">light</option>
+      <option value="night">night</option>
+      <option value="paper">paper</option>
+      <option value="harbor">harbor</option>
+      <option value="contrast">contrast</option>
+    </select>
+  </label>
   <button class="icon-btn desk-only" id="open-tracks" type="button">Tracks</button>
   <a class="icon-btn" href="#/settings">Settings</a>
+  <nav class="primary-nav" aria-label="Floor menu">
+    <a href="#/atlas">Diagrams</a>
+    <a href="#/flows">Flows</a>
+    <a href="#/charts">Charts</a>
+    <a href="#/cheat">Cheat Codes</a>
+    <a href="#/play">Play</a>
+    <a href="#/ecosystem">Ecosystem</a>
+    <a href="#/downloads">Downloads</a>
+    <a href="#/career">Careers</a>
+  </nav>
 </header>
 <div class="shell">
   <aside class="rail" id="rail" aria-label="Tracks"></aside>
   <main id="main">
     <section id="home">
-      <p class="kicker">Free operations university</p>
-      <h1>Genesys Cloud CX Lab</h1>
-      <p class="lede">Architect flows, bullseye routing, BYOC trunks, the Edge, WEM, Predictive Engagement, and the Platform API. Every lesson links to the Resource Center, the Developer Center, Genesys Education, or an RFC.</p>
-      <div class="statrow" style="margin:14px 0">
-        <div class="stat"><b id="stat-tracks">—</b><span>tracks</span></div>
-        <div class="stat"><b id="stat-lessons">—</b><span>lessons</span></div>
-        <div class="stat"><b id="stat-quiz">—</b><span>quiz items</span></div>
-        <div class="stat"><b id="stat-done">0</b><span>finished</span></div>
-        <div class="ring" id="progress-ring" style="--p:0"><span id="stat-pct">0%</span></div>
-      </div>
-      <div class="hero">
+      <div class="hero-fold">
         <div class="stage">
-          <div class="chips">
-            <a class="btn primary" href="#/tracks">Start with foundations</a>
-            <a class="btn" href="#/atlas">Diagram atlas</a>
-            <a class="btn" href="#/cheat">Cheat codes</a>
-            <a class="btn" href="#/studio/architect">Architect builder</a>
-            <a class="btn" href="#/topology">3D topology</a>
+          <p class="kicker">Free operations university</p>
+          <h1>Genesys Cloud CX Lab</h1>
+          <p class="lede">Architect flows, bullseye routing, BYOC trunks, the Edge, WEM, Predictive Engagement, and the Platform API. Every lesson links to a public source.</p>
+          <div class="statrow" style="margin:10px 0">
+            <div class="stat"><b id="stat-tracks">—</b><span>tracks</span></div>
+            <div class="stat"><b id="stat-lessons">—</b><span>lessons</span></div>
+            <div class="stat"><b id="stat-quiz">—</b><span>quiz items</span></div>
+            <div class="stat"><b id="stat-done">0</b><span>finished</span></div>
+            <div class="ring" id="progress-ring" style="--p:0"><span id="stat-pct">0%</span></div>
           </div>
-          <p class="muted">Public docs were read again on 15 October 2026. When a vendor page and this lab disagree, the page wins.</p>
-          <div id="mascot-slot"></div>
+          <div class="chips">
+            <a class="btn primary" href="#/cheat">Cheat codes</a>
+            <a class="btn" href="#/atlas">Diagrams</a>
+            <a class="btn" href="#/flows">Flows</a>
+            <a class="btn" href="#/charts">Charts</a>
+            <a class="btn" href="#/tracks">Tracks</a>
+          </div>
         </div>
-        <svg class="constellation" viewBox="0 0 360 240" role="img" aria-label="Stylized path from a carrier through a trunk into Architect, a queue, and an agent.">
-          <rect width="360" height="240" fill="none"></rect>
-          <path d="M40 150 H120 L170 70 H250 L300 150" fill="none" stroke="currentColor" stroke-width="2" opacity="0.45"></path>
-          <g class="pulse">
-            <circle cx="40" cy="150" r="10" fill="#ff5a36"></circle>
-            <circle cx="120" cy="150" r="8" fill="#8fd4ff"></circle>
-            <circle cx="170" cy="70" r="12" fill="#d6f25c"></circle>
-            <circle cx="250" cy="70" r="8" fill="#b3a6ff"></circle>
-            <circle cx="300" cy="150" r="10" fill="#ff5a36"></circle>
-          </g>
-          <g fill="currentColor" font-size="12" font-family="Palatino, Georgia, serif">
-            <text x="22" y="178">Carrier</text>
-            <text x="98" y="178">Trunk</text>
-            <text x="142" y="56">Architect</text>
-            <text x="232" y="56">Queue</text>
-            <text x="278" y="178">Agent</text>
-          </g>
-        </svg>
-        <div class="float-card a">SIP on 5061<br>RTP is not SIP</div>
-        <div class="float-card b">Publish the flow<br>Drafts do not answer</div>
+        <div class="hero-stage hero">
+          <canvas id="hero-canvas" class="hero-canvas" aria-label="Rotating wireframe of the lab floor"></canvas>
+          <div id="mascot-slot" class="hero-mascot"></div>
+          <svg class="constellation" viewBox="0 0 360 240" role="img" aria-label="Stylized path from a carrier through a trunk into Architect, a queue, and an agent.">
+            <rect width="360" height="240" fill="none"></rect>
+            <path d="M40 150 H120 L170 70 H250 L300 150" fill="none" stroke="currentColor" stroke-width="2" opacity="0.45"></path>
+            <g class="pulse">
+              <circle cx="40" cy="150" r="10" fill="#ff5a36"></circle>
+              <circle cx="120" cy="150" r="8" fill="#8fd4ff"></circle>
+              <circle cx="170" cy="70" r="12" fill="#d6f25c"></circle>
+              <circle cx="250" cy="70" r="8" fill="#b3a6ff"></circle>
+              <circle cx="300" cy="150" r="10" fill="#ff5a36"></circle>
+            </g>
+            <g fill="currentColor" font-size="12" font-family="Palatino, Georgia, serif">
+              <text x="22" y="178">Carrier</text>
+              <text x="98" y="178">Trunk</text>
+              <text x="142" y="56">Architect</text>
+              <text x="232" y="56">Queue</text>
+              <text x="278" y="178">Agent</text>
+            </g>
+          </svg>
+          <div class="float-card a">SIP on 5061<br>RTP is not SIP</div>
+          <div class="float-card b">Publish the flow<br>Drafts do not answer</div>
+        </div>
       </div>
+      <div id="home-icons" class="icon-parade" aria-label="Lab counters"></div>
+      <aside class="cheat-banner">
+        <div>
+          <p class="kicker">Downloads</p>
+          <h2>Cheat codes</h2>
+          <p>Thirteen sheets as HTML, PDF, and PNG, plus flashcards and the offline zip. Each file carries the lab footer.</p>
+        </div>
+        <a class="btn primary" href="#/cheat">Open cheat codes</a>
+      </aside>
+      <section id="home-flows" aria-label="Featured flows">
+        <h2>Flows</h2>
+        <p class="muted">Animated call, routing, and cutover pictures load with the atlas.</p>
+      </section>
+      <section id="home-charts" aria-label="Lab charts">
+        <h2>Charts</h2>
+      </section>
       <div id="home-dynamic"></div>
     </section>
     <section id="view" hidden></section>
@@ -383,15 +422,14 @@ th, td { border-bottom: 1px solid var(--cc-line); text-align: left; padding: 8px
   <p>Independent educational project. Not affiliated with or endorsed by Genesys, Cisco, Salesforce, Zendesk, or any other vendor. Trademarks belong to their owners. MIT code. CC BY-NC-SA content.</p>
   <p><a href="https://cyphermonkeylabs.com/#contact">Report a concern / takedown</a> · <a href="https://cyphermonkeylabs.com/#contact">Work with us</a></p>
   <div class="next-labs" aria-label="Other labs">
-    <a href="https://cypherwebex-canon-test.vercel.app">Webex Canon</a>
-    <a href="https://github.com/cipher0x9/webex-lab-free-university-mesmerizing">Webex lab</a>
-    <a href="https://github.com/cipher0x9/uc-lab-free-university-mesmerizing">UC lab</a>
-    <a href="https://github.com/cipher0x9/amazon-connect-lab-free-university-mesmerizing">Amazon Connect</a>
-    <a href="https://github.com/cipher0x9/five9-lab-free-university-mesmerizing">Five9</a>
-    <a href="https://github.com/cipher0x9/nice-cxone-lab-free-university-mesmerizing">NiCE CXone</a>
-    <a href="https://github.com/cipher0x9/microsoft-voice-cc-lab-free-university-mesmerizing">Microsoft voice</a>
-    <a href="https://github.com/cipher0x9/sip-universe-lab-free-university-mesmerizing">SIP universe</a>
-    <a href="https://github.com/cipher0x9/ai-lab-free-university-mesmerizing">AI lab</a>
+    <a href="https://cipher0x9.github.io/webex-lab-free-university-mesmerizing/">Webex lab</a>
+    <a href="https://cipher0x9.github.io/uc-lab-free-university-mesmerizing/">UC lab</a>
+    <a href="https://cipher0x9.github.io/amazon-connect-lab-free-university-mesmerizing/">Amazon Connect</a>
+    <a href="https://cipher0x9.github.io/five9-lab-free-university-mesmerizing/">Five9</a>
+    <a href="https://cipher0x9.github.io/nice-cxone-lab-free-university-mesmerizing/">NiCE CXone</a>
+    <a href="https://cipher0x9.github.io/microsoft-voice-cc-lab-free-university-mesmerizing/">Microsoft voice</a>
+    <a href="https://cipher0x9.github.io/sip-universe-lab-free-university-mesmerizing/">SIP universe</a>
+    <a href="https://cipher0x9.github.io/ai-lab-free-university-mesmerizing/">AI lab</a>
   </div>
 </footer>
 <script type="module" src="assets/app.js"></script>

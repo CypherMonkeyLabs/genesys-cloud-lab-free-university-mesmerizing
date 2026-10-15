@@ -54,13 +54,16 @@ Verified by `node scripts/verify.mjs` on 15 October 2026:
 | Glossary entries | 50 |
 | Boss incidents | 8 |
 | Interview questions | 26 |
-| Animated diagrams | 46 |
+| Diagrams in the atlas | 47 |
+| Animated flows | 26 |
+| Charts | 6 |
+| Mermaid SVGs (build time) | 6 |
 | Cheat sheets | 13 |
 | Flashcards in the download deck | 480 |
 | Studios | 5 |
-| First-load shell | 95,111 bytes |
+| First-load shell | 105,011 bytes |
 
-The shell is `campus/index.html`, `campus/assets/app.js`, `campus/data/manifest.json`, and the web manifest. Studios, topology, Three.js, track JSON, and `reference.json` stay off that first paint. Vendored Three.js is about 2.1 MB and loads only with the 3D view.
+The shell is `campus/index.html`, `campus/assets/app.js`, `campus/data/manifest.json`, and the web manifest. Studios, charts, Markmap, topology, Three.js, track JSON, and `reference.json` stay off that first paint. Three.js loads with the hero wireframe and the topology view. Mermaid is not shipped to the browser; `scripts/build_mermaid.mjs` writes the SVGs.
 
 Lighthouse mobile, captured against `http://127.0.0.1:8741/campus/` on 14 October 2026: performance 100, accessibility 100.
 
@@ -95,4 +98,5 @@ Code is MIT. Educational prose is CC BY-NC-SA 4.0. See [LICENSE](LICENSE). Three
 - WebRTC firewall rows stay on the parent ports article. This lab’s table is only the rows it opened.
 - No named customer story is included. Salesforce and Zendesk are the documented embeds. Other CRMs stay on AppFoundry.
 - The labs site contact link is `https://cyphermonkeylabs.com/#contact`. That site returned HTTP 500 when it was fetched during this build, so the form anchor is unverified.
-- Sibling labs in the footer point at their GitHub repositories, plus the Webex Canon URL named in the mission. A live GitHub Pages URL was not confirmed for every sibling.
+- The footer sibling strip uses `https://cipher0x9.github.io/<repo>/`. Those eight pages returned HTTP 200 on 15 October 2026. Origin `main` for this repo was readable and is the earlier lab, not a richer copy, so it was not merged over this branch.
+- Chart drawings sit below the first screen on a 900px desktop. The sticky menu, the counter tiles, the cheat-code banner, and the flows heading are in that screen. On a 390px phone the menu, counters, theme switch, and mascot fit; the counter tiles begin at the bottom edge.

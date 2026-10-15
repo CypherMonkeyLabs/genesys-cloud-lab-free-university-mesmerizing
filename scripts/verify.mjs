@@ -3,6 +3,7 @@ import { join } from "node:path";
 import { decide } from "../campus/assets/routing-model.js";
 import { DIAGRAMS, PORTS } from "../campus/assets/diagrams.js";
 import { PAGE_CITES } from "../campus/assets/pages.js";
+import { CHARTS } from "../campus/assets/floorviz.js";
 
 const root = join(import.meta.dirname, "..");
 const manifest = JSON.parse(readFileSync(join(root, "campus/data/manifest.json"), "utf8"));
@@ -84,7 +85,10 @@ if (faults < 30) problems.push("faults");
 if (reference.glossary.length < 40) problems.push("glossary");
 if (reference.bosses.length < 8) problems.push("bosses");
 if (reference.interviews.length < 24) problems.push("interviews");
-if (DIAGRAMS.length < 24) problems.push(`diagrams ${DIAGRAMS.length}`);
+const flowDiagrams = DIAGRAMS.filter((item) => item.flow);
+if (DIAGRAMS.length < 25) problems.push(`diagrams ${DIAGRAMS.length}`);
+if (flowDiagrams.length < 12) problems.push(`flows ${flowDiagrams.length}`);
+if (CHARTS.length < 6) problems.push(`charts ${CHARTS.length}`);
 for (const item of DIAGRAMS) checkUrl(item.url, item.id);
 for (const item of PORTS) checkUrl(item.url, item.name);
 for (const url of PAGE_CITES) checkUrl(url, "page");
@@ -101,12 +105,35 @@ for (const needle of ["https://cyphermonkeylabs.com", "https://linktr.ee/cypherm
 }
 if (/linkedin/i.test(html)) problems.push("linkedin");
 if (/mailto:/i.test(html)) problems.push("mailto");
+for (const label of ["Diagrams", "Flows", "Charts", "Cheat Codes", "Play", "Ecosystem", "Downloads", "Careers"]) {
+  if (!html.includes(`>${label}<`)) problems.push(`menu ${label}`);
+}
+if (!html.includes("cipher0x9.github.io")) problems.push("github.io strip");
+if (!html.includes('id="theme-switch"')) problems.push("theme switcher");
+for (const file of ["campus/vendor/d3.js", "campus/vendor/anime.js", "campus/vendor/rough.js", "campus/vendor/confetti.js", "campus/vendor/markmap.js", "campus/vendor/three.module.js", "campus/assets/floorviz.js", "campus/assets/hero3d.js"]) {
+  if (!existsSync(join(root, file))) problems.push(`missing ${file}`);
+}
+const mermaidDir = join(root, "campus/assets/mermaid");
+const mermaidSvgs = existsSync(mermaidDir) ? readdirSync(mermaidDir).filter((name) => name.endsWith(".svg")) : [];
+if (mermaidSvgs.length < 5) problems.push(`mermaid svgs ${mermaidSvgs.length}`);
 
 const downloadDir = join(root, "campus/downloads");
 if (!existsSync(downloadDir)) problems.push("downloads missing");
 else {
   const catalog = JSON.parse(readFileSync(join(downloadDir, "catalog.json"), "utf8"));
-  if (catalog.sheets.length < 12) problems.push("sheets");
+  if (catalog.sheets.length < 10) problems.push(`sheets ${catalog.sheets.length}`);
+  for (const sheet of catalog.sheets) {
+    for (const key of ["html", "pdf", "png"]) {
+      const rel = sheet[key];
+      if (!rel || !existsSync(join(root, "campus", rel))) problems.push(`${sheet.id || sheet.title} missing ${key}`);
+    }
+    if (sheet.html && existsSync(join(root, "campus", sheet.html))) {
+      const text = readFileSync(join(root, "campus", sheet.html), "utf8");
+      for (const needle of ["cyphermonkeylabs.com", "linktr.ee/cyphermonkey", "github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing", "Not affiliated"]) {
+        if (!text.includes(needle)) problems.push(`${sheet.html} missing ${needle}`);
+      }
+    }
+  }
   const cards = JSON.parse(readFileSync(join(downloadDir, "flashcards.json"), "utf8"));
   if (cards.cards.length < 400) problems.push("flashcards");
   if (statSync(join(downloadDir, "genesys-cx-offline-bundle.zip")).size < 1000) problems.push("zip");
@@ -209,6 +236,11 @@ const report = {
   bosses: reference.bosses.length,
   interviews: reference.interviews.length,
   studios: manifest.studios.length,
+  diagrams: DIAGRAMS.length,
+  flows: flowDiagrams.length,
+  charts: CHARTS.length,
+  mermaid: mermaidSvgs.length,
+  sheets: existsSync(downloadDir) ? JSON.parse(readFileSync(join(downloadDir, "catalog.json"), "utf8")).sheets.length : 0,
   shellBytes,
   problems
 };

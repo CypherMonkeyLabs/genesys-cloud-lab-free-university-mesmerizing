@@ -20,6 +20,10 @@ export const PAGE_CITES = [
 
 const HANDLERS = {
   atlas: showAtlas,
+  flows: showFlows,
+  charts: showCharts,
+  play: showPlay,
+  downloads: showCheat,
   ports: showPorts,
   game: showGame,
   map: showMap,
@@ -44,6 +48,49 @@ export function mountPage(name, ctx) {
     return undefined;
   }
   return handler(ctx);
+}
+
+function showFlows(ctx) {
+  ctx.setTitle("Flows");
+  const flows = DIAGRAMS.filter((item) => item.flow);
+  const mermaid = [
+    ["sip-sequence", "SIP success path", "Teaching sketch of a call that is answered. Real traces also use 183 and PRACK."],
+    ["acd-flow", "ACD eligibility", "Teaching sketch. On Queue, utilization, and skills decide who can be alerted."],
+    ["deploy-flow", "Deployment order", "Teaching checklist from region and trunk through a published flow and a queue."],
+    ["cutover-flow", "Cutover", "Teaching sequence. One number, then the queue, then the people."],
+    ["trouble-flow", "No-audio branch", "Teaching tree. A flow that runs with silence is a media problem."],
+    ["data-flow", "Data action", "Teaching sketch. A data action leaves the flow."]
+  ];
+  const generated = mermaid.map(([id, title, caption]) => `<article class="card"><h3>${ctx.esc(title)}</h3><figure class="mermaid-svg"><img alt="${ctx.esc(caption)}" src="assets/mermaid/${id}.svg"></figure><p>${ctx.esc(caption)}</p><p class="muted">Built with Mermaid at generation time. The runtime does not load Mermaid.</p></article>`).join("");
+  const cards = flows.map((spec) => `<article class="card" id="f-${spec.id}">${renderDiagram(spec)}<h3>${ctx.esc(spec.title)}</h3><p>${ctx.esc(spec.caption)}</p><p><a href="${ctx.esc(spec.url)}">${ctx.esc(spec.cite)}</a></p></article>`).join("");
+  ctx.root.innerHTML = `<p class="kicker">Flows</p><h1>${flows.length} animated flows</h1>
+    <p>Ladders, routing, architecture, deployment, cutover, and troubleshooting trees from the atlas, plus sequence drawings generated with Mermaid.</p>
+    <div class="grid">${generated}</div>
+    <h2>Atlas flows</h2>
+    <div class="grid">${cards}</div>`;
+}
+
+async function showCharts(ctx) {
+  ctx.setTitle("Charts");
+  ctx.root.innerHTML = `<p class="kicker">Charts</p><h1>Counts from this lab</h1>
+    <p>These pictures count lessons, minutes, levels, quiz items, diagram kinds, and port-table rows. They are not Genesys production metrics.</p>
+    <div id="chart-root"></div>`;
+  const mod = await import("./floorviz.js");
+  await mod.mountFloor(ctx.root.querySelector("#chart-root"), ctx.state.manifest, null);
+}
+
+function showPlay(ctx) {
+  ctx.setTitle("Play");
+  ctx.root.innerHTML = `<p class="kicker">Play</p><h1>Games on the floor</h1>
+    <p>Scores stay in this browser. Nothing here dials a real number.</p>
+    <div class="grid">
+      <a class="card" href="#/game"><h3>Port game</h3><p>Eight questions from the firewall and trunk articles.</p></a>
+      <a class="card" href="#/daily"><h3>Daily challenge</h3><p>One question, seeded by the UTC date.</p></a>
+      <a class="card" href="#/sandbox"><h3>Call-flow sandbox</h3><p>Place Architect actions and watch the path.</p></a>
+      <a class="card" href="#/badges"><h3>Badges</h3><p>Lessons, the port game, and the Konami code.</p></a>
+      <a class="card" href="#/topology"><h3>3D topology</h3><p>Core, BYOC, Edge, and a failure toggle.</p></a>
+      <a class="card" href="#/studio/routing"><h3>Routing studio</h3><p>Bullseye, preferred agent, and conversation score.</p></a>
+    </div>`;
 }
 
 function showAtlas(ctx) {
