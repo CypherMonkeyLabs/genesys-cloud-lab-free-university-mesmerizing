@@ -1,7 +1,7 @@
 {
   "title": "Genesys Cloud CX Lab",
-  "updated": "2026-10-14",
-  "quizCount": 666,
+  "updated": "2026-10-15",
+  "quizCount": 720,
   "tracks": [
     {
       "id": "foundations",
@@ -494,7 +494,7 @@
       "title": "Workforce management",
       "kicker": "WEM",
       "accent": 2,
-      "summary": "Business units, management units, service goals, schedules, adherence, and time off. WFM is a CX 3 capability.",
+      "summary": "Business units, forecasts, schedules, adherence, and time off. WFM is a CX 3 capability.",
       "file": "data/tracks/wfm.json",
       "lessons": [
         {
@@ -545,6 +545,20 @@
           "level": "Core",
           "minutes": 10,
           "summary": "The catalog lists a Workforce Management specialist certification and a preparation course. It does not list a code this lab is willing to invent."
+        },
+        {
+          "id": "w-forecast",
+          "title": "A forecast has a short view and a long view",
+          "level": "Advanced",
+          "minutes": 13,
+          "summary": "Short-term data can build a schedule. The long-term view is for seasonality and does not generate one."
+        },
+        {
+          "id": "w-generate",
+          "title": "Generate one schedule from a forecast that covers it",
+          "level": "Advanced",
+          "minutes": 13,
+          "summary": "The schedule period has to sit inside the short-term forecast, and a business unit generates one schedule at a time."
         }
       ]
     },
@@ -937,6 +951,65 @@
           "level": "Foundation",
           "minutes": 10,
           "summary": "Prices, unconfirmed hosts, exam codes, lifecycle dates, and CRM feature lists stay off the page."
+        }
+      ]
+    },
+    {
+      "id": "predictive",
+      "title": "Predictive Engagement",
+      "kicker": "On the site",
+      "accent": 3,
+      "summary": "Website journeys, segments, action maps, Messenger, and the Journey Outcomes deprecation. This is not ACD predictive routing.",
+      "file": "data/tracks/predictive.json",
+      "lessons": [
+        {
+          "id": "pe-what",
+          "title": "Predictive Engagement watches the site, not the queue math",
+          "level": "Core",
+          "minutes": 13,
+          "summary": "It predicts what a visitor is trying to do and offers a message, a chat, content, or a flow. Predictive routing is a different feature on the queue."
+        },
+        {
+          "id": "pe-track",
+          "title": "Messenger tracks web messaging. The old snippet tracks web chat.",
+          "level": "Core",
+          "minutes": 14,
+          "summary": "Genesys tells Genesys Cloud CX customers to use web messaging. Leaving both snippets on the page double-counts the visit."
+        },
+        {
+          "id": "pe-segments",
+          "title": "A segment matches visitors who meet every condition you listed",
+          "level": "Core",
+          "minutes": 12,
+          "summary": "At least one condition. More conditions, fewer visitors. Conditions are not shared with the next segment."
+        },
+        {
+          "id": "pe-map",
+          "title": "An action map is qualified before it is offered",
+          "level": "Core",
+          "minutes": 14,
+          "summary": "Segment, visitor activity, and outcome probability are the trigger kinds. Priority breaks a tie. Web chat is the legacy action."
+        },
+        {
+          "id": "pe-outcomes",
+          "title": "Journey Outcomes have a published end date",
+          "level": "Advanced",
+          "minutes": 14,
+          "summary": "Announced 18 May 2026. Planned effective date 29 June 2026. Outcome scoring is not part of the Customer Outcomes replacement."
+        },
+        {
+          "id": "pe-flow",
+          "title": "An Architect flow can be the action, and it can also be the thing you must edit",
+          "level": "Advanced",
+          "minutes": 12,
+          "summary": "Advanced orchestration is an action type. Flows that still call getJourneyOutcome need a path that does not depend on it."
+        },
+        {
+          "id": "pe-report",
+          "title": "Prove the map with Live Now and the performance reports",
+          "level": "Core",
+          "minutes": 12,
+          "summary": "Visitor activity and action-map performance are the Predictive Engagement reports. Outcome columns age out with the deprecation."
         }
       ]
     }

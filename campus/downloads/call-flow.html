@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Voice call flow</title>
+<style>
+body { font: 16px/1.45 Georgia, serif; margin: 32px auto; max-width: 720px; color: #1b140f; background: #f7f4ef; }
+h1 { font-size: 28px; }
+a { color: #8d1d08; }
+footer { margin-top: 28px; border-top: 1px solid #ccc; padding-top: 12px; font-size: 13px; }
+@media print { body { background: #fff; } }
+</style></head><body>
+<h1>Voice call flow</h1>
+<p>Enter through Genesys Cloud Voice or a BYOC trunk. Premises calls can hit an Edge first.</p>
+<p>A published Architect flow decides. A draft does not answer.</p>
+<p>Transfer to a queue. The in-queue flow is the hold experience and must be published too.</p>
+<p>ACD offers an agent who is On Queue, under utilization, and acceptable to the evaluation method.</p>
+<p>Digital conversations skip the trunk and still need a flow and a queue.</p>
+<h2>Sources</h2>
+<ul><li><a href="https://help.genesys.cloud/articles/about-architect/">https://help.genesys.cloud/articles/about-architect/</a></li>
+<li><a href="https://help.genesys.cloud/articles/create-a-flow/">https://help.genesys.cloud/articles/create-a-flow/</a></li>
+<li><a href="https://help.genesys.cloud/articles/advanced-routing-overview/">https://help.genesys.cloud/articles/advanced-routing-overview/</a></li></ul>
+<footer><p>CypherMonkey Labs · Signal Floor</p>
+<p>https://cyphermonkeylabs.com</p>
+<p>https://linktr.ee/cyphermonkey</p>
+<p>https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing</p>
+<p>Independent educational project. Not affiliated with or endorsed by any vendor.</p>
+<p>Trademarks belong to their owners. MIT code. CC BY-NC-SA content.</p>
+<p>Concerns: https://cyphermonkeylabs.com/#contact</p></footer>
+</body></html>

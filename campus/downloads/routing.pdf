@@ -1,0 +1,73 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Count 1 /Kids [3 0 R] >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 1286 >>
+stream
+BT
+/F1 16 Tf
+48 760 Td
+(Routing troubleshooting) Tj
+/F1 10 Tf
+0 -22 Td
+(Are they On Queue, a member, and under utilization? All-skills matching needs every) Tj
+0 -14 Td
+(required skill, then the longest idle. Bullseye: up to five rings. A long delay means the) Tj
+0 -14 Td
+(outer ring is still closed. Preferred agents are first only if they are members and On) Tj
+0 -14 Td
+(Queue. One conversation-score priority point is 60,000 ms. Predictive routing is the queue) Tj
+0 -14 Td
+(method. Predictive Engagement is the website product.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Sources:) Tj
+0 -14 Td
+(https://help.genesys.cloud/articles/acd-evaluation-routing-methods/) Tj
+0 -14 Td
+(https://help.genesys.cloud/articles/bullseye-routing-overview/) Tj
+0 -14 Td
+(https://help.genesys.cloud/articles/create-queues/) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(CypherMonkey Labs · Signal Floor) Tj
+0 -14 Td
+(https://cyphermonkeylabs.com) Tj
+0 -14 Td
+(https://linktr.ee/cyphermonkey) Tj
+0 -14 Td
+(https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing) Tj
+0 -14 Td
+(Independent educational project. Not affiliated with or endorsed by any vendor.) Tj
+0 -14 Td
+(Trademarks belong to their owners. MIT code. CC BY-NC-SA content.) Tj
+0 -14 Td
+(Concerns: https://cyphermonkeylabs.com/#contact) Tj
+0 -14 Td
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000241 00000 n 
+0000001579 00000 n 
+trailer << /Size 6 /Root 1 0 R >>
+startxref
+1649
+%%EOF

@@ -1,0 +1,167 @@
+/** Menu labels and greetings. Lesson prose stays English so citations stay exact. */
+
+export const LANGS = [
+  ["en", "English"],
+  ["es", "Español"],
+  ["hi", "हिन्दी"],
+  ["te", "తెలుగు"],
+  ["fr", "Français"],
+  ["de", "Deutsch"],
+  ["ja", "日本語"],
+  ["ar", "العربية"]
+];
+
+const STR = {
+  en: {
+    greet: "Welcome to the signal floor.",
+    kicker: "Free operations university",
+    lede: "Architect flows, bullseye routing, BYOC trunks, the Edge, WEM, Predictive Engagement, and the Platform API. Every lesson links to a public source.",
+    diagrams: "Diagrams",
+    flows: "Flows",
+    charts: "Charts",
+    cheat: "Cheat Codes",
+    play: "Play",
+    ecosystem: "Ecosystem",
+    downloads: "Downloads",
+    careers: "Careers",
+    regions: "Regions",
+    light: "Light",
+    dark: "Dark",
+    listen: "Architect desk"
+  },
+  es: {
+    greet: "Bienvenido al piso de señales.",
+    kicker: "Universidad libre de operaciones",
+    lede: "Flujos de Architect, enrutamiento bullseye, troncales BYOC, Edge, WEM, Predictive Engagement y la API. Cada lección enlaza una fuente pública.",
+    diagrams: "Diagramas",
+    flows: "Flujos",
+    charts: "Gráficos",
+    cheat: "Chuletas",
+    play: "Jugar",
+    ecosystem: "Ecosistema",
+    downloads: "Descargas",
+    careers: "Carreras",
+    regions: "Regiones",
+    light: "Claro",
+    dark: "Oscuro",
+    listen: "Mesa de arquitectos"
+  },
+  hi: {
+    greet: "सिग्नल फ़्लोर पर स्वागत है।",
+    kicker: "मुफ़्त ऑपरेशंस विश्वविद्यालय",
+    lede: "Architect फ़्लो, bullseye रूटिंग, BYOC ट्रंक, Edge, WEM, Predictive Engagement और API। हर पाठ एक सार्वजनिक स्रोत से जुड़ा है।",
+    diagrams: "आरेख",
+    flows: "प्रवाह",
+    charts: "चार्ट",
+    cheat: "चीट कोड",
+    play: "खेल",
+    ecosystem: "इकोसिस्टम",
+    downloads: "डाउनलोड",
+    careers: "करियर",
+    regions: "क्षेत्र",
+    light: "हल्का",
+    dark: "गहरा",
+    listen: "आर्किटेक्ट डेस्क"
+  },
+  te: {
+    greet: "సిగ్నల్ ఫ్లోర్‌కు స్వాగతం.",
+    kicker: "ఉచిత ఆపరేషన్స్ విశ్వవిద్యాలయం",
+    lede: "Architect ఫ్లోలు, bullseye రూటింగ్, BYOC ట్రంక్‌లు, Edge, WEM, Predictive Engagement మరియు API. ప్రతి పాఠం ఒక పబ్లిక్ మూలానికి లింక్.",
+    diagrams: "పటాలు",
+    flows: "ప్రవాహాలు",
+    charts: "చార్టులు",
+    cheat: "చీట్ కోడ్స్",
+    play: "ఆడండి",
+    ecosystem: "ఎకోసిస్టమ్",
+    downloads: "డౌన్‌లోడ్స్",
+    careers: "కెరీర్",
+    regions: "ప్రాంతాలు",
+    light: "లైట్",
+    dark: "డార్క్",
+    listen: "ఆర్కిటెక్ట్ డెస్క్"
+  },
+  fr: {
+    greet: "Bienvenue sur le plateau signal.",
+    kicker: "Université d’exploitation libre",
+    lede: "Flux Architect, routage bullseye, trunks BYOC, Edge, WEM, Predictive Engagement et l’API. Chaque leçon cite une source publique.",
+    diagrams: "Schémas",
+    flows: "Flux",
+    charts: "Graphiques",
+    cheat: "Antisèches",
+    play: "Jouer",
+    ecosystem: "Écosystème",
+    downloads: "Téléchargements",
+    careers: "Carrières",
+    regions: "Régions",
+    light: "Clair",
+    dark: "Sombre",
+    listen: "Bureau des architectes"
+  },
+  de: {
+    greet: "Willkommen auf dem Signal Floor.",
+    kicker: "Freie Betriebs-Universität",
+    lede: "Architect-Flows, Bullseye-Routing, BYOC-Trunks, Edge, WEM, Predictive Engagement und die API. Jede Lektion verlinkt eine öffentliche Quelle.",
+    diagrams: "Diagramme",
+    flows: "Flüsse",
+    charts: "Charts",
+    cheat: "Spickzettel",
+    play: "Spielen",
+    ecosystem: "Ökosystem",
+    downloads: "Downloads",
+    careers: "Karriere",
+    regions: "Regionen",
+    light: "Hell",
+    dark: "Dunkel",
+    listen: "Architektentisch"
+  },
+  ja: {
+    greet: "シグナルフロアへようこそ。",
+    kicker: "無料の運用大学",
+    lede: "Architect フロー、ブルズアイルーティング、BYOC トランク、Edge、WEM、Predictive Engagement、API。各レッスンは公開資料へリンクします。",
+    diagrams: "図",
+    flows: "フロー",
+    charts: "チャート",
+    cheat: "チートシート",
+    play: "プレイ",
+    ecosystem: "エコシステム",
+    downloads: "ダウンロード",
+    careers: "キャリア",
+    regions: "リージョン",
+    light: "ライト",
+    dark: "ダーク",
+    listen: "アーキテクト席"
+  },
+  ar: {
+    greet: "مرحبًا بك في طابق الإشارة.",
+    kicker: "جامعة تشغيل مجانية",
+    lede: "تدفقات Architect، توجيه bullseye، جذوع BYOC، وEdge، وWEM، وPredictive Engagement، وواجهة API. كل درس يربط مصدرًا عامًا.",
+    diagrams: "مخططات",
+    flows: "تدفقات",
+    charts: "رسوم",
+    cheat: "أوراق مختصرة",
+    play: "تدريب",
+    ecosystem: "المنظومة",
+    downloads: "تنزيلات",
+    careers: "مسارات",
+    regions: "المناطق",
+    light: "فاتح",
+    dark: "داكن",
+    listen: "مكتب المعماريين"
+  }
+};
+
+export function pack(code) {
+  return STR[code] || STR.en;
+}
+
+export function applyLang(code) {
+  const lang = STR[code] ? code : "en";
+  const text = STR[lang];
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+  document.querySelectorAll("[data-i18n]").forEach((el) => {
+    const key = el.dataset.i18n;
+    if (text[key]) el.textContent = text[key];
+  });
+  return lang;
+}

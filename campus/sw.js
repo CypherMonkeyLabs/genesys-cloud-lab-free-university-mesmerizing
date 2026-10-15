@@ -1,9 +1,20 @@
-const CACHE = "gccx-lab-v1";
+const CACHE = "gccx-lab-v6";
 const SHELL = [
   "./",
   "./index.html",
   "./manifest.webmanifest",
   "./assets/app.js",
+  "./assets/university.css",
+  "./assets/mascot.js",
+  "./assets/diagrams.js",
+  "./assets/pages.js",
+  "./assets/floorviz.js",
+  "./assets/hero3d.js",
+  "./assets/icons3d.js",
+  "./assets/liveicons.js",
+  "./assets/headings.js",
+  "./assets/i18n.js",
+  "./assets/lightbox.js",
   "./assets/studios.js",
   "./assets/topology.js",
   "./assets/routing-model.js",
@@ -35,7 +46,7 @@ self.addEventListener("fetch", (event) => {
         }
         return response;
       }).catch(() => cached);
-      return cached || network;
+      return network || cached;
     })
   );
 });

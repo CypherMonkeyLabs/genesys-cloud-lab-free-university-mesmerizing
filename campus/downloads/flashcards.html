@@ -1,0 +1,486 @@
+<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'><title>Flashcards</title><style>body{font:15px/1.4 Georgia,serif;margin:24px;background:#f7f4ef;color:#1b140f}article{break-inside:avoid;border:1px solid #ccc;padding:12px;margin:8px 0;background:#fff}footer{margin-top:24px;font-size:13px}</style></head><body><h1>Signal Floor flashcards</h1><article><h2>Five</h2><p>Standard, predictive, bullseye, preferred, conditional.</p><p>ACD routing · Five routing methods</p></article>
+<article><h2>Default</h2><p>Standard.</p><p>ACD routing · Five routing methods</p></article>
+<article><h2>Predictive fallback</h2><p>Standard.</p><p>ACD routing · Five routing methods</p></article>
+<article><h2>Preferred fallback</h2><p>Standard, bullseye, or conditional.</p><p>ACD routing · Five routing methods</p></article>
+<article><h2>All</h2><p>Longest idle with every skill.</p><p>ACD routing · All skills, best available, or disregard</p></article>
+<article><h2>Best</h2><p>Top 100 longest idle, then proficiency.</p><p>ACD routing · All skills, best available, or disregard</p></article>
+<article><h2>Disregard</h2><p>Skills do not filter.</p><p>ACD routing · All skills, best available, or disregard</p></article>
+<article><h2>7 days</h2><p>Inactive agents drop out.</p><p>ACD routing · All skills, best available, or disregard</p></article>
+<article><h2>60,000 ms</h2><p>One conversation-score point.</p><p>ACD routing · Conversation score and priority score</p></article>
+<article><h2>Priority score</h2><p>Value first, time second.</p><p>ACD routing · Conversation score and priority score</p></article>
+<article><h2>Cross queue</h2><p>Priority-score queues take precedence.</p><p>ACD routing · Conversation score and priority score</p></article>
+<article><h2>Do not inflate</h2><p>If all priorities match, you bought nothing.</p><p>ACD routing · Conversation score and priority score</p></article>
+<article><h2>5 rings</h2><p>The cap.</p><p>ACD routing · Bullseye rings widen the target</p></article>
+<article><h2>2 seconds to 72 hours</h2><p>The delay range.</p><p>ACD routing · Bullseye rings widen the target</p></article>
+<article><h2>50 skills</h2><p>The removal cap.</p><p>ACD routing · Bullseye rings widen the target</p></article>
+<article><h2>Two styles</h2><p>Lower proficiency groups, or remove skills.</p><p>ACD routing · Bullseye rings widen the target</p></article>
+<article><h2>Member + On Queue</h2><p>Both are required.</p><p>ACD routing · Preferred agents are tried first</p></article>
+<article><h2>Skills</h2><p>Not required for a preferred agent.</p><p>ACD routing · Preferred agents are tried first</p></article>
+<article><h2>Utilization</h2><p>Full means skip.</p><p>ACD routing · Preferred agents are tried first</p></article>
+<article><h2>Email</h2><p>Last-agent routing does not apply.</p><p>ACD routing · Preferred agents are tried first</p></article>
+<article><h2>Three modes</h2><p>Comparison, all interactions, 80/20 monitoring.</p><p>ACD routing · Predictive routing is a KPI model with a timeout</p></article>
+<article><h2>80/20</h2><p>Fixed.</p><p>ACD routing · Predictive routing is a KPI model with a timeout</p></article>
+<article><h2>30 days</h2><p>No traffic disables it.</p><p>ACD routing · Predictive routing is a KPI model with a timeout</p></article>
+<article><h2>Fallback</h2><p>Standard.</p><p>ACD routing · Predictive routing is a KPI model with a timeout</p></article>
+<article><h2>Rule</h2><p>KPI plus availability.</p><p>ACD routing · Conditional group routing borrows agents carefully</p></article>
+<article><h2>Five</h2><p>Maximum rules.</p><p>ACD routing · Conditional group routing borrows agents carefully</p></article>
+<article><h2>Protect the donor</h2><p>Do not steal a failing queue’s agents.</p><p>ACD routing · Conditional group routing borrows agents carefully</p></article>
+<article><h2>Still ACD</h2><p>On Queue and utilization remain.</p><p>ACD routing · Conditional group routing borrows agents carefully</p></article>
+<article><h2>Defaults</h2><p>1 call, 1 email, 1 callback, 4 chats, 4 messages, 4 workitems.</p><p>ACD routing · Utilization and Not Responding</p></article>
+<article><h2>Alert</h2><p>7–59 seconds, then Not Responding.</p><p>ACD routing · Utilization and Not Responding</p></article>
+<article><h2>Auto answer</h2><p>No alerting timeout. Audio alert remains.</p><p>ACD routing · Utilization and Not Responding</p></article>
+<article><h2>Non-ACD</h2><p>Excluded unless you opt in.</p><p>ACD routing · Utilization and Not Responding</p></article>
+<article><h2>Bot</h2><p>Faces the customer.</p><p>Genesys AI and bots · Two Architect bot types, plus Copilot beside the agent</p></article>
+<article><h2>Copilot</h2><p>Faces the agent.</p><p>Genesys AI and bots · Two Architect bot types, plus Copilot beside the agent</p></article>
+<article><h2>CX 4</h2><p>Where the overview places Copilot.</p><p>Genesys AI and bots · Two Architect bot types, plus Copilot beside the agent</p></article>
+<article><h2>QA</h2><p>STA plus a form, not a bot.</p><p>Genesys AI and bots · Two Architect bot types, plus Copilot beside the agent</p></article>
+<article><h2>Example</h2><p>Balance or branch.</p><p>Genesys AI and bots · Dialog Engine bot flows are voice and digital intents</p></article>
+<article><h2>Action</h2><p>Call Bot Flow.</p><p>Genesys AI and bots · Dialog Engine bot flows are voice and digital intents</p></article>
+<article><h2>Intent</h2><p>A branch in the inbound flow.</p><p>Genesys AI and bots · Dialog Engine bot flows are voice and digital intents</p></article>
+<article><h2>Failure</h2><p>A queue.</p><p>Genesys AI and bots · Dialog Engine bot flows are voice and digital intents</p></article>
+<article><h2>Type</h2><p>Digital Bot Flow.</p><p>Genesys AI and bots · Digital bot flows are a different call</p></article>
+<article><h2>Action</h2><p>Call Digital Bot Flow.</p><p>Genesys AI and bots · Digital bot flows are a different call</p></article>
+<article><h2>Error queue</h2><p>Still required.</p><p>Genesys AI and bots · Digital bot flows are a different call</p></article>
+<article><h2>Human</h2><p>Still required.</p><p>Genesys AI and bots · Digital bot flows are a different call</p></article>
+<article><h2>No match</h2><p>A path.</p><p>Genesys AI and bots · Every bot has a failure output to a queue</p></article>
+<article><h2>Timeout</h2><p>A path.</p><p>Genesys AI and bots · Every bot has a failure output to a queue</p></article>
+<article><h2>Error</h2><p>A path.</p><p>Genesys AI and bots · Every bot has a failure output to a queue</p></article>
+<article><h2>Vendor</h2><p>Confirm in product. Still draw the exit.</p><p>Genesys AI and bots · Every bot has a failure output to a queue</p></article>
+<article><h2>Sources</h2><p>Knowledge you maintain.</p><p>Genesys AI and bots · Agent Copilot assists the person who stayed on the interaction</p></article>
+<article><h2>Panel</h2><p>Transcript, script, next action.</p><p>Genesys AI and bots · Agent Copilot assists the person who stayed on the interaction</p></article>
+<article><h2>Notes</h2><p>Reason, resolution, possible wrap-up.</p><p>Genesys AI and bots · Agent Copilot assists the person who stayed on the interaction</p></article>
+<article><h2>Transfer</h2><p>Help can remain. Digits still must not.</p><p>Genesys AI and bots · Agent Copilot assists the person who stayed on the interaction</p></article>
+<article><h2>30</h2><p>Named allotment on the overview.</p><p>Genesys AI and bots · Tokens are a published allotment, and a FAQ ratio you re-read</p></article>
+<article><h2>39</h2><p>Concurrent allotment.</p><p>Genesys AI and bots · Tokens are a published allotment, and a FAQ ratio you re-read</p></article>
+<article><h2>20</h2><p>FAQ’s evaluations per scoring token. Re-read.</p><p>Genesys AI and bots · Tokens are a published allotment, and a FAQ ratio you re-read</p></article>
+<article><h2>Bots</h2><p>No invented token price.</p><p>Genesys AI and bots · Tokens are a published allotment, and a FAQ ratio you re-read</p></article>
+<article><h2>GPE &amp; GPR</h2><p>Course 17671. One exam.</p><p>Genesys AI and bots · The AI exams are named on the catalog, one exam each</p></article>
+<article><h2>Digital bots</h2><p>Course 18174. One exam.</p><p>Genesys AI and bots · The AI exams are named on the catalog, one exam each</p></article>
+<article><h2>STA</h2><p>A specialist row.</p><p>Genesys AI and bots · The AI exams are named on the catalog, one exam each</p></article>
+<article><h2>Codes</h2><p>No invented GCX- prefix.</p><p>Genesys AI and bots · The AI exams are named on the catalog, one exam each</p></article>
+<article><h2>Explorer</h2><p>Does not send.</p><p>Platform APIs · The Developer Center is the map. This lab is not a client.</p></article>
+<article><h2>Illustration</h2><p>Not a capture.</p><p>Platform APIs · The Developer Center is the map. This lab is not a client.</p></article>
+<article><h2>Host</h2><p>Only US East is printed here.</p><p>Platform APIs · The Developer Center is the map. This lab is not a client.</p></article>
+<article><h2>Secret</h2><p>Never in the browser sample.</p><p>Platform APIs · The Developer Center is the map. This lab is not a client.</p></article>
+<article><h2>Service</h2><p>Client credentials.</p><p>Platform APIs · Pick the grant that matches who the call runs as</p></article>
+<article><h2>User</h2><p>Authorization code.</p><p>Platform APIs · Pick the grant that matches who the call runs as</p></article>
+<article><h2>SSO</h2><p>SAML2 Bearer.</p><p>Platform APIs · Pick the grant that matches who the call runs as</p></article>
+<article><h2>Implicit</h2><p>Deprecated after 25 May 2026.</p><p>Platform APIs · Pick the grant that matches who the call runs as</p></article>
+<article><h2>Basic</h2><p>Id and secret at the login host.</p><p>Platform APIs · Client credentials have no user, so users/me is the wrong call</p></article>
+<article><h2>Bearer</h2><p>The API host.</p><p>Platform APIs · Client credentials have no user, so users/me is the wrong call</p></article>
+<article><h2>users/me</h2><p>Wrong grant.</p><p>Platform APIs · Client credentials have no user, so users/me is the wrong call</p></article>
+<article><h2>Subset</h2><p>No privilege escalation.</p><p>Platform APIs · Client credentials have no user, so users/me is the wrong call</p></article>
+<article><h2>Date</h2><p>25 May 2026 on the article.</p><p>Platform APIs · Implicit grant is a migration, not a new design</p></article>
+<article><h2>User</h2><p>Code and PKCE.</p><p>Platform APIs · Implicit grant is a migration, not a new design</p></article>
+<article><h2>Service</h2><p>Client credentials.</p><p>Platform APIs · Implicit grant is a migration, not a new design</p></article>
+<article><h2>Inventory</h2><p>Including partners.</p><p>Platform APIs · Implicit grant is a migration, not a new design</p></article>
+<article><h2>US East</h2><p>login.mypurecloud.com / api.mypurecloud.com.</p><p>Platform APIs · Login host and API host are a pair you look up</p></article>
+<article><h2>US West</h2><p>login.usw2.pure.cloud. Confirm the API host.</p><p>Platform APIs · Login host and API host are a pair you look up</p></article>
+<article><h2>FedRAMP</h2><p>login.use2.us-gov-pure.cloud. Confirm the API host.</p><p>Platform APIs · Login host and API host are a pair you look up</p></article>
+<article><h2>Satellite</h2><p>Not an org home.</p><p>Platform APIs · Login host and API host are a pair you look up</p></article>
+<article><h2>Pair</h2><p>Role plus division.</p><p>Platform APIs · Role and division pairs are the real permission</p></article>
+<article><h2>All</h2><p>Org-wide, on purpose.</p><p>Platform APIs · Role and division pairs are the real permission</p></article>
+<article><h2>Home</h2><p>Cannot be deleted.</p><p>Platform APIs · Role and division pairs are the real permission</p></article>
+<article><h2>Creator</h2><p>Caps the client.</p><p>Platform APIs · Role and division pairs are the real permission</p></article>
+<article><h2>Client</h2><p>Its own OAuth client.</p><p>Platform APIs · SCIM and other directory sync still start with an OAuth client</p></article>
+<article><h2>Roles</h2><p>Provision, not everything.</p><p>Platform APIs · SCIM and other directory sync still start with an OAuth client</p></article>
+<article><h2>Secret</h2><p>A vault.</p><p>Platform APIs · SCIM and other directory sync still start with an OAuth client</p></article>
+<article><h2>After</h2><p>Queues and On Queue.</p><p>Platform APIs · SCIM and other directory sync still start with an OAuth client</p></article>
+<article><h2>200</h2><p>Maximum flow name length.</p><p>Architect flows · The flow types on the Architect home page</p></article>
+<article><h2>Per type</h2><p>Names are unique inside a type only.</p><p>Architect flows · The flow types on the Architect home page</p></article>
+<article><h2>Tabs</h2><p>Call, message, email, chat, bot, in-queue, secure, workflow, survey, and others.</p><p>Architect flows · The flow types on the Architect home page</p></article>
+<article><h2>Refresh</h2><p>Creation lag is expected.</p><p>Architect flows · The flow types on the Architect home page</p></article>
+<article><h2>Actions</h2><p>Play, collect, decide, transfer, dip, disconnect.</p><p>Architect flows · Tasks, menus, and a way out</p></article>
+<article><h2>Exit</h2><p>Queue, bot, or disconnect.</p><p>Architect flows · Tasks, menus, and a way out</p></article>
+<article><h2>Secure</h2><p>Blind transfer, not consultation VXML.</p><p>Architect flows · Tasks, menus, and a way out</p></article>
+<article><h2>Data dip</h2><p>A first-class Architect idea.</p><p>Architect flows · Tasks, menus, and a way out</p></article>
+<article><h2>Publish</h2><p>The default call flow is inert until then.</p><p>Architect flows · In-queue flows are the hold experience</p></article>
+<article><h2>No menus</h2><p>In-queue call flows are tasks and states, not menus.</p><p>Architect flows · In-queue flows are the hold experience</p></article>
+<article><h2>Email</h2><p>No built-in default. Inbound response launches it.</p><p>Architect flows · In-queue flows are the hold experience</p></article>
+<article><h2>Republish</h2><p>Edits do not ride the last publish.</p><p>Architect flows · In-queue flows are the hold experience</p></article>
+<article><h2>Data action</h2><p>A call out of the flow.</p><p>Architect flows · Data actions and participant data</p></article>
+<article><h2>Participant data</h2><p>What the agent is allowed to see.</p><p>Architect flows · Data actions and participant data</p></article>
+<article><h2>Salesforce auth</h2><p>Client credentials, not username-password.</p><p>Architect flows · Data actions and participant data</p></article>
+<article><h2>Failure branch</h2><p>Required. The caller will not wait politely.</p><p>Architect flows · Data actions and participant data</p></article>
+<article><h2>Type</h2><p>Common module is its own tab.</p><p>Architect flows · Common modules are how you stop copying tasks</p></article>
+<article><h2>Inputs</h2><p>Pass the queue. Do not hide it.</p><p>Architect flows · Common modules are how you stop copying tasks</p></article>
+<article><h2>Uniqueness</h2><p>Inside the common-module type.</p><p>Architect flows · Common modules are how you stop copying tasks</p></article>
+<article><h2>In-queue</h2><p>No reusable tasks there.</p><p>Architect flows · Common modules are how you stop copying tasks</p></article>
+<article><h2>Purpose</h2><p>Hide a sensitive entry from recording and from the agent.</p><p>Architect flows · Secure call flows keep digits away from the recording</p></article>
+<article><h2>Blind</h2><p>Not a consultation VXML transfer.</p><p>Architect flows · Secure call flows keep digits away from the recording</p></article>
+<article><h2>Do not log</h2><p>Participant data would leak the digits.</p><p>Architect flows · Secure call flows keep digits away from the recording</p></article>
+<article><h2>Policy</h2><p>Still decides whether the rest of the call is recorded.</p><p>Architect flows · Secure call flows keep digits away from the recording</p></article>
+<article><h2>Two bot types</h2><p>Dialog Engine and digital.</p><p>Architect flows · Call a bot from the inbound flow</p></article>
+<article><h2>Call action</h2><p>Match the action to the type.</p><p>Architect flows · Call a bot from the inbound flow</p></article>
+<article><h2>Failure</h2><p>Always a queue.</p><p>Architect flows · Call a bot from the inbound flow</p></article>
+<article><h2>Insights</h2><p>After publish, read what ran.</p><p>Architect flows · Call a bot from the inbound flow</p></article>
+<article><h2>Save</h2><p>Draft.</p><p>Architect flows · Publish, division, and Flow Insights</p></article>
+<article><h2>Publish</h2><p>Runtime version.</p><p>Architect flows · Publish, division, and Flow Insights</p></article>
+<article><h2>Route</h2><p>What actually invokes it.</p><p>Architect flows · Publish, division, and Flow Insights</p></article>
+<article><h2>Division</h2><p>Who is allowed to see it.</p><p>Architect flows · Publish, division, and Flow Insights</p></article>
+<article><h2>You bring</h2><p>The carrier contract.</p><p>BYOC Cloud and SIP trunks · BYOC Cloud is your carrier, Genesys’ media</p></article>
+<article><h2>Public</h2><p>Address and ports.</p><p>BYOC Cloud and SIP trunks · BYOC Cloud is your carrier, Genesys’ media</p></article>
+<article><h2>RTP</h2><p>Across the internet.</p><p>BYOC Cloud and SIP trunks · BYOC Cloud is your carrier, Genesys’ media</p></article>
+<article><h2>Emergency</h2><p>Not copied from GCV.</p><p>BYOC Cloud and SIP trunks · BYOC Cloud is your carrier, Genesys’ media</p></article>
+<article><h2>Two types</h2><p>Carrier and PBX.</p><p>BYOC Cloud and SIP trunks · Carrier trunks and PBX trunks</p></article>
+<article><h2>Three carrier subtypes</h2><p>Generic, Verizon, WhatsApp Business Calling.</p><p>BYOC Cloud and SIP trunks · Carrier trunks and PBX trunks</p></article>
+<article><h2>Base first</h2><p>Advanced only when required.</p><p>BYOC Cloud and SIP trunks · Carrier trunks and PBX trunks</p></article>
+<article><h2>Message flow</h2><p>A different object from the WhatsApp calling trunk.</p><p>BYOC Cloud and SIP trunks · Carrier trunks and PBX trunks</p></article>
+<article><h2>Order</h2><p>Location, trunk, route, plans.</p><p>BYOC Cloud and SIP trunks · The quick-start order</p></article>
+<article><h2>DCVP</h2><p>For new trunks.</p><p>BYOC Cloud and SIP trunks · The quick-start order</p></article>
+<article><h2>Assign</h2><p>Default routes are not finished.</p><p>BYOC Cloud and SIP trunks · The quick-start order</p></article>
+<article><h2>Location</h2><p>Not optional.</p><p>BYOC Cloud and SIP trunks · The quick-start order</p></article>
+<article><h2>Test first</h2><p>A new trunk.</p><p>BYOC Cloud and SIP trunks · Dynamic Cloud Voice is the current platform</p></article>
+<article><h2>ACL</h2><p>Egress ranges.</p><p>BYOC Cloud and SIP trunks · Dynamic Cloud Voice is the current platform</p></article>
+<article><h2>Trust</h2><p>Amazon root CAs and ciphers.</p><p>BYOC Cloud and SIP trunks · Dynamic Cloud Voice is the current platform</p></article>
+<article><h2>Then toggle</h2><p>High capacity outbound, then ingress targets.</p><p>BYOC Cloud and SIP trunks · Dynamic Cloud Voice is the current platform</p></article>
+<article><h2>200</h2><p>Plans per site.</p><p>BYOC Cloud and SIP trunks · Number plans classify what people dial</p></article>
+<article><h2>DID</h2><p>No custom plan required for basic routing.</p><p>BYOC Cloud and SIP trunks · Number plans classify what people dial</p></article>
+<article><h2>988</h2><p>Default plan to +18002738255. Re-read before you depend on it.</p><p>BYOC Cloud and SIP trunks · Number plans classify what people dial</p></article>
+<article><h2>Normalize</h2><p>Intra-country and inter-country. Not digit length.</p><p>BYOC Cloud and SIP trunks · Number plans classify what people dial</p></article>
+<article><h2>200 OK</h2><p>Dialog, not audio.</p><p>BYOC Cloud and SIP trunks · Watch the trunk, not only the flow</p></article>
+<article><h2>Monitor page</h2><p>Cloud media.</p><p>BYOC Cloud and SIP trunks · Watch the trunk, not only the flow</p></article>
+<article><h2>Far end</h2><p>ACL, CA, ingress.</p><p>BYOC Cloud and SIP trunks · Watch the trunk, not only the flow</p></article>
+<article><h2>Insights</h2><p>The flow can be innocent.</p><p>BYOC Cloud and SIP trunks · Watch the trunk, not only the flow</p></article>
+<article><h2>GCV</h2><p>Genesys is the carrier. Read the region and country tables.</p><p>BYOC Cloud and SIP trunks · Genesys Cloud Voice is the other door</p></article>
+<article><h2>BYOC</h2><p>You are the carrier’s customer.</p><p>BYOC Cloud and SIP trunks · Genesys Cloud Voice is the other door</p></article>
+<article><h2>Emergency</h2><p>Does not cross over by itself.</p><p>BYOC Cloud and SIP trunks · Genesys Cloud Voice is the other door</p></article>
+<article><h2>Features</h2><p>CX voice features are not the same decision as the trunk.</p><p>BYOC Cloud and SIP trunks · Genesys Cloud Voice is the other door</p></article>
+<article><h2>Listing</h2><p>A candidate.</p><p>AppFoundry and CRM · AppFoundry is the marketplace, not a feature you assume is installed</p></article>
+<article><h2>Install</h2><p>The moment it exists.</p><p>AppFoundry and CRM · AppFoundry is the marketplace, not a feature you assume is installed</p></article>
+<article><h2>Client</h2><p>Scope it.</p><p>AppFoundry and CRM · AppFoundry is the marketplace, not a feature you assume is installed</p></article>
+<article><h2>Unknown CRM</h2><p>Marketplace, not fiction.</p><p>AppFoundry and CRM · AppFoundry is the marketplace, not a feature you assume is installed</p></article>
+<article><h2>Embed</h2><p>Pop, dial, log.</p><p>AppFoundry and CRM · Genesys Cloud for Salesforce is a documented embed</p></article>
+<article><h2>Assist</h2><p>As the page states.</p><p>AppFoundry and CRM · Genesys Cloud for Salesforce is a documented embed</p></article>
+<article><h2>Data action</h2><p>Separate OAuth.</p><p>AppFoundry and CRM · Genesys Cloud for Salesforce is a documented embed</p></article>
+<article><h2>Schema</h2><p>Yours to map.</p><p>AppFoundry and CRM · Genesys Cloud for Salesforce is a documented embed</p></article>
+<article><h2>Leave</h2><p>Username and password.</p><p>AppFoundry and CRM · Salesforce data actions move to OAuth client credentials</p></article>
+<article><h2>Bring</h2><p>Key, secret, My Domain.</p><p>AppFoundry and CRM · Salesforce data actions move to OAuth client credentials</p></article>
+<article><h2>Keep</h2><p>The action body, then re-test.</p><p>AppFoundry and CRM · Salesforce data actions move to OAuth client credentials</p></article>
+<article><h2>Other page</h2><p>CX Cloud OAuth settings.</p><p>AppFoundry and CRM · Salesforce data actions move to OAuth client credentials</p></article>
+<article><h2>Source</h2><p>The Zendesk article.</p><p>AppFoundry and CRM · Zendesk has its own about page, with a similar embed idea</p></article>
+<article><h2>Not</h2><p>The Salesforce My Domain steps.</p><p>AppFoundry and CRM · Zendesk has its own about page, with a similar embed idea</p></article>
+<article><h2>Client</h2><p>If it calls the API.</p><p>AppFoundry and CRM · Zendesk has its own about page, with a similar embed idea</p></article>
+<article><h2>Gap</h2><p>Say unconfirmed.</p><p>AppFoundry and CRM · Zendesk has its own about page, with a similar embed idea</p></article>
+<article><h2>Unknown</h2><p>No invented list.</p><p>AppFoundry and CRM · Dynamics, ServiceNow, and the rest stay on the marketplace</p></article>
+<article><h2>Build</h2><p>OAuth and data actions.</p><p>AppFoundry and CRM · Dynamics, ServiceNow, and the rest stay on the marketplace</p></article>
+<article><h2>Timeout</h2><p>The call continues.</p><p>AppFoundry and CRM · Dynamics, ServiceNow, and the rest stay on the marketplace</p></article>
+<article><h2>Cite</h2><p>A page you opened.</p><p>AppFoundry and CRM · Dynamics, ServiceNow, and the rest stay on the marketplace</p></article>
+<article><h2>Timeout</h2><p>Then queue.</p><p>AppFoundry and CRM · A CRM failure is not an ACD failure</p></article>
+<article><h2>Status</h2><p>Name the CRM.</p><p>AppFoundry and CRM · A CRM failure is not an ACD failure</p></article>
+<article><h2>403</h2><p>Check the division pair.</p><p>AppFoundry and CRM · A CRM failure is not an ACD failure</p></article>
+<article><h2>Pop</h2><p>Can fail while ACD works.</p><p>AppFoundry and CRM · A CRM failure is not an ACD failure</p></article>
+<article><h2>Path</h2><p>Entry, flow, queue, agent.</p><p>Ecosystem · The conversation crosses a short list of systems</p></article>
+<article><h2>Neighbors</h2><p>WEM, CRM, AI.</p><p>Ecosystem · The conversation crosses a short list of systems</p></article>
+<article><h2>Packages</h2><p>CX 1 through CX 4.</p><p>Ecosystem · The conversation crosses a short list of systems</p></article>
+<article><h2>Toggles</h2><p>A picture, not a switch on your org.</p><p>Ecosystem · The conversation crosses a short list of systems</p></article>
+<article><h2>WFM</h2><p>Schedules.</p><p>Ecosystem · WFM, QM, E911, analytics, CRM, and bots are sisters</p></article>
+<article><h2>QM</h2><p>Forms and recordings.</p><p>Ecosystem · WFM, QM, E911, analytics, CRM, and bots are sisters</p></article>
+<article><h2>E911</h2><p>A tested route.</p><p>Ecosystem · WFM, QM, E911, analytics, CRM, and bots are sisters</p></article>
+<article><h2>Glossary</h2><p>A pointer, not the law.</p><p>Ecosystem · WFM, QM, E911, analytics, CRM, and bots are sisters</p></article>
+<article><h2>Two links</h2><p>Cisco and Genesys.</p><p>Ecosystem · The Cisco bridge is a translation, with both citations showing</p></article>
+<article><h2>Caps</h2><p>Stay on their own page.</p><p>Ecosystem · The Cisco bridge is a translation, with both citations showing</p></article>
+<article><h2>Webex</h2><p>Attach or abstain.</p><p>Ecosystem · The Cisco bridge is a translation, with both citations showing</p></article>
+<article><h2>CUCM</h2><p>Still the PBX.</p><p>Ecosystem · The Cisco bridge is a translation, with both citations showing</p></article>
+<article><h2>GC-GCP</h2><p>Professional. One exam.</p><p>Ecosystem · Read the catalog by name, then the announcement</p></article>
+<article><h2>GC-GCD</h2><p>Developer. One exam.</p><p>Ecosystem · Read the catalog by name, then the announcement</p></article>
+<article><h2>Specialists</h2><p>Names, not invented codes.</p><p>Ecosystem · Read the catalog by name, then the announcement</p></article>
+<article><h2>Announcement</h2><p>Webcam and practice. Re-read.</p><p>Ecosystem · Read the catalog by name, then the announcement</p></article>
+<article><h2>Object</h2><p>Name it.</p><p>Ecosystem · Interview answers cite a page, not a vibe</p></article>
+<article><h2>Limit</h2><p>Or look it up.</p><p>Ecosystem · Interview answers cite a page, not a vibe</p></article>
+<article><h2>Cite</h2><p>A real article.</p><p>Ecosystem · Interview answers cite a page, not a vibe</p></article>
+<article><h2>Abstain</h2><p>EOL, unconfirmed CRMs, Webex.</p><p>Ecosystem · Interview answers cite a page, not a vibe</p></article>
+<article><h2>Prices</h2><p>Link only.</p><p>Ecosystem · What this lab will not invent</p></article>
+<article><h2>IPs</h2><p>Current article only.</p><p>Ecosystem · What this lab will not invent</p></article>
+<article><h2>Codes</h2><p>Catalog only.</p><p>Ecosystem · What this lab will not invent</p></article>
+<article><h2>Conflict</h2><p>The live page wins.</p><p>Ecosystem · What this lab will not invent</p></article>
+<article><h2>Group</h2><p>Share phones and trunks.</p><p>The Edge and BYOC Premises · The premises Edge is the local media hop</p></article>
+<article><h2>Inherit</h2><p>The Edge takes the group’s phone trunks.</p><p>The Edge and BYOC Premises · The premises Edge is the local media hop</p></article>
+<article><h2>Cloud vs premises</h2><p>AWS versus an Edge.</p><p>The Edge and BYOC Premises · The premises Edge is the local media hop</p></article>
+<article><h2>Emergency</h2><p>Still your carrier if the trunk is BYOC.</p><p>The Edge and BYOC Premises · The premises Edge is the local media hop</p></article>
+<article><h2>Same site</h2><p>The preferred path.</p><p>The Edge and BYOC Premises · Local site routing stays home until it cannot</p></article>
+<article><h2>Three exceptions</h2><p>Offline, capacity, missing resource.</p><p>The Edge and BYOC Premises · Local site routing stays home until it cannot</p></article>
+<article><h2>Low latency</h2><p>What a group is for.</p><p>The Edge and BYOC Premises · Local site routing stays home until it cannot</p></article>
+<article><h2>Plans</h2><p>Live on the site.</p><p>The Edge and BYOC Premises · Local site routing stays home until it cannot</p></article>
+<article><h2>Inherit</h2><p>Confirm it.</p><p>The Edge and BYOC Premises · Phone trunks, WebRTC, and inherit</p></article>
+<article><h2>Pin</h2><p>An override with a reason.</p><p>The Edge and BYOC Premises · Phone trunks, WebRTC, and inherit</p></article>
+<article><h2>WebRTC</h2><p>A phone trunk.</p><p>The Edge and BYOC Premises · Phone trunks, WebRTC, and inherit</p></article>
+<article><h2>Test</h2><p>Both Edges.</p><p>The Edge and BYOC Premises · Phone trunks, WebRTC, and inherit</p></article>
+<article><h2>Three exceptions</h2><p>Offline, capacity, missing resource.</p><p>The Edge and BYOC Premises · When the local Edge is offline</p></article>
+<article><h2>Cloud path</h2><p>Independent of the Edge.</p><p>The Edge and BYOC Premises · When the local Edge is offline</p></article>
+<article><h2>Nowhere to go</h2><p>The other site must hold the resource.</p><p>The Edge and BYOC Premises · When the local Edge is offline</p></article>
+<article><h2>Steady state</h2><p>Overflow should not be normal.</p><p>The Edge and BYOC Premises · When the local Edge is offline</p></article>
+<article><h2>Per number</h2><p>Name the model.</p><p>The Edge and BYOC Premises · Choose Cloud, Premises, or both</p></article>
+<article><h2>Cloud</h2><p>Public carrier, internet RTP.</p><p>The Edge and BYOC Premises · Choose Cloud, Premises, or both</p></article>
+<article><h2>Premises</h2><p>Edge, local trunks.</p><p>The Edge and BYOC Premises · Choose Cloud, Premises, or both</p></article>
+<article><h2>GCV</h2><p>Genesys is the carrier.</p><p>The Edge and BYOC Premises · Choose Cloud, Premises, or both</p></article>
+<article><h2>WebRTC</h2><p>A phone trunk.</p><p>The Edge and BYOC Premises · A browser phone is still a network endpoint</p></article>
+<article><h2>Path</h2><p>VPN, split, or local. Choose.</p><p>The Edge and BYOC Premises · A browser phone is still a network endpoint</p></article>
+<article><h2>Console</h2><p>Edge or cloud media.</p><p>The Edge and BYOC Premises · A browser phone is still a network endpoint</p></article>
+<article><h2>Flow last</h2><p>If signaling is already fine.</p><p>The Edge and BYOC Premises · A browser phone is still a network endpoint</p></article>
+<article><h2>Group</h2><p>Low latency.</p><p>The Edge and BYOC Premises · Premises turn-up checklist</p></article>
+<article><h2>Inherit</h2><p>Every Edge.</p><p>The Edge and BYOC Premises · Premises turn-up checklist</p></article>
+<article><h2>Site</h2><p>Trunk, plans, location.</p><p>The Edge and BYOC Premises · Premises turn-up checklist</p></article>
+<article><h2>Two tests</h2><p>Edge down, and a cloud DID.</p><p>The Edge and BYOC Premises · Premises turn-up checklist</p></article>
+<article><h2>Warning</h2><p>BYOC emergency is not Genesys’ service.</p><p>Numbers and emergency calling · Name the emergency owner before the DID</p></article>
+<article><h2>No copy</h2><p>GCV records do not move to the BYOC carrier.</p><p>Numbers and emergency calling · Name the emergency owner before the DID</p></article>
+<article><h2>Internet</h2><p>Power and broadband can remove the path.</p><p>Numbers and emergency calling · Name the emergency owner before the DID</p></article>
+<article><h2>Configure</h2><p>Number plan and emergency route.</p><p>Numbers and emergency calling · Name the emergency owner before the DID</p></article>
+<article><h2>911 and 933</h2><p>US and Canada defaults.</p><p>Numbers and emergency calling · Emergency is a classification and a route</p></article>
+<article><h2>142</h2><p>Swiss example.</p><p>Numbers and emergency calling · Emergency is a classification and a route</p></article>
+<article><h2>Route</h2><p>Still required.</p><p>Numbers and emergency calling · Emergency is a classification and a route</p></article>
+<article><h2>988</h2><p>Default destination is documented. Re-read it.</p><p>Numbers and emergency calling · Emergency is a classification and a route</p></article>
+<article><h2>Physical</h2><p>Not a nickname.</p><p>Numbers and emergency calling · The location is a physical place</p></article>
+<article><h2>Carrier</h2><p>You send it for BYOC.</p><p>Numbers and emergency calling · The location is a physical place</p></article>
+<article><h2>Site</h2><p>Attaches the location.</p><p>Numbers and emergency calling · The location is a physical place</p></article>
+<article><h2>Door test</h2><p>Could someone find it.</p><p>Numbers and emergency calling · The location is a physical place</p></article>
+<article><h2>Row</h2><p>DID, toll-free, domestic, international.</p><p>Numbers and emergency calling · Voice coverage is a table, not a promise</p></article>
+<article><h2>FedRAMP</h2><p>US voice services.</p><p>Numbers and emergency calling · Voice coverage is a table, not a promise</p></article>
+<article><h2>ESR</h2><p>Boundary is the commitment.</p><p>Numbers and emergency calling · Voice coverage is a table, not a promise</p></article>
+<article><h2>Coming</h2><p>Stay coming until the page changes.</p><p>Numbers and emergency calling · Voice coverage is a table, not a promise</p></article>
+<article><h2>Intra-country</h2><p>Adds the country code.</p><p>Numbers and emergency calling · Normalize toward E.164 on purpose</p></article>
+<article><h2>Extension</h2><p>No rewrite.</p><p>Numbers and emergency calling · Normalize toward E.164 on purpose</p></article>
+<article><h2>E.164 list</h2><p>Plus required, no rewrite.</p><p>Numbers and emergency calling · Normalize toward E.164 on purpose</p></article>
+<article><h2>Twice</h2><p>Possible, and often a bug.</p><p>Numbers and emergency calling · Normalize toward E.164 on purpose</p></article>
+<article><h2>Simulator</h2><p>First.</p><p>Numbers and emergency calling · Test emergency like a change, not like a demo</p></article>
+<article><h2>Carrier</h2><p>Owns the live method.</p><p>Numbers and emergency calling · Test emergency like a change, not like a demo</p></article>
+<article><h2>Outage</h2><p>Write the broadband-down action.</p><p>Numbers and emergency calling · Test emergency like a change, not like a demo</p></article>
+<article><h2>Log</h2><p>Model, route, result.</p><p>Numbers and emergency calling · Test emergency like a change, not like a demo</p></article>
+<article><h2>CX 1</h2><p>Voice package: inbound and outbound voice, secure IVR, callbacks, campaigns.</p><p>Foundations · What Genesys Cloud CX is</p></article>
+<article><h2>CX 3</h2><p>Adds WEM and voice transcription minutes on top of CX 1 and CX 2.</p><p>Foundations · What Genesys Cloud CX is</p></article>
+<article><h2>CX 4 tokens</h2><p>30 named, 39 concurrent, as published on the overview.</p><p>Foundations · What Genesys Cloud CX is</p></article>
+<article><h2>Old matrix</h2><p>A dated PDF is not the source for the current CX 4 description.</p><p>Foundations · What Genesys Cloud CX is</p></article>
+<article><h2>Core vs satellite</h2><p>Core hosts the org. Satellite hosts media paths and cannot be the org region.</p><p>Foundations · Core regions and satellite media</p></article>
+<article><h2>US East login</h2><p>https://login.mypurecloud.com for us-east-1.</p><p>Foundations · Core regions and satellite media</p></article>
+<article><h2>US West login</h2><p>https://login.usw2.pure.cloud for us-west-2.</p><p>Foundations · Core regions and satellite media</p></article>
+<article><h2>Voice coverage</h2><p>Read the Genesys Cloud Voice region article before you promise numbers.</p><p>Foundations · Core regions and satellite media</p></article>
+<article><h2>SIP</h2><p>RFC 3261. Session setup, not the audio packets.</p><p>Foundations · SIP, RTP, and what the trunk is doing</p></article>
+<article><h2>RTP</h2><p>RFC 3550. The audio stream.</p><p>Foundations · SIP, RTP, and what the trunk is doing</p></article>
+<article><h2>SRTP</h2><p>RFC 3711. Encrypted RTP.</p><p>Foundations · SIP, RTP, and what the trunk is doing</p></article>
+<article><h2>DTMF</h2><p>RFC 4733 telephone events, when digits must not depend on in-band audio.</p><p>Foundations · SIP, RTP, and what the trunk is doing</p></article>
+<article><h2>Queue</h2><p>The waiting line. Unique name, no special characters, 5,000 members.</p><p>Foundations · What ACD is before you name a queue</p></article>
+<article><h2>On Queue</h2><p>The status that makes an agent eligible for ACD work.</p><p>Foundations · What ACD is before you name a queue</p></article>
+<article><h2>Routing method</h2><p>Standard, predictive, bullseye, preferred, or conditional group.</p><p>Foundations · What ACD is before you name a queue</p></article>
+<article><h2>Alerting</h2><p>7 to 59 seconds on voice, then Not Responding.</p><p>Foundations · What ACD is before you name a queue</p></article>
+<article><h2>In-queue call</h2><p>A default exists. It does nothing until you publish it.</p><p>Foundations · Digital conversations beside voice</p></article>
+<article><h2>In-queue email</h2><p>No built-in default. Create the flow.</p><p>Foundations · Digital conversations beside voice</p></article>
+<article><h2>Default voice cap</h2><p>One call.</p><p>Foundations · Digital conversations beside voice</p></article>
+<article><h2>Default message cap</h2><p>Up to four messages.</p><p>Foundations · Digital conversations beside voice</p></article>
+<article><h2>Home</h2><p>Always present. Cannot be deleted. Objects can move.</p><p>Foundations · Divisions, before roles get complicated</p></article>
+<article><h2>Move, not copy</h2><p>A queue belongs to one division.</p><p>Foundations · Divisions, before roles get complicated</p></article>
+<article><h2>Role + division</h2><p>That pair is what lets a user see the objects.</p><p>Foundations · Divisions, before roles get complicated</p></article>
+<article><h2>Transactional</h2><p>Conversations and recordings carry division context too.</p><p>Foundations · Divisions, before roles get complicated</p></article>
+<article><h2>Catalog header</h2><p>GC-GCP professional, GC-GCD developer.</p><p>Foundations · How to read a Genesys page without inventing the rest</p></article>
+<article><h2>Do not invent codes</h2><p>Specialist names are cited. Extra codes are not.</p><p>Foundations · How to read a Genesys page without inventing the rest</p></article>
+<article><h2>Client credentials</h2><p>Not a user. /api/v2/users/me is out of scope for that token.</p><p>Foundations · How to read a Genesys page without inventing the rest</p></article>
+<article><h2>Fair use</h2><p>Link the policy. Do not freeze a price in a lesson.</p><p>Foundations · How to read a Genesys page without inventing the rest</p></article>
+<article><h2>Order</h2><p>Location, trunk, outbound route, number plan.</p><p>Foundations · Prerequisites before the first trunk</p></article>
+<article><h2>DCVP</h2><p>Use it for new BYOC Cloud trunks.</p><p>Foundations · Prerequisites before the first trunk</p></article>
+<article><h2>Public address</h2><p>The carrier or PBX must be reachable.</p><p>Foundations · Prerequisites before the first trunk</p></article>
+<article><h2>Emergency warning</h2><p>BYOC emergency is your carrier’s service, not Genesys’.</p><p>Foundations · Prerequisites before the first trunk</p></article>
+<article><h2>Rebuild</h2><p>The default.</p><p>Migration · Nothing imports your old routing by magic</p></article>
+<article><h2>Studio</h2><p>A map, not a converter.</p><p>Migration · Nothing imports your old routing by magic</p></article>
+<article><h2>Journey</h2><p>Sentences first.</p><p>Migration · Nothing imports your old routing by magic</p></article>
+<article><h2>Publish</h2><p>Or it does not run.</p><p>Migration · Nothing imports your old routing by magic</p></article>
+<article><h2>Strategy</h2><p>Behavior, not a file format.</p><p>Migration · Engage and PureConnect become flows and queues</p></article>
+<article><h2>Queues</h2><p>Recreated.</p><p>Migration · Engage and PureConnect become flows and queues</p></article>
+<article><h2>Date</h2><p>A Genesys notice.</p><p>Migration · Engage and PureConnect become flows and queues</p></article>
+<article><h2>WEM</h2><p>Its own workstream.</p><p>Migration · Engage and PureConnect become flows and queues</p></article>
+<article><h2>Menu</h2><p>Architect tasks.</p><p>Migration · IVR becomes Architect tasks, menus, and audio</p></article>
+<article><h2>Hold</h2><p>Published in-queue flow.</p><p>Migration · IVR becomes Architect tasks, menus, and audio</p></article>
+<article><h2>Dip</h2><p>Data action plus failure.</p><p>Migration · IVR becomes Architect tasks, menus, and audio</p></article>
+<article><h2>Cisco</h2><p>Source of the old behavior only.</p><p>Migration · IVR becomes Architect tasks, menus, and audio</p></article>
+<article><h2>Members</h2><p>Who may answer.</p><p>Migration · UCCE skill groups and precision queues are not Genesys queues</p></article>
+<article><h2>Skills</h2><p>What they must match.</p><p>Migration · UCCE skill groups and precision queues are not Genesys queues</p></article>
+<article><h2>Rings</h2><p>Up to five.</p><p>Migration · UCCE skill groups and precision queues are not Genesys queues</p></article>
+<article><h2>Analogy</h2><p>Not a converter.</p><p>Migration · UCCE skill groups and precision queues are not Genesys queues</p></article>
+<article><h2>Script</h2><p>Architect.</p><p>Migration · UCCX is a smaller center with the same rebuild rule</p></article>
+<article><h2>CSQ</h2><p>Queue.</p><p>Migration · UCCX is a smaller center with the same rebuild rule</p></article>
+<article><h2>Desktop</h2><p>Workspace or a cited embed.</p><p>Migration · UCCX is a smaller center with the same rebuild rule</p></article>
+<article><h2>Test</h2><p>Before the trunk cut.</p><p>Migration · UCCX is a smaller center with the same rebuild rule</p></article>
+<article><h2>Cluster</h2><p>Stays until you remove it.</p><p>Migration · CUCM stays. BYOC is the door, not a replacement cluster.</p></article>
+<article><h2>Cloud</h2><p>BYOC and DCVP.</p><p>Migration · CUCM stays. BYOC is the door, not a replacement cluster.</p></article>
+<article><h2>Edge</h2><p>If phones are local.</p><p>Migration · CUCM stays. BYOC is the door, not a replacement cluster.</p></article>
+<article><h2>Emergency</h2><p>A real test, not a guess.</p><p>Migration · CUCM stays. BYOC is the door, not a replacement cluster.</p></article>
+<article><h2>Blank</h2><p>Better than a bad link.</p><p>Migration · Webex is a neighbor, not a page this lab pretends to summarize</p></article>
+<article><h2>Door</h2><p>BYOC or Edge.</p><p>Migration · Webex is a neighbor, not a page this lab pretends to summarize</p></article>
+<article><h2>Flows</h2><p>Rebuilt.</p><p>Migration · Webex is a neighbor, not a page this lab pretends to summarize</p></article>
+<article><h2>Week</h2><p>Re-read both sides.</p><p>Migration · Webex is a neighbor, not a page this lab pretends to summarize</p></article>
+<article><h2>Lab</h2><p>First call.</p><p>Migration · Cut over one number, then the queue, then the people</p></article>
+<article><h2>Emergency</h2><p>Before the DID.</p><p>Migration · Cut over one number, then the queue, then the people</p></article>
+<article><h2>One number</h2><p>Then the rest.</p><p>Migration · Cut over one number, then the queue, then the people</p></article>
+<article><h2>Rollback</h2><p>A person and a clock.</p><p>Migration · Cut over one number, then the queue, then the people</p></article>
+<article><h2>Org home</h2><p>One core region and its login URL.</p><p>Organization and licensing · Place the organization in a core region</p></article>
+<article><h2>Satellite</h2><p>Media and recordings, not the org.</p><p>Organization and licensing · Place the organization in a core region</p></article>
+<article><h2>GCV</h2><p>Separate availability table.</p><p>Organization and licensing · Place the organization in a core region</p></article>
+<article><h2>FedRAMP</h2><p>A different login host and US-only voice.</p><p>Organization and licensing · Place the organization in a core region</p></article>
+<article><h2>Pair</h2><p>Role plus division, not role alone.</p><p>Organization and licensing · Roles are permission lists paired with divisions</p></article>
+<article><h2>Subset</h2><p>An OAuth client cannot exceed its creator.</p><p>Organization and licensing · Roles are permission lists paired with divisions</p></article>
+<article><h2>/users/me</h2><p>Needs a user token.</p><p>Organization and licensing · Roles are permission lists paired with divisions</p></article>
+<article><h2>Implicit</h2><p>Deprecated after 25 May 2026 in the OAuth article.</p><p>Organization and licensing · Roles are permission lists paired with divisions</p></article>
+<article><h2>30 minutes</h2><p>Shorter peaks are ignored.</p><p>Organization and licensing · Named licenses and the concurrent peak</p></article>
+<article><h2>One org</h2><p>Do not sum peaks across orgs.</p><p>Organization and licensing · Named licenses and the concurrent peak</p></article>
+<article><h2>Highest level</h2><p>The priciest assignment in the period wins.</p><p>Organization and licensing · Named licenses and the concurrent peak</p></article>
+<article><h2>Fair use</h2><p>Monthly pool, no rollover. Read the live table.</p><p>Organization and licensing · Named licenses and the concurrent peak</p></article>
+<article><h2>CX 1</h2><p>Voice.</p><p>Organization and licensing · Pick CX 1, CX 2, CX 3, or CX 4 on purpose</p></article>
+<article><h2>CX 2</h2><p>Digital and quality.</p><p>Organization and licensing · Pick CX 1, CX 2, CX 3, or CX 4 on purpose</p></article>
+<article><h2>CX 3</h2><p>WEM and transcription minutes.</p><p>Organization and licensing · Pick CX 1, CX 2, CX 3, or CX 4 on purpose</p></article>
+<article><h2>Copilot</h2><p>Knowledge, transcript, scripts, next best action, forms, notes.</p><p>Organization and licensing · Pick CX 1, CX 2, CX 3, or CX 4 on purpose</p></article>
+<article><h2>5,000</h2><p>Members per queue.</p><p>Organization and licensing · People, queues, and the 5,000 member line</p></article>
+<article><h2>Three joins</h2><p>User, division grant, queue membership.</p><p>Organization and licensing · People, queues, and the 5,000 member line</p></article>
+<article><h2>Name</h2><p>Unique, no special characters.</p><p>Organization and licensing · People, queues, and the 5,000 member line</p></article>
+<article><h2>Phones</h2><p>Edge group work, not the first org task.</p><p>Organization and licensing · People, queues, and the 5,000 member line</p></article>
+<article><h2>Pool</h2><p>Monthly, across users, no rollover.</p><p>Organization and licensing · Fair use is a pool, not a mystery invoice</p></article>
+<article><h2>Meters</h2><p>IVR, API, storage, BYOC, transcription, SMS, and others.</p><p>Organization and licensing · Fair use is a pool, not a mystery invoice</p></article>
+<article><h2>Do not copy rates</h2><p>The policy page is the quote.</p><p>Organization and licensing · Fair use is a pool, not a mystery invoice</p></article>
+<article><h2>API</h2><p>Client-credentials calls still count.</p><p>Organization and licensing · Fair use is a pool, not a mystery invoice</p></article>
+<article><h2>Publish</h2><p>Or the hold experience does not exist.</p><p>Organization and licensing · A first-week admin checklist</p></article>
+<article><h2>Narrow client</h2><p>Subset of the creator, one division.</p><p>Organization and licensing · A first-week admin checklist</p></article>
+<article><h2>Package</h2><p>Match CX 1–4 to the scope.</p><p>Organization and licensing · A first-week admin checklist</p></article>
+<article><h2>Home</h2><p>Keep it.</p><p>Organization and licensing · A first-week admin checklist</p></article>
+<article><h2>Site</h2><p>Visitor behavior.</p><p>Predictive Engagement · Predictive Engagement watches the site, not the queue math</p></article>
+<article><h2>Not ACD</h2><p>Predictive routing is the queue method.</p><p>Predictive Engagement · Predictive Engagement watches the site, not the queue math</p></article>
+<article><h2>Offers</h2><p>Messaging, chat, content, flow.</p><p>Predictive Engagement · Predictive Engagement watches the site, not the queue math</p></article>
+<article><h2>Outcomes</h2><p>On a published deprecation.</p><p>Predictive Engagement · Predictive Engagement watches the site, not the queue math</p></article>
+<article><h2>Messaging</h2><p>Messenger snippet.</p><p>Predictive Engagement · Messenger tracks web messaging. The old snippet tracks web chat.</p></article>
+<article><h2>Web chat</h2><p>Legacy tracking snippet.</p><p>Predictive Engagement · Messenger tracks web messaging. The old snippet tracks web chat.</p></article>
+<article><h2>One of them</h2><p>Remove the snippet when Messenger tracks.</p><p>Predictive Engagement · Messenger tracks web messaging. The old snippet tracks web chat.</p></article>
+<article><h2>Live Now</h2><p>Proof that events arrived.</p><p>Predictive Engagement · Messenger tracks web messaging. The old snippet tracks web chat.</p></article>
+<article><h2>One condition</h2><p>Minimum.</p><p>Predictive Engagement · A segment matches visitors who meet every condition you listed</p></article>
+<article><h2>More conditions</h2><p>Fewer visitors.</p><p>Predictive Engagement · A segment matches visitors who meet every condition you listed</p></article>
+<article><h2>Not shared</h2><p>Copy what you need.</p><p>Predictive Engagement · A segment matches visitors who meet every condition you listed</p></article>
+<article><h2>Examples</h2><p>Not a complete attribute list.</p><p>Predictive Engagement · A segment matches visitors who meet every condition you listed</p></article>
+<article><h2>Action</h2><p>Messaging, chat, content, or flow.</p><p>Predictive Engagement · An action map is qualified before it is offered</p></article>
+<article><h2>Trigger</h2><p>Segment, activity, or outcome.</p><p>Predictive Engagement · An action map is qualified before it is offered</p></article>
+<article><h2>Priority</h2><p>Chooses among qualified maps.</p><p>Predictive Engagement · An action map is qualified before it is offered</p></article>
+<article><h2>Queue</h2><p>Optional, for chat and messaging offers.</p><p>Predictive Engagement · An action map is qualified before it is offered</p></article>
+<article><h2>Announced</h2><p>2026-05-18.</p><p>Predictive Engagement · Journey Outcomes have a published end date</p></article>
+<article><h2>Planned end</h2><p>2026-06-29.</p><p>Predictive Engagement · Journey Outcomes have a published end date</p></article>
+<article><h2>Scoring</h2><p>Not in Customer Outcomes.</p><p>Predictive Engagement · Journey Outcomes have a published end date</p></article>
+<article><h2>Unverified live</h2><p>This lab did not open an org.</p><p>Predictive Engagement · Journey Outcomes have a published end date</p></article>
+<article><h2>Four actions</h2><p>Messaging, chat, content, flow.</p><p>Predictive Engagement · An Architect flow can be the action, and it can also be the thing you must edit</p></article>
+<article><h2>No field list</h2><p>Open the Salesforce topic.</p><p>Predictive Engagement · An Architect flow can be the action, and it can also be the thing you must edit</p></article>
+<article><h2>Skipped branch</h2><p>getJourneyOutcome.</p><p>Predictive Engagement · An Architect flow can be the action, and it can also be the thing you must edit</p></article>
+<article><h2>Fallback</h2><p>Queue or another offer.</p><p>Predictive Engagement · An Architect flow can be the action, and it can also be the thing you must edit</p></article>
+<article><h2>Live Now</h2><p>Events are arriving.</p><p>Predictive Engagement · Prove the map with Live Now and the performance reports</p></article>
+<article><h2>Activity</h2><p>Devices, segments.</p><p>Predictive Engagement · Prove the map with Live Now and the performance reports</p></article>
+<article><h2>Map report</h2><p>Did the offer run.</p><p>Predictive Engagement · Prove the map with Live Now and the performance reports</p></article>
+<article><h2>Outcomes</h2><p>Export, then let them go.</p><p>Predictive Engagement · Prove the map with Live Now and the performance reports</p></article>
+<article><h2>Forms</h2><p>The score.</p><p>Quality and recording · Quality management evaluates the conversation</p></article>
+<article><h2>Policy</h2><p>What gets recorded.</p><p>Quality and recording · Quality management evaluates the conversation</p></article>
+<article><h2>Coach</h2><p>What you do with the score.</p><p>Quality and recording · Quality management evaluates the conversation</p></article>
+<article><h2>Package</h2><p>QM from CX 2. WFM from CX 3.</p><p>Quality and recording · Quality management evaluates the conversation</p></article>
+<article><h2>Weight</h2><p>What moves the score.</p><p>Quality and recording · Forms have questions and weights</p></article>
+<article><h2>Calibrate</h2><p>Graders must agree.</p><p>Quality and recording · Forms have questions and weights</p></article>
+<article><h2>Observable</h2><p>If it is not in the interaction, do not score it.</p><p>Quality and recording · Forms have questions and weights</p></article>
+<article><h2>AI</h2><p>Does not replace the rubric.</p><p>Quality and recording · Forms have questions and weights</p></article>
+<article><h2>Policy</h2><p>Which calls, how long.</p><p>Quality and recording · Recording policies choose calls and retention</p></article>
+<article><h2>Screen</h2><p>Agent screen, ACD.</p><p>Quality and recording · Recording policies choose calls and retention</p></article>
+<article><h2>Secure</h2><p>A segment, not the policy.</p><p>Quality and recording · Recording policies choose calls and retention</p></article>
+<article><h2>Storage</h2><p>A fair-use meter.</p><p>Quality and recording · Recording policies choose calls and retention</p></article>
+<article><h2>Show the score</h2><p>Or it does not coach.</p><p>Quality and recording · Coaching and disputes close the loop</p></article>
+<article><h2>Appointment</h2><p>A real meeting.</p><p>Quality and recording · Coaching and disputes close the loop</p></article>
+<article><h2>Dispute</h2><p>A path, not a threat.</p><p>Quality and recording · Coaching and disputes close the loop</p></article>
+<article><h2>In progress</h2><p>Allowed.</p><p>Quality and recording · Coaching and disputes close the loop</p></article>
+<article><h2>Three gates</h2><p>STA, QM, tokens.</p><p>Quality and recording · AI scoring needs STA, QM, and tokens</p></article>
+<article><h2>Ratio</h2><p>See the FAQ. Do not freeze it blindly.</p><p>Quality and recording · AI scoring needs STA, QM, and tokens</p></article>
+<article><h2>No double bill</h2><p>Copilot summary reused by Virtual Supervisor.</p><p>Quality and recording · AI scoring needs STA, QM, and tokens</p></article>
+<article><h2>Rubric</h2><p>Still yours.</p><p>Quality and recording · AI scoring needs STA, QM, and tokens</p></article>
+<article><h2>Reason</h2><p>Why the copy exists.</p><p>Quality and recording · Retention, export, and the reason you recorded</p></article>
+<article><h2>Lifecycle</h2><p>When the copy dies.</p><p>Quality and recording · Retention, export, and the reason you recorded</p></article>
+<article><h2>Meter</h2><p>Storage still counts.</p><p>Quality and recording · Retention, export, and the reason you recorded</p></article>
+<article><h2>Lab</h2><p>Synthetic here. Real audio stays in the org.</p><p>Quality and recording · Retention, export, and the reason you recorded</p></article>
+<article><h2>Name</h2><p>Unique, no special characters.</p><p>Queues, skills, and wrap-up · Create the queue in a division</p></article>
+<article><h2>5,000</h2><p>Member cap.</p><p>Queues, skills, and wrap-up · Create the queue in a division</p></article>
+<article><h2>Division</h2><p>Chosen at create.</p><p>Queues, skills, and wrap-up · Create the queue in a division</p></article>
+<article><h2>Copy</h2><p>Review routing after.</p><p>Queues, skills, and wrap-up · Create the queue in a division</p></article>
+<article><h2>Tag vs number</h2><p>All-skills cares about the tag. Best-available cares about the number.</p><p>Queues, skills, and wrap-up · Skills and proficiency are on the agent</p></article>
+<article><h2>7 days</h2><p>Inactive agents drop out.</p><p>Queues, skills, and wrap-up · Skills and proficiency are on the agent</p></article>
+<article><h2>WEM style</h2><p>Lower proficiency, same skill.</p><p>Queues, skills, and wrap-up · Skills and proficiency are on the agent</p></article>
+<article><h2>Extra skills</h2><p>Do not impersonate the required one.</p><p>Queues, skills, and wrap-up · Skills and proficiency are on the agent</p></article>
+<article><h2>Optional</h2><p>Agent may skip.</p><p>Queues, skills, and wrap-up · After call work and the system wrap-up codes</p></article>
+<article><h2>TIMEOUT</h2><p>Timer won.</p><p>Queues, skills, and wrap-up · After call work and the system wrap-up codes</p></article>
+<article><h2>LOGOUT</h2><p>Logoff setting won.</p><p>Queues, skills, and wrap-up · After call work and the system wrap-up codes</p></article>
+<article><h2>Callbacks</h2><p>Always need a code.</p><p>Queues, skills, and wrap-up · After call work and the system wrap-up codes</p></article>
+<article><h2>Same division</h2><p>Queue and codes.</p><p>Queues, skills, and wrap-up · Wrap-up codes live in divisions too</p></article>
+<article><h2>Role</h2><p>Limits the picker.</p><p>Queues, skills, and wrap-up · Wrap-up codes live in divisions too</p></article>
+<article><h2>On behalf</h2><p>Inherits ACW.</p><p>Queues, skills, and wrap-up · Wrap-up codes live in divisions too</p></article>
+<article><h2>Direct internal</h2><p>The documented escape.</p><p>Queues, skills, and wrap-up · Wrap-up codes live in divisions too</p></article>
+<article><h2>Pair</h2><p>Percentage and seconds.</p><p>Queues, skills, and wrap-up · Service level is a percentage and a target in seconds</p></article>
+<article><h2>Per media</h2><p>Voice is not email.</p><p>Queues, skills, and wrap-up · Service level is a percentage and a target in seconds</p></article>
+<article><h2>Routing</h2><p>Conditional rules need the KPI.</p><p>Queues, skills, and wrap-up · Service level is a percentage and a target in seconds</p></article>
+<article><h2>WEM</h2><p>Templates should agree with the queue.</p><p>Queues, skills, and wrap-up · Service level is a percentage and a target in seconds</p></article>
+<article><h2>Slot</h2><p>One callback by default.</p><p>Queues, skills, and wrap-up · Callbacks are interactions with their own rules</p></article>
+<article><h2>No interrupt</h2><p>Calls and callbacks stay apart.</p><p>Queues, skills, and wrap-up · Callbacks are interactions with their own rules</p></article>
+<article><h2>Code</h2><p>Required even if ACW is Optional.</p><p>Queues, skills, and wrap-up · Callbacks are interactions with their own rules</p></article>
+<article><h2>Last agent</h2><p>Do not promise it for inbound callbacks.</p><p>Queues, skills, and wrap-up · Callbacks are interactions with their own rules</p></article>
+<article><h2>Copy</h2><p>Review routing immediately.</p><p>Queues, skills, and wrap-up · Membership, On Queue, and the copy trap</p></article>
+<article><h2>On Queue</h2><p>The door.</p><p>Queues, skills, and wrap-up · Membership, On Queue, and the copy trap</p></article>
+<article><h2>5,000</h2><p>Still the cap.</p><p>Queues, skills, and wrap-up · Membership, On Queue, and the copy trap</p></article>
+<article><h2>Test</h2><p>Before the DID.</p><p>Queues, skills, and wrap-up · Membership, On Queue, and the copy trap</p></article>
+<article><h2>Voice scope</h2><p>IVR through voicemail, as the page lists it.</p><p>Speech and text analytics · STA reads the conversation after the channel has it</p></article>
+<article><h2>Digital</h2><p>Email, message, chat.</p><p>Speech and text analytics · STA reads the conversation after the channel has it</p></article>
+<article><h2>Package</h2><p>Transcription minutes at CX 3.</p><p>Speech and text analytics · STA reads the conversation after the channel has it</p></article>
+<article><h2>Tables</h2><p>Re-read dialects and prices.</p><p>Speech and text analytics · STA reads the conversation after the channel has it</p></article>
+<article><h2>Label</h2><p>Not a verdict.</p><p>Speech and text analytics · Sentiment is a label on the text, not a mood you can argue with</p></article>
+<article><h2>Listen</h2><p>Then coach.</p><p>Speech and text analytics · Sentiment is a label on the text, not a mood you can argue with</p></article>
+<article><h2>Form</h2><p>Still QM.</p><p>Speech and text analytics · Sentiment is a label on the text, not a mood you can argue with</p></article>
+<article><h2>Scope</h2><p>Only queues you will read.</p><p>Speech and text analytics · Sentiment is a label on the text, not a mood you can argue with</p></article>
+<article><h2>Phrase</h2><p>The words.</p><p>Speech and text analytics · Topics, programs, and phrases are the dictionary</p></article>
+<article><h2>Topic</h2><p>One intent.</p><p>Speech and text analytics · Topics, programs, and phrases are the dictionary</p></article>
+<article><h2>Program</h2><p>The dictionary for a queue.</p><p>Speech and text analytics · Topics, programs, and phrases are the dictionary</p></article>
+<article><h2>Test</h2><p>Search before you trust a chart.</p><p>Speech and text analytics · Topics, programs, and phrases are the dictionary</p></article>
+<article><h2>Model</h2><p>Flags language.</p><p>Speech and text analytics · Agent empathy is a detected behavior, still a form question</p></article>
+<article><h2>Form</h2><p>Defines the behavior.</p><p>Speech and text analytics · Agent empathy is a detected behavior, still a form question</p></article>
+<article><h2>Calibrate</h2><p>Humans agree.</p><p>Speech and text analytics · Agent empathy is a detected behavior, still a form question</p></article>
+<article><h2>Automate</h2><p>Only with a documented filter.</p><p>Speech and text analytics · Agent empathy is a detected behavior, still a form question</p></article>
+<article><h2>Search</h2><p>Did the words exist?</p><p>Speech and text analytics · Content search is how you test the dictionary</p></article>
+<article><h2>Topic</h2><p>Did the dictionary include them?</p><p>Speech and text analytics · Content search is how you test the dictionary</p></article>
+<article><h2>Leg</h2><p>IVR, agent, voicemail.</p><p>Speech and text analytics · Content search is how you test the dictionary</p></article>
+<article><h2>Privacy</h2><p>Transcripts stay in the org.</p><p>Speech and text analytics · Content search is how you test the dictionary</p></article>
+<article><h2>Final</h2><p>After the interaction.</p><p>Speech and text analytics · Full analysis and a faster transcript are different clocks</p></article>
+<article><h2>Sooner</h2><p>Notifications API.</p><p>Speech and text analytics · Full analysis and a faster transcript are different clocks</p></article>
+<article><h2>Triggers</h2><p>Only listed filters.</p><p>Speech and text analytics · Full analysis and a faster transcript are different clocks</p></article>
+<article><h2>Streaming</h2><p>Confirm the connector. Do not invent one.</p><p>Speech and text analytics · Full analysis and a faster transcript are different clocks</p></article>
+<article><h2>CX 3</h2><p>Where WEM starts.</p><p>Workforce management · WEM is a set of products, and WFM is one of them</p></article>
+<article><h2>WFM objects</h2><p>Business units, management units, goals, plans, schedules, adherence, time off.</p><p>Workforce management · WEM is a set of products, and WFM is one of them</p></article>
+<article><h2>Sibling</h2><p>QM and STA are not the schedule.</p><p>Workforce management · WEM is a set of products, and WFM is one of them</p></article>
+<article><h2>Cert</h2><p>Workforce Management, with the listed course.</p><p>Workforce management · WEM is a set of products, and WFM is one of them</p></article>
+<article><h2>Business unit</h2><p>Planning container.</p><p>Workforce management · Business units and management units</p></article>
+<article><h2>Management unit</h2><p>People you schedule.</p><p>Workforce management · Business units and management units</p></article>
+<article><h2>Queue</h2><p>People who can be offered work.</p><p>Workforce management · Business units and management units</p></article>
+<article><h2>Align skills</h2><p>Forecast what you route.</p><p>Workforce management · Business units and management units</p></article>
+<article><h2>Template</h2><p>The planning promise.</p><p>Workforce management · Service goal templates are the planning target</p></article>
+<article><h2>Queue</h2><p>The reported promise.</p><p>Workforce management · Service goal templates are the planning target</p></article>
+<article><h2>Match them</h2><p>Or you staff the wrong target.</p><p>Workforce management · Service goal templates are the planning target</p></article>
+<article><h2>Erlang</h2><p>Not claimed as the Genesys engine.</p><p>Workforce management · Service goal templates are the planning target</p></article>
+<article><h2>Activity</h2><p>What they should be doing.</p><p>Workforce management · Schedules are the plan agents work</p></article>
+<article><h2>On Queue</h2><p>What ACD requires.</p><p>Workforce management · Schedules are the plan agents work</p></article>
+<article><h2>Membership</h2><p>Still separate.</p><p>Workforce management · Schedules are the plan agents work</p></article>
+<article><h2>Schedule</h2><p>Does not edit rings.</p><p>Workforce management · Schedules are the plan agents work</p></article>
+<article><h2>Intraday</h2><p>Today.</p><p>Workforce management · Intraday and adherence compare the plan to the floor</p></article>
+<article><h2>Adherence</h2><p>Plan versus actual.</p><p>Workforce management · Intraday and adherence compare the plan to the floor</p></article>
+<article><h2>Count On Queue</h2><p>Before you edit routing.</p><p>Workforce management · Intraday and adherence compare the plan to the floor</p></article>
+<article><h2>Historical</h2><p>Also documented.</p><p>Workforce management · Intraday and adherence compare the plan to the floor</p></article>
+<article><h2>Request</h2><p>In WFM.</p><p>Workforce management · Time off is a schedule change with a rule</p></article>
+<article><h2>Schedule</h2><p>Must show the absence.</p><p>Workforce management · Time off is a schedule change with a rule</p></article>
+<article><h2>Status</h2><p>Not On Queue.</p><p>Workforce management · Time off is a schedule change with a rule</p></article>
+<article><h2>Membership</h2><p>Unchanged.</p><p>Workforce management · Time off is a schedule change with a rule</p></article>
+<article><h2>Name</h2><p>Workforce Management Certification.</p><p>Workforce management · The workforce certification is a named exam</p></article>
+<article><h2>Prep</h2><p>WEM – Workforce Management.</p><p>Workforce management · The workforce certification is a named exam</p></article>
+<article><h2>Not GC-GCP</h2><p>Different exam.</p><p>Workforce management · The workforce certification is a named exam</p></article>
+<article><h2>Practice</h2><p>Genesys’ own, 25–30, no voucher.</p><p>Workforce management · The workforce certification is a named exam</p></article>
+<article><h2>Short-term</h2><p>Up to six weeks, can schedule.</p><p>Workforce management · A forecast has a short view and a long view</p></article>
+<article><h2>Long-term</h2><p>Seasonality, cannot schedule.</p><p>Workforce management · A forecast has a short view and a long view</p></article>
+<article><h2>AHT</h2><p>Talk, hold, ACW.</p><p>Workforce management · A forecast has a short view and a long view</p></article>
+<article><h2>Volume</h2><p>Interactions offered.</p><p>Workforce management · A forecast has a short view and a long view</p></article>
+<article><h2>Three methods</h2><p>With forecast, without, or blank.</p><p>Workforce management · Generate one schedule from a forecast that covers it</p></article>
+<article><h2>Cover the dates</h2><p>Short-term weeks must include the schedule.</p><p>Workforce management · Generate one schedule from a forecast that covers it</p></article>
+<article><h2>One at a time</h2><p>Per business unit.</p><p>Workforce management · Generate one schedule from a forecast that covers it</p></article>
+<article><h2>Reschedule</h2><p>A forecast swap does not move shifts by itself.</p><p>Workforce management · Generate one schedule from a forecast that covers it</p></article><footer><p>CypherMonkey Labs · Signal Floor</p>
+<p>https://cyphermonkeylabs.com</p>
+<p>https://linktr.ee/cyphermonkey</p>
+<p>https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing</p>
+<p>Independent educational project. Not affiliated with or endorsed by any vendor.</p>
+<p>Trademarks belong to their owners. MIT code. CC BY-NC-SA content.</p>
+<p>Concerns: https://cyphermonkeylabs.com/#contact</p></footer></body></html>
