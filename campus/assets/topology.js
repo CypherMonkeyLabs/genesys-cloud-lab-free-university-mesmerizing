@@ -115,7 +115,7 @@ async function webgl(stage, active) {
   stage.innerHTML = `<div class="topo-wrap"><canvas id="floor" aria-label="Three.js topology. Drag to orbit. Failure buttons change which links glow."></canvas><div class="topo-labels" id="labels"></div></div>`;
   const canvas = stage.querySelector("#floor");
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
   renderer.setSize(canvas.clientWidth || 800, 520);
   const scene = new THREE.Scene();
   scene.fog = new THREE.FogExp2(0x071018, 0.045);

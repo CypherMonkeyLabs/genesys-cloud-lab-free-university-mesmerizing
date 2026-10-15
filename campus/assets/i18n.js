@@ -27,7 +27,13 @@ const STR = {
     regions: "Regions",
     light: "Light",
     dark: "Dark",
-    listen: "Architect desk"
+    listen: "Architect desk",
+    menu: "Menu",
+    close: "Close",
+    learn: "Learn",
+    settings: "Settings",
+    home: "Home",
+    listenbar: "Listen"
   },
   es: {
     greet: "Bienvenido al piso de señales.",
@@ -44,7 +50,13 @@ const STR = {
     regions: "Regiones",
     light: "Claro",
     dark: "Oscuro",
-    listen: "Mesa de arquitectos"
+    listen: "Mesa de arquitectos",
+    menu: "Menú",
+    close: "Cerrar",
+    learn: "Aprender",
+    settings: "Ajustes",
+    home: "Inicio",
+    listenbar: "Escuchar"
   },
   hi: {
     greet: "सिग्नल फ़्लोर पर स्वागत है।",
@@ -61,7 +73,13 @@ const STR = {
     regions: "क्षेत्र",
     light: "हल्का",
     dark: "गहरा",
-    listen: "आर्किटेक्ट डेस्क"
+    listen: "आर्किटेक्ट डेस्क",
+    menu: "मेनू",
+    close: "बंद",
+    learn: "सीखें",
+    settings: "सेटिंग्स",
+    home: "होम",
+    listenbar: "सुनें"
   },
   te: {
     greet: "సిగ్నల్ ఫ్లోర్‌కు స్వాగతం.",
@@ -78,7 +96,13 @@ const STR = {
     regions: "ప్రాంతాలు",
     light: "లైట్",
     dark: "డార్క్",
-    listen: "ఆర్కిటెక్ట్ డెస్క్"
+    listen: "ఆర్కిటెక్ట్ డెస్క్",
+    menu: "మెను",
+    close: "మూసివేయి",
+    learn: "నేర్చుకోండి",
+    settings: "సెట్టింగ్‌లు",
+    home: "హోమ్",
+    listenbar: "వినండి"
   },
   fr: {
     greet: "Bienvenue sur le plateau signal.",
@@ -95,7 +119,13 @@ const STR = {
     regions: "Régions",
     light: "Clair",
     dark: "Sombre",
-    listen: "Bureau des architectes"
+    listen: "Bureau des architectes",
+    menu: "Menu",
+    close: "Fermer",
+    learn: "Apprendre",
+    settings: "Réglages",
+    home: "Accueil",
+    listenbar: "Écouter"
   },
   de: {
     greet: "Willkommen auf dem Signal Floor.",
@@ -112,7 +142,13 @@ const STR = {
     regions: "Regionen",
     light: "Hell",
     dark: "Dunkel",
-    listen: "Architektentisch"
+    listen: "Architektentisch",
+    menu: "Menü",
+    close: "Schließen",
+    learn: "Lernen",
+    settings: "Einstellungen",
+    home: "Start",
+    listenbar: "Hören"
   },
   ja: {
     greet: "シグナルフロアへようこそ。",
@@ -129,7 +165,13 @@ const STR = {
     regions: "リージョン",
     light: "ライト",
     dark: "ダーク",
-    listen: "アーキテクト席"
+    listen: "アーキテクト席",
+    menu: "メニュー",
+    close: "閉じる",
+    learn: "学ぶ",
+    settings: "設定",
+    home: "ホーム",
+    listenbar: "聴く"
   },
   ar: {
     greet: "مرحبًا بك في طابق الإشارة.",
@@ -146,7 +188,13 @@ const STR = {
     regions: "المناطق",
     light: "فاتح",
     dark: "داكن",
-    listen: "مكتب المعماريين"
+    listen: "مكتب المعماريين",
+    menu: "القائمة",
+    close: "إغلاق",
+    learn: "تعلّم",
+    settings: "الإعدادات",
+    home: "الرئيسية",
+    listenbar: "استمع"
   }
 };
 

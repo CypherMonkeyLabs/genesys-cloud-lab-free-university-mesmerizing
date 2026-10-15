@@ -271,7 +271,7 @@ th, td { border-bottom: 1px solid var(--cc-line); text-align: left; padding: 8px
   .rail { display: none; }
   .rail.open { display: block; position: fixed; inset: 64px 0 64px 0; z-index: 11; background: var(--cc-bg); max-height: none; }
 }
-@media (max-width: 640px) {
+@media (max-width: 700px) {
   .bottom-nav { display: block; }
   .topbar .desk-only { display: none; }
   main { padding: 14px 12px 108px; }
@@ -335,7 +335,11 @@ th, td { border-bottom: 1px solid var(--cc-line); text-align: left; padding: 8px
   <button class="icon-btn" id="tone-toggle" type="button" data-i18n="light">Light</button>
   <a class="icon-btn" href="#/regions" data-i18n="regions">Regions</a>
   <button class="icon-btn desk-only" id="open-tracks" type="button">Tracks</button>
-  <a class="icon-btn" href="#/settings">Settings</a>
+  <a class="icon-btn" href="#/settings" data-i18n="settings">Settings</a>
+  <button type="button" class="menu-open" id="menu-open" aria-expanded="false" aria-controls="floor-menu">
+    <span class="menu-glyph" aria-hidden="true"></span>
+    <span data-i18n="menu">Menu</span>
+  </button>
   </div>
   <nav class="primary-nav" aria-label="Floor menu">
     <a href="#/atlas" data-i18n="diagrams">Diagrams</a>
@@ -348,6 +352,80 @@ th, td { border-bottom: 1px solid var(--cc-line); text-align: left; padding: 8px
     <a href="#/career" data-i18n="careers">Careers</a>
   </nav>
 </header>
+</div>
+<div id="menu-backdrop" class="menu-backdrop" hidden></div>
+<div id="floor-menu" class="floor-menu" role="dialog" aria-modal="true" aria-labelledby="floor-menu-title" hidden>
+  <div class="menu-head">
+    <p id="floor-menu-title">Signal Floor</p>
+    <button type="button" class="menu-close" id="menu-close" data-i18n="close">Close</button>
+  </div>
+  <form id="menu-search" class="menu-search" role="search">
+    <label for="menu-q">Search lessons</label>
+    <input id="menu-q" type="search" placeholder="Search lessons, faults, APIs" autocomplete="off">
+  </form>
+  <div class="menu-prefs">
+    <label>Theme
+      <select id="menu-theme" aria-label="Theme">
+        <option value="neon">neon</option>
+        <option value="holographic">holographic</option>
+        <option value="cyberpunk">cyberpunk</option>
+        <option value="sunset">sunset</option>
+        <option value="light">light</option>
+        <option value="futuristic">futuristic</option>
+        <option value="gaming">gaming</option>
+        <option value="night">night</option>
+        <option value="contrast">contrast</option>
+      </select>
+    </label>
+    <label>Language
+      <select id="menu-lang" aria-label="Language">
+        <option value="en">English</option>
+        <option value="es">Español</option>
+        <option value="hi">हिन्दी</option>
+        <option value="te">తెలుగు</option>
+        <option value="fr">Français</option>
+        <option value="de">Deutsch</option>
+        <option value="ja">日本語</option>
+        <option value="ar">العربية</option>
+      </select>
+    </label>
+  </div>
+  <nav class="menu-nav" aria-label="All sections">
+    <a href="#/" data-i18n="home">Home</a>
+    <a href="#/tracks" data-i18n="learn">Learn</a>
+    <a href="#/atlas" data-i18n="diagrams">Diagrams</a>
+    <a href="#/flows" data-i18n="flows">Flows</a>
+    <a href="#/charts" data-i18n="charts">Charts</a>
+    <a href="#/cheat" data-i18n="cheat">Cheat Codes</a>
+    <a href="#/play" data-i18n="play">Play</a>
+    <a href="#/ecosystem" data-i18n="ecosystem">Ecosystem</a>
+    <a href="#/downloads" data-i18n="downloads">Downloads</a>
+    <a href="#/career" data-i18n="careers">Careers</a>
+    <a href="#/regions" data-i18n="regions">Regions</a>
+    <a href="#/ports">Ports</a>
+    <a href="#/roadmap">Roadmap</a>
+    <a href="#/security">Security</a>
+    <a href="#/whats-new">What’s new</a>
+    <a href="#/playbooks">Playbooks</a>
+    <a href="#/deploy">Deployment</a>
+    <a href="#/architecture">Architecture</a>
+    <a href="#/reporting">Reporting</a>
+    <a href="#/certs">Certifications</a>
+    <a href="#/glossary">Glossary</a>
+    <a href="#/interview">Interview</a>
+    <a href="#/boss">Boss incidents</a>
+    <a href="#/studio">Studios</a>
+    <a href="#/settings" data-i18n="settings">Settings</a>
+  </nav>
+  <p class="menu-note">Sound and reduced motion are in Settings. One panel, every screen size.</p>
+  <div class="menu-else">
+    <a href="https://cyphermonkeylabs.com">Labs</a>
+    <a href="https://linktr.ee/cyphermonkey">Linktree</a>
+    <a href="https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing">Repo · rate / comment / help</a>
+    <a href="https://dev.to/cyphermonkey">DEV</a>
+    <a href="https://huggingface.co/Cypher0x9">Hugging Face</a>
+    <a href="https://x.com/Cypher0x9">X</a>
+  </div>
 </div>
 <div class="shell">
   <aside class="rail" id="rail" aria-label="Tracks"></aside>
@@ -401,9 +479,9 @@ th, td { border-bottom: 1px solid var(--cc-line); text-align: left; padding: 8px
           </div>
         </div>
         <div id="home-icons" class="icon-parade hero-icons" aria-label="Lab counters"></div>
-        <div class="ticker" aria-hidden="true"><span>TLS 5061 · UDP/TCP 5060 · RTP 16384–65535 · managed phones 8061 · bullseye 5 rings · publish the flow · satellite regions carry media · TLS 5061 · UDP/TCP 5060 · RTP 16384–65535 · managed phones 8061 · bullseye 5 rings · publish the flow · satellite regions carry media · </span></div>
+        <div class="ticker" aria-hidden="true"><span class="ticker-line">TLS 5061 · UDP/TCP 5060 · RTP 16384–65535 · managed phones 8061 · bullseye 5 rings · publish the flow · satellite regions carry media · </span><span class="ticker-line" aria-hidden="true">TLS 5061 · UDP/TCP 5060 · RTP 16384–65535 · managed phones 8061 · bullseye 5 rings · publish the flow · satellite regions carry media · </span></div>
       </section>
-      <section class="audio-dock" aria-label="Architect conversation">
+      <section class="audio-dock" id="listen" aria-label="Architect conversation">
         <p class="kicker" data-i18n="listen">Architect desk</p>
         <p class="muted">Player is ready for a later recording. Drop higher-quality files at audio/tour.mp3 and audio/practice.mp3. The clips here are placeholders generated offline with espeak-ng. Lesson text stays written.</p>
         <p><audio id="clip-tour" controls preload="metadata" src="audio/tour.mp3"></audio> How to view the floor</p>
@@ -430,13 +508,13 @@ th, td { border-bottom: 1px solid var(--cc-line); text-align: left; padding: 8px
     <section id="view" hidden></section>
   </main>
 </div>
-<div class="bottom-nav">
-  <nav aria-label="Primary">
-    <a href="#/">Home</a>
-    <a href="#/tracks" id="nav-learn">Learn</a>
-    <a href="#/atlas">Atlas</a>
-    <a href="#/cheat">Cheat</a>
-    <a href="#/settings">You</a>
+<div class="bottom-nav quick-bar">
+  <nav aria-label="Quick">
+    <a href="#/tracks" id="nav-learn" data-i18n="learn">Learn</a>
+    <a href="#/atlas" data-i18n="diagrams">Diagrams</a>
+    <a href="#/play" data-i18n="play">Play</a>
+    <button type="button" id="quick-menu" data-i18n="menu">Menu</button>
+    <a href="#listen" id="nav-listen" data-i18n="listenbar">Listen</a>
   </nav>
 </div>
 <dialog id="lx" class="lx" aria-label="Diagram lightbox">
@@ -462,6 +540,12 @@ th, td { border-bottom: 1px solid var(--cc-line); text-align: left; padding: 8px
 <footer class="site-footer">
   <p><strong>CypherMonkey Labs · Signal Floor</strong></p>
   <p>Independent educational project. Not affiliated with or endorsed by Genesys, Cisco, Salesforce, Zendesk, or any other vendor. Trademarks belong to their owners. MIT code. CC BY-NC-SA content.</p>
+  <p>
+    <a href="https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing">Rate this lab</a>
+    · <a href="https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing/issues">Comment</a>
+    · <a href="https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing/issues/new">Help</a>
+    · <a href="https://cyphermonkeylabs.com/#contact">Contact</a>
+  </p>
   <p><a href="https://cyphermonkeylabs.com/#contact">Report a concern / takedown</a> · <a href="https://cyphermonkeylabs.com/#contact">Work with us</a></p>
   <div class="next-labs" aria-label="Other labs">
     <a href="https://cipher0x9.github.io/webex-lab-free-university-mesmerizing/">Webex lab</a>

@@ -1,5 +1,5 @@
 import { mountMascot } from "./mascot.js";
-import { applyLang, pack } from "./i18n.js";
+import { applyLang, pack, LANGS } from "./i18n.js";
 import { isoIcon, iconForTrack } from "./icons3d.js";
 import { heading } from "./headings.js";
 import { ensureLightbox } from "./lightbox.js";
@@ -126,6 +126,10 @@ function applySettings(s) {
   applyLang(s.lang || "en");
   const tone = document.querySelector("#tone-toggle");
   if (tone) tone.textContent = theme === "light" ? words.dark : words.light;
+  const menuTheme = $("#menu-theme");
+  if (menuTheme) menuTheme.value = theme;
+  const menuLang = $("#menu-lang");
+  if (menuLang) menuLang.value = s.lang || "en";
   const themeColor = getComputedStyle(document.documentElement).getPropertyValue("--cc-bg").trim();
   const meta = document.querySelector('meta[name="theme-color"]');
   if (meta && themeColor) meta.content = themeColor;
@@ -136,6 +140,13 @@ function syncChrome() {
   const chrome = document.querySelector("#chrome");
   const h = chrome ? chrome.offsetHeight : 0;
   if (h) document.documentElement.style.setProperty("--chrome-h", h + "px");
+  const bar = document.querySelector(".bottom-nav");
+  const shown = bar && getComputedStyle(bar).display !== "none";
+  document.documentElement.style.setProperty("--bar-h", shown ? bar.offsetHeight + "px" : "0px");
+}
+
+function motionReduced() {
+  return document.documentElement.dataset.reduce === "1" || window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
 function lessonProg(id) {
@@ -226,34 +237,23 @@ function bindChrome() {
     location.hash = "#/search?q=" + encodeURIComponent(q);
   });
   $("#open-tracks").addEventListener("click", () => railEl.classList.toggle("open"));
-  $("#nav-learn").addEventListener("click", () => {
-    if (window.matchMedia("(max-width: 980px)").matches) {
-      railEl.classList.toggle("open");
-    }
-  });
+  const learn = $("#nav-learn");
+  if (learn) {
+    learn.addEventListener("click", () => {
+      if (window.matchMedia("(min-width: 701px) and (max-width: 980px)").matches) railEl.classList.toggle("open");
+    });
+  }
+  wireMenu();
   document.body.addEventListener("click", (ev) => {
     const a = ev.target.closest("a[href^='#/']");
     if (a) railEl.classList.remove("open");
   });
   const offline = $("#offline-sky");
   if (offline) offline.addEventListener("click", () => cacheAll());
-  const themeSwitch = $("#theme-switch");
-  if (themeSwitch) {
-    themeSwitch.value = state.settings.theme || "neon";
-    themeSwitch.addEventListener("change", () => {
-      state.settings.theme = themeSwitch.value;
-      saveSettings();
-    });
-  }
-  const langSwitch = $("#lang-switch");
-  if (langSwitch) {
-    langSwitch.value = state.settings.lang || "en";
-    langSwitch.addEventListener("change", () => {
-      state.settings.lang = langSwitch.value;
-      saveSettings();
-      render();
-    });
-  }
+  watchTheme($("#theme-switch"));
+  watchTheme($("#menu-theme"));
+  watchLang($("#lang-switch"));
+  watchLang($("#menu-lang"));
   const tone = $("#tone-toggle");
   if (tone) {
     tone.addEventListener("click", () => {
@@ -307,12 +307,168 @@ function parseRoute() {
   return { parts, query: new URLSearchParams(qs || "") };
 }
 
+function sectionMatch(href, hashPrefix) {
+  if (!hashPrefix || !href.startsWith("#/")) return false;
+  if (href === hashPrefix) return true;
+  if (href === "#/tracks" && (hashPrefix.startsWith("#/track") || hashPrefix.startsWith("#/lesson"))) return true;
+  if (href === "#/play" && ["#/game", "#/sandbox", "#/daily", "#/badges", "#/topology"].includes(hashPrefix)) return true;
+  if (href === "#/atlas" && hashPrefix === "#/map") return true;
+  return false;
+}
+
 function setCurrent(hashPrefix) {
-  document.querySelectorAll(".bottom-nav a, .rail a, .primary-nav a").forEach((a) => {
+  document.querySelectorAll(".bottom-nav a, .rail a, .primary-nav a, .menu-nav a").forEach((a) => {
     const href = a.getAttribute("href") || "";
-    const on = hashPrefix && href === hashPrefix;
+    const on = sectionMatch(href, hashPrefix);
     if (on) a.setAttribute("aria-current", "page");
     else a.removeAttribute("aria-current");
+  });
+}
+
+let menuPushed = false;
+
+function openMenu() {
+  const menu = $("#floor-menu");
+  const backdrop = $("#menu-backdrop");
+  if (!menu || !menu.hidden) return;
+  menu.hidden = false;
+  if (backdrop && window.matchMedia("(min-width: 701px)").matches) backdrop.hidden = false;
+  document.body.classList.add("menu-open");
+  $("#menu-open")?.setAttribute("aria-expanded", "true");
+  if (!history.state || !history.state.floorMenu) {
+    history.pushState({ floorMenu: 1 }, "");
+    menuPushed = true;
+  }
+  document.dispatchEvent(new CustomEvent("gccx-visibility", { detail: { run: false } }));
+  $("#menu-close")?.focus();
+}
+
+function hideMenu() {
+  const menu = $("#floor-menu");
+  const backdrop = $("#menu-backdrop");
+  if (menu) menu.hidden = true;
+  if (backdrop) backdrop.hidden = true;
+  document.body.classList.remove("menu-open");
+  $("#menu-open")?.setAttribute("aria-expanded", "false");
+  document.dispatchEvent(new CustomEvent("gccx-visibility", { detail: { run: true } }));
+}
+
+function closeMenu(fromPop) {
+  const menu = $("#floor-menu");
+  if (!menu || menu.hidden) return;
+  hideMenu();
+  if (fromPop) {
+    menuPushed = false;
+    return;
+  }
+  if (menuPushed) {
+    menuPushed = false;
+    history.back();
+  }
+}
+
+function wireMenu() {
+  $("#menu-open")?.addEventListener("click", openMenu);
+  $("#quick-menu")?.addEventListener("click", openMenu);
+  $("#menu-close")?.addEventListener("click", () => closeMenu(false));
+  $("#menu-backdrop")?.addEventListener("click", () => closeMenu(false));
+  $("#floor-menu")?.addEventListener("click", (ev) => {
+    const link = ev.target.closest("a");
+    if (!link || !$("#floor-menu").contains(link)) return;
+    const href = link.getAttribute("href") || "";
+    if (href.startsWith("#")) {
+      ev.preventDefault();
+      hideMenu();
+      menuPushed = false;
+      if (history.state && history.state.floorMenu) history.replaceState(null, "");
+      if (location.hash === href) render();
+      else location.hash = href;
+      return;
+    }
+    hideMenu();
+    menuPushed = false;
+    if (history.state && history.state.floorMenu) history.replaceState(null, "");
+  });
+  $("#menu-search")?.addEventListener("submit", (ev) => {
+    ev.preventDefault();
+    const q = $("#menu-q").value.trim();
+    hideMenu();
+    menuPushed = false;
+    if (history.state && history.state.floorMenu) history.replaceState(null, "");
+    location.hash = "#/search?q=" + encodeURIComponent(q);
+  });
+  $("#nav-listen")?.addEventListener("click", (ev) => {
+    ev.preventDefault();
+    const behavior = motionReduced() ? "auto" : "smooth";
+    if ((location.hash || "#/") !== "#/" && location.hash !== "") {
+      sessionStorage.setItem("gccx-listen", "1");
+      location.hash = "#/";
+      return;
+    }
+    document.getElementById("listen")?.scrollIntoView({ behavior, block: "start" });
+  });
+  $("#floor-menu")?.addEventListener("keydown", (ev) => {
+    if (ev.key !== "Tab") return;
+    const items = [...$("#floor-menu").querySelectorAll("a, button, input, select")].filter((el) => !el.disabled);
+    if (!items.length) return;
+    const first = items[0];
+    const last = items[items.length - 1];
+    if (ev.shiftKey && document.activeElement === first) {
+      ev.preventDefault();
+      last.focus();
+    } else if (!ev.shiftKey && document.activeElement === last) {
+      ev.preventDefault();
+      first.focus();
+    }
+  });
+  window.addEventListener("popstate", () => {
+    if ($("#floor-menu") && !$("#floor-menu").hidden) closeMenu(true);
+  });
+  document.addEventListener("keydown", (ev) => {
+    if (ev.key === "Escape" && $("#floor-menu") && !$("#floor-menu").hidden) closeMenu(false);
+  });
+}
+
+function watchTheme(select) {
+  if (!select) return;
+  select.value = state.settings.theme || "neon";
+  select.addEventListener("change", () => {
+    state.settings.theme = select.value;
+    saveSettings();
+  });
+}
+
+function watchLang(select) {
+  if (!select) return;
+  select.value = state.settings.lang || "en";
+  select.addEventListener("change", () => {
+    state.settings.lang = select.value;
+    saveSettings();
+    render();
+  });
+}
+
+let revealObserver = null;
+
+function armReveal(root) {
+  if (!root) return;
+  const nodes = [...root.querySelectorAll(".card, .cheat-banner, .audio-dock, #home-flows, #home-charts")];
+  if (motionReduced()) {
+    nodes.forEach((el) => el.classList.add("is-in"));
+    return;
+  }
+  if (!revealObserver) {
+    revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-in");
+        revealObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.12 });
+  }
+  nodes.forEach((el) => {
+    el.classList.add("reveal");
+    revealObserver.observe(el);
   });
 }
 
@@ -382,6 +538,11 @@ function showHome() {
     <h2>Tracks</h2>
     <div class="grid">${state.manifest.tracks.map(trackCard).join("")}</div>`;
   mountHomeViz();
+  armReveal($("#home"));
+  if (sessionStorage.getItem("gccx-listen") === "1") {
+    sessionStorage.removeItem("gccx-listen");
+    document.getElementById("listen")?.scrollIntoView({ behavior: motionReduced() ? "auto" : "smooth", block: "start" });
+  }
   status("Home");
 }
 
@@ -410,6 +571,7 @@ async function mountHomeViz() {
   } catch (err) {
     status(err.message || "Charts did not draw");
   }
+  armReveal($("#home"));
 }
 
 function paintIcons(host, track, counts = {}) {
@@ -427,7 +589,7 @@ function paintIcons(host, track, counts = {}) {
     ["#/tracks", track ? ht(track.id, track.title) : "Lessons", lessons.length, "prism", `${minutes} min`],
     ["#/tracks", "Finished", done, "star", track ? "This track" : "This browser"]
   ];
-  host.innerHTML = tiles.map(([href, label, num, kind, note], index) => `<a class="icon-tile" href="${href}">${iconStage(kind, index)}<b data-count="${esc(num)}">${esc(num)}</b><span>${esc(label)}</span><span>${esc(note)}</span></a>`).join("");
+  host.innerHTML = tiles.map(([href, label, num, kind, note], index) => `<a class="icon-tile" href="${href}">${iconStage(kind, index)}<b data-count="${esc(num)}">${esc(num)}</b><span class="tile-label">${esc(label)}</span><span class="tile-note">${esc(note)}</span></a>`).join("");
   host.querySelectorAll("[data-count]").forEach((el) => countUp(el, el.dataset.count));
   refreshLive();
 }
@@ -812,6 +974,7 @@ function showSettings() {
       <fieldset><legend>Theme</legend>
         ${THEMES.map((theme) => `<label class="choice"><input type="radio" name="theme" value="${theme}" ${s.theme === theme ? "checked" : ""}> ${theme}</label>`).join("")}
       </fieldset>
+      <label>Language <select name="lang">${LANGS.map(([code, label]) => `<option value="${code}" ${s.lang === code ? "selected" : ""}>${label}</option>`).join("")}</select></label>
       <label>Font size <select name="font">${["sm", "md", "lg", "xl"].map((size) => `<option ${s.font === size ? "selected" : ""}>${size}</option>`).join("")}</select></label>
       <label class="choice"><input type="checkbox" name="sound" ${s.sound ? "checked" : ""}> Sound effects</label>
       <label class="choice"><input type="checkbox" name="narrate" ${s.narrate ? "checked" : ""}> Narration</label>
@@ -834,6 +997,7 @@ function showSettings() {
     ev.preventDefault();
     const data = new FormData(ev.target);
     state.settings.theme = data.get("theme");
+    state.settings.lang = data.get("lang") || "en";
     state.settings.font = data.get("font");
     state.settings.sound = data.get("sound") === "on";
     state.settings.narrate = data.get("narrate") === "on";
@@ -857,7 +1021,7 @@ function showSettings() {
 async function cacheAll() {
   if (!("caches" in window)) return status("Cache API unavailable");
   try {
-  const cache = await caches.open("gccx-lab-v6");
+  const cache = await caches.open("gccx-lab-v7");
   const urls = ["index.html", "assets/app.js", "assets/studios.js", "assets/topology.js", "assets/routing-model.js", "assets/university.css", "assets/mascot.js", "assets/diagrams.js", "assets/pages.js", "assets/floorviz.js", "assets/hero3d.js", "assets/icons3d.js", "assets/liveicons.js", "assets/headings.js", "assets/i18n.js", "assets/lightbox.js", "vendor/d3.js", "vendor/anime.js", "vendor/rough.js", "vendor/confetti.js", "data/manifest.json", "data/reference.json", "manifest.webmanifest", "downloads/catalog.json", "downloads/flashcards.json", "downloads/flashcards.html", "audio/tour.mp3", "audio/practice.mp3"];
   state.manifest.tracks.forEach((track) => urls.push(track.file));
   await cache.addAll(urls.map((url) => new URL(url, location.href).toString()));
@@ -926,6 +1090,7 @@ function mount(html) {
   status("Ready");
   syncChrome();
   refreshLive();
+  armReveal(viewEl);
 }
 
 function status(text) {
