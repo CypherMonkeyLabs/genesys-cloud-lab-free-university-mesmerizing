@@ -127,19 +127,35 @@ function esc(value) {
   return String(value ?? "").replace(/[&<>"']/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch]));
 }
 
-function frame(id, inner, label) {
-  return `<svg class="diagram" data-diagram="${esc(id)}" viewBox="0 0 720 280" role="img" aria-label="${esc(label)}">
+function blurb(caption) {
+  const sentence = String(caption || "").split(". ")[0];
+  return sentence.length > 86 ? sentence.slice(0, 83) + "…" : sentence;
+}
+
+function frame(spec, inner) {
+  const id = spec.id;
+  const label = spec.title;
+  return `<svg class="diagram" data-diagram="${esc(id)}" viewBox="0 0 720 372" role="img" aria-label="${esc(label)}">
     <defs>
       <linearGradient id="g-${esc(id)}" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stop-color="var(--svg-a, #123)" />
-        <stop offset="1" stop-color="var(--svg-b, #062)" />
+        <stop offset="0" stop-color="#3e8fd4" />
+        <stop offset="0.48" stop-color="#4d63c9" />
+        <stop offset="1" stop-color="#8a4cae" />
       </linearGradient>
     </defs>
-    <rect width="720" height="280" rx="22" fill="url(#g-${esc(id)})" />
-    <g fill="none" stroke="rgba(255,255,255,.18)" stroke-width="1">
-      <path d="M0 40 H720 M0 240 H720" />
+    <rect width="720" height="372" rx="22" fill="#f3f7ff" />
+    <rect width="720" height="372" rx="22" fill="url(#g-${esc(id)})" opacity="0.92" />
+    <circle cx="78" cy="36" r="88" fill="#b9f3ff" opacity="0.28" />
+    <circle cx="650" cy="210" r="120" fill="#ffd0ef" opacity="0.22" />
+    <g fill="none" stroke="rgba(255,255,255,.28)" stroke-width="1">
+      <path d="M0 46 H720 M0 276 H720" />
     </g>
     ${inner}
+    <g class="callout">
+      <rect x="16" y="286" width="688" height="70" rx="14" fill="rgba(255,255,255,0.96)" />
+      <text x="30" y="314" font-size="16" font-weight="700" font-family="ui-sans-serif, Segoe UI, sans-serif" fill="#102033">${esc(label)}</text>
+      <text x="30" y="338" font-size="13" font-family="ui-sans-serif, Segoe UI, sans-serif" fill="#1c3d5a">${esc(blurb(spec.caption))}</text>
+    </g>
   </svg>`;
 }
 
@@ -172,7 +188,7 @@ function chain(spec) {
   const start = 50 + gap / 2;
   const end = 50 + gap * (n - 1) + gap / 2;
   d += packet(`M${start},108 H${end}`);
-  return frame(spec.id, d, spec.title);
+  return frame(spec, d);
 }
 
 function stack(spec) {
@@ -184,7 +200,7 @@ function stack(spec) {
       <text x="360" y="${y + 21}" text-anchor="middle" font-size="14" font-family="ui-sans-serif, Segoe UI, sans-serif" fill="${INK}">${esc(label)}</text>`;
   });
   d += packet("M120,70 V230", "3.4s");
-  return frame(spec.id, d, spec.title);
+  return frame(spec, d);
 }
 
 function rings(spec) {
@@ -196,7 +212,7 @@ function rings(spec) {
       <text x="400" y="${70 + i * 42}" font-size="15" fill="#fff" font-family="ui-sans-serif, Segoe UI, sans-serif">${esc(label)}</text>`;
   });
   d += `<circle cx="250" cy="145" r="8" fill="#ff5a36" class="pulse-dot" />`;
-  return frame(spec.id, d, spec.title);
+  return frame(spec, d);
 }
 
 function split(spec) {
@@ -209,7 +225,7 @@ function split(spec) {
     });
     return out;
   };
-  return frame(spec.id, col(40, left, leftItems, "#8fd4ff") + col(400, right, rightItems, "#ff7ad9") + packet("M320,140 H400", "2.8s"), spec.title);
+  return frame(spec, col(40, left, leftItems, "#8fd4ff") + col(400, right, rightItems, "#ff7ad9") + packet("M320,140 H400", "2.8s"));
 }
 
 function ladder(spec) {
@@ -227,7 +243,7 @@ function ladder(spec) {
       <polygon points="${x2},${y} ${x2 + (fromLeft ? -8 : 8)},${y - 4} ${x2 + (fromLeft ? -8 : 8)},${y + 4}" fill="#fff" />
       <text x="350" y="${y - 4}" text-anchor="middle" fill="#fff" font-size="12" font-family="ui-monospace, monospace">${esc(msg[1])}</text>`;
   });
-  return frame(spec.id, d, spec.title);
+  return frame(spec, d);
 }
 
 function orbit(spec) {
@@ -242,7 +258,7 @@ function orbit(spec) {
     }).join("")}
   </g>`;
   d += chip(360, 150, center, "#ff5a36");
-  return frame(spec.id, d, spec.title);
+  return frame(spec, d);
 }
 
 function tree(spec) {
@@ -255,7 +271,7 @@ function tree(spec) {
     + kid(540, rightKids)
     + `<path d="M360 68 V90 H180 V92 M360 90 H540 V92 M180 132 V148 M540 132 V148" fill="none" stroke="#fff" stroke-width="2" class="dash" stroke-dasharray="6 6"/>`
     + packet("M360,70 V100 H180 V150", "5s");
-  return frame(spec.id, inner, spec.title);
+  return frame(spec, inner);
 }
 
 const DRAW = { chain, stack, rings, split, ladder, orbit, tree };

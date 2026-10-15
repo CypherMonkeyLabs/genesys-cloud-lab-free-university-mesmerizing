@@ -108,15 +108,15 @@ function wireTips(host) {
 }
 
 function radial(title, rows, highlightId) {
-  const w = 680;
-  const h = 520;
-  const svg = d3.create("svg").attr("viewBox", `0 0 ${w} ${h}`).attr("role", "img").attr("aria-label", title);
+  const w = 980;
+  const h = 760;
+  const svg = d3.create("svg").attr("class", "radial-chart").attr("viewBox", `0 0 ${w} ${h}`).attr("role", "img").attr("aria-label", title);
   const node = svg.node();
   sketchFrame(node, w, h);
   const max = d3.max(rows, (row) => row.value) || 1;
   const cx = w / 2;
-  const cy = h / 2 + 6;
-  const inner = 58;
+  const cy = h / 2 + 8;
+  const inner = 46;
   const outer = 168;
   const arc = d3.arc().innerRadius(inner);
   const step = (Math.PI * 2) / Math.max(1, rows.length);
@@ -133,14 +133,16 @@ function radial(title, rows, highlightId) {
       .attr("d", arc.outerRadius(radius).startAngle(start).endAngle(end)())
       .attr("fill", on ? "#ff5a36" : PALETTE[i % PALETTE.length])
       .attr("opacity", 0.92);
-    const labelArc = d3.arc().innerRadius(outer + 22).outerRadius(outer + 22);
+    const labelArc = d3.arc().innerRadius(outer + 96).outerRadius(outer + 96);
     const [lx, ly] = labelArc.centroid({ startAngle: start, endAngle: end });
+    const anchor = lx > 20 ? "start" : lx < -20 ? "end" : "middle";
+    const nudge = anchor === "start" ? 8 : anchor === "end" ? -8 : 0;
     svg.append("text")
-      .attr("x", cx + lx)
+      .attr("x", cx + lx + nudge)
       .attr("y", cy + ly)
-      .attr("text-anchor", "middle")
+      .attr("text-anchor", anchor)
       .attr("fill", "currentColor")
-      .attr("font-size", 11)
+      .attr("font-size", 18)
       .text(row.label);
   });
   return node;

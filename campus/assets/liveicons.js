@@ -35,15 +35,15 @@ function boot() {
   booting = import("../vendor/three.module.js").then((mod) => {
     THREE = mod;
     glCanvas = document.createElement("canvas");
-    glCanvas.width = 160;
-    glCanvas.height = 150;
+    glCanvas.width = 360;
+    glCanvas.height = 320;
     renderer = new THREE.WebGLRenderer({ canvas: glCanvas, antialias: true, alpha: true, preserveDrawingBuffer: true });
     renderer.setPixelRatio(1);
-    renderer.setSize(160, 150, false);
+    renderer.setSize(360, 320, false);
     renderer.setClearColor(0x000000, 0);
     scene = new THREE.Scene();
-    camera = new THREE.PerspectiveCamera(32, 160 / 150, 0.1, 20);
-    camera.position.set(0.4, 0.7, 3.4);
+    camera = new THREE.PerspectiveCamera(30, 360 / 320, 0.1, 20);
+    camera.position.set(0.35, 0.55, 2.15);
     camera.lookAt(0, 0, 0);
     scene.add(new THREE.AmbientLight(0xffffff, 0.55));
     const key = new THREE.PointLight(0xffffff, 12, 12);
@@ -202,6 +202,7 @@ function build(kind, color) {
       if (unknown) break;
     }
   }
+  group.scale.setScalar(1.28);
   return group;
 }
 

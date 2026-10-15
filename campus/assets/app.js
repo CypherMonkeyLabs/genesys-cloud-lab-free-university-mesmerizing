@@ -387,6 +387,7 @@ function showHome() {
 
 async function mountHomeViz() {
   if (homeEl.hidden) return;
+  import("./hero3d.js").then((mod) => mod.mountHero($("#hero-canvas"), state.settings.reduce)).catch(() => {});
   paintIcons($("#home-icons"), null);
   try {
     const { DIAGRAMS, renderDiagram } = await import("./diagrams.js");
@@ -409,7 +410,6 @@ async function mountHomeViz() {
   } catch (err) {
     status(err.message || "Charts did not draw");
   }
-  import("./hero3d.js").then((mod) => mod.mountHero($("#hero-canvas"), state.settings.reduce)).catch(() => {});
 }
 
 function paintIcons(host, track, counts = {}) {
@@ -857,7 +857,7 @@ function showSettings() {
 async function cacheAll() {
   if (!("caches" in window)) return status("Cache API unavailable");
   try {
-  const cache = await caches.open("gccx-lab-v5");
+  const cache = await caches.open("gccx-lab-v6");
   const urls = ["index.html", "assets/app.js", "assets/studios.js", "assets/topology.js", "assets/routing-model.js", "assets/university.css", "assets/mascot.js", "assets/diagrams.js", "assets/pages.js", "assets/floorviz.js", "assets/hero3d.js", "assets/icons3d.js", "assets/liveicons.js", "assets/headings.js", "assets/i18n.js", "assets/lightbox.js", "vendor/d3.js", "vendor/anime.js", "vendor/rough.js", "vendor/confetti.js", "data/manifest.json", "data/reference.json", "manifest.webmanifest", "downloads/catalog.json", "downloads/flashcards.json", "downloads/flashcards.html", "audio/tour.mp3", "audio/practice.mp3"];
   state.manifest.tracks.forEach((track) => urls.push(track.file));
   await cache.addAll(urls.map((url) => new URL(url, location.href).toString()));
@@ -986,7 +986,7 @@ function ht(id, fallback) {
 }
 
 function iconStage(kind, accent) {
-  return `<div class="iso-stage" data-kind="${esc(kind)}" data-accent="${esc(accent)}">${isoIcon(kind, Number(accent) || 0)}<canvas class="live-icon" width="160" height="150" aria-hidden="true"></canvas></div>`;
+  return `<div class="iso-stage" data-kind="${esc(kind)}" data-accent="${esc(accent)}">${isoIcon(kind, Number(accent) || 0)}<canvas class="live-icon" width="360" height="320" aria-hidden="true"></canvas></div>`;
 }
 
 function refreshLive() {

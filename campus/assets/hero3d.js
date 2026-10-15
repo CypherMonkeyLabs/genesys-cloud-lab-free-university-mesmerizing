@@ -392,11 +392,11 @@ const UPPER = ["Edge", "Bot", "WEM", "CRM", "Media", "Satellite"];
 
 function fillUpperRight(THREE, colors) {
   upper = new THREE.Group();
-  upper.position.set(2.35, 1.65, 0.35);
+  upper.position.set(1.8, 2.15, -0.2);
   rig.add(upper);
 
   const ring = new THREE.Mesh(
-    new THREE.TorusGeometry(2.35, 0.028, 12, 96),
+    new THREE.TorusGeometry(1.85, 0.028, 12, 96),
     new THREE.MeshBasicMaterial({ color: colors.accent, transparent: true, opacity: 0.9 })
   );
   ring.rotation.x = Math.PI / 2.4;
@@ -436,7 +436,7 @@ function fillUpperRight(THREE, colors) {
     node.add(sprite);
     labelSprites.push(sprite);
     const angle = (index / UPPER.length) * Math.PI * 2;
-    node.position.set(Math.cos(angle) * 2.35, Math.sin(angle * 2) * 0.42, Math.sin(angle) * 1.55);
+    node.position.set(Math.cos(angle) * 1.85, Math.sin(angle * 2) * 0.36, Math.sin(angle) * 1.15);
     upper.add(node);
   });
 
@@ -450,6 +450,8 @@ function fillUpperRight(THREE, colors) {
 
   addDepth(THREE, colors, 520, 0.045, -14, -4, 16, 9, "accent2");
   addDepth(THREE, colors, 180, 0.22, 2.2, 5.4, 8, 5, "accent");
+  addDepth(THREE, colors, 260, 0.16, -2.5, 2.2, 14, 4.2, "accent3");
+  fillSkyBand(THREE, colors);
 
   for (let i = 0; i < 28; i += 1) {
     const role = i % 3 === 0 ? "accent" : i % 3 === 1 ? "accent3" : "accent2";
@@ -461,6 +463,42 @@ function fillUpperRight(THREE, colors) {
     spark.position.set(1.4 + Math.cos(angle) * 2.1, 1.15 + Math.sin(angle * 1.7) * 1.15, Math.sin(angle) * 0.8);
     paints.push({ mat: spark.material, role });
     rig.add(spark);
+  }
+}
+
+function fillSkyBand(THREE, colors) {
+  const band = new THREE.Group();
+  band.position.set(0.2, 2.28, 0.15);
+  rig.add(band);
+  const arc = new THREE.Mesh(
+    new THREE.TorusGeometry(6.4, 0.04, 10, 90, Math.PI),
+    new THREE.MeshBasicMaterial({ color: colors.accent2, transparent: true, opacity: 0.95 })
+  );
+  arc.rotation.z = Math.PI;
+  paints.push({ mat: arc.material, role: "accent2" });
+  band.add(arc);
+  const haloTex = new THREE.CanvasTexture(haloTexture());
+  haloTex.channel = 0;
+  for (let i = 0; i < 16; i += 1) {
+    const role = ["accent", "accent2", "accent3", "accent4"][i % 4];
+    const bead = new THREE.Mesh(
+      new THREE.SphereGeometry(0.22 + (i % 3) * 0.05, 12, 12),
+      new THREE.MeshBasicMaterial({ color: colors[role] })
+    );
+    bead.position.set(-6.2 + i * 0.82, Math.sin(i * 0.7) * 0.22, Math.cos(i) * 0.25);
+    paints.push({ mat: bead.material, role });
+    band.add(bead);
+    const glow = new THREE.Sprite(new THREE.SpriteMaterial({
+      map: haloTex,
+      color: colors[role],
+      transparent: true,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false
+    }));
+    glow.scale.set(0.85, 0.85, 1);
+    glow.position.copy(bead.position);
+    paints.push({ mat: glow.material, role });
+    band.add(glow);
   }
 }
 
@@ -598,9 +636,9 @@ function start() {
     const wide = (canvasEl?.clientWidth || 800) > 860;
     const aimX = wide ? -0.95 : 0.05;
     camera.position.x += (aimX + mouse.x * 0.35 - camera.position.x) * 0.04;
-    camera.position.y += (1.35 + Math.sin(t * 0.15) * 0.18 - mouse.y * 0.2 - camera.position.y) * 0.04;
+    camera.position.y += (0.55 + Math.sin(t * 0.15) * 0.1 - mouse.y * 0.16 - camera.position.y) * 0.04;
     camera.position.z += (5.1 + pull - camera.position.z) * 0.04;
-    camera.lookAt(0.15, 0.2, 0);
+    camera.lookAt(0.15, -0.7, 0);
     paintFrame();
   };
   loop();

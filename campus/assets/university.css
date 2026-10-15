@@ -347,6 +347,8 @@ a.card:hover { transform: translateY(-4px); }
 }
 .cheat-banner h2 { margin: 0; }
 .chart-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
+#view .chart-card:has(.radial-chart) { grid-column: 1 / -1; }
+#track-chart-root .chart-card:has(.radial-chart) { grid-column: auto; }
 .chart-card svg { background: transparent; border: 0; }
 .mermaid-svg img, .mermaid-svg svg { width: 100%; height: auto; background: #0c1824; border-radius: 16px; }
 .crumbs { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; color: var(--cc-muted); font-size: 0.9rem; margin: 0 0 8px; }
@@ -551,7 +553,9 @@ a.card:hover, .icon-tile:hover {
   transform: translateY(-10px) rotateX(4deg) rotateY(-6deg);
   box-shadow: 0 18px 40px color-mix(in srgb, var(--cc-accent-1) 35%, transparent);
 }
-.iso-stage { width: 132px; height: 124px; margin: 0 auto 8px; perspective: 700px; }
+.iso-stage { width: 168px; height: 150px; margin: 0 auto 8px; perspective: 700px; }
+.icon-tile .iso-stage { width: 176px; height: 158px; }
+.iso-card .iso-stage { width: 280px; height: 248px; }
 .icon-tile svg.iso, .iso-stage svg.iso {
   width: 128px;
   height: 120px;
@@ -648,7 +652,8 @@ html[lang="ar"] body, html[lang="hi"] body, html[lang="te"] body, html[lang="ja"
     max-height: calc(100svh - var(--chrome-h, 168px));
   }
   .icon-tile { min-height: 0; padding: 6px; }
-  .icon-tile svg.iso { width: 72px; height: 68px; }
+  .icon-tile svg.iso { width: 120px; height: 108px; }
+  .iso-stage, .iso-card .iso-stage { width: 168px; height: 150px; }
 }
 
 .iso-stage { position: relative; }
@@ -661,7 +666,7 @@ html[lang="ar"] body, html[lang="hi"] body, html[lang="te"] body, html[lang="ja"
 }
 .iso-stage.has-live svg.iso { opacity: 0; }
 .diagram .packet { filter: drop-shadow(0 0 8px #2ff7ff) drop-shadow(0 0 14px #ff2fb3); }
-#view .diagram, #view .mermaid-svg img { min-height: 420px; }
+#view .diagram, #view .mermaid-svg img { min-height: 460px; background: radial-gradient(circle at 18% 0%, #9fd8ff, #3d4f9a 58%, #6a3d86); }
 .atlas-grid, #view .atlas-grid { grid-template-columns: 1fr; }
 #home-flows .card svg { max-height: 340px; }
 .chart-card svg { width: 100%; height: auto; min-height: 280px; }

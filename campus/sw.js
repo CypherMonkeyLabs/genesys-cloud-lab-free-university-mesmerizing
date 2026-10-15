@@ -1,4 +1,4 @@
-const CACHE = "gccx-lab-v5";
+const CACHE = "gccx-lab-v6";
 const SHELL = [
   "./",
   "./index.html",
@@ -46,7 +46,7 @@ self.addEventListener("fetch", (event) => {
         }
         return response;
       }).catch(() => cached);
-      return cached || network;
+      return network || cached;
     })
   );
 });
