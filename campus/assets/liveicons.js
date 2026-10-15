@@ -38,7 +38,7 @@ function boot() {
     glCanvas.width = 360;
     glCanvas.height = 320;
     renderer = new THREE.WebGLRenderer({ canvas: glCanvas, antialias: true, alpha: true, preserveDrawingBuffer: true });
-    renderer.setPixelRatio(1);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
     renderer.setSize(360, 320, false);
     renderer.setClearColor(0x000000, 0);
     scene = new THREE.Scene();
@@ -206,13 +206,19 @@ function build(kind, color) {
   return group;
 }
 
+function stageOnScreen(stage) {
+  const rect = stage.getBoundingClientRect();
+  return rect.bottom > 0 && rect.top < window.innerHeight && rect.width > 0;
+}
+
 function start() {
   if (frame || !renderer) return;
   const loop = () => {
     frame = requestAnimationFrame(loop);
+    if (document.hidden) return;
     const t = performance.now() * 0.001;
-    const live = entries.filter((entry) => entry.stage.isConnected);
-    if (!live.length || document.hidden) return;
+    const live = entries.filter((entry) => entry.stage.isConnected && stageOnScreen(entry.stage));
+    if (!live.length) return;
     live.forEach((entry) => {
       entries.forEach((other) => { other.group.visible = false; });
       entry.group.visible = true;
@@ -227,4 +233,15 @@ function start() {
     });
   };
   loop();
+}
+
+if (typeof document !== "undefined") {
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      if (frame) cancelAnimationFrame(frame);
+      frame = 0;
+      return;
+    }
+    start();
+  });
 }

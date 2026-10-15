@@ -20,6 +20,7 @@ let frame = 0;
 const mouse = { x: 0, y: 0 };
 let scrollY = 0;
 let listeners = false;
+let heroSeen = true;
 
 export function mountHero(canvas, reduce) {
   canvasEl = canvas;
@@ -98,7 +99,7 @@ function boot(THREE, canvas) {
     showFallback(canvas);
     return;
   }
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
   renderer.setClearColor(palette().bg, 1);
   scene = new THREE.Scene();
   camera = new THREE.PerspectiveCamera(52, 1, 0.1, 80);
@@ -383,9 +384,22 @@ function bind() {
   window.addEventListener("resize", resize);
   document.addEventListener("gccx-theme", () => recolor());
   document.addEventListener("visibilitychange", () => {
-    if (document.hidden) stop();
+    if (document.hidden || !heroSeen) stop();
     else start();
   });
+  document.addEventListener("gccx-visibility", (ev) => {
+    if (ev.detail && ev.detail.run === false) stop();
+    else if (!document.hidden && heroSeen) start();
+  });
+  const watch = canvasEl?.parentElement || canvasEl;
+  if (watch && "IntersectionObserver" in window) {
+    const io = new IntersectionObserver((entries) => {
+      heroSeen = entries.some((entry) => entry.isIntersecting);
+      if (!heroSeen || document.hidden) stop();
+      else start();
+    }, { threshold: 0 });
+    io.observe(watch);
+  }
 }
 
 const UPPER = ["Edge", "Bot", "WEM", "CRM", "Media", "Satellite"];
@@ -618,7 +632,7 @@ function start() {
   const loop = () => {
     if (!running) return;
     frame = requestAnimationFrame(loop);
-    if (!homeVisible()) return;
+    if (!homeVisible() || !heroSeen || document.hidden) return;
     const t = clock.getElapsedTime();
     if (gridMat) gridMat.uniforms.time.value = t;
     if (orbit) orbit.rotation.y = t * 0.22;
