@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ports and protocols</title>
+<style>
+body { font: 16px/1.45 Georgia, serif; margin: 32px auto; max-width: 720px; color: #1b140f; background: #f7f4ef; }
+h1 { font-size: 28px; }
+a { color: #8d1d08; }
+footer { margin-top: 28px; border-top: 1px solid #ccc; padding-top: 12px; font-size: 13px; }
+@media print { body { background: #fff; } }
+</style></head><body>
+<h1>Ports and protocols</h1>
+<p>TLS trunks: TCP 5061. UDP or TCP trunks: commonly 5060. Both ends must match.</p>
+<p>Managed phones signal on TCP 8061. Unmanaged phones use TCP 5061.</p>
+<p>Media is UDP 16384-65535, opened outbound, RTP or SRTP.</p>
+<p>Phone provisioning uses TCP 443, and the phone article also lists TCP 80.</p>
+<p>Secure BYOC Cloud does not use IPsec. Use SIP TLS 1.2 and SRTP.</p>
+<p>Signaling addresses and SDP media addresses are different. Copy the current region table.</p>
+<p>Do not paste an address from this lab. Synthetic logs use RFC 5737.</p>
+<h2>Sources</h2>
+<ul><li><a href="https://help.genesys.cloud/articles/choose-a-trunk-transport-protocol/">https://help.genesys.cloud/articles/choose-a-trunk-transport-protocol/</a></li>
+<li><a href="https://help.genesys.cloud/articles/tls-trunk-transport-protocol-specification/">https://help.genesys.cloud/articles/tls-trunk-transport-protocol-specification/</a></li>
+<li><a href="https://help.genesys.cloud/articles/ports-and-services-for-voip-phones-under-byoc-cloud/">https://help.genesys.cloud/articles/ports-and-services-for-voip-phones-under-byoc-cloud/</a></li>
+<li><a href="https://help.genesys.cloud/faqs/why-does-the-port-range-16384-32767-rtp-media-need-to-be-opened-up-for-genesys-cloud-voice-byoc-cloud/">https://help.genesys.cloud/faqs/why-does-the-port-range-16384-32767-rtp-media-need-to-be-opened-up-for-genesys-cloud-voice-byoc-cloud/</a></li>
+<li><a href="https://help.genesys.cloud/articles/byoc-cloud-public-sip-ip-addresses/">https://help.genesys.cloud/articles/byoc-cloud-public-sip-ip-addresses/</a></li></ul>
+<footer><p>CypherMonkey Labs · Signal Floor</p>
+<p>https://cyphermonkeylabs.com</p>
+<p>https://linktr.ee/cyphermonkey</p>
+<p>https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing</p>
+<p>Independent educational project. Not affiliated with or endorsed by any vendor.</p>
+<p>Trademarks belong to their owners. MIT code. CC BY-NC-SA content.</p>
+<p>Concerns: https://cyphermonkeylabs.com/#contact</p></footer>
+</body></html>

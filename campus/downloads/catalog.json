@@ -1,0 +1,193 @@
+{
+  "sheets": [
+    {
+      "id": "ports",
+      "title": "Ports and protocols",
+      "summary": "Signaling and media for BYOC Cloud, from the firewall and trunk articles.",
+      "html": "downloads/ports.html",
+      "pdf": "downloads/ports.pdf",
+      "png": "downloads/ports.png",
+      "svg": "downloads/ports.svg",
+      "sources": [
+        "https://help.genesys.cloud/articles/choose-a-trunk-transport-protocol/",
+        "https://help.genesys.cloud/articles/tls-trunk-transport-protocol-specification/",
+        "https://help.genesys.cloud/articles/ports-and-services-for-voip-phones-under-byoc-cloud/",
+        "https://help.genesys.cloud/faqs/why-does-the-port-range-16384-32767-rtp-media-need-to-be-opened-up-for-genesys-cloud-voice-byoc-cloud/",
+        "https://help.genesys.cloud/articles/byoc-cloud-public-sip-ip-addresses/"
+      ]
+    },
+    {
+      "id": "call-flow",
+      "title": "Voice call flow",
+      "summary": "The short path a voice conversation takes.",
+      "html": "downloads/call-flow.html",
+      "pdf": "downloads/call-flow.pdf",
+      "png": "downloads/call-flow.png",
+      "svg": "downloads/call-flow.svg",
+      "sources": [
+        "https://help.genesys.cloud/articles/about-architect/",
+        "https://help.genesys.cloud/articles/create-a-flow/",
+        "https://help.genesys.cloud/articles/advanced-routing-overview/"
+      ]
+    },
+    {
+      "id": "architect",
+      "title": "Architect checklist",
+      "summary": "Publish the flow the runtime will actually run.",
+      "html": "downloads/architect.html",
+      "pdf": "downloads/architect.pdf",
+      "png": "downloads/architect.png",
+      "svg": "downloads/architect.svg",
+      "sources": [
+        "https://help.genesys.cloud/articles/create-a-flow/",
+        "https://help.genesys.cloud/articles/queue-call-flows/",
+        "https://help.genesys.cloud/articles/about-genesys-dialog-engine-bot-flows/"
+      ]
+    },
+    {
+      "id": "routing",
+      "title": "Routing troubleshooting",
+      "summary": "Why an agent did not alert.",
+      "html": "downloads/routing.html",
+      "pdf": "downloads/routing.pdf",
+      "png": "downloads/routing.png",
+      "svg": "downloads/routing.svg",
+      "sources": [
+        "https://help.genesys.cloud/articles/acd-evaluation-routing-methods/",
+        "https://help.genesys.cloud/articles/bullseye-routing-overview/",
+        "https://help.genesys.cloud/articles/create-queues/"
+      ]
+    },
+    {
+      "id": "byoc",
+      "title": "BYOC and PSTN",
+      "summary": "Cloud carrier, premises Edge, or Genesys Cloud Voice.",
+      "html": "downloads/byoc.html",
+      "pdf": "downloads/byoc.pdf",
+      "png": "downloads/byoc.png",
+      "svg": "downloads/byoc.svg",
+      "sources": [
+        "https://help.genesys.cloud/articles/about-byoc-cloud/",
+        "https://help.genesys.cloud/articles/byoc-cloud-configuration-overview/",
+        "https://help.genesys.cloud/articles/edge-groups-overview/"
+      ]
+    },
+    {
+      "id": "emergency",
+      "title": "Emergency calling",
+      "summary": "Name the owner before the first DID.",
+      "html": "downloads/emergency.html",
+      "pdf": "downloads/emergency.pdf",
+      "png": "downloads/emergency.png",
+      "svg": "downloads/emergency.svg",
+      "sources": [
+        "https://help.genesys.cloud/articles/set-up-emergency-services-with-byoc/",
+        "https://help.genesys.cloud/articles/number-plan-information/"
+      ]
+    },
+    {
+      "id": "wfm",
+      "title": "WFM forecast and schedule",
+      "summary": "Short-term forecasts can build a schedule. Long-term forecasts cannot.",
+      "html": "downloads/wfm.html",
+      "pdf": "downloads/wfm.pdf",
+      "png": "downloads/wfm.png",
+      "svg": "downloads/wfm.svg",
+      "sources": [
+        "https://help.genesys.cloud/articles/workforce-management/",
+        "https://help.genesys.cloud/articles/work-with-forecasts/",
+        "https://help.genesys.cloud/articles/work-with-workforce-management-schedules/"
+      ]
+    },
+    {
+      "id": "quality",
+      "title": "Recording and quality",
+      "summary": "A policy decides which calls are kept. A form decides the score.",
+      "html": "downloads/quality.html",
+      "pdf": "downloads/quality.pdf",
+      "png": "downloads/quality.png",
+      "svg": "downloads/quality.svg",
+      "sources": [
+        "https://help.genesys.cloud/50540/",
+        "https://help.genesys.cloud/articles/about-recording/",
+        "https://help.genesys.cloud/faqs/category/speech-and-text-analytics/"
+      ]
+    },
+    {
+      "id": "api",
+      "title": "API and security",
+      "summary": "The grant has to match who the call runs as.",
+      "html": "downloads/api.html",
+      "pdf": "downloads/api.pdf",
+      "png": "downloads/api.png",
+      "svg": "downloads/api.svg",
+      "sources": [
+        "https://help.genesys.cloud/articles/create-an-oauth-client/",
+        "https://developer.genesys.cloud/api/rest/authorization/use-client-credentials"
+      ]
+    },
+    {
+      "id": "predictive",
+      "title": "Predictive Engagement",
+      "summary": "The website product. Not ACD predictive routing.",
+      "html": "downloads/predictive.html",
+      "pdf": "downloads/predictive.pdf",
+      "png": "downloads/predictive.png",
+      "svg": "downloads/predictive.svg",
+      "sources": [
+        "https://help.genesys.cloud/articles/about-predictive-engagement/",
+        "https://help.genesys.cloud/announcements/genesys-cloud/deprecation-journey-outcomes/"
+      ]
+    },
+    {
+      "id": "migration",
+      "title": "Migration cutover",
+      "summary": "Rebuild the behavior. This lab has not found a converter.",
+      "html": "downloads/migration.html",
+      "pdf": "downloads/migration.pdf",
+      "png": "downloads/migration.png",
+      "svg": "downloads/migration.svg",
+      "sources": [
+        "https://help.genesys.cloud/articles/about-architect/",
+        "https://www.cisco.com/c/en/us/support/customer-collaboration/unified-contact-center-enterprise/series.html"
+      ]
+    },
+    {
+      "id": "certs",
+      "title": "Certification path",
+      "summary": "Say the catalog names. Do not invent a GCX- code.",
+      "html": "downloads/certs.html",
+      "pdf": "downloads/certs.pdf",
+      "png": "downloads/certs.png",
+      "svg": "downloads/certs.svg",
+      "sources": [
+        "https://education.genesys.com/certification/cloud",
+        "https://education.genesys.com/explore/announcement/genesys-technical-certifications-important-announcement"
+      ]
+    },
+    {
+      "id": "whats-new",
+      "title": "What\u2019s new, 2026",
+      "summary": "Dates as printed on the pages this lab opened.",
+      "html": "downloads/whats-new.html",
+      "pdf": "downloads/whats-new.pdf",
+      "png": "downloads/whats-new.png",
+      "svg": "downloads/whats-new.svg",
+      "sources": [
+        "https://help.genesys.cloud/announcements/genesys-cloud/deprecation-journey-outcomes/",
+        "https://help.genesys.cloud/announcements/genesys-cloud/predictive-routing-supports-customer-defined-business-outcomes-with-custom-kpis/",
+        "https://help.genesys.cloud/articles/create-an-oauth-client/"
+      ]
+    }
+  ],
+  "cards": 480,
+  "footer": [
+    "CypherMonkey Labs \u00b7 Signal Floor",
+    "https://cyphermonkeylabs.com",
+    "https://linktr.ee/cyphermonkey",
+    "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing",
+    "Independent educational project. Not affiliated with or endorsed by any vendor.",
+    "Trademarks belong to their owners. MIT code. CC BY-NC-SA content.",
+    "Concerns: https://cyphermonkeylabs.com/#contact"
+  ]
+}

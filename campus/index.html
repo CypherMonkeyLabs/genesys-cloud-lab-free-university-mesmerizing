@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="night" data-font="md">
+<html lang="en" data-theme="futuristic" data-font="md">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,6 +12,7 @@
 try {
   var s = JSON.parse(localStorage.getItem('gccx-settings') || '{}');
   if (s.theme) document.documentElement.dataset.theme = s.theme;
+  else document.documentElement.dataset.theme = "futuristic";
   if (s.font) document.documentElement.dataset.font = s.font;
   if (s.reduce) document.documentElement.dataset.reduce = '1';
 } catch (e) {}
@@ -281,9 +282,20 @@ th, td { border-bottom: 1px solid var(--cc-line); text-align: left; padding: 8px
   .pulse { animation: none; }
 }
 </style>
+<link rel="stylesheet" href="assets/university.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
+<div class="sky">
+  <a href="https://cyphermonkeylabs.com">Labs</a>
+  <a href="https://linktr.ee/cyphermonkey">Linktree</a>
+  <a href="https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing">Repo · rate / comment / help</a>
+  <a href="https://dev.to/cyphermonkey">DEV</a>
+  <a href="https://huggingface.co/Cypher0x9">Hugging Face</a>
+  <a href="https://x.com/Cypher0x9">X</a>
+  <span class="spacer"></span>
+  <button type="button" id="offline-sky">Save for offline</button>
+</div>
 <header class="topbar">
   <a class="brand" href="#/">
     <span class="mark" aria-hidden="true">SF</span>
@@ -300,23 +312,27 @@ th, td { border-bottom: 1px solid var(--cc-line); text-align: left; padding: 8px
   <aside class="rail" id="rail" aria-label="Tracks"></aside>
   <main id="main">
     <section id="home">
-      <p class="kicker">Free operations studio</p>
+      <p class="kicker">Free operations university</p>
       <h1>Genesys Cloud CX Lab</h1>
-      <p class="lede">Architect flows, bullseye routing, BYOC trunks, the Edge, WEM, and the Platform API. Every claim in a lesson links to the Genesys Cloud Resource Center, the Developer Center, Genesys Education, or an RFC.</p>
+      <p class="lede">Architect flows, bullseye routing, BYOC trunks, the Edge, WEM, Predictive Engagement, and the Platform API. Every lesson links to the Resource Center, the Developer Center, Genesys Education, or an RFC.</p>
       <div class="statrow" style="margin:14px 0">
         <div class="stat"><b id="stat-tracks">—</b><span>tracks</span></div>
         <div class="stat"><b id="stat-lessons">—</b><span>lessons</span></div>
         <div class="stat"><b id="stat-quiz">—</b><span>quiz items</span></div>
         <div class="stat"><b id="stat-done">0</b><span>finished</span></div>
+        <div class="ring" id="progress-ring" style="--p:0"><span id="stat-pct">0%</span></div>
       </div>
       <div class="hero">
-        <div>
+        <div class="stage">
           <div class="chips">
             <a class="btn primary" href="#/tracks">Start with foundations</a>
+            <a class="btn" href="#/atlas">Diagram atlas</a>
+            <a class="btn" href="#/cheat">Cheat codes</a>
             <a class="btn" href="#/studio/architect">Architect builder</a>
             <a class="btn" href="#/topology">3D topology</a>
           </div>
-          <p class="muted">Retrieved against public docs on 14 October 2026. When a vendor page and this lab disagree, the page wins.</p>
+          <p class="muted">Public docs were read again on 15 October 2026. When a vendor page and this lab disagree, the page wins.</p>
+          <div id="mascot-slot"></div>
         </div>
         <svg class="constellation" viewBox="0 0 360 240" role="img" aria-label="Stylized path from a carrier through a trunk into Architect, a queue, and an agent.">
           <rect width="360" height="240" fill="none"></rect>
@@ -336,6 +352,8 @@ th, td { border-bottom: 1px solid var(--cc-line); text-align: left; padding: 8px
             <text x="278" y="178">Agent</text>
           </g>
         </svg>
+        <div class="float-card a">SIP on 5061<br>RTP is not SIP</div>
+        <div class="float-card b">Publish the flow<br>Drafts do not answer</div>
       </div>
       <div id="home-dynamic"></div>
     </section>
@@ -346,12 +364,36 @@ th, td { border-bottom: 1px solid var(--cc-line); text-align: left; padding: 8px
   <nav aria-label="Primary">
     <a href="#/">Home</a>
     <a href="#/tracks" id="nav-learn">Learn</a>
-    <a href="#/studio">Studio</a>
-    <a href="#/topology">Map</a>
+    <a href="#/atlas">Atlas</a>
+    <a href="#/cheat">Cheat</a>
     <a href="#/settings">You</a>
   </nav>
 </div>
 <div id="status" aria-live="polite"></div>
+<div id="egg" class="egg" hidden>
+  <div class="panel card">
+    <h2>CypherMonkey heard the code</h2>
+    <p>Badge unlocked in this browser. The floor is still a lab, not a live org.</p>
+    <p><a href="https://cyphermonkeylabs.com">cyphermonkeylabs.com</a></p>
+    <button class="btn primary" type="button" id="egg-close">Back to the floor</button>
+  </div>
+</div>
+<footer class="site-footer">
+  <p><strong>CypherMonkey Labs · Signal Floor</strong></p>
+  <p>Independent educational project. Not affiliated with or endorsed by Genesys, Cisco, Salesforce, Zendesk, or any other vendor. Trademarks belong to their owners. MIT code. CC BY-NC-SA content.</p>
+  <p><a href="https://cyphermonkeylabs.com/#contact">Report a concern / takedown</a> · <a href="https://cyphermonkeylabs.com/#contact">Work with us</a></p>
+  <div class="next-labs" aria-label="Other labs">
+    <a href="https://cypherwebex-canon-test.vercel.app">Webex Canon</a>
+    <a href="https://github.com/cipher0x9/webex-lab-free-university-mesmerizing">Webex lab</a>
+    <a href="https://github.com/cipher0x9/uc-lab-free-university-mesmerizing">UC lab</a>
+    <a href="https://github.com/cipher0x9/amazon-connect-lab-free-university-mesmerizing">Amazon Connect</a>
+    <a href="https://github.com/cipher0x9/five9-lab-free-university-mesmerizing">Five9</a>
+    <a href="https://github.com/cipher0x9/nice-cxone-lab-free-university-mesmerizing">NiCE CXone</a>
+    <a href="https://github.com/cipher0x9/microsoft-voice-cc-lab-free-university-mesmerizing">Microsoft voice</a>
+    <a href="https://github.com/cipher0x9/sip-universe-lab-free-university-mesmerizing">SIP universe</a>
+    <a href="https://github.com/cipher0x9/ai-lab-free-university-mesmerizing">AI lab</a>
+  </div>
+</footer>
 <script type="module" src="assets/app.js"></script>
 </body>
 </html>

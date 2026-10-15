@@ -1,9 +1,13 @@
-const CACHE = "gccx-lab-v1";
+const CACHE = "gccx-lab-v2";
 const SHELL = [
   "./",
   "./index.html",
   "./manifest.webmanifest",
   "./assets/app.js",
+  "./assets/university.css",
+  "./assets/mascot.js",
+  "./assets/diagrams.js",
+  "./assets/pages.js",
   "./assets/studios.js",
   "./assets/topology.js",
   "./assets/routing-model.js",

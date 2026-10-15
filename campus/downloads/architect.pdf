@@ -1,0 +1,73 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Count 1 /Kids [3 0 R] >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 1239 >>
+stream
+BT
+/F1 16 Tf
+48 760 Td
+(Architect checklist) Tj
+/F1 10 Tf
+0 -22 Td
+(Pick the flow type before you draw. Inbound, in-queue, bot, and secure are different) Tj
+0 -14 Td
+(types. Give every path a transfer, a handoff, or a disconnect. Call a bot from the inbound) Tj
+0 -14 Td
+(flow. Bind no-match, timeout, and error to a queue. A secure flow keeps payment audio out) Tj
+0 -14 Td
+(of the recording. It is not a place to store the digits. Save is a draft. Publish is what) Tj
+0 -14 Td
+(answers.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Sources:) Tj
+0 -14 Td
+(https://help.genesys.cloud/articles/create-a-flow/) Tj
+0 -14 Td
+(https://help.genesys.cloud/articles/queue-call-flows/) Tj
+0 -14 Td
+(https://help.genesys.cloud/articles/about-genesys-dialog-engine-bot-flows/) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(CypherMonkey Labs · Signal Floor) Tj
+0 -14 Td
+(https://cyphermonkeylabs.com) Tj
+0 -14 Td
+(https://linktr.ee/cyphermonkey) Tj
+0 -14 Td
+(https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing) Tj
+0 -14 Td
+(Independent educational project. Not affiliated with or endorsed by any vendor.) Tj
+0 -14 Td
+(Trademarks belong to their owners. MIT code. CC BY-NC-SA content.) Tj
+0 -14 Td
+(Concerns: https://cyphermonkeylabs.com/#contact) Tj
+0 -14 Td
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000241 00000 n 
+0000001532 00000 n 
+trailer << /Size 6 /Root 1 0 R >>
+startxref
+1602
+%%EOF

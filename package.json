@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "python3 scripts/build_curriculum.py",
+    "build": "python3 scripts/build_curriculum.py && python3 scripts/build_downloads.py",
     "verify": "node scripts/verify.mjs"
   }
 }

@@ -1,0 +1,69 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Count 1 /Kids [3 0 R] >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 1100 >>
+stream
+BT
+/F1 16 Tf
+48 760 Td
+(API and security) Tj
+/F1 10 Tf
+0 -22 Td
+(Client credentials are for a service. The token cannot call /api/v2/users/me. User-facing) Tj
+0 -14 Td
+(apps use authorization code with PKCE. Token Implicit Grant is documented as deprecated) Tj
+0 -14 Td
+(after 25 May 2026. A role works only in the divisions it is paired with. This lab?s API) Tj
+0 -14 Td
+(explorer never sends the sample.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Sources:) Tj
+0 -14 Td
+(https://help.genesys.cloud/articles/create-an-oauth-client/) Tj
+0 -14 Td
+(https://developer.genesys.cloud/api/rest/authorization/use-client-credentials) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(CypherMonkey Labs · Signal Floor) Tj
+0 -14 Td
+(https://cyphermonkeylabs.com) Tj
+0 -14 Td
+(https://linktr.ee/cyphermonkey) Tj
+0 -14 Td
+(https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing) Tj
+0 -14 Td
+(Independent educational project. Not affiliated with or endorsed by any vendor.) Tj
+0 -14 Td
+(Trademarks belong to their owners. MIT code. CC BY-NC-SA content.) Tj
+0 -14 Td
+(Concerns: https://cyphermonkeylabs.com/#contact) Tj
+0 -14 Td
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000241 00000 n 
+0000001393 00000 n 
+trailer << /Size 6 /Root 1 0 R >>
+startxref
+1463
+%%EOF

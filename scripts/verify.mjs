@@ -1,6 +1,8 @@
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { decide } from "../campus/assets/routing-model.js";
+import { DIAGRAMS, PORTS } from "../campus/assets/diagrams.js";
+import { PAGE_CITES } from "../campus/assets/pages.js";
 
 const root = join(import.meta.dirname, "..");
 const manifest = JSON.parse(readFileSync(join(root, "campus/data/manifest.json"), "utf8"));
@@ -82,6 +84,42 @@ if (faults < 30) problems.push("faults");
 if (reference.glossary.length < 40) problems.push("glossary");
 if (reference.bosses.length < 8) problems.push("bosses");
 if (reference.interviews.length < 24) problems.push("interviews");
+if (DIAGRAMS.length < 24) problems.push(`diagrams ${DIAGRAMS.length}`);
+for (const item of DIAGRAMS) checkUrl(item.url, item.id);
+for (const item of PORTS) checkUrl(item.url, item.name);
+for (const url of PAGE_CITES) checkUrl(url, "page");
+const seenDiagram = new Set();
+for (const item of DIAGRAMS) {
+  if (seenDiagram.has(item.id)) problems.push(`duplicate diagram ${item.id}`);
+  seenDiagram.add(item.id);
+  if (!item.title || !item.caption) problems.push(`${item.id} blank`);
+}
+
+const html = readFileSync(join(root, "campus/index.html"), "utf8");
+for (const needle of ["https://cyphermonkeylabs.com", "https://linktr.ee/cyphermonkey", "https://dev.to/cyphermonkey", "https://huggingface.co/Cypher0x9", "https://x.com/Cypher0x9", "CC BY-NC-SA"]) {
+  if (!html.includes(needle)) problems.push(`chrome missing ${needle}`);
+}
+if (/linkedin/i.test(html)) problems.push("linkedin");
+if (/mailto:/i.test(html)) problems.push("mailto");
+
+const downloadDir = join(root, "campus/downloads");
+if (!existsSync(downloadDir)) problems.push("downloads missing");
+else {
+  const catalog = JSON.parse(readFileSync(join(downloadDir, "catalog.json"), "utf8"));
+  if (catalog.sheets.length < 12) problems.push("sheets");
+  const cards = JSON.parse(readFileSync(join(downloadDir, "flashcards.json"), "utf8"));
+  if (cards.cards.length < 400) problems.push("flashcards");
+  if (statSync(join(downloadDir, "genesys-cx-offline-bundle.zip")).size < 1000) problems.push("zip");
+  for (const name of readdirSync(downloadDir)) {
+    if (!/\.(html|svg|json|pdf)$/.test(name)) continue;
+    const text = readFileSync(join(downloadDir, name), "utf8");
+    if (/linkedin/i.test(text)) problems.push(`${name} linkedin`);
+    if (/mailto:/i.test(text)) problems.push(`${name} mailto`);
+    if (!text.includes("cyphermonkeylabs.com")) problems.push(`${name} footer`);
+  }
+  const predictive = manifest.tracks.find((track) => track.id === "predictive");
+  if (!predictive || predictive.lessons.length < 7) problems.push("predictive track");
+}
 
 function agent(name, extra) {
   return {

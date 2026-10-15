@@ -28,6 +28,7 @@ MODULES = [
     "t14_crm",
     "t15_migration",
     "t16_ecosystem",
+    "t17_predictive",
 ]
 
 STUDIOS = [
@@ -77,7 +78,7 @@ def main():
         })
     manifest = {
         "title": "Genesys Cloud CX Lab",
-        "updated": "2026-10-14",
+        "updated": "2026-10-15",
         "quizCount": quiz,
         "tracks": manifest_tracks,
         "studios": STUDIOS,

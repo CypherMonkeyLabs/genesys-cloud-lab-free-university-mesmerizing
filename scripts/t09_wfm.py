@@ -6,7 +6,7 @@ TRACK = {
     "title": "Workforce management",
     "kicker": "WEM",
     "accent": 2,
-    "summary": "Business units, management units, service goals, schedules, adherence, and time off. WFM is a CX 3 capability.",
+    "summary": "Business units, forecasts, schedules, adherence, and time off. WFM is a CX 3 capability.",
     "lessons": [],
 }
 def add(item):
@@ -255,4 +255,75 @@ add(lesson(
     ["Exam name from the catalog.", "Prep course name.", "Two product articles you will re-read.", "A note that this lab is not the practice exam."],
     "The list uses catalog names.",
     ("Wrong exam", "A candidate studies only GC-GCP and expects the WFM specialist badge.", "Catalog: two different rows.", "The professional exam’s prep courses are Implementation, Administration, and Reporting.", "Open the Workforce Management row and its own course."),
+))
+
+add(lesson(
+    "w-forecast", "A forecast has a short view and a long view", "Advanced", 13,
+    "Short-term data can build a schedule. The long-term view is for seasonality and does not generate one.",
+    [
+        "The workforce management overview lists developing forecasts, comparing intraday forecast to actual values, and three schedule styles: blank, forecast-based, and without a forecast. The forecast article splits the data. The short-term view is interval-level, one week at a time, for up to six weeks depending on the forecast length, and it can generate schedules. The long-term view is day and week data, up to one year at a time and two years total, for seasonality and trends. It cannot generate a schedule.",
+        "Forecast metrics named on that page are pattern, volume as interactions offered, and average handle time made of average talk time, average hold time, and average after call work. This lab does not restate a creation algorithm. If a button name on the forecast page is not in the sentence above, re-open the page before you teach it.",
+    ],
+    cites("wfm-overview", "wfm-forecasts", "wem"),
+    fig("Short-term forecasts feed schedules. Long-term forecasts do not.", [
+        ("f", "Forecast", "wem", 18, 40),
+        ("s", "Short-term", "queue", 50, 22),
+        ("l", "Long-term", "region", 50, 70),
+        ("g", "Schedule", "agent", 84, 22),
+    ], [("f", "s"), ("f", "l"), ("s", "g")]),
+    "Point each view at a job",
+    [
+        ("Planner", "Short-term", "Up to six weeks", "Interval data.", "Can generate a schedule"),
+        ("Planner", "Long-term", "Up to two years", "Day and week data.", "Seasonality only"),
+        ("Planner", "Metrics", "Volume and AHT", "AHT includes talk, hold, and ACW.", "Not a routing score"),
+        ("Planner", "Intraday", "Forecast versus actual", "The overview names that comparison.", "Adherence is the next lesson family"),
+    ],
+    [
+        q("Which forecast view can generate a schedule?", "The short-term view", ["The long-term view", "A bullseye ring", "An OAuth token"], "The forecast article says the long-term view cannot."),
+        q("Short-term data is shown as:", "Interval-level, one week at a time, up to six weeks", ["A single yearly total", "A SIP ladder", "A wrap-up code"], "That is the short-term description."),
+        q("Average handle time on the forecast page includes:", "Talk, hold, and after call work", ["Only ring time", "Only tokens", "Only adherence"], "The article names those three averages."),
+        q("The long-term view is for:", "Seasonality and trends", ["Generating the week’s shifts", "Opening TLS 5061", "Publishing an Architect flow"], "It does not generate schedules."),
+        q("Volume in that forecast means:", "Interactions offered", ["Agents On Queue", "Tokens spent", "Trunk CPS"], "The page says interactions offered."),
+        q("Intraday, the overview asks you to compare:", "Forecast and actual values", ["Two OAuth grants", "Core and satellite orgs", "Exam codes"], "That comparison is listed on the overview."),
+    ],
+    [("Short-term", "Up to six weeks, can schedule."), ("Long-term", "Seasonality, cannot schedule."), ("AHT", "Talk, hold, ACW."), ("Volume", "Interactions offered.")],
+    "Label a forecast you would actually build",
+    ["The business unit.", "Whether you need six weeks or a seasonal view.", "Which view is allowed to generate the schedule.", "The metric you will compare intraday."],
+    "The schedule is tied to the short-term view only.",
+    ("Year view as the roster", "Someone generates next week’s shifts from the long-term forecast.", "The long-term view is open. No schedule is produced.", "That view cannot generate a schedule.", "Switch to a short-term forecast that covers the schedule weeks."),
+))
+
+add(lesson(
+    "w-generate", "Generate one schedule from a forecast that covers it", "Advanced", 13,
+    "The schedule period has to sit inside the short-term forecast, and a business unit generates one schedule at a time.",
+    [
+        "Schedules can be created with a forecast, without a forecast, or blank. With a forecast, the engine uses the forecast plus work-plan constraints. Without a forecast, you get a pattern of shifts when no forecast exists. Blank means you add the people and the shifts yourself. The schedules article caps a generated schedule at six weeks. A forecast appears for generation only when it is marked available and its short-term weeks cover the schedule. A six-week schedule needs those six short-term weeks. A four-week schedule can sit inside a four-, five-, or six-week short-term forecast.",
+        "You generate one schedule per business unit at a time. Choosing a different forecast on a schedule that already exists does not move the agents’ shifts. Adjusted required staff follows the new forecast. Planning groups that are not in the new forecast come off that schedule. Agent shifts change when you reschedule, not when you only swap the forecast.",
+    ],
+    cites("wfm-schedules", "wfm-from-forecast", "wfm-choose"),
+    fig("Forecast coverage first. Then one generation. Then, if needed, a reschedule.", [
+        ("f", "Forecast", "wem", 16, 40),
+        ("g", "Generate", "queue", 46, 40),
+        ("a", "Agents", "agent", 76, 40),
+    ], [("f", "g"), ("g", "a")]),
+    "Check coverage before you press generate",
+    [
+        ("Admin", "Method", "With forecast", "Or without, or blank.", "Say which one"),
+        ("Admin", "Length", "Six weeks or fewer", "The schedules article caps it.", "Match the short-term weeks"),
+        ("Admin", "Lock", "One generation", "One business unit at a time.", "Wait for it"),
+        ("Admin", "Swap", "Choose forecast", "Shifts stay until you reschedule.", "Adjusted staff moves"),
+    ],
+    [
+        q("How many schedules can one business unit generate at a time?", "One", ["Six", "Two hundred", "One per agent"], "The generate article says one at a time."),
+        q("A six-week schedule needs:", "A short-term forecast covering those six weeks", ["Any long-term forecast", "A published IVR", "An implicit grant"], "The period has to fall inside the forecast."),
+        q("A blank schedule means:", "You add agents and shifts yourself", ["The forecast is ignored but still required", "Agents are deleted", "The queue routing method changes"], "Blank is the third method."),
+        q("The maximum schedule length named on the schedules page is:", "6 weeks", ["2 years", "72 hours", "30 minutes"], "Six is the schedule cap. Two years is the long-term forecast."),
+        q("Swapping the forecast on an existing schedule immediately shifts agents?", "No. Reschedule to move shifts.", ["Yes", "Only on CX 1", "Only for preferred agents"], "The choose-forecast article keeps agent schedules until you reschedule."),
+        q("A forecast that is not marked available for scheduling:", "Does not appear as a generation source", ["Still builds the roster", "Opens port 5060", "Publishes the in-queue flow"], "The articles require that flag and date coverage."),
+    ],
+    [("Three methods", "With forecast, without, or blank."), ("Cover the dates", "Short-term weeks must include the schedule."), ("One at a time", "Per business unit."), ("Reschedule", "A forecast swap does not move shifts by itself.")],
+    "Write the generation check",
+    ["Business unit.", "Start week and number of weeks, six or fewer.", "Forecast name and whether it is available.", "Whether you will reschedule after a forecast change."],
+    "The four lines match the articles.",
+    ("Forecast swap, no reschedule", "Required staff looks new. Agents are still on yesterday’s shifts.", "Choose forecast was used. Generate was not run again.", "Shifts stay until a reschedule.", "Reschedule if the people should move, and expect missing planning groups to drop off."),
 ))

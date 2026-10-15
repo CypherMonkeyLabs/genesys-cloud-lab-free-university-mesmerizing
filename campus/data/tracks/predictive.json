@@ -1,0 +1,1437 @@
+{
+  "id": "predictive",
+  "title": "Predictive Engagement",
+  "kicker": "On the site",
+  "accent": 3,
+  "summary": "Website journeys, segments, action maps, Messenger, and the Journey Outcomes deprecation. This is not ACD predictive routing.",
+  "lessons": [
+    {
+      "id": "pe-what",
+      "title": "Predictive Engagement watches the site, not the queue math",
+      "level": "Core",
+      "minutes": 13,
+      "summary": "It predicts what a visitor is trying to do and offers a message, a chat, content, or a flow. Predictive routing is a different feature on the queue.",
+      "paras": [
+        "The About Predictive Engagement page calls it a Genesys Cloud AI feature that analyzes how visitors behave on websites, predicts the outcomes they are trying to reach, and personalizes the engagement. The use-case page says it uses machine learning, segmentation, and real-time outcome scoring, then engages with chat, a chatbot, or a content offer. You can also hand the moment to an Architect flow. None of that is the ACD routing method named predictive routing.",
+        "Agents later see journey information on the interaction. Supervisors get visitor activity and action-map performance. Those reports sit beside contact-center analytics. They do not replace service level on the queue. Read the deprecation notice before you design anything that depends on Journey Outcomes. That feature has a planned end."
+      ],
+      "cites": [
+        {
+          "title": "About Predictive Engagement",
+          "url": "https://help.genesys.cloud/articles/about-predictive-engagement/"
+        },
+        {
+          "title": "Genesys Predictive Engagement",
+          "url": "https://help.genesys.cloud/usecases/genesys-predictive-engagement/"
+        },
+        {
+          "title": "Deprecation: Journey Outcomes",
+          "url": "https://help.genesys.cloud/announcements/genesys-cloud/deprecation-journey-outcomes/"
+        },
+        {
+          "title": "Advanced routing overview",
+          "url": "https://help.genesys.cloud/articles/advanced-routing-overview/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "The website is a separate door from the SIP trunk.",
+        "nodes": [
+          {
+            "id": "web",
+            "label": "Website",
+            "kind": "crm",
+            "x": 12,
+            "y": 40
+          },
+          {
+            "id": "pe",
+            "label": "Predictive",
+            "kind": "bot",
+            "x": 40,
+            "y": 40
+          },
+          {
+            "id": "map",
+            "label": "Action map",
+            "kind": "architect",
+            "x": 66,
+            "y": 28
+          },
+          {
+            "id": "q",
+            "label": "Queue",
+            "kind": "queue",
+            "x": 88,
+            "y": 55
+          }
+        ],
+        "edges": [
+          {
+            "a": "web",
+            "b": "pe"
+          },
+          {
+            "a": "pe",
+            "b": "map"
+          },
+          {
+            "a": "map",
+            "b": "q"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Keep the two predictives apart",
+        "steps": [
+          {
+            "from": "Visitor",
+            "to": "Site",
+            "title": "Page views and events",
+            "detail": "Tracked by Predictive Engagement.",
+            "inspect": "Not a trunk"
+          },
+          {
+            "from": "Map",
+            "to": "Offer",
+            "title": "Message, chat, content, or flow",
+            "detail": "The action types on the create page.",
+            "inspect": "Queue only if you route the offer"
+          },
+          {
+            "from": "Agent",
+            "to": "Journey",
+            "title": "Context on the interaction",
+            "detail": "The about page lists that work.",
+            "inspect": "Not Copilot"
+          },
+          {
+            "from": "Queue",
+            "to": "ACD",
+            "title": "Predictive routing",
+            "detail": "A different article.",
+            "inspect": "Do not mix the names"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Predictive Engagement primarily watches:",
+          "choices": [
+            "Edge groups",
+            "Exam vouchers",
+            "Visitors on your website",
+            "SIP trunks"
+          ],
+          "answer": 2,
+          "why": "The about page is about website behavior."
+        },
+        {
+          "q": "Predictive routing is:",
+          "choices": [
+            "An ACD method on a queue",
+            "The same screen as action maps",
+            "A Messenger snippet",
+            "A forecast"
+          ],
+          "answer": 0,
+          "why": "The routing track is the other feature."
+        },
+        {
+          "q": "The use case names these engagement styles:",
+          "choices": [
+            "A number plan",
+            "A bullseye ring",
+            "Chat, chatbot, or content offer",
+            "A premises Edge"
+          ],
+          "answer": 2,
+          "why": "An Architect flow is an additional action type on the create page."
+        },
+        {
+          "q": "A healthy queue with no website tracking means:",
+          "choices": [
+            "The org moved regions",
+            "Predictive Engagement has nothing to score",
+            "ACD is down",
+            "TLS 5061 is closed"
+          ],
+          "answer": 1,
+          "why": "The site has to be instrumented."
+        },
+        {
+          "q": "Journey data shown to an agent is:",
+          "choices": [
+            "The emergency route",
+            "A client-credentials token",
+            "Context on the interaction",
+            "A replacement for wrap-up codes"
+          ],
+          "answer": 2,
+          "why": "The about page lists working the interaction with journey information."
+        },
+        {
+          "q": "You should design a new Journey Outcome in October 2026 because:",
+          "choices": [
+            "The feature is guaranteed permanent",
+            "CX 1 includes it",
+            "It opens RTP",
+            "You should not. Read the deprecation first."
+          ],
+          "answer": 3,
+          "why": "The announcement tells you to avoid new outcome configurations."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Site",
+          "back": "Visitor behavior."
+        },
+        {
+          "front": "Not ACD",
+          "back": "Predictive routing is the queue method."
+        },
+        {
+          "front": "Offers",
+          "back": "Messaging, chat, content, flow."
+        },
+        {
+          "front": "Outcomes",
+          "back": "On a published deprecation."
+        }
+      ],
+      "lab": {
+        "title": "Name the feature you mean",
+        "steps": [
+          "Write Predictive Engagement or predictive routing, not \u201cpredictive.\u201d",
+          "Name the site you would track.",
+          "Name the offer type.",
+          "Say whether a queue is involved."
+        ],
+        "success": "The four names do not collapse into one product."
+      },
+      "fault": {
+        "title": "One word for two products",
+        "symptom": "A design says \u201cturn on predictive\u201d and nobody knows which admin page to open.",
+        "log": "The queue uses standard routing. The website has no snippet.",
+        "cause": "The names were swapped.",
+        "fix": "Split the requirement into an action map or a queue routing method."
+      }
+    },
+    {
+      "id": "pe-track",
+      "title": "Messenger tracks web messaging. The old snippet tracks web chat.",
+      "level": "Core",
+      "minutes": 14,
+      "summary": "Genesys tells Genesys Cloud CX customers to use web messaging. Leaving both snippets on the page double-counts the visit.",
+      "paras": [
+        "The about page says you can use web messaging with Predictive Engagement and encourages web messaging instead of web chat. The tracking-snippet article is explicit: web chat deploys the Predictive Engagement tracking snippet; web messaging deploys the Messenger snippet. Paste a tracking snippet in the head of the main window, not in an iframe. After ac('init') on a traditional snippet, or ac('load') on the SPA snippet, Predictive Engagement tracks pageview events.",
+        "The migration article tells you to remove the tracking snippet when you deploy Messenger, because Digital User Tracking is already part of Messenger and two snippets double-track. Enable Digital User Tracking on the Messenger configuration, publish a new version, and point action maps that still say web chat at web messaging. The Messenger article says to turn on the Predictive Engagement toggle in the Apps tab when you want journey data, then use Live Now to see events."
+      ],
+      "cites": [
+        {
+          "title": "About Predictive Engagement",
+          "url": "https://help.genesys.cloud/articles/about-predictive-engagement/"
+        },
+        {
+          "title": "Predictive Engagement tracking snippet",
+          "url": "https://help.genesys.cloud/articles/predictive-engagement-tracking-snippet/"
+        },
+        {
+          "title": "Migrate from web chat to web messaging",
+          "url": "https://help.genesys.cloud/articles/migrate-from-web-chat-to-web-messaging-for-digital-user-tracking-and-predictive-engagement/"
+        },
+        {
+          "title": "Configure and deploy Genesys Messenger",
+          "url": "https://help.genesys.cloud/articles/configure-and-deploy-genesys-messenger/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "One snippet on the page. Messenger replaces the legacy tracker for web messaging.",
+        "nodes": [
+          {
+            "id": "old",
+            "label": "Legacy snippet",
+            "kind": "phone",
+            "x": 18,
+            "y": 62
+          },
+          {
+            "id": "msg",
+            "label": "Messenger",
+            "kind": "bot",
+            "x": 50,
+            "y": 28
+          },
+          {
+            "id": "live",
+            "label": "Live Now",
+            "kind": "wem",
+            "x": 84,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "msg",
+            "b": "live"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Pick one deploy path",
+        "steps": [
+          {
+            "from": "Site",
+            "to": "Choice",
+            "title": "Web messaging",
+            "detail": "The path Genesys encourages.",
+            "inspect": "Messenger snippet"
+          },
+          {
+            "from": "Site",
+            "to": "Legacy",
+            "title": "Web chat snippet",
+            "detail": "Only if you still run web chat.",
+            "inspect": "Not inside an iframe"
+          },
+          {
+            "from": "Admin",
+            "to": "Tracking",
+            "title": "Digital User Tracking",
+            "detail": "On the Messenger configuration.",
+            "inspect": "Publish the version"
+          },
+          {
+            "from": "Admin",
+            "to": "Proof",
+            "title": "Live Now",
+            "detail": "Events show up there.",
+            "inspect": "Then build the action map"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Web messaging is deployed with:",
+          "choices": [
+            "Only the legacy tracking snippet",
+            "A BYOC trunk",
+            "An Edge group",
+            "The Messenger snippet"
+          ],
+          "answer": 3,
+          "why": "The tracking-snippet article splits the two paths."
+        },
+        {
+          "q": "Where does the legacy tracking snippet go?",
+          "choices": [
+            "In a hidden iframe only",
+            "On the Edge",
+            "In a queue flow",
+            "In the head of the main window, not in an iframe"
+          ],
+          "answer": 3,
+          "why": "The article says not to use an iframe."
+        },
+        {
+          "q": "ac('init') belongs to:",
+          "choices": [
+            "Client credentials",
+            "Bullseye ring 2",
+            "The traditional tracking snippet",
+            "Messenger Digital User Tracking"
+          ],
+          "answer": 2,
+          "why": "The SPA snippet uses ac('load') instead."
+        },
+        {
+          "q": "Leaving the legacy snippet up after Messenger is deployed:",
+          "choices": [
+            "Double-tracks the visit",
+            "Is required",
+            "Disables ACD",
+            "Opens port 5060"
+          ],
+          "answer": 0,
+          "why": "The migration article says remove it."
+        },
+        {
+          "q": "Live Now is how you:",
+          "choices": [
+            "Buy a DID",
+            "Set a service level",
+            "Grant the All division",
+            "See that events are arriving"
+          ],
+          "answer": 3,
+          "why": "The Messenger article names it as the check."
+        },
+        {
+          "q": "Action maps that still offer web chat, after you move to messaging, need:",
+          "choices": [
+            "A premises Edge",
+            "No change",
+            "The action type changed to web messaging",
+            "A new core region"
+          ],
+          "answer": 2,
+          "why": "The migration steps include that edit."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Messaging",
+          "back": "Messenger snippet."
+        },
+        {
+          "front": "Web chat",
+          "back": "Legacy tracking snippet."
+        },
+        {
+          "front": "One of them",
+          "back": "Remove the snippet when Messenger tracks."
+        },
+        {
+          "front": "Live Now",
+          "back": "Proof that events arrived."
+        }
+      ],
+      "lab": {
+        "title": "Write the tag plan",
+        "steps": [
+          "Messaging or legacy chat.",
+          "Where the snippet sits.",
+          "That the other snippet is absent.",
+          "The Live Now check you will do."
+        ],
+        "success": "The page has one tracker and a way to see events."
+      },
+      "fault": {
+        "title": "Double count",
+        "symptom": "Visitor activity is about twice the web-server page count.",
+        "log": "Both snippets are in the template.",
+        "cause": "The migration note says that double-tracks.",
+        "fix": "Remove the Predictive Engagement tracking snippet and keep Messenger."
+      }
+    },
+    {
+      "id": "pe-segments",
+      "title": "A segment matches visitors who meet every condition you listed",
+      "level": "Core",
+      "minutes": 12,
+      "summary": "At least one condition. More conditions, fewer visitors. Conditions are not shared with the next segment.",
+      "paras": [
+        "The use case describes a segment as a way to categorize visitors by shared behavior and attributes. Attributes it gives as examples include browser, device, location, campaign, and referrer. That list is not a schema. The best-practices page says a segment needs at least one condition, that you should design the conditions for a specific action map, and that adding conditions reduces how many visitors match. Conditions are not shared across segments and outcomes.",
+        "The same best-practices page carries the Journey Outcomes deprecation banner. A segment that exists only to feed an outcome trigger is on borrowed time. Build the segment for a visitor you can still recognize from attributes and activity after outcomes stop qualifying action maps."
+      ],
+      "cites": [
+        {
+          "title": "Genesys Predictive Engagement",
+          "url": "https://help.genesys.cloud/usecases/genesys-predictive-engagement/"
+        },
+        {
+          "title": "Best practices for segments",
+          "url": "https://help.genesys.cloud/articles/best-practices-for-segments/"
+        },
+        {
+          "title": "Deprecation: Journey Outcomes",
+          "url": "https://help.genesys.cloud/announcements/genesys-cloud/deprecation-journey-outcomes/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Conditions narrow the segment. They do not copy themselves into the next one.",
+        "nodes": [
+          {
+            "id": "all",
+            "label": "Visitors",
+            "kind": "crm",
+            "x": 14,
+            "y": 40
+          },
+          {
+            "id": "seg",
+            "label": "Segment",
+            "kind": "bot",
+            "x": 48,
+            "y": 40
+          },
+          {
+            "id": "map",
+            "label": "Action map",
+            "kind": "architect",
+            "x": 82,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "all",
+            "b": "seg"
+          },
+          {
+            "a": "seg",
+            "b": "map"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Write conditions you could explain",
+        "steps": [
+          {
+            "from": "Designer",
+            "to": "Purpose",
+            "title": "One action map",
+            "detail": "The best-practices page starts there.",
+            "inspect": "Not a junk drawer"
+          },
+          {
+            "from": "Designer",
+            "to": "Condition",
+            "title": "At least one",
+            "detail": "Required.",
+            "inspect": "Attribute or activity"
+          },
+          {
+            "from": "Designer",
+            "to": "Narrow",
+            "title": "Each extra condition",
+            "detail": "Fewer matches.",
+            "inspect": "On purpose"
+          },
+          {
+            "from": "Designer",
+            "to": "Reuse",
+            "title": "Do not assume sharing",
+            "detail": "Conditions stay on that object.",
+            "inspect": "Copy them if you need them again"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "A segment with no conditions is:",
+          "choices": [
+            "Not a defined segment. You need at least one.",
+            "Matched to everyone by default",
+            "A queue",
+            "A trunk"
+          ],
+          "answer": 0,
+          "why": "The best-practices page requires a condition."
+        },
+        {
+          "q": "Adding conditions generally:",
+          "choices": [
+            "Opens 5061",
+            "Matches fewer visitors",
+            "Matches every visitor",
+            "Raises the service level"
+          ],
+          "answer": 1,
+          "why": "More conditions, fewer matches."
+        },
+        {
+          "q": "Conditions are shared automatically with other segments?",
+          "choices": [
+            "Only for Spanish",
+            "No",
+            "Yes",
+            "Only on CX 1"
+          ],
+          "answer": 1,
+          "why": "The page says they are not shared."
+        },
+        {
+          "q": "Browser and device are:",
+          "choices": [
+            "Number-plan types",
+            "Examples of attributes on the use-case page, not a full list",
+            "The only legal attributes",
+            "Skills on the agent"
+          ],
+          "answer": 1,
+          "why": "Do not treat the examples as a schema."
+        },
+        {
+          "q": "You design segment conditions:",
+          "choices": [
+            "After the exam",
+            "Inside the SIP URI",
+            "On the Edge group",
+            "With a specific action map in mind"
+          ],
+          "answer": 3,
+          "why": "That is the first best practice."
+        },
+        {
+          "q": "A segment whose only job is an outcome trigger should be:",
+          "choices": [
+            "Turned into a DID",
+            "Re-read against the deprecation before you depend on it",
+            "Copied into a bullseye ring",
+            "Ignored because segments are deprecated"
+          ],
+          "answer": 1,
+          "why": "Segments remain. Journey Outcomes are the feature on the banner."
+        }
+      ],
+      "cards": [
+        {
+          "front": "One condition",
+          "back": "Minimum."
+        },
+        {
+          "front": "More conditions",
+          "back": "Fewer visitors."
+        },
+        {
+          "front": "Not shared",
+          "back": "Copy what you need."
+        },
+        {
+          "front": "Examples",
+          "back": "Not a complete attribute list."
+        }
+      ],
+      "lab": {
+        "title": "Draft one segment",
+        "steps": [
+          "The action map it serves.",
+          "The first condition.",
+          "What a second condition would exclude.",
+          "A note that outcome-only logic needs the deprecation page."
+        ],
+        "success": "Someone else can see who the segment is for."
+      },
+      "fault": {
+        "title": "Everyone matches",
+        "symptom": "A segment with five loose conditions still matches the whole site, and the offer fires constantly.",
+        "log": "The conditions do not describe the audience.",
+        "cause": "Each extra real condition narrows the match.",
+        "fix": "Replace the loose conditions with ones that name the visitor you meant."
+      }
+    },
+    {
+      "id": "pe-map",
+      "title": "An action map is qualified before it is offered",
+      "level": "Core",
+      "minutes": 14,
+      "summary": "Segment, visitor activity, and outcome probability are the trigger kinds. Priority breaks a tie. Web chat is the legacy action.",
+      "paras": [
+        "Creating an action map starts with a name and an action: web messaging, web chat, a content offer, or an advanced orchestration flow. You then set what triggers it. The create page names segment, visitor activity, and outcome. The triggers article is the page that defines those rules, including outcome probability. The overview says a qualified map may still be held back by other offer conditions, and that priority decides which map is offered when several qualify. Web offers can be limited to particular pages.",
+        "For a web chat or web messaging offer you can pick an agent queue, and a schedule group so the offer appears only when agents are available. You can override the global frequency cap for one map. The overview\u2019s advice about waiting for a drop in outcome score is tied to Journey Outcomes. Treat that advice as historical design, and read the deprecation before you make outcome probability the only trigger."
+      ],
+      "cites": [
+        {
+          "title": "Create an action map",
+          "url": "https://help.genesys.cloud/articles/create-an-action-map/"
+        },
+        {
+          "title": "Define an action map's triggers",
+          "url": "https://help.genesys.cloud/articles/define-an-action-maps-triggers/"
+        },
+        {
+          "title": "Action maps overview",
+          "url": "https://help.genesys.cloud/articles/action-maps-overview-2/"
+        },
+        {
+          "title": "About action maps",
+          "url": "https://help.genesys.cloud/articles/about-action-maps/"
+        },
+        {
+          "title": "Deprecation: Journey Outcomes",
+          "url": "https://help.genesys.cloud/announcements/genesys-cloud/deprecation-journey-outcomes/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Qualified is not the same as shown. Priority and the page still get a vote.",
+        "nodes": [
+          {
+            "id": "t",
+            "label": "Trigger",
+            "kind": "bot",
+            "x": 16,
+            "y": 40
+          },
+          {
+            "id": "q",
+            "label": "Qualified",
+            "kind": "architect",
+            "x": 46,
+            "y": 40
+          },
+          {
+            "id": "o",
+            "label": "Offer",
+            "kind": "queue",
+            "x": 78,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "t",
+            "b": "q"
+          },
+          {
+            "a": "q",
+            "b": "o"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Build the map in that order",
+        "steps": [
+          {
+            "from": "Admin",
+            "to": "Action",
+            "title": "Messaging, chat, content, or flow",
+            "detail": "Pick one.",
+            "inspect": "Messaging is the encouraged chat path"
+          },
+          {
+            "from": "Admin",
+            "to": "Trigger",
+            "title": "Segment, activity, or outcome",
+            "detail": "The create page lists them.",
+            "inspect": "Open the triggers article for the rule"
+          },
+          {
+            "from": "Admin",
+            "to": "Queue",
+            "title": "Only for chat or messaging",
+            "detail": "Optional schedule group.",
+            "inspect": "Agents available"
+          },
+          {
+            "from": "Admin",
+            "to": "Tie",
+            "title": "Priority",
+            "detail": "When two maps qualify.",
+            "inspect": "Page limits still apply"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Which of these is an action type on the create page?",
+          "choices": [
+            "Web messaging, web chat, content offer, or advanced orchestration flow",
+            "Bullseye ring",
+            "BYOC PBX",
+            "A management unit"
+          ],
+          "answer": 0,
+          "why": "Those four are the listed actions."
+        },
+        {
+          "q": "Priority is used when:",
+          "choices": [
+            "The grant is implicit",
+            "More than one action map is qualified",
+            "The trunk is down",
+            "The forecast is long-term"
+          ],
+          "answer": 1,
+          "why": "The overview says priority picks the offer."
+        },
+        {
+          "q": "A schedule group on a messaging offer is for:",
+          "choices": [
+            "Showing the offer when agents are available",
+            "Encrypting RTP",
+            "Classifying 911",
+            "Sharing segment conditions"
+          ],
+          "answer": 0,
+          "why": "The create page names that control."
+        },
+        {
+          "q": "Qualified means:",
+          "choices": [
+            "The schedule is published",
+            "The trigger matched, and other offer conditions can still stop it",
+            "The visitor already accepted",
+            "The call is recorded"
+          ],
+          "answer": 1,
+          "why": "The overview separates qualified from offered."
+        },
+        {
+          "q": "Outcome probability as the only trigger is:",
+          "choices": [
+            "A firewall port",
+            "A design you re-check against the Journey Outcomes deprecation",
+            "Required for every map",
+            "The same as a skill"
+          ],
+          "answer": 1,
+          "why": "The announcement says outcome triggers stop qualifying after the effective date."
+        },
+        {
+          "q": "You can limit a web offer to:",
+          "choices": [
+            "UDP 5060 only",
+            "Specific pages",
+            "A premises Edge only",
+            "The Home division only"
+          ],
+          "answer": 1,
+          "why": "The create and overview pages describe page targeting."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Action",
+          "back": "Messaging, chat, content, or flow."
+        },
+        {
+          "front": "Trigger",
+          "back": "Segment, activity, or outcome."
+        },
+        {
+          "front": "Priority",
+          "back": "Chooses among qualified maps."
+        },
+        {
+          "front": "Queue",
+          "back": "Optional, for chat and messaging offers."
+        }
+      ],
+      "lab": {
+        "title": "Sketch one map",
+        "steps": [
+          "Action type.",
+          "Trigger you can explain without an outcome, if you can.",
+          "Queue and schedule, or why there is no queue.",
+          "Priority relative to the other map on that page."
+        ],
+        "success": "The sketch names an action that still exists if outcomes are removed."
+      },
+      "fault": {
+        "title": "Offer with nobody there",
+        "symptom": "The chat offer fires all night and abandons.",
+        "log": "No schedule group. The queue is empty.",
+        "cause": "The create page allows a schedule group so the offer waits for agents.",
+        "fix": "Add the schedule group or accept the after-hours offer on purpose."
+      }
+    },
+    {
+      "id": "pe-outcomes",
+      "title": "Journey Outcomes have a published end date",
+      "level": "Advanced",
+      "minutes": 14,
+      "summary": "Announced 18 May 2026. Planned effective date 29 June 2026. Outcome scoring is not part of the Customer Outcomes replacement.",
+      "paras": [
+        "The deprecation announcement lists the announced date as 2026-05-18 and the planned effective date as 2026-06-29. After that date the page says customers cannot create or manage outcomes, existing outcomes are not processed, new outcome records are not generated, outcomes do not trigger action maps, and outcome reporting is not available. Action maps that have only an outcome trigger stop qualifying. The map is not deleted. The trigger is removed. Architect flows that call getJourneyOutcome skip that branch and otherwise run.",
+        "Customer Outcomes is described as a new platform feature under development. It is a simpler event model. The announcement says outcome scoring will not be part of it. A different announcement says a future Predictive Routing framework will take customer-defined business outcomes, including metrics that live outside Genesys Cloud, and that existing predictive-routing configurations need no change until you migrate. This lab read both pages on 15 October 2026, after the planned Journey Outcomes date. It did not sign in to an organization. If either page has moved, the page wins."
+      ],
+      "cites": [
+        {
+          "title": "Deprecation: Journey Outcomes",
+          "url": "https://help.genesys.cloud/announcements/genesys-cloud/deprecation-journey-outcomes/"
+        },
+        {
+          "title": "Predictive Routing customer-defined outcomes",
+          "url": "https://help.genesys.cloud/announcements/genesys-cloud/predictive-routing-supports-customer-defined-business-outcomes-with-custom-kpis/"
+        },
+        {
+          "title": "About Predictive Engagement",
+          "url": "https://help.genesys.cloud/articles/about-predictive-engagement/"
+        }
+      ],
+      "uncertainty": "Read on 15 October 2026. The planned effective date on the announcement was 2026-06-29. This lab did not confirm the state of a live organization. Customer Outcomes was still described as under development. The Predictive Routing custom-outcome framework was described as a future release.",
+      "figure": {
+        "caption": "Outcome triggers come off the map. Segment and activity triggers can remain.",
+        "nodes": [
+          {
+            "id": "o",
+            "label": "Outcome",
+            "kind": "warn",
+            "x": 22,
+            "y": 62
+          },
+          {
+            "id": "m",
+            "label": "Action map",
+            "kind": "architect",
+            "x": 55,
+            "y": 30
+          },
+          {
+            "id": "s",
+            "label": "Segment",
+            "kind": "bot",
+            "x": 84,
+            "y": 62
+          }
+        ],
+        "edges": [
+          {
+            "a": "s",
+            "b": "m"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Prepare before you promise an outcome score",
+        "steps": [
+          {
+            "from": "Owner",
+            "to": "Inventory",
+            "title": "Maps and flows",
+            "detail": "Where outcomes are used.",
+            "inspect": "The announcement asks for this"
+          },
+          {
+            "from": "Owner",
+            "to": "Export",
+            "title": "Reports you still need",
+            "detail": "Before they disappear.",
+            "inspect": "Analytics or the API"
+          },
+          {
+            "from": "Owner",
+            "to": "Detach",
+            "title": "Outcome-only triggers",
+            "detail": "Those maps stop qualifying.",
+            "inspect": "Leave a segment or activity trigger if the offer should remain"
+          },
+          {
+            "from": "Owner",
+            "to": "Flows",
+            "title": "getJourneyOutcome",
+            "detail": "That branch is skipped.",
+            "inspect": "The rest of the flow runs"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "The announcement\u2019s planned effective date is:",
+          "choices": [
+            "25 May 2026",
+            "2026-06-29",
+            "2024-01-01",
+            "2027-12-31"
+          ],
+          "answer": 1,
+          "why": "25 May 2026 is the implicit-grant date in the OAuth article, not this one."
+        },
+        {
+          "q": "After the effective date, an action map whose only trigger is an outcome:",
+          "choices": [
+            "Stops qualifying. The map itself is not deleted.",
+            "Keeps scoring forever",
+            "Deletes the queue",
+            "Becomes a trunk"
+          ],
+          "answer": 0,
+          "why": "The announcement says the trigger is removed from the configuration."
+        },
+        {
+          "q": "getJourneyOutcome after the effective date:",
+          "choices": [
+            "Hangs the call",
+            "Places an emergency call",
+            "Mints a token",
+            "That branch is skipped and the flow otherwise runs"
+          ],
+          "answer": 3,
+          "why": "The announcement describes that skip."
+        },
+        {
+          "q": "Customer Outcomes, as described on the deprecation page:",
+          "choices": [
+            "Is already the same screen",
+            "Is a SIP transport",
+            "Replaces Architect",
+            "Is under development and will not include outcome scoring"
+          ],
+          "answer": 3,
+          "why": "Do not promise outcome scores on the new feature."
+        },
+        {
+          "q": "The Predictive Routing outcomes announcement says existing routing configs:",
+          "choices": [
+            "Use implicit grant",
+            "Need no change until you migrate",
+            "Must be deleted today",
+            "Move to BYOC"
+          ],
+          "answer": 1,
+          "why": "That sentence is about Predictive Routing, not about keeping Journey Outcomes."
+        },
+        {
+          "q": "This lab verified the feature is gone inside a live org?",
+          "choices": [
+            "No. It read the announcement.",
+            "Yes",
+            "Only in FedRAMP",
+            "Only for CX 1"
+          ],
+          "answer": 0,
+          "why": "Re-open the page and look at your own org."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Announced",
+          "back": "2026-05-18."
+        },
+        {
+          "front": "Planned end",
+          "back": "2026-06-29."
+        },
+        {
+          "front": "Scoring",
+          "back": "Not in Customer Outcomes."
+        },
+        {
+          "front": "Unverified live",
+          "back": "This lab did not open an org."
+        }
+      ],
+      "lab": {
+        "title": "Make a removal list",
+        "steps": [
+          "Outcome configurations.",
+          "Action maps that trigger only on an outcome.",
+          "Flows that call getJourneyOutcome.",
+          "Reports to export."
+        ],
+        "success": "Each line has an owner and the announcement is the source."
+      },
+      "fault": {
+        "title": "Score promise",
+        "symptom": "A proposal still sells \u201creal-time outcome score\u201d as the reason to buy the website offer.",
+        "log": "The deprecation page says scoring is not part of Customer Outcomes.",
+        "cause": "The planned date is already in the past relative to 15 October 2026.",
+        "fix": "Rewrite the proposal around segments, activity, and messaging, and quote the announcement."
+      }
+    },
+    {
+      "id": "pe-flow",
+      "title": "An Architect flow can be the action, and it can also be the thing you must edit",
+      "level": "Advanced",
+      "minutes": 12,
+      "summary": "Advanced orchestration is an action type. Flows that still call getJourneyOutcome need a path that does not depend on it.",
+      "paras": [
+        "The about page lists Architect workflows and Architect flow actions as the way to integrate Predictive Engagement with other systems, including a listed topic for Salesforce lead creation and campaign attribution. This lab does not restate Salesforce fields. The create page names advanced orchestration flow as one of the four action types, beside web messaging, web chat, and a content offer.",
+        "If that flow asks Journey Outcomes for a score, the deprecation page says the getJourneyOutcome branch is skipped and the flow otherwise runs. Give the visitor a next step that does not need the score: a queue, a content offer, or a segment-based map. The Salesforce topic on the about page is an integration you open in the resource center, not a screen this lab redraws from memory."
+      ],
+      "cites": [
+        {
+          "title": "About Predictive Engagement",
+          "url": "https://help.genesys.cloud/articles/about-predictive-engagement/"
+        },
+        {
+          "title": "Create an action map",
+          "url": "https://help.genesys.cloud/articles/create-an-action-map/"
+        },
+        {
+          "title": "Deprecation: Journey Outcomes",
+          "url": "https://help.genesys.cloud/announcements/genesys-cloud/deprecation-journey-outcomes/"
+        },
+        {
+          "title": "About Architect",
+          "url": "https://help.genesys.cloud/articles/about-architect/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "The action map calls a flow. The flow still needs a path with no outcome score.",
+        "nodes": [
+          {
+            "id": "m",
+            "label": "Action map",
+            "kind": "architect",
+            "x": 18,
+            "y": 40
+          },
+          {
+            "id": "f",
+            "label": "Flow",
+            "kind": "bot",
+            "x": 50,
+            "y": 40
+          },
+          {
+            "id": "q",
+            "label": "Queue",
+            "kind": "queue",
+            "x": 82,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "m",
+            "b": "f"
+          },
+          {
+            "a": "f",
+            "b": "q"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Give the flow a way out",
+        "steps": [
+          {
+            "from": "Map",
+            "to": "Action",
+            "title": "Advanced orchestration flow",
+            "detail": "One of the four types.",
+            "inspect": "Not a guess"
+          },
+          {
+            "from": "Flow",
+            "to": "Work",
+            "title": "Lookup or handoff",
+            "detail": "The about page points at Architect actions.",
+            "inspect": "Do not invent the Salesforce body"
+          },
+          {
+            "from": "Flow",
+            "to": "Outcome",
+            "title": "getJourneyOutcome",
+            "detail": "Skip that branch after the effective date.",
+            "inspect": "Do not be the only path"
+          },
+          {
+            "from": "Flow",
+            "to": "Exit",
+            "title": "Queue or another offer",
+            "detail": "The visitor still has a next step.",
+            "inspect": "Publish the flow"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Advanced orchestration flow is:",
+          "choices": [
+            "An action type when you create an action map",
+            "A BYOC trunk subtype",
+            "A forecast view",
+            "A division"
+          ],
+          "answer": 0,
+          "why": "It sits beside messaging, chat, and content offers."
+        },
+        {
+          "q": "This lab\u2019s Salesforce lead steps are:",
+          "choices": [
+            "Not listed. Open the about page\u2019s integration topic.",
+            "A copied field map",
+            "The same as the Zendesk embed",
+            "An Edge trunk"
+          ],
+          "answer": 0,
+          "why": "The about page names the topic. It is not a field list."
+        },
+        {
+          "q": "A flow that only succeeds inside getJourneyOutcome:",
+          "choices": [
+            "Records the card number",
+            "Can skip the useful work after the deprecation",
+            "Is safer",
+            "Ignores the announcement"
+          ],
+          "answer": 1,
+          "why": "The announcement says that branch is skipped."
+        },
+        {
+          "q": "The rest of the flow, according to the announcement:",
+          "choices": [
+            "Loses its publish",
+            "Runs",
+            "Is deleted",
+            "Becomes a trunk"
+          ],
+          "answer": 1,
+          "why": "Only that branch is skipped."
+        },
+        {
+          "q": "The visitor\u2019s fallback should be:",
+          "choices": [
+            "An implicit grant",
+            "A queue or another offer that does not need the outcome",
+            "A second outcome",
+            "Port 80 left open with no owner"
+          ],
+          "answer": 1,
+          "why": "Design the path you will still have."
+        },
+        {
+          "q": "You publish the flow because:",
+          "choices": [
+            "The forecast publishes it",
+            "A draft does not run",
+            "Predictive Engagement publishes it for you",
+            "Live Now publishes it"
+          ],
+          "answer": 1,
+          "why": "Architect runtime uses the published version."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Four actions",
+          "back": "Messaging, chat, content, flow."
+        },
+        {
+          "front": "No field list",
+          "back": "Open the Salesforce topic."
+        },
+        {
+          "front": "Skipped branch",
+          "back": "getJourneyOutcome."
+        },
+        {
+          "front": "Fallback",
+          "back": "Queue or another offer."
+        }
+      ],
+      "lab": {
+        "title": "Mark the outcome branch",
+        "steps": [
+          "Flow name.",
+          "Whether it calls getJourneyOutcome.",
+          "The fallback action.",
+          "The published version you expect."
+        ],
+        "success": "The fallback is real and the Salesforce story is a link, not a fiction."
+      },
+      "fault": {
+        "title": "Dead branch",
+        "symptom": "Visitors who needed a score now fall out of the flow with no transfer.",
+        "log": "getJourneyOutcome is the only exit.",
+        "cause": "That branch is skipped.",
+        "fix": "Add a transfer to the queue on the path that remains."
+      }
+    },
+    {
+      "id": "pe-report",
+      "title": "Prove the map with Live Now and the performance reports",
+      "level": "Core",
+      "minutes": 12,
+      "summary": "Visitor activity and action-map performance are the Predictive Engagement reports. Outcome columns age out with the deprecation.",
+      "paras": [
+        "The about page points supervisors at live visitor tracking, visitor activity, and action-map performance, and at journey columns on Genesys Cloud performance views. The use case describes visitor activity by device, segments matched, outcomes achieved, and action-map performance for web chat, content offers, and Architect flow. Use those reports to see whether a map fired. Use Live Now when you are still proving that the snippet sees the page.",
+        "Outcomes achieved will not stay a trustworthy column through the deprecation. The announcement tells you to export outcome reports you need before the effective date. After that, judge the map by segments, activity, and the offers visitors actually got. A quiet report can mean the snippet is missing, the segment is too narrow, the frequency cap held the offer, or the schedule group hid it because nobody was On Queue."
+      ],
+      "cites": [
+        {
+          "title": "About Predictive Engagement",
+          "url": "https://help.genesys.cloud/articles/about-predictive-engagement/"
+        },
+        {
+          "title": "Genesys Predictive Engagement",
+          "url": "https://help.genesys.cloud/usecases/genesys-predictive-engagement/"
+        },
+        {
+          "title": "Configure and deploy Genesys Messenger",
+          "url": "https://help.genesys.cloud/articles/configure-and-deploy-genesys-messenger/"
+        },
+        {
+          "title": "Deprecation: Journey Outcomes",
+          "url": "https://help.genesys.cloud/announcements/genesys-cloud/deprecation-journey-outcomes/"
+        },
+        {
+          "title": "Create an action map",
+          "url": "https://help.genesys.cloud/articles/create-an-action-map/"
+        }
+      ],
+      "uncertainty": "The use case names action types web chat, content offers, and Architect flow. It does not, in the section this lab used, name a web-messaging column. Confirm that column on the report before you tell someone it is missing.",
+      "figure": {
+        "caption": "Live Now proves the tag. The performance report proves the offer.",
+        "nodes": [
+          {
+            "id": "tag",
+            "label": "Snippet",
+            "kind": "phone",
+            "x": 14,
+            "y": 40
+          },
+          {
+            "id": "now",
+            "label": "Live Now",
+            "kind": "wem",
+            "x": 46,
+            "y": 22
+          },
+          {
+            "id": "rep",
+            "label": "Reports",
+            "kind": "crm",
+            "x": 46,
+            "y": 68
+          },
+          {
+            "id": "map",
+            "label": "Action map",
+            "kind": "architect",
+            "x": 82,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "tag",
+            "b": "now"
+          },
+          {
+            "a": "now",
+            "b": "map"
+          },
+          {
+            "a": "map",
+            "b": "rep"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Separate a dead tag from a quiet map",
+        "steps": [
+          {
+            "from": "Check",
+            "to": "Live Now",
+            "title": "Events or not",
+            "detail": "No events means the tag or the domain.",
+            "inspect": "Not the queue"
+          },
+          {
+            "from": "Check",
+            "to": "Segment",
+            "title": "Too many conditions",
+            "detail": "Fewer matches.",
+            "inspect": "Best-practices page"
+          },
+          {
+            "from": "Check",
+            "to": "Cap",
+            "title": "Frequency and schedule",
+            "detail": "The create page names both.",
+            "inspect": "A hidden offer is not a failed trunk"
+          },
+          {
+            "from": "Check",
+            "to": "Outcomes",
+            "title": "Export, then stop trusting them",
+            "detail": "The announcement.",
+            "inspect": "Use the offer counts that remain"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Live Now answers:",
+          "choices": [
+            "Whether RTP is on 5060",
+            "Whether tracking events are arriving",
+            "Whether the carrier ACL is current",
+            "Whether GC-GCP is expired"
+          ],
+          "answer": 1,
+          "why": "It is the tracking check named on the Messenger page."
+        },
+        {
+          "q": "Action-map performance, per the use case, covers:",
+          "choices": [
+            "Edge failover",
+            "Web chat, content offers, and Architect flow",
+            "SIP response codes",
+            "Forecast AHT only"
+          ],
+          "answer": 1,
+          "why": "Web messaging is the newer offer type. Confirm its column on the report page."
+        },
+        {
+          "q": "A report with no visitors and an empty Live Now view points at:",
+          "choices": [
+            "Tracking, not ACD",
+            "Bullseye ring 5",
+            "The wrap-up timeout",
+            "A missing DID"
+          ],
+          "answer": 0,
+          "why": "The site is not sending events."
+        },
+        {
+          "q": "Outcome metrics after the planned effective date should be:",
+          "choices": [
+            "Exported beforehand and not treated as live",
+            "The only KPI",
+            "Copied into a number plan",
+            "Used as the emergency route"
+          ],
+          "answer": 0,
+          "why": "The announcement withdraws outcome reporting."
+        },
+        {
+          "q": "A schedule group can make a report look quiet because:",
+          "choices": [
+            "The core region moved",
+            "TLS was set to UDP",
+            "The offer is withheld when agents are unavailable",
+            "The snippet doubles"
+          ],
+          "answer": 2,
+          "why": "That control is on the create page."
+        },
+        {
+          "q": "Device type belongs in:",
+          "choices": [
+            "The trunk transport",
+            "The OAuth basic header",
+            "The Home division name",
+            "The visitor activity view described on the use case"
+          ],
+          "answer": 3,
+          "why": "The use case names a device drill-down."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Live Now",
+          "back": "Events are arriving."
+        },
+        {
+          "front": "Activity",
+          "back": "Devices, segments."
+        },
+        {
+          "front": "Map report",
+          "back": "Did the offer run."
+        },
+        {
+          "front": "Outcomes",
+          "back": "Export, then let them go."
+        }
+      ],
+      "lab": {
+        "title": "Write the quiet-report checks",
+        "steps": [
+          "Live Now, yes or no.",
+          "Segment conditions.",
+          "Frequency cap and schedule group.",
+          "Whether the column you miss is an outcome metric."
+        ],
+        "success": "The first failed check is the one you fix."
+      },
+      "fault": {
+        "title": "Wrong system",
+        "symptom": "The website team opens a telephony ticket because action-map performance is empty.",
+        "log": "Live Now is also empty. The queue is taking inbound calls.",
+        "cause": "Tracking never started.",
+        "fix": "Fix the Messenger deployment before you touch the trunk."
+      }
+    }
+  ]
+}
