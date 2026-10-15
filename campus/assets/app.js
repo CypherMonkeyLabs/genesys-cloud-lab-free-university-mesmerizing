@@ -1,6 +1,7 @@
 import { mountMascot } from "./mascot.js";
 import { applyLang, pack } from "./i18n.js";
 import { isoIcon, iconForTrack } from "./icons3d.js";
+import { heading } from "./headings.js";
 import { ensureLightbox } from "./lightbox.js";
 
 const SETTINGS_KEY = "gccx-settings";
@@ -250,6 +251,7 @@ function bindChrome() {
     langSwitch.addEventListener("change", () => {
       state.settings.lang = langSwitch.value;
       saveSettings();
+      render();
     });
   }
   const tone = $("#tone-toggle");
@@ -422,11 +424,12 @@ function paintIcons(host, track, counts = {}) {
     ["#/flows", "Flows", counts.flows ?? "—", "flow", "Animated"],
     ["#/charts", "Charts", counts.charts ?? 6, "chart", "From this lab"],
     ["#/cheat", "Cheat codes", counts.sheets ?? 13, "sheet", "HTML PDF PNG"],
-    ["#/tracks", track ? track.title : "Lessons", lessons.length, "prism", `${minutes} min`],
+    ["#/tracks", track ? ht(track.id, track.title) : "Lessons", lessons.length, "prism", `${minutes} min`],
     ["#/tracks", "Finished", done, "star", track ? "This track" : "This browser"]
   ];
-  host.innerHTML = tiles.map(([href, label, num, kind, note], index) => `<a class="icon-tile" href="${href}">${isoIcon(kind, index)}<b data-count="${esc(num)}">${esc(num)}</b><span>${esc(label)}</span><span>${esc(note)}</span></a>`).join("");
+  host.innerHTML = tiles.map(([href, label, num, kind, note], index) => `<a class="icon-tile" href="${href}">${iconStage(kind, index)}<b data-count="${esc(num)}">${esc(num)}</b><span>${esc(label)}</span><span>${esc(note)}</span></a>`).join("");
   host.querySelectorAll("[data-count]").forEach((el) => countUp(el, el.dataset.count));
+  refreshLive();
 }
 
 function showTracks() {
@@ -440,10 +443,10 @@ async function showTrack(id) {
   const items = track.lessons.map((lesson, index) => {
     const prog = state.progress.lessons[lesson.id];
     const mark = prog && prog.done ? "Finished" : "Open";
-    return `<a class="card" href="#/lesson/${lesson.id}"><div class="stripe a${track.accent}"></div><p class="kicker">${track.title} · ${index + 1}</p><h3>${esc(lesson.title)}</h3><p>${esc(lesson.summary)}</p><p class="muted">${esc(lesson.level)} · ${lesson.minutes} min · ${mark}</p></a>`;
+    return `<a class="card" href="#/lesson/${lesson.id}"><div class="stripe a${track.accent}"></div><p class="kicker">${esc(ht(track.id, track.title))} · ${index + 1}</p><h3>${esc(ht(lesson.id, lesson.title))}</h3><p>${esc(lesson.summary)}</p><p class="muted">${esc(lesson.level)} · ${lesson.minutes} min · ${mark}</p></a>`;
   }).join("");
-  mount(`${crumbs([["#/", "Home"], ["#/tracks", "Tracks"], ["#/track/" + id, track.title]])}
-    <p class="kicker">${esc(track.kicker)}</p><h1>${esc(track.title)}</h1><p>${esc(track.summary)}</p>
+  mount(`${crumbs([["#/", "Home"], ["#/tracks", "Tracks"], ["#/track/" + id, ht(track.id, track.title)]])}
+    <p class="kicker">${esc(track.kicker)}</p><h1>${esc(ht(track.id, track.title))}</h1><p>${esc(track.summary)}</p>
     <div id="track-icons" class="icon-parade" aria-label="Track counters"></div>
     <p class="spot-links"><a class="btn" href="#track-charts">Charts</a><a class="btn" href="#/flows">Flows</a><a class="btn" href="#/cheat">Cheat codes</a><a class="btn" href="#/atlas">Diagrams</a></p>
     <div class="grid">${items}</div>
@@ -458,7 +461,7 @@ async function showTrack(id) {
   });
   const viz = await import("./floorviz.js");
   await viz.mountFloor($("#track-chart-root"), state.manifest, id);
-  document.title = track.title + " · Genesys Cloud CX Lab";
+  document.title = ht(track.id, track.title) + " · Genesys Cloud CX Lab";
   setCurrent("#/track/" + id);
 }
 
@@ -469,7 +472,7 @@ async function showLesson(id) {
   const lesson = track.lessons.find((item) => item.id === id);
   mount(renderLesson(track, lesson));
   wireLesson(lesson);
-  document.title = lesson.title + " · Genesys Cloud CX Lab";
+  document.title = ht(lesson.id, lesson.title) + " · Genesys Cloud CX Lab";
   setCurrent("#/lesson/" + id);
   if (state.settings.narrate) say(lesson.summary);
 }
@@ -479,11 +482,11 @@ function renderLesson(track, lesson) {
   const paras = lesson.paras.map((p) => `<p>${esc(p)}</p>`).join("");
   const uncertainty = lesson.uncertainty ? `<aside class="uncertainty"><strong>Confirm on the vendor page. </strong>${esc(lesson.uncertainty)}</aside>` : "";
   return `
-    ${crumbs([["#/", "Home"], ["#/tracks", "Tracks"], ["#/track/" + track.id, track.title], ["#/lesson/" + lesson.id, lesson.title]])}
+    ${crumbs([["#/", "Home"], ["#/tracks", "Tracks"], ["#/track/" + track.id, ht(track.id, track.title)], ["#/lesson/" + lesson.id, ht(lesson.id, lesson.title)]])}
     <div class="read-layout">
       <article>
-        <p class="kicker"><a href="#/track/${track.id}">${esc(track.title)}</a> · ${esc(lesson.level)} · ${lesson.minutes} min</p>
-        <div class="lesson-head"><h1>${esc(lesson.title)}</h1></div>
+        <p class="kicker"><a href="#/track/${track.id}">${esc(ht(track.id, track.title))}</a> · ${esc(lesson.level)} · ${lesson.minutes} min</p>
+        <div class="lesson-head"><h1>${esc(ht(lesson.id, lesson.title))}</h1></div>
         <p class="lede">${esc(lesson.summary)}</p>
         <div id="sec-figure">${figureSvg(lesson.figure)}</div>
         <div id="sec-read">${paras}</div>
@@ -500,7 +503,7 @@ function renderLesson(track, lesson) {
         <div class="panel">${labShell(lesson)}</div>
         <h2 id="sec-fault">Fault and fix</h2>
         <div class="panel">${faultShell(lesson)}</div>
-        <p><a class="btn" href="#/track/${track.id}">Back to ${esc(track.title)}</a></p>
+        <p><a class="btn" href="#/track/${track.id}">Back to ${esc(ht(track.id, track.title))}</a></p>
       </article>
       <nav class="onpage" aria-label="On this page">
         <a href="#sec-figure">Figure</a>
@@ -715,7 +718,7 @@ async function showCerts() {
 }
 
 function showEcosystem() {
-  const tracks = state.manifest.tracks.map((track) => `<a class="card" href="#/track/${track.id}"><div class="stripe a${track.accent}"></div><h3>${esc(track.title)}</h3><p>${esc(track.summary)}</p></a>`).join("");
+  const tracks = state.manifest.tracks.map((track) => `<a class="card" href="#/track/${track.id}"><div class="stripe a${track.accent}"></div><h3>${esc(ht(track.id, track.title))}</h3><p>${esc(track.summary)}</p></a>`).join("");
   mount(`${crumbs([["#/", "Home"], ["#/ecosystem", "Ecosystem"]])}<p class="kicker">Map</p><h1>Ecosystem</h1>
     <p>Genesys Cloud CX is the conversation platform. WEM, recording, emergency calling, CRM, and bots sit on documented edges of that platform.</p>
     <h2>Mind map</h2>
@@ -854,8 +857,8 @@ function showSettings() {
 async function cacheAll() {
   if (!("caches" in window)) return status("Cache API unavailable");
   try {
-  const cache = await caches.open("gccx-lab-v4");
-  const urls = ["index.html", "assets/app.js", "assets/studios.js", "assets/topology.js", "assets/routing-model.js", "assets/university.css", "assets/mascot.js", "assets/diagrams.js", "assets/pages.js", "assets/floorviz.js", "assets/hero3d.js", "assets/icons3d.js", "assets/i18n.js", "assets/lightbox.js", "vendor/d3.js", "vendor/anime.js", "vendor/rough.js", "vendor/confetti.js", "data/manifest.json", "data/reference.json", "manifest.webmanifest", "downloads/catalog.json", "downloads/flashcards.json", "downloads/flashcards.html", "audio/tour.mp3", "audio/practice.mp3"];
+  const cache = await caches.open("gccx-lab-v5");
+  const urls = ["index.html", "assets/app.js", "assets/studios.js", "assets/topology.js", "assets/routing-model.js", "assets/university.css", "assets/mascot.js", "assets/diagrams.js", "assets/pages.js", "assets/floorviz.js", "assets/hero3d.js", "assets/icons3d.js", "assets/liveicons.js", "assets/headings.js", "assets/i18n.js", "assets/lightbox.js", "vendor/d3.js", "vendor/anime.js", "vendor/rough.js", "vendor/confetti.js", "data/manifest.json", "data/reference.json", "manifest.webmanifest", "downloads/catalog.json", "downloads/flashcards.json", "downloads/flashcards.html", "audio/tour.mp3", "audio/practice.mp3"];
   state.manifest.tracks.forEach((track) => urls.push(track.file));
   await cache.addAll(urls.map((url) => new URL(url, location.href).toString()));
   state.progress.offlineSaved = true;
@@ -877,7 +880,7 @@ async function showSearch(q) {
   });
   const ref = await loadReference();
   const terms = ref.glossary.filter((item) => !needle || (item.term + " " + item.def).toLowerCase().includes(needle)).slice(0, 12);
-  const cards = hits.slice(0, 40).map(({ track, lesson }) => `<a class="card" href="#/lesson/${lesson.id}"><p class="kicker">${esc(track.title)}</p><h3>${esc(lesson.title)}</h3><p>${esc(lesson.summary)}</p></a>`).join("");
+  const cards = hits.slice(0, 40).map(({ track, lesson }) => `<a class="card" href="#/lesson/${lesson.id}"><p class="kicker">${esc(ht(track.id, track.title))}</p><h3>${esc(ht(lesson.id, lesson.title))}</h3><p>${esc(lesson.summary)}</p></a>`).join("");
   const gloss = terms.map((item) => `<article class="card"><h3>${esc(item.term)}</h3><p>${esc(item.def)}</p><p><a href="${esc(item.url)}">${esc(item.source)}</a></p></article>`).join("");
   mount(`${crumbs([["#/", "Home"], ["#/search", "Search"]])}<p class="kicker">Search</p><h1>${needle ? "Results" : "Browse"}</h1><p>${hits.length} lesson${hits.length === 1 ? "" : "s"}${needle ? " for “" + esc(q) + "”" : ""}. ${terms.length} glossary hits.</p><div class="grid">${cards || "<p>No lesson title or summary uses that phrase.</p>"}</div><h2>Glossary</h2><div class="grid">${gloss}</div>`);
   document.title = "Search · Genesys Cloud CX Lab";
@@ -922,6 +925,7 @@ function mount(html) {
   viewEl.innerHTML = html;
   status("Ready");
   syncChrome();
+  refreshLive();
 }
 
 function status(text) {
@@ -929,7 +933,7 @@ function status(text) {
 }
 
 function paintRail() {
-  const links = state.manifest.tracks.map((track) => `<a href="#/track/${track.id}">${esc(track.title)} <span class="muted">${track.lessons.length}</span></a>`).join("");
+  const links = state.manifest.tracks.map((track) => `<a href="#/track/${track.id}">${esc(ht(track.id, track.title))} <span class="muted">${track.lessons.length}</span></a>`).join("");
   railEl.innerHTML = `<h2>Floor</h2><a href="#/">Home</a><a href="#/atlas">Diagram atlas</a><a href="#/regions">Regions</a><a href="#/ports">Ports</a><a href="#/cheat">Cheat codes</a><a href="#/map">Flow map</a><a href="#/studio">Studios</a><a href="#/sandbox">Flow sandbox</a><a href="#/topology">3D topology</a><a href="#/ecosystem">Ecosystem</a><a href="#/certs">Certifications</a><a href="#/whats-new">What’s new</a><a href="#/boss">Boss incidents</a><a href="#/badges">Badges</a><h2>Tracks</h2>${links}`;
 }
 
@@ -977,8 +981,20 @@ function paintHomeStats() {
   if (label) label.textContent = pct + "%";
 }
 
+function ht(id, fallback) {
+  return heading(id, state.settings.lang || "en", fallback);
+}
+
+function iconStage(kind, accent) {
+  return `<div class="iso-stage" data-kind="${esc(kind)}" data-accent="${esc(accent)}">${isoIcon(kind, Number(accent) || 0)}<canvas class="live-icon" width="160" height="150" aria-hidden="true"></canvas></div>`;
+}
+
+function refreshLive() {
+  import("./liveicons.js").then((mod) => mod.scan(document)).catch(() => {});
+}
+
 function trackCard(track) {
-  return `<a class="card iso-card" href="#/track/${track.id}"><div class="iso-stage">${isoIcon(iconForTrack(track.id), track.accent || 0)}</div><p class="kicker">${esc(track.kicker)}</p><h3>${esc(track.title)}</h3><p>${esc(track.summary)}</p><p class="muted">${track.lessons.length} lessons</p></a>`;
+  return `<a class="card iso-card" href="#/track/${track.id}">${iconStage(iconForTrack(track.id), track.accent || 0)}<p class="kicker">${esc(track.kicker)}</p><h3>${esc(ht(track.id, track.title))}</h3><p>${esc(track.summary)}</p><p class="muted">${track.lessons.length} lessons</p></a>`;
 }
 
 function studioCards() {

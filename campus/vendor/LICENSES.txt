@@ -1,6 +1,7 @@
 Vendored for offline use. Do not load these from a CDN.
 
 - three.js r186 (campus/vendor/three.module.js, three.core.js) — MIT
+- three.js r186 postprocessing examples (campus/vendor/three-post/: EffectComposer, RenderPass, UnrealBloomPass, and their Pass/shader dependencies) — MIT. Copied from the r186 tag and retargeted to the local three.module.js. No CDN.
 - d3 7.9.0 (campus/vendor/d3.js) — ISC
 - anime.js 4.5.0 (campus/vendor/anime.js) — MIT
 - rough.js 4.6.6 (campus/vendor/rough.js) — MIT

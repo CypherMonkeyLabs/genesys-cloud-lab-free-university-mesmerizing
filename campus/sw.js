@@ -1,4 +1,4 @@
-const CACHE = "gccx-lab-v4";
+const CACHE = "gccx-lab-v5";
 const SHELL = [
   "./",
   "./index.html",
@@ -11,6 +11,8 @@ const SHELL = [
   "./assets/floorviz.js",
   "./assets/hero3d.js",
   "./assets/icons3d.js",
+  "./assets/liveicons.js",
+  "./assets/headings.js",
   "./assets/i18n.js",
   "./assets/lightbox.js",
   "./assets/studios.js",

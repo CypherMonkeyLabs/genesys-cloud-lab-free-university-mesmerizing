@@ -144,7 +144,11 @@ function frame(id, inner, label) {
 }
 
 function packet(path, dur = "4.2s") {
-  return `<circle r="6" fill="#fff" class="packet"><animateMotion dur="${dur}" repeatCount="indefinite" path="${path}" /></circle>`;
+  return `<g class="packet">
+    <circle r="16" fill="#2ff7ff" opacity="0.35"><animateMotion dur="${dur}" repeatCount="indefinite" path="${path}" /></circle>
+    <circle r="8" fill="#ffffff"><animateMotion dur="${dur}" repeatCount="indefinite" path="${path}" /></circle>
+    <circle r="8" fill="#ff2fb3" opacity="0.9"><animateMotion dur="${dur}" begin="1.3s" repeatCount="indefinite" path="${path}" /></circle>
+  </g>`;
 }
 
 function chip(x, y, text, fill) {
