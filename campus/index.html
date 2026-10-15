@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="futuristic" data-font="md">
+<html lang="en" data-theme="neon" data-font="md">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,8 +11,9 @@
 <script>
 try {
   var s = JSON.parse(localStorage.getItem('gccx-settings') || '{}');
-  if (s.theme) document.documentElement.dataset.theme = s.theme;
-  else document.documentElement.dataset.theme = "futuristic";
+  var theme = s.theme || "neon";
+  if (theme === "paper" || theme === "harbor") theme = "neon";
+  document.documentElement.dataset.theme = theme;
   if (s.font) document.documentElement.dataset.font = s.font;
   if (s.reduce) document.documentElement.dataset.reduce = '1';
 } catch (e) {}
@@ -285,6 +286,7 @@ th, td { border-bottom: 1px solid var(--cc-line); text-align: left; padding: 8px
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
+<div class="chrome" id="chrome">
 <div class="sky">
   <a href="https://cyphermonkeylabs.com">Labs</a>
   <a href="https://linktr.ee/cyphermonkey">Linktree</a>
@@ -296,6 +298,7 @@ th, td { border-bottom: 1px solid var(--cc-line); text-align: left; padding: 8px
   <button type="button" id="offline-sky">Save for offline</button>
 </div>
 <header class="topbar">
+  <div class="bar-tools">
   <a class="brand" href="#/">
     <span class="mark" aria-hidden="true">SF</span>
     <span><b>Signal Floor</b><span>Genesys Cloud CX Lab</span></span>
@@ -306,79 +309,107 @@ th, td { border-bottom: 1px solid var(--cc-line); text-align: left; padding: 8px
   </form>
   <label class="theme-label">Theme
     <select id="theme-switch" class="theme-switch" aria-label="Theme">
+      <option value="neon">neon</option>
+      <option value="holographic">holographic</option>
+      <option value="cyberpunk">cyberpunk</option>
+      <option value="sunset">sunset</option>
+      <option value="light">light</option>
       <option value="futuristic">futuristic</option>
       <option value="gaming">gaming</option>
-      <option value="neon">neon</option>
-      <option value="light">light</option>
       <option value="night">night</option>
-      <option value="paper">paper</option>
-      <option value="harbor">harbor</option>
       <option value="contrast">contrast</option>
     </select>
   </label>
+  <label class="theme-label">Lang
+    <select id="lang-switch" aria-label="Language">
+      <option value="en">English</option>
+      <option value="es">Español</option>
+      <option value="hi">हिन्दी</option>
+      <option value="te">తెలుగు</option>
+      <option value="fr">Français</option>
+      <option value="de">Deutsch</option>
+      <option value="ja">日本語</option>
+      <option value="ar">العربية</option>
+    </select>
+  </label>
+  <button class="icon-btn" id="tone-toggle" type="button" data-i18n="light">Light</button>
+  <a class="icon-btn" href="#/regions" data-i18n="regions">Regions</a>
   <button class="icon-btn desk-only" id="open-tracks" type="button">Tracks</button>
   <a class="icon-btn" href="#/settings">Settings</a>
+  </div>
   <nav class="primary-nav" aria-label="Floor menu">
-    <a href="#/atlas">Diagrams</a>
-    <a href="#/flows">Flows</a>
-    <a href="#/charts">Charts</a>
-    <a href="#/cheat">Cheat Codes</a>
-    <a href="#/play">Play</a>
-    <a href="#/ecosystem">Ecosystem</a>
-    <a href="#/downloads">Downloads</a>
-    <a href="#/career">Careers</a>
+    <a href="#/atlas" data-i18n="diagrams">Diagrams</a>
+    <a href="#/flows" data-i18n="flows">Flows</a>
+    <a href="#/charts" data-i18n="charts">Charts</a>
+    <a href="#/cheat" data-i18n="cheat">Cheat Codes</a>
+    <a href="#/play" data-i18n="play">Play</a>
+    <a href="#/ecosystem" data-i18n="ecosystem">Ecosystem</a>
+    <a href="#/downloads" data-i18n="downloads">Downloads</a>
+    <a href="#/career" data-i18n="careers">Careers</a>
   </nav>
 </header>
+</div>
 <div class="shell">
   <aside class="rail" id="rail" aria-label="Tracks"></aside>
   <main id="main">
     <section id="home">
-      <div class="hero-fold">
-        <div class="stage">
-          <p class="kicker">Free operations university</p>
-          <h1>Genesys Cloud CX Lab</h1>
-          <p class="lede">Architect flows, bullseye routing, BYOC trunks, the Edge, WEM, Predictive Engagement, and the Platform API. Every lesson links to a public source.</p>
-          <div class="statrow" style="margin:10px 0">
-            <div class="stat"><b id="stat-tracks">—</b><span>tracks</span></div>
-            <div class="stat"><b id="stat-lessons">—</b><span>lessons</span></div>
-            <div class="stat"><b id="stat-quiz">—</b><span>quiz items</span></div>
-            <div class="stat"><b id="stat-done">0</b><span>finished</span></div>
-            <div class="ring" id="progress-ring" style="--p:0"><span id="stat-pct">0%</span></div>
+      <section class="hero-bleed" id="hero-bleed" aria-label="Animated call-path globe">
+        <canvas id="hero-canvas" class="hero-canvas" aria-hidden="true"></canvas>
+        <svg class="constellation hero-fallback" hidden viewBox="0 0 360 240" role="img" aria-label="Stylized path from a carrier through a trunk into Architect, a queue, and an agent.">
+          <rect width="360" height="240" fill="#05060a"></rect>
+          <path d="M40 150 H120 L170 70 H250 L300 150" fill="none" stroke="#2ff7ff" stroke-width="2" opacity="0.7"></path>
+          <g class="pulse">
+            <circle cx="40" cy="150" r="10" fill="#ff2fb3"></circle>
+            <circle cx="120" cy="150" r="8" fill="#2ff7ff"></circle>
+            <circle cx="170" cy="70" r="12" fill="#d6ff3c"></circle>
+            <circle cx="250" cy="70" r="8" fill="#b388ff"></circle>
+            <circle cx="300" cy="150" r="10" fill="#ff2fb3"></circle>
+          </g>
+          <g fill="#f4fbff" font-size="12" font-family="Palatino, Georgia, serif">
+            <text x="22" y="178">Carrier</text>
+            <text x="98" y="178">Trunk</text>
+            <text x="142" y="56">Architect</text>
+            <text x="232" y="56">Queue</text>
+            <text x="278" y="178">Agent</text>
+          </g>
+        </svg>
+        <div class="hero-scrim">
+          <div class="hero-copy">
+            <p class="kicker" data-i18n="kicker">Free operations university</p>
+            <h1>Genesys Cloud CX Lab</h1>
+            <p class="greet" id="hero-greet" data-i18n="greet">Welcome to the signal floor.</p>
+            <p class="lede" data-i18n="lede">Architect flows, bullseye routing, BYOC trunks, the Edge, WEM, Predictive Engagement, and the Platform API. Every lesson links to a public source.</p>
+            <div class="statrow" style="margin:10px 0">
+              <div class="stat"><b id="stat-tracks">—</b><span>tracks</span></div>
+              <div class="stat"><b id="stat-lessons">—</b><span>lessons</span></div>
+              <div class="stat"><b id="stat-quiz">—</b><span>quiz items</span></div>
+              <div class="stat"><b id="stat-done">0</b><span>finished</span></div>
+              <div class="ring" id="progress-ring" style="--p:0"><span id="stat-pct">0%</span></div>
+            </div>
+            <div class="chips">
+              <a class="btn primary" href="#/cheat">Cheat codes</a>
+              <a class="btn" href="#/atlas">Diagrams</a>
+              <a class="btn" href="#/flows">Flows</a>
+              <a class="btn" href="#/charts">Charts</a>
+              <a class="btn" href="#/tracks">Tracks</a>
+            </div>
           </div>
-          <div class="chips">
-            <a class="btn primary" href="#/cheat">Cheat codes</a>
-            <a class="btn" href="#/atlas">Diagrams</a>
-            <a class="btn" href="#/flows">Flows</a>
-            <a class="btn" href="#/charts">Charts</a>
-            <a class="btn" href="#/tracks">Tracks</a>
+          <div class="hero-side">
+            <div id="mascot-slot" class="hero-mascot"></div>
+            <div class="float-card a">SIP on 5061<br>RTP is not SIP</div>
+            <div class="float-card b">Publish the flow<br>Drafts do not answer</div>
           </div>
         </div>
-        <div class="hero-stage hero">
-          <canvas id="hero-canvas" class="hero-canvas" aria-label="Rotating wireframe of the lab floor"></canvas>
-          <div id="mascot-slot" class="hero-mascot"></div>
-          <svg class="constellation" viewBox="0 0 360 240" role="img" aria-label="Stylized path from a carrier through a trunk into Architect, a queue, and an agent.">
-            <rect width="360" height="240" fill="none"></rect>
-            <path d="M40 150 H120 L170 70 H250 L300 150" fill="none" stroke="currentColor" stroke-width="2" opacity="0.45"></path>
-            <g class="pulse">
-              <circle cx="40" cy="150" r="10" fill="#ff5a36"></circle>
-              <circle cx="120" cy="150" r="8" fill="#8fd4ff"></circle>
-              <circle cx="170" cy="70" r="12" fill="#d6f25c"></circle>
-              <circle cx="250" cy="70" r="8" fill="#b3a6ff"></circle>
-              <circle cx="300" cy="150" r="10" fill="#ff5a36"></circle>
-            </g>
-            <g fill="currentColor" font-size="12" font-family="Palatino, Georgia, serif">
-              <text x="22" y="178">Carrier</text>
-              <text x="98" y="178">Trunk</text>
-              <text x="142" y="56">Architect</text>
-              <text x="232" y="56">Queue</text>
-              <text x="278" y="178">Agent</text>
-            </g>
-          </svg>
-          <div class="float-card a">SIP on 5061<br>RTP is not SIP</div>
-          <div class="float-card b">Publish the flow<br>Drafts do not answer</div>
-        </div>
-      </div>
-      <div id="home-icons" class="icon-parade" aria-label="Lab counters"></div>
+        <div id="home-icons" class="icon-parade hero-icons" aria-label="Lab counters"></div>
+        <div class="ticker" aria-hidden="true"><span>TLS 5061 · UDP/TCP 5060 · RTP 16384–65535 · managed phones 8061 · bullseye 5 rings · publish the flow · satellite regions carry media · TLS 5061 · UDP/TCP 5060 · RTP 16384–65535 · managed phones 8061 · bullseye 5 rings · publish the flow · satellite regions carry media · </span></div>
+      </section>
+      <section class="audio-dock" aria-label="Architect conversation">
+        <p class="kicker" data-i18n="listen">Architect desk</p>
+        <p class="muted">Two short architect voices, generated offline with espeak-ng. Lesson text stays written.</p>
+        <p><audio id="clip-tour" controls preload="metadata" src="audio/tour.mp3"></audio> How to view the floor</p>
+        <p><audio id="clip-practice" controls preload="metadata" src="audio/practice.mp3"></audio> How to practise and share</p>
+        <p><a href="https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing">Rate / comment</a> · <a href="https://cyphermonkeylabs.com">Share the lab</a> · <a href="https://cyphermonkeylabs.com/#contact">Work with us</a></p>
+      </section>
       <aside class="cheat-banner">
         <div>
           <p class="kicker">Downloads</p>
@@ -408,6 +439,17 @@ th, td { border-bottom: 1px solid var(--cc-line); text-align: left; padding: 8px
     <a href="#/settings">You</a>
   </nav>
 </div>
+<dialog id="lx" class="lx" aria-label="Diagram lightbox">
+  <div class="lx-bar">
+    <button type="button" id="lx-play" class="btn tiny">Play</button>
+    <button type="button" id="lx-pause" class="btn tiny">Pause</button>
+    <button type="button" id="lx-step" class="btn tiny">Step</button>
+    <button type="button" id="lx-close" class="btn tiny">Close</button>
+  </div>
+  <div id="lx-stage"></div>
+  <p id="lx-why"></p>
+  <p id="lx-legend" class="muted"></p>
+</dialog>
 <div id="status" aria-live="polite"></div>
 <div id="egg" class="egg" hidden>
   <div class="panel card">

@@ -1,4 +1,5 @@
 import { DIAGRAMS, PORTS, renderDiagram } from "./diagrams.js";
+import { wireLightbox } from "./lightbox.js";
 
 export const PAGE_CITES = [
   ...new Set([
@@ -14,7 +15,10 @@ export const PAGE_CITES = [
     "https://help.genesys.cloud/articles/about-genesys-cloud-for-zendesk/",
     "https://appfoundry.genesys.com/",
     "https://education.genesys.com/certification/cloud",
-    "https://help.genesys.cloud/articles/genesys-cloud-ports-services/"
+    "https://help.genesys.cloud/articles/genesys-cloud-ports-services/",
+    "https://help.genesys.cloud/articles/aws-regions-for-genesys-cloud-deployment/",
+    "https://help.genesys.cloud/articles/aws-regions-genesys-cloud-voice/",
+    "https://developer.genesys.cloud/api/rest/authorization/use-client-credentials"
   ])
 ];
 
@@ -38,7 +42,8 @@ const HANDLERS = {
   playbooks: showPlaybooks,
   deploy: showDeploy,
   architecture: showArchitecture,
-  reporting: showReporting
+  reporting: showReporting,
+  regions: showRegions
 };
 
 export function mountPage(name, ctx) {
@@ -61,13 +66,14 @@ function showFlows(ctx) {
     ["trouble-flow", "No-audio branch", "Teaching tree. A flow that runs with silence is a media problem."],
     ["data-flow", "Data action", "Teaching sketch. A data action leaves the flow."]
   ];
-  const generated = mermaid.map(([id, title, caption]) => `<article class="card"><h3>${ctx.esc(title)}</h3><figure class="mermaid-svg"><img alt="${ctx.esc(caption)}" src="assets/mermaid/${id}.svg"></figure><p>${ctx.esc(caption)}</p><p class="muted">Built with Mermaid at generation time. The runtime does not load Mermaid.</p></article>`).join("");
-  const cards = flows.map((spec) => `<article class="card" id="f-${spec.id}">${renderDiagram(spec)}<h3>${ctx.esc(spec.title)}</h3><p>${ctx.esc(spec.caption)}</p><p><a href="${ctx.esc(spec.url)}">${ctx.esc(spec.cite)}</a></p></article>`).join("");
+  const generated = mermaid.map(([id, title, caption]) => `<article class="card lx-card" data-why="${ctx.esc(caption)}"><h3>${ctx.esc(title)}</h3><figure class="mermaid-svg"><img alt="${ctx.esc(caption)}" src="assets/mermaid/${id}.svg"></figure><p class="lx-why">${ctx.esc(caption)}</p><p><button class="btn tiny lx-open" type="button">Enlarge</button></p><p class="muted">Built with Mermaid at generation time. The runtime does not load Mermaid.</p></article>`).join("");
+  const cards = flows.map((spec) => `<article class="card lx-card" id="f-${spec.id}" data-why="${ctx.esc(spec.caption)}">${renderDiagram(spec)}<h3>${ctx.esc(spec.title)}</h3><p class="lx-why">${ctx.esc(spec.caption)}</p><p><button class="btn tiny lx-open" type="button">Enlarge</button> <a href="${ctx.esc(spec.url)}">${ctx.esc(spec.cite)}</a></p></article>`).join("");
   ctx.root.innerHTML = `<p class="kicker">Flows</p><h1>${flows.length} animated flows</h1>
-    <p>Ladders, routing, architecture, deployment, cutover, and troubleshooting trees from the atlas, plus sequence drawings generated with Mermaid.</p>
-    <div class="grid">${generated}</div>
+    <p>Ladders, routing, architecture, deployment, cutover, and troubleshooting trees from the atlas, plus sequence drawings generated with Mermaid. Enlarge a picture to play the marker.</p>
+    <div class="grid atlas-grid">${generated}</div>
     <h2>Atlas flows</h2>
-    <div class="grid">${cards}</div>`;
+    <div class="grid atlas-grid">${cards}</div>`;
+  wireLightbox(ctx.root);
 }
 
 async function showCharts(ctx) {
@@ -96,15 +102,51 @@ function showPlay(ctx) {
 function showAtlas(ctx) {
   ctx.setTitle("Diagram atlas");
   const cards = DIAGRAMS.map((spec) => `
-    <article class="card" id="d-${spec.id}">
+    <article class="card lx-card" id="d-${spec.id}" data-why="${ctx.esc(spec.caption)}">
       ${renderDiagram(spec)}
       <h3>${ctx.esc(spec.title)}</h3>
-      <p>${ctx.esc(spec.caption)}</p>
-      <p><a href="${ctx.esc(spec.url)}">${ctx.esc(spec.cite)}</a></p>
+      <p class="lx-why">${ctx.esc(spec.caption)}</p>
+      <p><button class="btn tiny lx-open" type="button">Enlarge</button> <a href="${ctx.esc(spec.url)}">${ctx.esc(spec.cite)}</a></p>
     </article>`).join("");
   ctx.root.innerHTML = `<p class="kicker">Atlas</p><h1>${DIAGRAMS.length} live diagrams</h1>
-    <p>Each picture is a teaching sketch. The caption names the limit of the drawing. The link is the source.</p>
-    <div class="grid">${cards}</div>`;
+    <p>Each picture is a teaching sketch. The caption names the limit of the drawing. The link is the source. Enlarge to play, pause, or step the marker.</p>
+    <div class="grid atlas-grid">${cards}</div>`;
+  wireLightbox(ctx.root);
+}
+
+function showRegions(ctx) {
+  ctx.setTitle("Regions");
+  ctx.root.innerHTML = `<p class="kicker">Residency</p><h1>Regions and the voice boundary</h1>
+    <p>An organization is created in one core AWS region. People sign in at that region’s login URL. Satellite regions carry media and cannot host the org. This page names only the hosts this lab has already checked. Every other row stays on the regions article.</p>
+    <div class="grid">
+      <article class="card">
+        <p class="kicker">US East · us-east-1</p>
+        <p class="region-num">login.mypurecloud.com</p>
+        <p>N. Virginia. The client-credentials guide pairs this login with api.mypurecloud.com. Do not swap the login host and the API host.</p>
+      </article>
+      <article class="card">
+        <p class="kicker">US West · us-west-2</p>
+        <p class="region-num">login.usw2.pure.cloud</p>
+        <p>Oregon. Confirm the API host on the regions article before a client is configured. This lab does not invent one.</p>
+      </article>
+      <article class="card">
+        <p class="kicker">FedRAMP · us-east-2</p>
+        <p class="region-num">login.use2.us-gov-pure.cloud</p>
+        <p>US East 2 (Ohio). A different cloud from the commercial login. Confirm the API host on the regions article.</p>
+      </article>
+    </div>
+    <h2>Voice coverage is a second table</h2>
+    <p>Genesys Cloud Voice country tables restrict DID, toll-free, domestic, and international calling. FedRAMP voice services on that page are US-only. The European Sovereign region does not extend its sovereignty commitment to calls that leave the boundary. Reload the page before you promise a country.</p>
+    <svg class="region-map" viewBox="0 0 720 220" role="img" aria-label="Three cited US login hosts. Other marks are examples, not coverage.">
+      <rect width="720" height="220" rx="18" fill="#120818"/>
+      <text x="24" y="36" fill="#f4fbff" font-size="16">Cited login hosts</text>
+      <g fill="#ff2fb3"><circle cx="180" cy="110" r="16"/><text x="150" y="150" font-size="13">US East</text></g>
+      <g fill="#2ff7ff"><circle cx="300" cy="90" r="16"/><text x="270" y="150" font-size="13">US West</text></g>
+      <g fill="#d6ff3c"><circle cx="240" cy="150" r="12"/><text x="200" y="186" font-size="13">FedRAMP</text></g>
+      <g fill="#b388ff" opacity="0.45"><circle cx="520" cy="80" r="8"/><circle cx="580" cy="130" r="8"/><text x="470" y="170" font-size="13">Example dots, not coverage</text></g>
+    </svg>
+    <p class="uncertainty"><strong>Not a carrier map. </strong>The purple dots are decoration. They are not countries, not PSTN coverage, and not a list of carriers. Confirm every other login host on the regions article.</p>
+    <p><a href="https://help.genesys.cloud/articles/aws-regions-for-genesys-cloud-deployment/">AWS regions for Genesys Cloud</a> · <a href="https://help.genesys.cloud/articles/aws-regions-genesys-cloud-voice/">AWS regions for Genesys Cloud Voice</a> · <a href="https://developer.genesys.cloud/api/rest/authorization/use-client-credentials">Client credentials grant</a></p>`;
 }
 
 function showArchitecture(ctx) {

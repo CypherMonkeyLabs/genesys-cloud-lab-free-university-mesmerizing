@@ -79,6 +79,29 @@ export async function mountFloor(host, manifest, highlightId) {
     slot.appendChild(blocks[index].node);
   });
   grow(host);
+  wireTips(host);
+}
+
+function wireTips(host) {
+  host.querySelectorAll(".chart-card").forEach((card) => {
+    const tip = document.createElement("div");
+    tip.className = "chart-tip";
+    tip.hidden = true;
+    card.appendChild(tip);
+    card.addEventListener("pointermove", (ev) => {
+      const hit = ev.target.closest ? ev.target.closest("[data-label]") : null;
+      if (!hit) {
+        tip.hidden = true;
+        return;
+      }
+      tip.hidden = false;
+      tip.textContent = `${hit.dataset.label}: ${hit.dataset.value}`;
+      const bounds = card.getBoundingClientRect();
+      tip.style.left = Math.max(8, ev.clientX - bounds.left + 14) + "px";
+      tip.style.top = Math.max(8, ev.clientY - bounds.top + 14) + "px";
+    });
+    card.addEventListener("pointerleave", () => { tip.hidden = true; });
+  });
 }
 
 function bars(title, rows, highlightId) {
@@ -105,6 +128,8 @@ function bars(title, rows, highlightId) {
     svg.append("rect")
       .attr("class", "bar")
       .attr("data-w", String(width))
+      .attr("data-label", row.label)
+      .attr("data-value", String(row.value))
       .attr("x", labelW)
       .attr("y", y)
       .attr("height", 14)
@@ -133,6 +158,8 @@ function donut(title, rows) {
   pie(rows).forEach((slice, i) => {
     g.append("path")
       .attr("class", "slice")
+      .attr("data-label", slice.data.label)
+      .attr("data-value", String(slice.data.value))
       .attr("d", arc(slice))
       .attr("fill", PALETTE[i % PALETTE.length]);
   });

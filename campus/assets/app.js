@@ -1,9 +1,12 @@
 import { mountMascot } from "./mascot.js";
+import { applyLang, pack } from "./i18n.js";
+import { isoIcon, iconForTrack } from "./icons3d.js";
+import { ensureLightbox } from "./lightbox.js";
 
 const SETTINGS_KEY = "gccx-settings";
 const PROGRESS_KEY = "gccx-progress";
-const THEMES = ["futuristic", "gaming", "neon", "light", "night", "paper", "harbor", "contrast"];
-const EXTRA = ["atlas", "ports", "game", "map", "sandbox", "daily", "badges", "cheat", "downloads", "flows", "charts", "play", "roadmap", "security", "career", "whats-new", "playbooks", "deploy", "architecture", "reporting"];
+const THEMES = ["neon", "holographic", "cyberpunk", "sunset", "light", "futuristic", "gaming", "night", "contrast"];
+const EXTRA = ["atlas", "ports", "game", "map", "sandbox", "daily", "badges", "cheat", "downloads", "flows", "charts", "play", "roadmap", "security", "career", "whats-new", "playbooks", "deploy", "architecture", "reporting", "regions"];
 const CRUMB = {
   atlas: "Diagrams",
   flows: "Flows",
@@ -25,7 +28,8 @@ const CRUMB = {
   playbooks: "Playbooks",
   deploy: "Deployment",
   architecture: "Architecture",
-  reporting: "Reporting"
+  reporting: "Reporting",
+  regions: "Regions"
 };
 
 const state = {
@@ -54,6 +58,8 @@ async function init() {
     navigator.serviceWorker.register("./sw.js").catch(() => {});
   }
   state.manifest = await fetchJson("data/manifest.json");
+  ensureLightbox();
+  syncChrome();
   paintRail();
   paintHomeStats();
   mountMascot(document.querySelector("#mascot-slot"));
@@ -70,8 +76,10 @@ function fetchJson(url) {
 
 function loadSettings() {
   const base = {
-    theme: document.documentElement.dataset.theme || "futuristic",
+    theme: document.documentElement.dataset.theme || "neon",
+    darkTheme: "neon",
     font: document.documentElement.dataset.font || "md",
+    lang: "en",
     sound: true,
     narrate: false,
     rate: 1,
@@ -79,7 +87,10 @@ function loadSettings() {
     reduce: document.documentElement.dataset.reduce === "1"
   };
   try {
-    return Object.assign(base, JSON.parse(localStorage.getItem(SETTINGS_KEY) || "{}"));
+    const saved = Object.assign(base, JSON.parse(localStorage.getItem(SETTINGS_KEY) || "{}"));
+    if (saved.theme === "paper" || saved.theme === "harbor") saved.theme = "neon";
+    if (!THEMES.includes(saved.theme)) saved.theme = "neon";
+    return saved;
   } catch (e) {
     return base;
   }
@@ -104,12 +115,26 @@ function saveProgress() {
 }
 
 function applySettings(s) {
-  document.documentElement.dataset.theme = s.theme || "futuristic";
+  const theme = THEMES.includes(s.theme) ? s.theme : "neon";
+  s.theme = theme;
+  if (theme !== "light") s.darkTheme = theme;
+  document.documentElement.dataset.theme = theme;
   document.documentElement.dataset.font = s.font || "md";
   document.documentElement.dataset.reduce = s.reduce ? "1" : "0";
+  const words = pack(s.lang || "en");
+  applyLang(s.lang || "en");
+  const tone = document.querySelector("#tone-toggle");
+  if (tone) tone.textContent = theme === "light" ? words.dark : words.light;
   const themeColor = getComputedStyle(document.documentElement).getPropertyValue("--cc-bg").trim();
   const meta = document.querySelector('meta[name="theme-color"]');
   if (meta && themeColor) meta.content = themeColor;
+  document.dispatchEvent(new CustomEvent("gccx-theme", { detail: { theme } }));
+}
+
+function syncChrome() {
+  const chrome = document.querySelector("#chrome");
+  const h = chrome ? chrome.offsetHeight : 0;
+  if (h) document.documentElement.style.setProperty("--chrome-h", h + "px");
 }
 
 function lessonProg(id) {
@@ -213,12 +238,34 @@ function bindChrome() {
   if (offline) offline.addEventListener("click", () => cacheAll());
   const themeSwitch = $("#theme-switch");
   if (themeSwitch) {
-    themeSwitch.value = state.settings.theme || "futuristic";
+    themeSwitch.value = state.settings.theme || "neon";
     themeSwitch.addEventListener("change", () => {
       state.settings.theme = themeSwitch.value;
       saveSettings();
     });
   }
+  const langSwitch = $("#lang-switch");
+  if (langSwitch) {
+    langSwitch.value = state.settings.lang || "en";
+    langSwitch.addEventListener("change", () => {
+      state.settings.lang = langSwitch.value;
+      saveSettings();
+    });
+  }
+  const tone = $("#tone-toggle");
+  if (tone) {
+    tone.addEventListener("click", () => {
+      if (state.settings.theme === "light") state.settings.theme = state.settings.darkTheme || "neon";
+      else {
+        state.settings.darkTheme = state.settings.theme;
+        state.settings.theme = "light";
+      }
+      if (themeSwitch) themeSwitch.value = state.settings.theme;
+      saveSettings();
+    });
+  }
+  syncChrome();
+  window.addEventListener("resize", syncChrome);
   document.addEventListener("keydown", (ev) => {
     if (ev.key !== "ArrowRight" && ev.key !== "ArrowLeft") return;
     const nav = ev.target.closest?.(".primary-nav");
@@ -304,8 +351,10 @@ async function render() {
 function showHome() {
   homeEl.hidden = false;
   viewEl.hidden = true;
+  document.body.dataset.home = "1";
   document.title = "Genesys Cloud CX Lab";
   setCurrent("#/");
+  syncChrome();
   paintHomeStats();
   const host = $("#home-dynamic");
   const wings = [
@@ -318,6 +367,7 @@ function showHome() {
     ["#/roadmap", "Roadmap"],
     ["#/whats-new", "What’s new"],
     ["#/career", "Career"],
+    ["#/regions", "Regions"],
     ["#/daily", "Daily challenge"],
     ["#/badges", "Badges"],
     ["#/game", "Port game"]
@@ -368,33 +418,15 @@ function paintIcons(host, track, counts = {}) {
     ? track.lessons.filter((lesson) => state.progress.lessons[lesson.id]?.done).length
     : Object.values(state.progress.lessons).filter((item) => item.done).length;
   const tiles = [
-    ["#/atlas", "Diagrams", String(counts.diagrams ?? "—"), diagramMark(), "Atlas"],
-    ["#/flows", "Flows", String(counts.flows ?? "—"), flowMark(), "Animated"],
-    ["#/charts", "Charts", String(counts.charts ?? 6), chartMark(), "From this lab"],
-    ["#/cheat", "Cheat codes", String(counts.sheets ?? 13), sheetMark(), "HTML PDF PNG"],
-    ["#/tracks", track ? track.title : "Lessons", String(lessons.length), bookMark(), `${minutes} min`],
-    ["#/tracks", "Finished", String(done), starMark(), track ? "This track" : "This browser"]
+    ["#/atlas", "Diagrams", counts.diagrams ?? "—", "constellation", "Atlas"],
+    ["#/flows", "Flows", counts.flows ?? "—", "flow", "Animated"],
+    ["#/charts", "Charts", counts.charts ?? 6, "chart", "From this lab"],
+    ["#/cheat", "Cheat codes", counts.sheets ?? 13, "sheet", "HTML PDF PNG"],
+    ["#/tracks", track ? track.title : "Lessons", lessons.length, "prism", `${minutes} min`],
+    ["#/tracks", "Finished", done, "star", track ? "This track" : "This browser"]
   ];
-  host.innerHTML = tiles.map(([href, label, num, icon, note]) => `<a class="icon-tile" href="${href}">${icon}<b>${esc(num)}</b><span>${esc(label)}</span><span>${esc(note)}</span></a>`).join("");
-}
-
-function diagramMark() {
-  return `<svg viewBox="0 0 36 36" aria-hidden="true"><rect x="4" y="8" width="12" height="8" rx="2" fill="#ff5a36"/><rect x="20" y="8" width="12" height="8" rx="2" fill="#8fd4ff"/><rect x="12" y="20" width="12" height="8" rx="2" fill="#d6f25c"/><path d="M10 16 V20 H18 M26 16 V20 H18" fill="none" stroke="currentColor"/></svg>`;
-}
-function flowMark() {
-  return `<svg viewBox="0 0 36 36" aria-hidden="true"><path d="M6 10 H30 M6 18 H30 M6 26 H30" stroke="#8fd4ff" stroke-width="2"/><circle cx="12" cy="10" r="3" fill="#ff5a36"/><circle cx="22" cy="18" r="3" fill="#d6f25c"/><circle cx="16" cy="26" r="3" fill="#b3a6ff"/></svg>`;
-}
-function chartMark() {
-  return `<svg viewBox="0 0 36 36" aria-hidden="true"><rect x="6" y="18" width="6" height="12" fill="#ff5a36"/><rect x="15" y="10" width="6" height="20" fill="#8fd4ff"/><rect x="24" y="14" width="6" height="16" fill="#d6f25c"/></svg>`;
-}
-function sheetMark() {
-  return `<svg viewBox="0 0 36 36" aria-hidden="true"><path d="M10 6 H22 L28 12 V30 H10 Z" fill="none" stroke="#ff5a36" stroke-width="2"/><path d="M14 16 H24 M14 21 H24 M14 26 H20" stroke="currentColor"/></svg>`;
-}
-function bookMark() {
-  return `<svg viewBox="0 0 36 36" aria-hidden="true"><path d="M8 8 H18 V28 H8 Z M18 8 H28 V28 H18 Z" fill="none" stroke="#b3a6ff" stroke-width="2"/></svg>`;
-}
-function starMark() {
-  return `<svg viewBox="0 0 36 36" aria-hidden="true"><path d="M18 6 L21 14 H30 L23 19 L26 28 L18 23 L10 28 L13 19 L6 14 H15 Z" fill="#d6f25c"/></svg>`;
+  host.innerHTML = tiles.map(([href, label, num, kind, note], index) => `<a class="icon-tile" href="${href}">${isoIcon(kind, index)}<b data-count="${esc(num)}">${esc(num)}</b><span>${esc(label)}</span><span>${esc(note)}</span></a>`).join("");
+  host.querySelectorAll("[data-count]").forEach((el) => countUp(el, el.dataset.count));
 }
 
 function showTracks() {
@@ -822,8 +854,8 @@ function showSettings() {
 async function cacheAll() {
   if (!("caches" in window)) return status("Cache API unavailable");
   try {
-  const cache = await caches.open("gccx-lab-v3");
-  const urls = ["index.html", "assets/app.js", "assets/studios.js", "assets/topology.js", "assets/routing-model.js", "assets/university.css", "assets/mascot.js", "assets/diagrams.js", "assets/pages.js", "assets/floorviz.js", "assets/hero3d.js", "vendor/d3.js", "vendor/anime.js", "vendor/rough.js", "vendor/confetti.js", "data/manifest.json", "data/reference.json", "manifest.webmanifest", "downloads/catalog.json", "downloads/flashcards.json", "downloads/flashcards.html"];
+  const cache = await caches.open("gccx-lab-v4");
+  const urls = ["index.html", "assets/app.js", "assets/studios.js", "assets/topology.js", "assets/routing-model.js", "assets/university.css", "assets/mascot.js", "assets/diagrams.js", "assets/pages.js", "assets/floorviz.js", "assets/hero3d.js", "assets/icons3d.js", "assets/i18n.js", "assets/lightbox.js", "vendor/d3.js", "vendor/anime.js", "vendor/rough.js", "vendor/confetti.js", "data/manifest.json", "data/reference.json", "manifest.webmanifest", "downloads/catalog.json", "downloads/flashcards.json", "downloads/flashcards.html", "audio/tour.mp3", "audio/practice.mp3"];
   state.manifest.tracks.forEach((track) => urls.push(track.file));
   await cache.addAll(urls.map((url) => new URL(url, location.href).toString()));
   state.progress.offlineSaved = true;
@@ -884,10 +916,12 @@ function showFatal(err) {
 }
 
 function mount(html) {
+  delete document.body.dataset.home;
   homeEl.hidden = true;
   viewEl.hidden = false;
   viewEl.innerHTML = html;
   status("Ready");
+  syncChrome();
 }
 
 function status(text) {
@@ -896,17 +930,46 @@ function status(text) {
 
 function paintRail() {
   const links = state.manifest.tracks.map((track) => `<a href="#/track/${track.id}">${esc(track.title)} <span class="muted">${track.lessons.length}</span></a>`).join("");
-  railEl.innerHTML = `<h2>Floor</h2><a href="#/">Home</a><a href="#/atlas">Diagram atlas</a><a href="#/ports">Ports</a><a href="#/cheat">Cheat codes</a><a href="#/map">Flow map</a><a href="#/studio">Studios</a><a href="#/sandbox">Flow sandbox</a><a href="#/topology">3D topology</a><a href="#/ecosystem">Ecosystem</a><a href="#/certs">Certifications</a><a href="#/whats-new">What’s new</a><a href="#/boss">Boss incidents</a><a href="#/badges">Badges</a><h2>Tracks</h2>${links}`;
+  railEl.innerHTML = `<h2>Floor</h2><a href="#/">Home</a><a href="#/atlas">Diagram atlas</a><a href="#/regions">Regions</a><a href="#/ports">Ports</a><a href="#/cheat">Cheat codes</a><a href="#/map">Flow map</a><a href="#/studio">Studios</a><a href="#/sandbox">Flow sandbox</a><a href="#/topology">3D topology</a><a href="#/ecosystem">Ecosystem</a><a href="#/certs">Certifications</a><a href="#/whats-new">What’s new</a><a href="#/boss">Boss incidents</a><a href="#/badges">Badges</a><h2>Tracks</h2>${links}`;
+}
+
+const countTokens = new WeakMap();
+
+function countUp(el, target) {
+  if (!el) return;
+  const next = Number(target);
+  if (!Number.isFinite(next)) {
+    el.textContent = String(target);
+    return;
+  }
+  if (document.documentElement.dataset.reduce === "1") {
+    el.textContent = String(next);
+    el.dataset.n = String(next);
+    return;
+  }
+  const token = (countTokens.get(el) || 0) + 1;
+  countTokens.set(el, token);
+  const from = Number(el.dataset.n || 0);
+  const t0 = performance.now();
+  const step = (now) => {
+    if (countTokens.get(el) !== token) return;
+    const p = Math.min(1, (now - t0) / 900);
+    const eased = 1 - Math.pow(1 - p, 3);
+    el.textContent = String(Math.round(from + (next - from) * eased));
+    if (p < 1) requestAnimationFrame(step);
+    else el.dataset.n = String(next);
+  };
+  requestAnimationFrame(step);
 }
 
 function paintHomeStats() {
   if (!state.manifest) return;
   const lessons = state.manifest.tracks.reduce((sum, track) => sum + track.lessons.length, 0);
-  $("#stat-tracks").textContent = String(state.manifest.tracks.length);
-  $("#stat-lessons").textContent = String(lessons);
-  $("#stat-quiz").textContent = String(state.manifest.quizCount);
   const done = Object.values(state.progress.lessons).filter((item) => item.done).length;
-  $("#stat-done").textContent = String(done);
+  countUp($("#stat-tracks"), state.manifest.tracks.length);
+  countUp($("#stat-lessons"), lessons);
+  countUp($("#stat-quiz"), state.manifest.quizCount);
+  countUp($("#stat-done"), done);
   const pct = lessons ? Math.round((done / lessons) * 100) : 0;
   const ring = $("#progress-ring");
   const label = $("#stat-pct");
@@ -915,7 +978,7 @@ function paintHomeStats() {
 }
 
 function trackCard(track) {
-  return `<a class="card" href="#/track/${track.id}"><div class="stripe a${track.accent}"></div><p class="kicker">${esc(track.kicker)}</p><h3>${esc(track.title)}</h3><p>${esc(track.summary)}</p><p class="muted">${track.lessons.length} lessons</p></a>`;
+  return `<a class="card iso-card" href="#/track/${track.id}"><div class="iso-stage">${isoIcon(iconForTrack(track.id), track.accent || 0)}</div><p class="kicker">${esc(track.kicker)}</p><h3>${esc(track.title)}</h3><p>${esc(track.summary)}</p><p class="muted">${track.lessons.length} lessons</p></a>`;
 }
 
 function studioCards() {
