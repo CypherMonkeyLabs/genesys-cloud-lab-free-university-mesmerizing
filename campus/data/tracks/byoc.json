@@ -1,0 +1,1440 @@
+{
+  "id": "byoc",
+  "title": "BYOC Cloud and SIP trunks",
+  "kicker": "Telephony",
+  "accent": 4,
+  "summary": "Carrier and PBX trunks, RTP over the internet, Dynamic Cloud Voice, and the quick-start order.",
+  "lessons": [
+    {
+      "id": "b-what",
+      "title": "BYOC Cloud is your carrier, Genesys\u2019 media",
+      "level": "Core",
+      "minutes": 12,
+      "summary": "You bring the carrier contract. Genesys terminates a SIP trunk on the AWS media tier. Audio is RTP on the internet.",
+      "paras": [
+        "The overview says you create the trunk in Telephony Admin between Genesys Cloud media resources in AWS and a third-party carrier or device. That far end can be another cloud or a box on prem, but it needs a public address and open ports. There is no customer Edge hardware in the pure BYOC Cloud path.",
+        "Because RTP crosses the public internet, the overview tells you to judge latency and loss before you commit. Genesys Cloud Voice is the other choice: Genesys is the carrier, including emergency services on numbers you buy there. Mixing them does not copy emergency data from Genesys Cloud Voice into your BYOC carrier."
+      ],
+      "cites": [
+        {
+          "title": "BYOC Cloud overview",
+          "url": "https://help.genesys.cloud/articles/byoc-cloud-overview/"
+        },
+        {
+          "title": "About BYOC Cloud",
+          "url": "https://help.genesys.cloud/articles/about-byoc-cloud/"
+        },
+        {
+          "title": "Set up emergency services with BYOC",
+          "url": "https://help.genesys.cloud/articles/set-up-emergency-services-with-byoc/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Public SIP and RTP between the carrier and the media tier.",
+        "nodes": [
+          {
+            "id": "c",
+            "label": "Carrier",
+            "kind": "carrier",
+            "x": 16,
+            "y": 40
+          },
+          {
+            "id": "sip",
+            "label": "SIP",
+            "kind": "trunk",
+            "x": 46,
+            "y": 22
+          },
+          {
+            "id": "rtp",
+            "label": "RTP",
+            "kind": "phone",
+            "x": 46,
+            "y": 68
+          },
+          {
+            "id": "m",
+            "label": "Media tier",
+            "kind": "region",
+            "x": 80,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "c",
+            "b": "sip"
+          },
+          {
+            "a": "sip",
+            "b": "m"
+          },
+          {
+            "a": "c",
+            "b": "rtp"
+          },
+          {
+            "a": "rtp",
+            "b": "m"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Decide Cloud versus Genesys as the carrier",
+        "steps": [
+          {
+            "from": "Buyer",
+            "to": "Contract",
+            "title": "Who bills the minutes",
+            "detail": "BYOC means you hold the carrier contract.",
+            "inspect": "GCV means Genesys does"
+          },
+          {
+            "from": "Engineer",
+            "to": "Address",
+            "title": "Public IP",
+            "detail": "The far end must be reachable.",
+            "inspect": "RFC 1918 alone will not do"
+          },
+          {
+            "from": "Engineer",
+            "to": "RTP",
+            "title": "Internet",
+            "detail": "Plan for latency.",
+            "inspect": "SRTP is still RTP"
+          },
+          {
+            "from": "Safety",
+            "to": "Emergency",
+            "title": "Separate",
+            "detail": "GCV emergency data is not handed to the BYOC carrier.",
+            "inspect": "You must tell the carrier"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "BYOC Cloud places the trunk between:",
+          "choices": [
+            "WFM and QM",
+            "A satellite and Home",
+            "The AWS media tier and your carrier or PBX",
+            "Two agents\u2019 browsers only"
+          ],
+          "answer": 2,
+          "why": "The overview describes that path."
+        },
+        {
+          "q": "The far end must have:",
+          "choices": [
+            "A publicly reachable address and open ports",
+            "Only a private address",
+            "An Architect bot",
+            "A CX 4 token"
+          ],
+          "answer": 0,
+          "why": "The overview states both requirements."
+        },
+        {
+          "q": "The media protocol the overview highlights is:",
+          "choices": [
+            "SMTP",
+            "Only SIP with no media",
+            "RTP over the internet",
+            "SCIM"
+          ],
+          "answer": 2,
+          "why": "SIP sets up. RTP carries audio."
+        },
+        {
+          "q": "A pure BYOC Cloud design includes customer Edge hardware?",
+          "choices": [
+            "Only for chat",
+            "Only for surveys",
+            "No",
+            "Yes, always"
+          ],
+          "answer": 2,
+          "why": "The cloud trunk terminates in AWS. Premises Edges are the other product."
+        },
+        {
+          "q": "Genesys Cloud Voice emergency information is shared automatically with a new BYOC carrier?",
+          "choices": [
+            "Only for 988",
+            "No. You inform the carrier yourself.",
+            "Yes",
+            "Only in FedRAMP"
+          ],
+          "answer": 1,
+          "why": "The emergency article is explicit."
+        },
+        {
+          "q": "Latency belongs in the design because:",
+          "choices": [
+            "Latency is a wrap-up code",
+            "Latency is removed by bullseye",
+            "The overview tells you to consider internet quality before you implement",
+            "Latency is illegal"
+          ],
+          "answer": 2,
+          "why": "It is a design input, not a surprise."
+        }
+      ],
+      "cards": [
+        {
+          "front": "You bring",
+          "back": "The carrier contract."
+        },
+        {
+          "front": "Public",
+          "back": "Address and ports."
+        },
+        {
+          "front": "RTP",
+          "back": "Across the internet."
+        },
+        {
+          "front": "Emergency",
+          "back": "Not copied from GCV."
+        }
+      ],
+      "lab": {
+        "title": "Write the BYOC decision",
+        "steps": [
+          "Name the carrier.",
+          "Write the public address you will use in the lab as 192.0.2.10.",
+          "State that 192.0.2.10 is documentation-only.",
+          "State who owns emergency."
+        ],
+        "success": "The decision names a carrier and an emergency owner."
+      },
+      "fault": {
+        "title": "Private address",
+        "symptom": "The trunk never comes in service.",
+        "log": "Far-end address: 10.1.1.20. Path: BYOC Cloud.",
+        "cause": "10.0.0.0/8 is not a public address. The overview requires one.",
+        "fix": "Give the carrier a public address, or use BYOC Premises with an Edge on that network."
+      }
+    },
+    {
+      "id": "b-types",
+      "title": "Carrier trunks and PBX trunks",
+      "level": "Core",
+      "minutes": 12,
+      "summary": "BYOC Carrier and BYOC PBX are the two types. Carrier has subtypes. PBX has one.",
+      "paras": [
+        "The create-trunk article lists BYOC Carrier and BYOC PBX. Carrier subtypes called out there are Generic BYOC Carrier, Genesys Cloud BYOC Verizon, and BYOC WhatsApp Business Calling. PBX has a single subtype. Start from the base settings. Open the advanced sections only when the carrier\u2019s questionnaire says you must.",
+        "WhatsApp as a trunk subtype is not the same object as an inbound message flow. One is telephony signaling for WhatsApp Business Calling. The other is Architect routing for messages. Do not collapse them because the brand name matches."
+      ],
+      "cites": [
+        {
+          "title": "About BYOC Cloud",
+          "url": "https://help.genesys.cloud/articles/about-byoc-cloud/"
+        },
+        {
+          "title": "BYOC Cloud quick start guide",
+          "url": "https://help.genesys.cloud/articles/byoc-cloud-configuration-overview/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Pick type and subtype before the advanced panels.",
+        "nodes": [
+          {
+            "id": "t",
+            "label": "Type",
+            "kind": "trunk",
+            "x": 20,
+            "y": 40
+          },
+          {
+            "id": "g",
+            "label": "Generic",
+            "kind": "carrier",
+            "x": 50,
+            "y": 20
+          },
+          {
+            "id": "v",
+            "label": "Verizon",
+            "kind": "carrier",
+            "x": 50,
+            "y": 45
+          },
+          {
+            "id": "w",
+            "label": "WhatsApp calling",
+            "kind": "phone",
+            "x": 50,
+            "y": 70
+          },
+          {
+            "id": "p",
+            "label": "PBX",
+            "kind": "edge",
+            "x": 80,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "t",
+            "b": "g"
+          },
+          {
+            "a": "t",
+            "b": "v"
+          },
+          {
+            "a": "t",
+            "b": "w"
+          },
+          {
+            "a": "t",
+            "b": "p"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Choose the subtype from the carrier, not from habit",
+        "steps": [
+          {
+            "from": "Admin",
+            "to": "Trunks",
+            "title": "External, Create",
+            "detail": "The article\u2019s menu path is Digital and Telephony, Telephony, Trunks.",
+            "inspect": "External Trunks tab"
+          },
+          {
+            "from": "Admin",
+            "to": "Type",
+            "title": "Carrier or PBX",
+            "detail": "Carrier faces a provider. PBX faces your switch.",
+            "inspect": "CUCM would be a PBX conversation"
+          },
+          {
+            "from": "Admin",
+            "to": "Subtype",
+            "title": "Generic unless told",
+            "detail": "Verizon and WhatsApp calling are specific.",
+            "inspect": "Do not pick Verizon for a different carrier"
+          },
+          {
+            "from": "Admin",
+            "to": "Advanced",
+            "title": "Only if required",
+            "detail": "Base settings are the recommendation.",
+            "inspect": "The questionnaire drives exceptions"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "The two BYOC Cloud trunk types are:",
+          "choices": [
+            "UDP and TCP only",
+            "CX 1 and CX 4",
+            "Home and All",
+            "BYOC Carrier and BYOC PBX"
+          ],
+          "answer": 3,
+          "why": "The create article names both."
+        },
+        {
+          "q": "Generic BYOC Carrier is:",
+          "choices": [
+            "A premises Edge",
+            "A bot flow",
+            "The subtype for most carrier configurations",
+            "A Verizon-only mode"
+          ],
+          "answer": 2,
+          "why": "The article says the generic subtype covers most carriers."
+        },
+        {
+          "q": "WhatsApp Business Calling as a trunk subtype is:",
+          "choices": [
+            "A wrap-up code",
+            "A carrier subtype, not an Architect message flow",
+            "The inbound message tab",
+            "A WFM activity"
+          ],
+          "answer": 1,
+          "why": "Keep the telephony object and the flow type apart."
+        },
+        {
+          "q": "BYOC PBX subtypes documented in that article:",
+          "choices": [
+            "Fifty",
+            "One",
+            "Three",
+            "Five"
+          ],
+          "answer": 1,
+          "why": "The article says PBX has a single subtype."
+        },
+        {
+          "q": "Advanced trunk settings should be opened:",
+          "choices": [
+            "Always, first",
+            "Never, they are decorative",
+            "Only after a region move",
+            "When the carrier requirements say the base settings are not enough"
+          ],
+          "answer": 3,
+          "why": "The article recommends the base settings."
+        },
+        {
+          "q": "A CUCM you still operate is most like:",
+          "choices": [
+            "A PBX reached by a BYOC PBX trunk",
+            "A Genesys core region",
+            "A bullseye ring",
+            "An OAuth grant"
+          ],
+          "answer": 0,
+          "why": "The PBX type is the documented fit for your own switch."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Two types",
+          "back": "Carrier and PBX."
+        },
+        {
+          "front": "Three carrier subtypes",
+          "back": "Generic, Verizon, WhatsApp Business Calling."
+        },
+        {
+          "front": "Base first",
+          "back": "Advanced only when required."
+        },
+        {
+          "front": "Message flow",
+          "back": "A different object from the WhatsApp calling trunk."
+        }
+      ],
+      "lab": {
+        "title": "Pick a type for three neighbors",
+        "steps": [
+          "A generic SIP carrier.",
+          "Verizon.",
+          "A CUCM cluster you still own.",
+          "Say which one is not an Architect flow."
+        ],
+        "success": "Each neighbor has a type and a subtype."
+      },
+      "fault": {
+        "title": "Verizon subtype on the wrong carrier",
+        "symptom": "Outbound calls fail the carrier\u2019s specific headers.",
+        "log": "Subtype: Genesys Cloud BYOC Verizon. Contract: a different carrier.",
+        "cause": "The subtype adds Verizon-specific header work the article mentions.",
+        "fix": "Recreate the trunk as Generic BYOC Carrier unless this contract is Verizon."
+      }
+    },
+    {
+      "id": "b-order",
+      "title": "The quick-start order",
+      "level": "Core",
+      "minutes": 12,
+      "summary": "Location, trunk, outbound route, number plan. The product on the subscription comes before all of that.",
+      "paras": [
+        "The quick start\u2019s order is the lab\u2019s order. Confirm the org and that BYOC Cloud is on the subscription. Work the carrier requirements. Add a physical location. Create the trunk. Assign it on an outbound route. Genesys creates default outbound routes and still requires you to attach the trunk. Add or adjust number plans for the classifications you dial.",
+        "The location is also the emergency story. Skipping it to \u201ctest the SIP first\u201d leaves 911 with nowhere honest to point. New trunks should be Dynamic Cloud Voice from the start so you do not migrate them next quarter."
+      ],
+      "cites": [
+        {
+          "title": "BYOC Cloud quick start guide",
+          "url": "https://help.genesys.cloud/articles/byoc-cloud-configuration-overview/"
+        },
+        {
+          "title": "Dynamic Cloud Voice platform overview",
+          "url": "https://help.genesys.cloud/articles/dynamic-cloud-voice-platform-overview/"
+        },
+        {
+          "title": "Number plan information",
+          "url": "https://help.genesys.cloud/articles/number-plan-information/"
+        },
+        {
+          "title": "Set up emergency services with BYOC",
+          "url": "https://help.genesys.cloud/articles/set-up-emergency-services-with-byoc/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "The quick start is a sequence, not a pile of screens.",
+        "nodes": [
+          {
+            "id": "l",
+            "label": "Location",
+            "kind": "phone",
+            "x": 14,
+            "y": 40
+          },
+          {
+            "id": "t",
+            "label": "Trunk",
+            "kind": "trunk",
+            "x": 38,
+            "y": 40
+          },
+          {
+            "id": "r",
+            "label": "Route",
+            "kind": "queue",
+            "x": 62,
+            "y": 40
+          },
+          {
+            "id": "n",
+            "label": "Plan",
+            "kind": "architect",
+            "x": 84,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "l",
+            "b": "t"
+          },
+          {
+            "a": "t",
+            "b": "r"
+          },
+          {
+            "a": "r",
+            "b": "n"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Turn up in order",
+        "steps": [
+          {
+            "from": "Admin",
+            "to": "Subscription",
+            "title": "BYOC Cloud present",
+            "detail": "The guide assumes it.",
+            "inspect": "Do not trunk a voice-less org"
+          },
+          {
+            "from": "Admin",
+            "to": "Location",
+            "title": "Physical site",
+            "detail": "Required to enable services.",
+            "inspect": "Emergency uses it"
+          },
+          {
+            "from": "Admin",
+            "to": "Trunk",
+            "title": "DCVP",
+            "detail": "New trunks use Dynamic Cloud Voice.",
+            "inspect": "Test trunk before production"
+          },
+          {
+            "from": "Admin",
+            "to": "Route",
+            "title": "Assign",
+            "detail": "Default routes exist and are empty until you assign.",
+            "inspect": "Then number plans"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Default outbound routes still need:",
+          "choices": [
+            "A trunk assignment",
+            "Nothing",
+            "A bot",
+            "A token"
+          ],
+          "answer": 0,
+          "why": "The quick start says you must assign the trunk."
+        },
+        {
+          "q": "The location step is skippable for a lab SIP test?",
+          "choices": [
+            "Only in US West",
+            "Only for email",
+            "No. The guide places it before the trunk, and emergency depends on it.",
+            "Yes"
+          ],
+          "answer": 2,
+          "why": "Do not skip it."
+        },
+        {
+          "q": "New trunks should be created on:",
+          "choices": [
+            "The legacy platform",
+            "An Edge only",
+            "A common module",
+            "Dynamic Cloud Voice"
+          ],
+          "answer": 3,
+          "why": "The quick start and the DCVP article agree."
+        },
+        {
+          "q": "Number plans come:",
+          "choices": [
+            "After you can classify what people dial",
+            "Before the org exists",
+            "Instead of a trunk",
+            "Only for 988"
+          ],
+          "answer": 0,
+          "why": "The quick start includes them in the telephony build."
+        },
+        {
+          "q": "Carrier requirements are:",
+          "choices": [
+            "A step you do with the carrier, documented beside the quick start",
+            "Optional folklore",
+            "An RFC only",
+            "A WFM forecast"
+          ],
+          "answer": 0,
+          "why": "The guide points at the carrier requirements article."
+        },
+        {
+          "q": "A trunk with no route assignment shows up as:",
+          "choices": [
+            "A deleted Home division",
+            "A predictive routing win",
+            "Inbound may work while outbound finds nothing",
+            "A region outage"
+          ],
+          "answer": 2,
+          "why": "That split is the classic missed step."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Order",
+          "back": "Location, trunk, route, plans."
+        },
+        {
+          "front": "DCVP",
+          "back": "For new trunks."
+        },
+        {
+          "front": "Assign",
+          "back": "Default routes are not finished."
+        },
+        {
+          "front": "Location",
+          "back": "Not optional."
+        }
+      ],
+      "lab": {
+        "title": "Write the four steps",
+        "steps": [
+          "Location.",
+          "Trunk type.",
+          "Which route gets the trunk.",
+          "Which number-plan classification you care about."
+        ],
+        "success": "The sequence matches the quick start."
+      },
+      "fault": {
+        "title": "Route left empty",
+        "symptom": "Agents dial out and hear reorder. Inbound DIDs ring.",
+        "log": "Outbound route trunk: unassigned. External trunk: in service.",
+        "cause": "The quick start\u2019s assignment step was skipped.",
+        "fix": "Assign the trunk on the outbound route and retry."
+      }
+    },
+    {
+      "id": "b-dcvp",
+      "title": "Dynamic Cloud Voice is the current platform",
+      "level": "Advanced",
+      "minutes": 13,
+      "summary": "New trunks start there. Moving an old trunk means allow lists, Amazon root CAs, TLS ciphers, and a toggle.",
+      "paras": [
+        "The DCVP article says to test a new trunk before you move production. Migration is not only a checkbox. You add the egress IP ranges to the carrier or SBC allow list, import Amazon root CAs so the far end trusts the BYOC endpoints, and confirm the TLS cipher list. Then you enable the high-capacity outbound platform on the trunk, and you point the far end\u2019s SIP targets at the new ingress addresses.",
+        "The article warns that the Genesys-side toggle is the easy half. The remote SIP endpoint is the hard half. Change the allow list before you flip production, and keep a tested trunk beside the old one until inbound and outbound both complete."
+      ],
+      "cites": [
+        {
+          "title": "Dynamic Cloud Voice platform overview",
+          "url": "https://help.genesys.cloud/articles/dynamic-cloud-voice-platform-overview/"
+        },
+        {
+          "title": "BYOC Cloud quick start guide",
+          "url": "https://help.genesys.cloud/articles/byoc-cloud-configuration-overview/"
+        }
+      ],
+      "uncertainty": "Copy the IP ranges and cipher names from the current DCVP article. They are operational data and this lab does not duplicate them, because a stale copy would be worse than a link.",
+      "figure": {
+        "caption": "Allow list and certificates move with the trunk, not after the outage.",
+        "nodes": [
+          {
+            "id": "old",
+            "label": "Old trunk",
+            "kind": "trunk",
+            "x": 18,
+            "y": 40
+          },
+          {
+            "id": "acl",
+            "label": "ACL and CA",
+            "kind": "edge",
+            "x": 48,
+            "y": 22
+          },
+          {
+            "id": "new",
+            "label": "DCVP",
+            "kind": "region",
+            "x": 78,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "old",
+            "b": "acl"
+          },
+          {
+            "a": "acl",
+            "b": "new"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Migrate without a surprise INVITE",
+        "steps": [
+          {
+            "from": "Engineer",
+            "to": "Test trunk",
+            "title": "New, not production",
+            "detail": "Prove the carrier path.",
+            "inspect": "The article prefers this"
+          },
+          {
+            "from": "Carrier",
+            "to": "ACL",
+            "title": "Add egress ranges",
+            "detail": "So BYOC can send.",
+            "inspect": "Do this before the flip"
+          },
+          {
+            "from": "Carrier",
+            "to": "Trust",
+            "title": "Amazon root CAs",
+            "detail": "TLS fails closed without them.",
+            "inspect": "Cipher list too"
+          },
+          {
+            "from": "Admin",
+            "to": "Toggle",
+            "title": "High capacity outbound",
+            "detail": "Genesys starts sending from the new egress.",
+            "inspect": "Then update ingress targets"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "The article\u2019s preferred way to learn DCVP is:",
+          "choices": [
+            "Deleting the location",
+            "Turning off TLS",
+            "A new test trunk, not your first production flip",
+            "Editing the live trunk at noon"
+          ],
+          "answer": 2,
+          "why": "Test, then migrate."
+        },
+        {
+          "q": "Amazon root CAs are imported so that:",
+          "choices": [
+            "The remote SIP endpoint trusts the BYOC endpoints",
+            "Agents trust the CRM",
+            "WFM trusts the forecast",
+            "Browsers trust AppFoundry"
+          ],
+          "answer": 0,
+          "why": "The article lists that trust step."
+        },
+        {
+          "q": "The allow list change is:",
+          "choices": [
+            "Allow only 192.0.2.0/24",
+            "Add the egress IP ranges on the carrier or SBC",
+            "Remove all UDP",
+            "Block the login host"
+          ],
+          "answer": 1,
+          "why": "192.0.2.0/24 is documentation space, not the Genesys egress list. Use the article\u2019s addresses."
+        },
+        {
+          "q": "The Genesys-side outbound control the article names is:",
+          "choices": [
+            "Publish the in-queue flow",
+            "Set bullseye to 2 seconds",
+            "Delete the OAuth client",
+            "Enable high capacity outbound platform"
+          ],
+          "answer": 3,
+          "why": "That toggle starts the new egress."
+        },
+        {
+          "q": "Ingress addresses must be updated on:",
+          "choices": [
+            "The wrap-up code",
+            "The division",
+            "The remote SIP endpoint",
+            "The agent\u2019s headset"
+          ],
+          "answer": 2,
+          "why": "Inbound will not arrive at the new platform otherwise."
+        },
+        {
+          "q": "Doing the toggle before the allow list risks:",
+          "choices": [
+            "A deleted Home division",
+            "Automatic GCV emergency",
+            "Outbound INVITEs that the carrier drops",
+            "Free tokens"
+          ],
+          "answer": 2,
+          "why": "The far end has to permit the new sources."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Test first",
+          "back": "A new trunk."
+        },
+        {
+          "front": "ACL",
+          "back": "Egress ranges."
+        },
+        {
+          "front": "Trust",
+          "back": "Amazon root CAs and ciphers."
+        },
+        {
+          "front": "Then toggle",
+          "back": "High capacity outbound, then ingress targets."
+        }
+      ],
+      "lab": {
+        "title": "Order a migration",
+        "steps": [
+          "Write test trunk first.",
+          "Write ACL and CA before the toggle.",
+          "Write the ingress update.",
+          "Say why 192.0.2.0/24 is not the allow list."
+        ],
+        "success": "The order matches the article, and the documentation range is not mistaken for Genesys\u2019 IPs."
+      },
+      "fault": {
+        "title": "TLS failure after the flip",
+        "symptom": "OPTIONS and INVITEs fail the handshake.",
+        "log": "Carrier log: unknown CA. Amazon roots not imported.",
+        "cause": "The trust step was skipped.",
+        "fix": "Import the Amazon root CAs from the DCVP article and retry the test trunk before production."
+      }
+    },
+    {
+      "id": "b-plans",
+      "title": "Number plans classify what people dial",
+      "level": "Core",
+      "minutes": 13,
+      "summary": "A site can hold 200 plans. DIDs do not need one for basic routing. Emergency, extension, and 988 already exist as defaults.",
+      "paras": [
+        "Default classifications in the number-plan article include Emergency (911 and 933 in the United States and Canada, 142 in Switzerland), Extension for 4 to 6 digits, National, International, a regex Network plan, and Suicide Prevention, which routes 988 to +18002738255. Match types include digit length, E.164 list, inter-country, intra-country, number list, and regular expression. Intra-country and inter-country normalize to E.164. Digit length and E.164 lists do not.",
+        "You can normalize more than once as a number passes through plans. The product includes a call simulator. Use it. A custom classification is just a name you invent for a group of numbers. The lab\u2019s number desk imitates these rules. It is not that simulator."
+      ],
+      "cites": [
+        {
+          "title": "Number plan information",
+          "url": "https://help.genesys.cloud/articles/number-plan-information/"
+        },
+        {
+          "title": "Set up emergency services with BYOC",
+          "url": "https://help.genesys.cloud/articles/set-up-emergency-services-with-byoc/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "A dial string hits a classification, then a route.",
+        "nodes": [
+          {
+            "id": "d",
+            "label": "Dial",
+            "kind": "phone",
+            "x": 14,
+            "y": 40
+          },
+          {
+            "id": "p",
+            "label": "Plan",
+            "kind": "architect",
+            "x": 46,
+            "y": 40
+          },
+          {
+            "id": "r",
+            "label": "Route",
+            "kind": "trunk",
+            "x": 78,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "d",
+            "b": "p"
+          },
+          {
+            "a": "p",
+            "b": "r"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Classify before you route",
+        "steps": [
+          {
+            "from": "Caller",
+            "to": "Site",
+            "title": "Dial 911",
+            "detail": "Emergency classification.",
+            "inspect": "Needs an emergency route"
+          },
+          {
+            "from": "Caller",
+            "to": "Site",
+            "title": "Dial 4501",
+            "detail": "Extension, 4 to 6 digits.",
+            "inspect": "No normalization"
+          },
+          {
+            "from": "Caller",
+            "to": "Site",
+            "title": "Dial a national number",
+            "detail": "Intra-country can add the country code.",
+            "inspect": "E.164 out"
+          },
+          {
+            "from": "Admin",
+            "to": "Simulator",
+            "title": "Test",
+            "detail": "The article says the product has one.",
+            "inspect": "Use it before the carrier test"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Custom number plans per site are capped at:",
+          "choices": [
+            "5",
+            "20",
+            "5000",
+            "200"
+          ],
+          "answer": 3,
+          "why": "The article states 200."
+        },
+        {
+          "q": "Basic DID routing requires a custom number plan?",
+          "choices": [
+            "No. DID routing is inherent.",
+            "Yes",
+            "Only for toll-free",
+            "Only in BYOC Premises"
+          ],
+          "answer": 0,
+          "why": "The article says plans are not required for that basic case."
+        },
+        {
+          "q": "988 on the default Suicide Prevention plan routes to:",
+          "choices": [
+            "A queue named Help",
+            "The Home division",
+            "+18002738255",
+            "911"
+          ],
+          "answer": 2,
+          "why": "That destination is in the article. Confirm it before you rely on it."
+        },
+        {
+          "q": "Extension match is:",
+          "choices": [
+            "A bullseye ring",
+            "An OAuth scope",
+            "Digit length, 4 to 6 digits, no normalization",
+            "Always E.164"
+          ],
+          "answer": 2,
+          "why": "The article describes that match type."
+        },
+        {
+          "q": "Intra-country normalization:",
+          "choices": [
+            "Strips the plus",
+            "Deletes the trunk",
+            "Converts to an email",
+            "Adds the site\u2019s country code and produces E.164"
+          ],
+          "answer": 3,
+          "why": "Inter-country and intra-country both normalize."
+        },
+        {
+          "q": "An E.164 number list entry:",
+          "choices": [
+            "Is always rewritten",
+            "Keeps the plus and is not normalized",
+            "Must be 4 digits",
+            "Must be 911"
+          ],
+          "answer": 1,
+          "why": "The article says no normalization for that match type."
+        }
+      ],
+      "cards": [
+        {
+          "front": "200",
+          "back": "Plans per site."
+        },
+        {
+          "front": "DID",
+          "back": "No custom plan required for basic routing."
+        },
+        {
+          "front": "988",
+          "back": "Default plan to +18002738255. Re-read before you depend on it."
+        },
+        {
+          "front": "Normalize",
+          "back": "Intra-country and inter-country. Not digit length."
+        }
+      ],
+      "lab": {
+        "title": "Classify four strings",
+        "steps": [
+          "911.",
+          "4501.",
+          "+15555550100.",
+          "A 10-digit national number.",
+          "Say which ones normalize."
+        ],
+        "success": "Each string has a classification and a yes or no on normalization."
+      },
+      "fault": {
+        "title": "988 rewritten by a custom plan",
+        "symptom": "A custom regex plan matches 988 and sends it to a queue.",
+        "log": "Classification order put the custom plan ahead of Suicide Prevention.",
+        "cause": "The default crisis route never runs.",
+        "fix": "Remove the custom match and test 988 in the product call simulator."
+      }
+    },
+    {
+      "id": "b-monitor",
+      "title": "Watch the trunk, not only the flow",
+      "level": "Core",
+      "minutes": 11,
+      "summary": "When audio fails and Architect Insights still shows runs, the trunk is the next object.",
+      "paras": [
+        "Monitor cloud media resources is the documented page for watching the cloud media your trunks use. A flow that transfers to ACD can be healthy while RTP is not. SIP responses tell you whether signaling completed. They do not tell you that the caller can hear the agent.",
+        "Pair that page with the carrier\u2019s view of the same call. If Genesys shows the trunk up and the carrier shows the INVITE rejected, you are looking at policy on the far end: ACL, TLS trust, or a number the carrier will not route. The DCVP migration exists because those far-end checks are easy to miss."
+      ],
+      "cites": [
+        {
+          "title": "Monitor cloud media resources",
+          "url": "https://help.genesys.cloud/articles/monitor-cloud-media-resources/"
+        },
+        {
+          "title": "BYOC Cloud overview",
+          "url": "https://help.genesys.cloud/articles/byoc-cloud-overview/"
+        },
+        {
+          "title": "Dynamic Cloud Voice platform overview",
+          "url": "https://help.genesys.cloud/articles/dynamic-cloud-voice-platform-overview/"
+        },
+        {
+          "title": "RFC 3261 SIP",
+          "url": "https://www.rfc-editor.org/rfc/rfc3261"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Signaling can succeed while media is the thing you monitor.",
+        "nodes": [
+          {
+            "id": "sip",
+            "label": "SIP 200",
+            "kind": "trunk",
+            "x": 22,
+            "y": 28
+          },
+          {
+            "id": "mon",
+            "label": "Media monitor",
+            "kind": "region",
+            "x": 55,
+            "y": 28
+          },
+          {
+            "id": "rtp",
+            "label": "RTP",
+            "kind": "phone",
+            "x": 55,
+            "y": 70
+          }
+        ],
+        "edges": [
+          {
+            "a": "sip",
+            "b": "mon"
+          },
+          {
+            "a": "mon",
+            "b": "rtp"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Split a failure into signaling or media",
+        "steps": [
+          {
+            "from": "Caller",
+            "to": "Trunk",
+            "title": "INVITE",
+            "detail": "Look for a final response.",
+            "inspect": "RFC 3261"
+          },
+          {
+            "from": "Trunk",
+            "to": "Monitor",
+            "title": "Cloud media",
+            "detail": "The documented Genesys view.",
+            "inspect": "Not a laptop capture alone"
+          },
+          {
+            "from": "Carrier",
+            "to": "ACL",
+            "title": "Drop or accept",
+            "detail": "Far-end policy.",
+            "inspect": "DCVP ranges if you migrated"
+          },
+          {
+            "from": "Agent",
+            "to": "Ears",
+            "title": "One-way",
+            "detail": "Signaling is not the proof.",
+            "inspect": "RTP is"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "A 200 OK proves the caller can hear the agent?",
+          "choices": [
+            "No. It proves the SIP dialog, not RTP.",
+            "Yes",
+            "Only with bullseye",
+            "Only on CX 4"
+          ],
+          "answer": 0,
+          "why": "Media is a separate protocol."
+        },
+        {
+          "q": "The documented Genesys page for cloud media is:",
+          "choices": [
+            "The fair use table",
+            "Flow Insights only",
+            "Monitor cloud media resources",
+            "The certification catalog"
+          ],
+          "answer": 2,
+          "why": "Use that page plus the carrier."
+        },
+        {
+          "q": "Flow Insights showing executions plus one-way audio means:",
+          "choices": [
+            "Delete the queue",
+            "Change the quiz",
+            "Look at media, not at another publish",
+            "Rewrite the prompt"
+          ],
+          "answer": 2,
+          "why": "The flow ran. The audio path did not."
+        },
+        {
+          "q": "After a DCVP move, a carrier reject is often:",
+          "choices": [
+            "ACL, trust, or ingress target",
+            "A wrap-up code",
+            "A division rename",
+            "A 7 day idle rule"
+          ],
+          "answer": 0,
+          "why": "Those are the article\u2019s migration steps."
+        },
+        {
+          "q": "RFC 3261 is the citation for:",
+          "choices": [
+            "Token counts",
+            "The signaling dialog",
+            "The monitoring UI",
+            "Utilization defaults"
+          ],
+          "answer": 1,
+          "why": "SIP, not the Genesys page."
+        },
+        {
+          "q": "Documentation address 192.0.2.10 in a lab trace is:",
+          "choices": [
+            "The US East API",
+            "A queue id",
+            "A placeholder from RFC 5737, not your carrier",
+            "A Genesys anycast"
+          ],
+          "answer": 2,
+          "why": "Do not allow-list it as if it were production."
+        }
+      ],
+      "cards": [
+        {
+          "front": "200 OK",
+          "back": "Dialog, not audio."
+        },
+        {
+          "front": "Monitor page",
+          "back": "Cloud media."
+        },
+        {
+          "front": "Far end",
+          "back": "ACL, CA, ingress."
+        },
+        {
+          "front": "Insights",
+          "back": "The flow can be innocent."
+        }
+      ],
+      "lab": {
+        "title": "Triage one one-way call",
+        "steps": [
+          "Say what SIP proved.",
+          "Name the Genesys page you would open.",
+          "Name the carrier check.",
+          "Say what you would not rewrite first."
+        ],
+        "success": "The first rewrite is not the Architect flow."
+      },
+      "fault": {
+        "title": "Flow blamed for RTP",
+        "symptom": "Three prompt edits did not restore audio.",
+        "log": "SIP: 200 OK. Carrier capture: RTP toward 203.0.113.10 blocked.",
+        "cause": "203.0.113.0/24 in this lab is documentation space standing in for a discarded media range.",
+        "fix": "Open the real media path with the carrier. Stop editing the prompt."
+      }
+    },
+    {
+      "id": "b-gcv",
+      "title": "Genesys Cloud Voice is the other door",
+      "level": "Core",
+      "minutes": 12,
+      "summary": "If Genesys is the carrier, you buy numbers in a region that offers voice, and emergency is part of that product story rather than your trunk.",
+      "paras": [
+        "The Voice regions article lists where Genesys Cloud Voice operates and where it does not. Country tables restrict DID, toll-free, domestic, and international calling. FedRAMP is US-only for those services. The European Sovereign region does not extend its sovereignty promise to calls that leave the boundary.",
+        "Choosing GCV does not delete a BYOC design you already have. It does mean you must not assume the GCV emergency record follows a BYOC number. The overview\u2019s CX 1 voice features, including campaigns and callbacks, are available on either carrier model. The carrier model changes who you call when a number will not complete."
+      ],
+      "cites": [
+        {
+          "title": "AWS regions for Genesys Cloud Voice",
+          "url": "https://help.genesys.cloud/articles/aws-regions-genesys-cloud-voice/"
+        },
+        {
+          "title": "Set up emergency services with BYOC",
+          "url": "https://help.genesys.cloud/articles/set-up-emergency-services-with-byoc/"
+        },
+        {
+          "title": "Overview of Genesys Cloud",
+          "url": "https://help.mypurecloud.com/articles/overview-of-genesys-cloud/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Two carrier models, one org, different emergency owners.",
+        "nodes": [
+          {
+            "id": "gcv",
+            "label": "GCV",
+            "kind": "region",
+            "x": 22,
+            "y": 30
+          },
+          {
+            "id": "org",
+            "label": "Org",
+            "kind": "queue",
+            "x": 50,
+            "y": 30
+          },
+          {
+            "id": "byoc",
+            "label": "BYOC",
+            "kind": "trunk",
+            "x": 78,
+            "y": 30
+          }
+        ],
+        "edges": [
+          {
+            "a": "gcv",
+            "b": "org"
+          },
+          {
+            "a": "byoc",
+            "b": "org"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Pick a model per number, not per slogan",
+        "steps": [
+          {
+            "from": "Buyer",
+            "to": "Region",
+            "title": "Voice offered?",
+            "detail": "Read the Voice region table.",
+            "inspect": "Country row too"
+          },
+          {
+            "from": "Buyer",
+            "to": "GCV",
+            "title": "Genesys is the carrier",
+            "detail": "Number purchase and emergency follow that product.",
+            "inspect": "Not a BYOC trunk"
+          },
+          {
+            "from": "Buyer",
+            "to": "BYOC",
+            "title": "You are the carrier\u2019s customer",
+            "detail": "You tell them the location.",
+            "inspect": "Genesys warning applies"
+          },
+          {
+            "from": "Admin",
+            "to": "Mix",
+            "title": "Both can exist",
+            "detail": "Do not copy emergency data across.",
+            "inspect": "Test each number"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Genesys Cloud Voice availability is documented in:",
+          "choices": [
+            "AppFoundry",
+            "Its own regions article, separate from the org deployment list",
+            "RFC 3261",
+            "The queue article only"
+          ],
+          "answer": 1,
+          "why": "Use the Voice article."
+        },
+        {
+          "q": "FedRAMP voice services for other countries are:",
+          "choices": [
+            "The same as Ireland",
+            "Unavailable, per the restrictions article",
+            "Worldwide",
+            "EU only"
+          ],
+          "answer": 1,
+          "why": "US services are the FedRAMP voice scope described there."
+        },
+        {
+          "q": "A BYOC number inherits GCV emergency registration automatically?",
+          "choices": [
+            "Only on CX 4",
+            "No",
+            "Yes",
+            "Only for 933"
+          ],
+          "answer": 1,
+          "why": "The emergency article says the GCV information is not provided to the BYOC carrier."
+        },
+        {
+          "q": "Campaigns and callbacks in the CX 1 description require BYOC?",
+          "choices": [
+            "They require predictive routing",
+            "No. They are voice features. The carrier model is a separate choice.",
+            "Yes",
+            "They require a premises Edge"
+          ],
+          "answer": 1,
+          "why": "Do not tie the feature list to one trunk type."
+        },
+        {
+          "q": "European Sovereign calls outside the boundary:",
+          "choices": [
+            "Become free",
+            "Use bullseye",
+            "Are not covered by the ESR sovereignty commitment",
+            "Are blocked by RFC"
+          ],
+          "answer": 2,
+          "why": "The restrictions article says so."
+        },
+        {
+          "q": "The right person to open a ticket with when a BYOC number fails is:",
+          "choices": [
+            "Your carrier, with Genesys if the trunk itself is down",
+            "Only the WFM team",
+            "Only the certification vendor",
+            "Nobody, it is RTP"
+          ],
+          "answer": 0,
+          "why": "You hold that contract."
+        }
+      ],
+      "cards": [
+        {
+          "front": "GCV",
+          "back": "Genesys is the carrier. Read the region and country tables."
+        },
+        {
+          "front": "BYOC",
+          "back": "You are the carrier\u2019s customer."
+        },
+        {
+          "front": "Emergency",
+          "back": "Does not cross over by itself."
+        },
+        {
+          "front": "Features",
+          "back": "CX voice features are not the same decision as the trunk."
+        }
+      ],
+      "lab": {
+        "title": "Choose a model for two numbers",
+        "steps": [
+          "A US DID you want Genesys to provide.",
+          "A carrier contract you must keep.",
+          "Say who owns emergency for each.",
+          "Name the article you would open for country coverage."
+        ],
+        "success": "Each number has an owner."
+      },
+      "fault": {
+        "title": "Sovereign surprise",
+        "symptom": "A number outside the ESR boundary was sold as fully sovereign.",
+        "log": "Destination country: outside the ESR list. Processing: non-EU carrier, per the restrictions article.",
+        "cause": "The boundary was not read.",
+        "fix": "Stop the claim, read the country table, and redesign the coverage."
+      }
+    }
+  ]
+}

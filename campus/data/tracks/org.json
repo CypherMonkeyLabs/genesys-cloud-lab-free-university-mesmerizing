@@ -1,0 +1,1516 @@
+{
+  "id": "org",
+  "title": "Organization and licensing",
+  "kicker": "Admin",
+  "accent": 2,
+  "summary": "Regions, roles, divisions, named and concurrent licenses, packages, and fair use.",
+  "lessons": [
+    {
+      "id": "o-place",
+      "title": "Place the organization in a core region",
+      "level": "Core",
+      "minutes": 12,
+      "summary": "You do not move an org between regions as a setting. You create it in a core region and live with that login host.",
+      "paras": [
+        "The regions article is explicit: the organization is deployed in a core region chosen from its location, and users sign in on that region\u2019s URL. Satellite regions never become that home. If a runbook says \u201cpoint the org at the satellite closest to the agents,\u201d it has mixed media design with org identity.",
+        "Genesys Cloud Voice is not available in every core region, and country coverage inside a region is restricted. The FedRAMP region\u2019s voice article limits non-US country services. The European Sovereign region has its own boundary rules for where voice may be processed. Read those pages before you promise a number in a country."
+      ],
+      "cites": [
+        {
+          "title": "AWS regions for Genesys Cloud",
+          "url": "https://help.genesys.cloud/articles/aws-regions-for-genesys-cloud-deployment/"
+        },
+        {
+          "title": "AWS regions for Genesys Cloud Voice",
+          "url": "https://help.genesys.cloud/articles/aws-regions-genesys-cloud-voice/"
+        }
+      ],
+      "uncertainty": "The Voice article also lists planned or limited regions such as Mexico Central and the European Sovereign region. Treat \u201ccoming\u201d and \u201climited\u201d labels on that page as current only until you reload it.",
+      "figure": {
+        "caption": "Identity stays in the core. Media may use a satellite.",
+        "nodes": [
+          {
+            "id": "login",
+            "label": "Login",
+            "kind": "region",
+            "x": 20,
+            "y": 30
+          },
+          {
+            "id": "org",
+            "label": "Org data",
+            "kind": "region",
+            "x": 48,
+            "y": 30
+          },
+          {
+            "id": "media",
+            "label": "Satellite",
+            "kind": "trunk",
+            "x": 78,
+            "y": 60
+          }
+        ],
+        "edges": [
+          {
+            "a": "login",
+            "b": "org"
+          },
+          {
+            "a": "org",
+            "b": "media"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Separate org home from media home",
+        "steps": [
+          {
+            "from": "Planner",
+            "to": "Regions",
+            "title": "Pick core",
+            "detail": "The org is created in one core.",
+            "inspect": "Login URL is fixed to that row"
+          },
+          {
+            "from": "Planner",
+            "to": "GCV list",
+            "title": "Check voice",
+            "detail": "Voice is only in some regions.",
+            "inspect": "Country table is separate"
+          },
+          {
+            "from": "Engineer",
+            "to": "Satellite",
+            "title": "Media only",
+            "detail": "Use it to shorten audio, not to rehome the org.",
+            "inspect": "Recordings can sit there"
+          },
+          {
+            "from": "Security",
+            "to": "FedRAMP",
+            "title": "Different cloud",
+            "detail": "use2.us-gov-pure.cloud is not the commercial host.",
+            "inspect": "Do not reuse a commercial token"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "What happens if you need the org in another core region?",
+          "choices": [
+            "Publish the in-queue flow",
+            "You are outside a simple setting change. The article describes creation in one core.",
+            "Toggle satellite to core",
+            "Rename the Home division"
+          ],
+          "answer": 1,
+          "why": "Deployment region is chosen when the org is created."
+        },
+        {
+          "q": "A satellite region can store which of these, per the regions article?",
+          "choices": [
+            "Media and recordings for Global Media Fabric",
+            "The organization\u2019s only login",
+            "OAuth client secrets as the org home",
+            "WFM schedules as the org home"
+          ],
+          "answer": 0,
+          "why": "Satellites are media locations."
+        },
+        {
+          "q": "FedRAMP voice coverage in the Voice article is limited how?",
+          "choices": [
+            "US numbers and US calling. Other countries are unavailable in that region.",
+            "Worldwide",
+            "EU only",
+            "No voice at all"
+          ],
+          "answer": 0,
+          "why": "The Voice restrictions article says other countries are unavailable in FedRAMP."
+        },
+        {
+          "q": "Which host is the commercial US East login?",
+          "choices": [
+            "login.usw2.pure.cloud",
+            "appfoundry.genesys.com",
+            "login.mypurecloud.com",
+            "login.use2.us-gov-pure.cloud"
+          ],
+          "answer": 2,
+          "why": "That pairing is in the regions table."
+        },
+        {
+          "q": "European Sovereign voice processing outside the ESR boundary means:",
+          "choices": [
+            "They are free",
+            "Those calls are not covered by the ESR data-sovereignty commitment",
+            "They are blocked",
+            "They become BYOC automatically"
+          ],
+          "answer": 1,
+          "why": "The Voice restrictions article says out-of-boundary calls use non-EU handling."
+        },
+        {
+          "q": "Global Media Fabric is configured from which object?",
+          "choices": [
+            "The evaluation form",
+            "The fair use token",
+            "The site",
+            "The OAuth client"
+          ],
+          "answer": 2,
+          "why": "The regions article points at site configuration for Global Media Fabric."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Org home",
+          "back": "One core region and its login URL."
+        },
+        {
+          "front": "Satellite",
+          "back": "Media and recordings, not the org."
+        },
+        {
+          "front": "GCV",
+          "back": "Separate availability table."
+        },
+        {
+          "front": "FedRAMP",
+          "back": "A different login host and US-only voice."
+        }
+      ],
+      "lab": {
+        "title": "Write the home region in the runbook",
+        "steps": [
+          "Record the AWS region name and the login URL.",
+          "State whether Genesys Cloud Voice is offered there.",
+          "State one country you will not promise until you read the country table.",
+          "Say what a satellite is allowed to do."
+        ],
+        "success": "The runbook has a region row someone else can check."
+      },
+      "fault": {
+        "title": "Token from the wrong cloud",
+        "symptom": "A FedRAMP admin pastes a commercial client id into a gov runbook.",
+        "log": "Login host in the script: login.mypurecloud.com. Org: FedRAMP.",
+        "cause": "The gov login host is login.use2.us-gov-pure.cloud.",
+        "fix": "Replace the host with the FedRAMP row and issue the client in that org."
+      }
+    },
+    {
+      "id": "o-roles",
+      "title": "Roles are permission lists paired with divisions",
+      "level": "Core",
+      "minutes": 13,
+      "summary": "A role without a division grant does not open objects. An OAuth client inherits only a subset of its creator\u2019s pairs.",
+      "paras": [
+        "Divisions overview is the access model: you grant a role on a division, and the user sees objects in that division. Queues, users, and flows are configuration objects you place. Conversations and recordings are transactional and pick up division context as they move.",
+        "When you create a client-credentials OAuth client, you assign role and division pairs. The developer guide says those pairs are limited to a subset of what the creating user already has. A client cannot be used to escalate past its creator. It also cannot call /api/v2/users/me, because there is no user."
+      ],
+      "cites": [
+        {
+          "title": "Divisions overview",
+          "url": "https://help.genesys.cloud/articles/divisions-overview/"
+        },
+        {
+          "title": "Client credentials grant",
+          "url": "https://developer.genesys.cloud/api/rest/authorization/use-client-credentials"
+        },
+        {
+          "title": "Create an OAuth client",
+          "url": "https://help.genesys.cloud/articles/create-an-oauth-client/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "A role meets a division. The client cannot outgrow its creator.",
+        "nodes": [
+          {
+            "id": "user",
+            "label": "Admin",
+            "kind": "agent",
+            "x": 16,
+            "y": 40
+          },
+          {
+            "id": "role",
+            "label": "Role",
+            "kind": "wem",
+            "x": 42,
+            "y": 22
+          },
+          {
+            "id": "div",
+            "label": "Division",
+            "kind": "queue",
+            "x": 42,
+            "y": 68
+          },
+          {
+            "id": "app",
+            "label": "OAuth client",
+            "kind": "trunk",
+            "x": 78,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "user",
+            "b": "role"
+          },
+          {
+            "a": "role",
+            "b": "div"
+          },
+          {
+            "a": "user",
+            "b": "app"
+          },
+          {
+            "a": "app",
+            "b": "div"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Grant the integration less than you have",
+        "steps": [
+          {
+            "from": "Admin",
+            "to": "Division",
+            "title": "Pick EMEA",
+            "detail": "Objects in EMEA are the scope.",
+            "inspect": "Home is not automatic for every role"
+          },
+          {
+            "from": "Admin",
+            "to": "Role",
+            "title": "Pair them",
+            "detail": "The grant is the pair, not the role alone.",
+            "inspect": "Queue stays invisible otherwise"
+          },
+          {
+            "from": "Admin",
+            "to": "OAuth",
+            "title": "Create client",
+            "detail": "Choose Client Credentials for a service.",
+            "inspect": "Copy the secret once"
+          },
+          {
+            "from": "Admin",
+            "to": "Roles on client",
+            "title": "Subset",
+            "detail": "You cannot assign a division you do not have.",
+            "inspect": "No privilege escalation"
+          },
+          {
+            "from": "App",
+            "to": "API",
+            "title": "Call /users",
+            "detail": "A list call can work. /users/me will not.",
+            "inspect": "No user context"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Client-credentials role assignments are limited by what?",
+          "choices": [
+            "The role-division pairs of the user who creates the client",
+            "The fair use token count",
+            "The number of queues",
+            "The SIP codec"
+          ],
+          "answer": 0,
+          "why": "The developer guide states that limit."
+        },
+        {
+          "q": "Why does GET /api/v2/users/me fail for that grant?",
+          "choices": [
+            "The token is not a user",
+            "The queue name has a space",
+            "The Edge is offline",
+            "Bullseye has six rings"
+          ],
+          "answer": 0,
+          "why": "The guide calls out user-context resources."
+        },
+        {
+          "q": "A supervisor who should see only one country needs:",
+          "choices": [
+            "Architect publish rights only",
+            "A role granted on that country\u2019s division",
+            "The All-access password",
+            "A second organization"
+          ],
+          "answer": 1,
+          "why": "Division grants are the access boundary."
+        },
+        {
+          "q": "Which grant does the OAuth article recommend for a Windows service?",
+          "choices": [
+            "Client Credentials",
+            "Token Implicit",
+            "A queue wrap-up code",
+            "SAML for a browser user only"
+          ],
+          "answer": 0,
+          "why": "Client Credentials is the non-user grant. Implicit is documented as deprecated after 25 May 2026."
+        },
+        {
+          "q": "Transactional objects include:",
+          "choices": [
+            "Only prompt WAV files",
+            "Only business units",
+            "Conversations and recordings",
+            "Only trunk IPs"
+          ],
+          "answer": 2,
+          "why": "The divisions article lists them."
+        },
+        {
+          "q": "Can the OAuth client be given a division the creator cannot see?",
+          "choices": [
+            "Only for Salesforce",
+            "No",
+            "Yes, if the secret is long",
+            "Yes, on CX 1"
+          ],
+          "answer": 1,
+          "why": "Pairs are a subset of the creator\u2019s access."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Pair",
+          "back": "Role plus division, not role alone."
+        },
+        {
+          "front": "Subset",
+          "back": "An OAuth client cannot exceed its creator."
+        },
+        {
+          "front": "/users/me",
+          "back": "Needs a user token."
+        },
+        {
+          "front": "Implicit",
+          "back": "Deprecated after 25 May 2026 in the OAuth article."
+        }
+      ],
+      "lab": {
+        "title": "Design one integration grant",
+        "steps": [
+          "Name the division the integration must see.",
+          "Name a role that can view queues in that division.",
+          "State why /users/me is the wrong test call.",
+          "Write down that the secret is shown once."
+        ],
+        "success": "You can review an OAuth client without giving it the whole org."
+      },
+      "fault": {
+        "title": "Over-broad client",
+        "symptom": "A billing integration can edit every division.",
+        "log": "Client roles: admin on All. Needed: read one queue.",
+        "cause": "The creator assigned their own broad pair.",
+        "fix": "Create a narrow role on the billing division and put only that pair on the client."
+      }
+    },
+    {
+      "id": "o-concurrent",
+      "title": "Named licenses and the concurrent peak",
+      "level": "Core",
+      "minutes": 12,
+      "summary": "Concurrent billing charges the peak of simultaneous users, and it ignores peaks shorter than 30 minutes.",
+      "paras": [
+        "The concurrent licensing article says Genesys charges the maximum number of simultaneous users in the billing period, after discarding peaks shorter than 30 minutes. Peaks do not have to be one continuous block. The charge uses the highest Genesys Cloud CX license those users held during the period. The calculation stays inside one organization. It does not combine orgs.",
+        "If you choose concurrent, the article says CX 1, CX 2, CX 3, and CX 4 users on that choice are licensed as concurrent. Named licensing is the other model: you assign a license to a person whether or not they are logged in. Fair use allocations also differ by named and concurrent user type, and the policy page is where those tables live."
+      ],
+      "cites": [
+        {
+          "title": "Concurrent licensing model billing overview",
+          "url": "https://help.genesys.cloud/articles/concurrent-licensing-model-billing-overview/"
+        },
+        {
+          "title": "Genesys Cloud fair use policy",
+          "url": "https://help.genesys.cloud/articles/genesys-cloud-fair-use-policy/"
+        },
+        {
+          "title": "Overview of Genesys Cloud",
+          "url": "https://help.mypurecloud.com/articles/overview-of-genesys-cloud/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "A 20-minute spike does not set the concurrent bill. A 40-minute plateau does.",
+        "nodes": [
+          {
+            "id": "spike",
+            "label": "20 min",
+            "kind": "phone",
+            "x": 22,
+            "y": 30
+          },
+          {
+            "id": "peak",
+            "label": "40 min",
+            "kind": "queue",
+            "x": 55,
+            "y": 30
+          },
+          {
+            "id": "bill",
+            "label": "Bill",
+            "kind": "wem",
+            "x": 82,
+            "y": 30
+          }
+        ],
+        "edges": [
+          {
+            "a": "peak",
+            "b": "bill"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Read a week of logins",
+        "steps": [
+          {
+            "from": "Org",
+            "to": "Model",
+            "title": "Concurrent",
+            "detail": "All CX users in the model are concurrent.",
+            "inspect": "One org only"
+          },
+          {
+            "from": "Users",
+            "to": "Shift change",
+            "title": "Overlap 20 min",
+            "detail": "Shorter than 30 minutes is discarded.",
+            "inspect": "Not the billed peak"
+          },
+          {
+            "from": "Users",
+            "to": "Overlap",
+            "title": "40 minutes",
+            "detail": "This plateau can set the peak.",
+            "inspect": "Highest license level counts"
+          },
+          {
+            "from": "Finance",
+            "to": "Fair use",
+            "title": "Pool",
+            "detail": "Allowances pool across users for the month.",
+            "inspect": "No rollover, per the policy summary"
+          },
+          {
+            "from": "Finance",
+            "to": "Second org",
+            "title": "Separate",
+            "detail": "Concurrency is not shared across orgs.",
+            "inspect": "Do not add the peaks"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "How long must a concurrent peak last to count?",
+          "choices": [
+            "It always counts",
+            "Longer than 30 minutes",
+            "Longer than 30 seconds",
+            "A full month"
+          ],
+          "answer": 1,
+          "why": "The article disregards peaks shorter than 30 minutes."
+        },
+        {
+          "q": "Two organizations can share one concurrent pool?",
+          "choices": [
+            "Only for CX 4",
+            "Only in satellite regions",
+            "No. The calculation is per organization.",
+            "Yes"
+          ],
+          "answer": 2,
+          "why": "The article says concurrency is not calculated across orgs."
+        },
+        {
+          "q": "Which license level is billed when a user changes packages mid-period?",
+          "choices": [
+            "Always CX 1",
+            "The highest level assigned during the period",
+            "The lowest",
+            "The one at midnight"
+          ],
+          "answer": 1,
+          "why": "The article bills the highest level assigned."
+        },
+        {
+          "q": "Named licensing differs because:",
+          "choices": [
+            "It ignores CX 4",
+            "It is illegal",
+            "It is only for trunks",
+            "The person consumes a license even when logged out"
+          ],
+          "answer": 3,
+          "why": "Named assigns the license to the user rather than to a simultaneous peak."
+        },
+        {
+          "q": "Fair use allocations, as described on the policy page, do what at month end?",
+          "choices": [
+            "They roll over for a year",
+            "They apply only to bots",
+            "They replace the user license",
+            "They pool across users and do not roll over"
+          ],
+          "answer": 3,
+          "why": "The policy describes monthly pooled allowances without rollover."
+        },
+        {
+          "q": "A 25-minute shift overlap on concurrent licensing:",
+          "choices": [
+            "Forces CX 4",
+            "Is disregarded",
+            "Sets the bill",
+            "Deletes the users"
+          ],
+          "answer": 1,
+          "why": "It is shorter than 30 minutes."
+        }
+      ],
+      "cards": [
+        {
+          "front": "30 minutes",
+          "back": "Shorter peaks are ignored."
+        },
+        {
+          "front": "One org",
+          "back": "Do not sum peaks across orgs."
+        },
+        {
+          "front": "Highest level",
+          "back": "The priciest assignment in the period wins."
+        },
+        {
+          "front": "Fair use",
+          "back": "Monthly pool, no rollover. Read the live table."
+        }
+      ],
+      "lab": {
+        "title": "Mark a sample week",
+        "steps": [
+          "Sketch three shifts with a 20-minute overlap and a 45-minute overlap.",
+          "Say which overlap can set the peak.",
+          "Say what happens if someone was CX 3 for a week and CX 1 after.",
+          "Open the fair use policy and find the word allocation."
+        ],
+        "success": "You can explain a concurrent invoice without inventing a per-minute login charge."
+      },
+      "fault": {
+        "title": "Inflated peak",
+        "symptom": "Finance sees a concurrent count equal to two full shifts.",
+        "log": "Overlap of the handoff: 50 minutes, every day.",
+        "cause": "The 30-minute discard does not apply. The plateau is real.",
+        "fix": "Stagger the handoff under 30 minutes or buy the peak you actually need."
+      }
+    },
+    {
+      "id": "o-packages",
+      "title": "Pick CX 1, CX 2, CX 3, or CX 4 on purpose",
+      "level": "Core",
+      "minutes": 12,
+      "summary": "Match the package to the job. Do not buy CX 1 and then design a WFM project.",
+      "paras": [
+        "Use the overview as the menu. Voice-only operations fit CX 1. Omnichannel plus quality fits CX 2. Scheduling, forecasting, and the transcription minutes that WEM expects fit CX 3. Agent Copilot and Journey Management, plus the published token counts, fit CX 4.",
+        "The fair use policy also names other commercial shapes, including Communicate, digital package variants, and EX, plus hourly user types. Those names exist on the policy. Their current allowances are rows in that table, not numbers this lab copies. Agent Copilot\u2019s own article describes knowledge, transcripts, scripts, next best action, forms, and written notes. That feature list is the copilot article, and the package that includes it is the overview."
+      ],
+      "cites": [
+        {
+          "title": "Overview of Genesys Cloud",
+          "url": "https://help.mypurecloud.com/articles/overview-of-genesys-cloud/"
+        },
+        {
+          "title": "Genesys Cloud fair use policy",
+          "url": "https://help.genesys.cloud/articles/genesys-cloud-fair-use-policy/"
+        },
+        {
+          "title": "Genesys Agent Copilot overview",
+          "url": "https://help.genesys.cloud/articles/agent-copilot-overview/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Match the work to the first package that contains it.",
+        "nodes": [
+          {
+            "id": "v",
+            "label": "Voice",
+            "kind": "phone",
+            "x": 14,
+            "y": 50
+          },
+          {
+            "id": "d",
+            "label": "Digital + QM",
+            "kind": "queue",
+            "x": 38,
+            "y": 50
+          },
+          {
+            "id": "w",
+            "label": "WEM",
+            "kind": "wem",
+            "x": 62,
+            "y": 50
+          },
+          {
+            "id": "a",
+            "label": "Copilot",
+            "kind": "bot",
+            "x": 84,
+            "y": 50
+          }
+        ],
+        "edges": [
+          {
+            "a": "v",
+            "b": "d"
+          },
+          {
+            "a": "d",
+            "b": "w"
+          },
+          {
+            "a": "w",
+            "b": "a"
+          }
+        ]
+      },
+      "flow": {
+        "title": "A scoping conversation",
+        "steps": [
+          {
+            "from": "Seller",
+            "to": "Buyer",
+            "title": "Voice only?",
+            "detail": "CX 1 if digital and WEM are out of scope.",
+            "inspect": "Secure IVR is included"
+          },
+          {
+            "from": "Buyer",
+            "to": "Seller",
+            "title": "Email and QM",
+            "detail": "CX 2 adds digital and quality.",
+            "inspect": "CX 1 is not enough"
+          },
+          {
+            "from": "Buyer",
+            "to": "Seller",
+            "title": "Schedules",
+            "detail": "CX 3 adds WEM.",
+            "inspect": "Transcription minutes too"
+          },
+          {
+            "from": "Buyer",
+            "to": "Seller",
+            "title": "Copilot",
+            "detail": "CX 4 adds Agent Copilot and tokens.",
+            "inspect": "30 named, 39 concurrent"
+          },
+          {
+            "from": "Buyer",
+            "to": "Policy",
+            "title": "Allowances",
+            "detail": "Read fair use before you model overage.",
+            "inspect": "Do not memorize last year\u2019s rate"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "A contact center that only takes calls and does not need QM or WEM starts at:",
+          "choices": [
+            "CX 1",
+            "CX 3",
+            "CX 4",
+            "EX only"
+          ],
+          "answer": 0,
+          "why": "The overview describes CX 1 as the voice package."
+        },
+        {
+          "q": "Quality management shows up at which package in the overview\u2019s stack?",
+          "choices": [
+            "Nowhere",
+            "AppFoundry only",
+            "CX 2, and therefore also in CX 3 and CX 4",
+            "CX 1 only"
+          ],
+          "answer": 2,
+          "why": "CX 2 adds quality. Higher packages include it."
+        },
+        {
+          "q": "Agent Copilot\u2019s article says it can write which of these?",
+          "choices": [
+            "SIP INVITEs",
+            "Edge firmware",
+            "Number plans",
+            "Notes, including reason, resolution, and possible wrap-up codes"
+          ],
+          "answer": 3,
+          "why": "That list is on the copilot overview."
+        },
+        {
+          "q": "Journey Management is named on which package?",
+          "choices": [
+            "CX 2",
+            "The RFC set",
+            "CX 4",
+            "CX 1"
+          ],
+          "answer": 2,
+          "why": "The overview places it on CX 4."
+        },
+        {
+          "q": "Communicate and hourly user types are documented where?",
+          "choices": [
+            "The bullseye article",
+            "The Edge group article",
+            "The fair use policy",
+            "RFC 3261"
+          ],
+          "answer": 2,
+          "why": "The policy names those commercial shapes."
+        },
+        {
+          "q": "Why does this lab refuse to print the per-minute overage price?",
+          "choices": [
+            "Prices are secret",
+            "There is no policy",
+            "Overage is forbidden",
+            "The fair use table changes, and the page is the source"
+          ],
+          "answer": 3,
+          "why": "Link the policy. Do not freeze the card."
+        }
+      ],
+      "cards": [
+        {
+          "front": "CX 1",
+          "back": "Voice."
+        },
+        {
+          "front": "CX 2",
+          "back": "Digital and quality."
+        },
+        {
+          "front": "CX 3",
+          "back": "WEM and transcription minutes."
+        },
+        {
+          "front": "Copilot",
+          "back": "Knowledge, transcript, scripts, next best action, forms, notes."
+        }
+      ],
+      "lab": {
+        "title": "Scope one statement of work",
+        "steps": [
+          "List the channels.",
+          "List whether QM, WFM, or Copilot is in scope.",
+          "Name the lowest package that covers the list.",
+          "Link the fair use policy instead of typing a price."
+        ],
+        "success": "The statement of work names a package someone can find on the overview."
+      },
+      "fault": {
+        "title": "Copilot on CX 2",
+        "symptom": "Agents were promised live suggested articles. The org is CX 2.",
+        "log": "Overview: Agent Copilot is a CX 4 addition.",
+        "cause": "The package does not include the feature that was sold.",
+        "fix": "Change the design or the licenses, and re-read both articles before you commit."
+      }
+    },
+    {
+      "id": "o-people",
+      "title": "People, queues, and the 5,000 member line",
+      "level": "Core",
+      "minutes": 11,
+      "summary": "Users live in the org. Queue membership is not the same thing as a division, and it has a hard cap.",
+      "paras": [
+        "Create the person, place them in a division, and grant a role. Membership on a queue is a further step, capped at 5,000 members, and the queue itself sits in one division. A person can be a member of a queue only if your access model lets you see both.",
+        "Stations and phones come later, with Edge groups and WebRTC trunks. Do not block org design on hardware. Do decide which division owns the queue before agents are added, because moving it later changes who can administer it."
+      ],
+      "cites": [
+        {
+          "title": "Create and configure queues",
+          "url": "https://help.genesys.cloud/articles/create-queues/"
+        },
+        {
+          "title": "Divisions overview",
+          "url": "https://help.genesys.cloud/articles/divisions-overview/"
+        },
+        {
+          "title": "Create a BYOC Premises Edge group with a phone trunk",
+          "url": "https://help.genesys.cloud/articles/create-edge-group-phone-trunk/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "User, division, and queue membership are three different joins.",
+        "nodes": [
+          {
+            "id": "user",
+            "label": "User",
+            "kind": "agent",
+            "x": 16,
+            "y": 40
+          },
+          {
+            "id": "div",
+            "label": "Division",
+            "kind": "region",
+            "x": 46,
+            "y": 22
+          },
+          {
+            "id": "q",
+            "label": "Queue",
+            "kind": "queue",
+            "x": 46,
+            "y": 70
+          },
+          {
+            "id": "phone",
+            "label": "Phone later",
+            "kind": "phone",
+            "x": 80,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "user",
+            "b": "div"
+          },
+          {
+            "a": "user",
+            "b": "q"
+          },
+          {
+            "a": "q",
+            "b": "div"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Add an agent without mixing up the joins",
+        "steps": [
+          {
+            "from": "Admin",
+            "to": "User",
+            "title": "Create",
+            "detail": "The person exists in the org.",
+            "inspect": "Division selected"
+          },
+          {
+            "from": "Admin",
+            "to": "Role",
+            "title": "Grant",
+            "detail": "They can sign in and see the right objects.",
+            "inspect": "Pair with division"
+          },
+          {
+            "from": "Admin",
+            "to": "Queue",
+            "title": "Add member",
+            "detail": "Membership is capped at 5,000.",
+            "inspect": "Name has no special characters"
+          },
+          {
+            "from": "Admin",
+            "to": "Phone",
+            "title": "Defer",
+            "detail": "WebRTC or a SIP phone trunk comes with the Edge group.",
+            "inspect": "Not required to test routing logic"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Queue membership is limited to:",
+          "choices": [
+            "5000",
+            "200",
+            "50",
+            "1"
+          ],
+          "answer": 0,
+          "why": "The queue article states 5,000."
+        },
+        {
+          "q": "The queue\u2019s division and the user\u2019s role division should be thought of as:",
+          "choices": [
+            "The access path that lets an admin see the queue they are editing",
+            "The same field",
+            "A SIP header",
+            "A wrap-up code"
+          ],
+          "answer": 0,
+          "why": "Divisions control who can see the object."
+        },
+        {
+          "q": "A queue name must be:",
+          "choices": [
+            "A phone number",
+            "Unique and free of special characters",
+            "Globally unique across all Genesys customers",
+            "Exactly 200 characters"
+          ],
+          "answer": 1,
+          "why": "Uniqueness is inside the org. 200 characters is the flow-name limit, not the queue rule stated here."
+        },
+        {
+          "q": "WebRTC phone trunks are configured with which object?",
+          "choices": [
+            "An Edge group, including for premises",
+            "A WFM business unit",
+            "An evaluation form",
+            "A topic"
+          ],
+          "answer": 0,
+          "why": "The Edge group article covers phone trunks, including WebRTC."
+        },
+        {
+          "q": "Moving a queue to another division:",
+          "choices": [
+            "Publishes Architect",
+            "Changes which role grants can see it",
+            "Duplicates the members",
+            "Changes the AWS region"
+          ],
+          "answer": 1,
+          "why": "The object belongs to one division."
+        },
+        {
+          "q": "On Queue is required before ACD will:",
+          "choices": [
+            "Buy a DID",
+            "Issue an OAuth secret",
+            "Offer interactions to that agent",
+            "Create the user"
+          ],
+          "answer": 2,
+          "why": "Membership alone is not the routing status."
+        }
+      ],
+      "cards": [
+        {
+          "front": "5,000",
+          "back": "Members per queue."
+        },
+        {
+          "front": "Three joins",
+          "back": "User, division grant, queue membership."
+        },
+        {
+          "front": "Name",
+          "back": "Unique, no special characters."
+        },
+        {
+          "front": "Phones",
+          "back": "Edge group work, not the first org task."
+        }
+      ],
+      "lab": {
+        "title": "Add a paper agent",
+        "steps": [
+          "Name the division.",
+          "Name the queue and check the character rule.",
+          "Add the agent as a member.",
+          "Write the status they must select."
+        ],
+        "success": "A second person could follow your notes and not exceed the cap."
+      },
+      "fault": {
+        "title": "Member cap",
+        "symptom": "The import stops at the end of a large skill group.",
+        "log": "Queue members: 5000. Import file: 5001.",
+        "cause": "The platform limit is 5,000 members on one queue.",
+        "fix": "Split the population across queues or remove stale members before the import."
+      }
+    },
+    {
+      "id": "o-fair",
+      "title": "Fair use is a pool, not a mystery invoice",
+      "level": "Core",
+      "minutes": 12,
+      "summary": "Licenses include monthly allowances. Overage is priced on the policy page. Copying the numbers into a design doc freezes them wrong.",
+      "paras": [
+        "The fair use policy describes consumption on top of the user license: BYOC Cloud minutes, data storage, basic routing and IVR, API requests, voice transcription, BYO SMS, workitems, and Journey Management events are among the families on that page. Allowances are monthly, they pool across users, and they do not roll over. Named, concurrent, and hourly user types are all in the policy\u2019s language.",
+        "API calls made with a client-credentials integration count toward the API allowance. A lab that polls conversations every second is a bill, not a demo. Transcription minutes are a different meter from the user license, which is why CX 3 calls them out separately. When you estimate, open the policy and read the row. Do not reuse a figure from this paragraph."
+      ],
+      "cites": [
+        {
+          "title": "Genesys Cloud fair use policy",
+          "url": "https://help.genesys.cloud/articles/genesys-cloud-fair-use-policy/"
+        },
+        {
+          "title": "Overview of Genesys Cloud",
+          "url": "https://help.mypurecloud.com/articles/overview-of-genesys-cloud/"
+        },
+        {
+          "title": "Client credentials grant",
+          "url": "https://developer.genesys.cloud/api/rest/authorization/use-client-credentials"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Several meters sit beside the user license.",
+        "nodes": [
+          {
+            "id": "user",
+            "label": "User license",
+            "kind": "agent",
+            "x": 16,
+            "y": 40
+          },
+          {
+            "id": "ivr",
+            "label": "IVR",
+            "kind": "architect",
+            "x": 40,
+            "y": 20
+          },
+          {
+            "id": "api",
+            "label": "API",
+            "kind": "trunk",
+            "x": 40,
+            "y": 60
+          },
+          {
+            "id": "tr",
+            "label": "Transcript",
+            "kind": "wem",
+            "x": 70,
+            "y": 20
+          },
+          {
+            "id": "byoc",
+            "label": "BYOC min",
+            "kind": "phone",
+            "x": 70,
+            "y": 60
+          }
+        ],
+        "edges": [
+          {
+            "a": "user",
+            "b": "ivr"
+          },
+          {
+            "a": "user",
+            "b": "api"
+          },
+          {
+            "a": "user",
+            "b": "tr"
+          },
+          {
+            "a": "user",
+            "b": "byoc"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Notice a meter before it notices you",
+        "steps": [
+          {
+            "from": "App",
+            "to": "API",
+            "title": "Poll",
+            "detail": "Each request can count.",
+            "inspect": "Client credentials is still an API call"
+          },
+          {
+            "from": "Flow",
+            "to": "IVR",
+            "title": "Minutes",
+            "detail": "Basic routing and IVR have an allowance.",
+            "inspect": "Overage is on the policy"
+          },
+          {
+            "from": "Trunk",
+            "to": "BYOC",
+            "title": "Answered calls",
+            "detail": "The policy describes how BYOC minutes are measured.",
+            "inspect": "Read the current rule"
+          },
+          {
+            "from": "CX 3",
+            "to": "Transcript",
+            "title": "Another meter",
+            "detail": "Voice transcription is not the same as the seat.",
+            "inspect": "CX 3 includes minutes"
+          },
+          {
+            "from": "Finance",
+            "to": "Month end",
+            "title": "No rollover",
+            "detail": "Unused allowance does not carry.",
+            "inspect": "Pool is across users"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Fair use allowances roll over to the next month?",
+          "choices": [
+            "Only API calls",
+            "Only CX 4",
+            "No",
+            "Yes"
+          ],
+          "answer": 2,
+          "why": "The policy describes monthly allowances without rollover."
+        },
+        {
+          "q": "A client-credentials integration\u2019s API calls are:",
+          "choices": [
+            "Free because there is no user",
+            "Billed as SIP",
+            "Ignored under 1,000",
+            "Still API usage against the allowance"
+          ],
+          "answer": 3,
+          "why": "The token type does not make the call free."
+        },
+        {
+          "q": "Voice transcription minutes are:",
+          "choices": [
+            "A separate meter from the seat, called out on CX 3 and in fair use",
+            "Included without limit on CX 1",
+            "An RFC",
+            "A queue setting only"
+          ],
+          "answer": 0,
+          "why": "Both the overview and the policy treat transcription as usage."
+        },
+        {
+          "q": "The right way to quote an overage rate in a design is:",
+          "choices": [
+            "Invent a round dollar",
+            "Link the live fair use policy",
+            "Paste a number from memory",
+            "Use the 2023 matrix price"
+          ],
+          "answer": 1,
+          "why": "The table is the source."
+        },
+        {
+          "q": "Allowances are pooled across:",
+          "choices": [
+            "Users in the org for that month",
+            "All customers in the region",
+            "Only concurrent users worldwide",
+            "Only bots"
+          ],
+          "answer": 0,
+          "why": "The policy pools across the org\u2019s users."
+        },
+        {
+          "q": "Journey Management events show up as a meter for which package story?",
+          "choices": [
+            "They are DTMF",
+            "They are a fair-use family, and Journey Management itself is a CX 4 capability",
+            "They are free on CX 1",
+            "They replace queues"
+          ],
+          "answer": 1,
+          "why": "Overview places the feature on CX 4. The policy meters events."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Pool",
+          "back": "Monthly, across users, no rollover."
+        },
+        {
+          "front": "Meters",
+          "back": "IVR, API, storage, BYOC, transcription, SMS, and others."
+        },
+        {
+          "front": "Do not copy rates",
+          "back": "The policy page is the quote."
+        },
+        {
+          "front": "API",
+          "back": "Client-credentials calls still count."
+        }
+      ],
+      "lab": {
+        "title": "List the meters your design will touch",
+        "steps": [
+          "Name every API your integration will call and how often.",
+          "Name whether calls are BYOC or Genesys Cloud Voice.",
+          "Name whether you will transcribe.",
+          "Open the policy and find those rows without writing the prices down."
+        ],
+        "success": "You have a meter list and a link, not a stale rate card."
+      },
+      "fault": {
+        "title": "Polling bill",
+        "symptom": "API overage appears in the first month of a new dashboard.",
+        "log": "Job: GET conversations every second, all day.",
+        "cause": "That is on the order of millions of requests. The policy prices API requests.",
+        "fix": "Poll on an event or lengthen the interval, and read the allowance before you ship the job."
+      }
+    },
+    {
+      "id": "o-bootstrap",
+      "title": "A first-week admin checklist",
+      "level": "Core",
+      "minutes": 14,
+      "summary": "Week one is region, divisions, roles, packages, one queue, and a published in-queue flow. Telephony can follow.",
+      "paras": [
+        "Create or confirm the org in the right core region. Create the divisions you will actually administer. Grant roles in pairs. Assign packages that match the scope. Create one queue with a legal name, a division, a language if you need one, and fewer than 5,000 members. Publish the default in-queue call flow or the queue will be silent.",
+        "Then decide Genesys Cloud Voice versus BYOC, because emergency responsibility changes with that choice. Do not create a client-credentials OAuth client with All-division admin \u201cjust for now.\u201d The subset rule exists so that temporary clients do not become the back door."
+      ],
+      "cites": [
+        {
+          "title": "AWS regions for Genesys Cloud",
+          "url": "https://help.genesys.cloud/articles/aws-regions-for-genesys-cloud-deployment/"
+        },
+        {
+          "title": "Divisions overview",
+          "url": "https://help.genesys.cloud/articles/divisions-overview/"
+        },
+        {
+          "title": "Create and configure queues",
+          "url": "https://help.genesys.cloud/articles/create-queues/"
+        },
+        {
+          "title": "In-queue flows overview",
+          "url": "https://help.genesys.cloud/articles/queue-call-flows/"
+        },
+        {
+          "title": "Overview of Genesys Cloud",
+          "url": "https://help.mypurecloud.com/articles/overview-of-genesys-cloud/"
+        },
+        {
+          "title": "Create an OAuth client",
+          "url": "https://help.genesys.cloud/articles/create-an-oauth-client/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Week one objects, in an order that avoids a silent queue.",
+        "nodes": [
+          {
+            "id": "reg",
+            "label": "Region",
+            "kind": "region",
+            "x": 10,
+            "y": 40
+          },
+          {
+            "id": "div",
+            "label": "Divisions",
+            "kind": "queue",
+            "x": 28,
+            "y": 40
+          },
+          {
+            "id": "lic",
+            "label": "Packages",
+            "kind": "wem",
+            "x": 46,
+            "y": 40
+          },
+          {
+            "id": "q",
+            "label": "Queue",
+            "kind": "queue",
+            "x": 64,
+            "y": 40
+          },
+          {
+            "id": "flow",
+            "label": "Publish",
+            "kind": "architect",
+            "x": 82,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "reg",
+            "b": "div"
+          },
+          {
+            "a": "div",
+            "b": "lic"
+          },
+          {
+            "a": "lic",
+            "b": "q"
+          },
+          {
+            "a": "q",
+            "b": "flow"
+          }
+        ]
+      },
+      "flow": {
+        "title": "The first week, object by object",
+        "steps": [
+          {
+            "from": "Admin",
+            "to": "Region",
+            "title": "Confirm login",
+            "detail": "Users must use the org\u2019s login host.",
+            "inspect": "Write it in the runbook"
+          },
+          {
+            "from": "Admin",
+            "to": "Divisions",
+            "title": "Create",
+            "detail": "Home stays. Add only the splits you will grant.",
+            "inspect": "Move queues on purpose"
+          },
+          {
+            "from": "Admin",
+            "to": "Packages",
+            "title": "Assign",
+            "detail": "CX 3 if WEM is in scope.",
+            "inspect": "CX 4 if Copilot is"
+          },
+          {
+            "from": "Admin",
+            "to": "Queue",
+            "title": "Create",
+            "detail": "Unique name, division, members.",
+            "inspect": "5,000 cap"
+          },
+          {
+            "from": "Admin",
+            "to": "In-queue",
+            "title": "Publish",
+            "detail": "The default call flow is inert until then.",
+            "inspect": "Digital flows are separate"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "The default in-queue call flow on day one is:",
+          "choices": [
+            "Impossible to publish",
+            "Only for email",
+            "Present and unpublished until you publish it",
+            "Already taking calls"
+          ],
+          "answer": 2,
+          "why": "The in-queue article is clear about the publish step."
+        },
+        {
+          "q": "The safest OAuth client on day one is:",
+          "choices": [
+            "Implicit grant with All division",
+            "A shared user password",
+            "No permissions and a hope",
+            "Client credentials with a narrow role and division"
+          ],
+          "answer": 3,
+          "why": "Narrow pairs match the developer guide. Implicit is deprecated after 25 May 2026."
+        },
+        {
+          "q": "WEM in the statement of work means the package conversation starts at:",
+          "choices": [
+            "A satellite region",
+            "RFC 3550",
+            "CX 3",
+            "CX 1"
+          ],
+          "answer": 2,
+          "why": "The overview puts WEM on CX 3."
+        },
+        {
+          "q": "Home division on day one should be:",
+          "choices": [
+            "Renamed to the AWS region",
+            "Turned into a queue",
+            "Left in place. It cannot be deleted.",
+            "Deleted"
+          ],
+          "answer": 2,
+          "why": "The divisions article forbids deleting Home."
+        },
+        {
+          "q": "Queue creation requires you to choose:",
+          "choices": [
+            "A division, among other fields",
+            "An RTP port",
+            "A bullseye ring only",
+            "A PSAP"
+          ],
+          "answer": 0,
+          "why": "The queue is a configuration object in a division."
+        },
+        {
+          "q": "Emergency ownership depends on:",
+          "choices": [
+            "Whether calls use Genesys Cloud Voice or a BYOC trunk",
+            "The font size in Architect",
+            "The quiz score",
+            "The wrap-up code"
+          ],
+          "answer": 0,
+          "why": "The BYOC emergency article separates those responsibilities."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Publish",
+          "back": "Or the hold experience does not exist."
+        },
+        {
+          "front": "Narrow client",
+          "back": "Subset of the creator, one division."
+        },
+        {
+          "front": "Package",
+          "back": "Match CX 1\u20134 to the scope."
+        },
+        {
+          "front": "Home",
+          "back": "Keep it."
+        }
+      ],
+      "lab": {
+        "title": "Run the checklist on paper",
+        "steps": [
+          "Write the login URL.",
+          "Name two divisions.",
+          "Name the package.",
+          "Name the queue and the in-queue publish step.",
+          "Name the OAuth division if you need an integration."
+        ],
+        "success": "Another admin can execute the list without a meeting."
+      },
+      "fault": {
+        "title": "Silent day one",
+        "symptom": "The pilot queue rings agents, but callers hear nothing while they wait.",
+        "log": "Default in-queue flow: not published.",
+        "cause": "Unpublished is the documented default state.",
+        "fix": "Publish it, place a test call, and only then invite the pilot group."
+      }
+    }
+  ]
+}

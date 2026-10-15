@@ -1,0 +1,1382 @@
+{
+  "id": "wfm",
+  "title": "Workforce management",
+  "kicker": "WEM",
+  "accent": 2,
+  "summary": "Business units, management units, service goals, schedules, adherence, and time off. WFM is a CX 3 capability.",
+  "lessons": [
+    {
+      "id": "w-map",
+      "title": "WEM is a set of products, and WFM is one of them",
+      "level": "Core",
+      "minutes": 12,
+      "summary": "Recording, screen recording, quality, performance, speech and text analytics, and workforce management are the WEM list.",
+      "paras": [
+        "The WEM article names those capabilities together. WFM is the planning half: business units, management units, service goal templates, planning groups, activity codes, schedules, adherence, intraday, and time off. Quality, recording, and speech analytics are the other half and have their own tracks in this lab.",
+        "The overview places WEM on CX 3. A CX 1 org does not grow a forecast by publishing an Architect flow. The Workforce Management certification on the education catalog is the specialist exam for this half, with the WEM \u2013 Workforce Management course as the listed preparation."
+      ],
+      "cites": [
+        {
+          "title": "About Workforce Engagement Management",
+          "url": "https://help.genesys.cloud/articles/about-workforce-engagement-management-wem/"
+        },
+        {
+          "title": "Overview of Genesys Cloud",
+          "url": "https://help.mypurecloud.com/articles/overview-of-genesys-cloud/"
+        },
+        {
+          "title": "Genesys Cloud exams",
+          "url": "https://education.genesys.com/certification/cloud"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "WFM plans. QM and analytics listen. They are siblings.",
+        "nodes": [
+          {
+            "id": "w",
+            "label": "WFM",
+            "kind": "wem",
+            "x": 18,
+            "y": 40
+          },
+          {
+            "id": "q",
+            "label": "QM",
+            "kind": "wem",
+            "x": 46,
+            "y": 22
+          },
+          {
+            "id": "s",
+            "label": "STA",
+            "kind": "bot",
+            "x": 46,
+            "y": 68
+          },
+          {
+            "id": "cx",
+            "label": "CX 3",
+            "kind": "region",
+            "x": 78,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "cx",
+            "b": "w"
+          },
+          {
+            "a": "cx",
+            "b": "q"
+          },
+          {
+            "a": "cx",
+            "b": "s"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Separate the WEM siblings",
+        "steps": [
+          {
+            "from": "Scope",
+            "to": "Package",
+            "title": "CX 3",
+            "detail": "WEM starts there.",
+            "inspect": "CX 4 includes it"
+          },
+          {
+            "from": "WFM",
+            "to": "Plan",
+            "title": "Schedules and adherence",
+            "detail": "Business units and management units.",
+            "inspect": "Not an evaluation form"
+          },
+          {
+            "from": "QM",
+            "to": "Listen",
+            "title": "Forms and coaching",
+            "detail": "A different admin.",
+            "inspect": "Next track"
+          },
+          {
+            "from": "Cert",
+            "to": "Catalog",
+            "title": "Workforce Management",
+            "detail": "Its own specialist exam.",
+            "inspect": "Prep course is listed"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "WEM arrives with which package in the overview?",
+          "choices": [
+            "CX 3",
+            "CX 1",
+            "A trunk",
+            "An RFC"
+          ],
+          "answer": 0,
+          "why": "Higher packages include it."
+        },
+        {
+          "q": "The WEM article\u2019s list includes:",
+          "choices": [
+            "Only SIP",
+            "Only bots",
+            "Only OAuth",
+            "Recording, screen recording, QM, performance, STA, and WFM"
+          ],
+          "answer": 3,
+          "why": "Those are the named capabilities."
+        },
+        {
+          "q": "Service goal templates belong to:",
+          "choices": [
+            "Workforce management",
+            "Secure call flows",
+            "DCVP",
+            "AppFoundry"
+          ],
+          "answer": 0,
+          "why": "The WEM article lists them under WFM."
+        },
+        {
+          "q": "The specialist certification for this work is named:",
+          "choices": [
+            "GC-GCD only",
+            "A Cisco exam",
+            "Architect only",
+            "Workforce Management Certification"
+          ],
+          "answer": 3,
+          "why": "The catalog lists it with the WEM \u2013 Workforce Management course."
+        },
+        {
+          "q": "An evaluation form is:",
+          "choices": [
+            "A ring",
+            "Quality management, not the forecast",
+            "A business unit",
+            "A number plan"
+          ],
+          "answer": 1,
+          "why": "Keep the siblings apart."
+        },
+        {
+          "q": "CX 1 can be made to forecast by publishing a flow?",
+          "choices": [
+            "Yes",
+            "Only with a bot",
+            "Only with 988",
+            "No"
+          ],
+          "answer": 3,
+          "why": "The package has to include WEM."
+        }
+      ],
+      "cards": [
+        {
+          "front": "CX 3",
+          "back": "Where WEM starts."
+        },
+        {
+          "front": "WFM objects",
+          "back": "Business units, management units, goals, plans, schedules, adherence, time off."
+        },
+        {
+          "front": "Sibling",
+          "back": "QM and STA are not the schedule."
+        },
+        {
+          "front": "Cert",
+          "back": "Workforce Management, with the listed course."
+        }
+      ],
+      "lab": {
+        "title": "Sort eight nouns",
+        "steps": [
+          "Mark each as WFM, QM, or telephony.",
+          "Business unit, evaluation form, Edge, service goal, transcript, trunk, time off, screen recording.",
+          "Name the package that first includes WEM."
+        ],
+        "success": "The telephony nouns are not in the WFM column."
+      },
+      "fault": {
+        "title": "Forecast on CX 1",
+        "symptom": "The project plan promises schedules. The org is CX 1.",
+        "log": "Overview: WEM is CX 3.",
+        "cause": "The package does not contain the product.",
+        "fix": "Change the license or cut the scope."
+      }
+    },
+    {
+      "id": "w-bu",
+      "title": "Business units and management units",
+      "level": "Core",
+      "minutes": 12,
+      "summary": "A business unit is the planning container. A management unit is the group of agents you actually schedule.",
+      "paras": [
+        "The WEM article tells you to configure business units and management units before schedules. Agents in a management unit share the planning rules you are about to write. A queue is not a management unit. Queue membership decides who can receive an interaction. The management unit decides who is on the schedule.",
+        "Splitting a management unit by every skill creates a puzzle the scheduler cannot solve. The bullseye article\u2019s advice about proficiency groups exists so forecasting and routing describe the same people. If routing uses a skill the schedule has never heard of, the forecast will staff the wrong bodies."
+      ],
+      "cites": [
+        {
+          "title": "About Workforce Engagement Management",
+          "url": "https://help.genesys.cloud/articles/about-workforce-engagement-management-wem/"
+        },
+        {
+          "title": "Bullseye routing overview",
+          "url": "https://help.genesys.cloud/articles/bullseye-routing-overview/"
+        },
+        {
+          "title": "Create and configure queues",
+          "url": "https://help.genesys.cloud/articles/create-queues/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Queue membership and the management unit are different groups.",
+        "nodes": [
+          {
+            "id": "q",
+            "label": "Queue",
+            "kind": "queue",
+            "x": 22,
+            "y": 40
+          },
+          {
+            "id": "mu",
+            "label": "Management unit",
+            "kind": "wem",
+            "x": 58,
+            "y": 40
+          },
+          {
+            "id": "bu",
+            "label": "Business unit",
+            "kind": "region",
+            "x": 84,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "q",
+            "b": "mu"
+          },
+          {
+            "a": "mu",
+            "b": "bu"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Draw the containers",
+        "steps": [
+          {
+            "from": "Admin",
+            "to": "Business unit",
+            "title": "Create",
+            "detail": "The planning container.",
+            "inspect": "One or more management units"
+          },
+          {
+            "from": "Admin",
+            "to": "Management unit",
+            "title": "Add agents",
+            "detail": "The people you will schedule.",
+            "inspect": "Not automatically the queue roster"
+          },
+          {
+            "from": "Routing",
+            "to": "Skills",
+            "title": "Align",
+            "detail": "Forecast the skills you route.",
+            "inspect": "Proficiency groups help"
+          },
+          {
+            "from": "Check",
+            "to": "Names",
+            "title": "Queue versus unit",
+            "detail": "Write both.",
+            "inspect": "They may differ"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "A management unit is:",
+          "choices": [
+            "A bullseye ring",
+            "The group of agents you schedule",
+            "A SIP trunk",
+            "A division you cannot delete"
+          ],
+          "answer": 1,
+          "why": "The WEM article lists it under WFM."
+        },
+        {
+          "q": "A queue and a management unit:",
+          "choices": [
+            "Are both phone trunks",
+            "Can contain different people",
+            "Must be identical",
+            "Are the same object"
+          ],
+          "answer": 1,
+          "why": "One routes. One schedules."
+        },
+        {
+          "q": "The bullseye overview cares about WEM because:",
+          "choices": [
+            "WEM buys DIDs",
+            "WEM issues tokens",
+            "Skill expansion should stay compatible with forecasting",
+            "WEM configures TLS"
+          ],
+          "answer": 2,
+          "why": "Proficiency groups are the compatible style."
+        },
+        {
+          "q": "Business unit sits:",
+          "choices": [
+            "Above the management units as the planning container",
+            "Inside a single wrap-up code",
+            "On the carrier",
+            "In the OAuth client"
+          ],
+          "answer": 0,
+          "why": "The article names both objects."
+        },
+        {
+          "q": "Staffing a skill the schedule does not know about causes:",
+          "choices": [
+            "An unpublished default only",
+            "A 200 character error",
+            "A forecast that does not match who can actually take the call",
+            "A free region move"
+          ],
+          "answer": 2,
+          "why": "Align routing and planning."
+        },
+        {
+          "q": "The 5,000 queue member cap is:",
+          "choices": [
+            "The token cap",
+            "A queue limit, not the definition of a management unit",
+            "The WFM cap",
+            "The plan cap"
+          ],
+          "answer": 1,
+          "why": "Do not reuse the number as a WFM rule."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Business unit",
+          "back": "Planning container."
+        },
+        {
+          "front": "Management unit",
+          "back": "People you schedule."
+        },
+        {
+          "front": "Queue",
+          "back": "People who can be offered work."
+        },
+        {
+          "front": "Align skills",
+          "back": "Forecast what you route."
+        }
+      ],
+      "lab": {
+        "title": "Name both groups",
+        "steps": [
+          "Business unit name.",
+          "Management unit name.",
+          "Queue name.",
+          "One skill both sides share."
+        ],
+        "success": "The three names are not copies of each other unless you mean them to be."
+      },
+      "fault": {
+        "title": "Roster copied badly",
+        "symptom": "The schedule shows 40 agents. The queue has 12.",
+        "log": "Management unit imported from HR. Queue membership never updated.",
+        "cause": "The containers were treated as one list.",
+        "fix": "Decide which list is in charge of the schedule and which is in charge of routing, then reconcile."
+      }
+    },
+    {
+      "id": "w-goal",
+      "title": "Service goal templates are the planning target",
+      "level": "Core",
+      "minutes": 11,
+      "summary": "The queue\u2019s service level and the WFM template should describe the same promise.",
+      "paras": [
+        "The WEM article lists service goal templates among the objects you configure. The queue article is where the live percentage and target seconds are set, per media. If the template says 80 percent in 20 seconds and the queue says 80 percent in 60, you will staff for one promise and report another.",
+        "This lab does not claim Genesys forecasts with Erlang C. Erlang models are classic telephony math. They are not stated in the WEM article. Use the template and the queue\u2019s own target, and treat any external staffing formula as a side calculation you label as such."
+      ],
+      "cites": [
+        {
+          "title": "About Workforce Engagement Management",
+          "url": "https://help.genesys.cloud/articles/about-workforce-engagement-management-wem/"
+        },
+        {
+          "title": "Create and configure queues",
+          "url": "https://help.genesys.cloud/articles/create-queues/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "One promise, two screens. They should match.",
+        "nodes": [
+          {
+            "id": "q",
+            "label": "Queue target",
+            "kind": "queue",
+            "x": 24,
+            "y": 40
+          },
+          {
+            "id": "t",
+            "label": "Template",
+            "kind": "wem",
+            "x": 64,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "q",
+            "b": "t"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Make the numbers agree",
+        "steps": [
+          {
+            "from": "WFM",
+            "to": "Template",
+            "title": "80/20 voice",
+            "detail": "Write the planning target.",
+            "inspect": "Per media, like the queue"
+          },
+          {
+            "from": "Queue",
+            "to": "Voice panel",
+            "title": "Same pair",
+            "detail": "Percentage and seconds.",
+            "inspect": "Email gets its own"
+          },
+          {
+            "from": "Lead",
+            "to": "Sign",
+            "title": "One promise",
+            "detail": "Leadership should see one pair.",
+            "inspect": "Not a slide and a queue that differ"
+          },
+          {
+            "from": "Math",
+            "to": "External",
+            "title": "Label it",
+            "detail": "If you use a classic formula, say it is not the product.",
+            "inspect": "The template is the product"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Service goal templates are documented under:",
+          "choices": [
+            "RFC 3261",
+            "Workforce management in the WEM article",
+            "BYOC",
+            "OAuth"
+          ],
+          "answer": 1,
+          "why": "That is their home."
+        },
+        {
+          "q": "The live voice target is configured on:",
+          "choices": [
+            "The queue\u2019s voice service level",
+            "The trunk",
+            "The bot",
+            "The token"
+          ],
+          "answer": 0,
+          "why": "Percentage and seconds, per media."
+        },
+        {
+          "q": "A template of 20 seconds and a queue target of 60 seconds means:",
+          "choices": [
+            "SIP fails",
+            "The Edge fails over",
+            "You are planning and reporting different promises",
+            "They are averaged"
+          ],
+          "answer": 2,
+          "why": "Make them the same on purpose."
+        },
+        {
+          "q": "This lab treats Erlang-style formulas as:",
+          "choices": [
+            "A required queue field",
+            "An RFC the product implements",
+            "External math, not a documented Genesys forecast engine",
+            "The WFM algorithm"
+          ],
+          "answer": 2,
+          "why": "The WEM article does not say Erlang."
+        },
+        {
+          "q": "Email and voice goals:",
+          "choices": [
+            "Are illegal if different",
+            "Are both 7 seconds",
+            "Can differ, because each media has its own target",
+            "Must be identical"
+          ],
+          "answer": 2,
+          "why": "The queue article configures medias separately."
+        },
+        {
+          "q": "CX 1 includes these templates?",
+          "choices": [
+            "Yes",
+            "Only the template, not the schedule",
+            "Only in FedRAMP",
+            "No. WEM is CX 3."
+          ],
+          "answer": 3,
+          "why": "The overview places WEM on CX 3."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Template",
+          "back": "The planning promise."
+        },
+        {
+          "front": "Queue",
+          "back": "The reported promise."
+        },
+        {
+          "front": "Match them",
+          "back": "Or you staff the wrong target."
+        },
+        {
+          "front": "Erlang",
+          "back": "Not claimed as the Genesys engine."
+        }
+      ],
+      "lab": {
+        "title": "Write one pair twice",
+        "steps": [
+          "Voice percentage and seconds.",
+          "The same pair as the template.",
+          "A different email pair.",
+          "A note that any side formula is external."
+        ],
+        "success": "The two voice pairs match."
+      },
+      "fault": {
+        "title": "Slide versus queue",
+        "symptom": "The board deck says 20 seconds. The queue says 45.",
+        "log": "Template was never updated after the deck.",
+        "cause": "Planners and the platform disagree.",
+        "fix": "Pick one pair and type it in both places."
+      }
+    },
+    {
+      "id": "w-sched",
+      "title": "Schedules are the plan agents work",
+      "level": "Core",
+      "minutes": 11,
+      "summary": "A schedule is built from the management unit, the goals, and activity codes. It is not a routing method.",
+      "paras": [
+        "The WEM article includes schedules and activity codes in the WFM list. Activity codes mark what an agent is supposed to be doing: on queue, break, meeting, training. On Queue, the routing status, is what ACD sees. An activity code that says \u201con queue\u201d while the agent never selects On Queue is a schedule that routing cannot honor.",
+        "Publishing a schedule does not add queue membership and does not change bullseye rings. If the schedule staffs a skill group that is not in the queue, the agents can be \u201cworking\u201d and the queue can still starve."
+      ],
+      "cites": [
+        {
+          "title": "About Workforce Engagement Management",
+          "url": "https://help.genesys.cloud/articles/about-workforce-engagement-management-wem/"
+        },
+        {
+          "title": "Create and configure queues",
+          "url": "https://help.genesys.cloud/articles/create-queues/"
+        },
+        {
+          "title": "Advanced routing overview",
+          "url": "https://help.genesys.cloud/articles/advanced-routing-overview/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "The schedule says when. On Queue says the agent is actually available.",
+        "nodes": [
+          {
+            "id": "s",
+            "label": "Schedule",
+            "kind": "wem",
+            "x": 22,
+            "y": 40
+          },
+          {
+            "id": "a",
+            "label": "Activity",
+            "kind": "agent",
+            "x": 52,
+            "y": 40
+          },
+          {
+            "id": "o",
+            "label": "On Queue",
+            "kind": "queue",
+            "x": 82,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "s",
+            "b": "a"
+          },
+          {
+            "a": "a",
+            "b": "o"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Connect the schedule to ACD",
+        "steps": [
+          {
+            "from": "Planner",
+            "to": "Activity codes",
+            "title": "Define",
+            "detail": "On queue, break, meeting.",
+            "inspect": "Names people recognize"
+          },
+          {
+            "from": "Planner",
+            "to": "Schedule",
+            "title": "Generate",
+            "detail": "From the management unit and the goal.",
+            "inspect": "Not from a routing method"
+          },
+          {
+            "from": "Agent",
+            "to": "Status",
+            "title": "On Queue",
+            "detail": "During the on-queue activity.",
+            "inspect": "Otherwise ACD sees nobody"
+          },
+          {
+            "from": "Check",
+            "to": "Membership",
+            "title": "Still required",
+            "detail": "The schedule does not join the queue.",
+            "inspect": "5,000 cap still applies"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Activity codes are:",
+          "choices": [
+            "Trunk subtypes",
+            "WFM labels for what the agent should be doing",
+            "SIP methods",
+            "OAuth grants"
+          ],
+          "answer": 1,
+          "why": "The WEM article lists them."
+        },
+        {
+          "q": "A schedule replaces On Queue?",
+          "choices": [
+            "Only for bots",
+            "No. Routing still requires the status.",
+            "Yes",
+            "Only for email"
+          ],
+          "answer": 1,
+          "why": "The queue article\u2019s status is separate."
+        },
+        {
+          "q": "A schedule adds queue members automatically?",
+          "choices": [
+            "Only on CX 4",
+            "No",
+            "Yes",
+            "Only under 30 minutes"
+          ],
+          "answer": 1,
+          "why": "Membership is a queue setting."
+        },
+        {
+          "q": "Bullseye rings are changed by publishing a schedule?",
+          "choices": [
+            "Only the delay floor",
+            "No",
+            "Yes",
+            "Only ring 5"
+          ],
+          "answer": 1,
+          "why": "Rings are routing configuration."
+        },
+        {
+          "q": "An on-queue activity with the agent left Available means:",
+          "choices": [
+            "The schedule and ACD disagree",
+            "Perfect adherence",
+            "A published flow",
+            "A DCVP migration"
+          ],
+          "answer": 0,
+          "why": "Available is not On Queue."
+        },
+        {
+          "q": "The planning inputs named in this lesson are:",
+          "choices": [
+            "Management unit, service goal, and activity codes",
+            "TLS ciphers",
+            "Amazon root CAs",
+            "Flow name length"
+          ],
+          "answer": 0,
+          "why": "Those are the WFM objects."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Activity",
+          "back": "What they should be doing."
+        },
+        {
+          "front": "On Queue",
+          "back": "What ACD requires."
+        },
+        {
+          "front": "Membership",
+          "back": "Still separate."
+        },
+        {
+          "front": "Schedule",
+          "back": "Does not edit rings."
+        }
+      ],
+      "lab": {
+        "title": "Write one day",
+        "steps": [
+          "Three activity codes.",
+          "When the agent must be On Queue.",
+          "Which queue they must already belong to.",
+          "What the schedule will not change."
+        ],
+        "success": "The day has a status, not only a color on a grid."
+      },
+      "fault": {
+        "title": "Green schedule, empty queue",
+        "symptom": "The forecast is met and the queue is unanswered.",
+        "log": "Agents in a meeting activity, or Available, during the on-queue block.",
+        "cause": "The status never became On Queue.",
+        "fix": "Coach the status, or fix the activity so the expectation is real."
+      }
+    },
+    {
+      "id": "w-intra",
+      "title": "Intraday and adherence compare the plan to the floor",
+      "level": "Core",
+      "minutes": 12,
+      "summary": "Adherence is the gap between the activity you scheduled and the status the agent is actually in.",
+      "paras": [
+        "The WEM article lists real-time and historical adherence and intraday monitoring. Intraday is how you change today when the morning forecast was wrong. Adherence is how you see that agents are not in the activity you published. Neither one rewrites Architect.",
+        "A queue that suddenly misses service level can be a routing bug or an adherence bug. Check On Queue counts before you add a bullseye ring. If the schedule said twelve and three are On Queue, the ring is not the first lever."
+      ],
+      "cites": [
+        {
+          "title": "About Workforce Engagement Management",
+          "url": "https://help.genesys.cloud/articles/about-workforce-engagement-management-wem/"
+        },
+        {
+          "title": "Create and configure queues",
+          "url": "https://help.genesys.cloud/articles/create-queues/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Intraday adjusts today. Adherence explains the gap.",
+        "nodes": [
+          {
+            "id": "plan",
+            "label": "Plan",
+            "kind": "wem",
+            "x": 18,
+            "y": 40
+          },
+          {
+            "id": "now",
+            "label": "Intraday",
+            "kind": "agent",
+            "x": 48,
+            "y": 22
+          },
+          {
+            "id": "ad",
+            "label": "Adherence",
+            "kind": "wem",
+            "x": 48,
+            "y": 70
+          },
+          {
+            "id": "q",
+            "label": "Queue",
+            "kind": "queue",
+            "x": 80,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "plan",
+            "b": "now"
+          },
+          {
+            "a": "plan",
+            "b": "ad"
+          },
+          {
+            "a": "now",
+            "b": "q"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Look at the floor before the ring",
+        "steps": [
+          {
+            "from": "Sup",
+            "to": "Intraday",
+            "title": "See the day",
+            "detail": "The article\u2019s monitoring view.",
+            "inspect": "Today, not next month"
+          },
+          {
+            "from": "Sup",
+            "to": "Adherence",
+            "title": "Compare",
+            "detail": "Scheduled activity versus actual.",
+            "inspect": "Historical and real time"
+          },
+          {
+            "from": "Sup",
+            "to": "On Queue",
+            "title": "Count bodies",
+            "detail": "Twelve planned, three present.",
+            "inspect": "That is the incident"
+          },
+          {
+            "from": "Sup",
+            "to": "Routing",
+            "title": "Later",
+            "detail": "Change rings only if the bodies are actually there.",
+            "inspect": "Otherwise you widen onto nobody"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Adherence compares:",
+          "choices": [
+            "SIP and RTP",
+            "CX 1 and CX 4",
+            "Two trunks",
+            "Scheduled activity and actual status"
+          ],
+          "answer": 3,
+          "why": "The WEM article includes adherence for that reason."
+        },
+        {
+          "q": "Intraday monitoring is for:",
+          "choices": [
+            "Changing the AWS region",
+            "Publishing a bot",
+            "Buying DIDs",
+            "Adjusting the current day"
+          ],
+          "answer": 3,
+          "why": "It is the same-day view."
+        },
+        {
+          "q": "A service-level miss with three of twelve agents On Queue is first:",
+          "choices": [
+            "An adherence or staffing problem",
+            "A DCVP cipher problem",
+            "A flow-name problem",
+            "A 988 problem"
+          ],
+          "answer": 0,
+          "why": "Count the bodies before you edit rings."
+        },
+        {
+          "q": "Historical adherence is:",
+          "choices": [
+            "Also in the WEM description, beside real-time",
+            "Removed",
+            "A carrier feature",
+            "An OAuth grant"
+          ],
+          "answer": 0,
+          "why": "The article says real-time and historical."
+        },
+        {
+          "q": "Adherence rewrites Architect flows?",
+          "choices": [
+            "Only secure flows",
+            "No",
+            "Yes",
+            "Only common modules"
+          ],
+          "answer": 1,
+          "why": "It explains people, not tasks."
+        },
+        {
+          "q": "Widening bullseye when nobody is On Queue:",
+          "choices": [
+            "Publishes the schedule",
+            "Moves the region",
+            "Does not create agents",
+            "Fixes adherence"
+          ],
+          "answer": 2,
+          "why": "The pool is still empty."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Intraday",
+          "back": "Today."
+        },
+        {
+          "front": "Adherence",
+          "back": "Plan versus actual."
+        },
+        {
+          "front": "Count On Queue",
+          "back": "Before you edit routing."
+        },
+        {
+          "front": "Historical",
+          "back": "Also documented."
+        }
+      ],
+      "lab": {
+        "title": "Triage one red interval",
+        "steps": [
+          "Planned count.",
+          "On Queue count.",
+          "Whether you would touch a ring.",
+          "What you would tell the supervisor."
+        ],
+        "success": "The ring is not the first edit."
+      },
+      "fault": {
+        "title": "Ring edited at noon",
+        "symptom": "Someone added a ring because service level dipped. The agents were in a meeting.",
+        "log": "Adherence: meeting. Routing change: extra ring.",
+        "cause": "The lever was people.",
+        "fix": "Revert the ring if it was only a reaction, and fix the activity or the meeting."
+      }
+    },
+    {
+      "id": "w-off",
+      "title": "Time off is a schedule change with a rule",
+      "level": "Core",
+      "minutes": 11,
+      "summary": "Time-off requests are part of WFM. An approved request that nobody reflects on the schedule is a rumor.",
+      "paras": [
+        "The WEM article lists time-off requests beside schedules and adherence. A request that is approved in mail and never entered in WFM will show the agent as absent against a schedule that still expects them. Adherence will flag them, and the forecast will be wrong.",
+        "Time off does not remove queue membership and does not set utilization. The agent who is off should not be On Queue. If they are, routing will still offer them work, and the schedule\u2019s story will be fiction."
+      ],
+      "cites": [
+        {
+          "title": "About Workforce Engagement Management",
+          "url": "https://help.genesys.cloud/articles/about-workforce-engagement-management-wem/"
+        },
+        {
+          "title": "Create and configure queues",
+          "url": "https://help.genesys.cloud/articles/create-queues/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "An approved request has to land on the schedule.",
+        "nodes": [
+          {
+            "id": "req",
+            "label": "Request",
+            "kind": "agent",
+            "x": 18,
+            "y": 40
+          },
+          {
+            "id": "ok",
+            "label": "Approved",
+            "kind": "wem",
+            "x": 48,
+            "y": 40
+          },
+          {
+            "id": "sch",
+            "label": "Schedule",
+            "kind": "wem",
+            "x": 78,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "req",
+            "b": "ok"
+          },
+          {
+            "a": "ok",
+            "b": "sch"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Close the loop",
+        "steps": [
+          {
+            "from": "Agent",
+            "to": "Request",
+            "title": "In WFM",
+            "detail": "The article lists the request.",
+            "inspect": "Not only in chat"
+          },
+          {
+            "from": "Sup",
+            "to": "Approve",
+            "title": "In the product",
+            "detail": "Then the schedule can change.",
+            "inspect": "Mail is not the system"
+          },
+          {
+            "from": "Schedule",
+            "to": "Update",
+            "title": "The day",
+            "detail": "Adherence should expect the absence.",
+            "inspect": "Otherwise it flags a good agent"
+          },
+          {
+            "from": "Agent",
+            "to": "Status",
+            "title": "Not On Queue",
+            "detail": "Routing follows status.",
+            "inspect": "Time off is not a routing method"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Time-off requests are documented as part of:",
+          "choices": [
+            "Workforce management",
+            "BYOC",
+            "Secure flows",
+            "Number plans"
+          ],
+          "answer": 0,
+          "why": "The WEM article lists them."
+        },
+        {
+          "q": "An approval that never hits the schedule causes:",
+          "choices": [
+            "A region move",
+            "Adherence to flag a planned absence as a miss",
+            "A trunk failure",
+            "A token refund"
+          ],
+          "answer": 1,
+          "why": "The plan and the floor disagree."
+        },
+        {
+          "q": "Time off removes queue membership?",
+          "choices": [
+            "No",
+            "Yes",
+            "Only over 5,000",
+            "Only for email"
+          ],
+          "answer": 0,
+          "why": "Membership is separate. Status is what must change."
+        },
+        {
+          "q": "An agent on approved time off who stays On Queue will:",
+          "choices": [
+            "Drop SRTP",
+            "Still be offered interactions",
+            "Be invisible to ACD",
+            "Lose their division"
+          ],
+          "answer": 1,
+          "why": "Routing watches status."
+        },
+        {
+          "q": "The system of record for the request should be:",
+          "choices": [
+            "A quiz",
+            "WFM, not a side conversation",
+            "A SIP header",
+            "A participant data key"
+          ],
+          "answer": 1,
+          "why": "Otherwise the schedule cannot know."
+        },
+        {
+          "q": "CX package implication:",
+          "choices": [
+            "No license is involved",
+            "Only AppFoundry",
+            "WFM requests require the WEM package story, CX 3 and up",
+            "CX 1 includes scheduling"
+          ],
+          "answer": 2,
+          "why": "The overview places WEM on CX 3."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Request",
+          "back": "In WFM."
+        },
+        {
+          "front": "Schedule",
+          "back": "Must show the absence."
+        },
+        {
+          "front": "Status",
+          "back": "Not On Queue."
+        },
+        {
+          "front": "Membership",
+          "back": "Unchanged."
+        }
+      ],
+      "lab": {
+        "title": "Walk one request",
+        "steps": [
+          "Where it is entered.",
+          "Who approves it.",
+          "What the schedule should show.",
+          "What the agent\u2019s status should be."
+        ],
+        "success": "The four answers are in the product, not in chat."
+      },
+      "fault": {
+        "title": "Chat approval",
+        "symptom": "The agent is off. Adherence is red. The queue is short.",
+        "log": "Approval: a chat message. WFM request: none.",
+        "cause": "The schedule never changed.",
+        "fix": "Enter and approve the request in WFM so the day matches."
+      }
+    },
+    {
+      "id": "w-cert",
+      "title": "The workforce certification is a named exam",
+      "level": "Core",
+      "minutes": 10,
+      "summary": "The catalog lists a Workforce Management specialist certification and a preparation course. It does not list a code this lab is willing to invent.",
+      "paras": [
+        "On the Genesys Education cloud exam page, Workforce Management Certification is a specialist exam. The recommended preparation is the course titled WEM \u2013 Workforce Management. Professional certification (GC-GCP) is a different exam, prepared by Implementation, Contact Center Administration, and Reporting and Analytics. You can sit more than one. They are not substitutes.",
+        "Practice exams exist, 25 to 30 questions, without a voucher, from the announcement page. That practice exam is not this lab\u2019s quiz. This lab\u2019s quiz checks whether you can cite the product. The practice exam is Genesys\u2019 own."
+      ],
+      "cites": [
+        {
+          "title": "Genesys Cloud exams",
+          "url": "https://education.genesys.com/certification/cloud"
+        },
+        {
+          "title": "Genesys technical certifications announcement",
+          "url": "https://education.genesys.com/explore/announcement/genesys-technical-certifications-important-announcement"
+        },
+        {
+          "title": "About Workforce Engagement Management",
+          "url": "https://help.genesys.cloud/articles/about-workforce-engagement-management-wem/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Specialist and professional exams are different catalog rows.",
+        "nodes": [
+          {
+            "id": "p",
+            "label": "GC-GCP",
+            "kind": "region",
+            "x": 22,
+            "y": 40
+          },
+          {
+            "id": "w",
+            "label": "WFM specialist",
+            "kind": "wem",
+            "x": 62,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "p",
+            "b": "w"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Pick the exam you mean",
+        "steps": [
+          {
+            "from": "Candidate",
+            "to": "Catalog",
+            "title": "Open the row",
+            "detail": "Use the name on the page.",
+            "inspect": "Do not invent a code"
+          },
+          {
+            "from": "Candidate",
+            "to": "Prep",
+            "title": "WEM \u2013 Workforce Management",
+            "detail": "The listed course.",
+            "inspect": "Not only this lab"
+          },
+          {
+            "from": "Candidate",
+            "to": "Practice",
+            "title": "Webassessor practice catalog",
+            "detail": "No voucher, per the announcement.",
+            "inspect": "25 to 30 questions"
+          },
+          {
+            "from": "Candidate",
+            "to": "Work",
+            "title": "Still learn the product",
+            "detail": "The exam does not configure your org.",
+            "inspect": "CX 3 still required to use WFM"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "The catalog name to study is:",
+          "choices": [
+            "MS-721",
+            "Workforce Management Certification",
+            "GCX-WFM as invented here",
+            "CCNA Collaboration"
+          ],
+          "answer": 1,
+          "why": "This lab cites the catalog name and does not invent a specialist code."
+        },
+        {
+          "q": "The listed preparation course is:",
+          "choices": [
+            "WEM \u2013 Workforce Management",
+            "Only the API course",
+            "Only Architect",
+            "A Cisco CVD"
+          ],
+          "answer": 0,
+          "why": "That is the catalog cell."
+        },
+        {
+          "q": "GC-GCP is:",
+          "choices": [
+            "The professional certification, a different exam",
+            "The same exam",
+            "A trunk subtype",
+            "A ring count"
+          ],
+          "answer": 0,
+          "why": "The header code is GC-GCP."
+        },
+        {
+          "q": "The free practice exam described on the announcement is:",
+          "choices": [
+            "A live PSAP test",
+            "An OAuth token",
+            "25 to 30 questions, no voucher, in Webassessor",
+            "This lab\u2019s quiz"
+          ],
+          "answer": 2,
+          "why": "Use Genesys\u2019 practice exam as well."
+        },
+        {
+          "q": "Passing the exam configures WFM in your org?",
+          "choices": [
+            "No",
+            "Yes",
+            "Only the business unit",
+            "Only if you use implicit grant"
+          ],
+          "answer": 0,
+          "why": "Licenses and admin work remain."
+        },
+        {
+          "q": "Japanese availability, per the announcement, excludes:",
+          "choices": [
+            "WFM",
+            "STA",
+            "The Architect certification",
+            "All cloud exams"
+          ],
+          "answer": 2,
+          "why": "The announcement says Architect is the exception."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Name",
+          "back": "Workforce Management Certification."
+        },
+        {
+          "front": "Prep",
+          "back": "WEM \u2013 Workforce Management."
+        },
+        {
+          "front": "Not GC-GCP",
+          "back": "Different exam."
+        },
+        {
+          "front": "Practice",
+          "back": "Genesys\u2019 own, 25\u201330, no voucher."
+        }
+      ],
+      "lab": {
+        "title": "Write your study list",
+        "steps": [
+          "Exam name from the catalog.",
+          "Prep course name.",
+          "Two product articles you will re-read.",
+          "A note that this lab is not the practice exam."
+        ],
+        "success": "The list uses catalog names."
+      },
+      "fault": {
+        "title": "Wrong exam",
+        "symptom": "A candidate studies only GC-GCP and expects the WFM specialist badge.",
+        "log": "Catalog: two different rows.",
+        "cause": "The professional exam\u2019s prep courses are Implementation, Administration, and Reporting.",
+        "fix": "Open the Workforce Management row and its own course."
+      }
+    }
+  ]
+}

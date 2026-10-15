@@ -1,0 +1,1622 @@
+{
+  "id": "acd",
+  "title": "ACD routing",
+  "kicker": "Routing",
+  "accent": 1,
+  "summary": "Standard, bullseye, preferred, predictive, and conditional routing, plus the two scoring methods.",
+  "lessons": [
+    {
+      "id": "r-methods",
+      "title": "Five routing methods",
+      "level": "Core",
+      "minutes": 12,
+      "summary": "Standard, predictive, bullseye, preferred agent, and conditional group routing are the methods on a queue.",
+      "paras": [
+        "The routing settings article lists those five. Standard is the default. It offers the interaction to the next agent according to the evaluation method you picked. Bullseye adds rings that widen the pool. Preferred agent tries a named pool first. Predictive uses historical outcomes against a KPI you select. Conditional group routing shares a group of agents across queues when a KPI rule says the other queue can spare them.",
+        "Methods can time out into another method. Preferred agent\u2019s timeout can fall back to standard, bullseye, or conditional group routing. Predictive\u2019s timeout falls back to standard. If you only memorize the names, you will mis-set the fallback and the queue will look \u201cstuck\u201d when it is doing the second method."
+      ],
+      "cites": [
+        {
+          "title": "Advanced routing overview",
+          "url": "https://help.genesys.cloud/articles/advanced-routing-overview/"
+        },
+        {
+          "title": "Specify routing and evaluation methods",
+          "url": "https://help.genesys.cloud/articles/specify-routing-settings/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "One queue, one method, and a documented fallback.",
+        "nodes": [
+          {
+            "id": "q",
+            "label": "Queue",
+            "kind": "queue",
+            "x": 18,
+            "y": 40
+          },
+          {
+            "id": "m",
+            "label": "Method",
+            "kind": "architect",
+            "x": 48,
+            "y": 22
+          },
+          {
+            "id": "fb",
+            "label": "Fallback",
+            "kind": "agent",
+            "x": 78,
+            "y": 60
+          }
+        ],
+        "edges": [
+          {
+            "a": "q",
+            "b": "m"
+          },
+          {
+            "a": "m",
+            "b": "fb"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Pick a method and its timeout",
+        "steps": [
+          {
+            "from": "Admin",
+            "to": "Queue",
+            "title": "Open routing",
+            "detail": "The method is a queue setting.",
+            "inspect": "Standard is the default"
+          },
+          {
+            "from": "Admin",
+            "to": "Method",
+            "title": "Choose",
+            "detail": "Five documented choices.",
+            "inspect": "Do not invent a sixth"
+          },
+          {
+            "from": "Admin",
+            "to": "Timeout",
+            "title": "Set",
+            "detail": "Preferred and predictive both expire.",
+            "inspect": "Name the fallback"
+          },
+          {
+            "from": "ACD",
+            "to": "Agents",
+            "title": "Offer",
+            "detail": "Only eligible agents are offered.",
+            "inspect": "On Queue and utilization still apply"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "The default routing method is:",
+          "choices": [
+            "Preferred",
+            "Standard",
+            "Predictive",
+            "Bullseye"
+          ],
+          "answer": 1,
+          "why": "The settings article says standard is the default."
+        },
+        {
+          "q": "Predictive routing\u2019s documented timeout fallback is:",
+          "choices": [
+            "Voicemail only",
+            "Standard routing",
+            "Disconnect",
+            "A new org"
+          ],
+          "answer": 1,
+          "why": "The settings article describes standard as that fallback."
+        },
+        {
+          "q": "Conditional group routing exists to:",
+          "choices": [
+            "Publish Architect",
+            "Share agent groups across queues without breaking the other queue\u2019s KPI",
+            "Replace SIP",
+            "Encrypt RTP"
+          ],
+          "answer": 1,
+          "why": "The overview describes KPI-and-availability rules."
+        },
+        {
+          "q": "How many routing methods does the settings article list?",
+          "choices": [
+            "Two",
+            "Eleven",
+            "Five",
+            "Three"
+          ],
+          "answer": 2,
+          "why": "Standard, predictive, bullseye, preferred, conditional group."
+        },
+        {
+          "q": "Preferred agent timeout may fall back to:",
+          "choices": [
+            "Only a bot",
+            "Only FedRAMP",
+            "Standard, bullseye, or conditional group",
+            "Only disconnect"
+          ],
+          "answer": 2,
+          "why": "The settings article lists those options."
+        },
+        {
+          "q": "Changing the method without reading the fallback causes:",
+          "choices": [
+            "A queue that looks stuck while it is in the second method",
+            "A region move",
+            "A license refund",
+            "An unpublished name"
+          ],
+          "answer": 0,
+          "why": "The timeout is part of the design."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Five",
+          "back": "Standard, predictive, bullseye, preferred, conditional."
+        },
+        {
+          "front": "Default",
+          "back": "Standard."
+        },
+        {
+          "front": "Predictive fallback",
+          "back": "Standard."
+        },
+        {
+          "front": "Preferred fallback",
+          "back": "Standard, bullseye, or conditional."
+        }
+      ],
+      "lab": {
+        "title": "Name the method for three queues",
+        "steps": [
+          "A simple longest-idle skills queue.",
+          "A queue that should widen skills over time.",
+          "A queue that should try last month\u2019s best closer first, with a KPI.",
+          "Write the fallback for the third."
+        ],
+        "success": "Each queue has a method and a fallback."
+      },
+      "fault": {
+        "title": "Stuck VIP",
+        "symptom": "VIP callers wait the full timeout even though general agents are idle.",
+        "log": "Method: preferred. Fallback: none was set, so the timeout sits.",
+        "cause": "Preferred only searches the preferred pool until it expires.",
+        "fix": "Set the timeout and a standard or bullseye fallback, then test with a non-preferred idle agent."
+      }
+    },
+    {
+      "id": "r-eval",
+      "title": "All skills, best available, or disregard",
+      "level": "Core",
+      "minutes": 13,
+      "summary": "The evaluation method is how standard and bullseye decide that an agent \u201chas the skills.\u201d",
+      "paras": [
+        "All skills matching selects the longest-idle agent who has every required skill. Proficiency is not the sort. Best available skills looks at the 100 longest-idle agents who have the required skills and then picks the highest average proficiency, with idle time as the tie-break. Disregard skills, next agent, offers the interaction to the first available agent and ignores skills.",
+        "The evaluation article also says routing considers agent activity from the previous 7 days and skips inactive agents. A skill you added this morning on an agent who has not been active does not behave like a skill on someone who has been taking calls all week. Bullseye\u2019s strict rings want all-skills or best-available. Disregard skills makes the rings much less meaningful."
+      ],
+      "cites": [
+        {
+          "title": "Routing and evaluation methods",
+          "url": "https://help.genesys.cloud/articles/acd-evaluation-routing-methods/"
+        },
+        {
+          "title": "Bullseye routing overview",
+          "url": "https://help.genesys.cloud/articles/bullseye-routing-overview/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "All-skills sorts by idle time. Best-available sorts by proficiency inside the idle window.",
+        "nodes": [
+          {
+            "id": "all",
+            "label": "All skills",
+            "kind": "agent",
+            "x": 22,
+            "y": 36
+          },
+          {
+            "id": "best",
+            "label": "Best of 100",
+            "kind": "agent",
+            "x": 55,
+            "y": 36
+          },
+          {
+            "id": "none",
+            "label": "Disregard",
+            "kind": "queue",
+            "x": 84,
+            "y": 36
+          }
+        ],
+        "edges": [
+          {
+            "a": "all",
+            "b": "best"
+          },
+          {
+            "a": "best",
+            "b": "none"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Two agents, one method",
+        "steps": [
+          {
+            "from": "Interaction",
+            "to": "ACD",
+            "title": "Needs Billing and Spanish",
+            "detail": "Both skills are required.",
+            "inspect": "Evaluation decides the rest"
+          },
+          {
+            "from": "All skills",
+            "to": "Leo",
+            "title": "Longest idle with both",
+            "detail": "Amina lacks Spanish and is out.",
+            "inspect": "Proficiency is not the sort"
+          },
+          {
+            "from": "Best",
+            "to": "Window",
+            "title": "100 longest idle",
+            "detail": "Then highest average proficiency.",
+            "inspect": "Idle breaks the tie"
+          },
+          {
+            "from": "Disregard",
+            "to": "Anyone",
+            "title": "First free agent",
+            "detail": "Skills are ignored.",
+            "inspect": "Rings stop meaning much"
+          },
+          {
+            "from": "Profile",
+            "to": "7 days",
+            "title": "Activity",
+            "detail": "Inactive agents are not in the pool.",
+            "inspect": "A brand-new skill is not magic"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "All skills matching breaks ties by:",
+          "choices": [
+            "Lowest license cost",
+            "Alphabetically",
+            "Longest idle among agents who have every skill",
+            "Highest proficiency"
+          ],
+          "answer": 2,
+          "why": "The evaluation article describes longest-idle, not proficiency, for this method."
+        },
+        {
+          "q": "Best available skills first narrows to:",
+          "choices": [
+            "Only CX 4 users",
+            "The 100 longest-idle agents who have the required skills",
+            "Every agent in the org",
+            "Only preferred agents"
+          ],
+          "answer": 1,
+          "why": "Then it compares average proficiency."
+        },
+        {
+          "q": "The tie-break inside best available skills is:",
+          "choices": [
+            "Idle time",
+            "Division name",
+            "SIP response code",
+            "Flow name length"
+          ],
+          "answer": 0,
+          "why": "Proficiency first, idle time second."
+        },
+        {
+          "q": "Disregard skills means:",
+          "choices": [
+            "Bullseye adds a sixth ring",
+            "Predictive is disabled globally",
+            "The next available agent, skills ignored",
+            "All skills are removed from the org"
+          ],
+          "answer": 2,
+          "why": "It is an evaluation method, not a data wipe."
+        },
+        {
+          "q": "Activity considered for routing is from:",
+          "choices": [
+            "All time",
+            "The previous 7 days",
+            "The previous 7 minutes",
+            "The previous 30 days only"
+          ],
+          "answer": 1,
+          "why": "The evaluation article states 7 days."
+        },
+        {
+          "q": "Bullseye skill removal is most meaningful with:",
+          "choices": [
+            "All skills matching or best available skills",
+            "Disregard skills",
+            "No evaluation at all",
+            "A secure flow"
+          ],
+          "answer": 0,
+          "why": "The bullseye article says those strict methods are where removal matters."
+        }
+      ],
+      "cards": [
+        {
+          "front": "All",
+          "back": "Longest idle with every skill."
+        },
+        {
+          "front": "Best",
+          "back": "Top 100 longest idle, then proficiency."
+        },
+        {
+          "front": "Disregard",
+          "back": "Skills do not filter."
+        },
+        {
+          "front": "7 days",
+          "back": "Inactive agents drop out."
+        }
+      ],
+      "lab": {
+        "title": "Score three agents on paper",
+        "steps": [
+          "Give two agents both skills and different idle times.",
+          "Give a third agent higher proficiency and less idle time.",
+          "Say who wins under all-skills.",
+          "Say who wins under best-available."
+        ],
+        "success": "You can predict the winner before you click the simulator."
+      },
+      "fault": {
+        "title": "Proficiency surprise",
+        "symptom": "The five-star agent never gets the call. A one-star agent does.",
+        "log": "Evaluation: all skills matching. Five-star agent idle: 10 seconds. One-star agent idle: 20 minutes. Both have the skills.",
+        "cause": "All-skills ignores proficiency.",
+        "fix": "Switch to best available skills if proficiency is the policy, or accept longest-idle as the policy."
+      }
+    },
+    {
+      "id": "r-score",
+      "title": "Conversation score and priority score",
+      "level": "Core",
+      "minutes": 12,
+      "summary": "One priority point on conversation score is worth 60,000 milliseconds of arrival time.",
+      "paras": [
+        "Conversation score combines arrival time and priority. The evaluation article says one priority point equals 60,000 milliseconds, so a higher priority jumps the line as if it had arrived earlier. Priority score uses the priority value first and time-in-queue only as a tie-break. When queues that the same agent serves use different scoring methods, Genesys Cloud gives precedence to queues using priority score.",
+        "A priority 5 interaction that arrived now outranks a priority 0 interaction that arrived four minutes ago, because five points are 300,000 milliseconds, which is five minutes. That arithmetic is the article\u2019s rule, and it is the rule the routing simulator uses. It is not a reason to set every queue to priority 10. If everything is urgent, nothing is."
+      ],
+      "cites": [
+        {
+          "title": "Routing and evaluation methods",
+          "url": "https://help.genesys.cloud/articles/acd-evaluation-routing-methods/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Priority pulls an interaction forward in time under conversation score.",
+        "nodes": [
+          {
+            "id": "old",
+            "label": "Priority 0",
+            "kind": "phone",
+            "x": 22,
+            "y": 60
+          },
+          {
+            "id": "new",
+            "label": "Priority 5",
+            "kind": "phone",
+            "x": 58,
+            "y": 28
+          },
+          {
+            "id": "ag",
+            "label": "Agent",
+            "kind": "agent",
+            "x": 84,
+            "y": 44
+          }
+        ],
+        "edges": [
+          {
+            "a": "new",
+            "b": "ag"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Who is offered when one agent becomes free",
+        "steps": [
+          {
+            "from": "Call A",
+            "to": "Queue",
+            "title": "Priority 0, waited 4 min",
+            "detail": "Conversation rank is its arrival.",
+            "inspect": "No boost"
+          },
+          {
+            "from": "Call B",
+            "to": "Queue",
+            "title": "Priority 5, just arrived",
+            "detail": "Five points equal five minutes.",
+            "inspect": "It ranks ahead of A"
+          },
+          {
+            "from": "Agent",
+            "to": "ACD",
+            "title": "One slot",
+            "detail": "Only one interaction is chosen.",
+            "inspect": "The other keeps waiting"
+          },
+          {
+            "from": "Other queue",
+            "to": "Priority score",
+            "title": "Different method",
+            "detail": "Priority-score queues win across methods.",
+            "inspect": "Do not mix them by accident"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "One conversation-score priority point equals:",
+          "choices": [
+            "1 millisecond",
+            "1 hour",
+            "7 days",
+            "60,000 milliseconds"
+          ],
+          "answer": 3,
+          "why": "The evaluation article states 60,000 ms."
+        },
+        {
+          "q": "A priority 5 call that just arrived versus a priority 0 call that arrived 4 minutes ago:",
+          "choices": [
+            "The trunk resets",
+            "The priority 5 call ranks first under conversation score",
+            "The older call always wins",
+            "Neither is offered"
+          ],
+          "answer": 1,
+          "why": "Five minutes of equivalent wait beats four minutes."
+        },
+        {
+          "q": "Priority score orders by:",
+          "choices": [
+            "Idle agent name",
+            "Flow Insights",
+            "License cost",
+            "Priority value, then time in queue"
+          ],
+          "answer": 3,
+          "why": "Time is the tie-break, not the main key."
+        },
+        {
+          "q": "If one queue uses priority score and another uses conversation score, an agent shared by both sees:",
+          "choices": [
+            "Only email",
+            "Only bullseye",
+            "Priority-score queues take precedence",
+            "A random queue"
+          ],
+          "answer": 2,
+          "why": "The evaluation article describes that cross-queue rule."
+        },
+        {
+          "q": "Setting every interaction to priority 10:",
+          "choices": [
+            "Publishes the in-queue flow",
+            "Lowers the concurrent peak",
+            "Removes the meaning of priority",
+            "Is required for predictive"
+          ],
+          "answer": 2,
+          "why": "Relative priority is the point of the score."
+        },
+        {
+          "q": "The simulator\u2019s conversation rank subtracts priority times 60,000 from arrival so that:",
+          "choices": [
+            "Skills are removed",
+            "The Edge fails over",
+            "Higher priority sorts as if it arrived earlier",
+            "Higher priority waits longer"
+          ],
+          "answer": 2,
+          "why": "That is the same relationship the article describes."
+        }
+      ],
+      "cards": [
+        {
+          "front": "60,000 ms",
+          "back": "One conversation-score point."
+        },
+        {
+          "front": "Priority score",
+          "back": "Value first, time second."
+        },
+        {
+          "front": "Cross queue",
+          "back": "Priority-score queues take precedence."
+        },
+        {
+          "front": "Do not inflate",
+          "back": "If all priorities match, you bought nothing."
+        }
+      ],
+      "lab": {
+        "title": "Do the arithmetic",
+        "steps": [
+          "Compute 5 times 60,000 ms.",
+          "Compare it with a 4 minute wait.",
+          "Say which call wins.",
+          "Say what changes if the queue uses priority score instead."
+        ],
+        "success": "You can explain the winner without opening the admin UI."
+      },
+      "fault": {
+        "title": "Callback jumped the board",
+        "symptom": "A fresh callback is offered before a caller who has waited six minutes.",
+        "log": "Callback priority: 10. Conversation score is on. 10 points equal 10 minutes.",
+        "cause": "The score is working. The priority value is the policy.",
+        "fix": "Lower the callback priority or switch the scoring method if the board should be first-in."
+      }
+    },
+    {
+      "id": "r-bullseye",
+      "title": "Bullseye rings widen the target",
+      "level": "Core",
+      "minutes": 14,
+      "summary": "Up to five rings. A delay from 2 seconds to 72 hours. Up to 50 skills removed on a ring.",
+      "paras": [
+        "Bullseye starts with the tightest pool and expands. The settings article allows five rings. The delay between rings is from 2 seconds through 259,200 seconds, which is 72 hours. A ring can remove up to 50 skills. Two expansion styles are documented: add groups that share the skill at a lower proficiency, which stays compatible with WEM forecasting, or remove skills on outer rings.",
+        "Inner-ring agents stay preferred over outer-ring agents even after the ring opens. Preferred agents are considered even when they lack the required skills. Agents who are busy, fully utilized, or logged out are not available. The routing simulator in this lab removes a skill on ring 2 after the ring 1 delay, which is the skill-removal style, not a second product."
+      ],
+      "cites": [
+        {
+          "title": "Bullseye routing overview",
+          "url": "https://help.genesys.cloud/articles/bullseye-routing-overview/"
+        },
+        {
+          "title": "Specify routing and evaluation methods",
+          "url": "https://help.genesys.cloud/articles/specify-routing-settings/"
+        },
+        {
+          "title": "Preferred agent routing behavior",
+          "url": "https://help.genesys.cloud/articles/preferred-agent-routing-behavior/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Ring 1 is tight. Ring 2 drops a skill after the delay.",
+        "nodes": [
+          {
+            "id": "r1",
+            "label": "Ring 1",
+            "kind": "agent",
+            "x": 30,
+            "y": 36
+          },
+          {
+            "id": "r2",
+            "label": "Ring 2",
+            "kind": "agent",
+            "x": 58,
+            "y": 36
+          },
+          {
+            "id": "call",
+            "label": "Call",
+            "kind": "phone",
+            "x": 12,
+            "y": 70
+          }
+        ],
+        "edges": [
+          {
+            "a": "call",
+            "b": "r1"
+          },
+          {
+            "a": "r1",
+            "b": "r2"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Spanish falls off after 8 seconds",
+        "steps": [
+          {
+            "from": "Call",
+            "to": "Ring 1",
+            "title": "Billing and Spanish",
+            "detail": "Only bilingual agents.",
+            "inspect": "Delay 8 seconds"
+          },
+          {
+            "from": "ACD",
+            "to": "Agents",
+            "title": "None free",
+            "detail": "The ring does not skip early just because you are impatient.",
+            "inspect": "Wait the delay"
+          },
+          {
+            "from": "Call",
+            "to": "Ring 2",
+            "title": "Drop Spanish",
+            "detail": "Billing remains.",
+            "inspect": "Up to 50 removals"
+          },
+          {
+            "from": "ACD",
+            "to": "Amina",
+            "title": "Billing only",
+            "detail": "She becomes eligible on ring 2.",
+            "inspect": "Unless a preferred agent already matched"
+          },
+          {
+            "from": "WEM",
+            "to": "Design",
+            "title": "Proficiency groups",
+            "detail": "Same skills, lower proficiency, if forecasting must stay aligned.",
+            "inspect": "The other expansion style"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "The maximum number of bullseye rings is:",
+          "choices": [
+            "50",
+            "5",
+            "3",
+            "10"
+          ],
+          "answer": 1,
+          "why": "Both the settings article and the queue article say five."
+        },
+        {
+          "q": "The shortest documented delay between rings is:",
+          "choices": [
+            "0 seconds",
+            "7 seconds",
+            "30 minutes",
+            "2 seconds"
+          ],
+          "answer": 3,
+          "why": "2 seconds is the floor. 7 seconds is the voice alerting floor, a different timer."
+        },
+        {
+          "q": "The longest documented ring delay is:",
+          "choices": [
+            "7 days",
+            "259,200 seconds, 72 hours",
+            "59 seconds",
+            "24 hours"
+          ],
+          "answer": 1,
+          "why": "The queue article states 259,200 seconds."
+        },
+        {
+          "q": "Skills you may remove on one ring:",
+          "choices": [
+            "Up to 50",
+            "Up to 5",
+            "Unlimited",
+            "None"
+          ],
+          "answer": 0,
+          "why": "The settings and queue articles state 50."
+        },
+        {
+          "q": "Which expansion style stays aligned with WEM forecasting?",
+          "choices": [
+            "Groups that share the skill at a lower proficiency",
+            "Deleting the queue",
+            "Disregard skills",
+            "Removing the division"
+          ],
+          "answer": 0,
+          "why": "The bullseye overview recommends that style for WEM compatibility."
+        },
+        {
+          "q": "After an outer ring opens, an inner-ring agent who becomes free:",
+          "choices": [
+            "Loses their skills",
+            "Still outranks the outer ring",
+            "Is ignored",
+            "Is logged out"
+          ],
+          "answer": 1,
+          "why": "The overview says inner rings keep priority."
+        }
+      ],
+      "cards": [
+        {
+          "front": "5 rings",
+          "back": "The cap."
+        },
+        {
+          "front": "2 seconds to 72 hours",
+          "back": "The delay range."
+        },
+        {
+          "front": "50 skills",
+          "back": "The removal cap."
+        },
+        {
+          "front": "Two styles",
+          "back": "Lower proficiency groups, or remove skills."
+        }
+      ],
+      "lab": {
+        "title": "Configure two rings on paper",
+        "steps": [
+          "Write ring 1\u2019s skills and delay.",
+          "Write the skill ring 2 removes.",
+          "Say who wins if a ring 1 agent frees up late.",
+          "Say which style you would use if WFM forecasts this queue."
+        ],
+        "success": "The rings match a policy someone can test in the simulator."
+      },
+      "fault": {
+        "title": "Instant widen",
+        "symptom": "Every call hits general agents immediately. The bilingual team never sees them.",
+        "log": "Ring 1 delay: 2 seconds. Bilingual agents are usually on another call for longer than that.",
+        "cause": "The ring is legal and too short for the real handle pattern.",
+        "fix": "Lengthen the delay so ring 1 has a chance, and watch abandon before you lengthen it again."
+      }
+    },
+    {
+      "id": "r-preferred",
+      "title": "Preferred agents are tried first",
+      "level": "Core",
+      "minutes": 13,
+      "summary": "A preferred agent is considered even without the required skills, and only if they are a member of the queue and On Queue.",
+      "paras": [
+        "The behavior article describes a score and a timeout. In its example the first window tries the highest-score preferred agent, and the next window opens the rest of the preferred pool. Selection among agents who meet the current score is by time since the last interaction. Full utilization removes an agent from consideration. Partial utilization does not. If no preferred agent is actually a member of the queue, the timeouts are skipped and routing moves on.",
+        "Last-agent routing does not apply to email flows, only to direct queue routing in the cases the article allows. During transfers, preferred agents are excluded. A higher-priority interaction still jumps ahead of a preferred match for a lower-priority one. The simulator\u2019s \u201cpreferred first\u201d switch is this idea: if any preferred agent is eligible, the pool is only those agents."
+      ],
+      "cites": [
+        {
+          "title": "Preferred agent routing behavior",
+          "url": "https://help.genesys.cloud/articles/preferred-agent-routing-behavior/"
+        },
+        {
+          "title": "Bullseye routing overview",
+          "url": "https://help.genesys.cloud/articles/bullseye-routing-overview/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Preferred agents form the first pool, skills or not.",
+        "nodes": [
+          {
+            "id": "call",
+            "label": "Call",
+            "kind": "phone",
+            "x": 14,
+            "y": 40
+          },
+          {
+            "id": "pref",
+            "label": "Preferred",
+            "kind": "agent",
+            "x": 48,
+            "y": 22
+          },
+          {
+            "id": "rest",
+            "label": "Everyone else",
+            "kind": "agent",
+            "x": 48,
+            "y": 70
+          }
+        ],
+        "edges": [
+          {
+            "a": "call",
+            "b": "pref"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Try Amina before the bilingual team",
+        "steps": [
+          {
+            "from": "Profile",
+            "to": "Queue",
+            "title": "Mark preferred",
+            "detail": "She must already be a member.",
+            "inspect": "A non-member skips the timer"
+          },
+          {
+            "from": "Amina",
+            "to": "Status",
+            "title": "On Queue",
+            "detail": "Off queue does not count.",
+            "inspect": "Full utilization does not count"
+          },
+          {
+            "from": "ACD",
+            "to": "Amina",
+            "title": "Offer",
+            "detail": "She can lack Spanish and still be tried.",
+            "inspect": "Bullseye does not block her"
+          },
+          {
+            "from": "Timer",
+            "to": "Fallback",
+            "title": "Expire",
+            "detail": "Then the configured fallback runs.",
+            "inspect": "Standard, bullseye, or conditional"
+          },
+          {
+            "from": "Transfer",
+            "to": "Rule",
+            "title": "Skip preferred",
+            "detail": "Transfers do not use the preferred pool.",
+            "inspect": "The article says so"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "A preferred agent who is not a member of the queue:",
+          "choices": [
+            "Breaks SIP",
+            "Causes the preferred timeouts to be skipped",
+            "Is added automatically",
+            "Becomes the division owner"
+          ],
+          "answer": 1,
+          "why": "The behavior article says the timeouts are skipped."
+        },
+        {
+          "q": "Preferred agents and required skills:",
+          "choices": [
+            "Skills are deleted",
+            "Only on email",
+            "They are considered even when the skills are missing",
+            "They must have every skill"
+          ],
+          "answer": 2,
+          "why": "The bullseye and preferred articles both say this."
+        },
+        {
+          "q": "Full utilization does what to a preferred agent?",
+          "choices": [
+            "Publishes the flow",
+            "Extends the 72 hour timer",
+            "Removes them from consideration",
+            "Raises their score to 100"
+          ],
+          "answer": 2,
+          "why": "Partial utilization still leaves them eligible."
+        },
+        {
+          "q": "Last-agent routing and email:",
+          "choices": [
+            "It uses RTP",
+            "Last-agent routing does not function for email flows",
+            "It is the only email method",
+            "It requires CX 1"
+          ],
+          "answer": 1,
+          "why": "The behavior article excludes email flows."
+        },
+        {
+          "q": "Among preferred agents who meet the current score, the article selects by:",
+          "choices": [
+            "Alphabetical name",
+            "License cost",
+            "Division",
+            "Time since last interaction"
+          ],
+          "answer": 3,
+          "why": "Idle time inside the score band."
+        },
+        {
+          "q": "A transfer to the queue:",
+          "choices": [
+            "Requires a secure flow",
+            "Does not use preferred agents",
+            "Always uses them",
+            "Deletes them"
+          ],
+          "answer": 1,
+          "why": "The article excludes preferred agents during transfers."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Member + On Queue",
+          "back": "Both are required."
+        },
+        {
+          "front": "Skills",
+          "back": "Not required for a preferred agent."
+        },
+        {
+          "front": "Utilization",
+          "back": "Full means skip."
+        },
+        {
+          "front": "Email",
+          "back": "Last-agent routing does not apply."
+        }
+      ],
+      "lab": {
+        "title": "Trace one preferred offer",
+        "steps": [
+          "Confirm membership.",
+          "Confirm On Queue.",
+          "Confirm they are not fully utilized.",
+          "Name the fallback when the timer ends."
+        ],
+        "success": "You can say why the preferred agent was skipped."
+      },
+      "fault": {
+        "title": "Preferred ghost",
+        "symptom": "The VIP timer never seems to run. Calls hit the general pool immediately.",
+        "log": "Preferred user: not a member of this queue. Timeout configured: 120 seconds.",
+        "cause": "Non-members cause the timeout to be skipped.",
+        "fix": "Add them to the queue, then retest."
+      }
+    },
+    {
+      "id": "r-predict",
+      "title": "Predictive routing is a KPI model with a timeout",
+      "level": "Advanced",
+      "minutes": 14,
+      "summary": "Predictive routing can run for everyone, in a comparison test, or at a fixed 80/20 split you cannot edit.",
+      "paras": [
+        "The queue article describes three modes. Comparison test mode measures predictive routing against a baseline. Use for all interactions sends everything through the model. Ongoing value monitoring keeps an 80 percent predictive and 20 percent baseline split, and the article says you cannot change that ratio. Genesys recommends leaving monitoring in place for months. The timeout still falls back to standard routing. If the queue has no interactions for 30 continuous days, predictive routing turns itself off and standard routing returns.",
+        "The model needs history. A queue you created this morning does not have a KPI story yet. Comparison mode is how you earn the right to turn it on for everyone. The AI certification catalog treats predictive routing and predictive engagement as a study path of their own. Turning the feature on is not the same as passing that exam, and it is not the same as bullseye."
+      ],
+      "cites": [
+        {
+          "title": "Create and configure queues",
+          "url": "https://help.genesys.cloud/articles/create-queues/"
+        },
+        {
+          "title": "Advanced routing overview",
+          "url": "https://help.genesys.cloud/articles/advanced-routing-overview/"
+        },
+        {
+          "title": "Genesys Cloud exams",
+          "url": "https://education.genesys.com/certification/cloud"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Eighty percent through the model, twenty percent through the baseline.",
+        "nodes": [
+          {
+            "id": "in",
+            "label": "Interactions",
+            "kind": "phone",
+            "x": 14,
+            "y": 40
+          },
+          {
+            "id": "p",
+            "label": "80 predictive",
+            "kind": "bot",
+            "x": 48,
+            "y": 22
+          },
+          {
+            "id": "b",
+            "label": "20 baseline",
+            "kind": "queue",
+            "x": 48,
+            "y": 68
+          },
+          {
+            "id": "std",
+            "label": "Standard timeout",
+            "kind": "agent",
+            "x": 82,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "in",
+            "b": "p"
+          },
+          {
+            "a": "in",
+            "b": "b"
+          },
+          {
+            "a": "p",
+            "b": "std"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Turn it on without lying to yourself",
+        "steps": [
+          {
+            "from": "Admin",
+            "to": "Mode",
+            "title": "Comparison",
+            "detail": "Prove the KPI before you trust it.",
+            "inspect": "Do not start on all traffic"
+          },
+          {
+            "from": "Admin",
+            "to": "Monitor",
+            "title": "80/20",
+            "detail": "The split is fixed.",
+            "inspect": "Leave it for months"
+          },
+          {
+            "from": "Model",
+            "to": "Timeout",
+            "title": "Standard",
+            "detail": "A slow decision still has a fallback.",
+            "inspect": "The caller is waiting"
+          },
+          {
+            "from": "Queue",
+            "to": "Idle 30 days",
+            "title": "Auto off",
+            "detail": "No traffic disables the model.",
+            "inspect": "Standard returns"
+          },
+          {
+            "from": "People",
+            "to": "Training",
+            "title": "Different skill",
+            "detail": "The GPE and GPR certification is a course path.",
+            "inspect": "Not a queue toggle"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Ongoing value monitoring splits traffic:",
+          "choices": [
+            "A custom ratio",
+            "80 percent predictive, 20 percent baseline, and you cannot change it",
+            "50/50",
+            "100 percent"
+          ],
+          "answer": 1,
+          "why": "The queue article says the ratio is fixed."
+        },
+        {
+          "q": "Predictive routing turns itself off when:",
+          "choices": [
+            "The queue has no interactions for 30 continuous days",
+            "An agent goes On Queue",
+            "A ring delay hits 2 seconds",
+            "You publish a flow"
+          ],
+          "answer": 0,
+          "why": "Standard routing is restored."
+        },
+        {
+          "q": "The timeout fallback is:",
+          "choices": [
+            "Bullseye only",
+            "A secure flow",
+            "Standard routing",
+            "Disconnect"
+          ],
+          "answer": 2,
+          "why": "The queue and routing articles describe that fallback."
+        },
+        {
+          "q": "Comparison test mode is for:",
+          "choices": [
+            "Measuring the model against a baseline before you trust it",
+            "Deleting skills",
+            "Emergency calling",
+            "OAuth"
+          ],
+          "answer": 0,
+          "why": "It is one of the three documented modes."
+        },
+        {
+          "q": "A brand-new queue is a weak predictive candidate because:",
+          "choices": [
+            "Names are limited to 7 characters",
+            "Satellites block it",
+            "The model learns from historical outcomes",
+            "New queues cannot use ACD"
+          ],
+          "answer": 2,
+          "why": "The overview describes learning from historical contact-center data."
+        },
+        {
+          "q": "The AI \u2013 GPE & GPR certification is:",
+          "choices": [
+            "An RFC",
+            "The same exam as GC-GCD",
+            "A Genesys Education exam path, separate from clicking the queue setting",
+            "Required to create a queue"
+          ],
+          "answer": 2,
+          "why": "The catalog lists it as its own certification."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Three modes",
+          "back": "Comparison, all interactions, 80/20 monitoring."
+        },
+        {
+          "front": "80/20",
+          "back": "Fixed."
+        },
+        {
+          "front": "30 days",
+          "back": "No traffic disables it."
+        },
+        {
+          "front": "Fallback",
+          "back": "Standard."
+        }
+      ],
+      "lab": {
+        "title": "Choose a mode",
+        "steps": [
+          "Say why you would not start on all interactions.",
+          "Write the 80/20 rule.",
+          "Write the 30-day rule.",
+          "Name the fallback."
+        ],
+        "success": "You can explain the mode without promising a KPI you have not measured."
+      },
+      "fault": {
+        "title": "Model went quiet",
+        "symptom": "A seasonal queue stopped using predictive routing in October.",
+        "log": "Last interaction: 32 days ago. Routing method now: standard.",
+        "cause": "Thirty quiet days disable it.",
+        "fix": "Turn it back on when the season starts, in comparison mode, and confirm new history is flowing."
+      }
+    },
+    {
+      "id": "r-conditional",
+      "title": "Conditional group routing borrows agents carefully",
+      "level": "Advanced",
+      "minutes": 12,
+      "summary": "A rule is a KPI plus agent availability. The other queue must be able to spare the people.",
+      "paras": [
+        "The overview describes conditional group routing as sharing groups of agents between queues based on rules. A rule combines a KPI with availability so you do not pull agents off a queue that is already missing its service level. The settings article says you can build up to five rules. It is a routing method, not a bullseye ring and not a WFM schedule change.",
+        "Use it when two queues are real neighbors, such as billing and billing overflow, and you can name the KPI that protects the donor queue. Do not use it as a silent way to empty a specialist queue. The agents still have to be On Queue, under utilization, and allowed by whatever evaluation method the target queue is using."
+      ],
+      "cites": [
+        {
+          "title": "Advanced routing overview",
+          "url": "https://help.genesys.cloud/articles/advanced-routing-overview/"
+        },
+        {
+          "title": "Specify routing and evaluation methods",
+          "url": "https://help.genesys.cloud/articles/specify-routing-settings/"
+        },
+        {
+          "title": "Agent utilization",
+          "url": "https://help.genesys.cloud/articles/utilization/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Overflow borrows agents only while the donor queue is healthy.",
+        "nodes": [
+          {
+            "id": "src",
+            "label": "Donor queue",
+            "kind": "queue",
+            "x": 18,
+            "y": 40
+          },
+          {
+            "id": "rule",
+            "label": "KPI rule",
+            "kind": "architect",
+            "x": 48,
+            "y": 40
+          },
+          {
+            "id": "dst",
+            "label": "Overflow",
+            "kind": "queue",
+            "x": 78,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "src",
+            "b": "rule"
+          },
+          {
+            "a": "rule",
+            "b": "dst"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Borrow billing agents for overflow",
+        "steps": [
+          {
+            "from": "Admin",
+            "to": "Rule",
+            "title": "Service level",
+            "detail": "Name the KPI that must hold.",
+            "inspect": "Up to five rules"
+          },
+          {
+            "from": "Admin",
+            "to": "Availability",
+            "title": "Spare agents",
+            "detail": "The donor must actually have people free.",
+            "inspect": "On Queue still matters"
+          },
+          {
+            "from": "ACD",
+            "to": "Donor",
+            "title": "Check",
+            "detail": "If the donor is failing its KPI, do not pull.",
+            "inspect": "That is the point of the rule"
+          },
+          {
+            "from": "Agent",
+            "to": "Utilization",
+            "title": "Capacity",
+            "detail": "A full agent is not spare.",
+            "inspect": "Voice default is one call"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "A conditional routing rule combines:",
+          "choices": [
+            "A SIP port and a codec",
+            "A token and a region",
+            "A prompt and a WAV",
+            "A KPI and agent availability"
+          ],
+          "answer": 3,
+          "why": "The overview defines a rule that way."
+        },
+        {
+          "q": "The settings article allows up to how many conditional rules?",
+          "choices": [
+            "Fifty",
+            "Two hundred",
+            "Five",
+            "One"
+          ],
+          "answer": 2,
+          "why": "Five is the documented cap."
+        },
+        {
+          "q": "Conditional routing is a substitute for WFM scheduling?",
+          "choices": [
+            "Only on CX 1",
+            "Only for email",
+            "No. It is a routing method.",
+            "Yes"
+          ],
+          "answer": 2,
+          "why": "Schedules live in WEM. This is ACD."
+        },
+        {
+          "q": "A donor queue missing its service level should:",
+          "choices": [
+            "Be deleted",
+            "Lose its division",
+            "Start a secure flow",
+            "Not give up its agents"
+          ],
+          "answer": 3,
+          "why": "The rule exists to protect that KPI."
+        },
+        {
+          "q": "Agents pulled across still must be:",
+          "choices": [
+            "On Queue and under their utilization cap",
+            "Off queue",
+            "Fully utilized",
+            "In a satellite region"
+          ],
+          "answer": 0,
+          "why": "Those filters are not removed by the rule."
+        },
+        {
+          "q": "Bullseye and conditional routing differ because:",
+          "choices": [
+            "Both are OAuth grants",
+            "Both are number plans",
+            "Bullseye widens skills on one queue. Conditional shares people across queues.",
+            "They are the same setting"
+          ],
+          "answer": 2,
+          "why": "The overview describes both, separately."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Rule",
+          "back": "KPI plus availability."
+        },
+        {
+          "front": "Five",
+          "back": "Maximum rules."
+        },
+        {
+          "front": "Protect the donor",
+          "back": "Do not steal a failing queue\u2019s agents."
+        },
+        {
+          "front": "Still ACD",
+          "back": "On Queue and utilization remain."
+        }
+      ],
+      "lab": {
+        "title": "Write one rule",
+        "steps": [
+          "Name the donor queue.",
+          "Name the KPI.",
+          "Name the overflow queue.",
+          "Say what should happen when the donor is already failing."
+        ],
+        "success": "The rule protects the donor in a sentence."
+      },
+      "fault": {
+        "title": "Raided specialists",
+        "symptom": "Spanish queue service level collapses every afternoon. Overflow looks fine.",
+        "log": "Conditional rule: no KPI, availability only.",
+        "cause": "The donor was not protected.",
+        "fix": "Add a service-level condition so the borrow stops while Spanish is already missing its target."
+      }
+    },
+    {
+      "id": "r-util",
+      "title": "Utilization and Not Responding",
+      "level": "Core",
+      "minutes": 13,
+      "summary": "A fully utilized agent is skipped. An agent who ignores an alert becomes Not Responding.",
+      "paras": [
+        "Defaults from the utilization article: one voice call, one email, one callback, up to four chats, up to four messages, and up to four workitems. You can change the org default and a single agent. You can also decide which medias may interrupt which others. By default, calls and callbacks do not interrupt each other. Non-ACD calls are excluded unless you enable \u201cCount non-ACD calls in utilization capacity\u201d and set voice capacity to 1, which stops ACD alerts during personal calls.",
+        "Voice alerting is 7 to 59 seconds. When it expires, the agent\u2019s status becomes Not Responding and the interaction returns to the queue. Auto answer removes the alerting timeout, though the agent still gets an audio alert. Preview calls count as callbacks. The preferred-agent article uses the same utilization idea: a full agent is not offered the interaction."
+      ],
+      "cites": [
+        {
+          "title": "Agent utilization",
+          "url": "https://help.genesys.cloud/articles/utilization/"
+        },
+        {
+          "title": "Create and configure queues",
+          "url": "https://help.genesys.cloud/articles/create-queues/"
+        },
+        {
+          "title": "Preferred agent routing behavior",
+          "url": "https://help.genesys.cloud/articles/preferred-agent-routing-behavior/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Capacity gates the offer. Alerting gates the answer.",
+        "nodes": [
+          {
+            "id": "acd",
+            "label": "ACD",
+            "kind": "queue",
+            "x": 16,
+            "y": 40
+          },
+          {
+            "id": "cap",
+            "label": "Utilization",
+            "kind": "agent",
+            "x": 46,
+            "y": 22
+          },
+          {
+            "id": "alert",
+            "label": "Alert",
+            "kind": "phone",
+            "x": 46,
+            "y": 70
+          },
+          {
+            "id": "nr",
+            "label": "Not Responding",
+            "kind": "agent",
+            "x": 80,
+            "y": 70
+          }
+        ],
+        "edges": [
+          {
+            "a": "acd",
+            "b": "cap"
+          },
+          {
+            "a": "cap",
+            "b": "alert"
+          },
+          {
+            "a": "alert",
+            "b": "nr"
+          }
+        ]
+      },
+      "flow": {
+        "title": "One voice call, then the alert",
+        "steps": [
+          {
+            "from": "Agent",
+            "to": "Voice",
+            "title": "Already on a call",
+            "detail": "Default capacity is one.",
+            "inspect": "The next call skips them"
+          },
+          {
+            "from": "Admin",
+            "to": "Interrupt",
+            "title": "Email versus voice",
+            "detail": "You choose what may interrupt.",
+            "inspect": "Calls and callbacks do not interrupt each other by default"
+          },
+          {
+            "from": "ACD",
+            "to": "Agent",
+            "title": "Alert 8 seconds",
+            "detail": "Inside the 7 to 59 window.",
+            "inspect": "A legal timeout"
+          },
+          {
+            "from": "Agent",
+            "to": "Miss",
+            "title": "Not Responding",
+            "detail": "The call returns to the queue.",
+            "inspect": "Auto answer would skip this timer"
+          },
+          {
+            "from": "Personal",
+            "to": "Toggle",
+            "title": "Count non-ACD",
+            "detail": "Optional. Stops ACD alerts during personal calls.",
+            "inspect": "Voice capacity must be 1"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Default simultaneous voice calls are:",
+          "choices": [
+            "4",
+            "8",
+            "0",
+            "1"
+          ],
+          "answer": 3,
+          "why": "The utilization article says one voice call."
+        },
+        {
+          "q": "Default chats are up to:",
+          "choices": [
+            "4",
+            "1",
+            "2",
+            "10"
+          ],
+          "answer": 0,
+          "why": "Chats, messages, and workitems default to four."
+        },
+        {
+          "q": "Voice alerting must be between:",
+          "choices": [
+            "2 seconds and 72 hours",
+            "30 minutes and a day",
+            "Exactly 4 seconds",
+            "7 and 59 seconds"
+          ],
+          "answer": 3,
+          "why": "That range is on the queue article."
+        },
+        {
+          "q": "When alerting expires, status becomes:",
+          "choices": [
+            "CX 4",
+            "Not Responding, and the interaction returns to the queue",
+            "On Queue",
+            "Preferred"
+          ],
+          "answer": 1,
+          "why": "The queue article describes that transition."
+        },
+        {
+          "q": "Auto answer and the alerting timeout:",
+          "choices": [
+            "Auto answer sets Not Responding immediately",
+            "Auto answer deletes the queue",
+            "The timeout does not apply, but an audio alert still plays",
+            "Auto answer is forbidden"
+          ],
+          "answer": 2,
+          "why": "The queue article says the option is hidden and an audio alert remains."
+        },
+        {
+          "q": "Calls and callbacks interrupting each other is:",
+          "choices": [
+            "Required",
+            "Only for email",
+            "A bullseye ring",
+            "Prevented by default"
+          ],
+          "answer": 3,
+          "why": "The utilization article says the default avoids that interrupt."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Defaults",
+          "back": "1 call, 1 email, 1 callback, 4 chats, 4 messages, 4 workitems."
+        },
+        {
+          "front": "Alert",
+          "back": "7\u201359 seconds, then Not Responding."
+        },
+        {
+          "front": "Auto answer",
+          "back": "No alerting timeout. Audio alert remains."
+        },
+        {
+          "front": "Non-ACD",
+          "back": "Excluded unless you opt in."
+        }
+      ],
+      "lab": {
+        "title": "Set one agent\u2019s capacity",
+        "steps": [
+          "Leave voice at 1 and say why.",
+          "Set chats to 2 and say what you changed from the default.",
+          "Pick an alerting timeout inside 7 to 59.",
+          "Say what Not Responding means for the caller."
+        ],
+        "success": "The numbers are inside the documented ranges."
+      },
+      "fault": {
+        "title": "Double voice",
+        "symptom": "Agents complain they receive a second call while they are talking.",
+        "log": "Agent utilization voice capacity: 2. Org default: 1.",
+        "cause": "The agent override allows a second call.",
+        "fix": "Set that agent back to 1 unless the program truly wants two voice conversations."
+      }
+    }
+  ]
+}

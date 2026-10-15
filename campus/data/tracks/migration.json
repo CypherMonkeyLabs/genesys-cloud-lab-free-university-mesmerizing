@@ -1,0 +1,1661 @@
+{
+  "id": "migration",
+  "title": "Migration",
+  "kicker": "Rebuild",
+  "accent": 1,
+  "summary": "Engage, PureConnect, and Cisco UCCE move by rebuilding Architect flows and queues. This is a learning bridge, not a converter.",
+  "lessons": [
+    {
+      "id": "x-rebuild",
+      "title": "Nothing imports your old routing by magic",
+      "level": "Core",
+      "minutes": 12,
+      "summary": "You rebuild flows, queues, and trunks. You do not flip a converter this lab has not found.",
+      "paras": [
+        "Genesys Engage routing strategies and PureConnect handlers do not become Architect flows because a project plan says \u201cmigrate\u201d. This lab has not found a documented one-click import. The work is to redraw the caller journey in Architect, recreate queues, and point numbers at the new routes. The migration studio in this lab is a table of those mappings, not a tool that edits either platform.",
+        "Cisco UCCE, UCCX, and a CUCM or Webex Calling trunk are a different vendor. The bridge lessons cite Cisco\u2019s product pages for what you are leaving and Genesys articles for what you are building. They are not a statement that the platforms are equivalent."
+      ],
+      "cites": [
+        {
+          "title": "About Architect",
+          "url": "https://help.genesys.cloud/articles/about-architect/"
+        },
+        {
+          "title": "Create and configure queues",
+          "url": "https://help.genesys.cloud/articles/create-queues/"
+        },
+        {
+          "title": "Create a flow",
+          "url": "https://help.genesys.cloud/articles/create-a-flow/"
+        },
+        {
+          "title": "Cisco Unified Contact Center Enterprise",
+          "url": "https://www.cisco.com/c/en/us/support/customer-collaboration/unified-contact-center-enterprise/series.html"
+        }
+      ],
+      "uncertainty": "Lifecycle dates for Engage and PureConnect must be confirmed on Genesys notices. This lesson does not set one.",
+      "figure": {
+        "caption": "Old logic is read. New flows are written. The table does not convert.",
+        "nodes": [
+          {
+            "id": "old",
+            "label": "Old platform",
+            "kind": "crm",
+            "x": 16,
+            "y": 40
+          },
+          {
+            "id": "map",
+            "label": "Bridge",
+            "kind": "architect",
+            "x": 48,
+            "y": 40
+          },
+          {
+            "id": "new",
+            "label": "Architect",
+            "kind": "queue",
+            "x": 82,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "old",
+            "b": "map"
+          },
+          {
+            "a": "map",
+            "b": "new"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Start with a journey, not an object dump",
+        "steps": [
+          {
+            "from": "Caller",
+            "to": "One path",
+            "title": "Write it in sentences",
+            "detail": "What they hear, where they queue.",
+            "inspect": "Ignore object names at first"
+          },
+          {
+            "from": "Architect",
+            "to": "Flows",
+            "title": "Inbound, in-queue, modules",
+            "detail": "Publish them.",
+            "inspect": "Drafts do not answer"
+          },
+          {
+            "from": "ACD",
+            "to": "Queues",
+            "title": "Members, skills, methods",
+            "detail": "Create-queues article.",
+            "inspect": "5000 members, one division"
+          },
+          {
+            "from": "Numbers",
+            "to": "Routes",
+            "title": "Last",
+            "detail": "After the path works.",
+            "inspect": "Emergency included"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "A documented one-click import of old routing into Architect:",
+          "choices": [
+            "Is not something this lab found. Plan to rebuild.",
+            "Is the default",
+            "Is an Edge firmware",
+            "Is GC-GCP"
+          ],
+          "answer": 0,
+          "why": "The studio says rebuild."
+        },
+        {
+          "q": "The migration studio:",
+          "choices": [
+            "Buys DIDs",
+            "Maps concepts. It does not call either platform.",
+            "Converts IRD files",
+            "Pushes to UCCE"
+          ],
+          "answer": 1,
+          "why": "It is a table."
+        },
+        {
+          "q": "The first artifact is:",
+          "choices": [
+            "A token budget",
+            "An exam voucher",
+            "The caller journey in sentences",
+            "A trunk ACL"
+          ],
+          "answer": 2,
+          "why": "Objects come after."
+        },
+        {
+          "q": "Queues in the new org still follow:",
+          "choices": [
+            "Implicit grant",
+            "Unique names, one division, the member limit",
+            "UCCE\u2019s database",
+            "No rules"
+          ],
+          "answer": 1,
+          "why": "The create-queues article."
+        },
+        {
+          "q": "Cisco pages in this track are:",
+          "choices": [
+            "RFCs",
+            "The source for the platform you are leaving",
+            "Genesys articles",
+            "Optional fiction"
+          ],
+          "answer": 1,
+          "why": "Do not cite them as Genesys behavior."
+        },
+        {
+          "q": "Unpublished Architect flows during cutover:",
+          "choices": [
+            "Set utilization",
+            "Do not answer calls",
+            "Run as drafts",
+            "Use the old IVR automatically"
+          ],
+          "answer": 1,
+          "why": "Publish."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Rebuild",
+          "back": "The default."
+        },
+        {
+          "front": "Studio",
+          "back": "A map, not a converter."
+        },
+        {
+          "front": "Journey",
+          "back": "Sentences first."
+        },
+        {
+          "front": "Publish",
+          "back": "Or it does not run."
+        }
+      ],
+      "lab": {
+        "title": "Pick one journey",
+        "steps": [
+          "Write five sentences a caller would recognize.",
+          "Name the Architect flow types.",
+          "Name the queue.",
+          "Name what you will not automate."
+        ],
+        "success": "The last line says rebuild, not import."
+      },
+      "fault": {
+        "title": "Ghost converter",
+        "symptom": "The plan says the IRD will be imported on Friday. Nobody owns an Architect flow.",
+        "log": "No published inbound flow. Cutover in two days.",
+        "cause": "The converter was a rumor.",
+        "fix": "Assign the rebuild. Delay cutover until the flow is published and called."
+      }
+    },
+    {
+      "id": "x-engage",
+      "title": "Engage and PureConnect become flows and queues",
+      "level": "Core",
+      "minutes": 12,
+      "summary": "Strategies, IRDs, and handlers are read as behavior, then redrawn.",
+      "paras": [
+        "Treat a Genesys Engage routing strategy or IRD as a description of menus, data dips, and targets. Treat PureConnect handlers and queues the same way. The Genesys Cloud objects are Architect flows, including common modules for anything you would otherwise paste twice, and queues with skills and a routing method. Confirm the current PureConnect or Engage lifecycle on a Genesys notice before you put a date in a steering deck. Community dates are not a contract.",
+        "Recording policies, WFM, and bots do not come along inside the IVR export. They are separate tracks in this lab because they are separate products. A cutover that only moves prompts has not moved the contact center."
+      ],
+      "cites": [
+        {
+          "title": "About Architect",
+          "url": "https://help.genesys.cloud/articles/about-architect/"
+        },
+        {
+          "title": "Create a flow",
+          "url": "https://help.genesys.cloud/articles/create-a-flow/"
+        },
+        {
+          "title": "Create and configure queues",
+          "url": "https://help.genesys.cloud/articles/create-queues/"
+        },
+        {
+          "title": "About Workforce Engagement Management",
+          "url": "https://help.genesys.cloud/articles/about-workforce-engagement-management-wem/"
+        }
+      ],
+      "uncertainty": "Do not treat WarmTransfer or any third-party blog as Genesys\u2019 lifecycle notice.",
+      "figure": {
+        "caption": "Strategy in, modules and queues out.",
+        "nodes": [
+          {
+            "id": "ird",
+            "label": "Strategy",
+            "kind": "crm",
+            "x": 14,
+            "y": 40
+          },
+          {
+            "id": "mod",
+            "label": "Modules",
+            "kind": "architect",
+            "x": 48,
+            "y": 22
+          },
+          {
+            "id": "q",
+            "label": "Queues",
+            "kind": "queue",
+            "x": 48,
+            "y": 68
+          },
+          {
+            "id": "wem",
+            "label": "WEM",
+            "kind": "wem",
+            "x": 82,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "ird",
+            "b": "mod"
+          },
+          {
+            "a": "ird",
+            "b": "q"
+          },
+          {
+            "a": "q",
+            "b": "wem"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Translate one strategy",
+        "steps": [
+          {
+            "from": "Read",
+            "to": "Prompts",
+            "title": "Architect audio",
+            "detail": "Not a binary paste.",
+            "inspect": "Secure flows if you collect digits"
+          },
+          {
+            "from": "Read",
+            "to": "Targets",
+            "title": "Queues and skills",
+            "detail": "Not a single mega-queue unless you mean it.",
+            "inspect": "Routing method explicit"
+          },
+          {
+            "from": "Read",
+            "to": "Shared logic",
+            "title": "Common modules",
+            "detail": "One holiday check, not twelve copies.",
+            "inspect": "Publish the module"
+          },
+          {
+            "from": "Date",
+            "to": "Notice",
+            "title": "Genesys lifecycle",
+            "detail": "Confirm it.",
+            "inspect": "No community EOL in the deck"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "An Engage strategy maps to:",
+          "choices": [
+            "A phone trunk automatically",
+            "A Cisco script",
+            "An OAuth grant",
+            "Architect behavior you redraw"
+          ],
+          "answer": 3,
+          "why": "Rebuild."
+        },
+        {
+          "q": "PureConnect handlers map to:",
+          "choices": [
+            "STA topics only",
+            "Nothing",
+            "Architect flows, and their queues map to Genesys Cloud queues",
+            "Edge groups only"
+          ],
+          "answer": 2,
+          "why": "Both objects matter."
+        },
+        {
+          "q": "A lifecycle date in the steering deck must come from:",
+          "choices": [
+            "A Cisco page",
+            "A Genesys notice you opened",
+            "A forum",
+            "This lab\u2019s memory"
+          ],
+          "answer": 1,
+          "why": "Mark it unconfirmed until then."
+        },
+        {
+          "q": "Shared holiday logic belongs in:",
+          "choices": [
+            "SCIM",
+            "A common module",
+            "Twelve copied tasks",
+            "A number plan"
+          ],
+          "answer": 1,
+          "why": "The Architect track explains why."
+        },
+        {
+          "q": "WFM after cutover:",
+          "choices": [
+            "Is free with any queue",
+            "Is an RFC",
+            "Is a separate workstream",
+            "Hides inside the IVR export"
+          ],
+          "answer": 2,
+          "why": "CX 3 on the overview."
+        },
+        {
+          "q": "Digit collection that used to be recorded:",
+          "choices": [
+            "Is safe by default",
+            "Is a topic",
+            "Is bullseye",
+            "Needs a secure-flow decision again"
+          ],
+          "answer": 3,
+          "why": "Do not copy digits into participant data."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Strategy",
+          "back": "Behavior, not a file format."
+        },
+        {
+          "front": "Queues",
+          "back": "Recreated."
+        },
+        {
+          "front": "Date",
+          "back": "A Genesys notice."
+        },
+        {
+          "front": "WEM",
+          "back": "Its own workstream."
+        }
+      ],
+      "lab": {
+        "title": "List what the export will not do",
+        "steps": [
+          "Prompts you must re-record or re-point.",
+          "Queues you must recreate.",
+          "WFM objects.",
+          "The lifecycle page you still need."
+        ],
+        "success": "The lifecycle item says \u201cconfirm\u201d, not a date."
+      },
+      "fault": {
+        "title": "Forum EOL",
+        "symptom": "The deck says PureConnect ends on a date copied from a blog.",
+        "log": "No Genesys notice in the packet.",
+        "cause": "The date is not a source.",
+        "fix": "Replace it with a link to the notice, or mark it unknown."
+      }
+    },
+    {
+      "id": "x-ivr",
+      "title": "IVR becomes Architect tasks, menus, and audio",
+      "level": "Core",
+      "minutes": 12,
+      "summary": "CVP, UCCX prompts, and Engage voice all become the same kind of flow.",
+      "paras": [
+        "Create a flow is the article for the voice tasks you will rebuild: play audio, collect input, decisions, transfers, data actions. Cisco\u2019s UCCX and UCCE pages remain the description of the old script. The mapping is conceptual. A CVP application and a UCCX script both become Architect if the journey is a voice menu. They do not keep their tool names.",
+        "In-queue treatment is a separate flow type, and the default in-queue call flow does nothing until you publish it. Migrating \u201cmusic on hold\u201d is not done when the inbound menu works. Call the queue and sit in it."
+      ],
+      "cites": [
+        {
+          "title": "Create a flow",
+          "url": "https://help.genesys.cloud/articles/create-a-flow/"
+        },
+        {
+          "title": "In-queue flows overview",
+          "url": "https://help.genesys.cloud/articles/queue-call-flows/"
+        },
+        {
+          "title": "Cisco Unified Contact Center Express",
+          "url": "https://www.cisco.com/c/en/us/support/customer-collaboration/unified-contact-center-express/series.html"
+        },
+        {
+          "title": "Cisco Unified Contact Center Enterprise",
+          "url": "https://www.cisco.com/c/en/us/support/customer-collaboration/unified-contact-center-enterprise/series.html"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Old IVR tools collapse into Architect tasks.",
+        "nodes": [
+          {
+            "id": "cvp",
+            "label": "CVP",
+            "kind": "phone",
+            "x": 14,
+            "y": 28
+          },
+          {
+            "id": "uccx",
+            "label": "UCCX",
+            "kind": "phone",
+            "x": 14,
+            "y": 62
+          },
+          {
+            "id": "arch",
+            "label": "Architect",
+            "kind": "architect",
+            "x": 55,
+            "y": 40
+          },
+          {
+            "id": "inq",
+            "label": "In-queue",
+            "kind": "queue",
+            "x": 86,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "cvp",
+            "b": "arch"
+          },
+          {
+            "a": "uccx",
+            "b": "arch"
+          },
+          {
+            "a": "arch",
+            "b": "inq"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Rebuild the menu and the hold",
+        "steps": [
+          {
+            "from": "Menu",
+            "to": "Collect",
+            "title": "Architect collect input",
+            "detail": "DTMF follows the audio article\u2019s model.",
+            "inspect": "RFC 4733 is the telephony backdrop, not the admin guide"
+          },
+          {
+            "from": "Data",
+            "to": "Dip",
+            "title": "Data action",
+            "detail": "Timeout and a failure output.",
+            "inspect": "CRM is not the IVR"
+          },
+          {
+            "from": "Hold",
+            "to": "In-queue",
+            "title": "Publish it",
+            "detail": "Music action, no menus.",
+            "inspect": "Default is not live"
+          },
+          {
+            "from": "Test",
+            "to": "Call",
+            "title": "Both paths",
+            "detail": "A menu choice and a wait.",
+            "inspect": "Two tests"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "CVP and a UCCX voice script both become:",
+          "choices": [
+            "Architect flows you write again",
+            "Edge groups",
+            "OAuth clients automatically",
+            "The same XML file"
+          ],
+          "answer": 0,
+          "why": "The tool name does not survive."
+        },
+        {
+          "q": "Music on hold in Genesys Cloud is:",
+          "choices": [
+            "A trunk setting only",
+            "A topic",
+            "An in-queue flow you publish",
+            "Automatic because the inbound flow exists"
+          ],
+          "answer": 2,
+          "why": "Call the queue and wait."
+        },
+        {
+          "q": "A data dip in the old IVR becomes:",
+          "choices": [
+            "A data action with a failure path",
+            "A skill",
+            "A division",
+            "A cert"
+          ],
+          "answer": 0,
+          "why": "Do not block forever."
+        },
+        {
+          "q": "Cisco\u2019s scripting guides are cited to:",
+          "choices": [
+            "Set token prices",
+            "Define E.164",
+            "Describe the system you are leaving",
+            "Replace help.genesys.cloud"
+          ],
+          "answer": 2,
+          "why": "Keep the vendors apart."
+        },
+        {
+          "q": "The default in-queue call flow:",
+          "choices": [
+            "Is live at org create",
+            "Cannot play audio",
+            "Is a bot",
+            "Exists and is not auto-published"
+          ],
+          "answer": 3,
+          "why": "Publish it."
+        },
+        {
+          "q": "DTMF design still has to respect:",
+          "choices": [
+            "What Architect collects, with telephony standards in the background",
+            "Only the UCCE precision queue",
+            "Only sentiment",
+            "Only SCIM"
+          ],
+          "answer": 0,
+          "why": "Test digits."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Menu",
+          "back": "Architect tasks."
+        },
+        {
+          "front": "Hold",
+          "back": "Published in-queue flow."
+        },
+        {
+          "front": "Dip",
+          "back": "Data action plus failure."
+        },
+        {
+          "front": "Cisco",
+          "back": "Source of the old behavior only."
+        }
+      ],
+      "lab": {
+        "title": "Two test calls",
+        "steps": [
+          "The menu choice.",
+          "The hold.",
+          "The data-action failure.",
+          "Which old script you are not importing."
+        ],
+        "success": "Both test calls are written as scripts a tester can run."
+      },
+      "fault": {
+        "title": "Menu only",
+        "symptom": "Agents answer, then silence, because hold was never published.",
+        "log": "Inbound flow: published. In-queue: default, not published.",
+        "cause": "The journey was half rebuilt.",
+        "fix": "Publish the in-queue flow and call it."
+      }
+    },
+    {
+      "id": "x-ucce",
+      "title": "UCCE skill groups and precision queues are not Genesys queues",
+      "level": "Core",
+      "minutes": 13,
+      "summary": "Membership, skills, and bullseye are three ideas you reassemble.",
+      "paras": [
+        "Cisco\u2019s UCCE pages describe skill groups and precision queues as that product\u2019s targeting. In Genesys Cloud a queue has members, and skills sit on the agents. All-skills matching, best available, and disregard skills are evaluation methods. Bullseye adds up to five rings, a delay from 2 seconds to 72 hours, and removal of up to 50 skills. Preferred agents are a further method. None of these objects is a UCCE skill group.",
+        "A precision queue that expands over time is the closest teaching analogy to bullseye. It is an analogy. The limits above are Genesys settings. Quote Cisco\u2019s guide for Cisco\u2019s limits, not these."
+      ],
+      "cites": [
+        {
+          "title": "Cisco Unified Contact Center Enterprise",
+          "url": "https://www.cisco.com/c/en/us/support/customer-collaboration/unified-contact-center-enterprise/series.html"
+        },
+        {
+          "title": "Advanced routing overview",
+          "url": "https://help.genesys.cloud/articles/advanced-routing-overview/"
+        },
+        {
+          "title": "Bullseye routing overview",
+          "url": "https://help.genesys.cloud/articles/bullseye-routing-overview/"
+        },
+        {
+          "title": "Routing and evaluation methods",
+          "url": "https://help.genesys.cloud/articles/acd-evaluation-routing-methods/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Skill group becomes members plus skills. Precision queue suggests bullseye.",
+        "nodes": [
+          {
+            "id": "sg",
+            "label": "Skill group",
+            "kind": "crm",
+            "x": 14,
+            "y": 28
+          },
+          {
+            "id": "pq",
+            "label": "Precision",
+            "kind": "crm",
+            "x": 14,
+            "y": 68
+          },
+          {
+            "id": "mem",
+            "label": "Members",
+            "kind": "queue",
+            "x": 55,
+            "y": 28
+          },
+          {
+            "id": "eye",
+            "label": "Bullseye",
+            "kind": "architect",
+            "x": 55,
+            "y": 68
+          }
+        ],
+        "edges": [
+          {
+            "a": "sg",
+            "b": "mem"
+          },
+          {
+            "a": "pq",
+            "b": "eye"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Rebuild one target",
+        "steps": [
+          {
+            "from": "Skill group",
+            "to": "Queue",
+            "title": "Members who should answer",
+            "detail": "Plus skills if you need them.",
+            "inspect": "Not the group name alone"
+          },
+          {
+            "from": "Precision",
+            "to": "Rings",
+            "title": "If the old queue expanded",
+            "detail": "Map steps to rings.",
+            "inspect": "Max five"
+          },
+          {
+            "from": "Eval",
+            "to": "All or best",
+            "title": "Write it down",
+            "detail": "Longest idle versus proficiency.",
+            "inspect": "Disregard is a choice"
+          },
+          {
+            "from": "Test",
+            "to": "Offer",
+            "title": "The simulator in this lab",
+            "detail": "Then a real queue.",
+            "inspect": "Teaching model, not the router"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "A UCCE skill group maps most honestly to:",
+          "choices": [
+            "Queue membership, plus skills if the old group used them",
+            "A single SIP header",
+            "An OAuth client",
+            "A recording policy"
+          ],
+          "answer": 0,
+          "why": "It is not one Genesys object."
+        },
+        {
+          "q": "Bullseye\u2019s documented ring count is:",
+          "choices": [
+            "Up to 50",
+            "Exactly 2",
+            "Unlimited",
+            "Up to 5"
+          ],
+          "answer": 3,
+          "why": "50 is the skill-removal cap, not the ring cap."
+        },
+        {
+          "q": "Ring delay can be:",
+          "choices": [
+            "Negative",
+            "2 seconds to 259200 seconds",
+            "Only 8 seconds",
+            "Only 30 minutes"
+          ],
+          "answer": 1,
+          "why": "72 hours is the top of that range."
+        },
+        {
+          "q": "Precision-queue steps and bullseye rings are:",
+          "choices": [
+            "Both deprecated",
+            "A teaching analogy with different limits",
+            "The same database",
+            "Both Cisco"
+          ],
+          "answer": 1,
+          "why": "Do not copy numbers across vendors."
+        },
+        {
+          "q": "Best available skills evaluates:",
+          "choices": [
+            "Only preferred agents",
+            "Only the newest agent",
+            "Only supervisors",
+            "The 100 longest-idle matches, then average proficiency"
+          ],
+          "answer": 3,
+          "why": "The evaluation article."
+        },
+        {
+          "q": "This lab\u2019s routing simulator is:",
+          "choices": [
+            "The production router",
+            "UCCE",
+            "A converter",
+            "A teaching model"
+          ],
+          "answer": 3,
+          "why": "Use it to learn, then test in the org."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Members",
+          "back": "Who may answer."
+        },
+        {
+          "front": "Skills",
+          "back": "What they must match."
+        },
+        {
+          "front": "Rings",
+          "back": "Up to five."
+        },
+        {
+          "front": "Analogy",
+          "back": "Not a converter."
+        }
+      ],
+      "lab": {
+        "title": "Map one precision queue",
+        "steps": [
+          "The old steps.",
+          "The Genesys rings, five or fewer.",
+          "The evaluation method.",
+          "A test that a preferred agent still wins when the article says they should."
+        ],
+        "success": "The ring count is five or fewer."
+      },
+      "fault": {
+        "title": "Fifty rings",
+        "symptom": "The design has one ring per UCCE step and runs past five.",
+        "log": "Steps: 9. Bullseye max: 5.",
+        "cause": "The analogy ignored the cap.",
+        "fix": "Collapse steps to five rings or fewer, and document what you merged."
+      }
+    },
+    {
+      "id": "x-uccx",
+      "title": "UCCX is a smaller center with the same rebuild rule",
+      "level": "Core",
+      "minutes": 11,
+      "summary": "Scripts, CSQs, and the Finesse desktop do not move as files.",
+      "paras": [
+        "Cisco\u2019s UCCX series page is the door to that product\u2019s scripts, contact service queues, and agent desktop. In Genesys Cloud the script becomes Architect, the CSQ becomes a queue with members and skills, and the desktop becomes the Genesys workspace or a documented CRM embed such as Salesforce or Zendesk. Finesse gadgets do not install from AppFoundry under a new name unless a listing you open says so.",
+        "UCCX customers often have a single site and a CUCM. The trunk lesson is next. Do not start with the trunk. Start with one published flow and one queue, then call it with a test number."
+      ],
+      "cites": [
+        {
+          "title": "Cisco Unified Contact Center Express",
+          "url": "https://www.cisco.com/c/en/us/support/customer-collaboration/unified-contact-center-express/series.html"
+        },
+        {
+          "title": "Create a flow",
+          "url": "https://help.genesys.cloud/articles/create-a-flow/"
+        },
+        {
+          "title": "Create and configure queues",
+          "url": "https://help.genesys.cloud/articles/create-queues/"
+        },
+        {
+          "title": "About Genesys Cloud for Salesforce",
+          "url": "https://help.genesys.cloud/articles/about-genesys-cloud-for-salesforce/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Script, CSQ, and desktop split into three Genesys decisions.",
+        "nodes": [
+          {
+            "id": "sc",
+            "label": "Script",
+            "kind": "phone",
+            "x": 14,
+            "y": 40
+          },
+          {
+            "id": "ar",
+            "label": "Architect",
+            "kind": "architect",
+            "x": 48,
+            "y": 22
+          },
+          {
+            "id": "q",
+            "label": "Queue",
+            "kind": "queue",
+            "x": 48,
+            "y": 55
+          },
+          {
+            "id": "desk",
+            "label": "Desktop",
+            "kind": "agent",
+            "x": 82,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "sc",
+            "b": "ar"
+          },
+          {
+            "a": "sc",
+            "b": "q"
+          },
+          {
+            "a": "sc",
+            "b": "desk"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Split the UCCX site",
+        "steps": [
+          {
+            "from": "Script",
+            "to": "Flow",
+            "title": "Rebuild",
+            "detail": "Publish.",
+            "inspect": "No XML import in this lab"
+          },
+          {
+            "from": "CSQ",
+            "to": "Queue",
+            "title": "Members and skills",
+            "detail": "One division.",
+            "inspect": "Routing method chosen"
+          },
+          {
+            "from": "Desktop",
+            "to": "Workspace or CRM",
+            "title": "Salesforce or Zendesk if that is the requirement",
+            "detail": "Cite the article.",
+            "inspect": "Do not promise Finesse parity"
+          },
+          {
+            "from": "Call",
+            "to": "Test",
+            "title": "Before the trunk cut",
+            "detail": "A test number.",
+            "inspect": "Hear the flow"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "A UCCX script becomes:",
+          "choices": [
+            "A firmware image",
+            "A client-credentials token",
+            "A topic program",
+            "An Architect flow you publish"
+          ],
+          "answer": 3,
+          "why": "Rebuild."
+        },
+        {
+          "q": "A CSQ is closest to:",
+          "choices": [
+            "A Genesys queue",
+            "A login host",
+            "A satellite region",
+            "An implicit grant"
+          ],
+          "answer": 0,
+          "why": "Add skills only if you need them."
+        },
+        {
+          "q": "Finesse gadgets:",
+          "choices": [
+            "Install automatically",
+            "Are Dialog Engine bots",
+            "Are number plans",
+            "Are not assumed to exist on AppFoundry"
+          ],
+          "answer": 3,
+          "why": "Open the listing if you need one."
+        },
+        {
+          "q": "The desktop choice this lab will cite is:",
+          "choices": [
+            "Always Dynamics",
+            "A personal mailbox",
+            "The Genesys workspace, or Salesforce or Zendesk when those articles match",
+            "Always Finesse"
+          ],
+          "answer": 2,
+          "why": "No invented CRM."
+        },
+        {
+          "q": "The first test should happen:",
+          "choices": [
+            "Only after GC-GCP",
+            "Before you cut the production trunk",
+            "After you delete CUCM",
+            "Only in production"
+          ],
+          "answer": 1,
+          "why": "Hear the flow."
+        },
+        {
+          "q": "UCCX and UCCE in this lab are:",
+          "choices": [
+            "Both Cisco sources, with different pages",
+            "The same product",
+            "Both Genesys",
+            "Both deprecated by RFC"
+          ],
+          "answer": 0,
+          "why": "Cite the series you mean."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Script",
+          "back": "Architect."
+        },
+        {
+          "front": "CSQ",
+          "back": "Queue."
+        },
+        {
+          "front": "Desktop",
+          "back": "Workspace or a cited embed."
+        },
+        {
+          "front": "Test",
+          "back": "Before the trunk cut."
+        }
+      ],
+      "lab": {
+        "title": "Write the UCCX row",
+        "steps": [
+          "One script.",
+          "One CSQ.",
+          "The desktop decision.",
+          "The test number\u2019s job."
+        ],
+        "success": "Finesse is not in the desktop decision unless you found a listing."
+      },
+      "fault": {
+        "title": "Gadget hope",
+        "symptom": "Agents expect their Finesse gadget on day one. Nothing was installed.",
+        "log": "No AppFoundry install. Workspace unconfigured.",
+        "cause": "Parity was assumed.",
+        "fix": "Pick the workspace or a documented embed and train to that."
+      }
+    },
+    {
+      "id": "x-cucm",
+      "title": "CUCM stays. BYOC is the door, not a replacement cluster.",
+      "level": "Core",
+      "minutes": 12,
+      "summary": "A dial plan and a trunk are Genesys number plans and a BYOC trunk. CUCM is still yours.",
+      "paras": [
+        "The migration studio\u2019s CUCM row points at BYOC PBX or BYOC Carrier, and at Dynamic Cloud Voice for new cloud trunks. Genesys does not absorb the CUCM cluster. Extensions, partitions, and calling search spaces stay on the Cisco side until you deliberately move a pattern. Number plans on the Genesys site classify what Genesys sees, up to 200 plans per site, including the emergency classification.",
+        "Local route groups and a premises Edge are a different design from a cloud trunk. If phones register to an Edge, use the Edge track. If CUCM sends a SIP trunk to Genesys, use the BYOC track. Do not draw both and configure neither."
+      ],
+      "cites": [
+        {
+          "title": "About BYOC Cloud",
+          "url": "https://help.genesys.cloud/articles/about-byoc-cloud/"
+        },
+        {
+          "title": "Dynamic Cloud Voice platform overview",
+          "url": "https://help.genesys.cloud/articles/dynamic-cloud-voice-platform-overview/"
+        },
+        {
+          "title": "Number plan information",
+          "url": "https://help.genesys.cloud/articles/number-plan-information/"
+        },
+        {
+          "title": "BYOC Premises Edge groups overview",
+          "url": "https://help.genesys.cloud/articles/edge-groups-overview/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "CUCM remains. A trunk crosses. Number plans classify.",
+        "nodes": [
+          {
+            "id": "cu",
+            "label": "CUCM",
+            "kind": "phone",
+            "x": 16,
+            "y": 40
+          },
+          {
+            "id": "tr",
+            "label": "BYOC",
+            "kind": "trunk",
+            "x": 50,
+            "y": 40
+          },
+          {
+            "id": "np",
+            "label": "Plans",
+            "kind": "architect",
+            "x": 82,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "cu",
+            "b": "tr"
+          },
+          {
+            "a": "tr",
+            "b": "np"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Choose the door",
+        "steps": [
+          {
+            "from": "Cloud",
+            "to": "SIP to Genesys",
+            "title": "BYOC Cloud",
+            "detail": "New trunks: Dynamic Cloud Voice.",
+            "inspect": "ACL the documented egress, do not copy a stale list"
+          },
+          {
+            "from": "Premises",
+            "to": "Phones on an Edge",
+            "title": "Edge group",
+            "detail": "Local site routing.",
+            "inspect": "Different track"
+          },
+          {
+            "from": "Plans",
+            "to": "Emergency",
+            "title": "Before the DID cut",
+            "detail": "911 and the site\u2019s country.",
+            "inspect": "Genesys is not the emergency provider on BYOC"
+          },
+          {
+            "from": "Test",
+            "to": "One pattern",
+            "title": "A lab extension",
+            "detail": "Not the operator route.",
+            "inspect": "Then expand"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "CUCM after a Genesys deployment:",
+          "choices": [
+            "Still exists unless you have a separate plan to remove it",
+            "Is deleted by BYOC",
+            "Becomes an Edge",
+            "Becomes Architect"
+          ],
+          "answer": 0,
+          "why": "The cluster is yours."
+        },
+        {
+          "q": "New BYOC Cloud trunks should use:",
+          "choices": [
+            "Dynamic Cloud Voice",
+            "A copied 2019 IP list",
+            "Implicit grant",
+            "A precision queue"
+          ],
+          "answer": 0,
+          "why": "The DCVP article is the current platform."
+        },
+        {
+          "q": "Number plans:",
+          "choices": [
+            "Replace CUCM partitions automatically",
+            "Are topics",
+            "Are tokens",
+            "Classify dialed strings on the Genesys site, up to 200 per site"
+          ],
+          "answer": 3,
+          "why": "Emergency is one classification."
+        },
+        {
+          "q": "Phones that must stay local to a site point at:",
+          "choices": [
+            "A premises Edge design",
+            "Only a cloud trunk with no Edge",
+            "SCIM",
+            "A bot"
+          ],
+          "answer": 0,
+          "why": "Pick one door and finish it."
+        },
+        {
+          "q": "BYOC emergency calling:",
+          "choices": [
+            "Is a fair-use footnote",
+            "Requires the emergency setup article, and Genesys is not the provider",
+            "Is automatic worldwide",
+            "Uses 988 as a backup PSAP"
+          ],
+          "answer": 1,
+          "why": "Do not invent a backup PSAP."
+        },
+        {
+          "q": "Copying an old media ACL forward:",
+          "choices": [
+            "Is required",
+            "Is a queue setting",
+            "Breaks when ingress addresses change",
+            "Is the DCVP migration"
+          ],
+          "answer": 2,
+          "why": "Follow the current allowlist guidance."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Cluster",
+          "back": "Stays until you remove it."
+        },
+        {
+          "front": "Cloud",
+          "back": "BYOC and DCVP."
+        },
+        {
+          "front": "Edge",
+          "back": "If phones are local."
+        },
+        {
+          "front": "Emergency",
+          "back": "A real test, not a guess."
+        }
+      ],
+      "lab": {
+        "title": "Pick the door in writing",
+        "steps": [
+          "Cloud or premises.",
+          "Who owns CUCM.",
+          "The emergency classification.",
+          "The first lab pattern."
+        ],
+        "success": "One door is chosen."
+      },
+      "fault": {
+        "title": "Both doors, neither built",
+        "symptom": "Cutover weekend has no trunk and no Edge.",
+        "log": "Design: \u201cSIP or Edge, TBD\u201d.",
+        "cause": "The choice was deferred until there was no time.",
+        "fix": "Choose, configure the lab pattern, and test it the week before."
+      }
+    },
+    {
+      "id": "x-webex",
+      "title": "Webex is a neighbor, not a page this lab pretends to summarize",
+      "level": "Core",
+      "minutes": 10,
+      "summary": "Use Cisco\u2019s product pages. Do not cite a Webex help URL this lab did not confirm.",
+      "paras": [
+        "Webex Contact Center and Webex Calling show up in the same migrations as CUCM. This lab did not confirm a specific Webex help article to deep-link, so it will not invent one. Cisco\u2019s UCCE and UCCX series pages are the Cisco citations already checked. For Webex, say \u201copen the current Cisco or Webex document\u201d and attach it in your own design.",
+        "Where Webex Calling is the PBX, the Genesys side is still a BYOC trunk or a premises Edge, plus Architect and queues. The neighbor can change its calling model without Genesys\u2019 articles changing. Re-read both sides in the same week."
+      ],
+      "cites": [
+        {
+          "title": "Cisco Unified Contact Center Enterprise",
+          "url": "https://www.cisco.com/c/en/us/support/customer-collaboration/unified-contact-center-enterprise/series.html"
+        },
+        {
+          "title": "About BYOC Cloud",
+          "url": "https://help.genesys.cloud/articles/about-byoc-cloud/"
+        },
+        {
+          "title": "About Architect",
+          "url": "https://help.genesys.cloud/articles/about-architect/"
+        }
+      ],
+      "uncertainty": "No specific Webex Contact Center article was confirmed for this lab. Attach your own.",
+      "figure": {
+        "caption": "Webex stays on Cisco\u2019s side of the bridge.",
+        "nodes": [
+          {
+            "id": "wx",
+            "label": "Webex",
+            "kind": "phone",
+            "x": 18,
+            "y": 40
+          },
+          {
+            "id": "gap",
+            "label": "Your cite",
+            "kind": "architect",
+            "x": 50,
+            "y": 40
+          },
+          {
+            "id": "gc",
+            "label": "Genesys",
+            "kind": "queue",
+            "x": 82,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "wx",
+            "b": "gap"
+          },
+          {
+            "a": "gap",
+            "b": "gc"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Leave a blank you are proud of",
+        "steps": [
+          {
+            "from": "Webex",
+            "to": "Doc",
+            "title": "Attach the page you opened",
+            "detail": "Not a link from memory.",
+            "inspect": "This lab left it blank on purpose"
+          },
+          {
+            "from": "Genesys",
+            "to": "Door",
+            "title": "BYOC or Edge",
+            "detail": "Already chosen in the previous lesson.",
+            "inspect": "Do not add a third"
+          },
+          {
+            "from": "Journey",
+            "to": "Architect",
+            "title": "Still rebuilt",
+            "detail": "The neighbor does not import flows.",
+            "inspect": "Publish"
+          },
+          {
+            "from": "Date",
+            "to": "Both sides",
+            "title": "Re-read the same week",
+            "detail": "Products move.",
+            "inspect": "Uncertainty is allowed"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "This lab\u2019s Webex help deep link is:",
+          "choices": [
+            "Absent on purpose",
+            "help.webex.com/anything",
+            "A Genesys article",
+            "An RFC"
+          ],
+          "answer": 0,
+          "why": "Confirm your own source."
+        },
+        {
+          "q": "Webex Calling as a PBX still needs:",
+          "choices": [
+            "Only STA",
+            "A Genesys trunk or Edge design",
+            "Nothing",
+            "Only a bot"
+          ],
+          "answer": 1,
+          "why": "The neighbor is not the contact center."
+        },
+        {
+          "q": "UCCE series pages are cited because:",
+          "choices": [
+            "They set token prices",
+            "They were confirmed Cisco documents",
+            "They describe Webex Contact Center fully",
+            "They replace Architect"
+          ],
+          "answer": 1,
+          "why": "Do not stretch them."
+        },
+        {
+          "q": "A design that says \u201csame as CUCM\u201d for Webex:",
+          "choices": [
+            "Is a grant type",
+            "Needs a Webex document attached",
+            "Is automatically true",
+            "Is bullseye"
+          ],
+          "answer": 1,
+          "why": "They are not the same paragraph."
+        },
+        {
+          "q": "Architect flows are imported from Webex when:",
+          "choices": [
+            "They are not. You rebuild.",
+            "Always",
+            "On CX 1",
+            "If the name matches"
+          ],
+          "answer": 0,
+          "why": "The rebuild rule stands."
+        },
+        {
+          "q": "Re-reading both vendors the same week matters because:",
+          "choices": [
+            "Either side can change",
+            "RFCs expire weekly",
+            "Divisions expire",
+            "Queues expire"
+          ],
+          "answer": 0,
+          "why": "Put the dates in the design."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Blank",
+          "back": "Better than a bad link."
+        },
+        {
+          "front": "Door",
+          "back": "BYOC or Edge."
+        },
+        {
+          "front": "Flows",
+          "back": "Rebuilt."
+        },
+        {
+          "front": "Week",
+          "back": "Re-read both sides."
+        }
+      ],
+      "lab": {
+        "title": "Attach or abstain",
+        "steps": [
+          "The Webex document title you personally opened, or the word abstain.",
+          "The Genesys door.",
+          "The flow you will publish.",
+          "The date you will re-read."
+        ],
+        "success": "Abstain is an acceptable answer."
+      },
+      "fault": {
+        "title": "Imaginary help center",
+        "symptom": "The design links a Webex article that opens a generic help home.",
+        "log": "URL not checked.",
+        "cause": "The cite is theater.",
+        "fix": "Open the article, or remove the link."
+      }
+    },
+    {
+      "id": "x-cut",
+      "title": "Cut over one number, then the queue, then the people",
+      "level": "Core",
+      "minutes": 12,
+      "summary": "A weekend big-bang is how untested emergency routes meet a full staff.",
+      "paras": [
+        "Order: a lab number through the new trunk or Edge, the emergency classification tested the way the emergency article allows, one published inbound flow, one published in-queue flow, one queue with real agents On Queue, then a single production number. Fair-use and recording policies should already exist, or you will record nothing and be surprised, or record everything and surprise legal.",
+        "Rollback is the old route still in place for every number you have not moved. Do not delete the CUCM pattern or the Engage route as the first step. Write the rollback as a person\u2019s action, with a clock time."
+      ],
+      "cites": [
+        {
+          "title": "Set up emergency services with BYOC",
+          "url": "https://help.genesys.cloud/articles/set-up-emergency-services-with-byoc/"
+        },
+        {
+          "title": "Create a flow",
+          "url": "https://help.genesys.cloud/articles/create-a-flow/"
+        },
+        {
+          "title": "Create and configure queues",
+          "url": "https://help.genesys.cloud/articles/create-queues/"
+        },
+        {
+          "title": "About recording",
+          "url": "https://help.genesys.cloud/articles/about-recording/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Lab number, then one production number, then the rest.",
+        "nodes": [
+          {
+            "id": "lab",
+            "label": "Lab DID",
+            "kind": "phone",
+            "x": 14,
+            "y": 40
+          },
+          {
+            "id": "one",
+            "label": "One prod",
+            "kind": "trunk",
+            "x": 48,
+            "y": 40
+          },
+          {
+            "id": "rest",
+            "label": "The rest",
+            "kind": "queue",
+            "x": 82,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "lab",
+            "b": "one"
+          },
+          {
+            "a": "one",
+            "b": "rest"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Run the narrow cut",
+        "steps": [
+          {
+            "from": "Lab",
+            "to": "Call",
+            "title": "Hear Architect",
+            "detail": "And hold music.",
+            "inspect": "Both flows published"
+          },
+          {
+            "from": "Emergency",
+            "to": "Test",
+            "title": "The legal method",
+            "detail": "Not a guess at a backup PSAP.",
+            "inspect": "Before any production DID"
+          },
+          {
+            "from": "One",
+            "to": "DID",
+            "title": "Move a quiet number",
+            "detail": "Agents On Queue.",
+            "inspect": "Utilization understood"
+          },
+          {
+            "from": "Back",
+            "to": "Who",
+            "title": "Named person and a time",
+            "detail": "Old route remains.",
+            "inspect": "Until you intend to remove it"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "The first production move should be:",
+          "choices": [
+            "The emergency route only",
+            "SCIM",
+            "One number, after a lab call worked",
+            "Every DID on Friday night"
+          ],
+          "answer": 2,
+          "why": "Narrow cuts."
+        },
+        {
+          "q": "Emergency testing happens:",
+          "choices": [
+            "The following quarter",
+            "Only in a slide",
+            "After you delete the old route",
+            "Before production DIDs move"
+          ],
+          "answer": 3,
+          "why": "The emergency track is blunt about this."
+        },
+        {
+          "q": "Rollback is:",
+          "choices": [
+            "Hope",
+            "Deleting Home",
+            "Turning off STA",
+            "A named person restoring the old route"
+          ],
+          "answer": 3,
+          "why": "Write the clock time."
+        },
+        {
+          "q": "In-queue silence means:",
+          "choices": [
+            "The cert expired",
+            "Tokens ran out",
+            "The hold flow is not published or not selected",
+            "Bullseye failed"
+          ],
+          "answer": 2,
+          "why": "Call it before cutover."
+        },
+        {
+          "q": "Recording policy before cutover:",
+          "choices": [
+            "Is optional because QM can invent audio",
+            "Is a bot",
+            "Is a grant",
+            "Decides what you keep on day one"
+          ],
+          "answer": 3,
+          "why": "Set it."
+        },
+        {
+          "q": "Deleting the old route first:",
+          "choices": [
+            "Is required by RFC 3261",
+            "Publishes flows",
+            "Removes rollback",
+            "Is best practice"
+          ],
+          "answer": 2,
+          "why": "Leave it until the new path is proven."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Lab",
+          "back": "First call."
+        },
+        {
+          "front": "Emergency",
+          "back": "Before the DID."
+        },
+        {
+          "front": "One number",
+          "back": "Then the rest."
+        },
+        {
+          "front": "Rollback",
+          "back": "A person and a clock."
+        }
+      ],
+      "lab": {
+        "title": "Write the clock",
+        "steps": [
+          "Lab call time.",
+          "Emergency test.",
+          "The one production number.",
+          "The rollback owner."
+        ],
+        "success": "The owner is a name, not \u201cthe team\u201d."
+      },
+      "fault": {
+        "title": "Big bang",
+        "symptom": "All DIDs move while the in-queue flow is still a draft.",
+        "log": "Change ticket: 400 numbers. In-queue: unpublished.",
+        "cause": "The order was reversed.",
+        "fix": "Move one number after both flows are published and called."
+      }
+    }
+  ]
+}

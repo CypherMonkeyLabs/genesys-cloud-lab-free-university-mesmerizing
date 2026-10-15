@@ -1,0 +1,1264 @@
+{
+  "id": "ecosystem",
+  "title": "Ecosystem",
+  "kicker": "The map",
+  "accent": 4,
+  "summary": "How the tracks fit, how to read certifications, and what this lab refuses to invent.",
+  "lessons": [
+    {
+      "id": "z-map",
+      "title": "The conversation crosses a short list of systems",
+      "level": "Foundation",
+      "minutes": 12,
+      "summary": "Carrier, trunk or Edge, Architect, queue, agent, then the systems beside the agent.",
+      "paras": [
+        "A voice conversation enters through Genesys Cloud Voice or BYOC, optionally through a premises Edge, and reaches Architect. Architect transfers to a queue. ACD offers an agent who is On Queue and under utilization. Recording, quality, workforce management, speech analytics, Copilot, and a CRM sit beside that path. They can fail alone. The topology studio is the picture, with failure toggles that drop one link at a time.",
+        "Digital conversations skip the trunk and still use Architect, queues, and the same beside-the-agent systems when those products are in the package. CX 1 is voice. Digital and quality arrive at CX 2. WEM and transcription minutes arrive at CX 3. Copilot arrives at CX 4. The overview is the stack."
+      ],
+      "cites": [
+        {
+          "title": "Overview of Genesys Cloud",
+          "url": "https://help.mypurecloud.com/articles/overview-of-genesys-cloud/"
+        },
+        {
+          "title": "About Architect",
+          "url": "https://help.genesys.cloud/articles/about-architect/"
+        },
+        {
+          "title": "Advanced routing overview",
+          "url": "https://help.genesys.cloud/articles/advanced-routing-overview/"
+        },
+        {
+          "title": "About BYOC Cloud",
+          "url": "https://help.genesys.cloud/articles/about-byoc-cloud/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "One path for the conversation. Several optional neighbors.",
+        "nodes": [
+          {
+            "id": "car",
+            "label": "Carrier",
+            "kind": "trunk",
+            "x": 8,
+            "y": 40
+          },
+          {
+            "id": "arch",
+            "label": "Architect",
+            "kind": "architect",
+            "x": 36,
+            "y": 40
+          },
+          {
+            "id": "q",
+            "label": "Queue",
+            "kind": "queue",
+            "x": 62,
+            "y": 40
+          },
+          {
+            "id": "ag",
+            "label": "Agent",
+            "kind": "agent",
+            "x": 86,
+            "y": 28
+          },
+          {
+            "id": "nb",
+            "label": "Neighbors",
+            "kind": "wem",
+            "x": 86,
+            "y": 68
+          }
+        ],
+        "edges": [
+          {
+            "a": "car",
+            "b": "arch"
+          },
+          {
+            "a": "arch",
+            "b": "q"
+          },
+          {
+            "a": "q",
+            "b": "ag"
+          },
+          {
+            "a": "ag",
+            "b": "nb"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Walk one call across the map",
+        "steps": [
+          {
+            "from": "Enter",
+            "to": "Trunk or Edge",
+            "title": "BYOC or premises",
+            "detail": "Or Genesys Cloud Voice.",
+            "inspect": "Emergency is not implied"
+          },
+          {
+            "from": "Decide",
+            "to": "Architect",
+            "title": "Published flow",
+            "detail": "Bot optional, with a failure queue.",
+            "inspect": "In-queue also published"
+          },
+          {
+            "from": "Offer",
+            "to": "ACD",
+            "title": "Method and evaluation",
+            "detail": "On Queue, utilization.",
+            "inspect": "Preferred and bullseye if you configured them"
+          },
+          {
+            "from": "Beside",
+            "to": "WEM, CRM, AI",
+            "title": "Only if the package and the install exist",
+            "detail": "They are not the path.",
+            "inspect": "Name the one you actually bought"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "The required voice path is:",
+          "choices": [
+            "An exam, then a trunk",
+            "Entry, Architect, queue, agent",
+            "CRM, then maybe a queue",
+            "A bot with no queue"
+          ],
+          "answer": 1,
+          "why": "Neighbors are optional."
+        },
+        {
+          "q": "Digital calls skip:",
+          "choices": [
+            "Queues",
+            "Agents",
+            "The SIP trunk",
+            "Architect"
+          ],
+          "answer": 2,
+          "why": "They still need a flow and a queue."
+        },
+        {
+          "q": "CX package order on the overview is:",
+          "choices": [
+            "Quality only on CX 4",
+            "Voice, then digital and quality, then WEM, then Copilot",
+            "Copilot, then voice",
+            "WEM on CX 1"
+          ],
+          "answer": 1,
+          "why": "Read the stack."
+        },
+        {
+          "q": "A CRM outage with a healthy queue means:",
+          "choices": [
+            "ACD is down",
+            "The region moved",
+            "The cert expired",
+            "The neighbor failed"
+          ],
+          "answer": 3,
+          "why": "Say which system."
+        },
+        {
+          "q": "The topology toggles are:",
+          "choices": [
+            "Cisco scripts",
+            "Token meters",
+            "Teaching failures, one link at a time",
+            "Live controls of your org"
+          ],
+          "answer": 2,
+          "why": "They do not call an API."
+        },
+        {
+          "q": "An unpublished flow on this map:",
+          "choices": [
+            "Still runs",
+            "Is a neighbor",
+            "Is fair use",
+            "Is a break in the path"
+          ],
+          "answer": 3,
+          "why": "Publish."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Path",
+          "back": "Entry, flow, queue, agent."
+        },
+        {
+          "front": "Neighbors",
+          "back": "WEM, CRM, AI."
+        },
+        {
+          "front": "Packages",
+          "back": "CX 1 through CX 4."
+        },
+        {
+          "front": "Toggles",
+          "back": "A picture, not a switch on your org."
+        }
+      ],
+      "lab": {
+        "title": "Draw your org on the map",
+        "steps": [
+          "Your entry door.",
+          "Your published flow.",
+          "Your queue method.",
+          "The neighbors you do not have."
+        ],
+        "success": "The missing neighbors are listed, not implied."
+      },
+      "fault": {
+        "title": "Everything box",
+        "symptom": "The diagram is one box labeled Genesys. Nobody can say what fails.",
+        "log": "No trunk, no flow, no queue.",
+        "cause": "The map was skipped.",
+        "fix": "Redraw the four hops before the workshop ends."
+      }
+    },
+    {
+      "id": "z-sisters",
+      "title": "WFM, QM, E911, analytics, CRM, and bots are sisters",
+      "level": "Core",
+      "minutes": 12,
+      "summary": "Each sister has a track and a page. None of them is a setting on the queue tab alone.",
+      "paras": [
+        "Workforce management is business units, schedules, and adherence, inside WEM, on CX 3. Quality is forms, policies, and coaching, from CX 2. Emergency calling is a classification, a route, and a location, with BYOC leaving you responsible for the provider. STA is transcription and topics. Bots and Copilot are the AI track. CRM is AppFoundry plus the Salesforce and Zendesk articles.",
+        "The glossary in this lab is a short restatement of those pages, each with a link. If the glossary and the page disagree, the page wins. The glossary is not a second source of truth."
+      ],
+      "cites": [
+        {
+          "title": "About Workforce Engagement Management",
+          "url": "https://help.genesys.cloud/articles/about-workforce-engagement-management-wem/"
+        },
+        {
+          "title": "About quality management",
+          "url": "https://help.genesys.cloud/50540/"
+        },
+        {
+          "title": "Set up emergency services with BYOC",
+          "url": "https://help.genesys.cloud/articles/set-up-emergency-services-with-byoc/"
+        },
+        {
+          "title": "Speech and text analytics overview",
+          "url": "https://help.genesys.cloud/articles/speech-and-text-analytics-overview/"
+        },
+        {
+          "title": "About Genesys Cloud for Salesforce",
+          "url": "https://help.genesys.cloud/articles/about-genesys-cloud-for-salesforce/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Sisters hang off the conversation. They are not the queue.",
+        "nodes": [
+          {
+            "id": "q",
+            "label": "Queue",
+            "kind": "queue",
+            "x": 50,
+            "y": 18
+          },
+          {
+            "id": "w",
+            "label": "WFM",
+            "kind": "wem",
+            "x": 18,
+            "y": 55
+          },
+          {
+            "id": "m",
+            "label": "QM",
+            "kind": "wem",
+            "x": 40,
+            "y": 70
+          },
+          {
+            "id": "e",
+            "label": "E911",
+            "kind": "phone",
+            "x": 62,
+            "y": 70
+          },
+          {
+            "id": "c",
+            "label": "CRM",
+            "kind": "crm",
+            "x": 84,
+            "y": 55
+          }
+        ],
+        "edges": [
+          {
+            "a": "q",
+            "b": "w"
+          },
+          {
+            "a": "q",
+            "b": "m"
+          },
+          {
+            "a": "q",
+            "b": "e"
+          },
+          {
+            "a": "q",
+            "b": "c"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Point each sister at its page",
+        "steps": [
+          {
+            "from": "WFM",
+            "to": "Schedules",
+            "title": "WEM article",
+            "detail": "Not QM.",
+            "inspect": "CX 3"
+          },
+          {
+            "from": "QM",
+            "to": "Forms",
+            "title": "Quality article",
+            "detail": "Recording policy beside it.",
+            "inspect": "CX 2"
+          },
+          {
+            "from": "E911",
+            "to": "Route",
+            "title": "BYOC emergency article",
+            "detail": "Test it.",
+            "inspect": "No invented backup PSAP"
+          },
+          {
+            "from": "CRM",
+            "to": "Embed",
+            "title": "Salesforce or Zendesk",
+            "detail": "Or AppFoundry.",
+            "inspect": "No invented Dynamics list"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "WFM and QM differ because:",
+          "choices": [
+            "Both are trunks",
+            "Both are grants",
+            "Scheduling and evaluating are different articles and different package rows",
+            "They are the same screen"
+          ],
+          "answer": 2,
+          "why": "CX 3 versus CX 2."
+        },
+        {
+          "q": "Emergency on BYOC is:",
+          "choices": [
+            "A topic",
+            "A bot",
+            "Your provider, your route, your test",
+            "Included as a Genesys PSAP"
+          ],
+          "answer": 2,
+          "why": "The emergency article."
+        },
+        {
+          "q": "The glossary wins an argument with the product page when:",
+          "choices": [
+            "If the term is long",
+            "It does not. Re-open the page.",
+            "Always",
+            "On Fridays"
+          ],
+          "answer": 1,
+          "why": "Links are there so you can check."
+        },
+        {
+          "q": "STA\u2019s sister job is:",
+          "choices": [
+            "Transcripts, topics, sentiment, search",
+            "SIP trunks",
+            "OAuth",
+            "Number plans"
+          ],
+          "answer": 0,
+          "why": "Its own track."
+        },
+        {
+          "q": "A bot is a sister, which means:",
+          "choices": [
+            "It is a region",
+            "It can fail while ACD is healthy, and it needs a path back",
+            "It replaces the queue",
+            "It is WFM"
+          ],
+          "answer": 1,
+          "why": "Draw the failure."
+        },
+        {
+          "q": "Dynamics in the sister list is:",
+          "choices": [
+            "An RFC",
+            "Unconfirmed here. Use AppFoundry.",
+            "Fully specified",
+            "The same as Zendesk"
+          ],
+          "answer": 1,
+          "why": "The CRM track says so."
+        }
+      ],
+      "cards": [
+        {
+          "front": "WFM",
+          "back": "Schedules."
+        },
+        {
+          "front": "QM",
+          "back": "Forms and recordings."
+        },
+        {
+          "front": "E911",
+          "back": "A tested route."
+        },
+        {
+          "front": "Glossary",
+          "back": "A pointer, not the law."
+        }
+      ],
+      "lab": {
+        "title": "Match six sisters",
+        "steps": [
+          "WFM.",
+          "QM.",
+          "Emergency.",
+          "STA.",
+          "CRM.",
+          "Bots.",
+          "The page for each."
+        ],
+        "success": "Each sister has a different URL."
+      },
+      "fault": {
+        "title": "QM sold as WFM",
+        "symptom": "The customer asks why there is no schedule. They own quality.",
+        "log": "CX 2. No business units.",
+        "cause": "The sisters were merged in the proposal.",
+        "fix": "Show the overview\u2019s package rows."
+      }
+    },
+    {
+      "id": "z-bridge",
+      "title": "The Cisco bridge is a translation, with both citations showing",
+      "level": "Core",
+      "minutes": 11,
+      "summary": "UCCE, UCCX, CUCM, and Webex are named so a Cisco engineer can find the door.",
+      "paras": [
+        "The migration track is the bridge: UCCE skill groups and precision queues, UCCX scripts and CSQs, CUCM trunks, and a deliberate blank where a Webex article was not confirmed. Each row should show a Cisco URL for the old system and a Genesys URL for the new one. A row with only one vendor is a guess about the other.",
+        "CUCM is the closest \u201csister technology\u201d outside Genesys that voice engineers already know. It remains their PBX until a separate project removes it. Genesys number plans do not edit calling search spaces."
+      ],
+      "cites": [
+        {
+          "title": "Cisco Unified Contact Center Enterprise",
+          "url": "https://www.cisco.com/c/en/us/support/customer-collaboration/unified-contact-center-enterprise/series.html"
+        },
+        {
+          "title": "Cisco Unified Contact Center Express",
+          "url": "https://www.cisco.com/c/en/us/support/customer-collaboration/unified-contact-center-express/series.html"
+        },
+        {
+          "title": "About BYOC Cloud",
+          "url": "https://help.genesys.cloud/articles/about-byoc-cloud/"
+        },
+        {
+          "title": "Number plan information",
+          "url": "https://help.genesys.cloud/articles/number-plan-information/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Two citations on every bridge row.",
+        "nodes": [
+          {
+            "id": "c",
+            "label": "Cisco",
+            "kind": "phone",
+            "x": 18,
+            "y": 40
+          },
+          {
+            "id": "row",
+            "label": "Row",
+            "kind": "architect",
+            "x": 50,
+            "y": 40
+          },
+          {
+            "id": "g",
+            "label": "Genesys",
+            "kind": "queue",
+            "x": 82,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "c",
+            "b": "row"
+          },
+          {
+            "a": "row",
+            "b": "g"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Audit a mapping table",
+        "steps": [
+          {
+            "from": "Row",
+            "to": "Old",
+            "title": "Cisco document",
+            "detail": "Series page or the page you attached.",
+            "inspect": "Webex may be abstain"
+          },
+          {
+            "from": "Row",
+            "to": "New",
+            "title": "Genesys article",
+            "detail": "Architect, queue, or BYOC.",
+            "inspect": "Not a forum"
+          },
+          {
+            "from": "Limit",
+            "to": "Numbers",
+            "title": "Do not copy caps across",
+            "detail": "Five bullseye rings are Genesys.",
+            "inspect": "Cisco\u2019s caps stay on Cisco\u2019s page"
+          },
+          {
+            "from": "PBX",
+            "to": "CUCM",
+            "title": "Still theirs",
+            "detail": "Trunk or Edge is the door.",
+            "inspect": "Emergency tested"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "A bridge row needs:",
+          "choices": [
+            "A token price",
+            "A citation for each side",
+            "Only a Genesys link",
+            "Only a memory"
+          ],
+          "answer": 1,
+          "why": "Otherwise one side is fiction."
+        },
+        {
+          "q": "Bullseye limits belong on:",
+          "choices": [
+            "The Genesys bullseye article",
+            "The UCCE page",
+            "Both, as if they matched",
+            "The OAuth article"
+          ],
+          "answer": 0,
+          "why": "Do not merge the numbers."
+        },
+        {
+          "q": "Webex in this lab is:",
+          "choices": [
+            "Fully specified",
+            "The same as UCCX",
+            "A Genesys product",
+            "Abstain until you attach a document"
+          ],
+          "answer": 3,
+          "why": "The migration lesson says why."
+        },
+        {
+          "q": "CUCM calling search spaces are:",
+          "choices": [
+            "Edited by number plans",
+            "OAuth scopes",
+            "Topics",
+            "Still CUCM configuration"
+          ],
+          "answer": 3,
+          "why": "Genesys classifies what it receives."
+        },
+        {
+          "q": "UCCX CSQs map as a teaching step to:",
+          "choices": [
+            "AI tokens",
+            "Satellite regions",
+            "Genesys queues",
+            "Login hosts"
+          ],
+          "answer": 2,
+          "why": "Skills are extra."
+        },
+        {
+          "q": "The studio table:",
+          "choices": [
+            "Burns tokens",
+            "Does not change either product",
+            "Pushes scripts",
+            "Is an API client"
+          ],
+          "answer": 1,
+          "why": "It is a reader."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Two links",
+          "back": "Cisco and Genesys."
+        },
+        {
+          "front": "Caps",
+          "back": "Stay on their own page."
+        },
+        {
+          "front": "Webex",
+          "back": "Attach or abstain."
+        },
+        {
+          "front": "CUCM",
+          "back": "Still the PBX."
+        }
+      ],
+      "lab": {
+        "title": "Fix one row",
+        "steps": [
+          "Add the missing vendor link.",
+          "Remove a limit that was copied across.",
+          "Say whether CUCM remains.",
+          "Say whether Webex is abstain."
+        ],
+        "success": "The row has two real URLs or an explicit abstain."
+      },
+      "fault": {
+        "title": "Single citation",
+        "symptom": "A mapping says precision queues support 50 rings, linking only the UCCE page.",
+        "log": "The 50 was the Genesys skill-removal cap.",
+        "cause": "The vendors were blended.",
+        "fix": "Split the sentence and cite bullseye for the Genesys number."
+      }
+    },
+    {
+      "id": "z-certs",
+      "title": "Read the catalog by name, then the announcement",
+      "level": "Core",
+      "minutes": 11,
+      "summary": "GC-GCP and GC-GCD are catalog codes. Specialist rows are names. AI rows are two exams.",
+      "paras": [
+        "On the Genesys Cloud exams page, as read on 14 October 2026, Genesys Cloud Professional Certification is GC-GCP, one exam, with prep courses Implementation (135), Contact Center Administration (140), and Reporting and Analytics (143), and the cert course 17089. Genesys Cloud Developer Certification is GC-GCD, prep API course 11874, cert course 17173. Specialists are listed by name: Architect, Workforce Management, Scripting, Quality Management, Outbound, and Speech and Text Analytics. The catalog links those to cert courses 11975, 12173, 12174, 12175, 16125, and 18415. AI \u2013 GPE & GPR and Digital Bots & Knowledge are one exam each, courses 17671 and 18174.",
+        "This lab does not promote older GCX- community prefixes to current codes. Engage on-premises exams are a different section of the catalog. The announcement page is where the webcam relaxation through 31 December 2026 and the free practice exams are described. Re-open both pages before you pay."
+      ],
+      "cites": [
+        {
+          "title": "Genesys Cloud exams",
+          "url": "https://education.genesys.com/certification/cloud"
+        },
+        {
+          "title": "Genesys technical certifications announcement",
+          "url": "https://education.genesys.com/explore/announcement/genesys-technical-certifications-important-announcement"
+        }
+      ],
+      "uncertainty": "Catalog details were read on 14 October 2026. Course numbers and the webcam date must be re-checked before you enroll or book.",
+      "figure": {
+        "caption": "Catalog name, then announcement, then a seat.",
+        "nodes": [
+          {
+            "id": "cat",
+            "label": "Catalog",
+            "kind": "region",
+            "x": 18,
+            "y": 40
+          },
+          {
+            "id": "ann",
+            "label": "Announcement",
+            "kind": "architect",
+            "x": 52,
+            "y": 40
+          },
+          {
+            "id": "seat",
+            "label": "Seat",
+            "kind": "agent",
+            "x": 84,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "cat",
+            "b": "ann"
+          },
+          {
+            "a": "ann",
+            "b": "seat"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Book from the row that matches the job",
+        "steps": [
+          {
+            "from": "Implement",
+            "to": "GC-GCP",
+            "title": "Courses 135, 140, 143",
+            "detail": "Cert course 17089.",
+            "inspect": "One exam"
+          },
+          {
+            "from": "API",
+            "to": "GC-GCD",
+            "title": "Prep 11874",
+            "detail": "Cert course 17173.",
+            "inspect": "One exam"
+          },
+          {
+            "from": "Specialist",
+            "to": "By name",
+            "title": "Architect through STA",
+            "detail": "No GCX- code from this lab.",
+            "inspect": "Prep courses are on the catalog"
+          },
+          {
+            "from": "Rules",
+            "to": "Announcement",
+            "title": "Webcam and practice",
+            "detail": "Through the date the page states.",
+            "inspect": "Practice exams are not vouchers"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "GC-GCP is:",
+          "choices": [
+            "A specialist code this lab invented",
+            "The STA exam",
+            "A Cisco cert",
+            "Genesys Cloud Professional Certification, one exam"
+          ],
+          "answer": 3,
+          "why": "Use the catalog name."
+        },
+        {
+          "q": "GC-GCD prep on the catalog is:",
+          "choices": [
+            "A practice dump",
+            "WFM only",
+            "The API course 11874",
+            "Architect course 660 only"
+          ],
+          "answer": 2,
+          "why": "The cert course is 17173."
+        },
+        {
+          "q": "Specialist exam codes in this lab are:",
+          "choices": [
+            "The same as GC-GCP",
+            "RFC numbers",
+            "Not stated. The catalog row is the name.",
+            "GCX- for each"
+          ],
+          "answer": 2,
+          "why": "Older posts are not the catalog."
+        },
+        {
+          "q": "STA\u2019s specialist cert is:",
+          "choices": [
+            "Included in GC-GCP",
+            "Retired here",
+            "Its own row, catalog course 18415",
+            "The same as Digital Bots"
+          ],
+          "answer": 2,
+          "why": "Do not swap AI and STA."
+        },
+        {
+          "q": "The announcement\u2019s webcam note, as read for this lab, runs through:",
+          "choices": [
+            "31 December 2026",
+            "31 December 2024",
+            "Forever",
+            "The next Edge upgrade"
+          ],
+          "answer": 0,
+          "why": "Re-open the announcement. The date is the page\u2019s."
+        },
+        {
+          "q": "Free practice exams on that announcement are:",
+          "choices": [
+            "The same as passing",
+            "GCX- dumps",
+            "Required to be paid",
+            "Not a voucher"
+          ],
+          "answer": 3,
+          "why": "Webassessor\u2019s practice catalog is the mechanism the page describes."
+        }
+      ],
+      "cards": [
+        {
+          "front": "GC-GCP",
+          "back": "Professional. One exam."
+        },
+        {
+          "front": "GC-GCD",
+          "back": "Developer. One exam."
+        },
+        {
+          "front": "Specialists",
+          "back": "Names, not invented codes."
+        },
+        {
+          "front": "Announcement",
+          "back": "Webcam and practice. Re-read."
+        }
+      ],
+      "lab": {
+        "title": "Choose a row",
+        "steps": [
+          "The job.",
+          "The catalog name.",
+          "The prep course numbers you will confirm.",
+          "The announcement sentence you will re-read."
+        ],
+        "success": "No GCX- code appears in the answer."
+      },
+      "fault": {
+        "title": "Dump site",
+        "symptom": "A candidate memorizes a GCX- question bank.",
+        "log": "The catalog does not use that prefix for these rows.",
+        "cause": "The source was not Genesys.",
+        "fix": "Close it. Use the catalog and the official practice exam."
+      }
+    },
+    {
+      "id": "z-interview",
+      "title": "Interview answers cite a page, not a vibe",
+      "level": "Core",
+      "minutes": 11,
+      "summary": "The drill in this lab is a set of questions with a model answer and a link.",
+      "paras": [
+        "A hiring panel for this platform asks about regions, queues, routing methods, Architect publish, OAuth grants, and the difference between a bot and Copilot. The interview view gives a short model answer and the article it came from. Practice saying the limit: five bullseye rings, users/me forbidden on client credentials, implicit grant deprecated after 25 May 2026, CX packages in order.",
+        "If you cannot point at a page, say you would look it up. That is a better answer than a precise fiction. The drill is not an exam dump and not a voucher."
+      ],
+      "cites": [
+        {
+          "title": "Advanced routing overview",
+          "url": "https://help.genesys.cloud/articles/advanced-routing-overview/"
+        },
+        {
+          "title": "Create an OAuth client",
+          "url": "https://help.genesys.cloud/articles/create-an-oauth-client/"
+        },
+        {
+          "title": "Overview of Genesys Cloud",
+          "url": "https://help.mypurecloud.com/articles/overview-of-genesys-cloud/"
+        },
+        {
+          "title": "Genesys Cloud exams",
+          "url": "https://education.genesys.com/certification/cloud"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Question, model answer, article.",
+        "nodes": [
+          {
+            "id": "q",
+            "label": "Question",
+            "kind": "agent",
+            "x": 16,
+            "y": 40
+          },
+          {
+            "id": "a",
+            "label": "Answer",
+            "kind": "architect",
+            "x": 50,
+            "y": 40
+          },
+          {
+            "id": "u",
+            "label": "URL",
+            "kind": "region",
+            "x": 82,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "q",
+            "b": "a"
+          },
+          {
+            "a": "a",
+            "b": "u"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Answer one question the long way",
+        "steps": [
+          {
+            "from": "Hear",
+            "to": "The ask",
+            "title": "Restate the object",
+            "detail": "Queue, grant, or package.",
+            "inspect": "Do not answer a neighbor"
+          },
+          {
+            "from": "Limit",
+            "to": "The number",
+            "title": "Only if you know the page",
+            "detail": "Otherwise say you will open it.",
+            "inspect": "Rings, timeouts, tokens"
+          },
+          {
+            "from": "Cite",
+            "to": "The URL",
+            "title": "From the drill or the track",
+            "detail": "Not a dump site.",
+            "inspect": "Offer to re-read"
+          },
+          {
+            "from": "Stop",
+            "to": "Scope",
+            "title": "What you will not claim",
+            "detail": "Webex article, Dynamics features, PureConnect EOL.",
+            "inspect": "Uncertainty is professional"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "A strong routing answer includes:",
+          "choices": [
+            "A token price",
+            "The method, the evaluation, and the article",
+            "Only \u201cit depends\u201d",
+            "A GCX- code"
+          ],
+          "answer": 1,
+          "why": "Limits if you know them."
+        },
+        {
+          "q": "users/me on a client-credentials token is:",
+          "choices": [
+            "The wrong call",
+            "The health check",
+            "Required",
+            "A queue"
+          ],
+          "answer": 0,
+          "why": "The guide says there is no user."
+        },
+        {
+          "q": "If you do not know a limit:",
+          "choices": [
+            "Invent a round number",
+            "Cite a forum",
+            "Change the subject to Cisco",
+            "Say you will open the page"
+          ],
+          "answer": 3,
+          "why": "Looking it up is the skill."
+        },
+        {
+          "q": "The interview drill is:",
+          "choices": [
+            "Practice with citations",
+            "An exam dump",
+            "A voucher",
+            "A live API"
+          ],
+          "answer": 0,
+          "why": "It stays in the browser."
+        },
+        {
+          "q": "Package questions are answered from:",
+          "choices": [
+            "RFC 5737",
+            "The overview",
+            "A 2023 memory if it conflicts",
+            "AppFoundry"
+          ],
+          "answer": 1,
+          "why": "CX 1 through CX 4."
+        },
+        {
+          "q": "PureConnect end-of-life in an interview:",
+          "choices": [
+            "A date from a blog",
+            "Never",
+            "31 December 2026",
+            "\u201cI would confirm the Genesys notice\u201d"
+          ],
+          "answer": 3,
+          "why": "That webcam date is a different page."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Object",
+          "back": "Name it."
+        },
+        {
+          "front": "Limit",
+          "back": "Or look it up."
+        },
+        {
+          "front": "Cite",
+          "back": "A real article."
+        },
+        {
+          "front": "Abstain",
+          "back": "EOL, unconfirmed CRMs, Webex."
+        }
+      ],
+      "lab": {
+        "title": "Practice three",
+        "steps": [
+          "One routing limit.",
+          "One OAuth limit.",
+          "One thing you will refuse to invent.",
+          "The URL for the first two."
+        ],
+        "success": "The refusal is specific."
+      },
+      "fault": {
+        "title": "Confident fiction",
+        "symptom": "The candidate says bullseye supports 12 rings because a blog did.",
+        "log": "The article says 5.",
+        "cause": "The number was borrowed.",
+        "fix": "Answer 5 and offer the bullseye overview."
+      }
+    },
+    {
+      "id": "z-refuse",
+      "title": "What this lab will not invent",
+      "level": "Foundation",
+      "minutes": 10,
+      "summary": "Prices, unconfirmed hosts, exam codes, lifecycle dates, and CRM feature lists stay off the page.",
+      "paras": [
+        "The rules that built the lessons: cite a page that was actually opened, prefer Genesys articles and the RFCs for SIP, RTP, SRTP, and DTMF, use documentation addresses from RFC 5737 in synthetic logs, and mark uncertainty when a number can move. Fair-use dollar figures, DCVP IP lists, dialect lists, and country-by-country voice coverage are links, not copies.",
+        "Specialist exams are names. Implicit grant\u2019s date is the OAuth article\u2019s date. PureConnect and Engage dates wait for a Genesys notice. Dynamics and ServiceNow wait for a listing. Webex waits for a document you attach. If a later page disagrees with a lesson, the page wins, and the lesson should be read as the way to find that page."
+      ],
+      "cites": [
+        {
+          "title": "Genesys Cloud fair use policy",
+          "url": "https://help.genesys.cloud/articles/genesys-cloud-fair-use-policy/"
+        },
+        {
+          "title": "Dynamic Cloud Voice platform overview",
+          "url": "https://help.genesys.cloud/articles/dynamic-cloud-voice-platform-overview/"
+        },
+        {
+          "title": "Genesys Cloud exams",
+          "url": "https://education.genesys.com/certification/cloud"
+        },
+        {
+          "title": "RFC 5737 documentation addresses",
+          "url": "https://www.rfc-editor.org/rfc/rfc5737"
+        }
+      ],
+      "uncertainty": "If you find a lesson that states a price, a DCVP prefix, a GCX- code, or a PureConnect end date, treat that sentence as a bug.",
+      "figure": {
+        "caption": "If it is not on a page you can open, it is not in the design.",
+        "nodes": [
+          {
+            "id": "page",
+            "label": "Page",
+            "kind": "region",
+            "x": 22,
+            "y": 40
+          },
+          {
+            "id": "lab",
+            "label": "Lesson",
+            "kind": "architect",
+            "x": 55,
+            "y": 40
+          },
+          {
+            "id": "no",
+            "label": "Not invented",
+            "kind": "crm",
+            "x": 84,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "page",
+            "b": "lab"
+          },
+          {
+            "a": "lab",
+            "b": "no"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Run the refusal checklist",
+        "steps": [
+          {
+            "from": "Money",
+            "to": "Fair use",
+            "title": "Link, do not copy rates",
+            "detail": "The policy page.",
+            "inspect": "Allowances are named, prices are not"
+          },
+          {
+            "from": "IPs",
+            "to": "DCVP",
+            "title": "Link, do not paste the allowlist",
+            "detail": "It changes.",
+            "inspect": "Stale ACLs are an outage"
+          },
+          {
+            "from": "Codes",
+            "to": "Catalog",
+            "title": "GC-GCP and GC-GCD only",
+            "detail": "Specialists by name.",
+            "inspect": "No GCX-"
+          },
+          {
+            "from": "Dates",
+            "to": "Notices",
+            "title": "EOL unconfirmed",
+            "detail": "Webcam date only from the announcement.",
+            "inspect": "Re-read"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Fair-use prices in this lab are:",
+          "choices": [
+            "An RFC",
+            "Not copied. The policy page is the source.",
+            "A rate card",
+            "A quiz answer you should memorize as dollars"
+          ],
+          "answer": 1,
+          "why": "Name the allowance family if you must."
+        },
+        {
+          "q": "DCVP ingress addresses should be:",
+          "choices": [
+            "Read from the current article when you configure a trunk",
+            "Pasted from a lesson",
+            "RFC 5737 addresses",
+            "Guessed"
+          ],
+          "answer": 0,
+          "why": "5737 is for documentation examples, not for your ACL."
+        },
+        {
+          "q": "Synthetic logs use RFC 5737 because:",
+          "choices": [
+            "Those ranges are reserved for documentation",
+            "They are Genesys",
+            "They are your carrier",
+            "They are the PSAP"
+          ],
+          "answer": 0,
+          "why": "192.0.2.0/24, 198.51.100.0/24, 203.0.113.0/24."
+        },
+        {
+          "q": "A specialist GCX- code in a lesson would be:",
+          "choices": [
+            "A grant",
+            "A defect in this lab",
+            "Required",
+            "The catalog"
+          ],
+          "answer": 1,
+          "why": "Names only."
+        },
+        {
+          "q": "When a lesson and a live article disagree:",
+          "choices": [
+            "The article wins",
+            "The lesson wins",
+            "The older PDF wins",
+            "The forum wins"
+          ],
+          "answer": 0,
+          "why": "These pages are how you find the article."
+        },
+        {
+          "q": "An unconfirmed CRM feature list should be:",
+          "choices": [
+            "Marked CX 4",
+            "Given a price",
+            "Removed or replaced with a listing you opened",
+            "Filled in from Salesforce"
+          ],
+          "answer": 2,
+          "why": "The refusal is the point."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Prices",
+          "back": "Link only."
+        },
+        {
+          "front": "IPs",
+          "back": "Current article only."
+        },
+        {
+          "front": "Codes",
+          "back": "Catalog only."
+        },
+        {
+          "front": "Conflict",
+          "back": "The live page wins."
+        }
+      ],
+      "lab": {
+        "title": "Strike three claims",
+        "steps": [
+          "A dollar figure.",
+          "A pasted IP.",
+          "A GCX- code or an EOL date.",
+          "The URL you would use instead."
+        ],
+        "success": "The design is shorter and sourced."
+      },
+      "fault": {
+        "title": "Helpful invention",
+        "symptom": "A proposal adds a backup PSAP number, a Dynamics field map, and a PureConnect end date.",
+        "log": "None of the three has a page.",
+        "cause": "The author was being helpful.",
+        "fix": "Delete all three. Link the emergency article, AppFoundry, and the lifecycle notice once you have it."
+      }
+    }
+  ]
+}

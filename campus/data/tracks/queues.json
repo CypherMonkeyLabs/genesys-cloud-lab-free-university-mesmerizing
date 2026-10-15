@@ -1,0 +1,1386 @@
+{
+  "id": "queues",
+  "title": "Queues, skills, and wrap-up",
+  "kicker": "ACD objects",
+  "accent": 4,
+  "summary": "Queue media settings, skills, wrap-up codes, callbacks, and service level.",
+  "lessons": [
+    {
+      "id": "q-create",
+      "title": "Create the queue in a division",
+      "level": "Core",
+      "minutes": 11,
+      "summary": "The queue is a named waiting line in one division, with at most 5,000 members.",
+      "paras": [
+        "Menu path in the article is User Management, then Queues. You set a unique name without special characters, an optional peer id for an external platform, the division, and an optional default language. You can copy settings and members from an existing queue and edit after.",
+        "Copying a queue copies its routing method too. If the source uses predictive routing or a five-ring bullseye, the copy is not a blank standard queue. Read the routing tab after the copy. The new queue still needs its own in-queue flow assignment if you do not want the org default."
+      ],
+      "cites": [
+        {
+          "title": "Create and configure queues",
+          "url": "https://help.genesys.cloud/articles/create-queues/"
+        },
+        {
+          "title": "Divisions overview",
+          "url": "https://help.genesys.cloud/articles/divisions-overview/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "A queue is created inside one division.",
+        "nodes": [
+          {
+            "id": "div",
+            "label": "Division",
+            "kind": "region",
+            "x": 22,
+            "y": 40
+          },
+          {
+            "id": "q",
+            "label": "Queue",
+            "kind": "queue",
+            "x": 55,
+            "y": 40
+          },
+          {
+            "id": "m",
+            "label": "Members",
+            "kind": "agent",
+            "x": 82,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "div",
+            "b": "q"
+          },
+          {
+            "a": "q",
+            "b": "m"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Create Billing voice",
+        "steps": [
+          {
+            "from": "Admin",
+            "to": "Queues",
+            "title": "Create",
+            "detail": "Open User Management, Queues.",
+            "inspect": "Name it without special characters"
+          },
+          {
+            "from": "Admin",
+            "to": "Division",
+            "title": "Home or EMEA",
+            "detail": "One division.",
+            "inspect": "Move later if you guessed wrong"
+          },
+          {
+            "from": "Admin",
+            "to": "Copy",
+            "title": "Optional",
+            "detail": "Copy members only if you mean to.",
+            "inspect": "Check the routing tab after"
+          },
+          {
+            "from": "Admin",
+            "to": "Save",
+            "title": "General tab",
+            "detail": "The article says the configuration opens on General.",
+            "inspect": "Then set media"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Queue names must be:",
+          "choices": [
+            "Exactly the division name",
+            "A SIP URI",
+            "Unique and free of special characters",
+            "Unique across every Genesys customer"
+          ],
+          "answer": 2,
+          "why": "The article states both rules."
+        },
+        {
+          "q": "Member cap is:",
+          "choices": [
+            "5000",
+            "200",
+            "50",
+            "5"
+          ],
+          "answer": 0,
+          "why": "5,000 members per queue."
+        },
+        {
+          "q": "The division on the queue controls:",
+          "choices": [
+            "The token price",
+            "Which role grants can administer it",
+            "The RTP codec",
+            "The login region"
+          ],
+          "answer": 1,
+          "why": "Divisions are the access boundary."
+        },
+        {
+          "q": "Copy settings and members:",
+          "choices": [
+            "Publishes Architect",
+            "Is optional and still needs a review of routing",
+            "Is required",
+            "Deletes the source"
+          ],
+          "answer": 1,
+          "why": "The copy includes configuration, which includes routing."
+        },
+        {
+          "q": "Peer id on a queue is for:",
+          "choices": [
+            "Bullseye ring 1",
+            "External platform synchronization",
+            "Emergency calling",
+            "OAuth"
+          ],
+          "answer": 1,
+          "why": "The article describes the peer id that way."
+        },
+        {
+          "q": "Default language on the queue is:",
+          "choices": [
+            "Optional",
+            "Always en-US",
+            "Forbidden",
+            "A trunk setting"
+          ],
+          "answer": 0,
+          "why": "The article calls it non-mandatory."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Name",
+          "back": "Unique, no special characters."
+        },
+        {
+          "front": "5,000",
+          "back": "Member cap."
+        },
+        {
+          "front": "Division",
+          "back": "Chosen at create."
+        },
+        {
+          "front": "Copy",
+          "back": "Review routing after."
+        }
+      ],
+      "lab": {
+        "title": "Create a paper queue",
+        "steps": [
+          "Write a legal name.",
+          "Name the division.",
+          "Say whether you will copy.",
+          "Say what you will check if you do."
+        ],
+        "success": "The queue can be created without a naming or division surprise."
+      },
+      "fault": {
+        "title": "Illegal name",
+        "symptom": "The save fails.",
+        "log": "Name: Billing/voice.",
+        "cause": "The slash is a special character.",
+        "fix": "Use Billing voice."
+      }
+    },
+    {
+      "id": "q-skills",
+      "title": "Skills and proficiency are on the agent",
+      "level": "Core",
+      "minutes": 12,
+      "summary": "The queue asks for skills. The agent profile holds them. Evaluation decides whether proficiency matters.",
+      "paras": [
+        "ACD skills are tags with a proficiency. All-skills matching ignores the number and demands the tag. Best available skills uses the average proficiency inside the 100 longest-idle window. A skill the interaction does not require does not help or hurt that interaction.",
+        "Bullseye can express the same skill at a lower proficiency on an outer ring by using groups, which the overview prefers when WEM forecasts must stay stable. Removing the skill entirely is the other style. Agents inactive for the 7 day window described in the evaluation article are not candidates even if their profile looks perfect."
+      ],
+      "cites": [
+        {
+          "title": "Routing and evaluation methods",
+          "url": "https://help.genesys.cloud/articles/acd-evaluation-routing-methods/"
+        },
+        {
+          "title": "Bullseye routing overview",
+          "url": "https://help.genesys.cloud/articles/bullseye-routing-overview/"
+        },
+        {
+          "title": "Advanced routing overview",
+          "url": "https://help.genesys.cloud/articles/advanced-routing-overview/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "The interaction asks. The profile answers.",
+        "nodes": [
+          {
+            "id": "need",
+            "label": "Billing 3",
+            "kind": "queue",
+            "x": 20,
+            "y": 40
+          },
+          {
+            "id": "a",
+            "label": "Amina 5",
+            "kind": "agent",
+            "x": 55,
+            "y": 22
+          },
+          {
+            "id": "b",
+            "label": "Leo 1",
+            "kind": "agent",
+            "x": 55,
+            "y": 68
+          }
+        ],
+        "edges": [
+          {
+            "a": "need",
+            "b": "a"
+          },
+          {
+            "a": "need",
+            "b": "b"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Staff a bilingual ring",
+        "steps": [
+          {
+            "from": "Admin",
+            "to": "Skill",
+            "title": "Create Billing",
+            "detail": "The tag exists before the queue can require it.",
+            "inspect": "Proficiency lives on the user"
+          },
+          {
+            "from": "Admin",
+            "to": "Users",
+            "title": "Assign",
+            "detail": "Give the specialist pool a high proficiency.",
+            "inspect": "Give overflow a lower one"
+          },
+          {
+            "from": "Queue",
+            "to": "Evaluation",
+            "title": "Best",
+            "detail": "Proficiency now matters.",
+            "inspect": "All-skills would ignore it"
+          },
+          {
+            "from": "Queue",
+            "to": "Bullseye",
+            "title": "Outer ring",
+            "detail": "Either a lower proficiency group or a removed skill.",
+            "inspect": "Pick the WEM-safe style if you forecast"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Proficiency changes who wins under which evaluation?",
+          "choices": [
+            "All skills matching",
+            "Disregard skills",
+            "Neither",
+            "Best available skills"
+          ],
+          "answer": 3,
+          "why": "All-skills uses presence of the tag and idle time."
+        },
+        {
+          "q": "An unused extra skill on an agent:",
+          "choices": [
+            "Counts as any skill",
+            "Deletes utilization",
+            "Publishes the flow",
+            "Does not satisfy a different required skill"
+          ],
+          "answer": 3,
+          "why": "The interaction\u2019s required set is what matters."
+        },
+        {
+          "q": "The WEM-friendly bullseye expansion is:",
+          "choices": [
+            "Delete the skill from the org",
+            "Disregard skills",
+            "Turn off On Queue",
+            "Same skill, lower proficiency group"
+          ],
+          "answer": 3,
+          "why": "The bullseye overview says this stays compatible with forecasting."
+        },
+        {
+          "q": "Inactive agents are excluded based on:",
+          "choices": [
+            "Their phone model",
+            "The previous 7 days of activity",
+            "Their division name",
+            "Their license only"
+          ],
+          "answer": 1,
+          "why": "The evaluation article states the 7 day window."
+        },
+        {
+          "q": "All skills matching and a proficiency of 1 versus 5, both holding the tag:",
+          "choices": [
+            "1 always wins",
+            "The call disconnects",
+            "Idle time decides",
+            "5 always wins"
+          ],
+          "answer": 2,
+          "why": "Proficiency is not the sort."
+        },
+        {
+          "q": "Skills are stored on:",
+          "choices": [
+            "The login host",
+            "The fair use table",
+            "The agent profile, and required by the interaction or queue rules",
+            "The SIP trunk"
+          ],
+          "answer": 2,
+          "why": "Profiles hold the tags. Routing asks for them."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Tag vs number",
+          "back": "All-skills cares about the tag. Best-available cares about the number."
+        },
+        {
+          "front": "7 days",
+          "back": "Inactive agents drop out."
+        },
+        {
+          "front": "WEM style",
+          "back": "Lower proficiency, same skill."
+        },
+        {
+          "front": "Extra skills",
+          "back": "Do not impersonate the required one."
+        }
+      ],
+      "lab": {
+        "title": "Assign two proficiencies",
+        "steps": [
+          "Create the skill name.",
+          "Assign 5 and 2 to two agents.",
+          "Say who wins under all-skills if the 2 is longer idle.",
+          "Say who wins under best-available."
+        ],
+        "success": "The method and the numbers agree."
+      },
+      "fault": {
+        "title": "Skill on the queue only",
+        "symptom": "Admins added a skill requirement and nobody matches.",
+        "log": "Agent profiles: no Billing skill. Queue rule: Billing required. Evaluation: all skills.",
+        "cause": "The tag was never assigned.",
+        "fix": "Assign Billing to the people who should take the work, or change the evaluation on purpose."
+      }
+    },
+    {
+      "id": "q-acw",
+      "title": "After call work and the system wrap-up codes",
+      "level": "Core",
+      "minutes": 13,
+      "summary": "ACW is optional, discretionary, or time-boxed. The platform has its own codes when agents do not finish.",
+      "paras": [
+        "Optional ACW lets the agent skip wrap-up. Mandatory discretionary lets them end ACW themselves. Mandatory time-boxed caps the duration. If Optional or Mandatory discretionary is on, the interaction stays open until the agent ends it. If they log off or close the browser during ACW, it stays open unless you enable End Interactions Automatically when Agents Logoff, which closes it with ININ-SYSTEM-LOGOUT.",
+        "If the timer expires before a required code is chosen, Genesys Cloud assigns ININ-WRAP-UP-TIMEOUT. Callbacks require a wrap-up code even when ACW is Optional. Agents can save codes and notes only if they actually enter ACW. A direct transfer can still force a code from the previous queue\u2019s list. Outbound dialing has its own codes. The article says not to use the agent-requested option on outbound campaigns because agents can skip the work the campaign needs."
+      ],
+      "cites": [
+        {
+          "title": "Create and configure queues",
+          "url": "https://help.genesys.cloud/articles/create-queues/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "The segment ends in a code, or the platform writes one.",
+        "nodes": [
+          {
+            "id": "talk",
+            "label": "Talk",
+            "kind": "phone",
+            "x": 16,
+            "y": 40
+          },
+          {
+            "id": "acw",
+            "label": "ACW",
+            "kind": "agent",
+            "x": 46,
+            "y": 40
+          },
+          {
+            "id": "code",
+            "label": "Code",
+            "kind": "wem",
+            "x": 76,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "talk",
+            "b": "acw"
+          },
+          {
+            "a": "acw",
+            "b": "code"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Close the segment on purpose",
+        "steps": [
+          {
+            "from": "Queue",
+            "to": "ACW",
+            "title": "Choose a mode",
+            "detail": "Optional, discretionary, or time-boxed.",
+            "inspect": "Know which one you picked"
+          },
+          {
+            "from": "Agent",
+            "to": "Code",
+            "title": "Select",
+            "detail": "Required modes will not close without it.",
+            "inspect": "Notes save only inside ACW"
+          },
+          {
+            "from": "Timer",
+            "to": "Platform",
+            "title": "ININ-WRAP-UP-TIMEOUT",
+            "detail": "The platform fills the blank.",
+            "inspect": "You will see it in reports"
+          },
+          {
+            "from": "Logoff",
+            "to": "Platform",
+            "title": "ININ-SYSTEM-LOGOUT",
+            "detail": "Only if the org setting is on.",
+            "inspect": "Otherwise ACW sits open"
+          },
+          {
+            "from": "Callback",
+            "to": "Rule",
+            "title": "Always a code",
+            "detail": "Optional ACW does not waive it.",
+            "inspect": "The article is specific"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "ININ-WRAP-UP-TIMEOUT means:",
+          "choices": [
+            "The agent picked a custom code",
+            "Predictive routing turned off",
+            "The ACW timer expired before a code was chosen",
+            "The trunk failed"
+          ],
+          "answer": 2,
+          "why": "The queue article names that system code."
+        },
+        {
+          "q": "ININ-SYSTEM-LOGOUT is applied when:",
+          "choices": [
+            "A token expires",
+            "The org setting closes interactions on logoff during ACW",
+            "Every normal wrap-up",
+            "A bullseye ring opens"
+          ],
+          "answer": 1,
+          "why": "It is the logoff path, not the timer path."
+        },
+        {
+          "q": "Callbacks and Optional ACW:",
+          "choices": [
+            "Callbacks skip the queue",
+            "Callbacks delete the recording",
+            "A wrap-up code is still required",
+            "No code is required"
+          ],
+          "answer": 2,
+          "why": "The article calls this out."
+        },
+        {
+          "q": "Notes and codes are saved when:",
+          "choices": [
+            "The DID was purchased",
+            "The agent requested ACW and entered it",
+            "The call connected",
+            "The flow published"
+          ],
+          "answer": 1,
+          "why": "Skipping ACW skips the save."
+        },
+        {
+          "q": "Mandatory time-boxed ACW:",
+          "choices": [
+            "Caps how long wrap-up can last",
+            "Removes wrap-up codes",
+            "Sets utilization to 4",
+            "Disables alerting"
+          ],
+          "answer": 0,
+          "why": "The mode is a maximum duration."
+        },
+        {
+          "q": "The article\u2019s warning on outbound campaigns is:",
+          "choices": [
+            "It is required for BYOC",
+            "It sets the 80/20 split",
+            "Do not use the agent-requested option, because agents can skip work the campaign needs",
+            "Always use it"
+          ],
+          "answer": 2,
+          "why": "That warning is in the wrap-up section."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Optional",
+          "back": "Agent may skip."
+        },
+        {
+          "front": "TIMEOUT",
+          "back": "Timer won."
+        },
+        {
+          "front": "LOGOUT",
+          "back": "Logoff setting won."
+        },
+        {
+          "front": "Callbacks",
+          "back": "Always need a code."
+        }
+      ],
+      "lab": {
+        "title": "Pick an ACW mode",
+        "steps": [
+          "Choose a mode and say what the agent must do.",
+          "Name both system codes.",
+          "Say what callbacks do under Optional.",
+          "Say why outbound agent-requested is discouraged."
+        ],
+        "success": "The mode and the two system codes are in your notes."
+      },
+      "fault": {
+        "title": "Stuck ACW",
+        "symptom": "Agents who shut the laptop leave interactions open for hours.",
+        "log": "ACW: Mandatory discretionary. End on logoff: off.",
+        "cause": "The article says the interaction waits for the agent unless that setting is on.",
+        "fix": "Enable End Interactions Automatically when Agents Logoff, and expect ININ-SYSTEM-LOGOUT on those segments."
+      }
+    },
+    {
+      "id": "q-wrapdiv",
+      "title": "Wrap-up codes live in divisions too",
+      "level": "Core",
+      "minutes": 11,
+      "summary": "The codes an agent sees are the codes their role can see, and Genesys wants them in the queue\u2019s division.",
+      "paras": [
+        "The queue article says you add wrap-up codes that your role can see, and it recommends codes assigned to the same division as the queue so reports make sense. A code in another division is a reporting split even if an admin with broad access managed to attach it.",
+        "Internal calls made on behalf of a queue can hand the receiving agent that queue\u2019s ACW settings and codes. The article\u2019s escape is to place a direct internal call instead of calling on behalf of the queue. The receiving agent may still see the interaction as ACD. Read that note before you debug \u201cwrong code list\u201d on an internal consult."
+      ],
+      "cites": [
+        {
+          "title": "Create and configure queues",
+          "url": "https://help.genesys.cloud/articles/create-queues/"
+        },
+        {
+          "title": "Divisions overview",
+          "url": "https://help.genesys.cloud/articles/divisions-overview/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Codes and the queue should share a division.",
+        "nodes": [
+          {
+            "id": "code",
+            "label": "Code",
+            "kind": "wem",
+            "x": 22,
+            "y": 40
+          },
+          {
+            "id": "div",
+            "label": "Division",
+            "kind": "region",
+            "x": 50,
+            "y": 40
+          },
+          {
+            "id": "q",
+            "label": "Queue",
+            "kind": "queue",
+            "x": 78,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "code",
+            "b": "div"
+          },
+          {
+            "a": "q",
+            "b": "div"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Attach codes the report can explain",
+        "steps": [
+          {
+            "from": "Admin",
+            "to": "Codes",
+            "title": "Create in the queue\u2019s division",
+            "detail": "Same division as the queue.",
+            "inspect": "Recommended by the article"
+          },
+          {
+            "from": "Admin",
+            "to": "Queue",
+            "title": "Add",
+            "detail": "You only see codes your role allows.",
+            "inspect": "Filter by name to review"
+          },
+          {
+            "from": "Agent",
+            "to": "ACW",
+            "title": "Pick",
+            "detail": "The list is the queue\u2019s list.",
+            "inspect": "A transfer can carry the previous queue\u2019s list"
+          },
+          {
+            "from": "Agent",
+            "to": "Internal",
+            "title": "Direct call",
+            "detail": "Avoid inheriting another queue\u2019s ACW by accident.",
+            "inspect": "On-behalf calls inherit"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Genesys recommends wrap-up codes be assigned to:",
+          "choices": [
+            "No division",
+            "The trunk",
+            "The division the queue belongs to",
+            "All divisions always"
+          ],
+          "answer": 2,
+          "why": "So reports that include the code stay understandable."
+        },
+        {
+          "q": "An admin sees codes:",
+          "choices": [
+            "From every customer",
+            "Only system codes",
+            "Only ININ-WRAP-UP-TIMEOUT",
+            "In divisions their role can access"
+          ],
+          "answer": 3,
+          "why": "The picker is permissioned."
+        },
+        {
+          "q": "A direct transfer to a user who is not in a queue can still:",
+          "choices": [
+            "Skip ACW always",
+            "Force a code from the previous segment\u2019s queue",
+            "Delete the recording",
+            "Change the AWS region"
+          ],
+          "answer": 1,
+          "why": "The article describes that inheritance."
+        },
+        {
+          "q": "Calling on behalf of a queue versus a direct internal call:",
+          "choices": [
+            "On-behalf inherits that queue\u2019s ACW. Direct is the documented way to avoid it.",
+            "They are identical",
+            "Direct calls are forbidden",
+            "On-behalf uses RTP only"
+          ],
+          "answer": 0,
+          "why": "The article draws that distinction."
+        },
+        {
+          "q": "Removing a code from the queue:",
+          "choices": [
+            "Resets utilization",
+            "Takes it off that queue\u2019s list. It does not have to delete the code object.",
+            "Deletes the division",
+            "Publishes every flow"
+          ],
+          "answer": 1,
+          "why": "The article has a remove step on the queue list."
+        },
+        {
+          "q": "System codes and custom codes:",
+          "choices": [
+            "System codes are illegal",
+            "Custom codes are CX 4 only",
+            "Neither is reported",
+            "Both can appear. System codes are written by the platform in the cases already covered."
+          ],
+          "answer": 3,
+          "why": "TIMEOUT and LOGOUT are the system examples."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Same division",
+          "back": "Queue and codes."
+        },
+        {
+          "front": "Role",
+          "back": "Limits the picker."
+        },
+        {
+          "front": "On behalf",
+          "back": "Inherits ACW."
+        },
+        {
+          "front": "Direct internal",
+          "back": "The documented escape."
+        }
+      ],
+      "lab": {
+        "title": "Place codes with the queue",
+        "steps": [
+          "Name the division.",
+          "Name three codes.",
+          "Say who can see them.",
+          "Say what an on-behalf internal call will inherit."
+        ],
+        "success": "The code list belongs to the same division as the queue."
+      },
+      "fault": {
+        "title": "Split report",
+        "symptom": "Half the wrap-up codes do not filter with the EMEA queue.",
+        "log": "Queue division: EMEA. Codes created in Home and attached by an All-division admin.",
+        "cause": "The article\u2019s reporting recommendation was skipped.",
+        "fix": "Recreate or move the codes into EMEA and attach those."
+      }
+    },
+    {
+      "id": "q-sl",
+      "title": "Service level is a percentage and a target in seconds",
+      "level": "Core",
+      "minutes": 11,
+      "summary": "Each media has a service level percentage and a target duration. That pair is what conditional routing and WFM both mean by \u201cthe goal.\u201d",
+      "paras": [
+        "The queue article tells you to set a service level percentage and a service level target in seconds per channel. Voice, chat, email, message, and callback are configured on their own media panels. A single number for \u201cthe queue\u201d is not how the admin page works. A voice target of 20 seconds and an email target of an hour can both be honest.",
+        "Conditional group routing\u2019s KPI is only meaningful if this pair exists and you believe it. WEM service goal templates, covered in the WFM track, are the planning version of the same idea. Do not set the queue target to 1 second to \u201clook good.\u201d The percentage will tell on you."
+      ],
+      "cites": [
+        {
+          "title": "Create and configure queues",
+          "url": "https://help.genesys.cloud/articles/create-queues/"
+        },
+        {
+          "title": "Advanced routing overview",
+          "url": "https://help.genesys.cloud/articles/advanced-routing-overview/"
+        },
+        {
+          "title": "About Workforce Engagement Management",
+          "url": "https://help.genesys.cloud/articles/about-workforce-engagement-management-wem/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Percentage answered inside a target, per media.",
+        "nodes": [
+          {
+            "id": "v",
+            "label": "Voice 20s",
+            "kind": "phone",
+            "x": 22,
+            "y": 40
+          },
+          {
+            "id": "e",
+            "label": "Email",
+            "kind": "crm",
+            "x": 55,
+            "y": 40
+          },
+          {
+            "id": "goal",
+            "label": "Goal",
+            "kind": "wem",
+            "x": 82,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "v",
+            "b": "goal"
+          },
+          {
+            "a": "e",
+            "b": "goal"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Set two different targets",
+        "steps": [
+          {
+            "from": "Admin",
+            "to": "Voice",
+            "title": "80 percent in 20 seconds",
+            "detail": "A classic voice pair.",
+            "inspect": "Enter it on the voice panel"
+          },
+          {
+            "from": "Admin",
+            "to": "Email",
+            "title": "A longer target",
+            "detail": "Email is not voice.",
+            "inspect": "Own percentage, own seconds"
+          },
+          {
+            "from": "Routing",
+            "to": "Conditional",
+            "title": "Use the voice goal",
+            "detail": "The donor rule needs a real KPI.",
+            "inspect": "A blank target protects nothing"
+          },
+          {
+            "from": "WFM",
+            "to": "Template",
+            "title": "Plan to the same number",
+            "detail": "Forecasts and the queue should not disagree.",
+            "inspect": "WEM track covers templates"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Service level on a queue is:",
+          "choices": [
+            "A single org-wide millisecond",
+            "A SIP response",
+            "A token count",
+            "A percentage and a target duration, per media"
+          ],
+          "answer": 3,
+          "why": "The queue article configures both, by channel."
+        },
+        {
+          "q": "Voice and email should share one target because they are one queue?",
+          "choices": [
+            "Only on CX 1",
+            "Only if bullseye is off",
+            "No. Each media has its own settings.",
+            "Yes"
+          ],
+          "answer": 2,
+          "why": "The article has separate channel configuration."
+        },
+        {
+          "q": "Conditional routing without a believable service level:",
+          "choices": [
+            "Has no KPI to protect the donor queue",
+            "Runs faster",
+            "Disables utilization",
+            "Publishes flows"
+          ],
+          "answer": 0,
+          "why": "The rule is a KPI plus availability."
+        },
+        {
+          "q": "A 1 second voice target will likely:",
+          "choices": [
+            "Guarantee CX 4",
+            "Disable alerting",
+            "Remove skills",
+            "Show a poor percentage, because agents cannot answer that fast"
+          ],
+          "answer": 3,
+          "why": "The percentage is measured against the target you typed."
+        },
+        {
+          "q": "Alerting timeout and service level target are:",
+          "choices": [
+            "The same field",
+            "Both 72 hours",
+            "Both OAuth settings",
+            "Different timers. Alerting is 7\u201359 seconds for the agent. The target is the caller\u2019s goal."
+          ],
+          "answer": 3,
+          "why": "Do not copy one into the other without reading both."
+        },
+        {
+          "q": "WEM service goal templates relate to this number as:",
+          "choices": [
+            "A login host",
+            "The planning side of the same service idea",
+            "A replacement for SIP",
+            "A recording policy"
+          ],
+          "answer": 1,
+          "why": "The WEM article lists service goal templates among planning objects."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Pair",
+          "back": "Percentage and seconds."
+        },
+        {
+          "front": "Per media",
+          "back": "Voice is not email."
+        },
+        {
+          "front": "Routing",
+          "back": "Conditional rules need the KPI."
+        },
+        {
+          "front": "WEM",
+          "back": "Templates should agree with the queue."
+        }
+      ],
+      "lab": {
+        "title": "Write two targets",
+        "steps": [
+          "Voice percentage and seconds.",
+          "Email percentage and seconds.",
+          "Say which one a conditional rule would watch.",
+          "Say why 1 second is a bad voice target."
+        ],
+        "success": "The two medias do not share a fantasy number."
+      },
+      "fault": {
+        "title": "One number for everything",
+        "symptom": "Email service level is red every day. Agents answer email in 30 minutes, which leadership said was fine.",
+        "log": "Email target copied from voice: 20 seconds.",
+        "cause": "The media panel was not edited.",
+        "fix": "Set the email target to the promise you actually made."
+      }
+    },
+    {
+      "id": "q-callback",
+      "title": "Callbacks are interactions with their own rules",
+      "level": "Core",
+      "minutes": 12,
+      "summary": "A callback is queued work. It still needs a wrap-up code, and it counts as its own utilization slot.",
+      "paras": [
+        "CX 1 includes callbacks. The utilization default is one callback, and preview calls are treated as callbacks. Calls and callbacks do not interrupt each other by default, so an agent on a live call is not also offered a callback. The queue\u2019s callback media panel has its own service level.",
+        "The wrap-up article says a callback requires a wrap-up code even if voice ACW is Optional. Preferred-agent behavior also notes that for email, messaging, and inbound callbacks the platform no longer routes to the last handling agent, while scheduled callbacks are a different case. Read that sentence on the preferred-agent page before you promise \u201cthe same agent will call back.\u201d"
+      ],
+      "cites": [
+        {
+          "title": "Overview of Genesys Cloud",
+          "url": "https://help.mypurecloud.com/articles/overview-of-genesys-cloud/"
+        },
+        {
+          "title": "Agent utilization",
+          "url": "https://help.genesys.cloud/articles/utilization/"
+        },
+        {
+          "title": "Create and configure queues",
+          "url": "https://help.genesys.cloud/articles/create-queues/"
+        },
+        {
+          "title": "Preferred agent routing behavior",
+          "url": "https://help.genesys.cloud/articles/preferred-agent-routing-behavior/"
+        }
+      ],
+      "uncertainty": "Scheduled callbacks are called out separately from inbound callbacks on the preferred-agent page. Confirm the current sentence before you design a scheduled campaign around last-agent behavior.",
+      "figure": {
+        "caption": "A callback waits beside voice and consumes its own slot.",
+        "nodes": [
+          {
+            "id": "cust",
+            "label": "Customer",
+            "kind": "phone",
+            "x": 14,
+            "y": 40
+          },
+          {
+            "id": "cb",
+            "label": "Callback",
+            "kind": "queue",
+            "x": 46,
+            "y": 40
+          },
+          {
+            "id": "ag",
+            "label": "Agent",
+            "kind": "agent",
+            "x": 78,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "cust",
+            "b": "cb"
+          },
+          {
+            "a": "cb",
+            "b": "ag"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Offer a callback without double-alerting",
+        "steps": [
+          {
+            "from": "Flow",
+            "to": "Queue",
+            "title": "Create callback",
+            "detail": "CX 1 includes the feature.",
+            "inspect": "It is queued work"
+          },
+          {
+            "from": "ACD",
+            "to": "Agent",
+            "title": "One slot",
+            "detail": "Default capacity is one callback.",
+            "inspect": "It will not interrupt a live call by default"
+          },
+          {
+            "from": "Agent",
+            "to": "ACW",
+            "title": "Code required",
+            "detail": "Even if voice ACW is Optional.",
+            "inspect": "The article is explicit"
+          },
+          {
+            "from": "Design",
+            "to": "Last agent",
+            "title": "Do not promise",
+            "detail": "Inbound callbacks are called out on the preferred page.",
+            "inspect": "Scheduled callbacks are the exception to re-read"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Default callback utilization is:",
+          "choices": [
+            "Unlimited",
+            "1",
+            "4",
+            "0"
+          ],
+          "answer": 1,
+          "why": "The utilization article lists one callback."
+        },
+        {
+          "q": "A live call and a callback interrupting each other is:",
+          "choices": [
+            "Only in bullseye",
+            "Only for bots",
+            "Off by default",
+            "Required"
+          ],
+          "answer": 2,
+          "why": "The article prevents that interrupt by default."
+        },
+        {
+          "q": "Preview calls count as:",
+          "choices": [
+            "Emails",
+            "Workitems",
+            "Chats",
+            "Callbacks"
+          ],
+          "answer": 3,
+          "why": "The utilization article says so."
+        },
+        {
+          "q": "Wrap-up on a callback when ACW is Optional:",
+          "choices": [
+            "Still required",
+            "Skipped",
+            "Replaced by a token",
+            "Forbidden"
+          ],
+          "answer": 0,
+          "why": "The queue article says the code is required regardless."
+        },
+        {
+          "q": "CX package that includes callbacks in the overview\u2019s voice list:",
+          "choices": [
+            "CX 1",
+            "Only CX 4",
+            "Only AppFoundry",
+            "None"
+          ],
+          "answer": 0,
+          "why": "Callbacks are in the CX 1 description."
+        },
+        {
+          "q": "Promising the same agent on every inbound callback is risky because:",
+          "choices": [
+            "Agents cannot be On Queue",
+            "RTP forbids it",
+            "The preferred-agent article says inbound callbacks are no longer routed to the last handling agent",
+            "Callbacks have no queue"
+          ],
+          "answer": 2,
+          "why": "Re-read scheduled versus inbound on that page."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Slot",
+          "back": "One callback by default."
+        },
+        {
+          "front": "No interrupt",
+          "back": "Calls and callbacks stay apart."
+        },
+        {
+          "front": "Code",
+          "back": "Required even if ACW is Optional."
+        },
+        {
+          "front": "Last agent",
+          "back": "Do not promise it for inbound callbacks."
+        }
+      ],
+      "lab": {
+        "title": "Write the callback rules",
+        "steps": [
+          "State the utilization default.",
+          "State the interrupt default.",
+          "State the wrap-up rule.",
+          "State what you will not promise about the same agent."
+        ],
+        "success": "The callback design does not contradict the three articles."
+      },
+      "fault": {
+        "title": "Double alert",
+        "symptom": "Agents on live calls also get callback alerts and miss both.",
+        "log": "Interrupt: calls may interrupt callbacks, and callbacks may interrupt calls. An admin enabled both.",
+        "cause": "The default was changed.",
+        "fix": "Restore the default that keeps calls and callbacks from interrupting each other, unless you have a measured reason not to."
+      }
+    },
+    {
+      "id": "q-members",
+      "title": "Membership, On Queue, and the copy trap",
+      "level": "Core",
+      "minutes": 11,
+      "summary": "A copied queue can duplicate a bullseye you did not mean to clone.",
+      "paras": [
+        "Membership is the list of agents who may receive the queue\u2019s work, up to 5,000. On Queue is the status that actually enters them. Copying settings and members is a shortcut and a trap: routing method, evaluation, bullseye rings, wrap-up, and ACW come along. The article says you can edit after the copy. Do that before the queue takes a DID.",
+        "An agent in the member list who is off queue, fully utilized, or missing a required skill under all-skills matching will not be offered the interaction. The simulator makes those three filters obvious. Production adds the 7 day activity window and the scoring across queues."
+      ],
+      "cites": [
+        {
+          "title": "Create and configure queues",
+          "url": "https://help.genesys.cloud/articles/create-queues/"
+        },
+        {
+          "title": "Routing and evaluation methods",
+          "url": "https://help.genesys.cloud/articles/acd-evaluation-routing-methods/"
+        },
+        {
+          "title": "Agent utilization",
+          "url": "https://help.genesys.cloud/articles/utilization/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Members are the roster. On Queue is the door.",
+        "nodes": [
+          {
+            "id": "list",
+            "label": "Members",
+            "kind": "queue",
+            "x": 22,
+            "y": 40
+          },
+          {
+            "id": "on",
+            "label": "On Queue",
+            "kind": "agent",
+            "x": 55,
+            "y": 22
+          },
+          {
+            "id": "off",
+            "label": "Off queue",
+            "kind": "agent",
+            "x": 55,
+            "y": 68
+          }
+        ],
+        "edges": [
+          {
+            "a": "list",
+            "b": "on"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Copy, then edit, then test",
+        "steps": [
+          {
+            "from": "Admin",
+            "to": "Copy",
+            "title": "From Billing",
+            "detail": "Members and settings arrive together.",
+            "inspect": "Open the routing tab"
+          },
+          {
+            "from": "Admin",
+            "to": "Rings",
+            "title": "Reset if needed",
+            "detail": "A five-ring plan may not fit the new queue.",
+            "inspect": "Evaluation too"
+          },
+          {
+            "from": "Agent",
+            "to": "Status",
+            "title": "On Queue",
+            "detail": "Membership is not enough.",
+            "inspect": "Off queue is invisible"
+          },
+          {
+            "from": "Test",
+            "to": "Call",
+            "title": "One agent",
+            "detail": "Confirm who is offered.",
+            "inspect": "Then add the DID"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Copying a queue copies:",
+          "choices": [
+            "Only the division\u2019s login host",
+            "Nothing",
+            "Settings and members, including routing if that is part of the configuration",
+            "Only the name"
+          ],
+          "answer": 2,
+          "why": "The article says settings and members, and you can edit after."
+        },
+        {
+          "q": "An off-queue member is:",
+          "choices": [
+            "A trunk",
+            "Not offered ACD interactions",
+            "The first choice",
+            "Automatically preferred"
+          ],
+          "answer": 1,
+          "why": "On Queue is the entry status."
+        },
+        {
+          "q": "The member cap still applies to a copied queue:",
+          "choices": [
+            "The cap becomes 10,000",
+            "The cap is 200",
+            "Yes. 5,000.",
+            "No"
+          ],
+          "answer": 2,
+          "why": "The limit is per queue."
+        },
+        {
+          "q": "Fully utilized members are:",
+          "choices": [
+            "Moved to Home",
+            "Skipped",
+            "Preferred",
+            "Given a second voice call by default"
+          ],
+          "answer": 1,
+          "why": "Utilization removes them from the offer."
+        },
+        {
+          "q": "The 7 day activity rule means a copied roster can include:",
+          "choices": [
+            "Only preferred agents",
+            "People who will not be selected until they are active again",
+            "Only bots",
+            "Only CX 4"
+          ],
+          "answer": 1,
+          "why": "The evaluation article excludes inactive agents."
+        },
+        {
+          "q": "The right time to attach a DID is:",
+          "choices": [
+            "Before the queue exists",
+            "During the copy dialog only",
+            "After deleting Home",
+            "After you have reviewed routing and placed a test call"
+          ],
+          "answer": 3,
+          "why": "A copied bullseye should be a choice, not a surprise."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Copy",
+          "back": "Review routing immediately."
+        },
+        {
+          "front": "On Queue",
+          "back": "The door."
+        },
+        {
+          "front": "5,000",
+          "back": "Still the cap."
+        },
+        {
+          "front": "Test",
+          "back": "Before the DID."
+        }
+      ],
+      "lab": {
+        "title": "Review a copied queue",
+        "steps": [
+          "List three settings you will reopen.",
+          "Confirm member count under 5,000.",
+          "Name the status agents must select.",
+          "Place a test before cutover."
+        ],
+        "success": "The copy is a draft, not a launch."
+      },
+      "fault": {
+        "title": "Inherited rings",
+        "symptom": "A new overflow queue waits 72 hours on ring 1 because the source was a specialty queue.",
+        "log": "Copied bullseye delay: 259200 seconds.",
+        "cause": "The maximum delay was copied on purpose in the source and by accident here.",
+        "fix": "Set a delay that matches this queue\u2019s promise, publish nothing else until a test call expands the way you expect."
+      }
+    }
+  ]
+}

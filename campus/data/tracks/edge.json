@@ -1,0 +1,1405 @@
+{
+  "id": "edge",
+  "title": "The Edge and BYOC Premises",
+  "kicker": "Premises",
+  "accent": 2,
+  "summary": "Premises Edges, Edge groups, phone trunks, sites, and what happens when the local Edge is down.",
+  "lessons": [
+    {
+      "id": "e-role",
+      "title": "The premises Edge is the local media hop",
+      "level": "Core",
+      "minutes": 12,
+      "summary": "BYOC Premises puts an Edge on your network. Phones and trunks registered there do not need a public address the way BYOC Cloud does.",
+      "paras": [
+        "An Edge group is a set of premises Edges on a low-latency network. Phones on those Edges can call each other, and a trunk plugged into one Edge can be used by the others in the group. That sharing is the point of the group. A single Edge with no group is a single point of failure for every phone that depends on it.",
+        "This is a different product from BYOC Cloud. Cloud trunks terminate in AWS. Premises trunks terminate on the Edge. Emergency calling can still be internet-based in some premises designs, and the same Genesys warning applies: if the call rides a BYOC trunk, Genesys is not the emergency provider."
+      ],
+      "cites": [
+        {
+          "title": "BYOC Premises Edge groups overview",
+          "url": "https://help.genesys.cloud/articles/edge-groups-overview/"
+        },
+        {
+          "title": "Set up emergency services with BYOC",
+          "url": "https://help.genesys.cloud/articles/set-up-emergency-services-with-byoc/"
+        },
+        {
+          "title": "BYOC Cloud overview",
+          "url": "https://help.genesys.cloud/articles/byoc-cloud-overview/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Phones share a trunk through the Edge group.",
+        "nodes": [
+          {
+            "id": "p1",
+            "label": "Phone",
+            "kind": "phone",
+            "x": 14,
+            "y": 30
+          },
+          {
+            "id": "p2",
+            "label": "Phone",
+            "kind": "phone",
+            "x": 14,
+            "y": 70
+          },
+          {
+            "id": "e",
+            "label": "Edge group",
+            "kind": "edge",
+            "x": 48,
+            "y": 46
+          },
+          {
+            "id": "t",
+            "label": "Trunk",
+            "kind": "trunk",
+            "x": 80,
+            "y": 46
+          }
+        ],
+        "edges": [
+          {
+            "a": "p1",
+            "b": "e"
+          },
+          {
+            "a": "p2",
+            "b": "e"
+          },
+          {
+            "a": "e",
+            "b": "t"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Put the trunk where the group can see it",
+        "steps": [
+          {
+            "from": "Engineer",
+            "to": "Edge",
+            "title": "Place on the LAN",
+            "detail": "Low latency to the phones.",
+            "inspect": "The group definition"
+          },
+          {
+            "from": "Engineer",
+            "to": "Group",
+            "title": "Add the Edge",
+            "detail": "The Edge inherits group phone trunks.",
+            "inspect": "Confirm inherit on the interface"
+          },
+          {
+            "from": "Carrier",
+            "to": "Trunk",
+            "title": "One Edge",
+            "detail": "Other Edges in the group can use it.",
+            "inspect": "That is the documented benefit"
+          },
+          {
+            "from": "Safety",
+            "to": "Power",
+            "title": "Local",
+            "detail": "A dead Edge is a local outage.",
+            "inspect": "Cloud trunks are a different path"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "An Edge group exists so that:",
+          "choices": [
+            "WFM forecasts faster",
+            "Edges can share phones and trunks on a low-latency network",
+            "The org can change AWS regions",
+            "OAuth secrets replicate"
+          ],
+          "answer": 1,
+          "why": "The overview lists sharing as the benefit."
+        },
+        {
+          "q": "A trunk on one Edge in the group is:",
+          "choices": [
+            "A division",
+            "Usable by the other Edges in that group",
+            "Invisible to them",
+            "A cloud trunk automatically"
+          ],
+          "answer": 1,
+          "why": "The article says members share endpoints."
+        },
+        {
+          "q": "BYOC Cloud and BYOC Premises differ because:",
+          "choices": [
+            "Cloud terminates in AWS. Premises terminates on an Edge.",
+            "They are the same SKU",
+            "Premises has no SIP",
+            "Cloud has no RTP"
+          ],
+          "answer": 0,
+          "why": "Keep the two products apart."
+        },
+        {
+          "q": "Inheriting phone trunks is confirmed on:",
+          "choices": [
+            "The quiz",
+            "The bot flow",
+            "The Edge network interface, Inherit from Edge Group",
+            "The fair use page"
+          ],
+          "answer": 2,
+          "why": "The create-group article tells you to confirm that setting."
+        },
+        {
+          "q": "A single Edge with every phone registered to it is:",
+          "choices": [
+            "A local single point of failure",
+            "Required",
+            "A satellite region",
+            "A CX 4 token"
+          ],
+          "answer": 0,
+          "why": "The group exists so one device is not the whole site."
+        },
+        {
+          "q": "Emergency calls that use the premises BYOC trunk are:",
+          "choices": [
+            "Still under the BYOC warning. Genesys is not the emergency provider.",
+            "Guaranteed by the Edge serial number",
+            "Routed as GCV automatically",
+            "Blocked"
+          ],
+          "answer": 0,
+          "why": "The emergency article covers both BYOC models."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Group",
+          "back": "Share phones and trunks."
+        },
+        {
+          "front": "Inherit",
+          "back": "The Edge takes the group\u2019s phone trunks."
+        },
+        {
+          "front": "Cloud vs premises",
+          "back": "AWS versus an Edge."
+        },
+        {
+          "front": "Emergency",
+          "back": "Still your carrier if the trunk is BYOC."
+        }
+      ],
+      "lab": {
+        "title": "Draw one site",
+        "steps": [
+          "Name two Edges.",
+          "Name the shared trunk.",
+          "Say what a phone on Edge B uses.",
+          "Say who owns emergency."
+        ],
+        "success": "The picture shows a group, not a single box."
+      },
+      "fault": {
+        "title": "Trunk on the wrong Edge",
+        "symptom": "Phones on Edge B cannot seize the carrier.",
+        "log": "Edge B phone trunks: Use the following trunks, empty. Group trunk: attached only in the group, inherit not selected.",
+        "cause": "The Edge is not inheriting.",
+        "fix": "Select Inherit from Edge Group, or explicitly add the trunk, then test."
+      }
+    },
+    {
+      "id": "e-site",
+      "title": "Local site routing stays home until it cannot",
+      "level": "Core",
+      "minutes": 12,
+      "summary": "Genesys uses Edges in the same site when it can. Another site is the exception.",
+      "paras": [
+        "The Edge group article says local site routing prefers same-site Edges to save bandwidth and latency. Another site is used when local Edges are offline, already at capacity, or do not hold the resource, such as the agent, the station, or the trunk.",
+        "A site is also where number plans and outbound routes live, and where you attach a location. Building two sites and one giant Edge group across a slow WAN fights the article. The group wants a low-latency network. The site wants local media. Those sentences should agree."
+      ],
+      "cites": [
+        {
+          "title": "BYOC Premises Edge groups overview",
+          "url": "https://help.genesys.cloud/articles/edge-groups-overview/"
+        },
+        {
+          "title": "BYOC Cloud quick start guide",
+          "url": "https://help.genesys.cloud/articles/byoc-cloud-configuration-overview/"
+        },
+        {
+          "title": "Number plan information",
+          "url": "https://help.genesys.cloud/articles/number-plan-information/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Same-site Edges first. The other site is a documented exception.",
+        "nodes": [
+          {
+            "id": "a",
+            "label": "Site A",
+            "kind": "edge",
+            "x": 22,
+            "y": 40
+          },
+          {
+            "id": "b",
+            "label": "Site B",
+            "kind": "edge",
+            "x": 70,
+            "y": 40
+          },
+          {
+            "id": "call",
+            "label": "Call",
+            "kind": "phone",
+            "x": 46,
+            "y": 16
+          }
+        ],
+        "edges": [
+          {
+            "a": "call",
+            "b": "a"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Keep the call on the site",
+        "steps": [
+          {
+            "from": "Call",
+            "to": "Site A",
+            "title": "Local Edge",
+            "detail": "Preferred path.",
+            "inspect": "Bandwidth stays home"
+          },
+          {
+            "from": "Edge A",
+            "to": "Capacity",
+            "title": "Full",
+            "detail": "Then another site may be used.",
+            "inspect": "Documented exception"
+          },
+          {
+            "from": "Edge A",
+            "to": "Offline",
+            "title": "Failover",
+            "detail": "Also an exception.",
+            "inspect": "Not the steady state"
+          },
+          {
+            "from": "Trunk",
+            "to": "Only on B",
+            "title": "Resource exception",
+            "detail": "The call may cross because the trunk is not local.",
+            "inspect": "Place trunks where the calls are"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Local site routing prefers:",
+          "choices": [
+            "The farthest satellite",
+            "A random Edge",
+            "The Home division",
+            "Edges in the same site"
+          ],
+          "answer": 3,
+          "why": "The article says same-site first."
+        },
+        {
+          "q": "Another site is used when local Edges are:",
+          "choices": [
+            "Running WebRTC",
+            "Offline, at capacity, or missing the resource",
+            "In the same rack",
+            "Newer"
+          ],
+          "answer": 1,
+          "why": "Those are the three documented exceptions."
+        },
+        {
+          "q": "A trunk that exists only at site B will:",
+          "choices": [
+            "Be ignored",
+            "Delete site A",
+            "Become GCV",
+            "Pull calls toward B when that trunk is required"
+          ],
+          "answer": 3,
+          "why": "The resource exception covers a trunk that is not local."
+        },
+        {
+          "q": "An Edge group stretched across a high-latency WAN:",
+          "choices": [
+            "Conflicts with the low-latency group definition",
+            "Is required",
+            "Is a number plan",
+            "Is an OAuth grant"
+          ],
+          "answer": 0,
+          "why": "The group article wants low latency."
+        },
+        {
+          "q": "Number plans are attached at:",
+          "choices": [
+            "The bot",
+            "The token",
+            "The site",
+            "The agent profile"
+          ],
+          "answer": 2,
+          "why": "The number-plan article is a site feature."
+        },
+        {
+          "q": "Steady-state design should:",
+          "choices": [
+            "Put Edges, phones, and the trunks they need in the same site",
+            "Hairpin every call",
+            "Use one Edge worldwide",
+            "Disable local routing"
+          ],
+          "answer": 0,
+          "why": "Exceptions are for failure, not for the happy path."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Same site",
+          "back": "The preferred path."
+        },
+        {
+          "front": "Three exceptions",
+          "back": "Offline, capacity, missing resource."
+        },
+        {
+          "front": "Low latency",
+          "back": "What a group is for."
+        },
+        {
+          "front": "Plans",
+          "back": "Live on the site."
+        }
+      ],
+      "lab": {
+        "title": "Place a trunk",
+        "steps": [
+          "Name the site where the agents sit.",
+          "Put the trunk there.",
+          "Name the three reasons a call may leave.",
+          "Say why a WAN-wide group is a bad default."
+        ],
+        "success": "The happy path is local."
+      },
+      "fault": {
+        "title": "Hairpin by design",
+        "symptom": "Every branch call traverses the headquarters WAN.",
+        "log": "Branch Edges: offline in the design. Only the HQ Edge exists.",
+        "cause": "The exception has been made the architecture.",
+        "fix": "Put an Edge and the local trunk in the branch, and let HQ be the failure path."
+      }
+    },
+    {
+      "id": "e-phone",
+      "title": "Phone trunks, WebRTC, and inherit",
+      "level": "Core",
+      "minutes": 11,
+      "summary": "WebRTC and SIP phones are phone trunks on the Edge group. Inherit is the default you should verify.",
+      "paras": [
+        "The create-group article has you select a WebRTC or SIP phone trunk on the group. Each Edge can inherit that list. The advanced path is to ignore the group and pin trunks on one Edge\u2019s network interface. Pinning is how a phone becomes stranded when that one Edge dies.",
+        "WebRTC phones still need a working path to the Edge or cloud media that hosts them. They are not a reason to skip the site and the location. A browser phone at home is a network design, not only a checkbox."
+      ],
+      "cites": [
+        {
+          "title": "Create a BYOC Premises Edge group with a phone trunk",
+          "url": "https://help.genesys.cloud/articles/create-edge-group-phone-trunk/"
+        },
+        {
+          "title": "BYOC Premises Edge groups overview",
+          "url": "https://help.genesys.cloud/articles/edge-groups-overview/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Inherit the group phone trunk unless you mean to pin it.",
+        "nodes": [
+          {
+            "id": "g",
+            "label": "Group trunk",
+            "kind": "trunk",
+            "x": 22,
+            "y": 40
+          },
+          {
+            "id": "e1",
+            "label": "Edge A inherit",
+            "kind": "edge",
+            "x": 58,
+            "y": 22
+          },
+          {
+            "id": "e2",
+            "label": "Edge B pin",
+            "kind": "edge",
+            "x": 58,
+            "y": 70
+          }
+        ],
+        "edges": [
+          {
+            "a": "g",
+            "b": "e1"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Verify inherit before the pilot",
+        "steps": [
+          {
+            "from": "Admin",
+            "to": "Group",
+            "title": "Add WebRTC trunk",
+            "detail": "The article\u2019s phone-trunk field.",
+            "inspect": "SIP phones are the same list"
+          },
+          {
+            "from": "Admin",
+            "to": "Edge",
+            "title": "Network interface",
+            "detail": "Confirm Inherit from Edge Group.",
+            "inspect": "The article tells you to look"
+          },
+          {
+            "from": "Admin",
+            "to": "Pin",
+            "title": "Only with a reason",
+            "detail": "Use the following trunks is the override.",
+            "inspect": "Write the reason down"
+          },
+          {
+            "from": "Test",
+            "to": "Both Edges",
+            "title": "Register a phone",
+            "detail": "A phone should survive one Edge if the group is real.",
+            "inspect": "Otherwise you pinned it"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "The default the article tells you to confirm is:",
+          "choices": [
+            "A cloud-only DID",
+            "Inherit from Edge Group",
+            "Use the following trunks, empty",
+            "No phone trunk"
+          ],
+          "answer": 1,
+          "why": "Inherit is the documented default behavior."
+        },
+        {
+          "q": "WebRTC is configured as:",
+          "choices": [
+            "A wrap-up code",
+            "A bullseye ring",
+            "A fair-use token",
+            "A phone trunk on the Edge group"
+          ],
+          "answer": 3,
+          "why": "The article includes WebRTC in the phone-trunk picker."
+        },
+        {
+          "q": "Pinning a phone trunk to one Edge means:",
+          "choices": [
+            "Automatic failover",
+            "A second region",
+            "A published flow",
+            "The other Edges do not provide that phone path"
+          ],
+          "answer": 3,
+          "why": "Override is local to that interface."
+        },
+        {
+          "q": "The menu path in the article includes:",
+          "choices": [
+            "Quality, evaluations",
+            "OAuth, tokens",
+            "Telephony, Edge Groups, or the Edge network interface for the override",
+            "WFM, forecasts"
+          ],
+          "answer": 2,
+          "why": "Those are the telephony admin pages named."
+        },
+        {
+          "q": "A home WebRTC user still needs:",
+          "choices": [
+            "CX 4",
+            "A designed path to the media that hosts the phone",
+            "Nothing",
+            "A premises headset server always"
+          ],
+          "answer": 1,
+          "why": "The checkbox is not the network."
+        },
+        {
+          "q": "A pilot that only tests one Edge:",
+          "choices": [
+            "Does not prove group failover",
+            "Proves DCVP",
+            "Proves emergency",
+            "Proves predictive routing"
+          ],
+          "answer": 0,
+          "why": "Fail one Edge on purpose in a maintenance window."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Inherit",
+          "back": "Confirm it."
+        },
+        {
+          "front": "Pin",
+          "back": "An override with a reason."
+        },
+        {
+          "front": "WebRTC",
+          "back": "A phone trunk."
+        },
+        {
+          "front": "Test",
+          "back": "Both Edges."
+        }
+      ],
+      "lab": {
+        "title": "Check one interface",
+        "steps": [
+          "Say where inherit is displayed.",
+          "Say what the override is called.",
+          "Say how you would test failover.",
+          "Say why a home user is still a network design."
+        ],
+        "success": "Inherit is either confirmed or deliberately replaced."
+      },
+      "fault": {
+        "title": "Empty override",
+        "symptom": "New phones will not register on Edge B.",
+        "log": "Phone trunks: Use the following trunks. List: empty. Group: WebRTC trunk present.",
+        "cause": "The override replaced inherit with nothing.",
+        "fix": "Select Inherit from Edge Group."
+      }
+    },
+    {
+      "id": "e-fail",
+      "title": "When the local Edge is offline",
+      "level": "Core",
+      "minutes": 12,
+      "summary": "The documented failover is another site, if that site actually has the resource.",
+      "paras": [
+        "Offline, at capacity, or missing the resource: those are the only reasons the article gives for leaving the site. If site B has no trunk and no path to the agent\u2019s station, failover has nowhere to go. Capacity is a real limit. Filling every Edge to the ceiling makes the failure path the normal path.",
+        "Cloud callers on a BYOC Cloud trunk do not use this Edge at all. An Edge outage and a cloud trunk outage are different incidents. The topology in this lab lets you toggle them separately so the two stories stay apart."
+      ],
+      "cites": [
+        {
+          "title": "BYOC Premises Edge groups overview",
+          "url": "https://help.genesys.cloud/articles/edge-groups-overview/"
+        },
+        {
+          "title": "BYOC Cloud overview",
+          "url": "https://help.genesys.cloud/articles/byoc-cloud-overview/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Offline local Edges, then the other site, and only if the resource is there.",
+        "nodes": [
+          {
+            "id": "a",
+            "label": "Site A down",
+            "kind": "edge",
+            "x": 20,
+            "y": 40
+          },
+          {
+            "id": "b",
+            "label": "Site B",
+            "kind": "edge",
+            "x": 55,
+            "y": 40
+          },
+          {
+            "id": "c",
+            "label": "Cloud trunk",
+            "kind": "trunk",
+            "x": 84,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "a",
+            "b": "b"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Fail one site in a maintenance window",
+        "steps": [
+          {
+            "from": "Ops",
+            "to": "Edge A",
+            "title": "Take offline",
+            "detail": "Local phones must move or fail.",
+            "inspect": "Documented"
+          },
+          {
+            "from": "Ops",
+            "to": "Site B",
+            "title": "Check the trunk",
+            "detail": "No trunk means no failover for that call.",
+            "inspect": "Resource exception works both ways"
+          },
+          {
+            "from": "Ops",
+            "to": "Cloud DID",
+            "title": "Separate test",
+            "detail": "It should still ring.",
+            "inspect": "It does not use the Edge"
+          },
+          {
+            "from": "Ops",
+            "to": "Capacity",
+            "title": "Watch the steady state",
+            "detail": "If you always overflow, you are out of capacity.",
+            "inspect": "Add Edges or calls"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "A cloud BYOC caller during a premises Edge outage:",
+          "choices": [
+            "Can still be served by the AWS media tier",
+            "Always drops",
+            "Becomes a satellite org",
+            "Loses their division"
+          ],
+          "answer": 0,
+          "why": "Different path."
+        },
+        {
+          "q": "Failover to another site fails when:",
+          "choices": [
+            "The flow is published",
+            "The queue has a description",
+            "That site does not hold the trunk, station, or agent you need",
+            "The site has a name"
+          ],
+          "answer": 2,
+          "why": "The resource has to exist there."
+        },
+        {
+          "q": "Capacity failover means:",
+          "choices": [
+            "The code is ININ-WRAP-UP-TIMEOUT",
+            "Local Edges are already full, so another site is allowed",
+            "The bill is concurrent",
+            "The bot timed out"
+          ],
+          "answer": 1,
+          "why": "It is one of the three exceptions."
+        },
+        {
+          "q": "Making overflow the normal path means:",
+          "choices": [
+            "You are running at capacity all the time",
+            "Local routing is healthy",
+            "DCVP is off",
+            "Skills are disregarded"
+          ],
+          "answer": 0,
+          "why": "The article describes capacity as an exception."
+        },
+        {
+          "q": "The three exceptions are:",
+          "choices": [
+            "UDP, TCP, and TLS only",
+            "Offline, capacity, and missing resource",
+            "Save, publish, and refresh",
+            "CX 1, CX 2, and CX 3"
+          ],
+          "answer": 1,
+          "why": "The Edge group article lists them."
+        },
+        {
+          "q": "The lab topology separates Edge failure from trunk failure so that:",
+          "choices": [
+            "You can see which path actually drops",
+            "Both always drop together",
+            "3D replaces the article",
+            "Failures are decorative"
+          ],
+          "answer": 0,
+          "why": "They are different products."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Three exceptions",
+          "back": "Offline, capacity, missing resource."
+        },
+        {
+          "front": "Cloud path",
+          "back": "Independent of the Edge."
+        },
+        {
+          "front": "Nowhere to go",
+          "back": "The other site must hold the resource."
+        },
+        {
+          "front": "Steady state",
+          "back": "Overflow should not be normal."
+        }
+      ],
+      "lab": {
+        "title": "Write the failover test",
+        "steps": [
+          "State the Edge you will stop.",
+          "State the site that should take the call.",
+          "State the cloud DID that should not care.",
+          "State what you will measure."
+        ],
+        "success": "The test has a premises case and a cloud case."
+      },
+      "fault": {
+        "title": "Empty site B",
+        "symptom": "Edge A dies and branch phones get silence.",
+        "log": "Site B Edges: online. Trunks: none. Stations: none.",
+        "cause": "There is no resource to fail over to.",
+        "fix": "Put a trunk and a usable path at B, or accept that A is a single point of failure and staff it that way."
+      }
+    },
+    {
+      "id": "e-compare",
+      "title": "Choose Cloud, Premises, or both",
+      "level": "Core",
+      "minutes": 12,
+      "summary": "Use premises when the phones and the carrier are on your network. Use cloud when they are not. Use both only where each number has an owner.",
+      "paras": [
+        "BYOC Cloud wants a public carrier and accepts internet RTP. BYOC Premises wants Edges close to phones and trunks. Genesys Cloud Voice wants neither your carrier nor your Edge for those numbers. A design that uses all three is legal and easy to mis-operate if emergency, monitoring, and the DID\u2019s route are not labeled per number.",
+        "The quick start, the Edge group article, and the Voice region article are the three pages that justify the choice. A slide that says \u201chybrid\u201d without those pages is not a design."
+      ],
+      "cites": [
+        {
+          "title": "BYOC Cloud overview",
+          "url": "https://help.genesys.cloud/articles/byoc-cloud-overview/"
+        },
+        {
+          "title": "BYOC Premises Edge groups overview",
+          "url": "https://help.genesys.cloud/articles/edge-groups-overview/"
+        },
+        {
+          "title": "AWS regions for Genesys Cloud Voice",
+          "url": "https://help.genesys.cloud/articles/aws-regions-genesys-cloud-voice/"
+        },
+        {
+          "title": "Set up emergency services with BYOC",
+          "url": "https://help.genesys.cloud/articles/set-up-emergency-services-with-byoc/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Three ways a number can enter the org.",
+        "nodes": [
+          {
+            "id": "g",
+            "label": "GCV",
+            "kind": "region",
+            "x": 16,
+            "y": 40
+          },
+          {
+            "id": "c",
+            "label": "BYOC Cloud",
+            "kind": "trunk",
+            "x": 46,
+            "y": 40
+          },
+          {
+            "id": "p",
+            "label": "Premises Edge",
+            "kind": "edge",
+            "x": 78,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "g",
+            "b": "c"
+          },
+          {
+            "a": "c",
+            "b": "p"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Label every number",
+        "steps": [
+          {
+            "from": "Number",
+            "to": "Model",
+            "title": "One owner",
+            "detail": "GCV, cloud trunk, or premises trunk.",
+            "inspect": "Not \u201chybrid\u201d as the owner"
+          },
+          {
+            "from": "Emergency",
+            "to": "Owner",
+            "title": "Named",
+            "detail": "Genesys for GCV. Carrier for BYOC.",
+            "inspect": "Written down"
+          },
+          {
+            "from": "Monitor",
+            "to": "Path",
+            "title": "Named",
+            "detail": "Cloud media page, or the Edge.",
+            "inspect": "Different consoles"
+          },
+          {
+            "from": "Site",
+            "to": "Local",
+            "title": "If premises",
+            "detail": "Same-site Edges.",
+            "inspect": "Cloud skips this"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "A number\u2019s carrier model should be:",
+          "choices": [
+            "One of GCV, BYOC Cloud, or BYOC Premises, written down",
+            "Always all three",
+            "Implied by the queue name",
+            "Chosen by bullseye"
+          ],
+          "answer": 0,
+          "why": "Hybrid is a mix of numbers, not a mix inside one number."
+        },
+        {
+          "q": "Internet RTP is a reason to hesitate about:",
+          "choices": [
+            "A local Edge on a quiet LAN",
+            "A wrap-up code",
+            "A division",
+            "BYOC Cloud"
+          ],
+          "answer": 3,
+          "why": "The cloud overview tells you to judge the internet."
+        },
+        {
+          "q": "Phones on a private LAN with a local carrier fit:",
+          "choices": [
+            "Fair use only",
+            "BYOC Premises",
+            "A satellite org",
+            "A bot flow"
+          ],
+          "answer": 1,
+          "why": "The Edge is the local hop."
+        },
+        {
+          "q": "Emergency ownership for a BYOC number is:",
+          "choices": [
+            "The WFM business unit",
+            "The OAuth client",
+            "The carrier, with Genesys\u2019 warning in view",
+            "Automatically Genesys"
+          ],
+          "answer": 2,
+          "why": "The emergency article."
+        },
+        {
+          "q": "\u201cHybrid\u201d without a per-number table is:",
+          "choices": [
+            "A published flow",
+            "Not a design yet",
+            "Required by RFC 3261",
+            "The CX 4 token"
+          ],
+          "answer": 1,
+          "why": "Label the numbers."
+        },
+        {
+          "q": "The three articles that justify the choice are:",
+          "choices": [
+            "Three quiz pages",
+            "Three RFCs only",
+            "Three certifications only",
+            "BYOC Cloud overview, Edge groups, and Genesys Cloud Voice regions"
+          ],
+          "answer": 3,
+          "why": "Read those before the slide."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Per number",
+          "back": "Name the model."
+        },
+        {
+          "front": "Cloud",
+          "back": "Public carrier, internet RTP."
+        },
+        {
+          "front": "Premises",
+          "back": "Edge, local trunks."
+        },
+        {
+          "front": "GCV",
+          "back": "Genesys is the carrier."
+        }
+      ],
+      "lab": {
+        "title": "Label five numbers",
+        "steps": [
+          "Write the model for each.",
+          "Write the emergency owner.",
+          "Write which console you would open.",
+          "Say which article you used."
+        ],
+        "success": "The table has no row labeled only \u201chybrid.\u201d"
+      },
+      "fault": {
+        "title": "Unlabeled DID",
+        "symptom": "An outage bridge cannot tell which carrier to call.",
+        "log": "DID inventory: model column empty.",
+        "cause": "The design never assigned an owner.",
+        "fix": "Fill the column from the trunk or the GCV number list before the next change window."
+      }
+    },
+    {
+      "id": "e-webrtc-net",
+      "title": "A browser phone is still a network endpoint",
+      "level": "Core",
+      "minutes": 11,
+      "summary": "WebRTC removes the desk set. It does not remove media engineering.",
+      "paras": [
+        "The Edge group article treats WebRTC as a phone trunk. The BYOC Cloud overview treats internet RTP as something you must judge. A browser at home is both: a WebRTC endpoint whose packets cross whatever network the agent is actually on. Split tunneling, a full VPN, and a hotel network are different designs.",
+        "Do not debug a home-agent audio problem by editing Architect. Confirm the phone trunk, the Edge or cloud media the phone uses, and the path from the browser. Then look at the flow."
+      ],
+      "cites": [
+        {
+          "title": "Create a BYOC Premises Edge group with a phone trunk",
+          "url": "https://help.genesys.cloud/articles/create-edge-group-phone-trunk/"
+        },
+        {
+          "title": "BYOC Cloud overview",
+          "url": "https://help.genesys.cloud/articles/byoc-cloud-overview/"
+        },
+        {
+          "title": "Monitor cloud media resources",
+          "url": "https://help.genesys.cloud/articles/monitor-cloud-media-resources/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "The browser still has a media path.",
+        "nodes": [
+          {
+            "id": "b",
+            "label": "Browser",
+            "kind": "phone",
+            "x": 16,
+            "y": 40
+          },
+          {
+            "id": "net",
+            "label": "Network",
+            "kind": "trunk",
+            "x": 46,
+            "y": 40
+          },
+          {
+            "id": "m",
+            "label": "Media",
+            "kind": "region",
+            "x": 78,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "b",
+            "b": "net"
+          },
+          {
+            "a": "net",
+            "b": "m"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Place the path before the pilot",
+        "steps": [
+          {
+            "from": "Agent",
+            "to": "Browser",
+            "title": "WebRTC",
+            "detail": "The phone trunk must exist.",
+            "inspect": "Inherit or cloud media"
+          },
+          {
+            "from": "Network",
+            "to": "Path",
+            "title": "VPN or split",
+            "detail": "Pick one on purpose.",
+            "inspect": "Hotel Wi-Fi is a test case"
+          },
+          {
+            "from": "Ops",
+            "to": "Monitor",
+            "title": "Media page or Edge",
+            "detail": "Look there first.",
+            "inspect": "Not the prompt"
+          },
+          {
+            "from": "Flow",
+            "to": "Later",
+            "title": "If signaling is fine",
+            "detail": "Then read Insights.",
+            "inspect": "Order matters"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "WebRTC is documented as:",
+          "choices": [
+            "A number-plan match type",
+            "A phone trunk",
+            "A queue evaluation method",
+            "A certification"
+          ],
+          "answer": 1,
+          "why": "The Edge group article includes it."
+        },
+        {
+          "q": "Home-agent audio is first a question about:",
+          "choices": [
+            "The bullseye delay",
+            "The quiz",
+            "The path from the browser to media",
+            "The wrap-up code text"
+          ],
+          "answer": 2,
+          "why": "Architect did not move the packets."
+        },
+        {
+          "q": "Internet quality is called out for:",
+          "choices": [
+            "Only surveys",
+            "BYOC Cloud RTP, and it applies to any media that crosses the internet",
+            "Only fax",
+            "Only SMS"
+          ],
+          "answer": 1,
+          "why": "The overview\u2019s warning is about RTP on the internet."
+        },
+        {
+          "q": "A full-tunnel VPN and split tunnel are:",
+          "choices": [
+            "Both DCVP toggles",
+            "Different paths you should choose explicitly",
+            "The same thing",
+            "Both forbidden"
+          ],
+          "answer": 1,
+          "why": "Write the choice down."
+        },
+        {
+          "q": "Monitor cloud media resources helps when:",
+          "choices": [
+            "You are editing a prompt",
+            "You are buying tokens",
+            "The phone\u2019s media is in the cloud",
+            "The agent forgot On Queue only"
+          ],
+          "answer": 2,
+          "why": "Use the console that matches the path."
+        },
+        {
+          "q": "Editing the in-queue prompt to fix one-way audio is:",
+          "choices": [
+            "Required",
+            "The DCVP migration",
+            "The 30 day rule",
+            "The wrong first move"
+          ],
+          "answer": 3,
+          "why": "Prove the media path first."
+        }
+      ],
+      "cards": [
+        {
+          "front": "WebRTC",
+          "back": "A phone trunk."
+        },
+        {
+          "front": "Path",
+          "back": "VPN, split, or local. Choose."
+        },
+        {
+          "front": "Console",
+          "back": "Edge or cloud media."
+        },
+        {
+          "front": "Flow last",
+          "back": "If signaling is already fine."
+        }
+      ],
+      "lab": {
+        "title": "Describe one home agent",
+        "steps": [
+          "Where the browser is.",
+          "Which phone trunk.",
+          "Which network path.",
+          "Which console you would open."
+        ],
+        "success": "The home agent has a path, not only a laptop."
+      },
+      "fault": {
+        "title": "VPN hairpin",
+        "symptom": "Home agents sound worse than branch agents on the same queue.",
+        "log": "Browsers: full-tunnel VPN to HQ, then back out to cloud media.",
+        "cause": "The path is twice as long as it needs to be.",
+        "fix": "Test split tunnel for media, with security\u2019s sign-off, and compare the cloud media monitor."
+      }
+    },
+    {
+      "id": "e-checklist",
+      "title": "Premises turn-up checklist",
+      "level": "Core",
+      "minutes": 12,
+      "summary": "Group, inherit, site, trunk, failover test, emergency owner.",
+      "paras": [
+        "Create the Edge group on a low-latency network. Add the phone trunk. Confirm inherit on every Edge. Put the carrier trunk where the calls are. Attach the site\u2019s location and number plans. Run one failover test and one cloud-trunk test so you know they are different. Write the emergency owner on the same page.",
+        "None of those steps is an Architect publish. You can build the flow in parallel. You cannot let the flow be the only test."
+      ],
+      "cites": [
+        {
+          "title": "BYOC Premises Edge groups overview",
+          "url": "https://help.genesys.cloud/articles/edge-groups-overview/"
+        },
+        {
+          "title": "Create a BYOC Premises Edge group with a phone trunk",
+          "url": "https://help.genesys.cloud/articles/create-edge-group-phone-trunk/"
+        },
+        {
+          "title": "Set up emergency services with BYOC",
+          "url": "https://help.genesys.cloud/articles/set-up-emergency-services-with-byoc/"
+        },
+        {
+          "title": "Number plan information",
+          "url": "https://help.genesys.cloud/articles/number-plan-information/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "The checklist ends in two test calls, not in a diagram.",
+        "nodes": [
+          {
+            "id": "g",
+            "label": "Group",
+            "kind": "edge",
+            "x": 16,
+            "y": 40
+          },
+          {
+            "id": "s",
+            "label": "Site",
+            "kind": "region",
+            "x": 40,
+            "y": 40
+          },
+          {
+            "id": "t",
+            "label": "Test",
+            "kind": "phone",
+            "x": 66,
+            "y": 40
+          },
+          {
+            "id": "e",
+            "label": "Emergency",
+            "kind": "carrier",
+            "x": 88,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "g",
+            "b": "s"
+          },
+          {
+            "a": "s",
+            "b": "t"
+          },
+          {
+            "a": "t",
+            "b": "e"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Turn up a branch",
+        "steps": [
+          {
+            "from": "Build",
+            "to": "Group",
+            "title": "Low latency",
+            "detail": "Edges that can share.",
+            "inspect": "Not across a slow WAN"
+          },
+          {
+            "from": "Build",
+            "to": "Inherit",
+            "title": "Confirmed",
+            "detail": "Every interface.",
+            "inspect": "No empty override"
+          },
+          {
+            "from": "Build",
+            "to": "Trunk and plans",
+            "title": "On the site",
+            "detail": "Local resource.",
+            "inspect": "Emergency route included"
+          },
+          {
+            "from": "Test",
+            "to": "Fail one Edge",
+            "title": "And one cloud DID",
+            "detail": "Two outcomes.",
+            "inspect": "Write them down"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "The checklist\u2019s failover test and cloud test are:",
+          "choices": [
+            "Replaced by a quiz",
+            "Both required, because they prove different paths",
+            "The same test",
+            "Optional if the flow is published"
+          ],
+          "answer": 1,
+          "why": "Edge failure and cloud trunk failure are different."
+        },
+        {
+          "q": "Inherit must be checked:",
+          "choices": [
+            "Once per org",
+            "Only in Architect",
+            "Only in WFM",
+            "On each Edge interface"
+          ],
+          "answer": 3,
+          "why": "The setting is per Edge."
+        },
+        {
+          "q": "Number plans and the location attach to:",
+          "choices": [
+            "The bot intent",
+            "The site",
+            "The OAuth client",
+            "The evaluation form"
+          ],
+          "answer": 1,
+          "why": "Telephony site objects."
+        },
+        {
+          "q": "A slow WAN between Edges in one group violates:",
+          "choices": [
+            "RFC 5737",
+            "The low-latency definition of a group",
+            "The 200 character flow name",
+            "The 80/20 predictive split"
+          ],
+          "answer": 1,
+          "why": "Keep the group local."
+        },
+        {
+          "q": "Emergency is on the checklist because:",
+          "choices": [
+            "Plans forbid 911",
+            "Queues forbid 911",
+            "BYOC trunks are not Genesys emergency service",
+            "Edges block 911"
+          ],
+          "answer": 2,
+          "why": "The warning belongs on the turn-up page."
+        },
+        {
+          "q": "Architect publish proves the Edge group?",
+          "choices": [
+            "Yes",
+            "Only for bots",
+            "Only after 30 days",
+            "No"
+          ],
+          "answer": 3,
+          "why": "Place a call."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Group",
+          "back": "Low latency."
+        },
+        {
+          "front": "Inherit",
+          "back": "Every Edge."
+        },
+        {
+          "front": "Site",
+          "back": "Trunk, plans, location."
+        },
+        {
+          "front": "Two tests",
+          "back": "Edge down, and a cloud DID."
+        }
+      ],
+      "lab": {
+        "title": "Sign the checklist",
+        "steps": [
+          "Group and site names.",
+          "Inherit confirmed.",
+          "Emergency owner.",
+          "Two test results."
+        ],
+        "success": "A second engineer could repeat the test."
+      },
+      "fault": {
+        "title": "Untested failover",
+        "symptom": "The design review passed on a diagram. The first real Edge failure dropped the branch.",
+        "log": "Test log: empty.",
+        "cause": "The exception path was never exercised.",
+        "fix": "Run the failover in a window and attach the result to the design."
+      }
+    }
+  ]
+}

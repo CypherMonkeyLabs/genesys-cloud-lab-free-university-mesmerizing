@@ -1,0 +1,1200 @@
+{
+  "id": "qm",
+  "title": "Quality and recording",
+  "kicker": "WEM",
+  "accent": 3,
+  "summary": "Evaluation forms, calibration, coaching, recording policies, and the prerequisites for AI scoring.",
+  "lessons": [
+    {
+      "id": "m-overview",
+      "title": "Quality management evaluates the conversation",
+      "level": "Core",
+      "minutes": 11,
+      "summary": "QM records and scores interactions, and it can coach. It is not the schedule.",
+      "paras": [
+        "The quality article describes evaluation forms, policies, calibration, coaching, disputes, and the ability to evaluate in-progress or recorded interactions. Speech and text analytics can cover the conversations so a form is not the only way you learn what was said. Screen recording is a separate capability for the agent\u2019s screen during ACD interactions.",
+        "The 2023 feature-matrix summary showed quality on the packages that include it, and the current overview puts that quality layer on CX 2 and above. WFM remains CX 3. Do not tell a CX 2 customer they have scheduling because they have evaluations."
+      ],
+      "cites": [
+        {
+          "title": "About quality management",
+          "url": "https://help.genesys.cloud/50540/"
+        },
+        {
+          "title": "About recording",
+          "url": "https://help.genesys.cloud/articles/about-recording/"
+        },
+        {
+          "title": "Overview of Genesys Cloud",
+          "url": "https://help.mypurecloud.com/articles/overview-of-genesys-cloud/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Evaluate the interaction. Schedule the people somewhere else.",
+        "nodes": [
+          {
+            "id": "rec",
+            "label": "Recording",
+            "kind": "wem",
+            "x": 18,
+            "y": 40
+          },
+          {
+            "id": "form",
+            "label": "Form",
+            "kind": "wem",
+            "x": 48,
+            "y": 40
+          },
+          {
+            "id": "coach",
+            "label": "Coaching",
+            "kind": "agent",
+            "x": 78,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "rec",
+            "b": "form"
+          },
+          {
+            "a": "form",
+            "b": "coach"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Open QM without opening WFM",
+        "steps": [
+          {
+            "from": "Admin",
+            "to": "Policy",
+            "title": "Which calls",
+            "detail": "Recording policy selects them.",
+            "inspect": "Not every call by accident"
+          },
+          {
+            "from": "Admin",
+            "to": "Form",
+            "title": "Questions and weights",
+            "detail": "The score is the form.",
+            "inspect": "Calibration keeps evaluators honest"
+          },
+          {
+            "from": "Sup",
+            "to": "Coach",
+            "title": "Appointment",
+            "detail": "The article includes coaching.",
+            "inspect": "A score without a conversation is a number"
+          },
+          {
+            "from": "Scope",
+            "to": "Package",
+            "title": "CX 2 for QM, CX 3 for WFM",
+            "detail": "They are not the same row.",
+            "inspect": "Read the overview"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Quality management\u2019s article includes:",
+          "choices": [
+            "Forms, policies, calibration, coaching, and disputes",
+            "SIP trunks",
+            "Edge groups",
+            "Number plans"
+          ],
+          "answer": 0,
+          "why": "Those are the QM tools."
+        },
+        {
+          "q": "Screen recording is:",
+          "choices": [
+            "The agent\u2019s screen during ACD interactions",
+            "The caller\u2019s camera by default",
+            "A trunk subtype",
+            "A token"
+          ],
+          "answer": 0,
+          "why": "About recording says so."
+        },
+        {
+          "q": "CX 2 and CX 3 differ here because:",
+          "choices": [
+            "CX 2 has no voice",
+            "CX 3 removes QM",
+            "QM is in the CX 2 story. WFM arrives at CX 3.",
+            "They are identical"
+          ],
+          "answer": 2,
+          "why": "The overview stacks them."
+        },
+        {
+          "q": "A recording policy decides:",
+          "choices": [
+            "The exam code",
+            "Which ACD calls are recorded and how long they are kept",
+            "The bullseye delay",
+            "The login host"
+          ],
+          "answer": 1,
+          "why": "About recording describes policies."
+        },
+        {
+          "q": "Evaluating an in-progress interaction is:",
+          "choices": [
+            "A premises-only feature",
+            "An RFC",
+            "Supported by the QM article",
+            "Forbidden"
+          ],
+          "answer": 2,
+          "why": "The article lists in-progress evaluation."
+        },
+        {
+          "q": "Coaching appointments are for:",
+          "choices": [
+            "Helping the agent improve after you know the gap",
+            "Buying DIDs",
+            "Migrating DCVP",
+            "Issuing OAuth secrets"
+          ],
+          "answer": 0,
+          "why": "The article includes them."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Forms",
+          "back": "The score."
+        },
+        {
+          "front": "Policy",
+          "back": "What gets recorded."
+        },
+        {
+          "front": "Coach",
+          "back": "What you do with the score."
+        },
+        {
+          "front": "Package",
+          "back": "QM from CX 2. WFM from CX 3."
+        }
+      ],
+      "lab": {
+        "title": "Name the three objects",
+        "steps": [
+          "A policy.",
+          "A form.",
+          "A coaching use.",
+          "The package for each of QM and WFM."
+        ],
+        "success": "The three objects are distinct."
+      },
+      "fault": {
+        "title": "Schedule sold as QM",
+        "symptom": "The customer bought CX 2 and expects forecasts.",
+        "log": "Overview: forecasts are WEM, CX 3.",
+        "cause": "Quality was the CX 2 addition.",
+        "fix": "Correct the order, or add the package that contains WFM."
+      }
+    },
+    {
+      "id": "m-form",
+      "title": "Forms have questions and weights",
+      "level": "Core",
+      "minutes": 11,
+      "summary": "The form is the rubric. Weights decide which questions move the score.",
+      "paras": [
+        "The QM article points at evaluation form weights and at creating forms. A form that weights greeting at 80 percent and resolution at 5 percent will congratulate short polite calls that do not solve the problem. AI scoring, later, can answer some questions only when the interaction is transcribed and you have the tokens. The rubric still has to be one a human accepts.",
+        "Calibration is how you find out that two evaluators do not mean the same thing by \u201cempathy.\u201d The article lists calibration as its own activity. Skipping it makes the leaderboard a measure of who graded, not of what happened."
+      ],
+      "cites": [
+        {
+          "title": "About quality management",
+          "url": "https://help.genesys.cloud/50540/"
+        },
+        {
+          "title": "Speech and text analytics FAQs",
+          "url": "https://help.genesys.cloud/faqs/category/speech-and-text-analytics/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Weights decide the score. Calibration decides the graders agree.",
+        "nodes": [
+          {
+            "id": "q1",
+            "label": "Question",
+            "kind": "wem",
+            "x": 20,
+            "y": 40
+          },
+          {
+            "id": "w",
+            "label": "Weight",
+            "kind": "architect",
+            "x": 48,
+            "y": 40
+          },
+          {
+            "id": "cal",
+            "label": "Calibration",
+            "kind": "agent",
+            "x": 78,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "q1",
+            "b": "w"
+          },
+          {
+            "a": "w",
+            "b": "cal"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Write a form you could defend",
+        "steps": [
+          {
+            "from": "Admin",
+            "to": "Questions",
+            "title": "Behavior you can hear",
+            "detail": "Not a vibe.",
+            "inspect": "The transcript or the recording has to show it"
+          },
+          {
+            "from": "Admin",
+            "to": "Weights",
+            "title": "Resolution heavier than greeting",
+            "detail": "Unless policy says otherwise.",
+            "inspect": "Write the reason"
+          },
+          {
+            "from": "Team",
+            "to": "Calibration",
+            "title": "Score the same call",
+            "detail": "Compare.",
+            "inspect": "The article expects this"
+          },
+          {
+            "from": "AI",
+            "to": "Later",
+            "title": "Only some questions",
+            "detail": "Tokens, STA, and QM are all required.",
+            "inspect": "The FAQ says so"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Form weights matter because:",
+          "choices": [
+            "They set ring count",
+            "They buy numbers",
+            "They decide which questions move the score",
+            "They set the SIP codec"
+          ],
+          "answer": 2,
+          "why": "A heavy greeting weight hides a missed resolution."
+        },
+        {
+          "q": "Calibration exists to:",
+          "choices": [
+            "Move the AWS region",
+            "Publish a flow",
+            "Reset utilization",
+            "See whether evaluators score the same call the same way"
+          ],
+          "answer": 3,
+          "why": "The QM article lists it."
+        },
+        {
+          "q": "AI scoring still needs a form a human accepts because:",
+          "choices": [
+            "AI ignores forms",
+            "Tokens replace questions",
+            "STA deletes weights",
+            "The rubric is the definition of quality"
+          ],
+          "answer": 3,
+          "why": "The FAQ ties AI scoring to evaluation questions."
+        },
+        {
+          "q": "A question the recording cannot show is:",
+          "choices": [
+            "The best question",
+            "Required",
+            "A trunk setting",
+            "A bad question"
+          ],
+          "answer": 3,
+          "why": "Score what the interaction contains."
+        },
+        {
+          "q": "Screen recording helps a form when:",
+          "choices": [
+            "You need RTP",
+            "You need a PSAP",
+            "You need a token only",
+            "The behavior is on the screen, not in the audio"
+          ],
+          "answer": 3,
+          "why": "About recording separates screen and call recording."
+        },
+        {
+          "q": "Two evaluators ten points apart on empathy means:",
+          "choices": [
+            "Disable recording",
+            "Change regions",
+            "Calibrate before you rank agents",
+            "Delete the form"
+          ],
+          "answer": 2,
+          "why": "The gap may be the graders."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Weight",
+          "back": "What moves the score."
+        },
+        {
+          "front": "Calibrate",
+          "back": "Graders must agree."
+        },
+        {
+          "front": "Observable",
+          "back": "If it is not in the interaction, do not score it."
+        },
+        {
+          "front": "AI",
+          "back": "Does not replace the rubric."
+        }
+      ],
+      "lab": {
+        "title": "Draft four questions",
+        "steps": [
+          "Two weighted behaviors.",
+          "The heavier one.",
+          "How you would calibrate.",
+          "Which question could not be heard on audio alone."
+        ],
+        "success": "The heavier question is the one leadership claims to care about."
+      },
+      "fault": {
+        "title": "Greeting theater",
+        "symptom": "Top agents have short calls and perfect scores. Customers call back.",
+        "log": "Greeting weight: 70. Resolution weight: 5.",
+        "cause": "The form rewards the wrong behavior.",
+        "fix": "Reweight and recalibrate."
+      }
+    },
+    {
+      "id": "m-policy",
+      "title": "Recording policies choose calls and retention",
+      "level": "Core",
+      "minutes": 11,
+      "summary": "A policy decides which ACD calls are recorded and how long they are kept. A secure flow is a hole in a segment, not a substitute for the policy.",
+      "paras": [
+        "About recording says you use policies to choose ACD calls and retention, and that a user can also record their own calls. Screen recording is specifically the agent\u2019s screen during ACD interactions. Retention is a legal and a storage question. Storage is also a fair-use meter. Keep the policy\u2019s duration and the fair-use page in the same review.",
+        "A secure payment flow stops recording for that entry. It does not set retention for the rest of the call. QM cannot evaluate audio you never recorded. If the policy records nothing, the form has nothing to play."
+      ],
+      "cites": [
+        {
+          "title": "About recording",
+          "url": "https://help.genesys.cloud/articles/about-recording/"
+        },
+        {
+          "title": "Create a flow",
+          "url": "https://help.genesys.cloud/articles/create-a-flow/"
+        },
+        {
+          "title": "Genesys Cloud fair use policy",
+          "url": "https://help.genesys.cloud/articles/genesys-cloud-fair-use-policy/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Policy selects the call. Retention decides how long it lives.",
+        "nodes": [
+          {
+            "id": "call",
+            "label": "Call",
+            "kind": "phone",
+            "x": 16,
+            "y": 40
+          },
+          {
+            "id": "pol",
+            "label": "Policy",
+            "kind": "wem",
+            "x": 46,
+            "y": 40
+          },
+          {
+            "id": "keep",
+            "label": "Retention",
+            "kind": "region",
+            "x": 78,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "call",
+            "b": "pol"
+          },
+          {
+            "a": "pol",
+            "b": "keep"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Write the policy in one paragraph",
+        "steps": [
+          {
+            "from": "Admin",
+            "to": "Who",
+            "title": "Which queues",
+            "detail": "Not the whole org by default unless you mean it.",
+            "inspect": "Queues are the usual scope"
+          },
+          {
+            "from": "Admin",
+            "to": "How long",
+            "title": "Retention",
+            "detail": "Match the legal hold.",
+            "inspect": "Storage is metered"
+          },
+          {
+            "from": "Admin",
+            "to": "Screen",
+            "title": "On or off",
+            "detail": "Separate from the audio policy.",
+            "inspect": "ACD screen time"
+          },
+          {
+            "from": "Secure",
+            "to": "Segment",
+            "title": "Still a hole",
+            "detail": "Payment digits stay out.",
+            "inspect": "The rest follows the policy"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Call recording policies control:",
+          "choices": [
+            "Login hosts",
+            "Exam vouchers",
+            "Which ACD calls are recorded and retention",
+            "Bullseye rings"
+          ],
+          "answer": 2,
+          "why": "About recording says so."
+        },
+        {
+          "q": "Screen recording records:",
+          "choices": [
+            "The PSAP",
+            "The agent\u2019s screen during ACD interactions",
+            "The caller\u2019s desktop by default",
+            "The carrier\u2019s SBC"
+          ],
+          "answer": 1,
+          "why": "That is the article\u2019s scope."
+        },
+        {
+          "q": "A secure flow and a recording policy:",
+          "choices": [
+            "The policy collects card numbers",
+            "The flow can suppress a segment. The policy still governs the call.",
+            "They are the same switch",
+            "The flow sets retention"
+          ],
+          "answer": 1,
+          "why": "Do not collapse them."
+        },
+        {
+          "q": "Retention that ignores fair use can:",
+          "choices": [
+            "Delete the region",
+            "Disable SIP",
+            "Publish flows",
+            "Become a storage overage"
+          ],
+          "answer": 3,
+          "why": "Storage is a metered family on the policy page."
+        },
+        {
+          "q": "QM with a policy that records nothing:",
+          "choices": [
+            "Uses bullseye",
+            "Uses 988",
+            "Has no audio to evaluate",
+            "Scores from the trunk name"
+          ],
+          "answer": 2,
+          "why": "The form needs the interaction."
+        },
+        {
+          "q": "Users recording their own calls is:",
+          "choices": [
+            "A bot feature",
+            "Also described on the recording article",
+            "Forbidden",
+            "CX 4 only"
+          ],
+          "answer": 1,
+          "why": "The article mentions user recording separately from ACD policy."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Policy",
+          "back": "Which calls, how long."
+        },
+        {
+          "front": "Screen",
+          "back": "Agent screen, ACD."
+        },
+        {
+          "front": "Secure",
+          "back": "A segment, not the policy."
+        },
+        {
+          "front": "Storage",
+          "back": "A fair-use meter."
+        }
+      ],
+      "lab": {
+        "title": "Draft the policy",
+        "steps": [
+          "Queues in scope.",
+          "Retention.",
+          "Whether screens are included.",
+          "What the secure flow still hides."
+        ],
+        "success": "Legal and storage owners could both sign it."
+      },
+      "fault": {
+        "title": "Record everything forever",
+        "symptom": "Storage overage arrives, and a customer asks for a deletion you cannot map.",
+        "log": "Policy: all calls, no end date.",
+        "cause": "Retention was not a decision.",
+        "fix": "Set a duration with legal, then re-read the fair-use storage row."
+      }
+    },
+    {
+      "id": "m-coach",
+      "title": "Coaching and disputes close the loop",
+      "level": "Core",
+      "minutes": 11,
+      "summary": "A score that the agent cannot see and cannot dispute is not a quality program.",
+      "paras": [
+        "The QM article lists coaching appointments, evaluation disputes, and managing those disputes. It also lists monitoring and coaching in-progress interactions. The point of the form is a conversation with the agent. A hidden score changes nothing on the next call.",
+        "Disputes are not a failure of the form. They are how you find a bad question or a bad grade. Calibration feeds the same loop. If every dispute is denied in a minute, agents will stop reading the form."
+      ],
+      "cites": [
+        {
+          "title": "About quality management",
+          "url": "https://help.genesys.cloud/50540/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Score, show, coach, and allow a dispute.",
+        "nodes": [
+          {
+            "id": "s",
+            "label": "Score",
+            "kind": "wem",
+            "x": 16,
+            "y": 40
+          },
+          {
+            "id": "a",
+            "label": "Agent",
+            "kind": "agent",
+            "x": 42,
+            "y": 40
+          },
+          {
+            "id": "c",
+            "label": "Coach",
+            "kind": "wem",
+            "x": 68,
+            "y": 22
+          },
+          {
+            "id": "d",
+            "label": "Dispute",
+            "kind": "architect",
+            "x": 68,
+            "y": 70
+          }
+        ],
+        "edges": [
+          {
+            "a": "s",
+            "b": "a"
+          },
+          {
+            "a": "a",
+            "b": "c"
+          },
+          {
+            "a": "a",
+            "b": "d"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Run one coaching week",
+        "steps": [
+          {
+            "from": "Eval",
+            "to": "Form",
+            "title": "Complete it",
+            "detail": "On a recorded or in-progress interaction.",
+            "inspect": "The article allows both"
+          },
+          {
+            "from": "Agent",
+            "to": "Read",
+            "title": "They can see it",
+            "detail": "Otherwise there is no program.",
+            "inspect": "Hidden scores do not coach"
+          },
+          {
+            "from": "Sup",
+            "to": "Appointment",
+            "title": "A real meeting",
+            "detail": "The article\u2019s coaching object.",
+            "inspect": "Not a drive-by"
+          },
+          {
+            "from": "Agent",
+            "to": "Dispute",
+            "title": "A path exists",
+            "detail": "Manage it.",
+            "inspect": "Use it to fix the form"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Coaching appointments are:",
+          "choices": [
+            "A documented QM feature",
+            "A WFM activity only",
+            "A trunk setting",
+            "An RFC"
+          ],
+          "answer": 0,
+          "why": "The QM article lists them."
+        },
+        {
+          "q": "Disputes exist so that:",
+          "choices": [
+            "Agents can challenge a grade, and you can find a bad rubric",
+            "Agents can delete recordings",
+            "Agents can change regions",
+            "Agents can skip On Queue"
+          ],
+          "answer": 0,
+          "why": "The article includes dispute management."
+        },
+        {
+          "q": "In-progress evaluation means:",
+          "choices": [
+            "You can score while the interaction is still live",
+            "You must wait 30 days",
+            "You must use a bot",
+            "You must use BYOC"
+          ],
+          "answer": 0,
+          "why": "The article lists it."
+        },
+        {
+          "q": "A score the agent never sees:",
+          "choices": [
+            "Is the recommended design",
+            "Is required for AI",
+            "Publishes the flow",
+            "Does not change the next call"
+          ],
+          "answer": 3,
+          "why": "Coaching needs a recipient."
+        },
+        {
+          "q": "Denying every dispute instantly will:",
+          "choices": [
+            "Teach agents the form is not real",
+            "Improve calibration",
+            "Fix weights",
+            "Lower storage"
+          ],
+          "answer": 0,
+          "why": "Disputes are a feedback path."
+        },
+        {
+          "q": "Monitoring in-progress interactions is:",
+          "choices": [
+            "Premises only",
+            "A number plan",
+            "Also on the QM article, beside coaching",
+            "Removed"
+          ],
+          "answer": 2,
+          "why": "The article lists monitor and coach."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Show the score",
+          "back": "Or it does not coach."
+        },
+        {
+          "front": "Appointment",
+          "back": "A real meeting."
+        },
+        {
+          "front": "Dispute",
+          "back": "A path, not a threat."
+        },
+        {
+          "front": "In progress",
+          "back": "Allowed."
+        }
+      ],
+      "lab": {
+        "title": "Script one coaching session",
+        "steps": [
+          "The behavior.",
+          "The evidence in the recording.",
+          "The next-call change.",
+          "How a dispute would be handled."
+        ],
+        "success": "The session cites a moment in the interaction, not a personality."
+      },
+      "fault": {
+        "title": "Score with no tape",
+        "symptom": "The agent disputes a failing grade and there is no recording.",
+        "log": "Policy recorded nothing. Form was filled from memory.",
+        "cause": "There is no evidence.",
+        "fix": "Turn on a policy for that queue before you score it."
+      }
+    },
+    {
+      "id": "m-ai",
+      "title": "AI scoring needs STA, QM, and tokens",
+      "level": "Advanced",
+      "minutes": 12,
+      "summary": "The FAQ is blunt: AI scoring requires Speech and Text Analytics, Quality Management, and AI Experience Tokens.",
+      "paras": [
+        "The STA FAQ says AI scoring needs the interaction transcribed, and that Virtual Supervisor AI scoring needs STA, QM, and AI Experience Tokens. It also says one token covers 20 evaluations analyzed with AI scoring. Agent Copilot summaries are not billed a second time when Virtual Supervisor shows the same summary. Those are billing rules, and the FAQ is the source. Re-read the token ratio before you model a budget. This sentence is a pointer, not a quote you should freeze if the FAQ changes.",
+        "AI scoring answers form questions. It does not replace calibration. A model that grades a question your form defines badly will do it consistently and wrongly. Fix the question."
+      ],
+      "cites": [
+        {
+          "title": "Speech and text analytics FAQs",
+          "url": "https://help.genesys.cloud/faqs/category/speech-and-text-analytics/"
+        },
+        {
+          "title": "About quality management",
+          "url": "https://help.genesys.cloud/50540/"
+        },
+        {
+          "title": "Genesys Agent Copilot overview",
+          "url": "https://help.genesys.cloud/articles/agent-copilot-overview/"
+        },
+        {
+          "title": "Overview of Genesys Cloud",
+          "url": "https://help.mypurecloud.com/articles/overview-of-genesys-cloud/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Transcript plus form plus tokens, then a score.",
+        "nodes": [
+          {
+            "id": "t",
+            "label": "Transcript",
+            "kind": "bot",
+            "x": 16,
+            "y": 40
+          },
+          {
+            "id": "f",
+            "label": "Form",
+            "kind": "wem",
+            "x": 46,
+            "y": 40
+          },
+          {
+            "id": "k",
+            "label": "Tokens",
+            "kind": "region",
+            "x": 74,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "t",
+            "b": "f"
+          },
+          {
+            "a": "f",
+            "b": "k"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Turn on AI scoring without a surprise bill",
+        "steps": [
+          {
+            "from": "Admin",
+            "to": "STA",
+            "title": "Transcription on",
+            "detail": "No transcript, no score.",
+            "inspect": "The FAQ requires it"
+          },
+          {
+            "from": "Admin",
+            "to": "QM",
+            "title": "A form",
+            "detail": "Questions the model can answer.",
+            "inspect": "Weights still matter"
+          },
+          {
+            "from": "Admin",
+            "to": "Tokens",
+            "title": "AI Experience Tokens",
+            "detail": "The third prerequisite.",
+            "inspect": "CX 4\u2019s token story is on the overview"
+          },
+          {
+            "from": "Finance",
+            "to": "Ratio",
+            "title": "Re-read the FAQ",
+            "detail": "The 20-evaluations note lives there.",
+            "inspect": "Copilot summaries are not double-billed"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "AI scoring requires:",
+          "choices": [
+            "Only a queue",
+            "Only an Edge",
+            "Only GC-GCP",
+            "STA, QM, and AI Experience Tokens"
+          ],
+          "answer": 3,
+          "why": "The FAQ lists all three."
+        },
+        {
+          "q": "Without transcription:",
+          "choices": [
+            "It uses the trunk name",
+            "It uses bullseye",
+            "It uses the division",
+            "AI scoring cannot evaluate the call"
+          ],
+          "answer": 3,
+          "why": "The FAQ says transcription is required."
+        },
+        {
+          "q": "The FAQ\u2019s token note for AI scoring is:",
+          "choices": [
+            "1 token covers 1 year",
+            "Tokens are free",
+            "Tokens replace QM",
+            "1 token covers 20 evaluations. Re-read before you budget."
+          ],
+          "answer": 3,
+          "why": "Treat the number as page content that can change."
+        },
+        {
+          "q": "Agent Copilot already summarized the interaction. Virtual Supervisor showing it:",
+          "choices": [
+            "Does not bill a second summary, per the FAQ",
+            "Always bills double",
+            "Deletes the recording",
+            "Disables STA"
+          ],
+          "answer": 0,
+          "why": "The FAQ says you are not billed twice."
+        },
+        {
+          "q": "A badly written form question scored by AI:",
+          "choices": [
+            "Will be consistently wrong",
+            "Will fix itself",
+            "Will delete the question",
+            "Will change the region"
+          ],
+          "answer": 0,
+          "why": "Calibrate the rubric."
+        },
+        {
+          "q": "CX 4\u2019s published tokens relate to this how?",
+          "choices": [
+            "Tokens are activity codes",
+            "The overview includes tokens on CX 4. The FAQ says scoring consumes them.",
+            "Tokens are only for SIP",
+            "CX 1 includes unlimited scoring"
+          ],
+          "answer": 1,
+          "why": "Read both pages."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Three gates",
+          "back": "STA, QM, tokens."
+        },
+        {
+          "front": "Ratio",
+          "back": "See the FAQ. Do not freeze it blindly."
+        },
+        {
+          "front": "No double bill",
+          "back": "Copilot summary reused by Virtual Supervisor."
+        },
+        {
+          "front": "Rubric",
+          "back": "Still yours."
+        }
+      ],
+      "lab": {
+        "title": "Check the three gates",
+        "steps": [
+          "Is transcription on for the queue?",
+          "Does a form exist?",
+          "Do you have tokens?",
+          "Did you re-read the FAQ\u2019s ratio?"
+        ],
+        "success": "All three gates are yes, or you are not turning it on."
+      },
+      "fault": {
+        "title": "Score with no transcript",
+        "symptom": "AI scoring returns nothing useful.",
+        "log": "Voice transcription: off. Tokens: purchased.",
+        "cause": "The FAQ requires the transcript.",
+        "fix": "Enable transcription, then score."
+      }
+    },
+    {
+      "id": "m-export",
+      "title": "Retention, export, and the reason you recorded",
+      "level": "Advanced",
+      "minutes": 11,
+      "summary": "Export and AWS recording paths exist so a recording can leave the platform under a policy, not as a side copy.",
+      "paras": [
+        "The QM article mentions AWS recording export among the tools around evaluations. About recording points at related articles for listening and for S3-style recording paths. Any export is still personal data. The fair-use storage meter and your retention policy decide how long the original lives. An export bucket you never expire is a second retention policy you forgot to write.",
+        "Do not export \u201cfor a demo\u201d from a production queue. Use a lab queue and a lab policy. The recordings in this lab\u2019s incidents are synthetic text, not audio from a person."
+      ],
+      "cites": [
+        {
+          "title": "About quality management",
+          "url": "https://help.genesys.cloud/50540/"
+        },
+        {
+          "title": "About recording",
+          "url": "https://help.genesys.cloud/articles/about-recording/"
+        },
+        {
+          "title": "Genesys Cloud fair use policy",
+          "url": "https://help.genesys.cloud/articles/genesys-cloud-fair-use-policy/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Export is a second copy. It needs its own retention.",
+        "nodes": [
+          {
+            "id": "g",
+            "label": "Genesys",
+            "kind": "wem",
+            "x": 22,
+            "y": 40
+          },
+          {
+            "id": "x",
+            "label": "Export",
+            "kind": "region",
+            "x": 55,
+            "y": 40
+          },
+          {
+            "id": "b",
+            "label": "Bucket",
+            "kind": "crm",
+            "x": 84,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "g",
+            "b": "x"
+          },
+          {
+            "a": "x",
+            "b": "b"
+          }
+        ]
+      },
+      "flow": {
+        "title": "If you export, write the rule",
+        "steps": [
+          {
+            "from": "Legal",
+            "to": "Why",
+            "title": "A reason",
+            "detail": "QA, dispute, or a legal hold.",
+            "inspect": "Not curiosity"
+          },
+          {
+            "from": "Admin",
+            "to": "Where",
+            "title": "The documented export path",
+            "detail": "The QM article points at AWS export.",
+            "inspect": "Follow the current article"
+          },
+          {
+            "from": "Admin",
+            "to": "How long",
+            "title": "Bucket lifecycle",
+            "detail": "Match or shorten the Genesys retention.",
+            "inspect": "Do not keep forever by default"
+          },
+          {
+            "from": "Lab",
+            "to": "Never",
+            "title": "Production audio in a demo",
+            "detail": "Synthetic logs only in this lab.",
+            "inspect": "Real audio stays in the org"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "An export bucket without a lifecycle is:",
+          "choices": [
+            "A bullseye ring",
+            "A second retention policy you did not mean to write",
+            "Free",
+            "Required by RFC 3550"
+          ],
+          "answer": 1,
+          "why": "Copies need an end date."
+        },
+        {
+          "q": "The QM article\u2019s export mention is:",
+          "choices": [
+            "A SIP REFER",
+            "A quiz",
+            "AWS recording export, as a documented path",
+            "Email to a personal inbox"
+          ],
+          "answer": 2,
+          "why": "Use the product path."
+        },
+        {
+          "q": "Fair use relates because:",
+          "choices": [
+            "Storage is metered, and a copy does not make the original free",
+            "Exports are unlimited",
+            "Exports delete tokens",
+            "Exports are queues"
+          ],
+          "answer": 0,
+          "why": "Read the storage row."
+        },
+        {
+          "q": "This lab\u2019s incident logs are:",
+          "choices": [
+            "PSAP audio",
+            "Synthetic text, not customer audio",
+            "Production recordings",
+            "Carrier captures"
+          ],
+          "answer": 1,
+          "why": "Do not confuse them."
+        },
+        {
+          "q": "A secure-flow segment should be:",
+          "choices": [
+            "Stored in participant data",
+            "Sent to the agent",
+            "Absent from the export as well, if it was never recorded",
+            "Added back from memory"
+          ],
+          "answer": 2,
+          "why": "You cannot export what the secure flow kept out."
+        },
+        {
+          "q": "The right queue for a vendor demo is:",
+          "choices": [
+            "A lab queue with a lab policy",
+            "The production billing queue",
+            "The emergency route",
+            "The Home division\u2019s only queue"
+          ],
+          "answer": 0,
+          "why": "Do not demo on real customers."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Reason",
+          "back": "Why the copy exists."
+        },
+        {
+          "front": "Lifecycle",
+          "back": "When the copy dies."
+        },
+        {
+          "front": "Meter",
+          "back": "Storage still counts."
+        },
+        {
+          "front": "Lab",
+          "back": "Synthetic here. Real audio stays in the org."
+        }
+      ],
+      "lab": {
+        "title": "Write an export rule",
+        "steps": [
+          "The reason.",
+          "The bucket lifecycle.",
+          "Who can read it.",
+          "A sentence that production audio is out of scope for demos."
+        ],
+        "success": "The rule has an end date."
+      },
+      "fault": {
+        "title": "Inbox forward",
+        "symptom": "Recordings arrive in a personal mailbox.",
+        "log": "No policy. An agent forwards the player link.",
+        "cause": "That is not the export path, and it has no retention.",
+        "fix": "Stop the forward. Use the documented export if a copy is justified, with a lifecycle."
+      }
+    }
+  ]
+}

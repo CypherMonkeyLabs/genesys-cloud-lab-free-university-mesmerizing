@@ -1,0 +1,1173 @@
+{
+  "id": "emergency",
+  "title": "Numbers and emergency calling",
+  "kicker": "Safety",
+  "accent": 1,
+  "summary": "E.164, emergency classifications, BYOC warnings, and Genesys Cloud Voice coverage.",
+  "lessons": [
+    {
+      "id": "n-owner",
+      "title": "Name the emergency owner before the DID",
+      "level": "Core",
+      "minutes": 12,
+      "summary": "Genesys is not responsible for emergency calls that ride a BYOC trunk. That sentence belongs in the design, not in the postmortem.",
+      "paras": [
+        "The BYOC emergency article covers BYOC Cloud and BYOC Premises. You can dial the local emergency number, such as 911 in the United States, only after the carrier and the Genesys number plan and outbound route are both configured. If you also have Genesys Cloud Voice, its emergency information is not sent to the BYOC carrier. You tell the carrier the physical location yourself.",
+        "Under BYOC Cloud and some premises configurations the emergency path is on the internet. A power cut or a broadband cut can take it away. The article says that plainly. A design that assumes the Edge or the laptop will always reach a PSAP is not the article."
+      ],
+      "cites": [
+        {
+          "title": "Set up emergency services with BYOC",
+          "url": "https://help.genesys.cloud/articles/set-up-emergency-services-with-byoc/"
+        },
+        {
+          "title": "AWS regions for Genesys Cloud Voice",
+          "url": "https://help.genesys.cloud/articles/aws-regions-genesys-cloud-voice/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Two products, two emergency owners.",
+        "nodes": [
+          {
+            "id": "g",
+            "label": "GCV",
+            "kind": "region",
+            "x": 22,
+            "y": 40
+          },
+          {
+            "id": "b",
+            "label": "BYOC",
+            "kind": "trunk",
+            "x": 55,
+            "y": 40
+          },
+          {
+            "id": "p",
+            "label": "PSAP",
+            "kind": "carrier",
+            "x": 84,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "g",
+            "b": "p"
+          },
+          {
+            "a": "b",
+            "b": "p"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Write the owner on the number",
+        "steps": [
+          {
+            "from": "Number",
+            "to": "Model",
+            "title": "GCV or BYOC",
+            "detail": "The owner follows the model.",
+            "inspect": "Do not guess"
+          },
+          {
+            "from": "BYOC",
+            "to": "Carrier",
+            "title": "Send the address",
+            "detail": "Genesys will not forward the GCV record.",
+            "inspect": "Physical location"
+          },
+          {
+            "from": "Site",
+            "to": "Plan",
+            "title": "Emergency class",
+            "detail": "911, 933, or the local number.",
+            "inspect": "Plus an emergency route"
+          },
+          {
+            "from": "Risk",
+            "to": "Internet",
+            "title": "Document the outage case",
+            "detail": "Broadband down means this path may be down.",
+            "inspect": "Say so in the runbook"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Genesys\u2019 warning on BYOC emergency calls is:",
+          "choices": [
+            "Genesys is the PSAP",
+            "Emergency is unsupported on GCV",
+            "911 is a wrap-up code",
+            "Genesys is not responsible when emergency calls use BYOC trunks"
+          ],
+          "answer": 3,
+          "why": "The article states the warning."
+        },
+        {
+          "q": "GCV emergency data follows a BYOC number automatically?",
+          "choices": [
+            "No",
+            "Yes",
+            "Only for 933",
+            "Only in satellite regions"
+          ],
+          "answer": 0,
+          "why": "You inform the BYOC carrier yourself."
+        },
+        {
+          "q": "BYOC Cloud emergency service can fail when:",
+          "choices": [
+            "A bot is published",
+            "Power or broadband is down, because the path is on the internet",
+            "The queue name has a space",
+            "Bullseye has two rings"
+          ],
+          "answer": 1,
+          "why": "The article names those outages."
+        },
+        {
+          "q": "The Genesys-side configuration lives in:",
+          "choices": [
+            "The evaluation form",
+            "The fair use table",
+            "The site number plan and the emergency outbound route",
+            "The OAuth client"
+          ],
+          "answer": 2,
+          "why": "The article points at those sections."
+        },
+        {
+          "q": "911 in the United States is used in the article as:",
+          "choices": [
+            "A skill",
+            "A region",
+            "An example of a regular emergency dialing number",
+            "A queue"
+          ],
+          "answer": 2,
+          "why": "Other countries use their own numbers. 142 is the Swiss example on the number-plan page."
+        },
+        {
+          "q": "A runbook that omits the carrier address for a BYOC number is:",
+          "choices": [
+            "A CX 1 feature",
+            "Incomplete",
+            "Fine if the flow is published",
+            "Required by RFC 3550"
+          ],
+          "answer": 1,
+          "why": "The carrier needs the physical location."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Warning",
+          "back": "BYOC emergency is not Genesys\u2019 service."
+        },
+        {
+          "front": "No copy",
+          "back": "GCV records do not move to the BYOC carrier."
+        },
+        {
+          "front": "Internet",
+          "back": "Power and broadband can remove the path."
+        },
+        {
+          "front": "Configure",
+          "back": "Number plan and emergency route."
+        }
+      ],
+      "lab": {
+        "title": "Label one DID",
+        "steps": [
+          "Model.",
+          "Emergency owner.",
+          "Location you will send the carrier, if BYOC.",
+          "The outage case you will write down."
+        ],
+        "success": "The label has an owner and an outage case."
+      },
+      "fault": {
+        "title": "Assumed PSAP",
+        "symptom": "A BYOC pilot dials 911 and the carrier has no location.",
+        "log": "Number plan: 911 present. Carrier paperwork: empty.",
+        "cause": "The plan without the carrier record is half the article.",
+        "fix": "Stop the pilot until the carrier confirms the address and a test process the carrier accepts."
+      }
+    },
+    {
+      "id": "n-plan",
+      "title": "Emergency is a classification and a route",
+      "level": "Core",
+      "minutes": 12,
+      "summary": "The default Emergency plan matches 911 and 933 in the US and Canada, and 142 in Switzerland. It still needs a route.",
+      "paras": [
+        "The number-plan article lists those defaults and the Suicide Prevention classification for 988 to +18002738255. Matching is not routing. The outbound route for the Emergency classification has to point at a trunk that can actually complete the call. An empty route is a matched number that goes nowhere.",
+        "933 is included alongside 911 in that default. Treat 933 as part of the documented US and Canada emergency classification, and re-read the page before you tell a tester which number to dial. Custom plans can shadow these defaults if you put a broader regex in front of them."
+      ],
+      "cites": [
+        {
+          "title": "Number plan information",
+          "url": "https://help.genesys.cloud/articles/number-plan-information/"
+        },
+        {
+          "title": "Set up emergency services with BYOC",
+          "url": "https://help.genesys.cloud/articles/set-up-emergency-services-with-byoc/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Match, then route. A match alone does not leave the building.",
+        "nodes": [
+          {
+            "id": "d",
+            "label": "911",
+            "kind": "phone",
+            "x": 16,
+            "y": 40
+          },
+          {
+            "id": "c",
+            "label": "Emergency class",
+            "kind": "architect",
+            "x": 48,
+            "y": 40
+          },
+          {
+            "id": "r",
+            "label": "Route",
+            "kind": "trunk",
+            "x": 80,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "d",
+            "b": "c"
+          },
+          {
+            "a": "c",
+            "b": "r"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Prove the route, not only the match",
+        "steps": [
+          {
+            "from": "Admin",
+            "to": "Plan",
+            "title": "See Emergency",
+            "detail": "911 and 933 for US and Canada.",
+            "inspect": "142 for Switzerland"
+          },
+          {
+            "from": "Admin",
+            "to": "Route",
+            "title": "Assign a trunk",
+            "detail": "The classification needs an outbound route.",
+            "inspect": "Empty is a dead end"
+          },
+          {
+            "from": "Admin",
+            "to": "988",
+            "title": "Leave the default",
+            "detail": "Unless you have a reviewed reason.",
+            "inspect": "Custom regex can shadow it"
+          },
+          {
+            "from": "Test",
+            "to": "Simulator",
+            "title": "Then a controlled test",
+            "detail": "The product has a call simulator.",
+            "inspect": "Live tests follow the carrier\u2019s rules"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "US and Canada emergency defaults named on the number-plan page include:",
+          "choices": [
+            "Only 112",
+            "Only 000",
+            "Only extension 4",
+            "911 and 933"
+          ],
+          "answer": 3,
+          "why": "933 is in that default."
+        },
+        {
+          "q": "142 is documented as:",
+          "choices": [
+            "A token",
+            "The Swiss emergency example",
+            "A US state code",
+            "A bullseye ring"
+          ],
+          "answer": 1,
+          "why": "The number-plan article says so."
+        },
+        {
+          "q": "A matched emergency number with no route:",
+          "choices": [
+            "Becomes a callback",
+            "Publishes a flow",
+            "Does not complete",
+            "Completes on any trunk"
+          ],
+          "answer": 2,
+          "why": "Classification and route are both required."
+        },
+        {
+          "q": "988\u2019s documented default destination is:",
+          "choices": [
+            "The Edge",
+            "+18002738255",
+            "The first queue",
+            "911"
+          ],
+          "answer": 1,
+          "why": "Confirm on the page before you depend on it."
+        },
+        {
+          "q": "A custom regex ahead of the emergency plan can:",
+          "choices": [
+            "Shadow the default",
+            "Increase the member cap",
+            "Change the AWS region",
+            "Disable ACW"
+          ],
+          "answer": 0,
+          "why": "Order matters."
+        },
+        {
+          "q": "The in-product tool the number-plan article mentions for testing destinations is:",
+          "choices": [
+            "The concurrent bill",
+            "The quiz",
+            "The call simulator",
+            "Flow Insights"
+          ],
+          "answer": 2,
+          "why": "Use it."
+        }
+      ],
+      "cards": [
+        {
+          "front": "911 and 933",
+          "back": "US and Canada defaults."
+        },
+        {
+          "front": "142",
+          "back": "Swiss example."
+        },
+        {
+          "front": "Route",
+          "back": "Still required."
+        },
+        {
+          "front": "988",
+          "back": "Default destination is documented. Re-read it."
+        }
+      ],
+      "lab": {
+        "title": "Check the emergency route",
+        "steps": [
+          "Name the classification.",
+          "Name the trunk on the route.",
+          "Say what a shadowing regex would do.",
+          "Say which test tool you would use first."
+        ],
+        "success": "Match and route are both filled in."
+      },
+      "fault": {
+        "title": "Shadowed 911",
+        "symptom": "A lab regex ^9 sends 911 to a test queue.",
+        "log": "Custom plan ordered before Emergency.",
+        "cause": "The default never sees the digits.",
+        "fix": "Delete the lab plan and retest 911 in the call simulator."
+      }
+    },
+    {
+      "id": "n-location",
+      "title": "The location is a physical place",
+      "level": "Core",
+      "minutes": 11,
+      "summary": "The quick start adds a location because services, including emergency, need a real site.",
+      "paras": [
+        "A location is not a division and not a site\u2019s nickname. The BYOC quick start says you specify a physical location for the site, and the emergency article says the carrier needs the exact place the numbers are used. A downtown billing address for a warehouse an hour away is the kind of mistake that sends responders to the wrong door.",
+        "Global Media Fabric and the site\u2019s Edges should agree with that same geography. A location in one city and a media path pinned across an ocean is a latency choice you should make on purpose, not by default."
+      ],
+      "cites": [
+        {
+          "title": "BYOC Cloud quick start guide",
+          "url": "https://help.genesys.cloud/articles/byoc-cloud-configuration-overview/"
+        },
+        {
+          "title": "Set up emergency services with BYOC",
+          "url": "https://help.genesys.cloud/articles/set-up-emergency-services-with-byoc/"
+        },
+        {
+          "title": "AWS regions for Genesys Cloud",
+          "url": "https://help.genesys.cloud/articles/aws-regions-for-genesys-cloud-deployment/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "The address responders would use is the location you send.",
+        "nodes": [
+          {
+            "id": "loc",
+            "label": "Location",
+            "kind": "phone",
+            "x": 22,
+            "y": 40
+          },
+          {
+            "id": "site",
+            "label": "Site",
+            "kind": "edge",
+            "x": 52,
+            "y": 40
+          },
+          {
+            "id": "car",
+            "label": "Carrier",
+            "kind": "carrier",
+            "x": 82,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "loc",
+            "b": "site"
+          },
+          {
+            "a": "site",
+            "b": "car"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Send the address you mean",
+        "steps": [
+          {
+            "from": "Admin",
+            "to": "Location",
+            "title": "Street address",
+            "detail": "The quick start\u2019s step.",
+            "inspect": "Not a PO box story"
+          },
+          {
+            "from": "Admin",
+            "to": "Site",
+            "title": "Attach it",
+            "detail": "The site points at the location.",
+            "inspect": "Edges live with the site"
+          },
+          {
+            "from": "Carrier",
+            "to": "Record",
+            "title": "Same address",
+            "detail": "BYOC does not inherit GCV.",
+            "inspect": "You send it"
+          },
+          {
+            "from": "Review",
+            "to": "Walk",
+            "title": "Could a responder find the door",
+            "detail": "If not, the record is wrong.",
+            "inspect": "Fix it before go-live"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "The location in the quick start is:",
+          "choices": [
+            "The OAuth redirect",
+            "A physical place for the site",
+            "The AWS region name",
+            "The queue division"
+          ],
+          "answer": 1,
+          "why": "It enables services and supports emergency."
+        },
+        {
+          "q": "A billing PO box as the emergency location is:",
+          "choices": [
+            "A number plan",
+            "The wrong record if people are not there",
+            "Always correct",
+            "Required"
+          ],
+          "answer": 1,
+          "why": "Responders need the place the numbers are used."
+        },
+        {
+          "q": "Who receives the BYOC location?",
+          "choices": [
+            "Your carrier",
+            "Automatically every PSAP via GCV data",
+            "The certification catalog",
+            "AppFoundry"
+          ],
+          "answer": 0,
+          "why": "You inform the carrier."
+        },
+        {
+          "q": "Sites and locations are:",
+          "choices": [
+            "Both OAuth grants",
+            "Both skills",
+            "Related telephony objects. A division is neither.",
+            "The same object"
+          ],
+          "answer": 2,
+          "why": "Do not collapse the vocabulary."
+        },
+        {
+          "q": "Media pinned far from the location is:",
+          "choices": [
+            "Required",
+            "Impossible",
+            "A wrap-up code",
+            "A latency choice you should notice"
+          ],
+          "answer": 3,
+          "why": "The regions article discusses media placement for a reason."
+        },
+        {
+          "q": "The emergency article\u2019s phrase \u201cexact physical location\u201d means:",
+          "choices": [
+            "The satellite region",
+            "The agent\u2019s home by default",
+            "Where the numbers are actually used",
+            "The headquarters marketing address always"
+          ],
+          "answer": 2,
+          "why": "Send the place people call from."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Physical",
+          "back": "Not a nickname."
+        },
+        {
+          "front": "Carrier",
+          "back": "You send it for BYOC."
+        },
+        {
+          "front": "Site",
+          "back": "Attaches the location."
+        },
+        {
+          "front": "Door test",
+          "back": "Could someone find it."
+        }
+      ],
+      "lab": {
+        "title": "Write one location",
+        "steps": [
+          "Street and city.",
+          "Which site.",
+          "Which carrier record.",
+          "The door test in one sentence."
+        ],
+        "success": "The address is a place a person can stand."
+      },
+      "fault": {
+        "title": "Headquarters for every branch",
+        "symptom": "Every branch DID has the HQ address.",
+        "log": "Carrier records: one address. Sites: twelve.",
+        "cause": "Responders would go to the wrong building.",
+        "fix": "Register each site\u2019s own address with the carrier."
+      }
+    },
+    {
+      "id": "n-gcv-limits",
+      "title": "Voice coverage is a table, not a promise",
+      "level": "Advanced",
+      "minutes": 12,
+      "summary": "Country rows decide DID, toll-free, domestic, and international. FedRAMP and the sovereign region add harder edges.",
+      "paras": [
+        "The restrictions article is a matrix of countries and call types, plus two special sections. FedRAMP can add US numbers and US domestic and international calling, and it cannot add other countries. The European Sovereign region\u2019s sovereignty commitment does not cover voice that leaves the ESR boundary. Those calls use non-EU carriers and are outside the commitment.",
+        "Planned regions on the Voice regions article, including notes about Mexico and Singapore in the table\u2019s forward-looking rows, are not a contract. If the page says limited or coming, your design says limited or coming. The lab will not freeze that table."
+      ],
+      "cites": [
+        {
+          "title": "AWS regions for Genesys Cloud Voice",
+          "url": "https://help.genesys.cloud/articles/aws-regions-genesys-cloud-voice/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Read the country row before you sell the number.",
+        "nodes": [
+          {
+            "id": "row",
+            "label": "Country row",
+            "kind": "region",
+            "x": 24,
+            "y": 40
+          },
+          {
+            "id": "did",
+            "label": "DID",
+            "kind": "phone",
+            "x": 58,
+            "y": 22
+          },
+          {
+            "id": "intl",
+            "label": "International",
+            "kind": "trunk",
+            "x": 58,
+            "y": 68
+          }
+        ],
+        "edges": [
+          {
+            "a": "row",
+            "b": "did"
+          },
+          {
+            "a": "row",
+            "b": "intl"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Check a country before the order",
+        "steps": [
+          {
+            "from": "Seller",
+            "to": "Article",
+            "title": "Open the row",
+            "detail": "DID, toll-free, domestic, international.",
+            "inspect": "Empty means no"
+          },
+          {
+            "from": "Seller",
+            "to": "FedRAMP",
+            "title": "US only",
+            "detail": "Other countries are unavailable.",
+            "inspect": "Do not attach a foreign DID"
+          },
+          {
+            "from": "Seller",
+            "to": "ESR",
+            "title": "Boundary",
+            "detail": "Outside means outside the commitment.",
+            "inspect": "Say that in the contract"
+          },
+          {
+            "from": "Seller",
+            "to": "Planned",
+            "title": "Not sold as live",
+            "detail": "Reload the page.",
+            "inspect": "The lab does not copy the future"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "FedRAMP Genesys Cloud Voice for a non-US country is:",
+          "choices": [
+            "Included in CX 1",
+            "A number-plan default",
+            "Unavailable",
+            "The same as commercial Ireland"
+          ],
+          "answer": 2,
+          "why": "The restrictions article says so."
+        },
+        {
+          "q": "An ESR call to a destination outside the boundary:",
+          "choices": [
+            "Is blocked by Architect",
+            "Is free",
+            "Uses only bullseye",
+            "Is not covered by the ESR sovereignty commitment"
+          ],
+          "answer": 3,
+          "why": "The article describes non-EU handling."
+        },
+        {
+          "q": "The right artifact before ordering numbers is:",
+          "choices": [
+            "The quiz score",
+            "The current country row",
+            "A 2023 PDF only",
+            "A forum post"
+          ],
+          "answer": 1,
+          "why": "Reload the restrictions page."
+        },
+        {
+          "q": "DID availability and international calling are:",
+          "choices": [
+            "Both tokens",
+            "Separate columns",
+            "Always identical",
+            "Both skills"
+          ],
+          "answer": 1,
+          "why": "A country can differ by call type. Read the row."
+        },
+        {
+          "q": "A region marked coming or limited on the Voice page should be sold as:",
+          "choices": [
+            "Coming or limited",
+            "Generally available worldwide",
+            "A premises Edge",
+            "A certification"
+          ],
+          "answer": 0,
+          "why": "Use the page\u2019s words."
+        },
+        {
+          "q": "This lab does not paste the full country matrix because:",
+          "choices": [
+            "The matrix is secret",
+            "There is no article",
+            "RFCs forbid it",
+            "The matrix changes and the page is the source"
+          ],
+          "answer": 3,
+          "why": "Link it."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Row",
+          "back": "DID, toll-free, domestic, international."
+        },
+        {
+          "front": "FedRAMP",
+          "back": "US voice services."
+        },
+        {
+          "front": "ESR",
+          "back": "Boundary is the commitment."
+        },
+        {
+          "front": "Coming",
+          "back": "Stay coming until the page changes."
+        }
+      ],
+      "lab": {
+        "title": "Check two countries",
+        "steps": [
+          "Pick a country you know is in the table.",
+          "Pick the FedRAMP constraint.",
+          "Write the ESR boundary rule.",
+          "Say you will reload the page before an order."
+        ],
+        "success": "The notes cite the article instead of a frozen matrix."
+      },
+      "fault": {
+        "title": "Foreign DID on FedRAMP",
+        "symptom": "An order for a non-US DID was submitted in the gov region.",
+        "log": "Restrictions: other countries unavailable.",
+        "cause": "The row was not read.",
+        "fix": "Cancel the order and use a region where that country is offered, if one exists on the current page."
+      }
+    },
+    {
+      "id": "n-e164",
+      "title": "Normalize toward E.164 on purpose",
+      "level": "Core",
+      "minutes": 11,
+      "summary": "Intra-country and inter-country plans normalize. Digit-length extensions and E.164 lists do not.",
+      "paras": [
+        "The number-plan article is specific. Inter-country matches a country code and a length and normalizes to E.164. Intra-country uses the site\u2019s country and does the same. Digit length for extensions does not normalize. An E.164 list entry must already contain the plus and is left alone. A number can pass through more than one plan and be normalized more than once.",
+        "That is why a double-prefix bug shows up as +1+1555\u2026 in a trace. A later plan normalized something an earlier plan had already finished. The call simulator is how you see it before the carrier rejects it."
+      ],
+      "cites": [
+        {
+          "title": "Number plan information",
+          "url": "https://help.genesys.cloud/articles/number-plan-information/"
+        },
+        {
+          "title": "RFC 5737 documentation addresses",
+          "url": "https://www.rfc-editor.org/rfc/rfc5737"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Some match types rewrite the number. Some must not.",
+        "nodes": [
+          {
+            "id": "ext",
+            "label": "Extension",
+            "kind": "phone",
+            "x": 18,
+            "y": 30
+          },
+          {
+            "id": "nat",
+            "label": "Intra-country",
+            "kind": "architect",
+            "x": 50,
+            "y": 30
+          },
+          {
+            "id": "e",
+            "label": "E.164 list",
+            "kind": "trunk",
+            "x": 82,
+            "y": 30
+          }
+        ],
+        "edges": [
+          {
+            "a": "ext",
+            "b": "nat"
+          },
+          {
+            "a": "nat",
+            "b": "e"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Watch a number change",
+        "steps": [
+          {
+            "from": "User",
+            "to": "Dial",
+            "title": "10 digits",
+            "detail": "Intra-country can add the country code.",
+            "inspect": "Plus and country code out"
+          },
+          {
+            "from": "User",
+            "to": "Dial",
+            "title": "4501",
+            "detail": "Extension. No rewrite.",
+            "inspect": "4 to 6 digits"
+          },
+          {
+            "from": "Flow",
+            "to": "Transfer",
+            "title": "+15555550100",
+            "detail": "Already E.164.",
+            "inspect": "A list match should not touch it"
+          },
+          {
+            "from": "Admin",
+            "to": "Simulator",
+            "title": "Look for a second plus",
+            "detail": "Double normalization is a bug.",
+            "inspect": "Fix the plan order"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Intra-country plans:",
+          "choices": [
+            "Delete the trunk",
+            "Normalize to E.164 using the site country code",
+            "Never change the digits",
+            "Only match 911"
+          ],
+          "answer": 1,
+          "why": "The article describes that normalization."
+        },
+        {
+          "q": "A 5-digit extension:",
+          "choices": [
+            "Matches digit length and is not normalized",
+            "Becomes E.164",
+            "Becomes 988",
+            "Becomes a queue"
+          ],
+          "answer": 0,
+          "why": "Digit length does not normalize."
+        },
+        {
+          "q": "An E.164 list entry must:",
+          "choices": [
+            "Contain the plus, and it is not normalized",
+            "Be 4 digits",
+            "Omit the plus",
+            "Be a regex only"
+          ],
+          "answer": 0,
+          "why": "The article says so."
+        },
+        {
+          "q": "A number can be normalized:",
+          "choices": [
+            "More than once if multiple plans touch it",
+            "Never",
+            "Only by a bot",
+            "Only in FedRAMP"
+          ],
+          "answer": 0,
+          "why": "The article allows multiple passes. That is how double prefixes happen."
+        },
+        {
+          "q": "555-0100 style numbers in this lab are:",
+          "choices": [
+            "Your carrier\u2019s test line",
+            "The PSAP",
+            "The API host",
+            "Fictional examples, not a customer"
+          ],
+          "answer": 3,
+          "why": "Do not dial them as a production test."
+        },
+        {
+          "q": "The tool that shows the rewrite before the carrier does is:",
+          "choices": [
+            "Flow Insights",
+            "The concurrent report",
+            "The 3D map",
+            "The call simulator"
+          ],
+          "answer": 3,
+          "why": "Use the product tool."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Intra-country",
+          "back": "Adds the country code."
+        },
+        {
+          "front": "Extension",
+          "back": "No rewrite."
+        },
+        {
+          "front": "E.164 list",
+          "back": "Plus required, no rewrite."
+        },
+        {
+          "front": "Twice",
+          "back": "Possible, and often a bug."
+        }
+      ],
+      "lab": {
+        "title": "Rewrite three strings by hand",
+        "steps": [
+          "A 10-digit national number.",
+          "A 5-digit extension.",
+          "A number that already has a plus.",
+          "Say which one must not change."
+        ],
+        "success": "You can predict the simulator."
+      },
+      "fault": {
+        "title": "Double prefix",
+        "symptom": "The carrier rejects +1+15555550100.",
+        "log": "Two intra-country plans both normalize.",
+        "cause": "The second pass treated the result as national again.",
+        "fix": "Stop after the first successful E.164 normalization and retest in the simulator."
+      }
+    },
+    {
+      "id": "n-test",
+      "title": "Test emergency like a change, not like a demo",
+      "level": "Core",
+      "minutes": 12,
+      "summary": "A live emergency test is a carrier and public-safety conversation. The call simulator is the part you can do alone.",
+      "paras": [
+        "Use the product call simulator for classification and normalization. Use a maintenance window and the carrier\u2019s approved method before any live emergency test. The article\u2019s warning about internet loss belongs in the test plan: if the broadband path is the only path, say what staff should do when it is down. That fallback is a life-safety procedure, and this lab will not invent a PSAP phone number for you.",
+        "Record the model, the location, the route, and the result. An unlogged successful test is a rumor. An unlogged failed test is how the next site repeats it."
+      ],
+      "cites": [
+        {
+          "title": "Number plan information",
+          "url": "https://help.genesys.cloud/articles/number-plan-information/"
+        },
+        {
+          "title": "Set up emergency services with BYOC",
+          "url": "https://help.genesys.cloud/articles/set-up-emergency-services-with-byoc/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Simulator first. Live test only with the carrier\u2019s method.",
+        "nodes": [
+          {
+            "id": "sim",
+            "label": "Simulator",
+            "kind": "architect",
+            "x": 22,
+            "y": 40
+          },
+          {
+            "id": "car",
+            "label": "Carrier method",
+            "kind": "carrier",
+            "x": 55,
+            "y": 40
+          },
+          {
+            "id": "log",
+            "label": "Log",
+            "kind": "wem",
+            "x": 84,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "sim",
+            "b": "car"
+          },
+          {
+            "a": "car",
+            "b": "log"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Plan the test",
+        "steps": [
+          {
+            "from": "Admin",
+            "to": "Simulator",
+            "title": "911, 933, 988, extensions",
+            "detail": "Classification only.",
+            "inspect": "No live PSAP yet"
+          },
+          {
+            "from": "Carrier",
+            "to": "Method",
+            "title": "Their process",
+            "detail": "Do not freelance a live test.",
+            "inspect": "Location confirmed"
+          },
+          {
+            "from": "Ops",
+            "to": "Outage",
+            "title": "Write the broadband-down action",
+            "detail": "The article says the path can vanish.",
+            "inspect": "Staff need a procedure"
+          },
+          {
+            "from": "Ops",
+            "to": "Log",
+            "title": "Model, route, result",
+            "detail": "So the next site can read it.",
+            "inspect": "Rumor is not a result"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "The first test tool is:",
+          "choices": [
+            "A quiz",
+            "A token",
+            "The call simulator",
+            "A live 911 call from a laptop"
+          ],
+          "answer": 2,
+          "why": "Classification can be proven without a PSAP."
+        },
+        {
+          "q": "A live emergency test should follow:",
+          "choices": [
+            "The carrier\u2019s approved method",
+            "A forum post",
+            "An RFC example",
+            "A bot intent"
+          ],
+          "answer": 0,
+          "why": "Do not improvise."
+        },
+        {
+          "q": "The internet-outage case must be:",
+          "choices": [
+            "Solved by bullseye",
+            "Written down, because the article says the path can be unavailable",
+            "Ignored",
+            "Solved by publishing a flow"
+          ],
+          "answer": 1,
+          "why": "Staff need a procedure this lab does not invent for them."
+        },
+        {
+          "q": "An unlogged test is:",
+          "choices": [
+            "A certification",
+            "Not a result the next site can trust",
+            "Better",
+            "Required"
+          ],
+          "answer": 1,
+          "why": "Write model, route, and result."
+        },
+        {
+          "q": "933 belongs in the simulator list for US and Canada because:",
+          "choices": [
+            "It is a skill",
+            "It is an extension",
+            "It is part of the documented emergency classification",
+            "It is a queue"
+          ],
+          "answer": 2,
+          "why": "The number-plan page includes it."
+        },
+        {
+          "q": "This lab does not supply a backup PSAP number because:",
+          "choices": [
+            "Inventing one would be dangerous and unsupported",
+            "PSAP numbers are skills",
+            "911 is deprecated",
+            "Edges block all emergency calls"
+          ],
+          "answer": 0,
+          "why": "Use local emergency services and the carrier\u2019s process."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Simulator",
+          "back": "First."
+        },
+        {
+          "front": "Carrier",
+          "back": "Owns the live method."
+        },
+        {
+          "front": "Outage",
+          "back": "Write the broadband-down action."
+        },
+        {
+          "front": "Log",
+          "back": "Model, route, result."
+        }
+      ],
+      "lab": {
+        "title": "Draft the test record",
+        "steps": [
+          "Simulator cases.",
+          "Who approves a live test.",
+          "The outage action\u2019s owner.",
+          "The four fields you will log."
+        ],
+        "success": "The record has a simulator section and a live section, and the live section has an approver."
+      },
+      "fault": {
+        "title": "Unapproved live test",
+        "symptom": "Someone dials 911 from the lab trunk to \u201csee what happens.\u201d",
+        "log": "No carrier window. No log.",
+        "cause": "That is not the article\u2019s process.",
+        "fix": "Stop. Use the simulator. Schedule a carrier-approved test if one is required."
+      }
+    }
+  ]
+}

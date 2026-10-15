@@ -1,0 +1,976 @@
+{
+  "title": "Genesys Cloud CX Lab",
+  "updated": "2026-10-14",
+  "quizCount": 666,
+  "tracks": [
+    {
+      "id": "foundations",
+      "title": "Foundations",
+      "kicker": "Start here",
+      "accent": 1,
+      "summary": "What Genesys Cloud CX is, where an organization lives, and how a voice conversation is supposed to move.",
+      "file": "data/tracks/foundations.json",
+      "lessons": [
+        {
+          "id": "f-platform",
+          "title": "What Genesys Cloud CX is",
+          "level": "Foundation",
+          "minutes": 14,
+          "summary": "Genesys Cloud CX is a subscription contact-center platform with four nested packages, not a single feature switch."
+        },
+        {
+          "id": "f-regions",
+          "title": "Core regions and satellite media",
+          "level": "Foundation",
+          "minutes": 16,
+          "summary": "An organization is born in one core AWS region. Satellite regions carry media. They do not host the org."
+        },
+        {
+          "id": "f-sip",
+          "title": "SIP, RTP, and what the trunk is doing",
+          "level": "Foundation",
+          "minutes": 15,
+          "summary": "SIP sets the call up. RTP moves the audio. They are different protocols, and Genesys trunks speak both."
+        },
+        {
+          "id": "f-acd-idea",
+          "title": "What ACD is before you name a queue",
+          "level": "Foundation",
+          "minutes": 12,
+          "summary": "ACD picks an agent for a waiting interaction. The queue is the waiting line. Skills, utilization, and On Queue decide who is eligible."
+        },
+        {
+          "id": "f-digital",
+          "title": "Digital conversations beside voice",
+          "level": "Foundation",
+          "minutes": 12,
+          "summary": "Voice is one media. Architect also has inbound message, email, and chat flows, and queues track those medias separately."
+        },
+        {
+          "id": "f-access",
+          "title": "Divisions, before roles get complicated",
+          "level": "Foundation",
+          "minutes": 13,
+          "summary": "A division groups objects inside one organization. It is not a second org, and the Home division cannot be deleted."
+        },
+        {
+          "id": "f-read",
+          "title": "How to read a Genesys page without inventing the rest",
+          "level": "Foundation",
+          "minutes": 11,
+          "summary": "This lab cites the Resource Center, the Developer Center, Genesys Education, and RFCs. The page wins when they differ."
+        },
+        {
+          "id": "f-prereq",
+          "title": "Prerequisites before the first trunk",
+          "level": "Foundation",
+          "minutes": 13,
+          "summary": "BYOC Cloud needs a public carrier address, an open port plan, and a real location. The org subscription has to include the telephony product you intend to use."
+        }
+      ]
+    },
+    {
+      "id": "org",
+      "title": "Organization and licensing",
+      "kicker": "Admin",
+      "accent": 2,
+      "summary": "Regions, roles, divisions, named and concurrent licenses, packages, and fair use.",
+      "file": "data/tracks/org.json",
+      "lessons": [
+        {
+          "id": "o-place",
+          "title": "Place the organization in a core region",
+          "level": "Core",
+          "minutes": 12,
+          "summary": "You do not move an org between regions as a setting. You create it in a core region and live with that login host."
+        },
+        {
+          "id": "o-roles",
+          "title": "Roles are permission lists paired with divisions",
+          "level": "Core",
+          "minutes": 13,
+          "summary": "A role without a division grant does not open objects. An OAuth client inherits only a subset of its creator\u2019s pairs."
+        },
+        {
+          "id": "o-concurrent",
+          "title": "Named licenses and the concurrent peak",
+          "level": "Core",
+          "minutes": 12,
+          "summary": "Concurrent billing charges the peak of simultaneous users, and it ignores peaks shorter than 30 minutes."
+        },
+        {
+          "id": "o-packages",
+          "title": "Pick CX 1, CX 2, CX 3, or CX 4 on purpose",
+          "level": "Core",
+          "minutes": 12,
+          "summary": "Match the package to the job. Do not buy CX 1 and then design a WFM project."
+        },
+        {
+          "id": "o-people",
+          "title": "People, queues, and the 5,000 member line",
+          "level": "Core",
+          "minutes": 11,
+          "summary": "Users live in the org. Queue membership is not the same thing as a division, and it has a hard cap."
+        },
+        {
+          "id": "o-fair",
+          "title": "Fair use is a pool, not a mystery invoice",
+          "level": "Core",
+          "minutes": 12,
+          "summary": "Licenses include monthly allowances. Overage is priced on the policy page. Copying the numbers into a design doc freezes them wrong."
+        },
+        {
+          "id": "o-bootstrap",
+          "title": "A first-week admin checklist",
+          "level": "Core",
+          "minutes": 14,
+          "summary": "Week one is region, divisions, roles, packages, one queue, and a published in-queue flow. Telephony can follow."
+        }
+      ]
+    },
+    {
+      "id": "architect",
+      "title": "Architect flows",
+      "kicker": "Design",
+      "accent": 3,
+      "summary": "Flow types, tasks, in-queue experiences, data actions, bots, secure calls, and publish.",
+      "file": "data/tracks/architect.json",
+      "lessons": [
+        {
+          "id": "a-types",
+          "title": "The flow types on the Architect home page",
+          "level": "Core",
+          "minutes": 13,
+          "summary": "Architect is a list of flow types. Picking the wrong tab is the first defect."
+        },
+        {
+          "id": "a-task",
+          "title": "Tasks, menus, and a way out",
+          "level": "Core",
+          "minutes": 13,
+          "summary": "An inbound call flow plays audio, collects input, and must transfer, hand off, or disconnect."
+        },
+        {
+          "id": "a-inqueue",
+          "title": "In-queue flows are the hold experience",
+          "level": "Core",
+          "minutes": 12,
+          "summary": "The caller is already queued. The in-queue flow is what they hear or read while ACD looks for an agent."
+        },
+        {
+          "id": "a-data",
+          "title": "Data actions and participant data",
+          "level": "Core",
+          "minutes": 12,
+          "summary": "A data action calls a system outside the flow. Participant data carries a value to the agent."
+        },
+        {
+          "id": "a-common",
+          "title": "Common modules are how you stop copying tasks",
+          "level": "Core",
+          "minutes": 11,
+          "summary": "A common module is a flow type you call from other flows. The name is still unique inside that type."
+        },
+        {
+          "id": "a-secure",
+          "title": "Secure call flows keep digits away from the recording",
+          "level": "Core",
+          "minutes": 12,
+          "summary": "A secure flow is how a caller enters a card number without that audio being recorded or shown to the agent."
+        },
+        {
+          "id": "a-botcall",
+          "title": "Call a bot from the inbound flow",
+          "level": "Core",
+          "minutes": 13,
+          "summary": "Dialog Engine bot flows and digital bot flows are Architect flow types. The inbound flow calls them. It does not become them."
+        },
+        {
+          "id": "a-publish",
+          "title": "Publish, division, and Flow Insights",
+          "level": "Core",
+          "minutes": 12,
+          "summary": "A saved flow is a draft. The runtime uses the published version. Insights tell you whether anyone hit it."
+        }
+      ]
+    },
+    {
+      "id": "acd",
+      "title": "ACD routing",
+      "kicker": "Routing",
+      "accent": 1,
+      "summary": "Standard, bullseye, preferred, predictive, and conditional routing, plus the two scoring methods.",
+      "file": "data/tracks/acd.json",
+      "lessons": [
+        {
+          "id": "r-methods",
+          "title": "Five routing methods",
+          "level": "Core",
+          "minutes": 12,
+          "summary": "Standard, predictive, bullseye, preferred agent, and conditional group routing are the methods on a queue."
+        },
+        {
+          "id": "r-eval",
+          "title": "All skills, best available, or disregard",
+          "level": "Core",
+          "minutes": 13,
+          "summary": "The evaluation method is how standard and bullseye decide that an agent \u201chas the skills.\u201d"
+        },
+        {
+          "id": "r-score",
+          "title": "Conversation score and priority score",
+          "level": "Core",
+          "minutes": 12,
+          "summary": "One priority point on conversation score is worth 60,000 milliseconds of arrival time."
+        },
+        {
+          "id": "r-bullseye",
+          "title": "Bullseye rings widen the target",
+          "level": "Core",
+          "minutes": 14,
+          "summary": "Up to five rings. A delay from 2 seconds to 72 hours. Up to 50 skills removed on a ring."
+        },
+        {
+          "id": "r-preferred",
+          "title": "Preferred agents are tried first",
+          "level": "Core",
+          "minutes": 13,
+          "summary": "A preferred agent is considered even without the required skills, and only if they are a member of the queue and On Queue."
+        },
+        {
+          "id": "r-predict",
+          "title": "Predictive routing is a KPI model with a timeout",
+          "level": "Advanced",
+          "minutes": 14,
+          "summary": "Predictive routing can run for everyone, in a comparison test, or at a fixed 80/20 split you cannot edit."
+        },
+        {
+          "id": "r-conditional",
+          "title": "Conditional group routing borrows agents carefully",
+          "level": "Advanced",
+          "minutes": 12,
+          "summary": "A rule is a KPI plus agent availability. The other queue must be able to spare the people."
+        },
+        {
+          "id": "r-util",
+          "title": "Utilization and Not Responding",
+          "level": "Core",
+          "minutes": 13,
+          "summary": "A fully utilized agent is skipped. An agent who ignores an alert becomes Not Responding."
+        }
+      ]
+    },
+    {
+      "id": "queues",
+      "title": "Queues, skills, and wrap-up",
+      "kicker": "ACD objects",
+      "accent": 4,
+      "summary": "Queue media settings, skills, wrap-up codes, callbacks, and service level.",
+      "file": "data/tracks/queues.json",
+      "lessons": [
+        {
+          "id": "q-create",
+          "title": "Create the queue in a division",
+          "level": "Core",
+          "minutes": 11,
+          "summary": "The queue is a named waiting line in one division, with at most 5,000 members."
+        },
+        {
+          "id": "q-skills",
+          "title": "Skills and proficiency are on the agent",
+          "level": "Core",
+          "minutes": 12,
+          "summary": "The queue asks for skills. The agent profile holds them. Evaluation decides whether proficiency matters."
+        },
+        {
+          "id": "q-acw",
+          "title": "After call work and the system wrap-up codes",
+          "level": "Core",
+          "minutes": 13,
+          "summary": "ACW is optional, discretionary, or time-boxed. The platform has its own codes when agents do not finish."
+        },
+        {
+          "id": "q-wrapdiv",
+          "title": "Wrap-up codes live in divisions too",
+          "level": "Core",
+          "minutes": 11,
+          "summary": "The codes an agent sees are the codes their role can see, and Genesys wants them in the queue\u2019s division."
+        },
+        {
+          "id": "q-sl",
+          "title": "Service level is a percentage and a target in seconds",
+          "level": "Core",
+          "minutes": 11,
+          "summary": "Each media has a service level percentage and a target duration. That pair is what conditional routing and WFM both mean by \u201cthe goal.\u201d"
+        },
+        {
+          "id": "q-callback",
+          "title": "Callbacks are interactions with their own rules",
+          "level": "Core",
+          "minutes": 12,
+          "summary": "A callback is queued work. It still needs a wrap-up code, and it counts as its own utilization slot."
+        },
+        {
+          "id": "q-members",
+          "title": "Membership, On Queue, and the copy trap",
+          "level": "Core",
+          "minutes": 11,
+          "summary": "A copied queue can duplicate a bullseye you did not mean to clone."
+        }
+      ]
+    },
+    {
+      "id": "byoc",
+      "title": "BYOC Cloud and SIP trunks",
+      "kicker": "Telephony",
+      "accent": 4,
+      "summary": "Carrier and PBX trunks, RTP over the internet, Dynamic Cloud Voice, and the quick-start order.",
+      "file": "data/tracks/byoc.json",
+      "lessons": [
+        {
+          "id": "b-what",
+          "title": "BYOC Cloud is your carrier, Genesys\u2019 media",
+          "level": "Core",
+          "minutes": 12,
+          "summary": "You bring the carrier contract. Genesys terminates a SIP trunk on the AWS media tier. Audio is RTP on the internet."
+        },
+        {
+          "id": "b-types",
+          "title": "Carrier trunks and PBX trunks",
+          "level": "Core",
+          "minutes": 12,
+          "summary": "BYOC Carrier and BYOC PBX are the two types. Carrier has subtypes. PBX has one."
+        },
+        {
+          "id": "b-order",
+          "title": "The quick-start order",
+          "level": "Core",
+          "minutes": 12,
+          "summary": "Location, trunk, outbound route, number plan. The product on the subscription comes before all of that."
+        },
+        {
+          "id": "b-dcvp",
+          "title": "Dynamic Cloud Voice is the current platform",
+          "level": "Advanced",
+          "minutes": 13,
+          "summary": "New trunks start there. Moving an old trunk means allow lists, Amazon root CAs, TLS ciphers, and a toggle."
+        },
+        {
+          "id": "b-plans",
+          "title": "Number plans classify what people dial",
+          "level": "Core",
+          "minutes": 13,
+          "summary": "A site can hold 200 plans. DIDs do not need one for basic routing. Emergency, extension, and 988 already exist as defaults."
+        },
+        {
+          "id": "b-monitor",
+          "title": "Watch the trunk, not only the flow",
+          "level": "Core",
+          "minutes": 11,
+          "summary": "When audio fails and Architect Insights still shows runs, the trunk is the next object."
+        },
+        {
+          "id": "b-gcv",
+          "title": "Genesys Cloud Voice is the other door",
+          "level": "Core",
+          "minutes": 12,
+          "summary": "If Genesys is the carrier, you buy numbers in a region that offers voice, and emergency is part of that product story rather than your trunk."
+        }
+      ]
+    },
+    {
+      "id": "edge",
+      "title": "The Edge and BYOC Premises",
+      "kicker": "Premises",
+      "accent": 2,
+      "summary": "Premises Edges, Edge groups, phone trunks, sites, and what happens when the local Edge is down.",
+      "file": "data/tracks/edge.json",
+      "lessons": [
+        {
+          "id": "e-role",
+          "title": "The premises Edge is the local media hop",
+          "level": "Core",
+          "minutes": 12,
+          "summary": "BYOC Premises puts an Edge on your network. Phones and trunks registered there do not need a public address the way BYOC Cloud does."
+        },
+        {
+          "id": "e-site",
+          "title": "Local site routing stays home until it cannot",
+          "level": "Core",
+          "minutes": 12,
+          "summary": "Genesys uses Edges in the same site when it can. Another site is the exception."
+        },
+        {
+          "id": "e-phone",
+          "title": "Phone trunks, WebRTC, and inherit",
+          "level": "Core",
+          "minutes": 11,
+          "summary": "WebRTC and SIP phones are phone trunks on the Edge group. Inherit is the default you should verify."
+        },
+        {
+          "id": "e-fail",
+          "title": "When the local Edge is offline",
+          "level": "Core",
+          "minutes": 12,
+          "summary": "The documented failover is another site, if that site actually has the resource."
+        },
+        {
+          "id": "e-compare",
+          "title": "Choose Cloud, Premises, or both",
+          "level": "Core",
+          "minutes": 12,
+          "summary": "Use premises when the phones and the carrier are on your network. Use cloud when they are not. Use both only where each number has an owner."
+        },
+        {
+          "id": "e-webrtc-net",
+          "title": "A browser phone is still a network endpoint",
+          "level": "Core",
+          "minutes": 11,
+          "summary": "WebRTC removes the desk set. It does not remove media engineering."
+        },
+        {
+          "id": "e-checklist",
+          "title": "Premises turn-up checklist",
+          "level": "Core",
+          "minutes": 12,
+          "summary": "Group, inherit, site, trunk, failover test, emergency owner."
+        }
+      ]
+    },
+    {
+      "id": "emergency",
+      "title": "Numbers and emergency calling",
+      "kicker": "Safety",
+      "accent": 1,
+      "summary": "E.164, emergency classifications, BYOC warnings, and Genesys Cloud Voice coverage.",
+      "file": "data/tracks/emergency.json",
+      "lessons": [
+        {
+          "id": "n-owner",
+          "title": "Name the emergency owner before the DID",
+          "level": "Core",
+          "minutes": 12,
+          "summary": "Genesys is not responsible for emergency calls that ride a BYOC trunk. That sentence belongs in the design, not in the postmortem."
+        },
+        {
+          "id": "n-plan",
+          "title": "Emergency is a classification and a route",
+          "level": "Core",
+          "minutes": 12,
+          "summary": "The default Emergency plan matches 911 and 933 in the US and Canada, and 142 in Switzerland. It still needs a route."
+        },
+        {
+          "id": "n-location",
+          "title": "The location is a physical place",
+          "level": "Core",
+          "minutes": 11,
+          "summary": "The quick start adds a location because services, including emergency, need a real site."
+        },
+        {
+          "id": "n-gcv-limits",
+          "title": "Voice coverage is a table, not a promise",
+          "level": "Advanced",
+          "minutes": 12,
+          "summary": "Country rows decide DID, toll-free, domestic, and international. FedRAMP and the sovereign region add harder edges."
+        },
+        {
+          "id": "n-e164",
+          "title": "Normalize toward E.164 on purpose",
+          "level": "Core",
+          "minutes": 11,
+          "summary": "Intra-country and inter-country plans normalize. Digit-length extensions and E.164 lists do not."
+        },
+        {
+          "id": "n-test",
+          "title": "Test emergency like a change, not like a demo",
+          "level": "Core",
+          "minutes": 12,
+          "summary": "A live emergency test is a carrier and public-safety conversation. The call simulator is the part you can do alone."
+        }
+      ]
+    },
+    {
+      "id": "wfm",
+      "title": "Workforce management",
+      "kicker": "WEM",
+      "accent": 2,
+      "summary": "Business units, management units, service goals, schedules, adherence, and time off. WFM is a CX 3 capability.",
+      "file": "data/tracks/wfm.json",
+      "lessons": [
+        {
+          "id": "w-map",
+          "title": "WEM is a set of products, and WFM is one of them",
+          "level": "Core",
+          "minutes": 12,
+          "summary": "Recording, screen recording, quality, performance, speech and text analytics, and workforce management are the WEM list."
+        },
+        {
+          "id": "w-bu",
+          "title": "Business units and management units",
+          "level": "Core",
+          "minutes": 12,
+          "summary": "A business unit is the planning container. A management unit is the group of agents you actually schedule."
+        },
+        {
+          "id": "w-goal",
+          "title": "Service goal templates are the planning target",
+          "level": "Core",
+          "minutes": 11,
+          "summary": "The queue\u2019s service level and the WFM template should describe the same promise."
+        },
+        {
+          "id": "w-sched",
+          "title": "Schedules are the plan agents work",
+          "level": "Core",
+          "minutes": 11,
+          "summary": "A schedule is built from the management unit, the goals, and activity codes. It is not a routing method."
+        },
+        {
+          "id": "w-intra",
+          "title": "Intraday and adherence compare the plan to the floor",
+          "level": "Core",
+          "minutes": 12,
+          "summary": "Adherence is the gap between the activity you scheduled and the status the agent is actually in."
+        },
+        {
+          "id": "w-off",
+          "title": "Time off is a schedule change with a rule",
+          "level": "Core",
+          "minutes": 11,
+          "summary": "Time-off requests are part of WFM. An approved request that nobody reflects on the schedule is a rumor."
+        },
+        {
+          "id": "w-cert",
+          "title": "The workforce certification is a named exam",
+          "level": "Core",
+          "minutes": 10,
+          "summary": "The catalog lists a Workforce Management specialist certification and a preparation course. It does not list a code this lab is willing to invent."
+        }
+      ]
+    },
+    {
+      "id": "qm",
+      "title": "Quality and recording",
+      "kicker": "WEM",
+      "accent": 3,
+      "summary": "Evaluation forms, calibration, coaching, recording policies, and the prerequisites for AI scoring.",
+      "file": "data/tracks/qm.json",
+      "lessons": [
+        {
+          "id": "m-overview",
+          "title": "Quality management evaluates the conversation",
+          "level": "Core",
+          "minutes": 11,
+          "summary": "QM records and scores interactions, and it can coach. It is not the schedule."
+        },
+        {
+          "id": "m-form",
+          "title": "Forms have questions and weights",
+          "level": "Core",
+          "minutes": 11,
+          "summary": "The form is the rubric. Weights decide which questions move the score."
+        },
+        {
+          "id": "m-policy",
+          "title": "Recording policies choose calls and retention",
+          "level": "Core",
+          "minutes": 11,
+          "summary": "A policy decides which ACD calls are recorded and how long they are kept. A secure flow is a hole in a segment, not a substitute for the policy."
+        },
+        {
+          "id": "m-coach",
+          "title": "Coaching and disputes close the loop",
+          "level": "Core",
+          "minutes": 11,
+          "summary": "A score that the agent cannot see and cannot dispute is not a quality program."
+        },
+        {
+          "id": "m-ai",
+          "title": "AI scoring needs STA, QM, and tokens",
+          "level": "Advanced",
+          "minutes": 12,
+          "summary": "The FAQ is blunt: AI scoring requires Speech and Text Analytics, Quality Management, and AI Experience Tokens."
+        },
+        {
+          "id": "m-export",
+          "title": "Retention, export, and the reason you recorded",
+          "level": "Advanced",
+          "minutes": 11,
+          "summary": "Export and AWS recording paths exist so a recording can leave the platform under a policy, not as a side copy."
+        }
+      ]
+    },
+    {
+      "id": "sta",
+      "title": "Speech and text analytics",
+      "kicker": "Listen after",
+      "accent": 4,
+      "summary": "What gets transcribed, how sentiment and topics are used, and why analysis is not the same thing as the live conversation.",
+      "file": "data/tracks/sta.json",
+      "lessons": [
+        {
+          "id": "s-scope",
+          "title": "STA reads the conversation after the channel has it",
+          "level": "Core",
+          "minutes": 12,
+          "summary": "Speech and text analytics covers voice and digital interactions. It is not a second ACD."
+        },
+        {
+          "id": "s-sentiment",
+          "title": "Sentiment is a label on the text, not a mood you can argue with",
+          "level": "Core",
+          "minutes": 11,
+          "summary": "Sentiment scores the customer\u2019s language. Use it as a filter, then listen."
+        },
+        {
+          "id": "s-topics",
+          "title": "Topics, programs, and phrases are the dictionary",
+          "level": "Core",
+          "minutes": 12,
+          "summary": "A program groups topics. A topic is phrases you expect to hear or read."
+        },
+        {
+          "id": "s-empathy",
+          "title": "Agent empathy is a detected behavior, still a form question",
+          "level": "Core",
+          "minutes": 11,
+          "summary": "Empathy detection points at calls. Calibration still decides what empathy means for your company."
+        },
+        {
+          "id": "s-search",
+          "title": "Content search is how you test the dictionary",
+          "level": "Core",
+          "minutes": 11,
+          "summary": "Search the transcript before you trust a topic count."
+        },
+        {
+          "id": "s-timing",
+          "title": "Full analysis and a faster transcript are different clocks",
+          "level": "Advanced",
+          "minutes": 12,
+          "summary": "Some views wait until the interaction is complete. A lower-latency transcript path is a different API."
+        }
+      ]
+    },
+    {
+      "id": "ai",
+      "title": "Genesys AI and bots",
+      "kicker": "Beside the agent",
+      "accent": 3,
+      "summary": "Dialog Engine and digital bots, failure paths, Agent Copilot, tokens, and the AI exams as the catalog names them.",
+      "file": "data/tracks/ai.json",
+      "lessons": [
+        {
+          "id": "g-kinds",
+          "title": "Two Architect bot types, plus Copilot beside the agent",
+          "level": "Core",
+          "minutes": 12,
+          "summary": "A bot flow talks to the customer. Agent Copilot talks to the agent. They are different products on different pages."
+        },
+        {
+          "id": "g-dialog",
+          "title": "Dialog Engine bot flows are voice and digital intents",
+          "level": "Core",
+          "minutes": 12,
+          "summary": "You build the bot in Architect, then the inbound flow calls it."
+        },
+        {
+          "id": "g-digital",
+          "title": "Digital bot flows are a different call",
+          "level": "Core",
+          "minutes": 11,
+          "summary": "Message experiences use Digital Bot Flows and Call Digital Bot Flow."
+        },
+        {
+          "id": "g-fail",
+          "title": "Every bot has a failure output to a queue",
+          "level": "Core",
+          "minutes": 11,
+          "summary": "No-match, timeout, and error are normal. The queue is the design."
+        },
+        {
+          "id": "g-copilot",
+          "title": "Agent Copilot assists the person who stayed on the interaction",
+          "level": "Core",
+          "minutes": 12,
+          "summary": "Knowledge, transcripts, scripts, next best action, and notes. The benefit is described as surviving a blind transfer."
+        },
+        {
+          "id": "g-tokens",
+          "title": "Tokens are a published allotment, and a FAQ ratio you re-read",
+          "level": "Advanced",
+          "minutes": 12,
+          "summary": "The overview publishes CX 4 token counts. The STA FAQ publishes how AI scoring spends them."
+        },
+        {
+          "id": "g-cert",
+          "title": "The AI exams are named on the catalog, one exam each",
+          "level": "Core",
+          "minutes": 10,
+          "summary": "Two AI certifications. No invented exam codes."
+        }
+      ]
+    },
+    {
+      "id": "api",
+      "title": "Platform APIs",
+      "kicker": "No live calls",
+      "accent": 1,
+      "summary": "OAuth grants, client credentials limits, region hosts, and why this lab\u2019s explorer never sends a request.",
+      "file": "data/tracks/api.json",
+      "lessons": [
+        {
+          "id": "p-center",
+          "title": "The Developer Center is the map. This lab is not a client.",
+          "level": "Core",
+          "minutes": 11,
+          "summary": "Read the public docs. Do not point a tutorial at a production org."
+        },
+        {
+          "id": "p-grants",
+          "title": "Pick the grant that matches who the call runs as",
+          "level": "Core",
+          "minutes": 12,
+          "summary": "Client credentials, authorization code with PKCE, and SAML2 Bearer are the grants to learn. Implicit is the one leaving."
+        },
+        {
+          "id": "p-cc",
+          "title": "Client credentials have no user, so users/me is the wrong call",
+          "level": "Core",
+          "minutes": 12,
+          "summary": "The token is the client. The guide shows that limit on purpose."
+        },
+        {
+          "id": "p-implicit",
+          "title": "Implicit grant is a migration, not a new design",
+          "level": "Core",
+          "minutes": 11,
+          "summary": "The OAuth article dates the deprecation: after 25 May 2026."
+        },
+        {
+          "id": "p-hosts",
+          "title": "Login host and API host are a pair you look up",
+          "level": "Core",
+          "minutes": 12,
+          "summary": "US East is the pair this lab will quote in full. Other rows stay on the regions article."
+        },
+        {
+          "id": "p-roles",
+          "title": "Role and division pairs are the real permission",
+          "level": "Core",
+          "minutes": 12,
+          "summary": "A token opens the door the role allows, in the division the pair names."
+        },
+        {
+          "id": "p-scim",
+          "title": "SCIM and other directory sync still start with an OAuth client",
+          "level": "Core",
+          "minutes": 11,
+          "summary": "The OAuth article points SCIM at a client. The client still has roles and a grant."
+        }
+      ]
+    },
+    {
+      "id": "crm",
+      "title": "AppFoundry and CRM",
+      "kicker": "Beside the desktop",
+      "accent": 2,
+      "summary": "The marketplace, the documented Salesforce and Zendesk embeds, and OAuth migrations that do not invent other CRMs.",
+      "file": "data/tracks/crm.json",
+      "lessons": [
+        {
+          "id": "i-market",
+          "title": "AppFoundry is the marketplace, not a feature you assume is installed",
+          "level": "Core",
+          "minutes": 11,
+          "summary": "An app is present only after someone installs it into the org."
+        },
+        {
+          "id": "i-sf",
+          "title": "Genesys Cloud for Salesforce is a documented embed",
+          "level": "Core",
+          "minutes": 12,
+          "summary": "Screen pop, click-to-dial, logging, and the assist features that page names."
+        },
+        {
+          "id": "i-sf-oauth",
+          "title": "Salesforce data actions move to OAuth client credentials",
+          "level": "Core",
+          "minutes": 12,
+          "summary": "Consumer key, secret, and My Domain URL. The request body of the action stays."
+        },
+        {
+          "id": "i-zd",
+          "title": "Zendesk has its own about page, with a similar embed idea",
+          "level": "Core",
+          "minutes": 11,
+          "summary": "Do not copy the Salesforce field list onto Zendesk."
+        },
+        {
+          "id": "i-other",
+          "title": "Dynamics, ServiceNow, and the rest stay on the marketplace",
+          "level": "Core",
+          "minutes": 11,
+          "summary": "No invented feature lists for CRMs this lab did not open."
+        },
+        {
+          "id": "i-fail",
+          "title": "A CRM failure is not an ACD failure",
+          "level": "Core",
+          "minutes": 11,
+          "summary": "Screen pop can die while the queue is healthy."
+        }
+      ]
+    },
+    {
+      "id": "migration",
+      "title": "Migration",
+      "kicker": "Rebuild",
+      "accent": 1,
+      "summary": "Engage, PureConnect, and Cisco UCCE move by rebuilding Architect flows and queues. This is a learning bridge, not a converter.",
+      "file": "data/tracks/migration.json",
+      "lessons": [
+        {
+          "id": "x-rebuild",
+          "title": "Nothing imports your old routing by magic",
+          "level": "Core",
+          "minutes": 12,
+          "summary": "You rebuild flows, queues, and trunks. You do not flip a converter this lab has not found."
+        },
+        {
+          "id": "x-engage",
+          "title": "Engage and PureConnect become flows and queues",
+          "level": "Core",
+          "minutes": 12,
+          "summary": "Strategies, IRDs, and handlers are read as behavior, then redrawn."
+        },
+        {
+          "id": "x-ivr",
+          "title": "IVR becomes Architect tasks, menus, and audio",
+          "level": "Core",
+          "minutes": 12,
+          "summary": "CVP, UCCX prompts, and Engage voice all become the same kind of flow."
+        },
+        {
+          "id": "x-ucce",
+          "title": "UCCE skill groups and precision queues are not Genesys queues",
+          "level": "Core",
+          "minutes": 13,
+          "summary": "Membership, skills, and bullseye are three ideas you reassemble."
+        },
+        {
+          "id": "x-uccx",
+          "title": "UCCX is a smaller center with the same rebuild rule",
+          "level": "Core",
+          "minutes": 11,
+          "summary": "Scripts, CSQs, and the Finesse desktop do not move as files."
+        },
+        {
+          "id": "x-cucm",
+          "title": "CUCM stays. BYOC is the door, not a replacement cluster.",
+          "level": "Core",
+          "minutes": 12,
+          "summary": "A dial plan and a trunk are Genesys number plans and a BYOC trunk. CUCM is still yours."
+        },
+        {
+          "id": "x-webex",
+          "title": "Webex is a neighbor, not a page this lab pretends to summarize",
+          "level": "Core",
+          "minutes": 10,
+          "summary": "Use Cisco\u2019s product pages. Do not cite a Webex help URL this lab did not confirm."
+        },
+        {
+          "id": "x-cut",
+          "title": "Cut over one number, then the queue, then the people",
+          "level": "Core",
+          "minutes": 12,
+          "summary": "A weekend big-bang is how untested emergency routes meet a full staff."
+        }
+      ]
+    },
+    {
+      "id": "ecosystem",
+      "title": "Ecosystem",
+      "kicker": "The map",
+      "accent": 4,
+      "summary": "How the tracks fit, how to read certifications, and what this lab refuses to invent.",
+      "file": "data/tracks/ecosystem.json",
+      "lessons": [
+        {
+          "id": "z-map",
+          "title": "The conversation crosses a short list of systems",
+          "level": "Foundation",
+          "minutes": 12,
+          "summary": "Carrier, trunk or Edge, Architect, queue, agent, then the systems beside the agent."
+        },
+        {
+          "id": "z-sisters",
+          "title": "WFM, QM, E911, analytics, CRM, and bots are sisters",
+          "level": "Core",
+          "minutes": 12,
+          "summary": "Each sister has a track and a page. None of them is a setting on the queue tab alone."
+        },
+        {
+          "id": "z-bridge",
+          "title": "The Cisco bridge is a translation, with both citations showing",
+          "level": "Core",
+          "minutes": 11,
+          "summary": "UCCE, UCCX, CUCM, and Webex are named so a Cisco engineer can find the door."
+        },
+        {
+          "id": "z-certs",
+          "title": "Read the catalog by name, then the announcement",
+          "level": "Core",
+          "minutes": 11,
+          "summary": "GC-GCP and GC-GCD are catalog codes. Specialist rows are names. AI rows are two exams."
+        },
+        {
+          "id": "z-interview",
+          "title": "Interview answers cite a page, not a vibe",
+          "level": "Core",
+          "minutes": 11,
+          "summary": "The drill in this lab is a set of questions with a model answer and a link."
+        },
+        {
+          "id": "z-refuse",
+          "title": "What this lab will not invent",
+          "level": "Foundation",
+          "minutes": 10,
+          "summary": "Prices, unconfirmed hosts, exam codes, lifecycle dates, and CRM feature lists stay off the page."
+        }
+      ]
+    }
+  ],
+  "studios": [
+    {
+      "id": "architect",
+      "title": "Architect-style flow builder",
+      "summary": "A vertical task list that exports learning JSON. It is not an import file for a live org.",
+      "accent": 3
+    },
+    {
+      "id": "routing",
+      "title": "Routing simulator",
+      "summary": "Conversation score, bullseye rings, preferred agents, and evaluation methods as the articles describe them.",
+      "accent": 1
+    },
+    {
+      "id": "api",
+      "title": "Platform API explorer",
+      "summary": "Sample requests and JSON for grants and queues. The page never sends them.",
+      "accent": 4
+    },
+    {
+      "id": "numbers",
+      "title": "Number plan desk",
+      "summary": "Classify a dial string with the documented default plans. Not the in-product call simulator.",
+      "accent": 2
+    },
+    {
+      "id": "migration",
+      "title": "Migration mapper",
+      "summary": "A learning bridge from Engage, PureConnect, and Cisco UCCE to objects you rebuild.",
+      "accent": 1
+    }
+  ]
+}

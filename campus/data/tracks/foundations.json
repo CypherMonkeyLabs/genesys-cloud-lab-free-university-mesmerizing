@@ -1,0 +1,1740 @@
+{
+  "id": "foundations",
+  "title": "Foundations",
+  "kicker": "Start here",
+  "accent": 1,
+  "summary": "What Genesys Cloud CX is, where an organization lives, and how a voice conversation is supposed to move.",
+  "lessons": [
+    {
+      "id": "f-platform",
+      "title": "What Genesys Cloud CX is",
+      "level": "Foundation",
+      "minutes": 14,
+      "summary": "Genesys Cloud CX is a subscription contact-center platform with four nested packages, not a single feature switch.",
+      "paras": [
+        "The overview article names four packages. Genesys Cloud CX 1 is the voice package: inbound and outbound voice, secure IVR, callbacks, and voice campaigns. CX 2 adds the digital channels and the quality and compliance layer on top of CX 1. CX 3 adds workforce engagement management and voice transcription minutes. CX 4 adds Agent Copilot, Journey Management, and a published AI token allotment: 30 tokens for a named user and 39 for a concurrent user.",
+        "Each higher package includes the lower ones. A design that needs scheduling and transcription is a CX 3 conversation. A design that needs Agent Copilot is a CX 4 conversation. The December 2023 feature-matrix PDF is a historical summary and does not describe CX 4 the way the current overview does."
+      ],
+      "cites": [
+        {
+          "title": "Overview of Genesys Cloud",
+          "url": "https://help.mypurecloud.com/articles/overview-of-genesys-cloud/"
+        },
+        {
+          "title": "Genesys Agent Copilot overview",
+          "url": "https://help.genesys.cloud/articles/agent-copilot-overview/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "CX packages stack from voice to AI.",
+        "nodes": [
+          {
+            "id": "cx1",
+            "label": "CX 1 voice",
+            "kind": "phone",
+            "x": 12,
+            "y": 70
+          },
+          {
+            "id": "cx2",
+            "label": "CX 2 digital",
+            "kind": "queue",
+            "x": 36,
+            "y": 50
+          },
+          {
+            "id": "cx3",
+            "label": "CX 3 WEM",
+            "kind": "wem",
+            "x": 62,
+            "y": 32
+          },
+          {
+            "id": "cx4",
+            "label": "CX 4 AI",
+            "kind": "bot",
+            "x": 84,
+            "y": 16
+          }
+        ],
+        "edges": [
+          {
+            "a": "cx1",
+            "b": "cx2"
+          },
+          {
+            "a": "cx2",
+            "b": "cx3"
+          },
+          {
+            "a": "cx3",
+            "b": "cx4"
+          }
+        ]
+      },
+      "flow": {
+        "title": "How a buyer reads the package stack",
+        "steps": [
+          {
+            "from": "Buyer",
+            "to": "Overview",
+            "title": "CX 1",
+            "detail": "Voice, secure IVR, callbacks, campaigns.",
+            "inspect": "Package: Genesys Cloud CX 1"
+          },
+          {
+            "from": "Buyer",
+            "to": "Overview",
+            "title": "CX 2",
+            "detail": "Adds digital channels and quality.",
+            "inspect": "Includes CX 1"
+          },
+          {
+            "from": "Buyer",
+            "to": "Overview",
+            "title": "CX 3",
+            "detail": "Adds WEM and transcription minutes.",
+            "inspect": "Includes CX 1 and CX 2"
+          },
+          {
+            "from": "Buyer",
+            "to": "Overview",
+            "title": "CX 4",
+            "detail": "Adds Agent Copilot, Journey Management, tokens.",
+            "inspect": "30 named / 39 concurrent tokens"
+          },
+          {
+            "from": "Buyer",
+            "to": "Resource Center",
+            "title": "Check the page",
+            "detail": "The live overview wins over an old matrix PDF.",
+            "inspect": "PDF date in the lab notes: 2023-12-06"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Which package first includes workforce engagement management?",
+          "choices": [
+            "Genesys Cloud CX 3",
+            "Genesys Cloud CX 1",
+            "Genesys Cloud CX 2",
+            "A free developer org"
+          ],
+          "answer": 0,
+          "why": "The overview lists WEM on CX 3, which also includes CX 1 and CX 2."
+        },
+        {
+          "q": "What does the overview add at CX 4 beyond CX 3?",
+          "choices": [
+            "A second AWS region for free",
+            "On-premises ICM",
+            "Unlimited SIP trunks",
+            "Agent Copilot, Journey Management, and AI tokens"
+          ],
+          "answer": 3,
+          "why": "Those three items are the CX 4 additions named on the overview."
+        },
+        {
+          "q": "How many AI tokens does the overview list for a named CX 4 user?",
+          "choices": [
+            "30",
+            "5",
+            "39",
+            "100"
+          ],
+          "answer": 0,
+          "why": "39 is the concurrent figure. 30 is the named figure."
+        },
+        {
+          "q": "CX 2 is best described as which of these?",
+          "choices": [
+            "A PureConnect license",
+            "CX 1 plus digital channels and quality",
+            "A voice-only bundle",
+            "WEM without voice"
+          ],
+          "answer": 1,
+          "why": "The overview builds each package on the previous one."
+        },
+        {
+          "q": "Why is the 2023 feature-matrix PDF a weak source for CX 4?",
+          "choices": [
+            "PDFs cannot describe voice",
+            "CX 4 is only a community nickname",
+            "It predates the CX 4 description on the current overview",
+            "Genesys removed CX 1"
+          ],
+          "answer": 2,
+          "why": "Use the overview article for the current package story."
+        },
+        {
+          "q": "Secure IVR and voice campaigns are introduced at which package?",
+          "choices": [
+            "CX 3 only",
+            "AppFoundry only",
+            "Genesys Cloud CX 1",
+            "CX 4 only"
+          ],
+          "answer": 2,
+          "why": "The overview places them in the voice package."
+        }
+      ],
+      "cards": [
+        {
+          "front": "CX 1",
+          "back": "Voice package: inbound and outbound voice, secure IVR, callbacks, campaigns."
+        },
+        {
+          "front": "CX 3",
+          "back": "Adds WEM and voice transcription minutes on top of CX 1 and CX 2."
+        },
+        {
+          "front": "CX 4 tokens",
+          "back": "30 named, 39 concurrent, as published on the overview."
+        },
+        {
+          "front": "Old matrix",
+          "back": "A dated PDF is not the source for the current CX 4 description."
+        }
+      ],
+      "lab": {
+        "title": "Read the package you actually own",
+        "steps": [
+          "Open the overview article and write down what CX 1, CX 2, CX 3, and CX 4 each add.",
+          "Circle the first package that includes WEM.",
+          "Find the named and concurrent token numbers for CX 4.",
+          "Note that a 2023 matrix is historical."
+        ],
+        "success": "You can say which package a design requires without guessing."
+      },
+      "fault": {
+        "title": "Package mismatch",
+        "symptom": "Agents expect schedules, but the org only shows voice queues.",
+        "log": "License view: Genesys Cloud CX 1 assigned. WFM admin pages are absent.",
+        "cause": "WEM is a CX 3 capability in the overview, not a CX 1 feature.",
+        "fix": "Move the users who need scheduling to a package that includes CX 3, or drop the WFM scope."
+      }
+    },
+    {
+      "id": "f-regions",
+      "title": "Core regions and satellite media",
+      "level": "Foundation",
+      "minutes": 16,
+      "summary": "An organization is born in one core AWS region. Satellite regions carry media. They do not host the org.",
+      "paras": [
+        "When an organization is created, Genesys Cloud deploys it in a core region and sends users to that region\u2019s login URL. US East (N. Virginia, us-east-1) uses https://login.mypurecloud.com. US West (Oregon, us-west-2) uses https://login.usw2.pure.cloud. The FedRAMP region (US East 2, Ohio, us-east-2) uses https://login.use2.us-gov-pure.cloud. The regions article is the full table. Do not invent a login host for a row you have not opened.",
+        "Satellite regions exist for Global Media Fabric. They add places for call and audio paths, including recording storage, so media does not have to hairpin to the core. A satellite region cannot be the AWS region where the organization itself is deployed. Some core regions offer Genesys Cloud Voice and some do not. Voice coverage, including which countries can buy numbers, is a separate article from the org-deployment list."
+      ],
+      "cites": [
+        {
+          "title": "AWS regions for Genesys Cloud",
+          "url": "https://help.genesys.cloud/articles/aws-regions-for-genesys-cloud-deployment/"
+        },
+        {
+          "title": "AWS regions for Genesys Cloud Voice",
+          "url": "https://help.genesys.cloud/articles/aws-regions-genesys-cloud-voice/"
+        }
+      ],
+      "uncertainty": "Other core regions exist on the same article, including Canada, Ireland, Frankfurt, London, Tokyo, and more. This lesson only hardcodes the three login URLs quoted from the table in full.",
+      "figure": {
+        "caption": "Core region holds the org. Satellite regions shorten media.",
+        "nodes": [
+          {
+            "id": "org",
+            "label": "Core org",
+            "kind": "region",
+            "x": 30,
+            "y": 40
+          },
+          {
+            "id": "sat",
+            "label": "Satellite media",
+            "kind": "trunk",
+            "x": 68,
+            "y": 28
+          },
+          {
+            "id": "rec",
+            "label": "Recording",
+            "kind": "wem",
+            "x": 68,
+            "y": 68
+          }
+        ],
+        "edges": [
+          {
+            "a": "org",
+            "b": "sat"
+          },
+          {
+            "a": "sat",
+            "b": "rec"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Where a new org actually lands",
+        "steps": [
+          {
+            "from": "Admin",
+            "to": "Core region",
+            "title": "Create org",
+            "detail": "The org is placed in one core region.",
+            "inspect": "Login URL follows that row"
+          },
+          {
+            "from": "User",
+            "to": "Login host",
+            "title": "Sign in",
+            "detail": "US East uses login.mypurecloud.com.",
+            "inspect": "us-east-1"
+          },
+          {
+            "from": "Media",
+            "to": "Satellite",
+            "title": "Audio path",
+            "detail": "Global Media Fabric can anchor media closer to the site.",
+            "inspect": "Satellite is not an org home"
+          },
+          {
+            "from": "Buyer",
+            "to": "GCV table",
+            "title": "Voice check",
+            "detail": "Number and calling coverage is its own article.",
+            "inspect": "FedRAMP voice is US-only in that article"
+          },
+          {
+            "from": "Engineer",
+            "to": "Regions page",
+            "title": "Confirm",
+            "detail": "Read the row before you hardcode a host.",
+            "inspect": "Do not copy a host from memory"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Can a satellite region be the deployment region for an organization?",
+          "choices": [
+            "Yes, if you buy CX 4",
+            "Only on Tuesdays",
+            "No. A satellite region cannot host the org.",
+            "Yes, for orgs under 50 users"
+          ],
+          "answer": 2,
+          "why": "The regions article says a satellite cannot act as the deployment region."
+        },
+        {
+          "q": "Which login URL does the regions article list for Americas (US East)?",
+          "choices": [
+            "https://login.usw2.pure.cloud",
+            "https://login.use2.us-gov-pure.cloud",
+            "https://api.genesys.com",
+            "https://login.mypurecloud.com"
+          ],
+          "answer": 3,
+          "why": "US East is us-east-1 and that login host."
+        },
+        {
+          "q": "What is a satellite region for?",
+          "choices": [
+            "Extra media locations, including recording storage, via Global Media Fabric",
+            "A second billing org",
+            "A PureConnect core",
+            "An AppFoundry tenant"
+          ],
+          "answer": 0,
+          "why": "Satellites shorten media paths. They are not a second organization."
+        },
+        {
+          "q": "US West (Oregon) maps to which AWS region name in the article?",
+          "choices": [
+            "us-west-2",
+            "us-east-1",
+            "eu-west-1",
+            "af-south-1"
+          ],
+          "answer": 0,
+          "why": "The article pairs US West (Oregon) with us-west-2."
+        },
+        {
+          "q": "Where do you confirm Genesys Cloud Voice country coverage?",
+          "choices": [
+            "The Architect home page",
+            "A queue name",
+            "The Genesys Cloud Voice regions article, not the org-deployment table alone",
+            "Any RFC"
+          ],
+          "answer": 2,
+          "why": "Voice availability is documented separately and has country restrictions."
+        },
+        {
+          "q": "FedRAMP in the regions table is which AWS region?",
+          "choices": [
+            "S\u00e3o Paulo",
+            "US East 2 (Ohio), us-east-2",
+            "US West",
+            "Ireland"
+          ],
+          "answer": 1,
+          "why": "The article lists the FedRAMP login on us-east-2."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Core vs satellite",
+          "back": "Core hosts the org. Satellite hosts media paths and cannot be the org region."
+        },
+        {
+          "front": "US East login",
+          "back": "https://login.mypurecloud.com for us-east-1."
+        },
+        {
+          "front": "US West login",
+          "back": "https://login.usw2.pure.cloud for us-west-2."
+        },
+        {
+          "front": "Voice coverage",
+          "back": "Read the Genesys Cloud Voice region article before you promise numbers."
+        }
+      ],
+      "lab": {
+        "title": "Pin an org to its region row",
+        "steps": [
+          "Open the AWS regions article.",
+          "Find the login URL for the region you think you are in.",
+          "Find one satellite region and write why it cannot hold the org.",
+          "Open the Genesys Cloud Voice region article and note one restriction."
+        ],
+        "success": "You can point at the right login host and you know where voice coverage is documented."
+      },
+      "fault": {
+        "title": "Wrong login host",
+        "symptom": "A script gets a token from login.mypurecloud.com and then sees none of the production users.",
+        "log": "Org home region: Americas (US West). Token request host: login.mypurecloud.com.",
+        "cause": "US West users authenticate at login.usw2.pure.cloud. The US East host is a different core.",
+        "fix": "Retarget the OAuth client and the API host to the org\u2019s documented region row."
+      }
+    },
+    {
+      "id": "f-sip",
+      "title": "SIP, RTP, and what the trunk is doing",
+      "level": "Foundation",
+      "minutes": 15,
+      "summary": "SIP sets the call up. RTP moves the audio. They are different protocols, and Genesys trunks speak both.",
+      "paras": [
+        "RFC 3261 is the Session Initiation Protocol. An INVITE offers a session, responses such as 100, 180, and 200 move the dialog along, and ACK confirms the 200. The media description inside that signaling is not the audio itself. RFC 3550 is RTP, the stream of audio packets. RFC 3711 is SRTP, the encrypted form of that stream. RFC 4733 is how telephone events such as DTMF digits can ride in the RTP stream instead of in the audio band.",
+        "BYOC Cloud places a SIP trunk between the Genesys Cloud media tier in AWS and a carrier or PBX that has a public address. The audio is RTP across the internet, so latency and loss on that path are part of the design. Example addresses in this lab use the documentation ranges in RFC 5737, such as 192.0.2.10, and are not a customer capture."
+      ],
+      "cites": [
+        {
+          "title": "RFC 3261 SIP",
+          "url": "https://www.rfc-editor.org/rfc/rfc3261"
+        },
+        {
+          "title": "RFC 3550 RTP",
+          "url": "https://www.rfc-editor.org/rfc/rfc3550"
+        },
+        {
+          "title": "RFC 3711 SRTP",
+          "url": "https://www.rfc-editor.org/rfc/rfc3711"
+        },
+        {
+          "title": "RFC 4733 DTMF",
+          "url": "https://www.rfc-editor.org/rfc/rfc4733"
+        },
+        {
+          "title": "BYOC Cloud overview",
+          "url": "https://help.genesys.cloud/articles/byoc-cloud-overview/"
+        },
+        {
+          "title": "RFC 5737 documentation addresses",
+          "url": "https://www.rfc-editor.org/rfc/rfc5737"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Signaling and media take different paths.",
+        "nodes": [
+          {
+            "id": "carrier",
+            "label": "Carrier",
+            "kind": "carrier",
+            "x": 12,
+            "y": 40
+          },
+          {
+            "id": "sip",
+            "label": "SIP",
+            "kind": "trunk",
+            "x": 40,
+            "y": 22
+          },
+          {
+            "id": "rtp",
+            "label": "RTP",
+            "kind": "phone",
+            "x": 40,
+            "y": 70
+          },
+          {
+            "id": "media",
+            "label": "Media tier",
+            "kind": "region",
+            "x": 78,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "carrier",
+            "b": "sip"
+          },
+          {
+            "a": "sip",
+            "b": "media"
+          },
+          {
+            "a": "carrier",
+            "b": "rtp"
+          },
+          {
+            "a": "rtp",
+            "b": "media"
+          }
+        ]
+      },
+      "flow": {
+        "title": "A lab INVITE, not a capture",
+        "steps": [
+          {
+            "from": "Carrier",
+            "to": "BYOC trunk",
+            "title": "INVITE",
+            "detail": "The carrier offers a session toward a public trunk address.",
+            "inspect": "INVITE sip:+15555550100@192.0.2.10 SIP/2.0"
+          },
+          {
+            "from": "BYOC trunk",
+            "to": "Carrier",
+            "title": "100 Trying",
+            "detail": "The trunk accepted the INVITE into processing.",
+            "inspect": "SIP/2.0 100 Trying"
+          },
+          {
+            "from": "BYOC trunk",
+            "to": "Carrier",
+            "title": "180 Ringing",
+            "detail": "Alerting has started. Audio is still not a conversation.",
+            "inspect": "SIP/2.0 180 Ringing"
+          },
+          {
+            "from": "Media",
+            "to": "Media",
+            "title": "RTP",
+            "detail": "RFC 3550 packets carry the voice once the session is up.",
+            "inspect": "UDP media, not the SIP dialog"
+          },
+          {
+            "from": "Phone",
+            "to": "Media",
+            "title": "DTMF",
+            "detail": "A digit can be an RFC 4733 telephone event.",
+            "inspect": "Payload telephone-event"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Which RFC defines SIP?",
+          "choices": [
+            "RFC 5737",
+            "RFC 3261",
+            "RFC 3550",
+            "RFC 3711"
+          ],
+          "answer": 1,
+          "why": "3261 is SIP. 3550 is RTP. 3711 is SRTP. 5737 is documentation addresses."
+        },
+        {
+          "q": "What does RTP carry that SIP does not?",
+          "choices": [
+            "Division IDs",
+            "The media packets of the conversation",
+            "The queue membership list",
+            "OAuth tokens"
+          ],
+          "answer": 1,
+          "why": "SIP sets up the session. RTP moves the audio."
+        },
+        {
+          "q": "SRTP is specified in which RFC?",
+          "choices": [
+            "RFC 3550",
+            "RFC 3711",
+            "RFC 4733",
+            "RFC 3261"
+          ],
+          "answer": 1,
+          "why": "3711 is Secure RTP."
+        },
+        {
+          "q": "Why does this lab use 192.0.2.10 in sample messages?",
+          "choices": [
+            "It is a Genesys anycast address",
+            "It is the US East login host",
+            "It is a customer SBC",
+            "RFC 5737 reserves it for documentation"
+          ],
+          "answer": 3,
+          "why": "Documentation ranges must not be mistaken for a live capture."
+        },
+        {
+          "q": "BYOC Cloud media between AWS and the carrier is which protocol family?",
+          "choices": [
+            "RTP over the internet",
+            "An Architect expression",
+            "SCIM",
+            "A screen recording"
+          ],
+          "answer": 0,
+          "why": "The BYOC Cloud overview calls out RTP across the public internet."
+        },
+        {
+          "q": "RFC 4733 is the right citation for which event?",
+          "choices": [
+            "Queue member limits",
+            "DTMF telephone events in RTP",
+            "OAuth client credentials",
+            "Bullseye ring timers"
+          ],
+          "answer": 1,
+          "why": "4733 covers telephone events such as digits."
+        }
+      ],
+      "cards": [
+        {
+          "front": "SIP",
+          "back": "RFC 3261. Session setup, not the audio packets."
+        },
+        {
+          "front": "RTP",
+          "back": "RFC 3550. The audio stream."
+        },
+        {
+          "front": "SRTP",
+          "back": "RFC 3711. Encrypted RTP."
+        },
+        {
+          "front": "DTMF",
+          "back": "RFC 4733 telephone events, when digits must not depend on in-band audio."
+        }
+      ],
+      "lab": {
+        "title": "Label a sample INVITE",
+        "steps": [
+          "Write a one-line INVITE that uses 192.0.2.10.",
+          "Name the RFC that makes that address safe for a lab.",
+          "Point at which line would be SIP and which path would be RTP.",
+          "Name the RFC you would cite for a DTMF digit."
+        ],
+        "success": "You can separate signaling from media without inventing headers."
+      },
+      "fault": {
+        "title": "One-way audio",
+        "symptom": "The caller hears ringing, then silence, while the agent hears the caller.",
+        "log": "SIP: 200 OK and ACK both completed. RTP from 192.0.2.11 toward the media tier: zero packets for 8 seconds.",
+        "cause": "The dialog is up. The RTP path is not. Signaling success does not prove media.",
+        "fix": "Inspect firewall and NAT for the UDP media range with the carrier, using the BYOC port guidance, before you rewrite the Architect flow."
+      }
+    },
+    {
+      "id": "f-acd-idea",
+      "title": "What ACD is before you name a queue",
+      "level": "Foundation",
+      "minutes": 12,
+      "summary": "ACD picks an agent for a waiting interaction. The queue is the waiting line. Skills, utilization, and On Queue decide who is eligible.",
+      "paras": [
+        "Genesys Cloud queues are the waiting lines. An agent enters the queues they belong to by choosing On Queue. A queue name is unique, cannot contain special characters, and can hold at most 5,000 members. The queue also belongs to a division, which is how access control reaches it.",
+        "Routing methods decide how that waiting line offers work: standard, predictive, bullseye, preferred agent, and conditional group routing. Evaluation methods decide what \u201chas the skills\u201d means. Utilization decides whether an agent who is already busy may take another interaction. Those controls are the rest of this lab. This lesson only fixes the vocabulary."
+      ],
+      "cites": [
+        {
+          "title": "Create and configure queues",
+          "url": "https://help.genesys.cloud/articles/create-queues/"
+        },
+        {
+          "title": "Advanced routing overview",
+          "url": "https://help.genesys.cloud/articles/advanced-routing-overview/"
+        },
+        {
+          "title": "Agent utilization",
+          "url": "https://help.genesys.cloud/articles/utilization/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "A queue offers work only to agents who are On Queue.",
+        "nodes": [
+          {
+            "id": "in",
+            "label": "Interaction",
+            "kind": "phone",
+            "x": 12,
+            "y": 40
+          },
+          {
+            "id": "q",
+            "label": "Queue",
+            "kind": "queue",
+            "x": 42,
+            "y": 40
+          },
+          {
+            "id": "on",
+            "label": "On Queue",
+            "kind": "agent",
+            "x": 72,
+            "y": 22
+          },
+          {
+            "id": "off",
+            "label": "Off queue",
+            "kind": "agent",
+            "x": 72,
+            "y": 70
+          }
+        ],
+        "edges": [
+          {
+            "a": "in",
+            "b": "q"
+          },
+          {
+            "a": "q",
+            "b": "on"
+          }
+        ]
+      },
+      "flow": {
+        "title": "From arrival to an eligible agent",
+        "steps": [
+          {
+            "from": "Caller",
+            "to": "Queue",
+            "title": "Enqueue",
+            "detail": "The interaction waits on a named queue.",
+            "inspect": "Queue name is unique"
+          },
+          {
+            "from": "Agent",
+            "to": "Workspace",
+            "title": "On Queue",
+            "detail": "Only On Queue agents are candidates.",
+            "inspect": "Off-queue agents are invisible to ACD"
+          },
+          {
+            "from": "ACD",
+            "to": "Profile",
+            "title": "Skills",
+            "detail": "The evaluation method decides if skills are required.",
+            "inspect": "All, best, or disregard"
+          },
+          {
+            "from": "ACD",
+            "to": "Utilization",
+            "title": "Capacity",
+            "detail": "A full agent is skipped.",
+            "inspect": "Defaults include one voice call"
+          },
+          {
+            "from": "ACD",
+            "to": "Agent",
+            "title": "Alert",
+            "detail": "Voice alerting is 7 to 59 seconds.",
+            "inspect": "Then Not Responding"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "What is the documented member cap on one queue?",
+          "choices": [
+            "Unlimited",
+            "5000",
+            "50",
+            "500"
+          ],
+          "answer": 1,
+          "why": "Create and configure queues states the 5,000 member limit."
+        },
+        {
+          "q": "Which status puts an agent into the queues they belong to?",
+          "choices": [
+            "On Queue",
+            "Available",
+            "Busy",
+            "Meeting"
+          ],
+          "answer": 0,
+          "why": "The queue article says agents select On Queue."
+        },
+        {
+          "q": "A queue name may not contain which of these?",
+          "choices": [
+            "Digits",
+            "A division",
+            "Special characters",
+            "Letters"
+          ],
+          "answer": 2,
+          "why": "Names must be unique and free of special characters."
+        },
+        {
+          "q": "Which routing method is the default named in the routing settings article?",
+          "choices": [
+            "Bullseye routing",
+            "Preferred agent routing",
+            "Standard routing",
+            "Predictive routing"
+          ],
+          "answer": 2,
+          "why": "Standard is the documented default."
+        },
+        {
+          "q": "Utilization is best described as which control?",
+          "choices": [
+            "The OAuth grant",
+            "How many interactions of each media an agent may hold",
+            "The SIP response code",
+            "The login region"
+          ],
+          "answer": 1,
+          "why": "The utilization article defines per-media capacity."
+        },
+        {
+          "q": "Voice alerting timeout must fall in which documented range?",
+          "choices": [
+            "Exactly 30 seconds",
+            "7 to 59 seconds",
+            "1 to 3 seconds",
+            "2 seconds to 72 hours"
+          ],
+          "answer": 1,
+          "why": "7 to 59 is the alerting range. The 72 hour figure belongs to other timers."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Queue",
+          "back": "The waiting line. Unique name, no special characters, 5,000 members."
+        },
+        {
+          "front": "On Queue",
+          "back": "The status that makes an agent eligible for ACD work."
+        },
+        {
+          "front": "Routing method",
+          "back": "Standard, predictive, bullseye, preferred, or conditional group."
+        },
+        {
+          "front": "Alerting",
+          "back": "7 to 59 seconds on voice, then Not Responding."
+        }
+      ],
+      "lab": {
+        "title": "Say the five routing methods out loud",
+        "steps": [
+          "List standard, predictive, bullseye, preferred agent, and conditional group routing.",
+          "State the queue member cap.",
+          "State the voice alerting range.",
+          "Explain On Queue in one sentence."
+        ],
+        "success": "You can brief a new admin without mixing timers from different features."
+      },
+      "fault": {
+        "title": "Ghost queue",
+        "symptom": "Agents are logged in and idle, and the queue stays at zero answered.",
+        "log": "Presence: Available. Routing status: Off Queue. Queue membership: Billing voice.",
+        "cause": "Available is not On Queue. ACD does not offer the interaction.",
+        "fix": "Have the agent select On Queue, then confirm membership on that queue."
+      }
+    },
+    {
+      "id": "f-digital",
+      "title": "Digital conversations beside voice",
+      "level": "Foundation",
+      "minutes": 12,
+      "summary": "Voice is one media. Architect also has inbound message, email, and chat flows, and queues track those medias separately.",
+      "paras": [
+        "The Architect home page lists inbound message, inbound email, and inbound chat alongside inbound call. In-queue flows exist for calls, email, and messages. Call flows ship with a default in-queue flow that is not published until you publish it. Email and message queues do not get that built-in default. You create those in-queue flows yourself.",
+        "Utilization counts medias separately. The documented defaults are one voice call, one email, one callback, up to four chats, up to four messages, and up to four workitems. A designer who copies a voice queue and expects the same in-queue music on email has skipped the flow-type list."
+      ],
+      "cites": [
+        {
+          "title": "Navigate the Architect home page",
+          "url": "https://help.genesys.cloud/articles/navigate-the-architect-home-page/"
+        },
+        {
+          "title": "In-queue flows overview",
+          "url": "https://help.genesys.cloud/articles/queue-call-flows/"
+        },
+        {
+          "title": "Agent utilization",
+          "url": "https://help.genesys.cloud/articles/utilization/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Voice and digital flows are different Architect types.",
+        "nodes": [
+          {
+            "id": "call",
+            "label": "Inbound call",
+            "kind": "phone",
+            "x": 16,
+            "y": 30
+          },
+          {
+            "id": "msg",
+            "label": "Message",
+            "kind": "queue",
+            "x": 42,
+            "y": 30
+          },
+          {
+            "id": "mail",
+            "label": "Email",
+            "kind": "crm",
+            "x": 68,
+            "y": 30
+          },
+          {
+            "id": "iq",
+            "label": "In-queue",
+            "kind": "architect",
+            "x": 42,
+            "y": 72
+          }
+        ],
+        "edges": [
+          {
+            "a": "call",
+            "b": "iq"
+          },
+          {
+            "a": "msg",
+            "b": "iq"
+          },
+          {
+            "a": "mail",
+            "b": "iq"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Pick the flow type before the prompt",
+        "steps": [
+          {
+            "from": "Admin",
+            "to": "Architect",
+            "title": "Open Flows",
+            "detail": "The home page is a list of flow types.",
+            "inspect": "Call, message, email, chat"
+          },
+          {
+            "from": "Admin",
+            "to": "In-queue call",
+            "title": "Default",
+            "detail": "A default call in-queue flow exists and still needs a publish.",
+            "inspect": "Unpublished means unused"
+          },
+          {
+            "from": "Admin",
+            "to": "In-queue email",
+            "title": "Create",
+            "detail": "Email has no built-in default in-queue flow.",
+            "inspect": "Create one on the queue"
+          },
+          {
+            "from": "ACD",
+            "to": "Utilization",
+            "title": "Media caps",
+            "detail": "Chats and messages default higher than voice.",
+            "inspect": "4 chats, 1 call"
+          },
+          {
+            "from": "Agent",
+            "to": "Workspace",
+            "title": "Handle",
+            "detail": "The agent can hold mixed medias up to those caps.",
+            "inspect": "Interrupt rules are separate"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Does Architect publish the default in-queue call flow for you?",
+          "choices": [
+            "Only for email",
+            "Only in FedRAMP",
+            "No. You must publish it before it handles waiting calls.",
+            "Yes, on org creation"
+          ],
+          "answer": 2,
+          "why": "The in-queue overview says the default is not automatically published."
+        },
+        {
+          "q": "Email and message in-queue flows differ from calls because:",
+          "choices": [
+            "They ignore divisions",
+            "They use RTP",
+            "There is no built-in default. You create them.",
+            "They cannot transfer to a queue"
+          ],
+          "answer": 2,
+          "why": "The overview says Architect does not include a built-in default for email and message."
+        },
+        {
+          "q": "Default chat utilization is up to how many?",
+          "choices": [
+            "1",
+            "2",
+            "10",
+            "4"
+          ],
+          "answer": 3,
+          "why": "The utilization article lists up to four chats."
+        },
+        {
+          "q": "Default voice utilization is how many calls?",
+          "choices": [
+            "1",
+            "4",
+            "8",
+            "0"
+          ],
+          "answer": 0,
+          "why": "One voice call is the documented default."
+        },
+        {
+          "q": "Which Architect home tab is the right place for a WhatsApp-style inbound message?",
+          "choices": [
+            "Secure call",
+            "Workflow only",
+            "Inbound message",
+            "Inbound call"
+          ],
+          "answer": 2,
+          "why": "Inbound message is the documented flow type for ACD messages."
+        },
+        {
+          "q": "Workitems appear in which default utilization row?",
+          "choices": [
+            "One per week",
+            "Up to four",
+            "They are not an interaction type",
+            "Unlimited"
+          ],
+          "answer": 1,
+          "why": "The utilization summary includes up to four workitems."
+        }
+      ],
+      "cards": [
+        {
+          "front": "In-queue call",
+          "back": "A default exists. It does nothing until you publish it."
+        },
+        {
+          "front": "In-queue email",
+          "back": "No built-in default. Create the flow."
+        },
+        {
+          "front": "Default voice cap",
+          "back": "One call."
+        },
+        {
+          "front": "Default message cap",
+          "back": "Up to four messages."
+        }
+      ],
+      "lab": {
+        "title": "Match media to a flow type",
+        "steps": [
+          "Name the Architect flow type for a phone call, an email, and a message.",
+          "State whether each has a built-in in-queue flow.",
+          "Write the default utilization for calls and for chats.",
+          "Explain why publishing matters."
+        ],
+        "success": "You can tell a voice design from a digital design before you draw the flow."
+      },
+      "fault": {
+        "title": "Silent hold",
+        "symptom": "Voice callers sit in silence. The queue is staffed.",
+        "log": "In-queue flow: Default In-Queue. Published: no.",
+        "cause": "The built-in flow is not live until it is published.",
+        "fix": "Publish the in-queue call flow, or assign a published one on the queue."
+      }
+    },
+    {
+      "id": "f-access",
+      "title": "Divisions, before roles get complicated",
+      "level": "Foundation",
+      "minutes": 13,
+      "summary": "A division groups objects inside one organization. It is not a second org, and the Home division cannot be deleted.",
+      "paras": [
+        "Administrators group configuration objects into divisions and then grant roles against those divisions. A queue lives in one division. Users reach objects by holding a role in the division that contains them. Every organization has a Home division. You can move objects into and out of Home. You cannot delete Home.",
+        "Until you create more divisions, new configuration objects land in a way the article describes through the All division concept: All grants organization-wide access, and transactional objects such as conversations, recordings, presence history, and audit data pick up division associations as they move. You move an object between divisions. You do not add a second division membership to the same queue."
+      ],
+      "cites": [
+        {
+          "title": "Divisions overview",
+          "url": "https://help.genesys.cloud/articles/divisions-overview/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "One org, many divisions, one home you cannot delete.",
+        "nodes": [
+          {
+            "id": "org",
+            "label": "Organization",
+            "kind": "region",
+            "x": 18,
+            "y": 30
+          },
+          {
+            "id": "home",
+            "label": "Home",
+            "kind": "queue",
+            "x": 48,
+            "y": 22
+          },
+          {
+            "id": "emea",
+            "label": "EMEA",
+            "kind": "queue",
+            "x": 48,
+            "y": 70
+          },
+          {
+            "id": "role",
+            "label": "Role",
+            "kind": "agent",
+            "x": 80,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "org",
+            "b": "home"
+          },
+          {
+            "a": "org",
+            "b": "emea"
+          },
+          {
+            "a": "role",
+            "b": "emea"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Move a queue, do not clone the org",
+        "steps": [
+          {
+            "from": "Admin",
+            "to": "Home",
+            "title": "See default",
+            "detail": "Home exists in every org and cannot be deleted.",
+            "inspect": "Objects can move"
+          },
+          {
+            "from": "Admin",
+            "to": "New division",
+            "title": "Create EMEA",
+            "detail": "A division groups objects. It is still one org.",
+            "inspect": "Not a new region"
+          },
+          {
+            "from": "Admin",
+            "to": "Queue",
+            "title": "Move",
+            "detail": "The queue leaves its old division.",
+            "inspect": "One division at a time"
+          },
+          {
+            "from": "Admin",
+            "to": "Role",
+            "title": "Grant",
+            "detail": "The role is paired with the division.",
+            "inspect": "No division, no objects"
+          },
+          {
+            "from": "Conversation",
+            "to": "Division",
+            "title": "Transactional",
+            "detail": "The live conversation picks up division context as it travels.",
+            "inspect": "Recordings included"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Can you delete the Home division?",
+          "choices": [
+            "Yes, on CX 4",
+            "Only the All division is permanent",
+            "No",
+            "Yes, after the last queue leaves"
+          ],
+          "answer": 2,
+          "why": "The divisions article says Home cannot be deleted."
+        },
+        {
+          "q": "A division is which of these?",
+          "choices": [
+            "A grouping of objects inside one organization",
+            "A separate AWS region",
+            "A SIP trunk",
+            "An OAuth grant"
+          ],
+          "answer": 0,
+          "why": "Divisions segregate objects without a second org."
+        },
+        {
+          "q": "How does a queue change division?",
+          "choices": [
+            "You publish an Architect flow",
+            "You move it. It belongs to one division.",
+            "You add it to every division",
+            "You rename the org"
+          ],
+          "answer": 1,
+          "why": "Objects are moved, not multi-homed."
+        },
+        {
+          "q": "Which list is called out as transactional objects?",
+          "choices": [
+            "Conversations, recordings, presence history, and audit data",
+            "SIP trunks only",
+            "Number plans only",
+            "OAuth secrets"
+          ],
+          "answer": 0,
+          "why": "The divisions article names those transactional objects."
+        },
+        {
+          "q": "All division is best described as:",
+          "choices": [
+            "The FedRAMP region",
+            "A queue of 5,000 bots",
+            "The default in-queue flow",
+            "Organization-wide access until you split objects up"
+          ],
+          "answer": 3,
+          "why": "All is the org-wide access concept in the same article."
+        },
+        {
+          "q": "Users see a division\u2019s objects when:",
+          "choices": [
+            "Their role is granted on that division",
+            "They know the queue name",
+            "They place one outbound call",
+            "They open Architect"
+          ],
+          "answer": 0,
+          "why": "Roles are how division access is granted."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Home",
+          "back": "Always present. Cannot be deleted. Objects can move."
+        },
+        {
+          "front": "Move, not copy",
+          "back": "A queue belongs to one division."
+        },
+        {
+          "front": "Role + division",
+          "back": "That pair is what lets a user see the objects."
+        },
+        {
+          "front": "Transactional",
+          "back": "Conversations and recordings carry division context too."
+        }
+      ],
+      "lab": {
+        "title": "Draw your org as divisions",
+        "steps": [
+          "Name the division that must exist.",
+          "Pick two business units that deserve their own division.",
+          "Write which objects you would move.",
+          "Write which role would be granted on each."
+        ],
+        "success": "You can explain Home versus a new division without creating a second org."
+      },
+      "fault": {
+        "title": "Invisible queue",
+        "symptom": "An EMEA supervisor cannot see the EMEA queue.",
+        "log": "Queue division: EMEA. Supervisor roles: Home only.",
+        "cause": "The role is not granted on the division that holds the queue.",
+        "fix": "Grant the supervisor role on EMEA, or move the queue into a division they already have."
+      }
+    },
+    {
+      "id": "f-read",
+      "title": "How to read a Genesys page without inventing the rest",
+      "level": "Foundation",
+      "minutes": 11,
+      "summary": "This lab cites the Resource Center, the Developer Center, Genesys Education, and RFCs. The page wins when they differ.",
+      "paras": [
+        "Implementation facts in this lab were checked against public pages on 14 October 2026. Certifications are the names on the Genesys Education cloud exam catalog, including GC-GCP and GC-GCD in the catalog header. Specialist rows are named there without this lab inventing extra exam codes. Community threads still say GCX- in places. Treat the catalog as the current list.",
+        "The Developer Center\u2019s client-credentials guide is the source for the token request, not a blog. The Resource Center is the source for admin behavior. When a summary on a help page and a sentence lower on the same page disagree, read the procedure, not only the generated summary. Fair-use numbers change. This lab points at the policy instead of copying the rate card."
+      ],
+      "cites": [
+        {
+          "title": "Genesys Cloud exams",
+          "url": "https://education.genesys.com/certification/cloud"
+        },
+        {
+          "title": "Genesys technical certifications announcement",
+          "url": "https://education.genesys.com/explore/announcement/genesys-technical-certifications-important-announcement"
+        },
+        {
+          "title": "Client credentials grant",
+          "url": "https://developer.genesys.cloud/api/rest/authorization/use-client-credentials"
+        },
+        {
+          "title": "Genesys Cloud fair use policy",
+          "url": "https://help.genesys.cloud/articles/genesys-cloud-fair-use-policy/"
+        }
+      ],
+      "uncertainty": "The education announcement also says external webcam rules for online proctoring are relaxed until 31 December 2026, practice exams are 25 to 30 questions and do not need a voucher, and Japanese exams are available except Architect. Re-read that notice before you book.",
+      "figure": {
+        "caption": "Four places a citation is allowed to point.",
+        "nodes": [
+          {
+            "id": "rc",
+            "label": "Resource Center",
+            "kind": "region",
+            "x": 18,
+            "y": 30
+          },
+          {
+            "id": "dev",
+            "label": "Developer Center",
+            "kind": "trunk",
+            "x": 42,
+            "y": 30
+          },
+          {
+            "id": "edu",
+            "label": "Education",
+            "kind": "wem",
+            "x": 66,
+            "y": 30
+          },
+          {
+            "id": "rfc",
+            "label": "RFC",
+            "kind": "phone",
+            "x": 84,
+            "y": 70
+          }
+        ],
+        "edges": [
+          {
+            "a": "rc",
+            "b": "dev"
+          },
+          {
+            "a": "edu",
+            "b": "rfc"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Check a claim before you repeat it",
+        "steps": [
+          {
+            "from": "You",
+            "to": "Catalog",
+            "title": "Open exams",
+            "detail": "Read the certification name on the education page.",
+            "inspect": "GC-GCP and GC-GCD are in the header"
+          },
+          {
+            "from": "You",
+            "to": "Article",
+            "title": "Open the procedure",
+            "detail": "Prefer the numbered steps over a one-line summary.",
+            "inspect": "Summaries can compress"
+          },
+          {
+            "from": "You",
+            "to": "API guide",
+            "title": "Read the grant",
+            "detail": "Client credentials are not a user.",
+            "inspect": "/users/me is called out"
+          },
+          {
+            "from": "You",
+            "to": "Fair use",
+            "title": "Do not memorize rates",
+            "detail": "The policy page holds the current table.",
+            "inspect": "Rates change"
+          },
+          {
+            "from": "You",
+            "to": "Lab",
+            "title": "Mark uncertainty",
+            "detail": "If the lab says confirm, open the link.",
+            "inspect": "The page wins"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Which catalog codes does the Genesys Education cloud page put in the header?",
+          "choices": [
+            "MS-721",
+            "GC-GCP and GC-GCD",
+            "GCX-ARC and GCX-WFM",
+            "CCNA and CCIE"
+          ],
+          "answer": 1,
+          "why": "The fetched catalog header uses GC-GCP and GC-GCD. This lab does not invent specialist codes."
+        },
+        {
+          "q": "A client-credentials token is documented as which kind of caller?",
+          "choices": [
+            "The logged-in agent",
+            "A division",
+            "A queue",
+            "A non-user application"
+          ],
+          "answer": 3,
+          "why": "The grant is for headless apps and cannot call user-context APIs such as /api/v2/users/me."
+        },
+        {
+          "q": "Where should a rate-card number come from?",
+          "choices": [
+            "This lab\u2019s memory",
+            "A 2023 PDF only",
+            "An RFC",
+            "The current fair use policy page"
+          ],
+          "answer": 3,
+          "why": "The policy is the rate source, and it changes."
+        },
+        {
+          "q": "What should you do when this lab and a vendor page disagree?",
+          "choices": [
+            "Average them",
+            "Trust a forum dump site",
+            "Trust the vendor page",
+            "Trust the lab"
+          ],
+          "answer": 2,
+          "why": "The lab is a study guide with links, not the product."
+        },
+        {
+          "q": "Why does the lab avoid GCX- exam codes?",
+          "choices": [
+            "The current catalog header shows GC-GCP and GC-GCD, and specialist codes are not invented here",
+            "Genesys has no exams",
+            "GCX is a SIP method",
+            "The codes were never used in community posts"
+          ],
+          "answer": 0,
+          "why": "Older posts use GCX-. The catalog is the source this lab follows."
+        },
+        {
+          "q": "Which announcement is safe to repeat from the education notice?",
+          "choices": [
+            "Webcam rules end in 2024",
+            "Speech and Text Analytics certification is open, and practice exams exist",
+            "All exams were retired in 2024",
+            "Architect is the only remaining exam"
+          ],
+          "answer": 1,
+          "why": "The announcement page says STA is open and describes free practice exams."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Catalog header",
+          "back": "GC-GCP professional, GC-GCD developer."
+        },
+        {
+          "front": "Do not invent codes",
+          "back": "Specialist names are cited. Extra codes are not."
+        },
+        {
+          "front": "Client credentials",
+          "back": "Not a user. /api/v2/users/me is out of scope for that token."
+        },
+        {
+          "front": "Fair use",
+          "back": "Link the policy. Do not freeze a price in a lesson."
+        }
+      ],
+      "lab": {
+        "title": "Open three primary sources",
+        "steps": [
+          "Open the cloud certification catalog and write the two header codes.",
+          "Open the client-credentials guide and find the sentence about /users/me.",
+          "Open the fair use policy and notice that it is a table, not a slogan."
+        ],
+        "success": "You know which site owns which kind of fact."
+      },
+      "fault": {
+        "title": "Stale code in a study sheet",
+        "symptom": "A candidate searches for GCX-GCP and finds conflicting names.",
+        "log": "Catalog header: Genesys Cloud: Professional Certification (GC-GCP).",
+        "cause": "The public catalog and older forum posts use different prefixes.",
+        "fix": "Study the catalog name and the linked preparation courses, and treat other prefixes as historical unless the course page prints them."
+      }
+    },
+    {
+      "id": "f-prereq",
+      "title": "Prerequisites before the first trunk",
+      "level": "Foundation",
+      "minutes": 13,
+      "summary": "BYOC Cloud needs a public carrier address, an open port plan, and a real location. The org subscription has to include the telephony product you intend to use.",
+      "paras": [
+        "The BYOC Cloud quick start assumes the organization exists and the BYOC Cloud product is on the subscription. You then work the carrier requirements, add a physical location, create a BYOC Carrier or BYOC PBX trunk, attach that trunk to an outbound route, and add number plans as needed. The location is not cosmetic. Emergency calling with BYOC uses it, and Genesys warns that it is not responsible for emergency calls that ride a BYOC trunk.",
+        "New BYOC Cloud trunks should use the Dynamic Cloud Voice platform. RTP still crosses the internet, so you judge latency before you promise a voice quality number you have not measured. Monitoring cloud media resources is the documented place to look at that cloud media, not a packet capture from a laptop as the only tool."
+      ],
+      "cites": [
+        {
+          "title": "BYOC Cloud quick start guide",
+          "url": "https://help.genesys.cloud/articles/byoc-cloud-configuration-overview/"
+        },
+        {
+          "title": "BYOC Cloud overview",
+          "url": "https://help.genesys.cloud/articles/byoc-cloud-overview/"
+        },
+        {
+          "title": "Set up emergency services with BYOC",
+          "url": "https://help.genesys.cloud/articles/set-up-emergency-services-with-byoc/"
+        },
+        {
+          "title": "Dynamic Cloud Voice platform overview",
+          "url": "https://help.genesys.cloud/articles/dynamic-cloud-voice-platform-overview/"
+        },
+        {
+          "title": "Monitor cloud media resources",
+          "url": "https://help.genesys.cloud/articles/monitor-cloud-media-resources/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Quick start order for a BYOC Cloud trunk.",
+        "nodes": [
+          {
+            "id": "org",
+            "label": "Org",
+            "kind": "region",
+            "x": 10,
+            "y": 40
+          },
+          {
+            "id": "loc",
+            "label": "Location",
+            "kind": "phone",
+            "x": 30,
+            "y": 40
+          },
+          {
+            "id": "trunk",
+            "label": "Trunk",
+            "kind": "trunk",
+            "x": 52,
+            "y": 40
+          },
+          {
+            "id": "route",
+            "label": "Route",
+            "kind": "queue",
+            "x": 74,
+            "y": 40
+          },
+          {
+            "id": "plan",
+            "label": "Number plan",
+            "kind": "architect",
+            "x": 90,
+            "y": 70
+          }
+        ],
+        "edges": [
+          {
+            "a": "org",
+            "b": "loc"
+          },
+          {
+            "a": "loc",
+            "b": "trunk"
+          },
+          {
+            "a": "trunk",
+            "b": "route"
+          },
+          {
+            "a": "route",
+            "b": "plan"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Stand up a trunk in the documented order",
+        "steps": [
+          {
+            "from": "Admin",
+            "to": "Subscription",
+            "title": "Confirm BYOC",
+            "detail": "The quick start assumes the product is on the subscription.",
+            "inspect": "Org already exists"
+          },
+          {
+            "from": "Admin",
+            "to": "Location",
+            "title": "Add a place",
+            "detail": "Emergency and the site need a physical location.",
+            "inspect": "Not a postal fiction"
+          },
+          {
+            "from": "Admin",
+            "to": "Trunk",
+            "title": "Carrier or PBX",
+            "detail": "Two BYOC Cloud trunk types.",
+            "inspect": "Public address required"
+          },
+          {
+            "from": "Admin",
+            "to": "DCVP",
+            "title": "New trunks",
+            "detail": "New trunks should use Dynamic Cloud Voice.",
+            "inspect": "Test before production"
+          },
+          {
+            "from": "Admin",
+            "to": "Route",
+            "title": "Assign trunk",
+            "detail": "An outbound route needs the trunk.",
+            "inspect": "Number plan classifies"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "What does the BYOC quick start assume is already true?",
+          "choices": [
+            "The org exists and BYOC Cloud is on the subscription",
+            "A premises Edge is installed",
+            "CX 4 tokens are loaded",
+            "A PureConnect handler is exported"
+          ],
+          "answer": 0,
+          "why": "Those two prerequisites open the guide."
+        },
+        {
+          "q": "Why does the quick start send you to Add Locations early?",
+          "choices": [
+            "Locations replace queues",
+            "Locations are SIP methods",
+            "Locations set the OAuth grant",
+            "The site needs a physical location, including for emergency services"
+          ],
+          "answer": 3,
+          "why": "The guide ties location to enabling services and to emergency."
+        },
+        {
+          "q": "New BYOC Cloud trunks should use which platform?",
+          "choices": [
+            "The original platform only",
+            "A hardware Edge only",
+            "WebRTC with no trunk",
+            "Dynamic Cloud Voice"
+          ],
+          "answer": 3,
+          "why": "The quick start points new trunks at Dynamic Cloud Voice."
+        },
+        {
+          "q": "Genesys\u2019 own warning on BYOC emergency calls is:",
+          "choices": [
+            "Genesys is not responsible when emergency calls use BYOC trunks",
+            "Genesys answers 911 as the PSAP",
+            "Emergency is blocked on all trunks",
+            "Emergency ignores locations"
+          ],
+          "answer": 0,
+          "why": "The emergency article states that warning directly."
+        },
+        {
+          "q": "BYOC Cloud requires the far end to have:",
+          "choices": [
+            "A publicly reachable address and open ports",
+            "A private RFC 1918 address only",
+            "An Architect bot",
+            "A WFM business unit"
+          ],
+          "answer": 0,
+          "why": "The overview requires a public address and the right ports."
+        },
+        {
+          "q": "Where does Genesys tell you to watch cloud media?",
+          "choices": [
+            "RFC 3261",
+            "Monitor cloud media resources",
+            "The fair use rate card",
+            "The certification catalog"
+          ],
+          "answer": 1,
+          "why": "That article is the documented monitoring page."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Order",
+          "back": "Location, trunk, outbound route, number plan."
+        },
+        {
+          "front": "DCVP",
+          "back": "Use it for new BYOC Cloud trunks."
+        },
+        {
+          "front": "Public address",
+          "back": "The carrier or PBX must be reachable."
+        },
+        {
+          "front": "Emergency warning",
+          "back": "BYOC emergency is your carrier\u2019s service, not Genesys\u2019."
+        }
+      ],
+      "lab": {
+        "title": "Write the quick-start checklist",
+        "steps": [
+          "List the four configuration objects in order.",
+          "Write the Dynamic Cloud Voice requirement in your own words.",
+          "Write the emergency warning in your own words.",
+          "Name the monitoring article."
+        ],
+        "success": "You can brief a carrier turn-up without skipping the location."
+      },
+      "fault": {
+        "title": "Trunk with no route",
+        "symptom": "Inbound numbers work. Outbound dialing finds no trunk.",
+        "log": "External trunk: Carrier-A, in service. Outbound route: default, trunk assignment empty.",
+        "cause": "The quick start says Genesys creates default outbound routes and you still must assign a trunk.",
+        "fix": "Assign Carrier-A on the outbound route for the classifications you dial."
+      }
+    }
+  ]
+}

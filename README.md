@@ -1,0 +1,83 @@
+# Genesys Cloud CX Lab
+
+Signal Floor is a free, static operations lab for Genesys Cloud CX. It runs in the browser, stores progress locally, and does not call a live organization.
+
+The curriculum covers organization setup, Architect flows, ACD routing, queues and skills, BYOC Cloud and Premises, SIP trunks, the Edge, emergency calling, workforce management, quality management, speech and text analytics, Genesys AI and bots, Platform APIs, AppFoundry and CRM embeds, and migration from Genesys Engage, PureConnect, and Cisco UCCE / UCCX. CUCM and Webex appear as a learning bridge with Cisco citations, not as a converter.
+
+## Run it
+
+From the repository root:
+
+```bash
+python3 scripts/build_curriculum.py
+python3 -m http.server 8741
+```
+
+Open [http://127.0.0.1:8741/campus/](http://127.0.0.1:8741/campus/). The root page only redirects into `campus/`, which is the GitHub Pages folder.
+
+Check the curriculum without a browser:
+
+```bash
+node scripts/verify.mjs
+```
+
+`verify.mjs` counts tracks, lessons, quiz items, labs, and faults, checks that every citation is an `https` URL on an allowed documentation host, measures the first-load shell, and asserts the teaching router: preferred agents beat a longer-idle peer, all-skills matching picks the longest idle full match, bullseye drops a skill after the ring delay, a priority of 5 beats a priority of 0 that arrived four minutes earlier, and utilized or off-queue agents are skipped.
+
+## What you can do
+
+- Read a lesson with a figure, a Play / Pause / Step / Inspect flow, a six-question quiz, flashcards, a lab checklist, and a fault with a synthetic log.
+- Build an Architect-style task list and export learning JSON marked not importable.
+- Simulate routing with conversation score, bullseye rings, preferred agents, and evaluation methods.
+- Browse Platform API samples, including the client-credentials limit on `/api/v2/users/me`. Nothing is sent.
+- Classify a dial string against the documented default number plans.
+- Map Engage, PureConnect, and Cisco objects to the Genesys objects you rebuild.
+- Orbit a 3D floor (vendored Three.js r186) or the flat map, and toggle trunk, Edge, queue, bot, and CRM failures.
+- Work boss incidents, an interview drill, a glossary, and the certification catalog as read on 14 October 2026.
+- Switch among night, paper, harbor, and high-contrast themes. Sound, narration, voice, speed, reduced motion, and type size persist in `localStorage`. Narration waits for `voiceschanged` and will not select Microsoft David, Zira, or Mark.
+
+Track JSON loads when you open a track. Three.js loads when you open the topology. Settings can cache tracks for offline use. The service worker does not prefetch every track at install, so the first view stays small.
+
+## Counts
+
+Verified by `node scripts/verify.mjs` on 14 October 2026:
+
+| | |
+| --- | ---: |
+| Tracks | 16 |
+| Lessons | 111 |
+| Quiz items | 666 |
+| Labs | 111 |
+| Faults | 111 |
+| Glossary entries | 41 |
+| Boss incidents | 8 |
+| Interview questions | 24 |
+| Studios | 5 |
+| First-load shell | 84,645 bytes |
+
+The shell is `campus/index.html`, `campus/assets/app.js`, `campus/data/manifest.json`, and the web manifest. Studios, topology, Three.js, track JSON, and `reference.json` stay off that first paint. Vendored Three.js is about 2.1 MB and loads only with the 3D view.
+
+Lighthouse mobile, captured against `http://127.0.0.1:8741/campus/` on 14 October 2026: performance 100, accessibility 100.
+
+## Citations
+
+Lessons link to the Genesys Cloud Resource Center, the Developer Center, Genesys Education, AppFoundry, Cisco’s UCCE and UCCX series pages, and the SIP, RTP, SRTP, DTMF, and documentation-address RFCs. Specialist exams are named from the catalog. This lab does not assign GCX- codes, copy fair-use prices, paste Dynamic Cloud Voice prefixes, or state a PureConnect end date. When a live page and a lesson disagree, the page wins. Uncertain sentences are marked in the lesson.
+
+Synthetic logs use the documentation ranges in RFC 5737 and fictional 555 numbers.
+
+## Screenshots
+
+![Home, night theme](docs/screenshots/desktop-home.png)
+
+![Lesson step-through](docs/screenshots/lesson-flow.png)
+
+![Architect-style builder](docs/screenshots/architect-builder.png)
+
+![Routing simulator](docs/screenshots/routing-simulator.png)
+
+![Topology with two failures](docs/screenshots/topology.png)
+
+![Phone width, paper theme, bottom navigation](docs/screenshots/mobile-home.png)
+
+## License
+
+Code is MIT. Educational prose is CC BY 4.0. See [LICENSE](LICENSE). Three.js remains under the license in `campus/vendor/THREE-LICENSE.txt`.

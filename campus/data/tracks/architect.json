@@ -1,0 +1,1732 @@
+{
+  "id": "architect",
+  "title": "Architect flows",
+  "kicker": "Design",
+  "accent": 3,
+  "summary": "Flow types, tasks, in-queue experiences, data actions, bots, secure calls, and publish.",
+  "lessons": [
+    {
+      "id": "a-types",
+      "title": "The flow types on the Architect home page",
+      "level": "Core",
+      "minutes": 13,
+      "summary": "Architect is a list of flow types. Picking the wrong tab is the first defect.",
+      "paras": [
+        "The home page documents inbound call, inbound message, inbound email, inbound chat, outbound call, bot flow, common module, in-queue call, in-queue email, in-queue message, secure call, voicemail, workflow, and survey invite. The create-a-flow article also names digital bot flows, voice survey, web survey invite, and workitem flows. Names must be unique inside one type, may repeat across types, and may be at most 200 characters.",
+        "You need Architect flow permissions to add, edit, and view, plus the routing permissions the flow type requires. Message and email flows ask for an error-event queue. A new flow can take a few seconds to appear. The home page has a refresh for that lag. It is not a failed save."
+      ],
+      "cites": [
+        {
+          "title": "Navigate the Architect home page",
+          "url": "https://help.genesys.cloud/articles/navigate-the-architect-home-page/"
+        },
+        {
+          "title": "Create a flow",
+          "url": "https://help.genesys.cloud/articles/create-a-flow/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Flow types are siblings. A name can repeat across types, not inside one.",
+        "nodes": [
+          {
+            "id": "in",
+            "label": "Inbound call",
+            "kind": "phone",
+            "x": 16,
+            "y": 28
+          },
+          {
+            "id": "msg",
+            "label": "Message",
+            "kind": "queue",
+            "x": 40,
+            "y": 28
+          },
+          {
+            "id": "bot",
+            "label": "Bot",
+            "kind": "bot",
+            "x": 64,
+            "y": 28
+          },
+          {
+            "id": "cm",
+            "label": "Common module",
+            "kind": "architect",
+            "x": 40,
+            "y": 70
+          }
+        ],
+        "edges": [
+          {
+            "a": "in",
+            "b": "bot"
+          },
+          {
+            "a": "in",
+            "b": "cm"
+          },
+          {
+            "a": "msg",
+            "b": "bot"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Create the right type",
+        "steps": [
+          {
+            "from": "Admin",
+            "to": "Architect",
+            "title": "Choose type",
+            "detail": "The tab is the contract.",
+            "inspect": "Inbound call is not inbound message"
+          },
+          {
+            "from": "Admin",
+            "to": "Name",
+            "title": "200 characters",
+            "detail": "Unique inside the type.",
+            "inspect": "Same name may exist on another type"
+          },
+          {
+            "from": "Admin",
+            "to": "Division",
+            "title": "Assign",
+            "detail": "The flow is a configuration object.",
+            "inspect": "Access follows the division"
+          },
+          {
+            "from": "Admin",
+            "to": "Language",
+            "title": "Default TTS",
+            "detail": "Pick a supported language.",
+            "inspect": "Not a cosmetic label"
+          },
+          {
+            "from": "Admin",
+            "to": "Refresh",
+            "title": "See the flow",
+            "detail": "Creation can lag.",
+            "inspect": "Refresh before you assume failure"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "A flow name may be at most how many characters?",
+          "choices": [
+            "50",
+            "32",
+            "Unlimited",
+            "200"
+          ],
+          "answer": 3,
+          "why": "Create a flow states the 200 character limit."
+        },
+        {
+          "q": "Can an inbound call flow and a bot flow share a name?",
+          "choices": [
+            "Only after publish",
+            "Yes. Uniqueness is per flow type.",
+            "No",
+            "Only in Home"
+          ],
+          "answer": 1,
+          "why": "The article allows the same name across types."
+        },
+        {
+          "q": "An error-event transfer queue is part of creating which flows?",
+          "choices": [
+            "Message and email flows",
+            "Every phone trunk",
+            "Only secure call",
+            "Only surveys"
+          ],
+          "answer": 0,
+          "why": "The create article calls that field out for message and email."
+        },
+        {
+          "q": "Which permission family does create-a-flow require besides routing?",
+          "choices": [
+            "Only billing",
+            "Only Edge",
+            "Architect flow add, edit, and view",
+            "Only WFM"
+          ],
+          "answer": 2,
+          "why": "Those Architect permissions are the prerequisite."
+        },
+        {
+          "q": "Workitem flows are documented as:",
+          "choices": [
+            "A SIP method",
+            "A satellite region",
+            "A license called EX only",
+            "A flow type, one flow per worktype in the create article"
+          ],
+          "answer": 3,
+          "why": "The create article includes workitem flows and a one-flow-per-worktype limit."
+        },
+        {
+          "q": "The flow does not show up for several seconds. The documented response is:",
+          "choices": [
+            "Refresh the Architect home list",
+            "Rebuild the org",
+            "Delete Home",
+            "Change AWS region"
+          ],
+          "answer": 0,
+          "why": "The article mentions the lag and the refresh control."
+        }
+      ],
+      "cards": [
+        {
+          "front": "200",
+          "back": "Maximum flow name length."
+        },
+        {
+          "front": "Per type",
+          "back": "Names are unique inside a type only."
+        },
+        {
+          "front": "Tabs",
+          "back": "Call, message, email, chat, bot, in-queue, secure, workflow, survey, and others."
+        },
+        {
+          "front": "Refresh",
+          "back": "Creation lag is expected."
+        }
+      ],
+      "lab": {
+        "title": "Name three flows without colliding",
+        "steps": [
+          "Pick a call flow name under 200 characters.",
+          "Use the same string on a bot flow and explain why that is legal.",
+          "Try the same string on a second call flow and explain why that is not.",
+          "Note the division you would assign."
+        ],
+        "success": "You can defend the name and the tab."
+      },
+      "fault": {
+        "title": "Wrong tab",
+        "symptom": "A WhatsApp design was built as an inbound call flow.",
+        "log": "Flow type: inbound call. Channel asked for: message.",
+        "cause": "Message routing never opens a call flow.",
+        "fix": "Create an inbound message flow. Leave the call flow for the DID."
+      }
+    },
+    {
+      "id": "a-task",
+      "title": "Tasks, menus, and a way out",
+      "level": "Core",
+      "minutes": 13,
+      "summary": "An inbound call flow plays audio, collects input, and must transfer, hand off, or disconnect.",
+      "paras": [
+        "About Architect describes linking actions: play audio, route to agents, queues, voicemail, numbers, or other flows, collect digits outside a menu, dip data, and branch with expressions. The inbound example in the bot article shows a question, a decision, and a transfer. That shape is the whole product in miniature.",
+        "A flow with only Play Audio has no exit. Transfer to ACD needs a real queue. Disconnect needs a reason the caller can understand. Call Bot Flow is an exit only if the bot itself has a failure path back to a queue. Secure flows are a special case covered later. They use a blind transfer rather than a consultation VXML transfer."
+      ],
+      "cites": [
+        {
+          "title": "About Architect",
+          "url": "https://help.genesys.cloud/articles/about-architect/"
+        },
+        {
+          "title": "Use Architect to create a bot for an inbound flow",
+          "url": "https://help.genesys.cloud/articles/use-architect-to-create-a-bot-for-an-inbound-flow/"
+        },
+        {
+          "title": "Create a flow",
+          "url": "https://help.genesys.cloud/articles/create-a-flow/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "A task is an ordered list with an exit.",
+        "nodes": [
+          {
+            "id": "play",
+            "label": "Play",
+            "kind": "phone",
+            "x": 16,
+            "y": 40
+          },
+          {
+            "id": "col",
+            "label": "Collect",
+            "kind": "architect",
+            "x": 40,
+            "y": 40
+          },
+          {
+            "id": "dec",
+            "label": "Decision",
+            "kind": "bot",
+            "x": 62,
+            "y": 40
+          },
+          {
+            "id": "acd",
+            "label": "ACD",
+            "kind": "queue",
+            "x": 84,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "play",
+            "b": "col"
+          },
+          {
+            "a": "col",
+            "b": "dec"
+          },
+          {
+            "a": "dec",
+            "b": "acd"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Billing menu, lab version",
+        "steps": [
+          {
+            "from": "Flow",
+            "to": "Caller",
+            "title": "Play Audio",
+            "detail": "Say why the caller reached you.",
+            "inspect": "Prompt text, not a file you do not own"
+          },
+          {
+            "from": "Flow",
+            "to": "Caller",
+            "title": "Collect Input",
+            "detail": "One digit is enough for a lab.",
+            "inspect": "No digit, no branch"
+          },
+          {
+            "from": "Flow",
+            "to": "Logic",
+            "title": "Decision",
+            "detail": "Branch on the digit.",
+            "inspect": "Else is required"
+          },
+          {
+            "from": "Flow",
+            "to": "Queue",
+            "title": "Transfer to ACD",
+            "detail": "The queue must exist.",
+            "inspect": "Division must be one you can see"
+          },
+          {
+            "from": "Flow",
+            "to": "Caller",
+            "title": "Disconnect",
+            "detail": "The other branch says goodbye.",
+            "inspect": "Do not drop the call silently"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "About Architect says you can route to which destinations?",
+          "choices": [
+            "Only a bot",
+            "Only FedRAMP",
+            "Only a CSV",
+            "Agents, queues, voicemail, external numbers, or other flows"
+          ],
+          "answer": 3,
+          "why": "That list is the product description."
+        },
+        {
+          "q": "A task that only plays audio is incomplete because:",
+          "choices": [
+            "SIP forbids prompts",
+            "The caller has no route and no disconnect",
+            "Audio is forbidden",
+            "Play Audio requires CX 4"
+          ],
+          "answer": 1,
+          "why": "Every example in the lab ends in a transfer, a bot, or a disconnect."
+        },
+        {
+          "q": "Secure call flows, per the create article, use:",
+          "choices": [
+            "An email flow",
+            "Predictive routing",
+            "A blind transfer rather than a consultation VXML transfer",
+            "A WebRTC phone only"
+          ],
+          "answer": 2,
+          "why": "The article explains the blind transfer as the way to avoid transfer failure."
+        },
+        {
+          "q": "Call Data Action belongs in the flow when:",
+          "choices": [
+            "You need a system outside Genesys during the conversation",
+            "You need a new AWS region",
+            "You need to delete Home",
+            "You need a concurrent peak"
+          ],
+          "answer": 0,
+          "why": "Data dips are part of the Architect description."
+        },
+        {
+          "q": "The bot article\u2019s banking example asks the caller to:",
+          "choices": [
+            "Choose a satellite",
+            "Check a balance or find a branch",
+            "Buy a trunk",
+            "Set a fair-use rate"
+          ],
+          "answer": 1,
+          "why": "That is the documented template story."
+        },
+        {
+          "q": "Transfer to ACD fails closed when:",
+          "choices": [
+            "RTP is encrypted",
+            "The queue name does not exist or you cannot see that division",
+            "The prompt is polite",
+            "The flow name is 20 characters"
+          ],
+          "answer": 1,
+          "why": "The action needs a real queue you are allowed to reference."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Actions",
+          "back": "Play, collect, decide, transfer, dip, disconnect."
+        },
+        {
+          "front": "Exit",
+          "back": "Queue, bot, or disconnect."
+        },
+        {
+          "front": "Secure",
+          "back": "Blind transfer, not consultation VXML."
+        },
+        {
+          "front": "Data dip",
+          "back": "A first-class Architect idea."
+        }
+      ],
+      "lab": {
+        "title": "Sketch a three-action task",
+        "steps": [
+          "Write the prompt.",
+          "Write the digit you collect.",
+          "Name the queue for digit 1.",
+          "Write the disconnect phrase for anything else."
+        ],
+        "success": "Someone else could build the task from your card."
+      },
+      "fault": {
+        "title": "No else",
+        "symptom": "Callers who press 2 sit in the flow.",
+        "log": "Decision: equals 1 transfers. No other output.",
+        "cause": "Unmatched input has no path.",
+        "fix": "Add an else that replays the prompt once and then disconnects or transfers to a general queue."
+      }
+    },
+    {
+      "id": "a-inqueue",
+      "title": "In-queue flows are the hold experience",
+      "level": "Core",
+      "minutes": 12,
+      "summary": "The caller is already queued. The in-queue flow is what they hear or read while ACD looks for an agent.",
+      "paras": [
+        "For calls, Architect supplies a default in-queue flow built around a music action. Menus and reusable tasks are not available in that flow type. The default is not published for you. Until you publish it, it does not handle waiting calls. You can replace the music and add actions, then republish.",
+        "Email and message do not get a built-in default. You create those in-queue flows and attach them. An outbound email or message does not launch the in-queue flow. It launches when an inbound response arrives. Treat any exact overall timeout you remember as something to re-read on the in-queue article. The page describes those periods and they are easy to mis-quote."
+      ],
+      "cites": [
+        {
+          "title": "In-queue flows overview",
+          "url": "https://help.genesys.cloud/articles/queue-call-flows/"
+        },
+        {
+          "title": "Navigate the Architect home page",
+          "url": "https://help.genesys.cloud/articles/navigate-the-architect-home-page/"
+        }
+      ],
+      "uncertainty": "The in-queue article also describes overall and recurring periods for email and message flows. Re-read those numbers on the page rather than trusting a remembered duration.",
+      "figure": {
+        "caption": "ACD searches while the in-queue flow plays.",
+        "nodes": [
+          {
+            "id": "c",
+            "label": "Caller",
+            "kind": "phone",
+            "x": 14,
+            "y": 40
+          },
+          {
+            "id": "q",
+            "label": "Queue",
+            "kind": "queue",
+            "x": 40,
+            "y": 40
+          },
+          {
+            "id": "iq",
+            "label": "In-queue",
+            "kind": "architect",
+            "x": 66,
+            "y": 22
+          },
+          {
+            "id": "ag",
+            "label": "Agent",
+            "kind": "agent",
+            "x": 66,
+            "y": 70
+          }
+        ],
+        "edges": [
+          {
+            "a": "c",
+            "b": "q"
+          },
+          {
+            "a": "q",
+            "b": "iq"
+          },
+          {
+            "a": "q",
+            "b": "ag"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Publish, or the hold is empty",
+        "steps": [
+          {
+            "from": "Caller",
+            "to": "Queue",
+            "title": "Wait",
+            "detail": "ACD is already hunting.",
+            "inspect": "The flow does not choose the agent"
+          },
+          {
+            "from": "Flow",
+            "to": "Caller",
+            "title": "Music",
+            "detail": "The default action is changeable.",
+            "inspect": "Menus are not in this flow type"
+          },
+          {
+            "from": "Admin",
+            "to": "Flow",
+            "title": "Publish",
+            "detail": "Unpublished means unused.",
+            "inspect": "Republish after edits"
+          },
+          {
+            "from": "Email",
+            "to": "Queue",
+            "title": "No default",
+            "detail": "Create the email in-queue flow.",
+            "inspect": "Outbound does not start it"
+          },
+          {
+            "from": "Reply",
+            "to": "Flow",
+            "title": "Inbound",
+            "detail": "The flow starts on the inbound response.",
+            "inspect": "Not on the first outbound send"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Menus in an in-queue call flow are:",
+          "choices": [
+            "Not available",
+            "Required",
+            "The only action",
+            "Limited to 200"
+          ],
+          "answer": 0,
+          "why": "The overview says menus and reusable tasks are not available."
+        },
+        {
+          "q": "The default in-queue call flow handles live calls when:",
+          "choices": [
+            "You publish it",
+            "The org is created",
+            "An agent logs in",
+            "A trunk registers"
+          ],
+          "answer": 0,
+          "why": "It is not automatically published."
+        },
+        {
+          "q": "The default action inside that call flow is:",
+          "choices": [
+            "Music you can change",
+            "A blind transfer",
+            "An OAuth token",
+            "A WFM forecast"
+          ],
+          "answer": 0,
+          "why": "The overview describes a single changeable music action."
+        },
+        {
+          "q": "An outbound email starts the in-queue email flow immediately?",
+          "choices": [
+            "No. It starts when an inbound response arrives.",
+            "Yes",
+            "Only on CX 1",
+            "Only if the name is unique"
+          ],
+          "answer": 0,
+          "why": "The overview states that launch rule."
+        },
+        {
+          "q": "Email in-queue flows differ from calls because:",
+          "choices": [
+            "There is no built-in default",
+            "They use RTP",
+            "They cannot be published",
+            "They ignore the queue"
+          ],
+          "answer": 0,
+          "why": "You create them."
+        },
+        {
+          "q": "Editing the music without republishing means:",
+          "choices": [
+            "Tokens are refunded",
+            "The published version is unchanged",
+            "The Edge reboots",
+            "The division is deleted"
+          ],
+          "answer": 1,
+          "why": "Publish is how the runtime hears the edit."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Publish",
+          "back": "The default call flow is inert until then."
+        },
+        {
+          "front": "No menus",
+          "back": "In-queue call flows are tasks and states, not menus."
+        },
+        {
+          "front": "Email",
+          "back": "No built-in default. Inbound response launches it."
+        },
+        {
+          "front": "Republish",
+          "back": "Edits do not ride the last publish."
+        }
+      ],
+      "lab": {
+        "title": "Publish a hold flow on paper",
+        "steps": [
+          "Say whether your media has a built-in default.",
+          "If it is voice, say the default action.",
+          "Write the publish step.",
+          "Say when an email in-queue flow starts."
+        ],
+        "success": "You will not leave a pilot on an unpublished default."
+      },
+      "fault": {
+        "title": "Pretty flow, old runtime",
+        "symptom": "The admin added a position announcement. Callers still hear only music.",
+        "log": "Saved: today. Last published: last month.",
+        "cause": "The runtime uses the published version.",
+        "fix": "Publish the in-queue flow and place a test call before announcing the change."
+      }
+    },
+    {
+      "id": "a-data",
+      "title": "Data actions and participant data",
+      "level": "Core",
+      "minutes": 12,
+      "summary": "A data action calls a system outside the flow. Participant data carries a value to the agent.",
+      "paras": [
+        "Architect\u2019s own description includes data dips and expressions. A Call Data Action is how a flow asks Salesforce, a REST service, or another connector for an answer and then branches. Set Participant Data is how a later agent, script, or screen pop sees what the flow learned. The Salesforce and Zendesk articles both describe screen pop and interaction logging as the agent-facing end of that story.",
+        "The action fails closed when the credential is wrong. Salesforce username-password credentials for data actions are on a deprecation path. The migration guide says to use the Salesforce OAuth client-credentials credential: consumer key, consumer secret, and My Domain URL. No change to the request body is required for that credential swap. A flow that worked last year can fail on auth alone."
+      ],
+      "cites": [
+        {
+          "title": "About Architect",
+          "url": "https://help.genesys.cloud/articles/about-architect/"
+        },
+        {
+          "title": "Salesforce OAuth client credentials migration",
+          "url": "https://help.genesys.cloud/articles/salesforce-oauth-client-credentials-flow-migration-guide/"
+        },
+        {
+          "title": "About Genesys Cloud for Salesforce",
+          "url": "https://help.genesys.cloud/articles/about-genesys-cloud-for-salesforce/"
+        },
+        {
+          "title": "About Genesys Cloud for Zendesk",
+          "url": "https://help.genesys.cloud/articles/about-genesys-cloud-for-zendesk/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "The flow dips out, then writes what it learned onto the conversation.",
+        "nodes": [
+          {
+            "id": "flow",
+            "label": "Flow",
+            "kind": "architect",
+            "x": 16,
+            "y": 40
+          },
+          {
+            "id": "da",
+            "label": "Data action",
+            "kind": "crm",
+            "x": 46,
+            "y": 22
+          },
+          {
+            "id": "sf",
+            "label": "Salesforce",
+            "kind": "crm",
+            "x": 74,
+            "y": 22
+          },
+          {
+            "id": "part",
+            "label": "Participant data",
+            "kind": "agent",
+            "x": 46,
+            "y": 72
+          }
+        ],
+        "edges": [
+          {
+            "a": "flow",
+            "b": "da"
+          },
+          {
+            "a": "da",
+            "b": "sf"
+          },
+          {
+            "a": "flow",
+            "b": "part"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Balance dip, then screen pop",
+        "steps": [
+          {
+            "from": "Flow",
+            "to": "Data action",
+            "title": "Call",
+            "detail": "Send an account id.",
+            "inspect": "Credential is OAuth, not a password"
+          },
+          {
+            "from": "Salesforce",
+            "to": "Flow",
+            "title": "Response",
+            "detail": "Return a balance or a failure.",
+            "inspect": "Timeouts need a branch"
+          },
+          {
+            "from": "Flow",
+            "to": "Conversation",
+            "title": "Set data",
+            "detail": "Store the value for the agent.",
+            "inspect": "Name it something the screen pop reads"
+          },
+          {
+            "from": "Flow",
+            "to": "Queue",
+            "title": "Transfer",
+            "detail": "The agent gets the pop with the data.",
+            "inspect": "The dip is not the queue"
+          },
+          {
+            "from": "Admin",
+            "to": "Credential",
+            "title": "Rotate",
+            "detail": "Swap username-password for client credentials.",
+            "inspect": "Request body can stay"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Set Participant Data is for:",
+          "choices": [
+            "Setting fair use",
+            "Carrying a value to the agent side of the same conversation",
+            "Choosing the AWS region",
+            "Buying a DID"
+          ],
+          "answer": 1,
+          "why": "It is conversation data, not org configuration."
+        },
+        {
+          "q": "The Salesforce data-action credential Genesys tells you to move to is:",
+          "choices": [
+            "OAuth client credentials with consumer key, secret, and My Domain URL",
+            "A shared inbox password",
+            "A SIP trunk",
+            "Implicit grant"
+          ],
+          "answer": 0,
+          "why": "That is the migration guide."
+        },
+        {
+          "q": "After that credential swap, the guide says the data-action request body:",
+          "choices": [
+            "Can stay as it is",
+            "Must be rewritten in SIP",
+            "Must be deleted",
+            "Must be a WAV file"
+          ],
+          "answer": 0,
+          "why": "No request or response redesign is required for the swap."
+        },
+        {
+          "q": "A data action timeout should:",
+          "choices": [
+            "Delete the queue",
+            "Publish a second org",
+            "Take an explicit failure branch",
+            "Hang forever"
+          ],
+          "answer": 2,
+          "why": "The caller is waiting. Silence is not a design."
+        },
+        {
+          "q": "Screen pop for Salesforce is documented as part of:",
+          "choices": [
+            "Bullseye ring 6",
+            "Genesys Cloud for Salesforce",
+            "The Edge firmware",
+            "RFC 3711"
+          ],
+          "answer": 1,
+          "why": "The product article lists screen pop."
+        },
+        {
+          "q": "Zendesk\u2019s documented embed also includes:",
+          "choices": [
+            "Number-plan emergency only",
+            "FedRAMP login",
+            "Click-to-dial, screen pop, and interaction logs",
+            "Edge groups"
+          ],
+          "answer": 2,
+          "why": "The Zendesk article lists those agent tools."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Data action",
+          "back": "A call out of the flow."
+        },
+        {
+          "front": "Participant data",
+          "back": "What the agent is allowed to see."
+        },
+        {
+          "front": "Salesforce auth",
+          "back": "Client credentials, not username-password."
+        },
+        {
+          "front": "Failure branch",
+          "back": "Required. The caller will not wait politely."
+        }
+      ],
+      "lab": {
+        "title": "Write one dip",
+        "steps": [
+          "Name the external system.",
+          "Name the input.",
+          "Name the participant-data key.",
+          "Write the failure path in one sentence.",
+          "Name the credential type."
+        ],
+        "success": "The dip has an input, an output, and a failure path."
+      },
+      "fault": {
+        "title": "Password grant died",
+        "symptom": "Every Salesforce data action started failing on the same morning.",
+        "log": "Credential type: Salesforce username-password. HTTP 400 from the token URL.",
+        "cause": "That credential type is deprecated.",
+        "fix": "Create a Connected App and switch the integration to OAuth client credentials. Leave the action contracts alone."
+      }
+    },
+    {
+      "id": "a-common",
+      "title": "Common modules are how you stop copying tasks",
+      "level": "Core",
+      "minutes": 11,
+      "summary": "A common module is a flow type you call from other flows. The name is still unique inside that type.",
+      "paras": [
+        "The Architect home page lists common module as its own type so you can build logic once and reuse it across flow types. The 200 character name limit and the per-type uniqueness rule still apply. A module that transfers to a queue hard-codes that queue unless you pass the queue in. Passing the queue in is the difference between a library and a copy.",
+        "Reusable tasks inside a single flow are not the same object as a common module shared by many flows. In-queue call flows, notably, do not offer reusable tasks. If the hold experience needs shared logic, you are in a different design conversation than a common module called from an inbound flow."
+      ],
+      "cites": [
+        {
+          "title": "Navigate the Architect home page",
+          "url": "https://help.genesys.cloud/articles/navigate-the-architect-home-page/"
+        },
+        {
+          "title": "Create a flow",
+          "url": "https://help.genesys.cloud/articles/create-a-flow/"
+        },
+        {
+          "title": "In-queue flows overview",
+          "url": "https://help.genesys.cloud/articles/queue-call-flows/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Several flows call one module instead of pasting the task.",
+        "nodes": [
+          {
+            "id": "a",
+            "label": "Sales",
+            "kind": "phone",
+            "x": 16,
+            "y": 28
+          },
+          {
+            "id": "b",
+            "label": "Service",
+            "kind": "phone",
+            "x": 16,
+            "y": 68
+          },
+          {
+            "id": "m",
+            "label": "Module",
+            "kind": "architect",
+            "x": 55,
+            "y": 46
+          },
+          {
+            "id": "q",
+            "label": "Queue",
+            "kind": "queue",
+            "x": 84,
+            "y": 46
+          }
+        ],
+        "edges": [
+          {
+            "a": "a",
+            "b": "m"
+          },
+          {
+            "a": "b",
+            "b": "m"
+          },
+          {
+            "a": "m",
+            "b": "q"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Extract a holiday check",
+        "steps": [
+          {
+            "from": "Admin",
+            "to": "Common module",
+            "title": "Create",
+            "detail": "Own name, own type.",
+            "inspect": "200 character limit"
+          },
+          {
+            "from": "Module",
+            "to": "Inputs",
+            "title": "Date and queue",
+            "detail": "Do not hide the queue inside the module.",
+            "inspect": "Callers pass it"
+          },
+          {
+            "from": "Inbound",
+            "to": "Module",
+            "title": "Call",
+            "detail": "Sales and service both call it.",
+            "inspect": "One publish updates both"
+          },
+          {
+            "from": "In-queue",
+            "to": "Design",
+            "title": "Different tool",
+            "detail": "That flow type has no reusable tasks.",
+            "inspect": "Do not assume the module UI is there"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "A common module is:",
+          "choices": [
+            "A queue setting",
+            "A SIP header",
+            "A division you cannot delete",
+            "Its own Architect flow type"
+          ],
+          "answer": 3,
+          "why": "The home page lists it beside the other types."
+        },
+        {
+          "q": "Two common modules may share a name?",
+          "choices": [
+            "Yes",
+            "Only if unpublished",
+            "Only in satellite regions",
+            "No. Uniqueness is inside the type."
+          ],
+          "answer": 3,
+          "why": "Per-type uniqueness still applies."
+        },
+        {
+          "q": "Hard-coding a queue inside a shared module is risky because:",
+          "choices": [
+            "Names can exceed 200 characters automatically",
+            "It deletes Home",
+            "It changes the AWS region",
+            "Every caller inherits that queue"
+          ],
+          "answer": 3,
+          "why": "Pass the destination in if callers differ."
+        },
+        {
+          "q": "In-queue call flows and reusable tasks:",
+          "choices": [
+            "They set utilization",
+            "Reusable tasks are not available in that flow type",
+            "They are required",
+            "They replace publish"
+          ],
+          "answer": 1,
+          "why": "The in-queue overview says so."
+        },
+        {
+          "q": "The name limit on the module is:",
+          "choices": [
+            "4 chats",
+            "200 characters",
+            "5,000",
+            "30 minutes"
+          ],
+          "answer": 1,
+          "why": "The create article\u2019s name limit covers flows, including this type."
+        },
+        {
+          "q": "A module publish affects:",
+          "choices": [
+            "The fair use price",
+            "Only voicemail",
+            "Flows that call that module",
+            "Every trunk in the region"
+          ],
+          "answer": 2,
+          "why": "Reuse is the point of the type."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Type",
+          "back": "Common module is its own tab."
+        },
+        {
+          "front": "Inputs",
+          "back": "Pass the queue. Do not hide it."
+        },
+        {
+          "front": "Uniqueness",
+          "back": "Inside the common-module type."
+        },
+        {
+          "front": "In-queue",
+          "back": "No reusable tasks there."
+        }
+      ],
+      "lab": {
+        "title": "Extract one check",
+        "steps": [
+          "Name the module.",
+          "List its inputs.",
+          "Name two flows that would call it.",
+          "Say why an in-queue flow might not be the caller."
+        ],
+        "success": "The module has inputs, not hidden queues."
+      },
+      "fault": {
+        "title": "Copied closed-day prompt",
+        "symptom": "Four flows still say yesterday\u2019s holiday hours.",
+        "log": "Logic pasted into each flow. No common module.",
+        "cause": "There is no single publish.",
+        "fix": "Move the date check into a common module and call it."
+      }
+    },
+    {
+      "id": "a-secure",
+      "title": "Secure call flows keep digits away from the recording",
+      "level": "Core",
+      "minutes": 12,
+      "summary": "A secure flow is how a caller enters a card number without that audio being recorded or shown to the agent.",
+      "paras": [
+        "The Architect home page describes secure call flows as the way to stop system recording and agent access while a caller enters sensitive digits, such as a payment. The create article says these flows are either agent-initiated or started by another call flow, and that Genesys uses a blind transfer rather than a consultation VXML transfer so the transfer does not fail.",
+        "This is not the same control as a queue recording policy. Recording policies decide which ACD calls are recorded at all. A secure flow is a hole in that recording for a segment. You still design the return path to the agent, and you still do not log the digits into participant data \u201cfor the screen pop.\u201d That would undo the point."
+      ],
+      "cites": [
+        {
+          "title": "Navigate the Architect home page",
+          "url": "https://help.genesys.cloud/articles/navigate-the-architect-home-page/"
+        },
+        {
+          "title": "Create a flow",
+          "url": "https://help.genesys.cloud/articles/create-a-flow/"
+        },
+        {
+          "title": "About recording",
+          "url": "https://help.genesys.cloud/articles/about-recording/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "The secure segment is a blind transfer away from the recorded agent leg.",
+        "nodes": [
+          {
+            "id": "ag",
+            "label": "Agent",
+            "kind": "agent",
+            "x": 14,
+            "y": 40
+          },
+          {
+            "id": "sec",
+            "label": "Secure flow",
+            "kind": "architect",
+            "x": 48,
+            "y": 40
+          },
+          {
+            "id": "pay",
+            "label": "Payment",
+            "kind": "phone",
+            "x": 78,
+            "y": 22
+          },
+          {
+            "id": "rec",
+            "label": "Recording",
+            "kind": "wem",
+            "x": 78,
+            "y": 72
+          }
+        ],
+        "edges": [
+          {
+            "a": "ag",
+            "b": "sec"
+          },
+          {
+            "a": "sec",
+            "b": "pay"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Take a payment without leaking it",
+        "steps": [
+          {
+            "from": "Agent",
+            "to": "Flow",
+            "title": "Start secure",
+            "detail": "The flow can be agent-initiated.",
+            "inspect": "Or another flow can call it"
+          },
+          {
+            "from": "Platform",
+            "to": "Agent",
+            "title": "Blind transfer",
+            "detail": "Not a consultation VXML transfer.",
+            "inspect": "Documented to avoid failure"
+          },
+          {
+            "from": "Caller",
+            "to": "Flow",
+            "title": "Digits",
+            "detail": "Collect the payment input.",
+            "inspect": "Do not copy it to participant data"
+          },
+          {
+            "from": "Flow",
+            "to": "Agent",
+            "title": "Return",
+            "detail": "The agent resumes without the digits.",
+            "inspect": "Recording resumes under policy"
+          },
+          {
+            "from": "Policy",
+            "to": "Call",
+            "title": "Separate",
+            "detail": "The queue policy still decides the rest of the call.",
+            "inspect": "Secure is a segment"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "A secure call flow exists to:",
+          "choices": [
+            "Store the card in participant data",
+            "Block recording and agent access during sensitive input",
+            "Speed up bullseye",
+            "Replace BYOC"
+          ],
+          "answer": 1,
+          "why": "The home page states the purpose."
+        },
+        {
+          "q": "The transfer type the create article specifies is:",
+          "choices": [
+            "Blind, not consultation VXML",
+            "Consultation only",
+            "REFER with no answer",
+            "An email transfer"
+          ],
+          "answer": 0,
+          "why": "Blind is the documented choice."
+        },
+        {
+          "q": "Who can start a secure flow?",
+          "choices": [
+            "Only a satellite region",
+            "Only WFM",
+            "Only a trunk",
+            "An agent or another call flow"
+          ],
+          "answer": 3,
+          "why": "The create article lists both initiators."
+        },
+        {
+          "q": "Putting the card number in participant data is:",
+          "choices": [
+            "Required",
+            "How screen pop is documented",
+            "How DCVP works",
+            "A way to undo the secure flow"
+          ],
+          "answer": 3,
+          "why": "The agent and the logs would see the value."
+        },
+        {
+          "q": "Queue recording policy and a secure flow:",
+          "choices": [
+            "Both live on the trunk only",
+            "Both are fair-use meters",
+            "Answer different questions. Policy selects calls. The secure flow punches a hole in a segment.",
+            "Are the same setting"
+          ],
+          "answer": 2,
+          "why": "About recording describes policies. Architect describes the secure flow."
+        },
+        {
+          "q": "After the secure segment the design still needs:",
+          "choices": [
+            "A deleted Home division",
+            "An unpublished in-queue flow",
+            "A return to the agent",
+            "A new organization"
+          ],
+          "answer": 2,
+          "why": "The caller and the agent still have a conversation to finish."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Purpose",
+          "back": "Hide a sensitive entry from recording and from the agent."
+        },
+        {
+          "front": "Blind",
+          "back": "Not a consultation VXML transfer."
+        },
+        {
+          "front": "Do not log",
+          "back": "Participant data would leak the digits."
+        },
+        {
+          "front": "Policy",
+          "back": "Still decides whether the rest of the call is recorded."
+        }
+      ],
+      "lab": {
+        "title": "Trace a payment",
+        "steps": [
+          "Say who starts the flow.",
+          "Say why the transfer is blind.",
+          "Say where the digits must not be written.",
+          "Say how the agent gets the caller back."
+        ],
+        "success": "The payment path has a return and no copy of the digits."
+      },
+      "fault": {
+        "title": "Digits in the note",
+        "symptom": "QA finds card numbers in agent notes.",
+        "log": "Secure flow used. A later Set Participant Data stored the collected input. The script wrote it into the note.",
+        "cause": "The secure segment never reached the recording, and the flow published it anyway.",
+        "fix": "Stop writing the collected input to participant data or notes. Confirm the secure flow is the only collector."
+      }
+    },
+    {
+      "id": "a-botcall",
+      "title": "Call a bot from the inbound flow",
+      "level": "Core",
+      "minutes": 13,
+      "summary": "Dialog Engine bot flows and digital bot flows are Architect flow types. The inbound flow calls them. It does not become them.",
+      "paras": [
+        "Genesys documents Dialog Engine Bot Flows for voice and digital flows, and Digital Bot Flows for message experiences. The inbound article shows creating a bot, asking a question, and calling that bot from the inbound flow. Intents come back as outcomes the flow can branch on. A banking template in that article checks a balance or finds a branch.",
+        "Call Bot Flow and Call Digital Bot Flow are different actions for different bot types. An external bot connector is a third action family. The connector list changes. Confirm the current connector in Architect rather than designing around a vendor this lab does not have an open product page for. Always give the bot a failure output that transfers to a queue."
+      ],
+      "cites": [
+        {
+          "title": "About Genesys Dialog Engine Bot Flows",
+          "url": "https://help.genesys.cloud/articles/about-genesys-dialog-engine-bot-flows/"
+        },
+        {
+          "title": "About Genesys Digital Bot Flows",
+          "url": "https://help.genesys.cloud/articles/about-genesys-digital-bot-flows/"
+        },
+        {
+          "title": "Use Architect to create a bot for an inbound flow",
+          "url": "https://help.genesys.cloud/articles/use-architect-to-create-a-bot-for-an-inbound-flow/"
+        },
+        {
+          "title": "About Architect",
+          "url": "https://help.genesys.cloud/articles/about-architect/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "The inbound flow calls a bot and still owns the failure path.",
+        "nodes": [
+          {
+            "id": "in",
+            "label": "Inbound",
+            "kind": "phone",
+            "x": 14,
+            "y": 40
+          },
+          {
+            "id": "bot",
+            "label": "Bot flow",
+            "kind": "bot",
+            "x": 46,
+            "y": 22
+          },
+          {
+            "id": "ok",
+            "label": "Intent",
+            "kind": "architect",
+            "x": 74,
+            "y": 22
+          },
+          {
+            "id": "q",
+            "label": "Queue",
+            "kind": "queue",
+            "x": 74,
+            "y": 70
+          }
+        ],
+        "edges": [
+          {
+            "a": "in",
+            "b": "bot"
+          },
+          {
+            "a": "bot",
+            "b": "ok"
+          },
+          {
+            "a": "bot",
+            "b": "q"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Ask, then fall back to a human",
+        "steps": [
+          {
+            "from": "Admin",
+            "to": "Bot flow",
+            "title": "Create",
+            "detail": "Pick Dialog Engine or digital.",
+            "inspect": "They are different types"
+          },
+          {
+            "from": "Bot",
+            "to": "Caller",
+            "title": "Question",
+            "detail": "Voice plays it. Chat shows it.",
+            "inspect": "The article\u2019s banking example"
+          },
+          {
+            "from": "Inbound",
+            "to": "Bot",
+            "title": "Call Bot Flow",
+            "detail": "Bind the outputs.",
+            "inspect": "Intent is data"
+          },
+          {
+            "from": "Bot",
+            "to": "Inbound",
+            "title": "Failure",
+            "detail": "No match, timeout, or error.",
+            "inspect": "Transfer to ACD"
+          },
+          {
+            "from": "Admin",
+            "to": "Insights",
+            "title": "Read",
+            "detail": "Flow Insights shows what actually ran.",
+            "inspect": "Publish first"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Dialog Engine Bot Flows and Digital Bot Flows are:",
+          "choices": [
+            "Both Architect bot types with different call actions",
+            "The same flow",
+            "SIP trunks",
+            "Divisions"
+          ],
+          "answer": 0,
+          "why": "The product documents them as related and distinct."
+        },
+        {
+          "q": "The banking example lets the caller:",
+          "choices": [
+            "Set a concurrent peak",
+            "Delete a recording policy",
+            "Check a balance or find a branch",
+            "Buy BYOC"
+          ],
+          "answer": 2,
+          "why": "That is the documented template."
+        },
+        {
+          "q": "A bot with no failure path:",
+          "choices": [
+            "Is required by RFC 3261",
+            "Publishes the queue",
+            "Sets utilization to 4",
+            "Strands the caller when the bot misses"
+          ],
+          "answer": 3,
+          "why": "Transfer to ACD belongs on the failure output."
+        },
+        {
+          "q": "Flow Insights is for:",
+          "choices": [
+            "Editing fair use",
+            "Orbiting the 3D map",
+            "Seeing how often flow pieces actually run",
+            "Buying numbers"
+          ],
+          "answer": 2,
+          "why": "The Architect bot material points at Flow Insights."
+        },
+        {
+          "q": "An external bot vendor should be chosen from:",
+          "choices": [
+            "The connectors currently shown in Architect",
+            "This lab\u2019s memory of 2023",
+            "A forum dump",
+            "The Edge serial number"
+          ],
+          "answer": 0,
+          "why": "Connector lists change. Confirm them in the product."
+        },
+        {
+          "q": "Voice versus chat for the same question action:",
+          "choices": [
+            "Both require a trunk",
+            "Chat uses 911",
+            "Voice speaks the question. Chat displays it.",
+            "Both send RTP"
+          ],
+          "answer": 2,
+          "why": "The bot article describes that split."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Two bot types",
+          "back": "Dialog Engine and digital."
+        },
+        {
+          "front": "Call action",
+          "back": "Match the action to the type."
+        },
+        {
+          "front": "Failure",
+          "back": "Always a queue."
+        },
+        {
+          "front": "Insights",
+          "back": "After publish, read what ran."
+        }
+      ],
+      "lab": {
+        "title": "Wire a bot with a fallback",
+        "steps": [
+          "Name the bot type.",
+          "Write the question.",
+          "Name two intents.",
+          "Name the queue on failure.",
+          "Say where you would read Flow Insights."
+        ],
+        "success": "The picture shows a bot and a queue, not a bot instead of a queue."
+      },
+      "fault": {
+        "title": "Bot dead end",
+        "symptom": "After hours, callers who ask for an agent hear the bot ask the same question again.",
+        "log": "Call Bot Flow failure output: empty.",
+        "cause": "There is no transfer.",
+        "fix": "Connect the failure output to the support queue and publish."
+      }
+    },
+    {
+      "id": "a-publish",
+      "title": "Publish, division, and Flow Insights",
+      "level": "Core",
+      "minutes": 12,
+      "summary": "A saved flow is a draft. The runtime uses the published version. Insights tell you whether anyone hit it.",
+      "paras": [
+        "Create, edit, and publish are different moments. In-queue flows make that obvious because the default exists and still does nothing until publish. The same discipline applies to inbound flows, bots, and common modules. Flow Insights, referenced from the bot documentation, shows how often pieces of a flow run. A flow that Insights says never runs is usually a routing problem: the call route, the queue\u2019s in-queue selection, or the bot call is pointing somewhere else.",
+        "The flow\u2019s division controls who can edit it. An admin in the wrong division will swear the flow is missing. It is not missing. Their role is not granted on that division. Fix the grant or move the flow. Do not create a second copy under a new name and leave the published one in place."
+      ],
+      "cites": [
+        {
+          "title": "Create a flow",
+          "url": "https://help.genesys.cloud/articles/create-a-flow/"
+        },
+        {
+          "title": "In-queue flows overview",
+          "url": "https://help.genesys.cloud/articles/queue-call-flows/"
+        },
+        {
+          "title": "About Genesys Dialog Engine Bot Flows",
+          "url": "https://help.genesys.cloud/articles/about-genesys-dialog-engine-bot-flows/"
+        },
+        {
+          "title": "Divisions overview",
+          "url": "https://help.genesys.cloud/articles/divisions-overview/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Draft, published runtime, and the route that points at it.",
+        "nodes": [
+          {
+            "id": "draft",
+            "label": "Draft",
+            "kind": "architect",
+            "x": 16,
+            "y": 40
+          },
+          {
+            "id": "pub",
+            "label": "Published",
+            "kind": "architect",
+            "x": 42,
+            "y": 40
+          },
+          {
+            "id": "route",
+            "label": "Call route",
+            "kind": "trunk",
+            "x": 68,
+            "y": 22
+          },
+          {
+            "id": "ins",
+            "label": "Insights",
+            "kind": "wem",
+            "x": 68,
+            "y": 70
+          }
+        ],
+        "edges": [
+          {
+            "a": "draft",
+            "b": "pub"
+          },
+          {
+            "a": "pub",
+            "b": "route"
+          },
+          {
+            "a": "pub",
+            "b": "ins"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Ship a change without leaving the old runtime up",
+        "steps": [
+          {
+            "from": "Author",
+            "to": "Draft",
+            "title": "Save",
+            "detail": "The editor has the new prompt.",
+            "inspect": "Callers do not"
+          },
+          {
+            "from": "Author",
+            "to": "Publish",
+            "title": "Runtime",
+            "detail": "Now the edge that executes flows can see it.",
+            "inspect": "Republish after every fix"
+          },
+          {
+            "from": "Admin",
+            "to": "Call route",
+            "title": "Point",
+            "detail": "A DID still runs whichever flow the route names.",
+            "inspect": "Publishing is not attaching"
+          },
+          {
+            "from": "Analyst",
+            "to": "Insights",
+            "title": "Read",
+            "detail": "Zero runs means the route or the call action is elsewhere.",
+            "inspect": "Not a codec problem"
+          },
+          {
+            "from": "Admin",
+            "to": "Division",
+            "title": "Grant",
+            "detail": "Editors need the flow\u2019s division.",
+            "inspect": "A copy hides the real flow"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Saving a flow updates callers when:",
+          "choices": [
+            "You change theme",
+            "You also publish, and the route or queue actually uses that flow",
+            "You save",
+            "You refresh the browser"
+          ],
+          "answer": 1,
+          "why": "Publish plus a reference is the runtime."
+        },
+        {
+          "q": "Flow Insights showing zero executions usually means:",
+          "choices": [
+            "The name is 200 characters",
+            "Nothing is invoking that published flow",
+            "RTP is one-way",
+            "The 30 minute concurrent rule"
+          ],
+          "answer": 1,
+          "why": "Look at the call route, the queue setting, or the Call Bot Flow action."
+        },
+        {
+          "q": "An admin who cannot see a flow should check:",
+          "choices": [
+            "The wrap-up code first",
+            "The flow\u2019s division and their role grant",
+            "The SIP codec first",
+            "The satellite region first"
+          ],
+          "answer": 1,
+          "why": "Divisions hide objects from roles that are not granted."
+        },
+        {
+          "q": "Creating a second copy instead of granting access:",
+          "choices": [
+            "Moves the AWS region",
+            "Leaves the published original in place and splits the design",
+            "Is the documented fix",
+            "Deletes the original"
+          ],
+          "answer": 1,
+          "why": "Fix the grant or move the flow."
+        },
+        {
+          "q": "The default in-queue flow is the teaching example of:",
+          "choices": [
+            "A token",
+            "Exists, saved, and still unused until publish",
+            "A flow that cannot be published",
+            "A trunk"
+          ],
+          "answer": 1,
+          "why": "That is the in-queue article\u2019s warning."
+        },
+        {
+          "q": "Call-route attachment and publish are:",
+          "choices": [
+            "Both required. Publish makes a version. The route selects it.",
+            "The same click",
+            "Illegal together",
+            "Only for bots"
+          ],
+          "answer": 0,
+          "why": "A published flow nobody references does not answer the DID."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Save",
+          "back": "Draft."
+        },
+        {
+          "front": "Publish",
+          "back": "Runtime version."
+        },
+        {
+          "front": "Route",
+          "back": "What actually invokes it."
+        },
+        {
+          "front": "Division",
+          "back": "Who is allowed to see it."
+        }
+      ],
+      "lab": {
+        "title": "Ship a one-line prompt change",
+        "steps": [
+          "Edit the prompt.",
+          "Publish.",
+          "Name the call route or queue that must reference it.",
+          "Say what zero Flow Insights executions would mean."
+        ],
+        "success": "The change has a publish and a reference, not only a save."
+      },
+      "fault": {
+        "title": "Two billing flows",
+        "symptom": "Half the DIDs still play the old hours.",
+        "log": "Billing inbound published today. Call route for +15555550199 still names Billing inbound legacy.",
+        "cause": "Publish did not move the route.",
+        "fix": "Point the route at the new flow, place a test call, then retire the legacy flow."
+      }
+    }
+  ]
+}

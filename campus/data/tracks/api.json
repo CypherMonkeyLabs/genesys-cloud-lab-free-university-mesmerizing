@@ -1,0 +1,1383 @@
+{
+  "id": "api",
+  "title": "Platform APIs",
+  "kicker": "No live calls",
+  "accent": 1,
+  "summary": "OAuth grants, client credentials limits, region hosts, and why this lab\u2019s explorer never sends a request.",
+  "lessons": [
+    {
+      "id": "p-center",
+      "title": "The Developer Center is the map. This lab is not a client.",
+      "level": "Core",
+      "minutes": 11,
+      "summary": "Read the public docs. Do not point a tutorial at a production org.",
+      "paras": [
+        "The Genesys Cloud Developer Center is the front door for the Platform API. The API explorer in this lab shows sample JSON shaped from the client-credentials guide and from admin limits such as queue alerting. It does not call login or API hosts. A sample with labIllustration set to true is a teaching body, not a captured response.",
+        "When you do build a client, the region\u2019s login host and API host must match the organization. This lab treats only the US East API host from the client-credentials guide, api.mypurecloud.com, as a host it is willing to print. Other regions: confirm the API host on the regions article."
+      ],
+      "cites": [
+        {
+          "title": "Genesys Cloud Developer Center",
+          "url": "https://developer.genesys.cloud/"
+        },
+        {
+          "title": "Client credentials grant",
+          "url": "https://developer.genesys.cloud/api/rest/authorization/use-client-credentials"
+        },
+        {
+          "title": "AWS regions for Genesys Cloud",
+          "url": "https://help.genesys.cloud/articles/aws-regions-for-genesys-cloud-deployment/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Docs and samples stay on this side of the network.",
+        "nodes": [
+          {
+            "id": "lab",
+            "label": "Lab",
+            "kind": "architect",
+            "x": 18,
+            "y": 40
+          },
+          {
+            "id": "doc",
+            "label": "Dev Center",
+            "kind": "region",
+            "x": 50,
+            "y": 40
+          },
+          {
+            "id": "org",
+            "label": "Org",
+            "kind": "queue",
+            "x": 84,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "lab",
+            "b": "doc"
+          },
+          {
+            "a": "doc",
+            "b": "org"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Decide whether a sample is safe to send",
+        "steps": [
+          {
+            "from": "Read",
+            "to": "Guide",
+            "title": "Client credentials page",
+            "detail": "See the real request shape.",
+            "inspect": "Basic auth, not a secret in a query"
+          },
+          {
+            "from": "Lab",
+            "to": "Sample",
+            "title": "labIllustration",
+            "detail": "Not a captured body.",
+            "inspect": "Do not file it as a bug"
+          },
+          {
+            "from": "Region",
+            "to": "Host",
+            "title": "Match the org",
+            "detail": "US East API host is the one this lab prints.",
+            "inspect": "Confirm the others"
+          },
+          {
+            "from": "Prod",
+            "to": "Never",
+            "title": "Tutorial traffic",
+            "detail": "Use a lab org.",
+            "inspect": "This site will not be your client"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "This lab\u2019s API explorer:",
+          "choices": [
+            "Replaces the Developer Center",
+            "Shows samples and does not send them",
+            "Posts to your org",
+            "Stores client secrets"
+          ],
+          "answer": 1,
+          "why": "It is a reader."
+        },
+        {
+          "q": "A body marked labIllustration is:",
+          "choices": [
+            "An RFC",
+            "A token",
+            "A teaching sample, not a captured response",
+            "A production error you must reproduce"
+          ],
+          "answer": 2,
+          "why": "Do not treat it as a wire capture."
+        },
+        {
+          "q": "The Developer Center is:",
+          "choices": [
+            "A cert voucher",
+            "The public API map",
+            "An Edge group",
+            "A queue"
+          ],
+          "answer": 1,
+          "why": "Start there."
+        },
+        {
+          "q": "The only API host this lab prints as documented is:",
+          "choices": [
+            "A private IP",
+            "The PSAP",
+            "api.mypurecloud.com",
+            "A guessed US West API host"
+          ],
+          "answer": 2,
+          "why": "Other API hosts are confirmed on the regions article."
+        },
+        {
+          "q": "Client secrets belong:",
+          "choices": [
+            "In participant data",
+            "In a flow name",
+            "In a quiz",
+            "In a server-side secret store, never in this lab\u2019s UI"
+          ],
+          "answer": 3,
+          "why": "The guide uses a Basic header."
+        },
+        {
+          "q": "Tutorial requests belong in:",
+          "choices": [
+            "The busiest production queue",
+            "A secure payment flow",
+            "An emergency route",
+            "A lab organization"
+          ],
+          "answer": 3,
+          "why": "Do not test on customers."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Explorer",
+          "back": "Does not send."
+        },
+        {
+          "front": "Illustration",
+          "back": "Not a capture."
+        },
+        {
+          "front": "Host",
+          "back": "Only US East is printed here."
+        },
+        {
+          "front": "Secret",
+          "back": "Never in the browser sample."
+        }
+      ],
+      "lab": {
+        "title": "Mark three samples",
+        "steps": [
+          "One you would send from a lab org.",
+          "One you would only read.",
+          "The host you still need to confirm.",
+          "Where the secret will live."
+        ],
+        "success": "The secret is not in the browser."
+      },
+      "fault": {
+        "title": "Secret in a ticket",
+        "symptom": "A client id and secret are pasted into a chat so a partner can \u201ctry the API\u201d.",
+        "log": "The paste includes the Basic header.",
+        "cause": "The secret left the server.",
+        "fix": "Rotate the client. Use a lab org and a secret store."
+      }
+    },
+    {
+      "id": "p-grants",
+      "title": "Pick the grant that matches who the call runs as",
+      "level": "Core",
+      "minutes": 12,
+      "summary": "Client credentials, authorization code with PKCE, and SAML2 Bearer are the grants to learn. Implicit is the one leaving.",
+      "paras": [
+        "The create-an-OAuth-client article lists the grant types you can assign. Client credentials are for a service. Authorization code, with PKCE where the article requires it, is for an application that acts as a user. SAML2 Bearer is the enterprise single-sign-on pattern the article includes. Token Implicit Grant is documented as deprecated after 25 May 2026.",
+        "A grant is not a role. After you pick the grant you still assign role and division pairs. A correct grant with an empty role list returns a token that cannot see the queues you meant."
+      ],
+      "cites": [
+        {
+          "title": "Create an OAuth client",
+          "url": "https://help.genesys.cloud/articles/create-an-oauth-client/"
+        },
+        {
+          "title": "Client credentials grant",
+          "url": "https://developer.genesys.cloud/api/rest/authorization/use-client-credentials"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Grant first, then roles and divisions.",
+        "nodes": [
+          {
+            "id": "g",
+            "label": "Grant",
+            "kind": "architect",
+            "x": 16,
+            "y": 40
+          },
+          {
+            "id": "r",
+            "label": "Role",
+            "kind": "wem",
+            "x": 48,
+            "y": 40
+          },
+          {
+            "id": "d",
+            "label": "Division",
+            "kind": "region",
+            "x": 80,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "g",
+            "b": "r"
+          },
+          {
+            "a": "r",
+            "b": "d"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Choose a grant out loud",
+        "steps": [
+          {
+            "from": "Service",
+            "to": "No user",
+            "title": "Client credentials",
+            "detail": "Data actions and back-end jobs.",
+            "inspect": "Cannot call users/me"
+          },
+          {
+            "from": "User app",
+            "to": "A person",
+            "title": "Authorization code",
+            "detail": "PKCE when the article says so.",
+            "inspect": "The token is that user"
+          },
+          {
+            "from": "SSO",
+            "to": "Enterprise IdP",
+            "title": "SAML2 Bearer",
+            "detail": "As the article describes.",
+            "inspect": "Still needs roles"
+          },
+          {
+            "from": "Old",
+            "to": "Implicit",
+            "title": "Do not start here",
+            "detail": "Deprecated after 25 May 2026.",
+            "inspect": "Migrate"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "A nightly job that is not a person should use:",
+          "choices": [
+            "A password in the flow",
+            "No OAuth",
+            "Client credentials",
+            "Implicit grant"
+          ],
+          "answer": 2,
+          "why": "The guide is written for that case."
+        },
+        {
+          "q": "An app that must act as the signed-in user should use:",
+          "choices": [
+            "Authorization code",
+            "Client credentials",
+            "A queue name",
+            "Bullseye"
+          ],
+          "answer": 0,
+          "why": "users/me needs a user."
+        },
+        {
+          "q": "SAML2 Bearer is:",
+          "choices": [
+            "A bot type",
+            "The enterprise SSO grant the OAuth article includes",
+            "A SIP method",
+            "A number plan"
+          ],
+          "answer": 1,
+          "why": "Use it when the IdP is the point."
+        },
+        {
+          "q": "Token Implicit Grant is documented as:",
+          "choices": [
+            "Deprecated after 25 May 2026",
+            "The only modern grant",
+            "Required for SCIM",
+            "Removed in 2019"
+          ],
+          "answer": 0,
+          "why": "Do not start a new app on it."
+        },
+        {
+          "q": "A token with no roles:",
+          "choices": [
+            "Is an admin",
+            "Bypasses divisions",
+            "Publishes flows",
+            "Authenticates and still cannot do the work"
+          ],
+          "answer": 3,
+          "why": "Assign role and division pairs."
+        },
+        {
+          "q": "PKCE belongs with:",
+          "choices": [
+            "Authorization code, when the article requires it",
+            "Client credentials Basic auth",
+            "RTP",
+            "ACW"
+          ],
+          "answer": 0,
+          "why": "Read the OAuth article rather than skipping PKCE."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Service",
+          "back": "Client credentials."
+        },
+        {
+          "front": "User",
+          "back": "Authorization code."
+        },
+        {
+          "front": "SSO",
+          "back": "SAML2 Bearer."
+        },
+        {
+          "front": "Implicit",
+          "back": "Deprecated after 25 May 2026."
+        }
+      ],
+      "lab": {
+        "title": "Match four apps",
+        "steps": [
+          "A data action.",
+          "A agent-desktop widget.",
+          "An SSO portal.",
+          "A legacy implicit app you would migrate."
+        ],
+        "success": "Each app has a different grant."
+      },
+      "fault": {
+        "title": "Password in a flow",
+        "symptom": "A data action stores a user\u2019s password to call the API.",
+        "log": "No OAuth client. A secret in the action.",
+        "cause": "The grant was skipped.",
+        "fix": "Create a client-credentials client and delete the password."
+      }
+    },
+    {
+      "id": "p-cc",
+      "title": "Client credentials have no user, so users/me is the wrong call",
+      "level": "Core",
+      "minutes": 12,
+      "summary": "The token is the client. The guide shows that limit on purpose.",
+      "paras": [
+        "The client-credentials guide shows a POST to the login host\u2019s /oauth/token with HTTP Basic of the client id and secret, and grant_type=client_credentials. The access token is then a bearer token against the API host. The same guide explains that this token cannot call /api/v2/users/me, because there is no user.",
+        "Roles on a client-credentials client are role-and-division pairs, and they are a subset of what the person who created the client could grant. You cannot escalate by creating a client. If the integration must read \u201cmy\u201d queues, use authorization code instead."
+      ],
+      "cites": [
+        {
+          "title": "Client credentials grant",
+          "url": "https://developer.genesys.cloud/api/rest/authorization/use-client-credentials"
+        },
+        {
+          "title": "Create an OAuth client",
+          "url": "https://help.genesys.cloud/articles/create-an-oauth-client/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Basic auth at login. Bearer at the API. No user on the token.",
+        "nodes": [
+          {
+            "id": "id",
+            "label": "Client",
+            "kind": "architect",
+            "x": 14,
+            "y": 40
+          },
+          {
+            "id": "login",
+            "label": "Login host",
+            "kind": "region",
+            "x": 46,
+            "y": 40
+          },
+          {
+            "id": "api",
+            "label": "API host",
+            "kind": "queue",
+            "x": 78,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "id",
+            "b": "login"
+          },
+          {
+            "a": "login",
+            "b": "api"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Read a token request without sending it",
+        "steps": [
+          {
+            "from": "POST",
+            "to": "/oauth/token",
+            "title": "grant_type=client_credentials",
+            "detail": "On the login host.",
+            "inspect": "Basic, not the secret in the body if the guide uses the header"
+          },
+          {
+            "from": "Response",
+            "to": "access_token",
+            "title": "Bearer",
+            "detail": "expires_in comes from the response.",
+            "inspect": "Do not hardcode a lifetime"
+          },
+          {
+            "from": "GET",
+            "to": "/api/v2/users",
+            "title": "A call the guide shows",
+            "detail": "Against the API host.",
+            "inspect": "US East sample: api.mypurecloud.com"
+          },
+          {
+            "from": "GET",
+            "to": "/api/v2/users/me",
+            "title": "Do not",
+            "detail": "No user context.",
+            "inspect": "Switch grants if you need it"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Client credentials are sent as:",
+          "choices": [
+            "A SIP REGISTER",
+            "A queue id",
+            "HTTP Basic of client id and secret, plus grant_type=client_credentials",
+            "A password grant in Architect"
+          ],
+          "answer": 2,
+          "why": "Follow the guide."
+        },
+        {
+          "q": "/api/v2/users/me with that token:",
+          "choices": [
+            "Is the happy path",
+            "Fails because the token is not a user",
+            "Returns the admin who created the client",
+            "Lists all divisions"
+          ],
+          "answer": 1,
+          "why": "The guide documents the limit."
+        },
+        {
+          "q": "The bearer token is used against:",
+          "choices": [
+            "The Edge",
+            "The carrier",
+            "The PSAP",
+            "The API host for the org\u2019s region"
+          ],
+          "answer": 3,
+          "why": "Login and API hosts are different."
+        },
+        {
+          "q": "expires_in should be:",
+          "choices": [
+            "Stored in a flow name",
+            "Read from the token response",
+            "Assumed to be one year",
+            "Ignored"
+          ],
+          "answer": 1,
+          "why": "Refresh on the documented schedule."
+        },
+        {
+          "q": "A client-credentials role can exceed the creator\u2019s rights:",
+          "choices": [
+            "Only for SCIM",
+            "No. Pairs are a subset of what the creator could grant.",
+            "Yes",
+            "Only in Home"
+          ],
+          "answer": 1,
+          "why": "You cannot escalate through a client."
+        },
+        {
+          "q": "Listing users, as in the guide\u2019s example, is:",
+          "choices": [
+            "The same as users/me",
+            "Forbidden always",
+            "A bot flow",
+            "A normal client-credentials call when the role allows it"
+          ],
+          "answer": 3,
+          "why": "The absence of a user is not the absence of all user APIs."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Basic",
+          "back": "Id and secret at the login host."
+        },
+        {
+          "front": "Bearer",
+          "back": "The API host."
+        },
+        {
+          "front": "users/me",
+          "back": "Wrong grant."
+        },
+        {
+          "front": "Subset",
+          "back": "No privilege escalation."
+        }
+      ],
+      "lab": {
+        "title": "Explain the 403 illustration",
+        "steps": [
+          "Which grant you used.",
+          "Which path failed.",
+          "Which grant you would switch to.",
+          "Where the secret is stored."
+        ],
+        "success": "The explanation does not include the secret."
+      },
+      "fault": {
+        "title": "Me with a bot",
+        "symptom": "A service account\u2019s health check calls /users/me and pages on 403.",
+        "log": "Grant: client credentials.",
+        "cause": "The health check expects a user.",
+        "fix": "Check /api/v2/users or a resource the role allows, or switch grants."
+      }
+    },
+    {
+      "id": "p-implicit",
+      "title": "Implicit grant is a migration, not a new design",
+      "level": "Core",
+      "minutes": 11,
+      "summary": "The OAuth article dates the deprecation: after 25 May 2026.",
+      "paras": [
+        "Token Implicit Grant returns a token in the browser redirect. That pattern is what the create-an-OAuth-client article marks deprecated after 25 May 2026. New work uses authorization code with PKCE, or client credentials when there is no user. Leaving an implicit client in place is a dated risk, not a style choice.",
+        "Inventory the clients before the date. Each one is either a user-facing app or a service. Split them. Do not \u201cfix\u201d an implicit app by pasting its token into a data action."
+      ],
+      "cites": [
+        {
+          "title": "Create an OAuth client",
+          "url": "https://help.genesys.cloud/articles/create-an-oauth-client/"
+        },
+        {
+          "title": "Client credentials grant",
+          "url": "https://developer.genesys.cloud/api/rest/authorization/use-client-credentials"
+        }
+      ],
+      "uncertainty": "Confirm the deprecation sentence on the OAuth article before you enforce 25 May 2026 in a program plan.",
+      "figure": {
+        "caption": "Implicit clients move to code+PKCE or to client credentials.",
+        "nodes": [
+          {
+            "id": "old",
+            "label": "Implicit",
+            "kind": "crm",
+            "x": 16,
+            "y": 40
+          },
+          {
+            "id": "code",
+            "label": "Code + PKCE",
+            "kind": "architect",
+            "x": 55,
+            "y": 22
+          },
+          {
+            "id": "cc",
+            "label": "Client credentials",
+            "kind": "region",
+            "x": 55,
+            "y": 68
+          }
+        ],
+        "edges": [
+          {
+            "a": "old",
+            "b": "code"
+          },
+          {
+            "a": "old",
+            "b": "cc"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Inventory and split",
+        "steps": [
+          {
+            "from": "Admin",
+            "to": "List",
+            "title": "Every OAuth client",
+            "detail": "Grant column.",
+            "inspect": "Including ones partners created"
+          },
+          {
+            "from": "User app",
+            "to": "Move",
+            "title": "Authorization code",
+            "detail": "Add PKCE.",
+            "inspect": "Test in a lab org"
+          },
+          {
+            "from": "Service",
+            "to": "Move",
+            "title": "Client credentials",
+            "detail": "Roles and divisions only.",
+            "inspect": "No users/me"
+          },
+          {
+            "from": "Date",
+            "to": "25 May 2026",
+            "title": "The article\u2019s line",
+            "detail": "Re-read in case the page moves.",
+            "inspect": "Do not invent an earlier kill date"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Token Implicit Grant is deprecated after:",
+          "choices": [
+            "The next Edge upgrade",
+            "Never",
+            "25 May 2026, on the OAuth client article",
+            "1 January 2020"
+          ],
+          "answer": 2,
+          "why": "Use the article\u2019s date."
+        },
+        {
+          "q": "A new single-page app that acts as a user should use:",
+          "choices": [
+            "Implicit",
+            "A password in localStorage",
+            "Client credentials for users/me",
+            "Authorization code with PKCE"
+          ],
+          "answer": 3,
+          "why": "That is the replacement."
+        },
+        {
+          "q": "A service mistaken for a user app should use:",
+          "choices": [
+            "Implicit forever",
+            "SAML inside a trunk",
+            "No auth",
+            "Client credentials, and stop calling users/me"
+          ],
+          "answer": 3,
+          "why": "Split the inventory."
+        },
+        {
+          "q": "Pasting an implicit token into a data action:",
+          "choices": [
+            "Rotates the secret",
+            "Publishes flows",
+            "Does not modernize the client",
+            "Is the migration"
+          ],
+          "answer": 2,
+          "why": "Change the grant."
+        },
+        {
+          "q": "The deprecation date in a design packet should be:",
+          "choices": [
+            "Set to a community rumor",
+            "Copied from the current article",
+            "Remembered from this lesson if the page changed",
+            "Omitted"
+          ],
+          "answer": 1,
+          "why": "Re-read before you enforce it."
+        },
+        {
+          "q": "Partners\u2019 OAuth clients are:",
+          "choices": [
+            "In the same inventory",
+            "Exempt",
+            "Cisco objects",
+            "Number plans"
+          ],
+          "answer": 0,
+          "why": "You own the org\u2019s clients."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Date",
+          "back": "25 May 2026 on the article."
+        },
+        {
+          "front": "User",
+          "back": "Code and PKCE."
+        },
+        {
+          "front": "Service",
+          "back": "Client credentials."
+        },
+        {
+          "front": "Inventory",
+          "back": "Including partners."
+        }
+      ],
+      "lab": {
+        "title": "Classify five imaginary clients",
+        "steps": [
+          "Two user apps.",
+          "Two services.",
+          "One you cannot classify until you see the grant.",
+          "The page you will re-open."
+        ],
+        "success": "Nothing stays implicit without a date."
+      },
+      "fault": {
+        "title": "Forgotten widget",
+        "symptom": "A browser widget still uses a hash token after the deprecation date.",
+        "log": "Grant: Token Implicit.",
+        "cause": "The inventory skipped it.",
+        "fix": "Move it to authorization code with PKCE."
+      }
+    },
+    {
+      "id": "p-hosts",
+      "title": "Login host and API host are a pair you look up",
+      "level": "Core",
+      "minutes": 12,
+      "summary": "US East is the pair this lab will quote in full. Other rows stay on the regions article.",
+      "paras": [
+        "US East (N. Virginia, us-east-1) uses login.mypurecloud.com and, in the client-credentials guide, api.mypurecloud.com. US West (Oregon, us-west-2) uses login.usw2.pure.cloud. FedRAMP (US East 2, us-east-2) uses login.use2.us-gov-pure.cloud. This lab does not invent the API hostname that pairs with those last two logins.",
+        "A token from one region\u2019s login host is not a token for another region\u2019s API. Satellite regions do not change this. They are media. The organization still has one core region and one login."
+      ],
+      "cites": [
+        {
+          "title": "AWS regions for Genesys Cloud",
+          "url": "https://help.genesys.cloud/articles/aws-regions-for-genesys-cloud-deployment/"
+        },
+        {
+          "title": "Client credentials grant",
+          "url": "https://developer.genesys.cloud/api/rest/authorization/use-client-credentials"
+        },
+        {
+          "title": "AWS regions for Genesys Cloud Voice",
+          "url": "https://help.genesys.cloud/articles/aws-regions-genesys-cloud-voice/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "One core region, one login, one API host.",
+        "nodes": [
+          {
+            "id": "org",
+            "label": "Core org",
+            "kind": "region",
+            "x": 20,
+            "y": 40
+          },
+          {
+            "id": "login",
+            "label": "Login",
+            "kind": "architect",
+            "x": 52,
+            "y": 40
+          },
+          {
+            "id": "api",
+            "label": "API",
+            "kind": "queue",
+            "x": 82,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "org",
+            "b": "login"
+          },
+          {
+            "a": "login",
+            "b": "api"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Bind a client to the right pair",
+        "steps": [
+          {
+            "from": "Org",
+            "to": "Region",
+            "title": "Read the org\u2019s region",
+            "detail": "Not the user\u2019s laptop.",
+            "inspect": "Core, not satellite"
+          },
+          {
+            "from": "US East",
+            "to": "Pair",
+            "title": "login.mypurecloud.com and api.mypurecloud.com",
+            "detail": "The pair this lab quotes.",
+            "inspect": "Guide plus regions article"
+          },
+          {
+            "from": "US West",
+            "to": "Login",
+            "title": "login.usw2.pure.cloud",
+            "detail": "API host: look it up.",
+            "inspect": "Do not guess api.usw2"
+          },
+          {
+            "from": "FedRAMP",
+            "to": "Login",
+            "title": "login.use2.us-gov-pure.cloud",
+            "detail": "API host: look it up.",
+            "inspect": "Voice coverage is a different article"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "The US East login host is:",
+          "choices": [
+            "login.usw2.pure.cloud",
+            "login.use2.us-gov-pure.cloud",
+            "api.mypurecloud.com",
+            "login.mypurecloud.com"
+          ],
+          "answer": 3,
+          "why": "The API host is the other name."
+        },
+        {
+          "q": "The US East API host shown in the client-credentials guide is:",
+          "choices": [
+            "A satellite region",
+            "The Edge",
+            "api.mypurecloud.com",
+            "login.mypurecloud.com"
+          ],
+          "answer": 2,
+          "why": "Do not swap login and API."
+        },
+        {
+          "q": "US West\u2019s login host is:",
+          "choices": [
+            "login.mypurecloud.com",
+            "A host this lab invented for the API",
+            "The carrier",
+            "login.usw2.pure.cloud"
+          ],
+          "answer": 3,
+          "why": "The API pair is confirmed on the regions article."
+        },
+        {
+          "q": "A token from US East used against another region:",
+          "choices": [
+            "Is faster",
+            "Is required for satellite media",
+            "Publishes flows",
+            "Is the wrong pair"
+          ],
+          "answer": 3,
+          "why": "Match the org."
+        },
+        {
+          "q": "A satellite region:",
+          "choices": [
+            "Stores roles",
+            "Does not replace the org\u2019s login host",
+            "Is where you create the org",
+            "Issues OAuth clients"
+          ],
+          "answer": 1,
+          "why": "Media is not the core."
+        },
+        {
+          "q": "FedRAMP\u2019s login host is:",
+          "choices": [
+            "A commercial guess",
+            "appfoundry.genesys.com",
+            "login.use2.us-gov-pure.cloud",
+            "login.mypurecloud.com"
+          ],
+          "answer": 2,
+          "why": "us-east-2 in the regions article."
+        }
+      ],
+      "cards": [
+        {
+          "front": "US East",
+          "back": "login.mypurecloud.com / api.mypurecloud.com."
+        },
+        {
+          "front": "US West",
+          "back": "login.usw2.pure.cloud. Confirm the API host."
+        },
+        {
+          "front": "FedRAMP",
+          "back": "login.use2.us-gov-pure.cloud. Confirm the API host."
+        },
+        {
+          "front": "Satellite",
+          "back": "Not an org home."
+        }
+      ],
+      "lab": {
+        "title": "Fill the pair",
+        "steps": [
+          "The org\u2019s core region.",
+          "The login host.",
+          "The API host, or the words \u201cconfirm on the regions article\u201d.",
+          "A sentence that satellite media does not change the pair."
+        ],
+        "success": "No guessed API hostname remains."
+      },
+      "fault": {
+        "title": "West token, east API",
+        "symptom": "Every call returns unauthorized after a region migration on paper.",
+        "log": "Token from login.usw2.pure.cloud. Requests still go to api.mypurecloud.com.",
+        "cause": "The pair was split.",
+        "fix": "Point the client at the API host the regions article lists for that org."
+      }
+    },
+    {
+      "id": "p-roles",
+      "title": "Role and division pairs are the real permission",
+      "level": "Core",
+      "minutes": 12,
+      "summary": "A token opens the door the role allows, in the division the pair names.",
+      "paras": [
+        "Divisions overview: objects live in one division, Home cannot be deleted, and the All division is the org-wide grant. OAuth clients do not escape that model. The client-credentials article\u2019s role-division pairs are how a service is scoped. Granting a queue role in Home does not let the client edit a queue that lives in another division.",
+        "Transactional objects such as conversations and recordings follow the division rules on that page. An integration that \u201ccannot see the recording\u201d is often a division grant, not a broken endpoint. Check the pair before you file an API defect."
+      ],
+      "cites": [
+        {
+          "title": "Divisions overview",
+          "url": "https://help.genesys.cloud/articles/divisions-overview/"
+        },
+        {
+          "title": "Create an OAuth client",
+          "url": "https://help.genesys.cloud/articles/create-an-oauth-client/"
+        },
+        {
+          "title": "Client credentials grant",
+          "url": "https://developer.genesys.cloud/api/rest/authorization/use-client-credentials"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "The same role in two divisions is two grants.",
+        "nodes": [
+          {
+            "id": "role",
+            "label": "Queue edit",
+            "kind": "wem",
+            "x": 22,
+            "y": 40
+          },
+          {
+            "id": "home",
+            "label": "Home",
+            "kind": "region",
+            "x": 58,
+            "y": 22
+          },
+          {
+            "id": "emea",
+            "label": "EMEA",
+            "kind": "region",
+            "x": 58,
+            "y": 68
+          }
+        ],
+        "edges": [
+          {
+            "a": "role",
+            "b": "home"
+          },
+          {
+            "a": "role",
+            "b": "emea"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Scope a service to one division",
+        "steps": [
+          {
+            "from": "Need",
+            "to": "One business unit",
+            "title": "That division only",
+            "detail": "Not All, unless you mean the org.",
+            "inspect": "All is a real grant"
+          },
+          {
+            "from": "Client",
+            "to": "Pairs",
+            "title": "Role plus division",
+            "detail": "Subset of the creator.",
+            "inspect": "No escalation"
+          },
+          {
+            "from": "Test",
+            "to": "Other division",
+            "title": "Expect a miss",
+            "detail": "That proves the scope.",
+            "inspect": "Do not \u201cfix\u201d it with All on a Friday"
+          },
+          {
+            "from": "Audit",
+            "to": "Who created it",
+            "title": "Their rights cap the client",
+            "detail": "If they lose a division, review the client.",
+            "inspect": "Pairs do not grow on their own"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "A role granted only in Home lets the client:",
+          "choices": [
+            "Delete Home",
+            "Bypass OAuth",
+            "Work on objects in Home",
+            "Edit every division"
+          ],
+          "answer": 2,
+          "why": "Division is part of the pair."
+        },
+        {
+          "q": "The All division is:",
+          "choices": [
+            "A default you should always add",
+            "The same as Home",
+            "A satellite region",
+            "An org-wide grant, used on purpose"
+          ],
+          "answer": 3,
+          "why": "It is powerful."
+        },
+        {
+          "q": "Client-credentials pairs are limited by:",
+          "choices": [
+            "The bot",
+            "The exam",
+            "What the creator could grant",
+            "The carrier"
+          ],
+          "answer": 2,
+          "why": "No escalation."
+        },
+        {
+          "q": "A recording the API \u201clost\u201d is often:",
+          "choices": [
+            "A division the token cannot see",
+            "A SIP 404",
+            "An unpublished in-queue flow",
+            "A 988 plan"
+          ],
+          "answer": 0,
+          "why": "Check the pair."
+        },
+        {
+          "q": "Home division:",
+          "choices": [
+            "Is implicit grant",
+            "Cannot be deleted",
+            "Is optional",
+            "Is a trunk"
+          ],
+          "answer": 1,
+          "why": "The divisions article says so."
+        },
+        {
+          "q": "Two queues in two divisions need:",
+          "choices": [
+            "No roles",
+            "A preferred agent",
+            "Grants that cover both, if one client must edit both",
+            "One Home grant"
+          ],
+          "answer": 2,
+          "why": "Objects have one division each."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Pair",
+          "back": "Role plus division."
+        },
+        {
+          "front": "All",
+          "back": "Org-wide, on purpose."
+        },
+        {
+          "front": "Home",
+          "back": "Cannot be deleted."
+        },
+        {
+          "front": "Creator",
+          "back": "Caps the client."
+        }
+      ],
+      "lab": {
+        "title": "Write the pairs",
+        "steps": [
+          "The client name.",
+          "The role.",
+          "The division.",
+          "The division you expect to fail a test call."
+        ],
+        "success": "The failure is intentional."
+      },
+      "fault": {
+        "title": "All by habit",
+        "symptom": "A partner integration can edit every queue in the org.",
+        "log": "Role pair: All division.",
+        "cause": "The scope was the whole org.",
+        "fix": "Replace All with the division that owns those queues."
+      }
+    },
+    {
+      "id": "p-scim",
+      "title": "SCIM and other directory sync still start with an OAuth client",
+      "level": "Core",
+      "minutes": 11,
+      "summary": "The OAuth article points SCIM at a client. The client still has roles and a grant.",
+      "paras": [
+        "Create an OAuth client is the article that tells you SCIM uses an OAuth client. Treat that client like any other service: a deliberate grant, least roles, a division pair, a secret that is not in a ticket. Directory sync that can create users can also create admins if the role is wide.",
+        "SCIM does not choose your region, your queues, or your bots. After users exist, the org work in the other tracks still has to happen. A synced user with no queue membership and Off Queue is a successful SCIM call and an empty contact center."
+      ],
+      "cites": [
+        {
+          "title": "Create an OAuth client",
+          "url": "https://help.genesys.cloud/articles/create-an-oauth-client/"
+        },
+        {
+          "title": "Divisions overview",
+          "url": "https://help.genesys.cloud/articles/divisions-overview/"
+        },
+        {
+          "title": "Create and configure queues",
+          "url": "https://help.genesys.cloud/articles/create-queues/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Directory to OAuth client to a user who still needs a queue.",
+        "nodes": [
+          {
+            "id": "dir",
+            "label": "Directory",
+            "kind": "crm",
+            "x": 14,
+            "y": 40
+          },
+          {
+            "id": "oa",
+            "label": "OAuth",
+            "kind": "architect",
+            "x": 46,
+            "y": 40
+          },
+          {
+            "id": "q",
+            "label": "Queue",
+            "kind": "queue",
+            "x": 80,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "dir",
+            "b": "oa"
+          },
+          {
+            "a": "oa",
+            "b": "q"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Stand up sync without standing up admins",
+        "steps": [
+          {
+            "from": "Admin",
+            "to": "Client",
+            "title": "Its own OAuth client",
+            "detail": "Not a person\u2019s implicit token.",
+            "inspect": "Client credentials or the grant the article names"
+          },
+          {
+            "from": "Admin",
+            "to": "Roles",
+            "title": "Only user provision",
+            "detail": "Not every permission the creator has.",
+            "inspect": "Division pairs"
+          },
+          {
+            "from": "Secret",
+            "to": "Store",
+            "title": "A vault",
+            "detail": "Rotate if it leaks.",
+            "inspect": "Never in this lab"
+          },
+          {
+            "from": "After",
+            "to": "Queues",
+            "title": "Membership is separate",
+            "detail": "SCIM did not join them to Billing.",
+            "inspect": "On Queue is still a status"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "SCIM in Genesys Cloud is tied to:",
+          "choices": [
+            "An in-queue flow",
+            "A cert voucher",
+            "An OAuth client, per the OAuth article",
+            "A phone trunk"
+          ],
+          "answer": 2,
+          "why": "Start there."
+        },
+        {
+          "q": "A wide SCIM role can:",
+          "choices": [
+            "Only buy numbers",
+            "Only read the FAQ",
+            "Provision more access than you meant, including privileged users",
+            "Only set ACW"
+          ],
+          "answer": 2,
+          "why": "Least privilege."
+        },
+        {
+          "q": "A synced user who never takes a call often:",
+          "choices": [
+            "Needs a topic",
+            "Has no queue membership or is not On Queue",
+            "Needs a new region",
+            "Needs implicit grant"
+          ],
+          "answer": 1,
+          "why": "SCIM creates the person, not the contact center."
+        },
+        {
+          "q": "The client secret for SCIM belongs in:",
+          "choices": [
+            "Participant data",
+            "A quiz answer",
+            "A secret store",
+            "A flow name"
+          ],
+          "answer": 2,
+          "why": "Rotate it if it escapes."
+        },
+        {
+          "q": "Division pairs still apply because:",
+          "choices": [
+            "The client is an OAuth client",
+            "SCIM bypasses divisions",
+            "Home was deleted",
+            "Tokens are queues"
+          ],
+          "answer": 0,
+          "why": "Scope the directory client."
+        },
+        {
+          "q": "After a successful sync you still configure:",
+          "choices": [
+            "Queues, roles, and presence behavior",
+            "Only the trunk",
+            "Only the exam",
+            "Nothing"
+          ],
+          "answer": 0,
+          "why": "The user is not yet an agent."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Client",
+          "back": "Its own OAuth client."
+        },
+        {
+          "front": "Roles",
+          "back": "Provision, not everything."
+        },
+        {
+          "front": "Secret",
+          "back": "A vault."
+        },
+        {
+          "front": "After",
+          "back": "Queues and On Queue."
+        }
+      ],
+      "lab": {
+        "title": "Review a SCIM client",
+        "steps": [
+          "The grant.",
+          "The roles.",
+          "The divisions.",
+          "One thing SCIM will not configure for you."
+        ],
+        "success": "The last item is queue membership or presence."
+      },
+      "fault": {
+        "title": "Admin sync",
+        "symptom": "Every new hire is an organization admin.",
+        "log": "SCIM role includes admin permissions.",
+        "cause": "The pair was copied from the project owner.",
+        "fix": "Replace it with a provision-only role and review who was created."
+      }
+    }
+  ]
+}

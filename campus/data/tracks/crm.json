@@ -1,0 +1,1205 @@
+{
+  "id": "crm",
+  "title": "AppFoundry and CRM",
+  "kicker": "Beside the desktop",
+  "accent": 2,
+  "summary": "The marketplace, the documented Salesforce and Zendesk embeds, and OAuth migrations that do not invent other CRMs.",
+  "lessons": [
+    {
+      "id": "i-market",
+      "title": "AppFoundry is the marketplace, not a feature you assume is installed",
+      "level": "Core",
+      "minutes": 11,
+      "summary": "An app is present only after someone installs it into the org.",
+      "paras": [
+        "AppFoundry is Genesys\u2019 marketplace for applications that extend Genesys Cloud. The site is the catalog. An org does not gain screen pop, a workforce add-on, or a bot connector because the listing exists. Someone with the right admin rights installs it, and that install often creates an OAuth client.",
+        "This lab cites the marketplace and the product articles it can open. If a CRM is not Salesforce or Zendesk in those articles, the lesson will say \u201clook on AppFoundry\u201d rather than invent a feature list. Listings change. Re-open the listing before you write it into a design."
+      ],
+      "cites": [
+        {
+          "title": "AppFoundry",
+          "url": "https://appfoundry.genesys.com/"
+        },
+        {
+          "title": "Create an OAuth client",
+          "url": "https://help.genesys.cloud/articles/create-an-oauth-client/"
+        },
+        {
+          "title": "Genesys Cloud Developer Center",
+          "url": "https://developer.genesys.cloud/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "A listing becomes an install, which becomes an OAuth client.",
+        "nodes": [
+          {
+            "id": "list",
+            "label": "Listing",
+            "kind": "crm",
+            "x": 16,
+            "y": 40
+          },
+          {
+            "id": "org",
+            "label": "Org",
+            "kind": "region",
+            "x": 48,
+            "y": 40
+          },
+          {
+            "id": "oa",
+            "label": "Client",
+            "kind": "architect",
+            "x": 80,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "list",
+            "b": "org"
+          },
+          {
+            "a": "org",
+            "b": "oa"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Treat a listing as a candidate",
+        "steps": [
+          {
+            "from": "Read",
+            "to": "Listing",
+            "title": "What it claims today",
+            "detail": "Not a screenshot from last year.",
+            "inspect": "AppFoundry"
+          },
+          {
+            "from": "Admin",
+            "to": "Install",
+            "title": "Into this org",
+            "detail": "Permissions required.",
+            "inspect": "Often an OAuth client"
+          },
+          {
+            "from": "Scope",
+            "to": "Division",
+            "title": "Role pairs",
+            "detail": "The client is not All unless you say so.",
+            "inspect": "Divisions still apply"
+          },
+          {
+            "from": "Other CRM",
+            "to": "No article",
+            "title": "Do not invent",
+            "detail": "Point at the marketplace.",
+            "inspect": "Salesforce and Zendesk have product pages"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "AppFoundry is:",
+          "choices": [
+            "An exam",
+            "The marketplace of apps you can install",
+            "A core AWS region",
+            "A queue type"
+          ],
+          "answer": 1,
+          "why": "The org is unchanged until you install."
+        },
+        {
+          "q": "A listing by itself:",
+          "choices": [
+            "Does not configure your org",
+            "Creates queues",
+            "Buys numbers",
+            "Passes GC-GCP"
+          ],
+          "answer": 0,
+          "why": "Install is a step."
+        },
+        {
+          "q": "Installs often create:",
+          "choices": [
+            "A cert voucher",
+            "An OAuth client you must scope",
+            "A premises Edge",
+            "A PSAP"
+          ],
+          "answer": 1,
+          "why": "Treat it like any other client."
+        },
+        {
+          "q": "A CRM this lab has not opened a product article for:",
+          "choices": [
+            "Is identical to Salesforce",
+            "Is unsupported forever",
+            "Is UCCE",
+            "Is \u201ccheck AppFoundry\u201d, not a feature list"
+          ],
+          "answer": 3,
+          "why": "Do not invent."
+        },
+        {
+          "q": "Listings change, so a design should:",
+          "choices": [
+            "Use implicit grant",
+            "Link the live listing",
+            "Freeze a 2023 screenshot as the contract",
+            "Ignore permissions"
+          ],
+          "answer": 1,
+          "why": "Re-open it."
+        },
+        {
+          "q": "The Developer Center relates because:",
+          "choices": [
+            "It is WFM",
+            "Custom apps and OAuth still follow the platform rules",
+            "It replaces AppFoundry",
+            "It is a trunk"
+          ],
+          "answer": 1,
+          "why": "Marketplace apps are still API clients."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Listing",
+          "back": "A candidate."
+        },
+        {
+          "front": "Install",
+          "back": "The moment it exists."
+        },
+        {
+          "front": "Client",
+          "back": "Scope it."
+        },
+        {
+          "front": "Unknown CRM",
+          "back": "Marketplace, not fiction."
+        }
+      ],
+      "lab": {
+        "title": "Review one listing",
+        "steps": [
+          "The name.",
+          "The permission it asks for.",
+          "The division you would grant.",
+          "What you will not claim if the listing is vague."
+        ],
+        "success": "The vague claim is left out."
+      },
+      "fault": {
+        "title": "Assumed install",
+        "symptom": "The design says screen pop works. The org has no app installed.",
+        "log": "AppFoundry listing bookmarked. OAuth clients: none for that app.",
+        "cause": "The bookmark was treated as an install.",
+        "fix": "Install it, or remove it from the design."
+      }
+    },
+    {
+      "id": "i-sf",
+      "title": "Genesys Cloud for Salesforce is a documented embed",
+      "level": "Core",
+      "minutes": 12,
+      "summary": "Screen pop, click-to-dial, logging, and the assist features that page names.",
+      "paras": [
+        "The About Genesys Cloud for Salesforce article describes the embed: agents work in Salesforce with Genesys capabilities such as screen pop, click-to-dial, and interaction logging. The page also discusses Agent Assist and Agent Copilot in that embed. Those sentences are the feature list this lab will repeat. Anything the page does not say, including a field map for your objects, is your design work.",
+        "The embed is not the Salesforce OAuth client-credentials migration. Logging a call and calling a Salesforce API from a data action are two integrations. They can share a vocabulary and still use different credentials. Configure both on purpose."
+      ],
+      "cites": [
+        {
+          "title": "About Genesys Cloud for Salesforce",
+          "url": "https://help.genesys.cloud/articles/about-genesys-cloud-for-salesforce/"
+        },
+        {
+          "title": "Genesys Agent Copilot overview",
+          "url": "https://help.genesys.cloud/articles/agent-copilot-overview/"
+        },
+        {
+          "title": "Salesforce OAuth client credentials migration",
+          "url": "https://help.genesys.cloud/articles/salesforce-oauth-client-credentials-flow-migration-guide/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "The embed is the desktop. A data action is a different credential.",
+        "nodes": [
+          {
+            "id": "sf",
+            "label": "Salesforce",
+            "kind": "crm",
+            "x": 16,
+            "y": 40
+          },
+          {
+            "id": "emb",
+            "label": "Embed",
+            "kind": "agent",
+            "x": 48,
+            "y": 22
+          },
+          {
+            "id": "da",
+            "label": "Data action",
+            "kind": "architect",
+            "x": 48,
+            "y": 68
+          }
+        ],
+        "edges": [
+          {
+            "a": "sf",
+            "b": "emb"
+          },
+          {
+            "a": "sf",
+            "b": "da"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Separate the two Salesforce paths",
+        "steps": [
+          {
+            "from": "Desktop",
+            "to": "Embed",
+            "title": "Screen pop and click-to-dial",
+            "detail": "The about article.",
+            "inspect": "Logging too"
+          },
+          {
+            "from": "Assist",
+            "to": "Copilot",
+            "title": "Only as that page describes",
+            "detail": "Do not add features.",
+            "inspect": "CX 4 still governs Copilot\u2019s package story"
+          },
+          {
+            "from": "Flow",
+            "to": "Data action",
+            "title": "Its own OAuth",
+            "detail": "The migration guide.",
+            "inspect": "Not the agent\u2019s password"
+          },
+          {
+            "from": "Map",
+            "to": "Your objects",
+            "title": "Not in this lab",
+            "detail": "Write the field map yourselves.",
+            "inspect": "The article will not know your schema"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Genesys Cloud for Salesforce, per its article, includes:",
+          "choices": [
+            "Screen pop, click-to-dial, and logging",
+            "BYOC trunks",
+            "Edge groups",
+            "Bullseye rings"
+          ],
+          "answer": 0,
+          "why": "Those are the embed\u2019s job."
+        },
+        {
+          "q": "Agent Assist and Copilot in that article are:",
+          "choices": [
+            "SIP methods",
+            "Mentioned on the Salesforce page, and still subject to the Copilot overview",
+            "A replacement for ACD",
+            "Free on CX 1"
+          ],
+          "answer": 1,
+          "why": "Read both pages."
+        },
+        {
+          "q": "A data action into Salesforce is:",
+          "choices": [
+            "A queue member",
+            "A separate integration from the embed",
+            "The same toggle",
+            "A number plan"
+          ],
+          "answer": 1,
+          "why": "Give it its own OAuth."
+        },
+        {
+          "q": "Your custom object map is:",
+          "choices": [
+            "Fixed by Home division",
+            "A default number plan",
+            "Your design. The article does not know it.",
+            "Published as an RFC"
+          ],
+          "answer": 2,
+          "why": "Write it down."
+        },
+        {
+          "q": "Putting an agent password in a data action:",
+          "choices": [
+            "Is PKCE",
+            "Is SCIM",
+            "Is the pattern the migration guide tells you to leave",
+            "Is required"
+          ],
+          "answer": 2,
+          "why": "Use the OAuth client credentials flow."
+        },
+        {
+          "q": "The embed fails open to a full contact center when:",
+          "choices": [
+            "Always",
+            "On CX 2",
+            "If click-to-dial works",
+            "It does not. Queues and flows still exist in Genesys."
+          ],
+          "answer": 3,
+          "why": "CRM is beside ACD, not instead of it."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Embed",
+          "back": "Pop, dial, log."
+        },
+        {
+          "front": "Assist",
+          "back": "As the page states."
+        },
+        {
+          "front": "Data action",
+          "back": "Separate OAuth."
+        },
+        {
+          "front": "Schema",
+          "back": "Yours to map."
+        }
+      ],
+      "lab": {
+        "title": "List the embed and the action",
+        "steps": [
+          "Three embed features you can cite.",
+          "Whether Copilot is in scope.",
+          "The data action\u2019s grant.",
+          "One field you will not pretend the article mapped."
+        ],
+        "success": "The unmapped field is explicit."
+      },
+      "fault": {
+        "title": "One password",
+        "symptom": "The data action still uses a Salesforce username and password after the embed was installed.",
+        "log": "Embed: installed. Action: password grant.",
+        "cause": "The embed did not migrate the action.",
+        "fix": "Follow the OAuth client-credentials migration guide."
+      }
+    },
+    {
+      "id": "i-sf-oauth",
+      "title": "Salesforce data actions move to OAuth client credentials",
+      "level": "Core",
+      "minutes": 12,
+      "summary": "Consumer key, secret, and My Domain URL. The request body of the action stays.",
+      "paras": [
+        "The Salesforce OAuth client-credentials migration guide describes leaving username-password auth. You create a Salesforce OAuth client, and you give Genesys the consumer key, the secret, and the My Domain URL. The guide says the data action\u2019s request body does not have to change for that migration. Read the guide for the clicks. This lesson is the shape, not a second copy of the clicks.",
+        "A different article, configure OAuth settings, covers CX Cloud from Genesys and Salesforce OAuth settings. Do not mix that page with the data-action migration and call them one wizard. Two pages, two jobs."
+      ],
+      "cites": [
+        {
+          "title": "Salesforce OAuth client credentials migration",
+          "url": "https://help.genesys.cloud/articles/salesforce-oauth-client-credentials-flow-migration-guide/"
+        },
+        {
+          "title": "Configure OAuth settings",
+          "url": "https://help.genesys.cloud/articles/configure-oauth-settings/"
+        },
+        {
+          "title": "About Genesys Cloud for Salesforce",
+          "url": "https://help.genesys.cloud/articles/about-genesys-cloud-for-salesforce/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Password auth leaves. Client credentials stay. The action body stays.",
+        "nodes": [
+          {
+            "id": "pw",
+            "label": "Password",
+            "kind": "crm",
+            "x": 14,
+            "y": 40
+          },
+          {
+            "id": "cc",
+            "label": "OAuth client",
+            "kind": "architect",
+            "x": 48,
+            "y": 40
+          },
+          {
+            "id": "body",
+            "label": "Same body",
+            "kind": "wem",
+            "x": 82,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "pw",
+            "b": "cc"
+          },
+          {
+            "a": "cc",
+            "b": "body"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Migrate the credential, not the JSON",
+        "steps": [
+          {
+            "from": "SF",
+            "to": "Client",
+            "title": "OAuth client credentials",
+            "detail": "In Salesforce.",
+            "inspect": "Consumer key and secret"
+          },
+          {
+            "from": "GC",
+            "to": "Action",
+            "title": "My Domain URL",
+            "detail": "The guide\u2019s inputs.",
+            "inspect": "Plus the secret in a real store"
+          },
+          {
+            "from": "Body",
+            "to": "Unchanged",
+            "title": "The request you already tested",
+            "detail": "The guide\u2019s point.",
+            "inspect": "Still re-test"
+          },
+          {
+            "from": "Other",
+            "to": "CX Cloud page",
+            "title": "A different article",
+            "detail": "Do not skip it if you use that product.",
+            "inspect": "Do not confuse it with this one"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "The migration guide replaces:",
+          "choices": [
+            "The region",
+            "Username-password auth on the Salesforce data action",
+            "The Architect flow",
+            "The queue"
+          ],
+          "answer": 1,
+          "why": "The credential changes."
+        },
+        {
+          "q": "Genesys needs:",
+          "choices": [
+            "An Edge serial",
+            "A topic phrase",
+            "Consumer key, secret, and My Domain URL",
+            "The agent\u2019s laptop password"
+          ],
+          "answer": 2,
+          "why": "Those are the guide\u2019s inputs."
+        },
+        {
+          "q": "The data action request body:",
+          "choices": [
+            "Must be rewritten as SIP",
+            "Is deleted",
+            "Becomes a bot",
+            "Can stay, per the guide"
+          ],
+          "answer": 3,
+          "why": "Re-test anyway."
+        },
+        {
+          "q": "Configure OAuth settings is:",
+          "choices": [
+            "A separate article from the data-action migration",
+            "The same page",
+            "A number plan",
+            "An exam"
+          ],
+          "answer": 0,
+          "why": "CX Cloud settings live there."
+        },
+        {
+          "q": "The secret in a shared document is:",
+          "choices": [
+            "A leak. Rotate it.",
+            "The My Domain",
+            "Required by the lab",
+            "A division"
+          ],
+          "answer": 0,
+          "why": "Store it as a secret."
+        },
+        {
+          "q": "After migration, a failure to pop the Salesforce record:",
+          "choices": [
+            "May be the embed, not the data action",
+            "Is always the consumer key",
+            "Is bullseye",
+            "Is ACW"
+          ],
+          "answer": 0,
+          "why": "They are different paths."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Leave",
+          "back": "Username and password."
+        },
+        {
+          "front": "Bring",
+          "back": "Key, secret, My Domain."
+        },
+        {
+          "front": "Keep",
+          "back": "The action body, then re-test."
+        },
+        {
+          "front": "Other page",
+          "back": "CX Cloud OAuth settings."
+        }
+      ],
+      "lab": {
+        "title": "Write the cutover",
+        "steps": [
+          "The old auth.",
+          "The three new inputs.",
+          "What you will re-test.",
+          "Which article is not this migration."
+        ],
+        "success": "The other article is named."
+      },
+      "fault": {
+        "title": "Half migrated",
+        "symptom": "Flows fail on Monday. The password was disabled in Salesforce and the action was not updated.",
+        "log": "Salesforce: password login off. Genesys action: still password.",
+        "cause": "The cutover was one-sided.",
+        "fix": "Apply the client-credentials inputs and re-test the action."
+      }
+    },
+    {
+      "id": "i-zd",
+      "title": "Zendesk has its own about page, with a similar embed idea",
+      "level": "Core",
+      "minutes": 11,
+      "summary": "Do not copy the Salesforce field list onto Zendesk.",
+      "paras": [
+        "About Genesys Cloud for Zendesk documents an embed in the same family: agents handle Genesys interactions from Zendesk, with the screen-pop and productivity features that page describes. Read that page for the list. This lab will not paste unverified feature parity.",
+        "OAuth still applies. A Zendesk app that calls the Platform API is a client with a grant and roles. The Salesforce migration guide is not the Zendesk guide. If you need a Zendesk credential change, open the Zendesk article rather than reusing the My Domain steps."
+      ],
+      "cites": [
+        {
+          "title": "About Genesys Cloud for Zendesk",
+          "url": "https://help.genesys.cloud/articles/about-genesys-cloud-for-zendesk/"
+        },
+        {
+          "title": "Create an OAuth client",
+          "url": "https://help.genesys.cloud/articles/create-an-oauth-client/"
+        },
+        {
+          "title": "About Genesys Cloud for Salesforce",
+          "url": "https://help.genesys.cloud/articles/about-genesys-cloud-for-salesforce/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Zendesk is its own article beside Salesforce.",
+        "nodes": [
+          {
+            "id": "zd",
+            "label": "Zendesk",
+            "kind": "crm",
+            "x": 22,
+            "y": 40
+          },
+          {
+            "id": "gc",
+            "label": "Genesys",
+            "kind": "region",
+            "x": 55,
+            "y": 40
+          },
+          {
+            "id": "sf",
+            "label": "Salesforce",
+            "kind": "crm",
+            "x": 84,
+            "y": 70
+          }
+        ],
+        "edges": [
+          {
+            "a": "zd",
+            "b": "gc"
+          },
+          {
+            "a": "sf",
+            "b": "gc"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Cite the page you mean",
+        "steps": [
+          {
+            "from": "Design",
+            "to": "Zendesk",
+            "title": "Open the Zendesk about article",
+            "detail": "Write only what it says.",
+            "inspect": "No parity assumptions"
+          },
+          {
+            "from": "Design",
+            "to": "Salesforce",
+            "title": "Leave it in the other lesson",
+            "detail": "My Domain is not a Zendesk field.",
+            "inspect": "Different guide"
+          },
+          {
+            "from": "API",
+            "to": "Client",
+            "title": "Grant and roles",
+            "detail": "If the app calls Genesys.",
+            "inspect": "Divisions included"
+          },
+          {
+            "from": "Unknown",
+            "to": "Feature",
+            "title": "Mark it unconfirmed",
+            "detail": "Or cut it.",
+            "inspect": "The uncertainty line exists for this"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Zendesk\u2019s feature list should come from:",
+          "choices": [
+            "The Salesforce article",
+            "A UCCE guide",
+            "Memory",
+            "The Zendesk about article"
+          ],
+          "answer": 3,
+          "why": "They are different pages."
+        },
+        {
+          "q": "My Domain URL is:",
+          "choices": [
+            "A Salesforce migration input, not a Zendesk step",
+            "Required on every CRM",
+            "A login host",
+            "A queue"
+          ],
+          "answer": 0,
+          "why": "Do not reuse it blindly."
+        },
+        {
+          "q": "An app in Zendesk that calls Genesys is:",
+          "choices": [
+            "An OAuth client",
+            "A phone trunk",
+            "A topic",
+            "A cert"
+          ],
+          "answer": 0,
+          "why": "Scope the roles."
+        },
+        {
+          "q": "Screen pop on Zendesk is:",
+          "choices": [
+            "A bullseye ring",
+            "An Edge group",
+            "Whatever the Zendesk article describes",
+            "Guaranteed identical to Salesforce"
+          ],
+          "answer": 2,
+          "why": "Read the page."
+        },
+        {
+          "q": "Inventing parity is:",
+          "choices": [
+            "Required",
+            "Fair use",
+            "Preferred routing",
+            "How designs fail acceptance"
+          ],
+          "answer": 3,
+          "why": "Mark gaps."
+        },
+        {
+          "q": "Both embeds still leave you to build:",
+          "choices": [
+            "Nothing",
+            "A new core region",
+            "An implicit grant",
+            "Queues, flows, and hours in Genesys"
+          ],
+          "answer": 3,
+          "why": "CRM does not replace Architect."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Source",
+          "back": "The Zendesk article."
+        },
+        {
+          "front": "Not",
+          "back": "The Salesforce My Domain steps."
+        },
+        {
+          "front": "Client",
+          "back": "If it calls the API."
+        },
+        {
+          "front": "Gap",
+          "back": "Say unconfirmed."
+        }
+      ],
+      "lab": {
+        "title": "Two columns",
+        "steps": [
+          "Three items you will only claim for Salesforce.",
+          "Three you will only claim after reading Zendesk.",
+          "One shared rule: OAuth.",
+          "One shared rule: Genesys still owns the queue."
+        ],
+        "success": "The columns are not copies."
+      },
+      "fault": {
+        "title": "Copied map",
+        "symptom": "Zendesk screen pop looks up a Salesforce field that does not exist.",
+        "log": "Design table pasted from the Salesforce workshop.",
+        "cause": "The CRM was swapped without the article.",
+        "fix": "Rewrite the row from the Zendesk page."
+      }
+    },
+    {
+      "id": "i-other",
+      "title": "Dynamics, ServiceNow, and the rest stay on the marketplace",
+      "level": "Core",
+      "minutes": 11,
+      "summary": "No invented feature lists for CRMs this lab did not open.",
+      "paras": [
+        "People will ask for Microsoft Dynamics and ServiceNow in the same breath as Salesforce. This lab did not confirm a product article for those embeds while it was written. The honest answer is AppFoundry plus the Developer Center: find the listing, read it, and if you build your own, use OAuth and data actions under the rules you already have.",
+        "A custom CRM integration is a client and a set of data actions, not a new routing method. The conversation still queues in Genesys. The CRM stores the record. When the data action times out, the agent still has the call. Draw that failure in Architect."
+      ],
+      "cites": [
+        {
+          "title": "AppFoundry",
+          "url": "https://appfoundry.genesys.com/"
+        },
+        {
+          "title": "Genesys Cloud Developer Center",
+          "url": "https://developer.genesys.cloud/"
+        },
+        {
+          "title": "Create an OAuth client",
+          "url": "https://help.genesys.cloud/articles/create-an-oauth-client/"
+        },
+        {
+          "title": "About Architect",
+          "url": "https://help.genesys.cloud/articles/about-architect/"
+        }
+      ],
+      "uncertainty": "This lab did not confirm Dynamics or ServiceNow product articles. Do not treat this page as one.",
+      "figure": {
+        "caption": "Unknown CRM: listing or a client you build. The queue remains.",
+        "nodes": [
+          {
+            "id": "m",
+            "label": "Marketplace",
+            "kind": "crm",
+            "x": 16,
+            "y": 28
+          },
+          {
+            "id": "c",
+            "label": "Your client",
+            "kind": "architect",
+            "x": 48,
+            "y": 28
+          },
+          {
+            "id": "q",
+            "label": "Queue",
+            "kind": "queue",
+            "x": 80,
+            "y": 60
+          }
+        ],
+        "edges": [
+          {
+            "a": "m",
+            "b": "q"
+          },
+          {
+            "a": "c",
+            "b": "q"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Answer the Dynamics question without fiction",
+        "steps": [
+          {
+            "from": "Ask",
+            "to": "Listing",
+            "title": "Open AppFoundry",
+            "detail": "Read what is there today.",
+            "inspect": "Do not quote this lab"
+          },
+          {
+            "from": "Build",
+            "to": "OAuth",
+            "title": "A client",
+            "detail": "Grant, roles, divisions.",
+            "inspect": "Secret in a vault"
+          },
+          {
+            "from": "Flow",
+            "to": "Data action",
+            "title": "Timeout path",
+            "detail": "The call continues.",
+            "inspect": "Do not strand the caller on a CRM"
+          },
+          {
+            "from": "Write",
+            "to": "Uncertainty",
+            "title": "What you did not confirm",
+            "detail": "Put it in the design.",
+            "inspect": "Better than a fake feature"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "This lab\u2019s feature list for Dynamics is:",
+          "choices": [
+            "Identical to Salesforce",
+            "Identical to UCCE",
+            "A default number plan",
+            "None. Confirm a listing or an article."
+          ],
+          "answer": 3,
+          "why": "Honesty is the feature."
+        },
+        {
+          "q": "A homegrown CRM integration is:",
+          "choices": [
+            "An Edge model",
+            "A specialist exam",
+            "An OAuth client and data actions",
+            "A new ACD method"
+          ],
+          "answer": 2,
+          "why": "Routing does not move."
+        },
+        {
+          "q": "When the CRM times out:",
+          "choices": [
+            "Implicit grant refreshes it",
+            "The conversation should still be handled in Genesys",
+            "The caller is dropped by design",
+            "Bullseye deletes the queue"
+          ],
+          "answer": 1,
+          "why": "Draw the failure."
+        },
+        {
+          "q": "ServiceNow in a statement of work should cite:",
+          "choices": [
+            "RFC 3550",
+            "The STA dialect table",
+            "A listing or article you opened",
+            "This lesson\u2019s imagination"
+          ],
+          "answer": 2,
+          "why": "This lesson refuses the list."
+        },
+        {
+          "q": "AppFoundry plus the Developer Center is:",
+          "choices": [
+            "A bot type",
+            "A cert",
+            "The pair of doors for an unknown system",
+            "A region pair"
+          ],
+          "answer": 2,
+          "why": "Listing or custom client."
+        },
+        {
+          "q": "Divisions apply to a custom client because:",
+          "choices": [
+            "It is still an OAuth client",
+            "Only Salesforce is divided",
+            "Home was removed",
+            "SCIM is exempt"
+          ],
+          "answer": 0,
+          "why": "Scope the pairs."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Unknown",
+          "back": "No invented list."
+        },
+        {
+          "front": "Build",
+          "back": "OAuth and data actions."
+        },
+        {
+          "front": "Timeout",
+          "back": "The call continues."
+        },
+        {
+          "front": "Cite",
+          "back": "A page you opened."
+        }
+      ],
+      "lab": {
+        "title": "Write the uncertainty",
+        "steps": [
+          "The CRM name.",
+          "The sentence \u201cnot confirmed in this lab\u201d.",
+          "Where you will look.",
+          "The Architect failure path."
+        ],
+        "success": "The failure path is a queue action, not a hope."
+      },
+      "fault": {
+        "title": "Invented pop",
+        "symptom": "The build promises ServiceNow screen pop with a field map nobody sourced.",
+        "log": "No listing and no article in the packet.",
+        "cause": "The map was fiction.",
+        "fix": "Cut the paragraph until a listing or a design you tested replaces it."
+      }
+    },
+    {
+      "id": "i-fail",
+      "title": "A CRM failure is not an ACD failure",
+      "level": "Core",
+      "minutes": 11,
+      "summary": "Screen pop can die while the queue is healthy.",
+      "paras": [
+        "Agents describe a CRM outage as \u201cGenesys is down\u201d because the panel they look at is the CRM. The topology in this lab splits those links on purpose. Data-action timeouts and embed outages leave the conversation on the agent. Your Architect flow should not wait forever on a data action before it transfers to a queue.",
+        "Client-credentials roles must include the division that owns the data action and the queue. A 403 that starts on Monday is often a division move on Friday. Check the pair before you rebuild the flow."
+      ],
+      "cites": [
+        {
+          "title": "About Architect",
+          "url": "https://help.genesys.cloud/articles/about-architect/"
+        },
+        {
+          "title": "Divisions overview",
+          "url": "https://help.genesys.cloud/articles/divisions-overview/"
+        },
+        {
+          "title": "About Genesys Cloud for Salesforce",
+          "url": "https://help.genesys.cloud/articles/about-genesys-cloud-for-salesforce/"
+        },
+        {
+          "title": "Create an OAuth client",
+          "url": "https://help.genesys.cloud/articles/create-an-oauth-client/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "The CRM link can drop. The queue link should not.",
+        "nodes": [
+          {
+            "id": "a",
+            "label": "Agent",
+            "kind": "agent",
+            "x": 30,
+            "y": 40
+          },
+          {
+            "id": "c",
+            "label": "CRM",
+            "kind": "crm",
+            "x": 70,
+            "y": 18
+          },
+          {
+            "id": "q",
+            "label": "Queue",
+            "kind": "queue",
+            "x": 70,
+            "y": 70
+          }
+        ],
+        "edges": [
+          {
+            "a": "a",
+            "b": "c"
+          },
+          {
+            "a": "a",
+            "b": "q"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Design the timeout",
+        "steps": [
+          {
+            "from": "Flow",
+            "to": "Data action",
+            "title": "A short timeout",
+            "detail": "Then Transfer to ACD.",
+            "inspect": "Do not loop the action"
+          },
+          {
+            "from": "Agent",
+            "to": "Embed",
+            "title": "A manual search path",
+            "detail": "If pop fails.",
+            "inspect": "The call is still there"
+          },
+          {
+            "from": "Admin",
+            "to": "403",
+            "title": "Check division pairs",
+            "detail": "Did the queue move?",
+            "inspect": "Roles do not follow automatically"
+          },
+          {
+            "from": "Comms",
+            "to": "Status",
+            "title": "Say which system failed",
+            "detail": "CRM versus Genesys.",
+            "inspect": "Stops the wrong bridge call"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "A data action timeout should:",
+          "choices": [
+            "Drop the caller",
+            "Switch regions",
+            "Fall through to the queue",
+            "Retry for the whole hold time"
+          ],
+          "answer": 2,
+          "why": "The conversation is the priority."
+        },
+        {
+          "q": "Agents saying Genesys is down during a CRM outage:",
+          "choices": [
+            "Are always right",
+            "Mean the Edge is offline",
+            "Mean implicit grant expired",
+            "Need a status that names the CRM"
+          ],
+          "answer": 3,
+          "why": "Split the links."
+        },
+        {
+          "q": "A 403 after a queue changes division is often:",
+          "choices": [
+            "A 988 plan",
+            "The OAuth pair still points at the old division",
+            "A codec mismatch",
+            "A topic miss"
+          ],
+          "answer": 1,
+          "why": "Update the pair."
+        },
+        {
+          "q": "Screen pop and ACD are:",
+          "choices": [
+            "Both number plans",
+            "Both exams",
+            "Independent enough that one can fail alone",
+            "The same service"
+          ],
+          "answer": 2,
+          "why": "Test them separately."
+        },
+        {
+          "q": "Looping a data action until it works:",
+          "choices": [
+            "Is preferred routing",
+            "Is SCIM",
+            "Traps the caller in the flow",
+            "Is bullseye"
+          ],
+          "answer": 2,
+          "why": "Cap it and transfer."
+        },
+        {
+          "q": "The division that owns the data action must be:",
+          "choices": [
+            "In the client\u2019s role pairs",
+            "Home always",
+            "All always",
+            "Empty"
+          ],
+          "answer": 0,
+          "why": "Least privilege that still works."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Timeout",
+          "back": "Then queue."
+        },
+        {
+          "front": "Status",
+          "back": "Name the CRM."
+        },
+        {
+          "front": "403",
+          "back": "Check the division pair."
+        },
+        {
+          "front": "Pop",
+          "back": "Can fail while ACD works."
+        }
+      ],
+      "lab": {
+        "title": "Write the failure sentence",
+        "steps": [
+          "How long the flow waits.",
+          "Where it transfers.",
+          "What the agent does if pop fails.",
+          "Who updates OAuth pairs after a division move."
+        ],
+        "success": "A person is named for the pair update."
+      },
+      "fault": {
+        "title": "Infinite dip",
+        "symptom": "Callers sit in silence while a data action retries through a CRM outage.",
+        "log": "Timeout: none. Failure output: empty.",
+        "cause": "The flow trusted the CRM.",
+        "fix": "Add a timeout and Transfer to ACD."
+      }
+    }
+  ]
+}

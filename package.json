@@ -1,0 +1,9 @@
+{
+  "name": "genesys-cloud-cx-lab",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "python3 scripts/build_curriculum.py",
+    "verify": "node scripts/verify.mjs"
+  }
+}

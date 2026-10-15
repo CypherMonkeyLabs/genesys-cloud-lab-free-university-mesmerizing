@@ -1,0 +1,1443 @@
+{
+  "id": "ai",
+  "title": "Genesys AI and bots",
+  "kicker": "Beside the agent",
+  "accent": 3,
+  "summary": "Dialog Engine and digital bots, failure paths, Agent Copilot, tokens, and the AI exams as the catalog names them.",
+  "lessons": [
+    {
+      "id": "g-kinds",
+      "title": "Two Architect bot types, plus Copilot beside the agent",
+      "level": "Core",
+      "minutes": 12,
+      "summary": "A bot flow talks to the customer. Agent Copilot talks to the agent. They are different products on different pages.",
+      "paras": [
+        "Architect documents Genesys Dialog Engine Bot Flows and Genesys Digital Bot Flows as flow types. An inbound flow calls them with the matching action. Agent Copilot, on its own overview, works inside the agent experience: knowledge, transcripts, scripts, next best action, and notes. Copilot is part of the CX 4 story on the package overview, along with Journey Management and a published token allotment.",
+        "Do not design a \u201cbot\u201d and assume it covers both. A voice bot that cannot reach a queue is a trapped caller. A Copilot summary that Virtual Supervisor reuses is a billing note on the STA FAQ, not a second bot."
+      ],
+      "cites": [
+        {
+          "title": "About Genesys Dialog Engine Bot Flows",
+          "url": "https://help.genesys.cloud/articles/about-genesys-dialog-engine-bot-flows/"
+        },
+        {
+          "title": "About Genesys Digital Bot Flows",
+          "url": "https://help.genesys.cloud/articles/about-genesys-digital-bot-flows/"
+        },
+        {
+          "title": "Genesys Agent Copilot overview",
+          "url": "https://help.genesys.cloud/articles/agent-copilot-overview/"
+        },
+        {
+          "title": "Overview of Genesys Cloud",
+          "url": "https://help.mypurecloud.com/articles/overview-of-genesys-cloud/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Bots face the customer. Copilot faces the agent.",
+        "nodes": [
+          {
+            "id": "cust",
+            "label": "Customer",
+            "kind": "phone",
+            "x": 12,
+            "y": 40
+          },
+          {
+            "id": "bot",
+            "label": "Bot flow",
+            "kind": "bot",
+            "x": 40,
+            "y": 22
+          },
+          {
+            "id": "ag",
+            "label": "Agent",
+            "kind": "agent",
+            "x": 68,
+            "y": 40
+          },
+          {
+            "id": "cp",
+            "label": "Copilot",
+            "kind": "wem",
+            "x": 90,
+            "y": 22
+          }
+        ],
+        "edges": [
+          {
+            "a": "cust",
+            "b": "bot"
+          },
+          {
+            "a": "bot",
+            "b": "ag"
+          },
+          {
+            "a": "ag",
+            "b": "cp"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Name which AI the design actually needs",
+        "steps": [
+          {
+            "from": "Caller",
+            "to": "Self-serve",
+            "title": "A bot flow",
+            "detail": "Dialog Engine or digital.",
+            "inspect": "Plus a failure queue"
+          },
+          {
+            "from": "Agent",
+            "to": "Help during the call",
+            "title": "Agent Copilot",
+            "detail": "Knowledge, transcript, scripts, notes.",
+            "inspect": "CX 4 on the overview"
+          },
+          {
+            "from": "QA",
+            "to": "Score later",
+            "title": "STA and QM",
+            "detail": "Not a bot.",
+            "inspect": "Tokens, per the FAQ"
+          },
+          {
+            "from": "Buyer",
+            "to": "Journey",
+            "title": "Named on CX 4",
+            "detail": "Separate from the bot flow type.",
+            "inspect": "Read the overview"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Dialog Engine Bot Flows and Digital Bot Flows are:",
+          "choices": [
+            "Architect flow types",
+            "SIP trunk types",
+            "Edge models",
+            "Fair-use meters"
+          ],
+          "answer": 0,
+          "why": "The Architect articles define them."
+        },
+        {
+          "q": "Agent Copilot is aimed at:",
+          "choices": [
+            "The agent during the interaction",
+            "The carrier SBC",
+            "The PSAP",
+            "The number plan"
+          ],
+          "answer": 0,
+          "why": "The Copilot overview describes the agent experience."
+        },
+        {
+          "q": "CX 4 on the package overview adds:",
+          "choices": [
+            "UCCE scripting",
+            "Agent Copilot, Journey Management, and AI tokens",
+            "A second core region",
+            "Unlimited trunks"
+          ],
+          "answer": 1,
+          "why": "That is the overview\u2019s list."
+        },
+        {
+          "q": "A bot and Copilot in one sentence without a failure queue:",
+          "choices": [
+            "Sets ACW",
+            "Still needs a human path for the caller",
+            "Is complete",
+            "Replaces ACD"
+          ],
+          "answer": 1,
+          "why": "The bot articles expect a way out."
+        },
+        {
+          "q": "Virtual Supervisor reusing a Copilot summary is documented as:",
+          "choices": [
+            "An implicit grant",
+            "Not a second summary bill, on the STA FAQ",
+            "A new trunk",
+            "A division move"
+          ],
+          "answer": 1,
+          "why": "Re-read the FAQ before you model cost."
+        },
+        {
+          "q": "Journey Management is:",
+          "choices": [
+            "An RFC",
+            "Named with CX 4, and not the same object as a bot flow",
+            "A queue",
+            "A phone trunk"
+          ],
+          "answer": 1,
+          "why": "Do not collapse the overview into one feature."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Bot",
+          "back": "Faces the customer."
+        },
+        {
+          "front": "Copilot",
+          "back": "Faces the agent."
+        },
+        {
+          "front": "CX 4",
+          "back": "Where the overview places Copilot."
+        },
+        {
+          "front": "QA",
+          "back": "STA plus a form, not a bot."
+        }
+      ],
+      "lab": {
+        "title": "Split the design",
+        "steps": [
+          "What the caller should do alone.",
+          "What the agent should see.",
+          "The package.",
+          "The queue if the bot fails."
+        ],
+        "success": "Four different answers, not one \u201cAI\u201d line."
+      },
+      "fault": {
+        "title": "One SKU story",
+        "symptom": "The statement of work says \u201cAI\u201d and nobody knows whether a bot, Copilot, or scoring was sold.",
+        "log": "CX 2 purchased. Copilot pages absent.",
+        "cause": "The package does not include the CX 4 row.",
+        "fix": "Rewrite the scope to the package, or change the package."
+      }
+    },
+    {
+      "id": "g-dialog",
+      "title": "Dialog Engine bot flows are voice and digital intents",
+      "level": "Core",
+      "minutes": 12,
+      "summary": "You build the bot in Architect, then the inbound flow calls it.",
+      "paras": [
+        "The Dialog Engine article and the inbound-bot article show a bot that asks a question and returns an intent the flow can branch on. The banking example checks a balance or finds a branch. Voice speaks the question. Chat displays it. Intents are outcomes, not a hidden script the ACD can guess.",
+        "Call Bot Flow is the action for this bot type. A digital-only bot uses a different action, covered next. Give every no-match, timeout, and error output a queue. Flow Insights, after you publish, shows whether anyone reached the bot."
+      ],
+      "cites": [
+        {
+          "title": "About Genesys Dialog Engine Bot Flows",
+          "url": "https://help.genesys.cloud/articles/about-genesys-dialog-engine-bot-flows/"
+        },
+        {
+          "title": "Use Architect to create a bot for an inbound flow",
+          "url": "https://help.genesys.cloud/articles/use-architect-to-create-a-bot-for-an-inbound-flow/"
+        },
+        {
+          "title": "About Architect",
+          "url": "https://help.genesys.cloud/articles/about-architect/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Ask, return an intent, or leave to a queue.",
+        "nodes": [
+          {
+            "id": "in",
+            "label": "Inbound",
+            "kind": "phone",
+            "x": 14,
+            "y": 40
+          },
+          {
+            "id": "bot",
+            "label": "Dialog bot",
+            "kind": "bot",
+            "x": 46,
+            "y": 22
+          },
+          {
+            "id": "ok",
+            "label": "Intent",
+            "kind": "architect",
+            "x": 78,
+            "y": 22
+          },
+          {
+            "id": "q",
+            "label": "Queue",
+            "kind": "queue",
+            "x": 78,
+            "y": 68
+          }
+        ],
+        "edges": [
+          {
+            "a": "in",
+            "b": "bot"
+          },
+          {
+            "a": "bot",
+            "b": "ok"
+          },
+          {
+            "a": "bot",
+            "b": "q"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Build the banking shape",
+        "steps": [
+          {
+            "from": "Admin",
+            "to": "Bot",
+            "title": "Create a Dialog Engine bot flow",
+            "detail": "Name it like a flow.",
+            "inspect": "Unique per type, 200 characters"
+          },
+          {
+            "from": "Bot",
+            "to": "Question",
+            "title": "Balance or branch",
+            "detail": "The documented example.",
+            "inspect": "Your domain will differ"
+          },
+          {
+            "from": "Inbound",
+            "to": "Action",
+            "title": "Call Bot Flow",
+            "detail": "Bind outputs.",
+            "inspect": "Not the digital action"
+          },
+          {
+            "from": "Fail",
+            "to": "Queue",
+            "title": "Transfer to ACD",
+            "detail": "No match and errors.",
+            "inspect": "Publish, then read Insights"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "The banking template in the inbound bot article:",
+          "choices": [
+            "Sets a concurrent peak",
+            "Deletes a division",
+            "Checks a balance or finds a branch",
+            "Buys a trunk"
+          ],
+          "answer": 2,
+          "why": "Use it as a shape, not as your business."
+        },
+        {
+          "q": "Voice and chat for the same question:",
+          "choices": [
+            "Both use RTP",
+            "Both use 911",
+            "Both require an Edge",
+            "Voice speaks it. Chat displays it."
+          ],
+          "answer": 3,
+          "why": "The article describes that split."
+        },
+        {
+          "q": "The action that calls a Dialog Engine bot is:",
+          "choices": [
+            "Disconnect",
+            "Call Bot Flow",
+            "Call Digital Bot Flow",
+            "Transfer to ACD only"
+          ],
+          "answer": 1,
+          "why": "Match the action to the type."
+        },
+        {
+          "q": "An intent is:",
+          "choices": [
+            "A fair-use meter",
+            "A login host",
+            "An outcome the inbound flow can branch on",
+            "A skill proficiency"
+          ],
+          "answer": 2,
+          "why": "Bind it to a path."
+        },
+        {
+          "q": "Flow Insights is useful after:",
+          "choices": [
+            "You save a draft",
+            "You create an OAuth secret",
+            "You move regions",
+            "You publish and traffic runs"
+          ],
+          "answer": 3,
+          "why": "A draft has no runtime to measure."
+        },
+        {
+          "q": "No-match with an empty failure output:",
+          "choices": [
+            "Routes by bullseye automatically",
+            "Sends a SIP 200",
+            "Opens Copilot",
+            "Strands the caller"
+          ],
+          "answer": 3,
+          "why": "Transfer to ACD belongs there."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Example",
+          "back": "Balance or branch."
+        },
+        {
+          "front": "Action",
+          "back": "Call Bot Flow."
+        },
+        {
+          "front": "Intent",
+          "back": "A branch in the inbound flow."
+        },
+        {
+          "front": "Failure",
+          "back": "A queue."
+        }
+      ],
+      "lab": {
+        "title": "Sketch three outputs",
+        "steps": [
+          "The question.",
+          "Two intents.",
+          "The failure queue.",
+          "Where you will read Flow Insights."
+        ],
+        "success": "Every output has a next action."
+      },
+      "fault": {
+        "title": "Wrong action",
+        "symptom": "The inbound flow cannot see the bot\u2019s intents.",
+        "log": "Action used: Call Digital Bot Flow. Bot type: Dialog Engine.",
+        "cause": "The action and the type disagree.",
+        "fix": "Use Call Bot Flow and republish."
+      }
+    },
+    {
+      "id": "g-digital",
+      "title": "Digital bot flows are a different call",
+      "level": "Core",
+      "minutes": 11,
+      "summary": "Message experiences use Digital Bot Flows and Call Digital Bot Flow.",
+      "paras": [
+        "The digital bot article describes Genesys Digital Bot Flows for message experiences. They are Architect flows, and they are not the Dialog Engine type with a renamed action. An inbound message flow calls them with Call Digital Bot Flow. Mixing the actions is a publish-time or runtime miss, not a wording preference.",
+        "Digital bots still need a human path. The message queue, the in-queue message flow, and the error-event queue from the Architect create-flow rules still apply. A bot that handles the first turn does not delete those requirements."
+      ],
+      "cites": [
+        {
+          "title": "About Genesys Digital Bot Flows",
+          "url": "https://help.genesys.cloud/articles/about-genesys-digital-bot-flows/"
+        },
+        {
+          "title": "Use Architect to create a bot for an inbound flow",
+          "url": "https://help.genesys.cloud/articles/use-architect-to-create-a-bot-for-an-inbound-flow/"
+        },
+        {
+          "title": "Create a flow",
+          "url": "https://help.genesys.cloud/articles/create-a-flow/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "A message flow calls a digital bot, and still has a queue.",
+        "nodes": [
+          {
+            "id": "msg",
+            "label": "Message",
+            "kind": "phone",
+            "x": 16,
+            "y": 40
+          },
+          {
+            "id": "db",
+            "label": "Digital bot",
+            "kind": "bot",
+            "x": 48,
+            "y": 40
+          },
+          {
+            "id": "q",
+            "label": "Queue",
+            "kind": "queue",
+            "x": 80,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "msg",
+            "b": "db"
+          },
+          {
+            "a": "db",
+            "b": "q"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Keep the digital path honest",
+        "steps": [
+          {
+            "from": "Admin",
+            "to": "Type",
+            "title": "Digital Bot Flow",
+            "detail": "Not Dialog Engine.",
+            "inspect": "The article separates them"
+          },
+          {
+            "from": "Flow",
+            "to": "Action",
+            "title": "Call Digital Bot Flow",
+            "detail": "On the inbound message flow.",
+            "inspect": "Match the type"
+          },
+          {
+            "from": "Admin",
+            "to": "Error queue",
+            "title": "Still required",
+            "detail": "Message flows need an error-event queue.",
+            "inspect": "Create-flow article"
+          },
+          {
+            "from": "Fail",
+            "to": "Human",
+            "title": "Transfer",
+            "detail": "When the bot cannot finish.",
+            "inspect": "In-queue message behavior still exists"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Digital Bot Flows are for:",
+          "choices": [
+            "Concurrent billing",
+            "Message experiences",
+            "Emergency calling",
+            "Edge groups"
+          ],
+          "answer": 1,
+          "why": "That is the article\u2019s scope."
+        },
+        {
+          "q": "The matching action is:",
+          "choices": [
+            "Call Bot Flow",
+            "Play Audio only",
+            "Set utilization",
+            "Call Digital Bot Flow"
+          ],
+          "answer": 3,
+          "why": "Do not reuse the voice action."
+        },
+        {
+          "q": "An inbound message flow still needs:",
+          "choices": [
+            "A 988 plan",
+            "A predictive model",
+            "An error-event queue",
+            "A premises Edge"
+          ],
+          "answer": 2,
+          "why": "The create-flow article requires it."
+        },
+        {
+          "q": "A digital bot replaces the queue when:",
+          "choices": [
+            "It does not. Keep a human path.",
+            "Always",
+            "On CX 1",
+            "If the name is unique"
+          ],
+          "answer": 0,
+          "why": "Bots miss."
+        },
+        {
+          "q": "Using Call Bot Flow on a digital bot is:",
+          "choices": [
+            "A type mismatch",
+            "Best practice",
+            "Required for chat",
+            "A region setting"
+          ],
+          "answer": 0,
+          "why": "Match action to type."
+        },
+        {
+          "q": "In-queue message flows:",
+          "choices": [
+            "Are phone trunks",
+            "Are tokens",
+            "Still matter after the bot hands off",
+            "Are deleted by bots"
+          ],
+          "answer": 2,
+          "why": "Read the in-queue rules for messages."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Type",
+          "back": "Digital Bot Flow."
+        },
+        {
+          "front": "Action",
+          "back": "Call Digital Bot Flow."
+        },
+        {
+          "front": "Error queue",
+          "back": "Still required."
+        },
+        {
+          "front": "Human",
+          "back": "Still required."
+        }
+      ],
+      "lab": {
+        "title": "Check a message design",
+        "steps": [
+          "Bot type.",
+          "Call action.",
+          "Error-event queue.",
+          "Handoff queue."
+        ],
+        "success": "All four names are written down."
+      },
+      "fault": {
+        "title": "Voice action on chat",
+        "symptom": "The message flow errors when it hits the bot.",
+        "log": "Call Bot Flow pointed at a Digital Bot Flow.",
+        "cause": "Wrong action.",
+        "fix": "Swap the action and publish."
+      }
+    },
+    {
+      "id": "g-fail",
+      "title": "Every bot has a failure output to a queue",
+      "level": "Core",
+      "minutes": 11,
+      "summary": "No-match, timeout, and error are normal. The queue is the design.",
+      "paras": [
+        "The inbound bot article\u2019s useful pattern is a question, an intent, and a way out. Treat failure as a path you draw, not as an exception. After hours, the way out may be a different queue or a callback, still inside Architect, still published.",
+        "External bot connectors exist as a separate action family. The list changes. This lab will not name a vendor. Confirm the connector in Architect, and still draw the failure output. A connector timeout is the same caller problem as a no-match."
+      ],
+      "cites": [
+        {
+          "title": "Use Architect to create a bot for an inbound flow",
+          "url": "https://help.genesys.cloud/articles/use-architect-to-create-a-bot-for-an-inbound-flow/"
+        },
+        {
+          "title": "About Genesys Dialog Engine Bot Flows",
+          "url": "https://help.genesys.cloud/articles/about-genesys-dialog-engine-bot-flows/"
+        },
+        {
+          "title": "About Architect",
+          "url": "https://help.genesys.cloud/articles/about-architect/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Three bad outcomes, one queue.",
+        "nodes": [
+          {
+            "id": "nm",
+            "label": "No match",
+            "kind": "bot",
+            "x": 18,
+            "y": 22
+          },
+          {
+            "id": "to",
+            "label": "Timeout",
+            "kind": "bot",
+            "x": 48,
+            "y": 22
+          },
+          {
+            "id": "er",
+            "label": "Error",
+            "kind": "bot",
+            "x": 78,
+            "y": 22
+          },
+          {
+            "id": "q",
+            "label": "Queue",
+            "kind": "queue",
+            "x": 48,
+            "y": 70
+          }
+        ],
+        "edges": [
+          {
+            "a": "nm",
+            "b": "q"
+          },
+          {
+            "a": "to",
+            "b": "q"
+          },
+          {
+            "a": "er",
+            "b": "q"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Draw the three exits",
+        "steps": [
+          {
+            "from": "No match",
+            "to": "Queue",
+            "title": "Transfer to ACD",
+            "detail": "The caller asked for a person or said something new.",
+            "inspect": "Do not re-ask forever"
+          },
+          {
+            "from": "Timeout",
+            "to": "Queue",
+            "title": "Same or a shorter path",
+            "detail": "Silence is not consent.",
+            "inspect": "Mind the in-queue experience"
+          },
+          {
+            "from": "Error",
+            "to": "Queue",
+            "title": "Connector or action failure",
+            "detail": "Including an external bot.",
+            "inspect": "Log it in Flow Insights"
+          },
+          {
+            "from": "Hours",
+            "to": "Schedule",
+            "title": "A second queue or callback",
+            "detail": "Still published.",
+            "inspect": "Do not leave the output empty at night"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "No-match should:",
+          "choices": [
+            "Disconnect with no message",
+            "Change regions",
+            "Transfer to a queue or another published path",
+            "Loop the question"
+          ],
+          "answer": 2,
+          "why": "The caller needs a way out."
+        },
+        {
+          "q": "An external bot connector:",
+          "choices": [
+            "Still needs a failure output",
+            "Cannot fail",
+            "Replaces the inbound flow",
+            "Is chosen from memory"
+          ],
+          "answer": 0,
+          "why": "Confirm the connector in Architect."
+        },
+        {
+          "q": "This lab names external bot vendors:",
+          "choices": [
+            "Only Cisco",
+            "Only on CX 1",
+            "It does not",
+            "It must"
+          ],
+          "answer": 2,
+          "why": "The list changes."
+        },
+        {
+          "q": "After-hours failure outputs:",
+          "choices": [
+            "Disable recording",
+            "Are part of the design, not a later project",
+            "Are illegal",
+            "Use 911"
+          ],
+          "answer": 1,
+          "why": "Draw them."
+        },
+        {
+          "q": "Flow Insights after a week of errors tells you:",
+          "choices": [
+            "Which output is actually firing",
+            "The fair-use price",
+            "The login host",
+            "The exam code"
+          ],
+          "answer": 0,
+          "why": "Publish first."
+        },
+        {
+          "q": "Re-asking the same question forever is:",
+          "choices": [
+            "Preferred agent routing",
+            "A secure flow",
+            "A trapped caller",
+            "Bullseye"
+          ],
+          "answer": 2,
+          "why": "Cap the retries and transfer."
+        }
+      ],
+      "cards": [
+        {
+          "front": "No match",
+          "back": "A path."
+        },
+        {
+          "front": "Timeout",
+          "back": "A path."
+        },
+        {
+          "front": "Error",
+          "back": "A path."
+        },
+        {
+          "front": "Vendor",
+          "back": "Confirm in product. Still draw the exit."
+        }
+      ],
+      "lab": {
+        "title": "Trace a timeout",
+        "steps": [
+          "What the caller hears.",
+          "Which queue answers.",
+          "What Insights will show.",
+          "What happens after hours."
+        ],
+        "success": "None of the four is \u201cempty\u201d."
+      },
+      "fault": {
+        "title": "Retry loop",
+        "symptom": "Callers who say \u201cagent\u201d hear the menu until they hang up.",
+        "log": "No-match output connected to the same Ask.",
+        "cause": "There is no exit.",
+        "fix": "Connect no-match to the support queue."
+      }
+    },
+    {
+      "id": "g-copilot",
+      "title": "Agent Copilot assists the person who stayed on the interaction",
+      "level": "Core",
+      "minutes": 12,
+      "summary": "Knowledge, transcripts, scripts, next best action, and notes. The benefit is described as surviving a blind transfer.",
+      "paras": [
+        "The Agent Copilot overview lists knowledge articles, transcripts, custom scripts, next best action, and forms and notes: reason, resolution, and a possible wrap-up. It is help for the agent, grounded in content you maintain. A knowledge article that is wrong will be repeated confidently. Curate the source.",
+        "The overview says the benefits survive a blind transfer, so the next agent is not starting from an empty panel. That is not a reason to blind-transfer a payment. Secure flows still exist to keep digits out of recordings and out of participant data. Copilot does not collect card numbers."
+      ],
+      "cites": [
+        {
+          "title": "Genesys Agent Copilot overview",
+          "url": "https://help.genesys.cloud/articles/agent-copilot-overview/"
+        },
+        {
+          "title": "Create a flow",
+          "url": "https://help.genesys.cloud/articles/create-a-flow/"
+        },
+        {
+          "title": "Overview of Genesys Cloud",
+          "url": "https://help.mypurecloud.com/articles/overview-of-genesys-cloud/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Copilot reads curated knowledge and stays with the conversation.",
+        "nodes": [
+          {
+            "id": "kn",
+            "label": "Knowledge",
+            "kind": "wem",
+            "x": 16,
+            "y": 28
+          },
+          {
+            "id": "cp",
+            "label": "Copilot",
+            "kind": "bot",
+            "x": 46,
+            "y": 40
+          },
+          {
+            "id": "ag",
+            "label": "Agent",
+            "kind": "agent",
+            "x": 78,
+            "y": 28
+          },
+          {
+            "id": "nx",
+            "label": "Next agent",
+            "kind": "agent",
+            "x": 78,
+            "y": 68
+          }
+        ],
+        "edges": [
+          {
+            "a": "kn",
+            "b": "cp"
+          },
+          {
+            "a": "cp",
+            "b": "ag"
+          },
+          {
+            "a": "ag",
+            "b": "nx"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Turn Copilot on without lying to the agent",
+        "steps": [
+          {
+            "from": "Content",
+            "to": "Articles",
+            "title": "Only maintained knowledge",
+            "detail": "Wrong articles get repeated.",
+            "inspect": "Name an owner"
+          },
+          {
+            "from": "Agent",
+            "to": "Panel",
+            "title": "Transcript and scripts",
+            "detail": "The overview lists them.",
+            "inspect": "Plus next best action"
+          },
+          {
+            "from": "Notes",
+            "to": "Wrap-up help",
+            "title": "Reason and resolution",
+            "detail": "A possible wrap-up, not a forced code.",
+            "inspect": "The agent still owns the code"
+          },
+          {
+            "from": "Transfer",
+            "to": "Blind",
+            "title": "Context can remain",
+            "detail": "The overview\u2019s claim.",
+            "inspect": "Secure flows still hide digits"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Agent Copilot\u2019s overview includes:",
+          "choices": [
+            "Number plans",
+            "Knowledge, transcripts, scripts, next best action, and notes",
+            "SIP trunks",
+            "Edge groups"
+          ],
+          "answer": 1,
+          "why": "That is the agent-facing list."
+        },
+        {
+          "q": "A stale knowledge article will:",
+          "choices": [
+            "Be repeated to the agent as if it were current",
+            "Fix itself",
+            "Disable ACD",
+            "Move the region"
+          ],
+          "answer": 0,
+          "why": "Curate the source."
+        },
+        {
+          "q": "Notes described on the overview include:",
+          "choices": [
+            "The carrier ACL",
+            "The OAuth secret",
+            "The PSAP",
+            "Reason, resolution, and a possible wrap-up"
+          ],
+          "answer": 3,
+          "why": "The agent still confirms the wrap-up code."
+        },
+        {
+          "q": "Benefits surviving a blind transfer means:",
+          "choices": [
+            "Card numbers are stored",
+            "The queue is deleted",
+            "Recording is disabled",
+            "The next agent can still see the assistance"
+          ],
+          "answer": 3,
+          "why": "It is not a PCI design."
+        },
+        {
+          "q": "Secure flows remain necessary because:",
+          "choices": [
+            "Payment digits must stay out of recordings and participant data",
+            "Copilot replaces them",
+            "They set bullseye",
+            "They buy tokens"
+          ],
+          "answer": 0,
+          "why": "Copilot is not a secure flow."
+        },
+        {
+          "q": "Copilot is packaged on the overview as:",
+          "choices": [
+            "An Edge firmware",
+            "A default number plan",
+            "A CX 4 addition",
+            "A CX 1 voice feature"
+          ],
+          "answer": 2,
+          "why": "Read the package stack."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Sources",
+          "back": "Knowledge you maintain."
+        },
+        {
+          "front": "Panel",
+          "back": "Transcript, script, next action."
+        },
+        {
+          "front": "Notes",
+          "back": "Reason, resolution, possible wrap-up."
+        },
+        {
+          "front": "Transfer",
+          "back": "Help can remain. Digits still must not."
+        }
+      ],
+      "lab": {
+        "title": "Name the sources",
+        "steps": [
+          "Who owns the knowledge articles.",
+          "Which script Copilot may use.",
+          "What the note should contain.",
+          "Which flow still hides payment digits."
+        ],
+        "success": "An owner is a person, not \u201cthe AI\u201d."
+      },
+      "fault": {
+        "title": "Stale article",
+        "symptom": "Agents quote a retired discount because Copilot surfaced it.",
+        "log": "Knowledge article last reviewed two years ago.",
+        "cause": "The source was wrong.",
+        "fix": "Unpublish the article and name a reviewer."
+      }
+    },
+    {
+      "id": "g-tokens",
+      "title": "Tokens are a published allotment, and a FAQ ratio you re-read",
+      "level": "Advanced",
+      "minutes": 12,
+      "summary": "The overview publishes CX 4 token counts. The STA FAQ publishes how AI scoring spends them.",
+      "paras": [
+        "The package overview lists 30 AI tokens for a named CX 4 user and 39 for a concurrent user. That sentence is the allotment story. The STA FAQ says AI scoring needs STA, quality management, and AI Experience Tokens, and that one token covers 20 AI-scored evaluations. It also says a Copilot summary reused by Virtual Supervisor is not billed twice. Re-read both pages before you put a number in a contract.",
+        "Bots are not the same meter. Do not assume a Dialog Engine flow spends the scoring token. If a page does not say it, this lab will not say it. Fair use is a third page, for pooled allowances such as API requests and transcription, and it is not the token table."
+      ],
+      "cites": [
+        {
+          "title": "Overview of Genesys Cloud",
+          "url": "https://help.mypurecloud.com/articles/overview-of-genesys-cloud/"
+        },
+        {
+          "title": "Speech and text analytics FAQs",
+          "url": "https://help.genesys.cloud/faqs/category/speech-and-text-analytics/"
+        },
+        {
+          "title": "Genesys Cloud fair use policy",
+          "url": "https://help.genesys.cloud/articles/genesys-cloud-fair-use-policy/"
+        },
+        {
+          "title": "Genesys Agent Copilot overview",
+          "url": "https://help.genesys.cloud/articles/agent-copilot-overview/"
+        }
+      ],
+      "uncertainty": "Token ratios and allotments change. The numbers in this lesson match the pages as read for this lab on 14 October 2026. Re-open them.",
+      "figure": {
+        "caption": "Allotment on the overview. Consumption on the FAQ.",
+        "nodes": [
+          {
+            "id": "ov",
+            "label": "Overview",
+            "kind": "region",
+            "x": 18,
+            "y": 40
+          },
+          {
+            "id": "faq",
+            "label": "STA FAQ",
+            "kind": "wem",
+            "x": 50,
+            "y": 40
+          },
+          {
+            "id": "sc",
+            "label": "AI score",
+            "kind": "bot",
+            "x": 82,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "ov",
+            "b": "faq"
+          },
+          {
+            "a": "faq",
+            "b": "sc"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Budget from the pages, not from this paragraph",
+        "steps": [
+          {
+            "from": "Buyer",
+            "to": "Allotment",
+            "title": "30 named, 39 concurrent",
+            "detail": "Overview, CX 4.",
+            "inspect": "Confirm the live sentence"
+          },
+          {
+            "from": "QA",
+            "to": "Scoring",
+            "title": "STA, QM, tokens",
+            "detail": "FAQ prerequisites.",
+            "inspect": "Ratio: re-read"
+          },
+          {
+            "from": "QA",
+            "to": "Summary reuse",
+            "title": "Not double-billed",
+            "detail": "Copilot summary in Virtual Supervisor.",
+            "inspect": "FAQ"
+          },
+          {
+            "from": "Architect",
+            "to": "Bot",
+            "title": "Do not invent a token price",
+            "detail": "Unless a page states it.",
+            "inspect": "Fair use is a different meter"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "The overview\u2019s named CX 4 token allotment is:",
+          "choices": [
+            "1",
+            "30",
+            "39",
+            "20"
+          ],
+          "answer": 1,
+          "why": "39 is the concurrent figure."
+        },
+        {
+          "q": "The concurrent allotment on that overview is:",
+          "choices": [
+            "30",
+            "100",
+            "5",
+            "39"
+          ],
+          "answer": 3,
+          "why": "Do not swap the two."
+        },
+        {
+          "q": "AI scoring consumes tokens only when:",
+          "choices": [
+            "GC-GCP is passed",
+            "STA, QM, and AI Experience Tokens are all in place",
+            "A queue exists",
+            "An Edge exists"
+          ],
+          "answer": 1,
+          "why": "The FAQ lists three gates."
+        },
+        {
+          "q": "The FAQ\u2019s evaluations-per-token note should be:",
+          "choices": [
+            "Copied into a trunk",
+            "Re-read before you budget",
+            "Memorized forever",
+            "Ignored"
+          ],
+          "answer": 1,
+          "why": "The page can change."
+        },
+        {
+          "q": "A Copilot summary shown again by Virtual Supervisor:",
+          "choices": [
+            "Disables the bot",
+            "Is not a second summary bill, per the FAQ",
+            "Always doubles",
+            "Deletes STA"
+          ],
+          "answer": 1,
+          "why": "That is the FAQ\u2019s billing note."
+        },
+        {
+          "q": "Fair use and AI tokens are:",
+          "choices": [
+            "Both Edge settings",
+            "Different pages. Do not merge them.",
+            "The same table",
+            "Both RFC 3261"
+          ],
+          "answer": 1,
+          "why": "Transcription minutes and API calls have their own fair-use rows."
+        }
+      ],
+      "cards": [
+        {
+          "front": "30",
+          "back": "Named allotment on the overview."
+        },
+        {
+          "front": "39",
+          "back": "Concurrent allotment."
+        },
+        {
+          "front": "20",
+          "back": "FAQ\u2019s evaluations per scoring token. Re-read."
+        },
+        {
+          "front": "Bots",
+          "back": "No invented token price."
+        }
+      ],
+      "lab": {
+        "title": "Write the budget footnote",
+        "steps": [
+          "The overview sentence.",
+          "The FAQ ratio sentence, dated by you when you read it.",
+          "What you will not claim about bot pricing.",
+          "Who re-reads both before renewal."
+        ],
+        "success": "The footnote names pages, not a guess."
+      },
+      "fault": {
+        "title": "Invented bot price",
+        "symptom": "A proposal says each bot intent costs one AI token.",
+        "log": "No article in the design packet states that.",
+        "cause": "The number was invented.",
+        "fix": "Delete it. Cite the overview and the FAQ only for what they say."
+      }
+    },
+    {
+      "id": "g-cert",
+      "title": "The AI exams are named on the catalog, one exam each",
+      "level": "Core",
+      "minutes": 10,
+      "summary": "Two AI certifications. No invented exam codes.",
+      "paras": [
+        "The Genesys Cloud exams page lists AI certifications separately from the Professional and Developer certifications and from the specialist exams. As read on 14 October 2026, each of AI \u2013 GPE & GPR and Digital Bots & Knowledge is one exam. The catalog links them to course 17671 and course 18174. This lab does not invent a GCX- prefix for either.",
+        "Speech and Text Analytics is a specialist certification on the same catalog, not one of those two AI exams. Passing a bot course does not pass the STA specialist exam. The announcement page covers webcam and practice-exam notes. Read it before you book."
+      ],
+      "cites": [
+        {
+          "title": "Genesys Cloud exams",
+          "url": "https://education.genesys.com/certification/cloud"
+        },
+        {
+          "title": "Genesys technical certifications announcement",
+          "url": "https://education.genesys.com/explore/announcement/genesys-technical-certifications-important-announcement"
+        }
+      ],
+      "uncertainty": "Course numbers were taken from the Genesys Cloud exams catalog as read on 14 October 2026. Confirm before you enroll.",
+      "figure": {
+        "caption": "Two AI exams, plus a separate STA specialist.",
+        "nodes": [
+          {
+            "id": "gpe",
+            "label": "GPE and GPR",
+            "kind": "bot",
+            "x": 16,
+            "y": 40
+          },
+          {
+            "id": "dig",
+            "label": "Digital bots",
+            "kind": "bot",
+            "x": 50,
+            "y": 40
+          },
+          {
+            "id": "sta",
+            "label": "STA specialist",
+            "kind": "wem",
+            "x": 84,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "gpe",
+            "b": "dig"
+          },
+          {
+            "a": "dig",
+            "b": "sta"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Pick the exam that matches the work",
+        "steps": [
+          {
+            "from": "Work",
+            "to": "Predictions and routing AI",
+            "title": "AI \u2013 GPE & GPR",
+            "detail": "Catalog course 17671.",
+            "inspect": "One exam"
+          },
+          {
+            "from": "Work",
+            "to": "Bots and knowledge",
+            "title": "Digital Bots & Knowledge",
+            "detail": "Catalog course 18174.",
+            "inspect": "One exam"
+          },
+          {
+            "from": "Work",
+            "to": "Topics and transcription",
+            "title": "STA specialist",
+            "detail": "A different row.",
+            "inspect": "Do not swap them"
+          },
+          {
+            "from": "Book",
+            "to": "Announcement",
+            "title": "Webcam and practice exams",
+            "detail": "Read the current note.",
+            "inspect": "No voucher story invented here"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "AI \u2013 GPE & GPR on the catalog is:",
+          "choices": [
+            "An Edge exam",
+            "One exam, linked from course 17671",
+            "A specialist with a GCX code this lab invented",
+            "The same as GC-GCP"
+          ],
+          "answer": 1,
+          "why": "Use the catalog name."
+        },
+        {
+          "q": "Digital Bots & Knowledge is:",
+          "choices": [
+            "Included automatically with GPE",
+            "The STA specialist",
+            "A Cisco exam",
+            "A separate one-exam AI certification, course 18174"
+          ],
+          "answer": 3,
+          "why": "Do not merge the rows."
+        },
+        {
+          "q": "The STA specialist exam is:",
+          "choices": [
+            "Retired in this lab\u2019s notes",
+            "GC-GCD",
+            "Its own catalog row",
+            "The same as Digital Bots"
+          ],
+          "answer": 2,
+          "why": "Topics and bots are different jobs."
+        },
+        {
+          "q": "This lab assigns GCX- codes to AI exams:",
+          "choices": [
+            "It does not. Older community posts are not the catalog.",
+            "It must",
+            "Only for bots",
+            "Only for STA"
+          ],
+          "answer": 0,
+          "why": "The catalog is the source."
+        },
+        {
+          "q": "Before you book, also read:",
+          "choices": [
+            "A dump site",
+            "RFC 5737",
+            "The BYOC quick start",
+            "The technical certifications announcement"
+          ],
+          "answer": 3,
+          "why": "Webcam and practice-exam notes live there."
+        },
+        {
+          "q": "Passing a digital bot course means:",
+          "choices": [
+            "You are GC-GCP",
+            "You can skip STA",
+            "You own CX 4",
+            "You prepared for that exam, not for every other row"
+          ],
+          "answer": 3,
+          "why": "Each exam is separate."
+        }
+      ],
+      "cards": [
+        {
+          "front": "GPE & GPR",
+          "back": "Course 17671. One exam."
+        },
+        {
+          "front": "Digital bots",
+          "back": "Course 18174. One exam."
+        },
+        {
+          "front": "STA",
+          "back": "A specialist row."
+        },
+        {
+          "front": "Codes",
+          "back": "No invented GCX- prefix."
+        }
+      ],
+      "lab": {
+        "title": "Match three jobs to three rows",
+        "steps": [
+          "A predictive-routing specialist.",
+          "A bot builder.",
+          "A speech-analytics admin.",
+          "The page you will re-open before paying."
+        ],
+        "success": "Three different catalog rows."
+      },
+      "fault": {
+        "title": "Wrong row",
+        "symptom": "A bot builder studies the professional implementation course and is surprised by intent questions.",
+        "log": "They booked GC-GCP.",
+        "cause": "The work matched Digital Bots & Knowledge.",
+        "fix": "Rebook using the catalog row."
+      }
+    }
+  ]
+}
