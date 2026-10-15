@@ -4,7 +4,7 @@ import rough from "../vendor/rough.js";
 import { animate } from "../vendor/anime.js";
 import { DIAGRAMS, PORTS } from "./diagrams.js";
 
-const REPO = "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing";
+const REPO = "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing";
 const PORTS_DOC = "https://help.genesys.cloud/articles/genesys-cloud-ports-services/";
 
 export const CHARTS = [
