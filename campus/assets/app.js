@@ -695,14 +695,23 @@ function paintIcons(host, track, counts = {}) {
   const done = track
     ? track.lessons.filter((lesson) => state.progress.lessons[lesson.id]?.done).length
     : Object.values(state.progress.lessons).filter((item) => item.done).length;
-  const tiles = [
-    ["#/atlas", "Diagrams", counts.diagrams ?? "—", "constellation", "Atlas"],
-    ["#/flows", "Flows", counts.flows ?? "—", "flow", "Animated"],
-    ["#/charts", "Charts", counts.charts ?? 6, "chart", "From this lab"],
-    ["#/cheat", "Cheat codes", counts.sheets ?? 13, "sheet", "HTML PDF PNG"],
-    ["#/tracks", track ? ht(track.id, track.title) : "Lessons", lessons.length, "prism", `${minutes} min`],
-    ["#/tracks", "Finished", done, "star", track ? "This track" : "This browser"]
-  ];
+  const tiles = host.id === "home-icons"
+    ? [
+      ["#/atlas", "Diagrams", counts.diagrams ?? "—", "diagram", "Atlas"],
+      ["#/flows", "Flows", counts.flows ?? "—", "flow", "Animated"],
+      ["#/charts", "Charts", counts.charts ?? 6, "chart", "From this lab"],
+      ["#/cheat", "Cheat codes", counts.sheets ?? 13, "cheat", "HTML PDF PNG"],
+      ["#/downloads", "Downloads", "ZIP", "download", "Sheets and bundle"],
+      ["#/play", "Play", "GO", "play", "Games and drills"]
+    ]
+    : [
+      ["#/atlas", "Diagrams", counts.diagrams ?? "—", "diagram", "Atlas"],
+      ["#/flows", "Flows", counts.flows ?? "—", "flow", "Animated"],
+      ["#/charts", "Charts", counts.charts ?? 6, "chart", "From this lab"],
+      ["#/cheat", "Cheat codes", counts.sheets ?? 13, "cheat", "HTML PDF PNG"],
+      ["#/tracks", track ? ht(track.id, track.title) : "Lessons", lessons.length, "prism", `${minutes} min`],
+      ["#/tracks", "Finished", done, "star", track ? "This track" : "This browser"]
+    ];
   host.innerHTML = tiles.map(([href, label, num, kind, note], index) => `<a class="icon-tile" href="${href}">${iconStage(kind, index)}<b data-count="${esc(num)}">${esc(num)}</b><span class="tile-label">${esc(label)}</span><span class="tile-note">${esc(note)}</span></a>`).join("");
   host.querySelectorAll("[data-count]").forEach((el) => countUp(el, el.dataset.count));
   refreshLive();

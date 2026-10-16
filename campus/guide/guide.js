@@ -137,7 +137,8 @@ tour.id = "tour";
 tour.hidden = true;
 tour.innerHTML = `<div class="tour-spot" id="tour-spot"></div><div class="tour-spot tour-spot-b" id="tour-spot-b" hidden></div>
 <div class="tour-card" role="dialog" aria-modal="true" aria-label="Tour">
-  <p class="tour-step" id="tour-step"></p>
+  <p class="tour-kicker">Lab tour</p>
+  <p class="tour-step" id="tour-step"><span class="tour-badge" id="tour-badge">1</span><span id="tour-step-label"></span></p>
   <p id="tour-copy"></p>
   <div class="tour-actions">
     <button type="button" id="tour-back">Back</button>
@@ -202,7 +203,8 @@ function placeSpot(box, el) {
 }
 function showStep() {
   const step = STEPS[stepIndex];
-  document.getElementById("tour-step").textContent = step.n + " of 6 · " + step.title;
+  document.getElementById("tour-badge").textContent = step.n;
+  document.getElementById("tour-step-label").textContent = "of 6 · " + step.title;
   document.getElementById("tour-copy").textContent = step.text;
   document.getElementById("tour-back").disabled = stepIndex === 0;
   document.getElementById("tour-next").textContent = stepIndex === STEPS.length - 1 ? "Finish" : "Next";

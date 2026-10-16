@@ -58,7 +58,7 @@ function boot() {
 }
 
 function register(stage) {
-  if (stage.dataset.live === "1") return;
+  if (stage.dataset.live === "1" || stage.closest(".icon-tile")) return;
   const face = stage.querySelector("canvas.live-icon");
   if (!face) return;
   const kind = stage.dataset.kind || "prism";
