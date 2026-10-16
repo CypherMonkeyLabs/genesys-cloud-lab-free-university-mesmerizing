@@ -114,8 +114,10 @@ async function webgl(stage, active) {
   const cuts = cutSet(active);
   stage.innerHTML = `<div class="topo-wrap"><canvas id="floor" aria-label="Three.js topology. Drag to orbit. Failure buttons change which links glow."></canvas><div class="topo-labels" id="labels"></div></div>`;
   const canvas = stage.querySelector("#floor");
-  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  const mobile = window.matchMedia("(max-width: 820px), (pointer: coarse)").matches;
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: !mobile, alpha: true, powerPreference: mobile ? "low-power" : "high-performance" });
+  const dpr = window.devicePixelRatio || 1;
+  renderer.setPixelRatio(mobile ? Math.min(dpr, 1) : Math.min(dpr, 1.5));
   renderer.setSize(canvas.clientWidth || 800, 520);
   const scene = new THREE.Scene();
   scene.fog = new THREE.FogExp2(0x071018, 0.045);
@@ -201,9 +203,13 @@ async function webgl(stage, active) {
     labels.appendChild(span);
     labelEls[node.id] = span;
   });
-  const tick = () => {
+  let last = 0;
+  const tick = (now) => {
     if (!running) return;
     frame = requestAnimationFrame(tick);
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (mobile && now - last < 34) return;
+    last = now;
     const width = canvas.clientWidth || 800;
     const height = 520;
     if (canvas.width !== Math.floor(width * renderer.getPixelRatio())) renderer.setSize(width, height, false);
@@ -217,7 +223,7 @@ async function webgl(stage, active) {
       el.style.display = vector.z < 1 ? "block" : "none";
     });
   };
-  tick();
+  tick(0);
   return () => {
     running = false;
     cancelAnimationFrame(frame);

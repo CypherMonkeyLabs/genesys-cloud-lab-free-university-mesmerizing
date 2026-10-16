@@ -100,10 +100,20 @@ for (const item of DIAGRAMS) {
 }
 
 const html = readFileSync(join(root, "campus/index.html"), "utf8");
-for (const needle of ["https://cyphermonkeylabs.com", "https://linktr.ee/cyphermonkey", "https://dev.to/cyphermonkey", "https://huggingface.co/Cypher0x9", "https://x.com/Cypher0x9", "CC BY-NC-SA"]) {
+const brandLinks = [
+  "https://github.com/cipher0x9",
+  "https://github.com/CypherMonkeyLabs",
+  "https://cyphermonkeylabs.com",
+  "https://x.com/Cypher0x9",
+  "https://www.linkedin.com/in/luckylakshmanucwebex",
+  "https://huggingface.co/Cypher0x9",
+];
+const retiredShortLink = "link" + "tr.ee";
+for (const needle of [...brandLinks, "https://dev.to/cyphermonkey", "CC BY-NC-SA"]) {
   if (!html.includes(needle)) problems.push(`chrome missing ${needle}`);
 }
-if (/linkedin/i.test(html)) problems.push("linkedin");
+if (html.includes(retiredShortLink)) problems.push("chrome retired short link");
+if (/linkedin\.com/i.test(html.split("linkedin.com/in/luckylakshmanucwebex").join(""))) problems.push("linkedin");
 if (/mailto:/i.test(html)) problems.push("mailto");
 for (const label of ["Diagrams", "Flows", "Charts", "Cheat Codes", "Play", "Ecosystem", "Downloads", "Careers"]) {
   if (!html.includes(`>${label}<`)) problems.push(`menu ${label}`);
@@ -129,9 +139,10 @@ else {
     }
     if (sheet.html && existsSync(join(root, "campus", sheet.html))) {
       const text = readFileSync(join(root, "campus", sheet.html), "utf8");
-      for (const needle of ["cyphermonkeylabs.com", "linktr.ee/cyphermonkey", "github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing", "Not affiliated"]) {
+      for (const needle of ["cyphermonkeylabs.com", "github.com/cipher0x9", "github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing", "linkedin.com/in/luckylakshmanucwebex", "huggingface.co/Cypher0x9", "x.com/Cypher0x9", "Not affiliated"]) {
         if (!text.includes(needle)) problems.push(`${sheet.html} missing ${needle}`);
       }
+      if (text.includes(retiredShortLink)) problems.push(`${sheet.html} retired short link`);
     }
   }
   const cards = JSON.parse(readFileSync(join(downloadDir, "flashcards.json"), "utf8"));
@@ -140,8 +151,11 @@ else {
   for (const name of readdirSync(downloadDir)) {
     if (!/\.(html|svg|json|pdf)$/.test(name)) continue;
     const text = readFileSync(join(downloadDir, name), "utf8");
-    if (/linkedin/i.test(text)) problems.push(`${name} linkedin`);
+    if (text.includes(retiredShortLink)) problems.push(`${name} retired short link`);
+    if (/linkedin\.com/i.test(text.split("linkedin.com/in/luckylakshmanucwebex").join(""))) problems.push(`${name} linkedin`);
     if (/mailto:/i.test(text)) problems.push(`${name} mailto`);
+    if (text.includes("github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing")) problems.push(`${name} old repo`);
+    if (!text.includes("github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing")) problems.push(`${name} repo`);
     if (!text.includes("cyphermonkeylabs.com")) problems.push(`${name} footer`);
   }
   const predictive = manifest.tracks.find((track) => track.id === "predictive");

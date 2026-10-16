@@ -121,7 +121,8 @@ function applySettings(s) {
   if (theme !== "light") s.darkTheme = theme;
   document.documentElement.dataset.theme = theme;
   document.documentElement.dataset.font = s.font || "md";
-  document.documentElement.dataset.reduce = s.reduce ? "1" : "0";
+  const osReduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  document.documentElement.dataset.reduce = (s.reduce || osReduce) ? "1" : "0";
   const words = pack(s.lang || "en");
   applyLang(s.lang || "en");
   const tone = document.querySelector("#tone-toggle");
@@ -147,6 +148,15 @@ function syncChrome() {
 
 function motionReduced() {
   return document.documentElement.dataset.reduce === "1" || window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+function narrowScreen() {
+  return window.matchMedia("(max-width: 820px), (pointer: coarse)").matches;
+}
+
+function whenQuiet(fn, timeout) {
+  const ric = window.requestIdleCallback || ((cb) => setTimeout(cb, timeout || 600));
+  ric(() => fn(), { timeout: timeout || 1600 });
 }
 
 function lessonProg(id) {
@@ -268,6 +278,11 @@ function bindChrome() {
   }
   syncChrome();
   window.addEventListener("resize", syncChrome);
+  const reduceMq = window.matchMedia("(prefers-reduced-motion: reduce)");
+  reduceMq.addEventListener?.("change", () => applySettings(state.settings));
+  $("#guide-launch")?.addEventListener("click", () => {
+    import("./guide.js").then((mod) => mod.toggleGuide()).catch(() => {});
+  });
   document.addEventListener("keydown", (ev) => {
     if (ev.key !== "ArrowRight" && ev.key !== "ArrowLeft") return;
     const nav = ev.target.closest?.(".primary-nav");
@@ -546,32 +561,89 @@ function showHome() {
   status("Home");
 }
 
+function scheduleHero() {
+  const canvas = $("#hero-canvas");
+  if (!canvas || homeEl.hidden) return;
+  const fb = canvas.parentElement?.querySelector(".hero-fallback");
+  const showStill = () => {
+    canvas.classList.add("is-fallback");
+    canvas.parentElement?.classList.remove("hero-live");
+    if (fb) fb.hidden = false;
+  };
+  if (motionReduced()) {
+    showStill();
+    return;
+  }
+  const start = () => {
+    if (homeEl.hidden || canvas.dataset.live === "1" || canvas.dataset.booting === "1") return;
+    import("./hero3d.js").then((mod) => mod.mountHero(canvas, state.settings.reduce)).catch(() => showStill());
+  };
+  if (narrowScreen()) {
+    showStill();
+    const play = $("#hero-play");
+    if (play && play.dataset.bound !== "1") {
+      play.dataset.bound = "1";
+      play.hidden = false;
+      play.addEventListener("click", () => {
+        play.hidden = true;
+        start();
+      }, { once: true });
+    } else if (play) {
+      play.hidden = false;
+    }
+    return;
+  }
+  whenQuiet(start, 1800);
+}
+
+function scheduleHomeViz() {
+  const host = $("#home-flows");
+  if (!host || host.dataset.armed === "1") return;
+  host.dataset.armed = "1";
+  const run = async () => {
+    if (homeEl.hidden) return;
+    try {
+      const { DIAGRAMS, renderDiagram } = await import("./diagrams.js");
+      if (homeEl.hidden) return;
+      const flowCount = DIAGRAMS.filter((item) => item.flow).length;
+      paintIcons($("#home-icons"), null, { diagrams: DIAGRAMS.length, flows: flowCount, charts: 6, sheets: 13 });
+      const picks = DIAGRAMS.filter((item) => item.flow).slice(0, 3);
+      const flows = $("#home-flows");
+      if (flows) {
+        flows.innerHTML = `<h2>Flows</h2>
+          <p class="muted"><a href="#/flows">All ${flowCount} animated flows</a> · <a href="#/atlas">${DIAGRAMS.length} diagrams</a> · <a href="#/cheat">Cheat codes</a></p>
+          <div class="flow-strip">${picks.map((spec) => `<article class="card">${renderDiagram(spec)}<h3>${esc(spec.title)}</h3></article>`).join("")}</div>`;
+      }
+      const charts = $("#home-charts");
+      if (charts && !charts.dataset.drawn) {
+        charts.dataset.drawn = "1";
+        charts.innerHTML = `<h2>Charts</h2><div id="home-chart-root" class="chart-hold"></div>`;
+        const mod = await import("./floorviz.js");
+        if (!homeEl.hidden) await mod.mountFloor($("#home-chart-root"), state.manifest, null);
+      }
+    } catch (err) {
+      status(err.message || "Charts did not draw");
+    }
+    armReveal($("#home"));
+  };
+  const target = $("#home-charts");
+  if (target && "IntersectionObserver" in window) {
+    const io = new IntersectionObserver((entries) => {
+      if (!entries.some((entry) => entry.isIntersecting)) return;
+      io.disconnect();
+      run();
+    }, { rootMargin: "160px" });
+    io.observe(target);
+    return;
+  }
+  whenQuiet(run, 2000);
+}
+
 async function mountHomeViz() {
   if (homeEl.hidden) return;
-  import("./hero3d.js").then((mod) => mod.mountHero($("#hero-canvas"), state.settings.reduce)).catch(() => {});
+  scheduleHero();
   paintIcons($("#home-icons"), null);
-  try {
-    const { DIAGRAMS, renderDiagram } = await import("./diagrams.js");
-    if (homeEl.hidden) return;
-    const flowCount = DIAGRAMS.filter((item) => item.flow).length;
-    paintIcons($("#home-icons"), null, { diagrams: DIAGRAMS.length, flows: flowCount, charts: 6, sheets: 13 });
-    const picks = DIAGRAMS.filter((item) => item.flow).slice(0, 3);
-    const flows = $("#home-flows");
-    if (flows) {
-      flows.innerHTML = `<h2>Flows</h2>
-        <p class="muted"><a href="#/flows">All ${DIAGRAMS.filter((item) => item.flow).length} animated flows</a> · <a href="#/atlas">${DIAGRAMS.length} diagrams</a> · <a href="#/cheat">Cheat codes</a></p>
-        <div class="flow-strip">${picks.map((spec) => `<article class="card">${renderDiagram(spec)}<h3>${esc(spec.title)}</h3></article>`).join("")}</div>`;
-    }
-    const charts = $("#home-charts");
-    if (charts) {
-      charts.innerHTML = `<h2>Charts</h2><div id="home-chart-root"></div>`;
-      const mod = await import("./floorviz.js");
-      if (!homeEl.hidden) await mod.mountFloor($("#home-chart-root"), state.manifest, null);
-    }
-  } catch (err) {
-    status(err.message || "Charts did not draw");
-  }
-  armReveal($("#home"));
+  scheduleHomeViz();
 }
 
 function paintIcons(host, track, counts = {}) {
@@ -882,7 +954,8 @@ async function showCerts() {
 function showEcosystem() {
   const tracks = state.manifest.tracks.map((track) => `<a class="card" href="#/track/${track.id}"><div class="stripe a${track.accent}"></div><h3>${esc(ht(track.id, track.title))}</h3><p>${esc(track.summary)}</p></a>`).join("");
   mount(`${crumbs([["#/", "Home"], ["#/ecosystem", "Ecosystem"]])}<p class="kicker">Map</p><h1>Ecosystem</h1>
-    <p>Genesys Cloud CX is the conversation platform. WEM, recording, emergency calling, CRM, and bots sit on documented edges of that platform.</p>
+    <p>Genesys Cloud CX is the conversation platform. WEM, recording, emergency calling, CRM, and bots sit on documented edges of that platform. Diagrams, flows, charts, and cheat codes are separate wings of the same floor. Each lesson keeps its own citation. If a vendor page disagrees, the page wins.</p>
+    <p class="muted">Lucky is a lifelong student and an AI enthusiast, from systems, networking, voice, and the contact center, growing into AI omni-channel agents. This floor is the notebook.</p>
     <h2>Mind map</h2>
     <div class="markmap-host"><svg id="eco-map" role="img" aria-label="Mind map of the tracks"></svg></div>
     <div class="toolbar">
@@ -916,7 +989,7 @@ async function mountMindmap() {
       });
     });
     const { root } = new Transformer().transform(lines.join("\n"));
-    Markmap.create(svg, { duration: state.settings.reduce ? 0 : 400 }, root);
+    Markmap.create(svg, { duration: motionReduced() ? 0 : 400 }, root);
   } catch (err) {
     svg.insertAdjacentHTML("afterend", `<p class="uncertainty">The mind map did not draw in this browser. The track cards are the same map.</p>`);
   }
@@ -1155,7 +1228,10 @@ function iconStage(kind, accent) {
 }
 
 function refreshLive() {
-  import("./liveicons.js").then((mod) => mod.scan(document)).catch(() => {});
+  if (motionReduced() || narrowScreen()) return;
+  whenQuiet(() => {
+    import("./liveicons.js").then((mod) => mod.scan(document)).catch(() => {});
+  }, 2400);
 }
 
 function trackCard(track) {
