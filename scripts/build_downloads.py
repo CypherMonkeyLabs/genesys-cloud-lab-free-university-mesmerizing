@@ -13,13 +13,19 @@ ROOT = Path(__file__).resolve().parents[1]
 CAMPUS = ROOT / "campus"
 OUT = CAMPUS / "downloads"
 REPO = "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
-PDF_REPO = "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
 COPYRIGHT = "© 2026 CypherMonkeyLabs"
+BRANDS = [
+    "https://github.com/cipher0x9",
+    "https://github.com/CypherMonkeyLabs",
+    "https://cyphermonkeylabs.com",
+    "https://x.com/Cypher0x9",
+    "https://www.linkedin.com/in/luckylakshmanucwebex",
+    "https://huggingface.co/Cypher0x9",
+]
 FOOT = [
     "CypherMonkey Labs · Signal Floor",
     COPYRIGHT,
-    "https://cyphermonkeylabs.com",
-    "https://linktr.ee/cyphermonkey",
+    *BRANDS,
     REPO,
     "Independent educational project. Not affiliated with or endorsed by any vendor.",
     "Trademarks belong to their owners. MIT code. CC BY-NC-SA content.",
@@ -239,8 +245,13 @@ def write_svg(path, title, lines, sources):
     for line in lines[:28]:
         tspans.append(f'<text x="40" y="{y}" font-size="16" fill="#1b140f">{xml(line)}</text>')
         y += 22
-    foot = f'<text x="40" y="760" font-size="12" fill="#4d4338">{xml(" · ".join(FOOT[:4]))}</text>'
-    src = f'<text x="40" y="780" font-size="12" fill="#8d1d08">{xml(sources[0] if sources else "")}</text>'
+    foot_lines = []
+    fy = 760
+    for line in BRANDS + [REPO]:
+        foot_lines.append(f'<text x="40" y="{fy}" font-size="11" fill="#4d4338">{xml(line)}</text>')
+        fy += 14
+    foot = "".join(foot_lines)
+    src = f'<text x="40" y="{fy}" font-size="12" fill="#8d1d08">{xml(sources[0] if sources else "")}</text>'
     path.write_text(f"""<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000">
 <rect width="800" height="1000" fill="#f7f4ef"/>
 <rect width="800" height="64" fill="#07101c"/>
@@ -386,7 +397,7 @@ def main():
         prose = lines + ["Sources: " + " ".join(sources)] + FOOT
         html_path = OUT / f"{sid}.html"
         write_html(html_path, title, lines, sources)
-        write_pdf(OUT / f"{sid}.pdf", title, wrap(" ".join(lines), 90) + [""] + ["Sources:"] + sources + [""] + FOOT + [PDF_REPO])
+        write_pdf(OUT / f"{sid}.pdf", title, wrap(" ".join(lines), 90) + [""] + ["Sources:"] + sources + [""] + FOOT)
         png_path = OUT / f"{sid}.png"
         if not write_png_from_html(html_path, png_path):
             write_png(png_path, title, lines + [""] + FOOT)

@@ -1958,14 +1958,15 @@
       "keywords": [
         "github",
         "huggingface",
-        "twitter"
+        "twitter",
+        "linkedin"
       ],
       "synonyms": [
         "x.com",
         "labs org",
         "cyphermonkeylabs"
       ],
-      "answer": "Visit my GitHub is https://github.com/cipher0x9. Visit the Labs org is https://github.com/CypherMonkeyLabs. Visit Cypher Monkey Labs is https://cyphermonkeylabs.com. X is https://x.com/Cypher0x9. Hugging Face is https://huggingface.co/Cypher0x9. This page does not list an email address or a LinkedIn page.",
+      "answer": "Visit my GitHub is https://github.com/cipher0x9. Visit the Labs org is https://github.com/CypherMonkeyLabs. Visit Cypher Monkey Labs is https://cyphermonkeylabs.com. X is https://x.com/Cypher0x9. LinkedIn is https://www.linkedin.com/in/luckylakshmanucwebex. Hugging Face is https://huggingface.co/Cypher0x9.",
       "source": "https://cyphermonkeylabs.com"
     },
     {
