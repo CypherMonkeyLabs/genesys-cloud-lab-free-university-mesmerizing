@@ -12,8 +12,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CAMPUS = ROOT / "campus"
 OUT = CAMPUS / "downloads"
-REPO = "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
-ORG = "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
+REPO = "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
+PDF_REPO = "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
 COPYRIGHT = "© 2026 CypherMonkeyLabs"
 FOOT = [
     "CypherMonkey Labs · Signal Floor",
@@ -21,7 +21,6 @@ FOOT = [
     "https://cyphermonkeylabs.com",
     "https://linktr.ee/cyphermonkey",
     REPO,
-    ORG,
     "Independent educational project. Not affiliated with or endorsed by any vendor.",
     "Trademarks belong to their owners. MIT code. CC BY-NC-SA content.",
     "Concerns: https://cyphermonkeylabs.com/#contact",
@@ -387,7 +386,7 @@ def main():
         prose = lines + ["Sources: " + " ".join(sources)] + FOOT
         html_path = OUT / f"{sid}.html"
         write_html(html_path, title, lines, sources)
-        write_pdf(OUT / f"{sid}.pdf", title, wrap(" ".join(lines), 90) + [""] + ["Sources:"] + sources + [""] + FOOT)
+        write_pdf(OUT / f"{sid}.pdf", title, wrap(" ".join(lines), 90) + [""] + ["Sources:"] + sources + [""] + FOOT + [PDF_REPO])
         png_path = OUT / f"{sid}.png"
         if not write_png_from_html(html_path, png_path):
             write_png(png_path, title, lines + [""] + FOOT)

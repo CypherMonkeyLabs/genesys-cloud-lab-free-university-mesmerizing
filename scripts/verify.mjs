@@ -108,7 +108,7 @@ if (/mailto:/i.test(html)) problems.push("mailto");
 for (const label of ["Diagrams", "Flows", "Charts", "Cheat Codes", "Play", "Ecosystem", "Downloads", "Careers"]) {
   if (!html.includes(`>${label}<`)) problems.push(`menu ${label}`);
 }
-if (!html.includes("cipher0x9.github.io")) problems.push("github.io strip");
+if (!html.includes("cyphermonkeylabs.com/")) problems.push("github.io strip");
 if (!html.includes('id="theme-switch"')) problems.push("theme switcher");
 for (const file of ["campus/vendor/d3.js", "campus/vendor/anime.js", "campus/vendor/rough.js", "campus/vendor/confetti.js", "campus/vendor/markmap.js", "campus/vendor/three.module.js", "campus/assets/floorviz.js", "campus/assets/hero3d.js"]) {
   if (!existsSync(join(root, file))) problems.push(`missing ${file}`);
@@ -129,7 +129,7 @@ else {
     }
     if (sheet.html && existsSync(join(root, "campus", sheet.html))) {
       const text = readFileSync(join(root, "campus", sheet.html), "utf8");
-      for (const needle of ["cyphermonkeylabs.com", "linktr.ee/cyphermonkey", "github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing", "Not affiliated"]) {
+      for (const needle of ["cyphermonkeylabs.com", "linktr.ee/cyphermonkey", "github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing", "Not affiliated"]) {
         if (!text.includes(needle)) problems.push(`${sheet.html} missing ${needle}`);
       }
     }

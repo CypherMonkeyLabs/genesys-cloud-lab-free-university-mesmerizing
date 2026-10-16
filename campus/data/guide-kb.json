@@ -13,7 +13,7 @@
         "start here"
       ],
       "answer": "Foundations: What Genesys Cloud CX is, where an organization lives, and how a voice conversation is supposed to move. This track has 8 lessons in this lab.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-f-platform",
@@ -27,7 +27,7 @@
         "foundations"
       ],
       "answer": "What Genesys Cloud CX is (Foundation, 14 min): Genesys Cloud CX is a subscription contact-center platform with four nested packages, not a single feature switch.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-f-regions",
@@ -41,7 +41,7 @@
         "foundations"
       ],
       "answer": "Core regions and satellite media (Foundation, 16 min): An organization is born in one core AWS region. Satellite regions carry media. They do not host the org.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-f-sip",
@@ -55,7 +55,7 @@
         "foundations"
       ],
       "answer": "SIP, RTP, and what the trunk is doing (Foundation, 15 min): SIP sets the call up. RTP moves the audio. They are different protocols, and Genesys trunks speak both.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-f-acd-idea",
@@ -69,7 +69,7 @@
         "foundations"
       ],
       "answer": "What ACD is before you name a queue (Foundation, 12 min): ACD picks an agent for a waiting interaction. The queue is the waiting line. Skills, utilization, and On Queue decide who is eligible.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-f-digital",
@@ -83,7 +83,7 @@
         "foundations"
       ],
       "answer": "Digital conversations beside voice (Foundation, 12 min): Voice is one media. Architect also has inbound message, email, and chat flows, and queues track those medias separately.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-f-access",
@@ -97,7 +97,7 @@
         "foundations"
       ],
       "answer": "Divisions, before roles get complicated (Foundation, 13 min): A division groups objects inside one organization. It is not a second org, and the Home division cannot be deleted.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-f-read",
@@ -111,7 +111,7 @@
         "foundations"
       ],
       "answer": "How to read a Genesys page without inventing the rest (Foundation, 11 min): This lab cites the Resource Center, the Developer Center, Genesys Education, and RFCs. The page wins when they differ.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-f-prereq",
@@ -125,7 +125,7 @@
         "foundations"
       ],
       "answer": "Prerequisites before the first trunk (Foundation, 13 min): BYOC Cloud needs a public carrier address, an open port plan, and a real location. The org subscription has to include the telephony product you intend to use.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "track-org",
@@ -139,7 +139,7 @@
         "admin"
       ],
       "answer": "Organization and licensing: Regions, roles, divisions, named and concurrent licenses, packages, and fair use. This track has 7 lessons in this lab.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-o-place",
@@ -153,7 +153,7 @@
         "organization and licensing"
       ],
       "answer": "Place the organization in a core region (Core, 12 min): You do not move an org between regions as a setting. You create it in a core region and live with that login host.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-o-roles",
@@ -167,7 +167,7 @@
         "organization and licensing"
       ],
       "answer": "Roles are permission lists paired with divisions (Core, 13 min): A role without a division grant does not open objects. An OAuth client inherits only a subset of its creator\u2019s pairs.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-o-concurrent",
@@ -181,7 +181,7 @@
         "organization and licensing"
       ],
       "answer": "Named licenses and the concurrent peak (Core, 12 min): Concurrent billing charges the peak of simultaneous users, and it ignores peaks shorter than 30 minutes.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-o-packages",
@@ -195,7 +195,7 @@
         "organization and licensing"
       ],
       "answer": "Pick CX 1, CX 2, CX 3, or CX 4 on purpose (Core, 12 min): Match the package to the job. Do not buy CX 1 and then design a WFM project.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-o-people",
@@ -209,7 +209,7 @@
         "organization and licensing"
       ],
       "answer": "People, queues, and the 5,000 member line (Core, 11 min): Users live in the org. Queue membership is not the same thing as a division, and it has a hard cap.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-o-fair",
@@ -223,7 +223,7 @@
         "organization and licensing"
       ],
       "answer": "Fair use is a pool, not a mystery invoice (Core, 12 min): Licenses include monthly allowances. Overage is priced on the policy page. Copying the numbers into a design doc freezes them wrong.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-o-bootstrap",
@@ -237,7 +237,7 @@
         "organization and licensing"
       ],
       "answer": "A first-week admin checklist (Core, 14 min): Week one is region, divisions, roles, packages, one queue, and a published in-queue flow. Telephony can follow.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "track-architect",
@@ -251,7 +251,7 @@
         "design"
       ],
       "answer": "Architect flows: Flow types, tasks, in-queue experiences, data actions, bots, secure calls, and publish. This track has 8 lessons in this lab.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-a-types",
@@ -265,7 +265,7 @@
         "architect flows"
       ],
       "answer": "The flow types on the Architect home page (Core, 13 min): Architect is a list of flow types. Picking the wrong tab is the first defect.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-a-task",
@@ -279,7 +279,7 @@
         "architect flows"
       ],
       "answer": "Tasks, menus, and a way out (Core, 13 min): An inbound call flow plays audio, collects input, and must transfer, hand off, or disconnect.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-a-inqueue",
@@ -293,7 +293,7 @@
         "architect flows"
       ],
       "answer": "In-queue flows are the hold experience (Core, 12 min): The caller is already queued. The in-queue flow is what they hear or read while ACD looks for an agent.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-a-data",
@@ -307,7 +307,7 @@
         "architect flows"
       ],
       "answer": "Data actions and participant data (Core, 12 min): A data action calls a system outside the flow. Participant data carries a value to the agent.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-a-common",
@@ -321,7 +321,7 @@
         "architect flows"
       ],
       "answer": "Common modules are how you stop copying tasks (Core, 11 min): A common module is a flow type you call from other flows. The name is still unique inside that type.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-a-secure",
@@ -335,7 +335,7 @@
         "architect flows"
       ],
       "answer": "Secure call flows keep digits away from the recording (Core, 12 min): A secure flow is how a caller enters a card number without that audio being recorded or shown to the agent.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-a-botcall",
@@ -349,7 +349,7 @@
         "architect flows"
       ],
       "answer": "Call a bot from the inbound flow (Core, 13 min): Dialog Engine bot flows and digital bot flows are Architect flow types. The inbound flow calls them. It does not become them.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-a-publish",
@@ -363,7 +363,7 @@
         "architect flows"
       ],
       "answer": "Publish, division, and Flow Insights (Core, 12 min): A saved flow is a draft. The runtime uses the published version. Insights tell you whether anyone hit it.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "track-acd",
@@ -377,7 +377,7 @@
         "routing"
       ],
       "answer": "ACD routing: Standard, bullseye, preferred, predictive, and conditional routing, plus the two scoring methods. This track has 8 lessons in this lab.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-r-methods",
@@ -391,7 +391,7 @@
         "acd routing"
       ],
       "answer": "Five routing methods (Core, 12 min): Standard, predictive, bullseye, preferred agent, and conditional group routing are the methods on a queue.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-r-eval",
@@ -405,7 +405,7 @@
         "acd routing"
       ],
       "answer": "All skills, best available, or disregard (Core, 13 min): The evaluation method is how standard and bullseye decide that an agent \u201chas the skills.\u201d",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-r-score",
@@ -419,7 +419,7 @@
         "acd routing"
       ],
       "answer": "Conversation score and priority score (Core, 12 min): One priority point on conversation score is worth 60,000 milliseconds of arrival time.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-r-bullseye",
@@ -433,7 +433,7 @@
         "acd routing"
       ],
       "answer": "Bullseye rings widen the target (Core, 14 min): Up to five rings. A delay from 2 seconds to 72 hours. Up to 50 skills removed on a ring.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-r-preferred",
@@ -447,7 +447,7 @@
         "acd routing"
       ],
       "answer": "Preferred agents are tried first (Core, 13 min): A preferred agent is considered even without the required skills, and only if they are a member of the queue and On Queue.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-r-predict",
@@ -461,7 +461,7 @@
         "acd routing"
       ],
       "answer": "Predictive routing is a KPI model with a timeout (Advanced, 14 min): Predictive routing can run for everyone, in a comparison test, or at a fixed 80/20 split you cannot edit.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-r-conditional",
@@ -475,7 +475,7 @@
         "acd routing"
       ],
       "answer": "Conditional group routing borrows agents carefully (Advanced, 12 min): A rule is a KPI plus agent availability. The other queue must be able to spare the people.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-r-util",
@@ -489,7 +489,7 @@
         "acd routing"
       ],
       "answer": "Utilization and Not Responding (Core, 13 min): A fully utilized agent is skipped. An agent who ignores an alert becomes Not Responding.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "track-queues",
@@ -503,7 +503,7 @@
         "acd objects"
       ],
       "answer": "Queues, skills, and wrap-up: Queue media settings, skills, wrap-up codes, callbacks, and service level. This track has 7 lessons in this lab.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-q-create",
@@ -517,7 +517,7 @@
         "queues, skills, and wrap-up"
       ],
       "answer": "Create the queue in a division (Core, 11 min): The queue is a named waiting line in one division, with at most 5,000 members.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-q-skills",
@@ -531,7 +531,7 @@
         "queues, skills, and wrap-up"
       ],
       "answer": "Skills and proficiency are on the agent (Core, 12 min): The queue asks for skills. The agent profile holds them. Evaluation decides whether proficiency matters.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-q-acw",
@@ -545,7 +545,7 @@
         "queues, skills, and wrap-up"
       ],
       "answer": "After call work and the system wrap-up codes (Core, 13 min): ACW is optional, discretionary, or time-boxed. The platform has its own codes when agents do not finish.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-q-wrapdiv",
@@ -559,7 +559,7 @@
         "queues, skills, and wrap-up"
       ],
       "answer": "Wrap-up codes live in divisions too (Core, 11 min): The codes an agent sees are the codes their role can see, and Genesys wants them in the queue\u2019s division.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-q-sl",
@@ -573,7 +573,7 @@
         "queues, skills, and wrap-up"
       ],
       "answer": "Service level is a percentage and a target in seconds (Core, 11 min): Each media has a service level percentage and a target duration. That pair is what conditional routing and WFM both mean by \u201cthe goal.\u201d",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-q-callback",
@@ -587,7 +587,7 @@
         "queues, skills, and wrap-up"
       ],
       "answer": "Callbacks are interactions with their own rules (Core, 12 min): A callback is queued work. It still needs a wrap-up code, and it counts as its own utilization slot.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-q-members",
@@ -601,7 +601,7 @@
         "queues, skills, and wrap-up"
       ],
       "answer": "Membership, On Queue, and the copy trap (Core, 11 min): A copied queue can duplicate a bullseye you did not mean to clone.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "track-byoc",
@@ -615,7 +615,7 @@
         "telephony"
       ],
       "answer": "BYOC Cloud and SIP trunks: Carrier and PBX trunks, RTP over the internet, Dynamic Cloud Voice, and the quick-start order. This track has 7 lessons in this lab.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-b-what",
@@ -629,7 +629,7 @@
         "byoc cloud and sip trunks"
       ],
       "answer": "BYOC Cloud is your carrier, Genesys\u2019 media (Core, 12 min): You bring the carrier contract. Genesys terminates a SIP trunk on the AWS media tier. Audio is RTP on the internet.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-b-types",
@@ -643,7 +643,7 @@
         "byoc cloud and sip trunks"
       ],
       "answer": "Carrier trunks and PBX trunks (Core, 12 min): BYOC Carrier and BYOC PBX are the two types. Carrier has subtypes. PBX has one.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-b-order",
@@ -657,7 +657,7 @@
         "byoc cloud and sip trunks"
       ],
       "answer": "The quick-start order (Core, 12 min): Location, trunk, outbound route, number plan. The product on the subscription comes before all of that.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-b-dcvp",
@@ -671,7 +671,7 @@
         "byoc cloud and sip trunks"
       ],
       "answer": "Dynamic Cloud Voice is the current platform (Advanced, 13 min): New trunks start there. Moving an old trunk means allow lists, Amazon root CAs, TLS ciphers, and a toggle.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-b-plans",
@@ -685,7 +685,7 @@
         "byoc cloud and sip trunks"
       ],
       "answer": "Number plans classify what people dial (Core, 13 min): A site can hold 200 plans. DIDs do not need one for basic routing. Emergency, extension, and 988 already exist as defaults.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-b-monitor",
@@ -699,7 +699,7 @@
         "byoc cloud and sip trunks"
       ],
       "answer": "Watch the trunk, not only the flow (Core, 11 min): When audio fails and Architect Insights still shows runs, the trunk is the next object.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-b-gcv",
@@ -713,7 +713,7 @@
         "byoc cloud and sip trunks"
       ],
       "answer": "Genesys Cloud Voice is the other door (Core, 12 min): If Genesys is the carrier, you buy numbers in a region that offers voice, and emergency is part of that product story rather than your trunk.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "track-edge",
@@ -727,7 +727,7 @@
         "premises"
       ],
       "answer": "The Edge and BYOC Premises: Premises Edges, Edge groups, phone trunks, sites, and what happens when the local Edge is down. This track has 7 lessons in this lab.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-e-role",
@@ -741,7 +741,7 @@
         "the edge and byoc premises"
       ],
       "answer": "The premises Edge is the local media hop (Core, 12 min): BYOC Premises puts an Edge on your network. Phones and trunks registered there do not need a public address the way BYOC Cloud does.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-e-site",
@@ -755,7 +755,7 @@
         "the edge and byoc premises"
       ],
       "answer": "Local site routing stays home until it cannot (Core, 12 min): Genesys uses Edges in the same site when it can. Another site is the exception.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-e-phone",
@@ -769,7 +769,7 @@
         "the edge and byoc premises"
       ],
       "answer": "Phone trunks, WebRTC, and inherit (Core, 11 min): WebRTC and SIP phones are phone trunks on the Edge group. Inherit is the default you should verify.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-e-fail",
@@ -783,7 +783,7 @@
         "the edge and byoc premises"
       ],
       "answer": "When the local Edge is offline (Core, 12 min): The documented failover is another site, if that site actually has the resource.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-e-compare",
@@ -797,7 +797,7 @@
         "the edge and byoc premises"
       ],
       "answer": "Choose Cloud, Premises, or both (Core, 12 min): Use premises when the phones and the carrier are on your network. Use cloud when they are not. Use both only where each number has an owner.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-e-webrtc-net",
@@ -811,7 +811,7 @@
         "the edge and byoc premises"
       ],
       "answer": "A browser phone is still a network endpoint (Core, 11 min): WebRTC removes the desk set. It does not remove media engineering.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-e-checklist",
@@ -825,7 +825,7 @@
         "the edge and byoc premises"
       ],
       "answer": "Premises turn-up checklist (Core, 12 min): Group, inherit, site, trunk, failover test, emergency owner.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "track-emergency",
@@ -839,7 +839,7 @@
         "safety"
       ],
       "answer": "Numbers and emergency calling: E.164, emergency classifications, BYOC warnings, and Genesys Cloud Voice coverage. This track has 6 lessons in this lab.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-n-owner",
@@ -853,7 +853,7 @@
         "numbers and emergency calling"
       ],
       "answer": "Name the emergency owner before the DID (Core, 12 min): Genesys is not responsible for emergency calls that ride a BYOC trunk. That sentence belongs in the design, not in the postmortem.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-n-plan",
@@ -867,7 +867,7 @@
         "numbers and emergency calling"
       ],
       "answer": "Emergency is a classification and a route (Core, 12 min): The default Emergency plan matches 911 and 933 in the US and Canada, and 142 in Switzerland. It still needs a route.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-n-location",
@@ -881,7 +881,7 @@
         "numbers and emergency calling"
       ],
       "answer": "The location is a physical place (Core, 11 min): The quick start adds a location because services, including emergency, need a real site.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-n-gcv-limits",
@@ -895,7 +895,7 @@
         "numbers and emergency calling"
       ],
       "answer": "Voice coverage is a table, not a promise (Advanced, 12 min): Country rows decide DID, toll-free, domestic, and international. FedRAMP and the sovereign region add harder edges.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-n-e164",
@@ -909,7 +909,7 @@
         "numbers and emergency calling"
       ],
       "answer": "Normalize toward E.164 on purpose (Core, 11 min): Intra-country and inter-country plans normalize. Digit-length extensions and E.164 lists do not.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-n-test",
@@ -923,7 +923,7 @@
         "numbers and emergency calling"
       ],
       "answer": "Test emergency like a change, not like a demo (Core, 12 min): A live emergency test is a carrier and public-safety conversation. The call simulator is the part you can do alone.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "track-wfm",
@@ -937,7 +937,7 @@
         "wem"
       ],
       "answer": "Workforce management: Business units, forecasts, schedules, adherence, and time off. WFM is a CX 3 capability. This track has 9 lessons in this lab.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-w-map",
@@ -951,7 +951,7 @@
         "workforce management"
       ],
       "answer": "WEM is a set of products, and WFM is one of them (Core, 12 min): Recording, screen recording, quality, performance, speech and text analytics, and workforce management are the WEM list.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-w-bu",
@@ -965,7 +965,7 @@
         "workforce management"
       ],
       "answer": "Business units and management units (Core, 12 min): A business unit is the planning container. A management unit is the group of agents you actually schedule.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-w-goal",
@@ -979,7 +979,7 @@
         "workforce management"
       ],
       "answer": "Service goal templates are the planning target (Core, 11 min): The queue\u2019s service level and the WFM template should describe the same promise.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-w-sched",
@@ -993,7 +993,7 @@
         "workforce management"
       ],
       "answer": "Schedules are the plan agents work (Core, 11 min): A schedule is built from the management unit, the goals, and activity codes. It is not a routing method.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-w-intra",
@@ -1007,7 +1007,7 @@
         "workforce management"
       ],
       "answer": "Intraday and adherence compare the plan to the floor (Core, 12 min): Adherence is the gap between the activity you scheduled and the status the agent is actually in.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-w-off",
@@ -1021,7 +1021,7 @@
         "workforce management"
       ],
       "answer": "Time off is a schedule change with a rule (Core, 11 min): Time-off requests are part of WFM. An approved request that nobody reflects on the schedule is a rumor.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-w-cert",
@@ -1035,7 +1035,7 @@
         "workforce management"
       ],
       "answer": "The workforce certification is a named exam (Core, 10 min): The catalog lists a Workforce Management specialist certification and a preparation course. It does not list a code this lab is willing to invent.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-w-forecast",
@@ -1049,7 +1049,7 @@
         "workforce management"
       ],
       "answer": "A forecast has a short view and a long view (Advanced, 13 min): Short-term data can build a schedule. The long-term view is for seasonality and does not generate one.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-w-generate",
@@ -1063,7 +1063,7 @@
         "workforce management"
       ],
       "answer": "Generate one schedule from a forecast that covers it (Advanced, 13 min): The schedule period has to sit inside the short-term forecast, and a business unit generates one schedule at a time.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "track-qm",
@@ -1077,7 +1077,7 @@
         "wem"
       ],
       "answer": "Quality and recording: Evaluation forms, calibration, coaching, recording policies, and the prerequisites for AI scoring. This track has 6 lessons in this lab.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-m-overview",
@@ -1091,7 +1091,7 @@
         "quality and recording"
       ],
       "answer": "Quality management evaluates the conversation (Core, 11 min): QM records and scores interactions, and it can coach. It is not the schedule.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-m-form",
@@ -1105,7 +1105,7 @@
         "quality and recording"
       ],
       "answer": "Forms have questions and weights (Core, 11 min): The form is the rubric. Weights decide which questions move the score.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-m-policy",
@@ -1119,7 +1119,7 @@
         "quality and recording"
       ],
       "answer": "Recording policies choose calls and retention (Core, 11 min): A policy decides which ACD calls are recorded and how long they are kept. A secure flow is a hole in a segment, not a substitute for the policy.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-m-coach",
@@ -1133,7 +1133,7 @@
         "quality and recording"
       ],
       "answer": "Coaching and disputes close the loop (Core, 11 min): A score that the agent cannot see and cannot dispute is not a quality program.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-m-ai",
@@ -1147,7 +1147,7 @@
         "quality and recording"
       ],
       "answer": "AI scoring needs STA, QM, and tokens (Advanced, 12 min): The FAQ is blunt: AI scoring requires Speech and Text Analytics, Quality Management, and AI Experience Tokens.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-m-export",
@@ -1161,7 +1161,7 @@
         "quality and recording"
       ],
       "answer": "Retention, export, and the reason you recorded (Advanced, 11 min): Export and AWS recording paths exist so a recording can leave the platform under a policy, not as a side copy.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "track-sta",
@@ -1175,7 +1175,7 @@
         "listen after"
       ],
       "answer": "Speech and text analytics: What gets transcribed, how sentiment and topics are used, and why analysis is not the same thing as the live conversation. This track has 6 lessons in this lab.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-s-scope",
@@ -1189,7 +1189,7 @@
         "speech and text analytics"
       ],
       "answer": "STA reads the conversation after the channel has it (Core, 12 min): Speech and text analytics covers voice and digital interactions. It is not a second ACD.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-s-sentiment",
@@ -1203,7 +1203,7 @@
         "speech and text analytics"
       ],
       "answer": "Sentiment is a label on the text, not a mood you can argue with (Core, 11 min): Sentiment scores the customer\u2019s language. Use it as a filter, then listen.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-s-topics",
@@ -1217,7 +1217,7 @@
         "speech and text analytics"
       ],
       "answer": "Topics, programs, and phrases are the dictionary (Core, 12 min): A program groups topics. A topic is phrases you expect to hear or read.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-s-empathy",
@@ -1231,7 +1231,7 @@
         "speech and text analytics"
       ],
       "answer": "Agent empathy is a detected behavior, still a form question (Core, 11 min): Empathy detection points at calls. Calibration still decides what empathy means for your company.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-s-search",
@@ -1245,7 +1245,7 @@
         "speech and text analytics"
       ],
       "answer": "Content search is how you test the dictionary (Core, 11 min): Search the transcript before you trust a topic count.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-s-timing",
@@ -1259,7 +1259,7 @@
         "speech and text analytics"
       ],
       "answer": "Full analysis and a faster transcript are different clocks (Advanced, 12 min): Some views wait until the interaction is complete. A lower-latency transcript path is a different API.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "track-ai",
@@ -1273,7 +1273,7 @@
         "beside the agent"
       ],
       "answer": "Genesys AI and bots: Dialog Engine and digital bots, failure paths, Agent Copilot, tokens, and the AI exams as the catalog names them. This track has 7 lessons in this lab.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-g-kinds",
@@ -1287,7 +1287,7 @@
         "genesys ai and bots"
       ],
       "answer": "Two Architect bot types, plus Copilot beside the agent (Core, 12 min): A bot flow talks to the customer. Agent Copilot talks to the agent. They are different products on different pages.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-g-dialog",
@@ -1301,7 +1301,7 @@
         "genesys ai and bots"
       ],
       "answer": "Dialog Engine bot flows are voice and digital intents (Core, 12 min): You build the bot in Architect, then the inbound flow calls it.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-g-digital",
@@ -1315,7 +1315,7 @@
         "genesys ai and bots"
       ],
       "answer": "Digital bot flows are a different call (Core, 11 min): Message experiences use Digital Bot Flows and Call Digital Bot Flow.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-g-fail",
@@ -1329,7 +1329,7 @@
         "genesys ai and bots"
       ],
       "answer": "Every bot has a failure output to a queue (Core, 11 min): No-match, timeout, and error are normal. The queue is the design.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-g-copilot",
@@ -1343,7 +1343,7 @@
         "genesys ai and bots"
       ],
       "answer": "Agent Copilot assists the person who stayed on the interaction (Core, 12 min): Knowledge, transcripts, scripts, next best action, and notes. The benefit is described as surviving a blind transfer.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-g-tokens",
@@ -1357,7 +1357,7 @@
         "genesys ai and bots"
       ],
       "answer": "Tokens are a published allotment, and a FAQ ratio you re-read (Advanced, 12 min): The overview publishes CX 4 token counts. The STA FAQ publishes how AI scoring spends them.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-g-cert",
@@ -1371,7 +1371,7 @@
         "genesys ai and bots"
       ],
       "answer": "The AI exams are named on the catalog, one exam each (Core, 10 min): Two AI certifications. No invented exam codes.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "track-api",
@@ -1385,7 +1385,7 @@
         "no live calls"
       ],
       "answer": "Platform APIs: OAuth grants, client credentials limits, region hosts, and why this lab\u2019s explorer never sends a request. This track has 7 lessons in this lab.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-p-center",
@@ -1399,7 +1399,7 @@
         "platform apis"
       ],
       "answer": "The Developer Center is the map. This lab is not a client. (Core, 11 min): Read the public docs. Do not point a tutorial at a production org.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-p-grants",
@@ -1413,7 +1413,7 @@
         "platform apis"
       ],
       "answer": "Pick the grant that matches who the call runs as (Core, 12 min): Client credentials, authorization code with PKCE, and SAML2 Bearer are the grants to learn. Implicit is the one leaving.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-p-cc",
@@ -1427,7 +1427,7 @@
         "platform apis"
       ],
       "answer": "Client credentials have no user, so users/me is the wrong call (Core, 12 min): The token is the client. The guide shows that limit on purpose.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-p-implicit",
@@ -1441,7 +1441,7 @@
         "platform apis"
       ],
       "answer": "Implicit grant is a migration, not a new design (Core, 11 min): The OAuth article dates the deprecation: after 25 May 2026.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-p-hosts",
@@ -1455,7 +1455,7 @@
         "platform apis"
       ],
       "answer": "Login host and API host are a pair you look up (Core, 12 min): US East is the pair this lab will quote in full. Other rows stay on the regions article.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-p-roles",
@@ -1469,7 +1469,7 @@
         "platform apis"
       ],
       "answer": "Role and division pairs are the real permission (Core, 12 min): A token opens the door the role allows, in the division the pair names.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-p-scim",
@@ -1483,7 +1483,7 @@
         "platform apis"
       ],
       "answer": "SCIM and other directory sync still start with an OAuth client (Core, 11 min): The OAuth article points SCIM at a client. The client still has roles and a grant.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "track-crm",
@@ -1497,7 +1497,7 @@
         "beside the desktop"
       ],
       "answer": "AppFoundry and CRM: The marketplace, the documented Salesforce and Zendesk embeds, and OAuth migrations that do not invent other CRMs. This track has 6 lessons in this lab.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-i-market",
@@ -1511,7 +1511,7 @@
         "appfoundry and crm"
       ],
       "answer": "AppFoundry is the marketplace, not a feature you assume is installed (Core, 11 min): An app is present only after someone installs it into the org.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-i-sf",
@@ -1525,7 +1525,7 @@
         "appfoundry and crm"
       ],
       "answer": "Genesys Cloud for Salesforce is a documented embed (Core, 12 min): Screen pop, click-to-dial, logging, and the assist features that page names.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-i-sf-oauth",
@@ -1539,7 +1539,7 @@
         "appfoundry and crm"
       ],
       "answer": "Salesforce data actions move to OAuth client credentials (Core, 12 min): Consumer key, secret, and My Domain URL. The request body of the action stays.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-i-zd",
@@ -1553,7 +1553,7 @@
         "appfoundry and crm"
       ],
       "answer": "Zendesk has its own about page, with a similar embed idea (Core, 11 min): Do not copy the Salesforce field list onto Zendesk.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-i-other",
@@ -1567,7 +1567,7 @@
         "appfoundry and crm"
       ],
       "answer": "Dynamics, ServiceNow, and the rest stay on the marketplace (Core, 11 min): No invented feature lists for CRMs this lab did not open.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-i-fail",
@@ -1581,7 +1581,7 @@
         "appfoundry and crm"
       ],
       "answer": "A CRM failure is not an ACD failure (Core, 11 min): Screen pop can die while the queue is healthy.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "track-migration",
@@ -1595,7 +1595,7 @@
         "rebuild"
       ],
       "answer": "Migration: Engage, PureConnect, and Cisco UCCE move by rebuilding Architect flows and queues. This is a learning bridge, not a converter. This track has 8 lessons in this lab.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-x-rebuild",
@@ -1609,7 +1609,7 @@
         "migration"
       ],
       "answer": "Nothing imports your old routing by magic (Core, 12 min): You rebuild flows, queues, and trunks. You do not flip a converter this lab has not found.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-x-engage",
@@ -1623,7 +1623,7 @@
         "migration"
       ],
       "answer": "Engage and PureConnect become flows and queues (Core, 12 min): Strategies, IRDs, and handlers are read as behavior, then redrawn.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-x-ivr",
@@ -1637,7 +1637,7 @@
         "migration"
       ],
       "answer": "IVR becomes Architect tasks, menus, and audio (Core, 12 min): CVP, UCCX prompts, and Engage voice all become the same kind of flow.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-x-ucce",
@@ -1651,7 +1651,7 @@
         "migration"
       ],
       "answer": "UCCE skill groups and precision queues are not Genesys queues (Core, 13 min): Membership, skills, and bullseye are three ideas you reassemble.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-x-uccx",
@@ -1665,7 +1665,7 @@
         "migration"
       ],
       "answer": "UCCX is a smaller center with the same rebuild rule (Core, 11 min): Scripts, CSQs, and the Finesse desktop do not move as files.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-x-cucm",
@@ -1679,7 +1679,7 @@
         "migration"
       ],
       "answer": "CUCM stays. BYOC is the door, not a replacement cluster. (Core, 12 min): A dial plan and a trunk are Genesys number plans and a BYOC trunk. CUCM is still yours.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-x-webex",
@@ -1693,7 +1693,7 @@
         "migration"
       ],
       "answer": "Webex is a neighbor, not a page this lab pretends to summarize (Core, 10 min): Use Cisco\u2019s product pages. Do not cite a Webex help URL this lab did not confirm.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-x-cut",
@@ -1707,7 +1707,7 @@
         "migration"
       ],
       "answer": "Cut over one number, then the queue, then the people (Core, 12 min): A weekend big-bang is how untested emergency routes meet a full staff.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "track-ecosystem",
@@ -1721,7 +1721,7 @@
         "the map"
       ],
       "answer": "Ecosystem: How the tracks fit, how to read certifications, and what this lab refuses to invent. This track has 6 lessons in this lab.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-z-map",
@@ -1735,7 +1735,7 @@
         "ecosystem"
       ],
       "answer": "The conversation crosses a short list of systems (Foundation, 12 min): Carrier, trunk or Edge, Architect, queue, agent, then the systems beside the agent.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-z-sisters",
@@ -1749,7 +1749,7 @@
         "ecosystem"
       ],
       "answer": "WFM, QM, E911, analytics, CRM, and bots are sisters (Core, 12 min): Each sister has a track and a page. None of them is a setting on the queue tab alone.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-z-bridge",
@@ -1763,7 +1763,7 @@
         "ecosystem"
       ],
       "answer": "The Cisco bridge is a translation, with both citations showing (Core, 11 min): UCCE, UCCX, CUCM, and Webex are named so a Cisco engineer can find the door.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-z-certs",
@@ -1777,7 +1777,7 @@
         "ecosystem"
       ],
       "answer": "Read the catalog by name, then the announcement (Core, 11 min): GC-GCP and GC-GCD are catalog codes. Specialist rows are names. AI rows are two exams.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-z-interview",
@@ -1791,7 +1791,7 @@
         "ecosystem"
       ],
       "answer": "Interview answers cite a page, not a vibe (Core, 11 min): The drill in this lab is a set of questions with a model answer and a link.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-z-refuse",
@@ -1805,7 +1805,7 @@
         "ecosystem"
       ],
       "answer": "What this lab will not invent (Foundation, 10 min): Prices, unconfirmed hosts, exam codes, lifecycle dates, and CRM feature lists stay off the page.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "track-predictive",
@@ -1819,7 +1819,7 @@
         "on the site"
       ],
       "answer": "Predictive Engagement: Website journeys, segments, action maps, Messenger, and the Journey Outcomes deprecation. This is not ACD predictive routing. This track has 7 lessons in this lab.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-pe-what",
@@ -1833,7 +1833,7 @@
         "predictive engagement"
       ],
       "answer": "Predictive Engagement watches the site, not the queue math (Core, 13 min): It predicts what a visitor is trying to do and offers a message, a chat, content, or a flow. Predictive routing is a different feature on the queue.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-pe-track",
@@ -1847,7 +1847,7 @@
         "predictive engagement"
       ],
       "answer": "Messenger tracks web messaging. The old snippet tracks web chat. (Core, 14 min): Genesys tells Genesys Cloud CX customers to use web messaging. Leaving both snippets on the page double-counts the visit.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-pe-segments",
@@ -1861,7 +1861,7 @@
         "predictive engagement"
       ],
       "answer": "A segment matches visitors who meet every condition you listed (Core, 12 min): At least one condition. More conditions, fewer visitors. Conditions are not shared with the next segment.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-pe-map",
@@ -1875,7 +1875,7 @@
         "predictive engagement"
       ],
       "answer": "An action map is qualified before it is offered (Core, 14 min): Segment, visitor activity, and outcome probability are the trigger kinds. Priority breaks a tie. Web chat is the legacy action.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-pe-outcomes",
@@ -1889,7 +1889,7 @@
         "predictive engagement"
       ],
       "answer": "Journey Outcomes have a published end date (Advanced, 14 min): Announced 18 May 2026. Planned effective date 29 June 2026. Outcome scoring is not part of the Customer Outcomes replacement.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-pe-flow",
@@ -1903,7 +1903,7 @@
         "predictive engagement"
       ],
       "answer": "An Architect flow can be the action, and it can also be the thing you must edit (Advanced, 12 min): Advanced orchestration is an action type. Flows that still call getJourneyOutcome need a path that does not depend on it.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lesson-pe-report",
@@ -1917,7 +1917,7 @@
         "predictive engagement"
       ],
       "answer": "Prove the map with Live Now and the performance reports (Core, 12 min): Visitor activity and action-map performance are the Predictive Engagement reports. Outcome columns age out with the deprecation.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lab",
@@ -1933,7 +1933,7 @@
         "free"
       ],
       "answer": "Signal Floor is a free, static operations lab for Genesys Cloud CX. It runs in the browser, stores progress locally, and does not call a live organization.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "lucky",
@@ -1981,7 +1981,7 @@
         "cc by-nc-sa"
       ],
       "answer": "The footer says \u00a9 2026 CypherMonkeyLabs. Code is MIT. Educational prose is CC BY-NC-SA 4.0. The project is not affiliated with or endorsed by Genesys, Cisco, Salesforce, or Zendesk.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "search",
@@ -1995,7 +1995,7 @@
         "lookup"
       ],
       "answer": "Search reads lesson titles and summaries in this browser, plus glossary lines. Nothing is sent to a server.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "diagrams",
@@ -2010,7 +2010,7 @@
         "figure"
       ],
       "answer": "The diagram atlas is a set of teaching sketches. Each caption names the limit of the drawing. The link is the source. Enlarge a picture to play, pause, or step the marker.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "flows",
@@ -2025,7 +2025,7 @@
         "call flow"
       ],
       "answer": "Flows are the animated pictures from the atlas, plus sequence drawings generated with Mermaid at build time. The runtime does not load Mermaid.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "charts",
@@ -2040,7 +2040,7 @@
         "counts"
       ],
       "answer": "Charts count lessons, minutes, levels, quiz items, diagram kinds, and port-table rows from this lab. They are not Genesys production metrics.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "cheats",
@@ -2057,7 +2057,7 @@
         "sheets"
       ],
       "answer": "Cheat codes are one-page sheets as HTML, PDF, and PNG, plus a flashcard deck and an offline zip. Each file links back to a public source instead of pasting the vendor document.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "sip",
@@ -2374,7 +2374,7 @@
         "prefers-reduced-motion"
       ],
       "answer": "If the device asks for reduced motion, or Settings turns reduce on, the 3D floor stays on the flat drawing and looping animations stop. Sound and reduced motion are in Settings.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "guide",
@@ -2389,7 +2389,7 @@
         "assistant"
       ],
       "answer": "Guide Bot is a scripted widget in this browser. It matches these notes with keywords and synonyms. It can run a short tour or a quiz and show the score. It does not invent a fact that is not in the notes. A future cloud agent can be attached by setting window.GCCX_GUIDE_ENDPOINT to an https URL that returns grounded:true plus an answer and an https source. This build does not call one unless that hook is set.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "ecosystem",
@@ -2404,7 +2404,7 @@
         "sister"
       ],
       "answer": "The Ecosystem page maps every track. WEM, recording, emergency calling, CRM, and bots sit on documented edges of Genesys Cloud CX. The glossary, certifications, and boss incidents are linked from that page.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
       "id": "packages",
@@ -2482,7 +2482,7 @@
         "browser"
       ],
       "answer": "Progress stays in this browser. Track JSON loads when you open a track. The service worker does not prefetch every track at install.",
-      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     }
   ],
   "tours": [
@@ -2493,32 +2493,32 @@
         {
           "text": "Signal Floor is a free operations lab. It runs in the browser and does not call a live organization. The wings below are Diagrams, Flows, Charts, Cheat Codes, and Ecosystem.",
           "href": "#/",
-          "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+          "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
         },
         {
           "text": "Diagrams are teaching sketches. Each caption names the limit of the drawing and links a source.",
           "href": "#/atlas",
-          "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+          "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
         },
         {
           "text": "Flows are the animated pictures from the atlas, plus Mermaid drawings made at build time. The browser does not load Mermaid.",
           "href": "#/flows",
-          "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+          "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
         },
         {
           "text": "Charts count lessons, minutes, levels, quiz items, diagram kinds, and port rows in this lab. They are not production metrics.",
           "href": "#/charts",
-          "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+          "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
         },
         {
           "text": "Cheat codes are one-page sheets as HTML, PDF, and PNG, plus flashcards and an offline zip.",
           "href": "#/cheat",
-          "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+          "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
         },
         {
           "text": "Ecosystem lists every track. WEM, recording, emergency calling, CRM, and bots sit on documented edges of the platform.",
           "href": "#/ecosystem",
-          "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+          "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
         }
       ]
     },
@@ -2529,27 +2529,27 @@
         {
           "text": "Foundations. What Genesys Cloud CX is, where an organization lives, and how a voice conversation is supposed to move.",
           "href": "#/track/foundations",
-          "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+          "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
         },
         {
           "text": "Architect flows. Flow types, tasks, in-queue experiences, data actions, bots, secure calls, and publish. A draft does not answer. Publish the flow.",
           "href": "#/track/architect",
-          "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+          "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
         },
         {
           "text": "ACD routing. Standard, bullseye, preferred, predictive, and conditional routing, plus the two scoring methods.",
           "href": "#/track/acd",
-          "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+          "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
         },
         {
           "text": "Queues, skills, and wrap-up. Queue media settings, skills, wrap-up codes, callbacks, and service level.",
           "href": "#/track/queues",
-          "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+          "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
         },
         {
           "text": "BYOC Cloud and SIP trunks. Carrier and PBX trunks, RTP over the internet, Dynamic Cloud Voice, and the quick-start order.",
           "href": "#/track/byoc",
-          "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+          "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
         },
         {
           "text": "Ports: TLS trunks use TCP 5061. UDP or TCP trunks commonly use 5060. Media is UDP 16384-65535. Copy live addresses from the current article, not from this lab.",
@@ -2565,27 +2565,27 @@
         {
           "text": "Genesys AI and bots. Dialog Engine and digital bots, failure paths, Agent Copilot, tokens, and the AI exams as the catalog names them.",
           "href": "#/track/ai",
-          "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+          "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
         },
         {
           "text": "Speech and text analytics. What gets transcribed, how sentiment and topics are used, and why analysis is not the same thing as the live conversation.",
           "href": "#/track/sta",
-          "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+          "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
         },
         {
           "text": "Predictive Engagement. Website journeys, segments, action maps, Messenger, and the Journey Outcomes deprecation. This is not ACD predictive routing.",
           "href": "#/track/predictive",
-          "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+          "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
         },
         {
           "text": "Platform APIs. OAuth grants, client credentials limits, region hosts, and why this lab\u2019s explorer never sends a request.",
           "href": "#/track/api",
-          "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+          "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
         },
         {
           "text": "AppFoundry and CRM. The marketplace, the documented Salesforce and Zendesk embeds, and OAuth migrations that do not invent other CRMs.",
           "href": "#/track/crm",
-          "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+          "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
         }
       ]
     }
