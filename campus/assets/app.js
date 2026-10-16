@@ -76,8 +76,38 @@ async function init() {
   paintRail();
   paintHomeStats();
   mountMascot(document.querySelector("#mascot-slot"));
+  bindDeskAudio();
   await prepareVoices();
   render();
+}
+
+function bindDeskAudio() {
+  document.querySelectorAll("#clip-tour, #clip-practice").forEach((audio) => {
+    audio.addEventListener("error", () => {
+      const src = audio.getAttribute("src");
+      if (!src || audio.dataset.fallback === "1") {
+        if (!audio.nextElementSibling?.classList.contains("clip-missing")) {
+          const note = document.createElement("span");
+          note.className = "muted clip-missing";
+          note.textContent = " This clip did not load. The written script is still in the lab.";
+          audio.insertAdjacentElement("afterend", note);
+        }
+        return;
+      }
+      audio.dataset.fallback = "1";
+      fetch(src).then((res) => {
+        if (!res.ok) throw new Error("missing");
+        return res.blob();
+      }).then((blob) => {
+        audio.src = URL.createObjectURL(blob);
+      }).catch(() => {
+        const note = document.createElement("span");
+        note.className = "muted clip-missing";
+        note.textContent = " This clip did not load. The written script is still in the lab.";
+        audio.insertAdjacentElement("afterend", note);
+      });
+    });
+  });
 }
 
 function fetchJson(url) {

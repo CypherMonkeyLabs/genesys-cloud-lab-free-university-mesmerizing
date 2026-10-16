@@ -9,6 +9,7 @@ import time
 import zlib
 from pathlib import Path
 
+from lab_menu import menu_html, stylesheet_link
 from source_lib import html_block, load_checks, normalize, png_tail, text_lines
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -232,13 +233,15 @@ def write_html(path, title, paragraphs, sources):
     entries = normalize(sources)
     body = "\n".join(f"<p>{xml(p)}</p>" for p in paragraphs)
     icon_prefix = "../" if path.parent == OUT else "../../"
+    index_prefix = icon_prefix
+    css_href = "lab-menu.css" if path.parent == OUT else "../lab-menu.css"
     path.write_text(f"""<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="{icon_prefix}favicon.ico" sizes="any">
 <link rel="icon" href="{icon_prefix}favicon.svg" type="image/svg+xml">
 <title>{xml(title)}</title>
 <style>
-body {{ font: 16px/1.45 Georgia, serif; margin: 32px auto; max-width: 720px; color: #123528; background: #f4fbf7; }}
+body {{ font: 16px/1.45 Georgia, serif; margin: 32px auto; max-width: 1120px; color: #123528; background: #f4fbf7; }}
 h1 {{ font-size: 28px; color: #123528; }}
 a {{ color: #0f5c4c; }}
 .disclaimer-panel {{ border: 2px solid #1d6b4f; background: #e7f6ee; color: #123528; padding: 14px 16px; border-radius: 12px; margin-top: 28px; }}
@@ -247,7 +250,10 @@ a {{ color: #0f5c4c; }}
 .sources-deeper a {{ color: #08306b; }}
 .src-flag {{ background: #fde68a; color: #422006; font-weight: 800; padding: 0 6px; border-radius: 999px; }}
 @media print {{ body {{ background: #fff; }} }}
-</style></head><body>
+</style>
+{stylesheet_link(css_href)}
+</head><body>
+{menu_html(index_prefix)}
 <h1>{xml(title)}</h1>
 {body}
 {html_block(entries)}
@@ -659,7 +665,11 @@ def main():
         "article{break-inside:avoid;border:1px solid #ccc;padding:12px;margin:8px 0;background:#fff}"
         ".sources-deeper{margin-top:12px;padding:10px;border:2px solid #0f766e;background:#f0fdfa;color:#042f2e}"
         ".sources-deeper a{color:#08306b}.src-flag{background:#fde68a;color:#422006;font-weight:800}"
-        "footer{margin-top:24px;font-size:13px}</style></head><body><h1>Signal Floor flashcards</h1>"
+        "footer{margin-top:24px;font-size:13px}</style>"
+        + stylesheet_link("lab-menu.css")
+        + "</head><body>"
+        + menu_html("../")
+        + "<h1>Signal Floor flashcards</h1>"
         + "\n".join(blocks)
         + "<footer>" + "\n".join(f"<p>{xml(line)}</p>" for line in visible_foot()) + "</footer></body></html>",
         encoding="utf-8",
@@ -746,11 +756,15 @@ def main():
         f"<tr><td>{xml(name)}</td><td>{xml(status)}</td><td>{xml(note)}</td></tr>" for name, status, note in checks
     )
     (OUT / "test-table.html").write_text(
-        "<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'><title>Download test table</title>"
-        "<style>body{font:15px/1.4 Georgia,serif;margin:24px;color:#123528;background:#f4fbf7}"
-        "table{border-collapse:collapse;width:100%}td,th{border:1px solid #1d6b4f;padding:6px 8px;text-align:left}"
-        ".disclaimer-panel{border:2px solid #1d6b4f;background:#e7f6ee;padding:12px;margin-top:20px}</style></head><body>"
-        "<h1>Download test table</h1>"
+        "<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>Download test table</title>"
+        "<link rel='icon' href='../favicon.ico' sizes='any'><link rel='icon' href='../favicon.svg' type='image/svg+xml'>"
+        "<style>body{font:15px/1.4 Georgia,serif;margin:24px auto;max-width:1120px;color:#123528;background:#f4fbf7}"
+        "table{border-collapse:collapse;width:100%}td,th{border:1px solid #1d6b4f;padding:6px 8px;text-align:left;overflow-wrap:anywhere}"
+        ".disclaimer-panel{border:2px solid #1d6b4f;background:#e7f6ee;padding:12px;margin-top:20px}</style>"
+        + stylesheet_link("lab-menu.css")
+        + "</head><body>"
+        + menu_html("../")
+        + "<h1>Download test table</h1>"
         "<p>The build wrote these files and checked the disclaimer text inside HTML and SVG. "
         "PNG files are bitmap title cards from the build script, not browser screenshots of the live diagrams. "
         "PPTX and DOCX are minimal Office Open XML. Confirm before relying.</p>"

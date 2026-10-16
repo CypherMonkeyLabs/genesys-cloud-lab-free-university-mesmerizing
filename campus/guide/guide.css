@@ -241,7 +241,7 @@ body.menu-open .bot-panel,
 body.menu-open .bot-greet,
 body.menu-open .bot-nudge { visibility: hidden; }
 @media (max-width: 700px) {
-  .bot-root { width: 64px; height: 72px; top: calc(var(--chrome-h, 56px) + 18px) !important; bottom: auto !important; right: 8px !important; }
+  .bot-root { width: 64px; height: 72px; top: auto; left: auto; right: 8px; bottom: calc(var(--bar-h, 64px) + 8px); }
   .bot-launcher { width: 64px; height: 72px; }
   .bot-root.is-open .bot-launcher { visibility: hidden; }
   .bot-form { display: grid; grid-template-columns: auto 1fr auto; align-items: center; }

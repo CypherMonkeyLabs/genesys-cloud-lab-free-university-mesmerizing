@@ -1,0 +1,56 @@
+/* Large lab menu for standalone download pages. */
+body { max-width: 1120px; margin-left: auto; margin-right: auto; }
+.lab-menu, .lab-menu * { box-sizing: border-box; }
+.lab-menu {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto 28px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+.lab-menu-title {
+  grid-column: 1 / -1;
+  margin: 0;
+  font: 800 1.6rem Georgia, "Iowan Old Style", Palatino, serif;
+  color: #123528;
+}
+.lab-menu a {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  min-height: 88px;
+  padding: 12px 14px;
+  border: 2px solid #0f766e;
+  border-radius: 18px;
+  background: #ffffff;
+  color: #123528;
+  text-decoration: none;
+}
+.lab-menu a:focus-visible {
+  outline: 3px solid #0f766e;
+  outline-offset: 3px;
+}
+.lab-ico {
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  background: #ccfbf1;
+  color: #0f766e;
+}
+.lab-ico svg { width: 30px; height: 30px; display: block; }
+.lab-copy { min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.lab-copy strong { font-size: 1.08rem; line-height: 1.2; }
+.lab-copy small {
+  color: #134e4a;
+  font-size: 0.95rem;
+  line-height: 1.35;
+  font-weight: 550;
+  white-space: normal;
+}
+@media (min-width: 800px) {
+  .lab-menu { grid-template-columns: 1fr 1fr; }
+}
