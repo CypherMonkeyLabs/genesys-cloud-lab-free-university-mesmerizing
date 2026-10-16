@@ -65,7 +65,7 @@ Verified by `node scripts/verify.mjs` on 15 October 2026:
 
 The shell is `campus/index.html`, `campus/assets/app.js`, `campus/data/manifest.json`, and the web manifest. Studios, charts, Markmap, topology, Three.js, track JSON, and `reference.json` stay off that first paint. Three.js loads with the hero wireframe and the topology view. Mermaid is not shipped to the browser; `scripts/build_mermaid.mjs` writes the SVGs.
 
-Lighthouse mobile, captured against `http://127.0.0.1:8741/campus/` on 16 October 2026 before this pass: performance 53, accessibility 100, total blocking time about 82 s. The cost was the home-screen WebGL icon loop and the bloomed hero, which never went idle. The 3D floor now waits for an idle desktop moment, or for the mobile “Play the 3D floor” control, caps `devicePixelRatio` at 1 on small screens, skips bloom there, and stays on the flat drawing when `prefers-reduced-motion` is set.
+Lighthouse mobile, captured against `http://127.0.0.1:8741/campus/` on 16 October 2026: before this pass, performance 53, accessibility 100, total blocking time about 82 s, cumulative layout shift 0.016. After deferring the home WebGL, the same run is performance 93, accessibility 100, total blocking time 0 ms, cumulative layout shift still 0.016. The cost was the home-screen WebGL icon loop and the bloomed hero, which never went idle. The 3D floor now waits for an idle desktop moment, or for the mobile “Play the 3D floor” control, caps `devicePixelRatio` at 1 on small screens, skips bloom there, and stays on the flat drawing when `prefers-reduced-motion` is set.
 
 ## Citations
 
