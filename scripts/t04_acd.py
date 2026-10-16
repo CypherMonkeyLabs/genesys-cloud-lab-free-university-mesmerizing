@@ -122,7 +122,7 @@ add(lesson(
     "r-bullseye", "Bullseye rings widen the target", "Core", 14,
     "Up to five rings. A delay from 2 seconds to 72 hours. Up to 50 skills removed on a ring.",
     [
-        "Bullseye starts with the tightest pool and expands. The settings article allows five rings. The delay between rings is from 2 seconds through 259,200 seconds, which is 72 hours. A ring can remove up to 50 skills. Two expansion styles are documented: add groups that share the skill at a lower proficiency, which stays compatible with WEM forecasting, or remove skills on outer rings.",
+        "Bullseye starts with the tightest pool and expands. The settings article first says to define up to five rings. Later on that same page, the skill-removal steps and the preferred-agent steps say up to six rings, and the advanced routing overview says create up to six rings. The delay between rings is from 2 seconds through 259,200 seconds, which is 72 hours. A ring can remove up to 50 skills. Two expansion styles are documented: add groups that share the skill at a lower proficiency, which stays compatible with WEM forecasting, or remove skills on outer rings.",
         "Inner-ring agents stay preferred over outer-ring agents even after the ring opens. Preferred agents are considered even when they lack the required skills. Agents who are busy, fully utilized, or logged out are not available. The routing simulator in this lab removes a skill on ring 2 after the ring 1 delay, which is the skill-removal style, not a second product.",
     ],
     cites("bullseye", "routing-settings", "preferred"),
@@ -140,18 +140,19 @@ add(lesson(
         ("WEM", "Design", "Proficiency groups", "Same skills, lower proficiency, if forecasting must stay aligned.", "The other expansion style"),
     ],
     [
-        q("The maximum number of bullseye rings is:", "5", ["3", "10", "50"], "Both the settings article and the queue article say five."),
+        q("The settings article first tells you to define up to:", "Five rings", ["Three rings", "Ten rings", "Fifty rings"], "That opening instruction says five. A later step on the same page, and the advanced routing overview, say six. Confirm the control in the queue."),
         q("The shortest documented delay between rings is:", "2 seconds", ["0 seconds", "7 seconds", "30 minutes"], "2 seconds is the floor. 7 seconds is the voice alerting floor, a different timer."),
         q("The longest documented ring delay is:", "259,200 seconds, 72 hours", ["59 seconds", "24 hours", "7 days"], "The queue article states 259,200 seconds."),
         q("Skills you may remove on one ring:", "Up to 50", ["Up to 5", "Unlimited", "None"], "The settings and queue articles state 50."),
         q("Which expansion style stays aligned with WEM forecasting?", "Groups that share the skill at a lower proficiency", ["Deleting the queue", "Disregard skills", "Removing the division"], "The bullseye overview recommends that style for WEM compatibility."),
         q("After an outer ring opens, an inner-ring agent who becomes free:", "Still outranks the outer ring", ["Is ignored", "Is logged out", "Loses their skills"], "The overview says inner rings keep priority."),
     ],
-    [("5 rings", "The cap."), ("2 seconds to 72 hours", "The delay range."), ("50 skills", "The removal cap."), ("Two styles", "Lower proficiency groups, or remove skills.")],
+    [("Ring count", "First instruction: five. Later steps and the overview: six. Confirm in the queue."), ("2 seconds to 72 hours", "The delay range."), ("50 skills", "The removal cap."), ("Two styles", "Lower proficiency groups, or remove skills.")],
     "Configure two rings on paper",
     ["Write ring 1’s skills and delay.", "Write the skill ring 2 removes.", "Say who wins if a ring 1 agent frees up late.", "Say which style you would use if WFM forecasts this queue."],
     "The rings match a policy someone can test in the simulator.",
     ("Instant widen", "Every call hits general agents immediately. The bilingual team never sees them.", "Ring 1 delay: 2 seconds. Bilingual agents are usually on another call for longer than that.", "The ring is legal and too short for the real handle pattern.", "Lengthen the delay so ring 1 has a chance, and watch abandon before you lengthen it again."),
+    "The settings article’s first bullseye instruction says five rings. A later step on that page says up to six, and the advanced routing overview says create up to six. Count the rings the queue offers before you design a sixth.",
 ))
 
 add(lesson(

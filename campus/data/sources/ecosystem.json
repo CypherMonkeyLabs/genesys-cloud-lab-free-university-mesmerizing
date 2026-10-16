@@ -148,16 +148,8 @@
       "note": ""
     },
     {
-      "title": "RFC 3261 SIP",
-      "url": "https://www.rfc-editor.org/rfc/rfc3261",
-      "kind": "rfc",
-      "lastChecked": "2026-10",
-      "status": "ok",
-      "note": ""
-    },
-    {
-      "title": "Genesys Cloud for Zendesk",
-      "url": "https://help.genesys.cloud/articles/about-genesys-cloud-for-zendesk/",
+      "title": "BYOC Premises Edge groups overview",
+      "url": "https://help.genesys.cloud/articles/edge-groups-overview/",
       "kind": "resource-center",
       "lastChecked": "2026-10",
       "status": "ok",
@@ -177,7 +169,71 @@
       "kind": "developer",
       "lastChecked": "2026-10",
       "status": "ok",
-      "note": "General developer docs. This is the Developer Center home, not a page written for this room alone."
+      "note": ""
+    },
+    {
+      "title": "Deprecation: Salesforce open CTI integration",
+      "url": "https://help.genesys.cloud/announcements/genesys-cloud/deprecation-salesforce-open-cti-integration/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "About Genesys Cloud for Zendesk",
+      "url": "https://help.genesys.cloud/articles/about-genesys-cloud-for-zendesk/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "About Genesys Dialog Engine Bot Flows",
+      "url": "https://help.genesys.cloud/articles/about-genesys-dialog-engine-bot-flows/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "About Genesys Virtual Agent",
+      "url": "https://help.genesys.cloud/articles/about-genesys-virtual-agent/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Genesys Agent Copilot overview",
+      "url": "https://help.genesys.cloud/articles/agent-copilot-overview/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Deprecation: Journey Outcomes",
+      "url": "https://help.genesys.cloud/announcements/genesys-cloud/deprecation-journey-outcomes/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Predictive Routing customer-defined outcomes",
+      "url": "https://help.genesys.cloud/announcements/genesys-cloud/predictive-routing-supports-customer-defined-business-outcomes-with-custom-kpis/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "RFC 3261 SIP",
+      "url": "https://www.rfc-editor.org/rfc/rfc3261",
+      "kind": "rfc",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
     },
     {
       "title": "Genesys Community",

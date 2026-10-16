@@ -1,0 +1,1218 @@
+{
+  "id": "quality",
+  "title": "Quality and speech analytics",
+  "kicker": "Chapter",
+  "accent": 3,
+  "summary": "Evaluation forms, AI scoring, topics and programs, and the limits on the speech-analytics articles.",
+  "lessons": [
+    {
+      "id": "y-qm",
+      "title": "Quality evaluates the interaction. Speech analytics reads it",
+      "level": "Foundation",
+      "minutes": 12,
+      "summary": "The quality article says speech and text analytics runs on 100 percent of interactions. That is a claim to re-open, not a sample size you invent.",
+      "paras": [
+        "The about-quality-management article says quality management lets managers record and evaluate agents and interactions, and coach them. Its administration list includes evaluation forms, weights, policies, and exporting recordings to AWS. Its evaluation list includes a dashboard, scoring, calibration, monitoring in-progress interactions, annotations, assignees, and disputes. Coaching appointments are a separate section on that page.",
+        "The same article says speech and text analytics provides automated analytics on 100 percent of interactions. This chapter uses that sentence as the article\u2019s scope, not as a guarantee this lab measured. The quality track in the lab already walks forms, policies, and coaching at a high level. This chapter goes into the automation options, the topic dictionary, and the program limits."
+      ],
+      "cites": [
+        {
+          "title": "About quality management",
+          "url": "https://help.genesys.cloud/articles/about-quality-management/"
+        },
+        {
+          "title": "About recording",
+          "url": "https://help.genesys.cloud/articles/about-recording/"
+        },
+        {
+          "title": "Speech and text analytics overview",
+          "url": "https://help.genesys.cloud/articles/speech-and-text-analytics-overview/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Recording and a form are quality. Topics and sentiment are speech analytics.",
+        "nodes": [
+          {
+            "id": "rec",
+            "label": "Recording",
+            "kind": "wem",
+            "x": 16,
+            "y": 40
+          },
+          {
+            "id": "form",
+            "label": "Form",
+            "kind": "agent",
+            "x": 46,
+            "y": 28
+          },
+          {
+            "id": "sta",
+            "label": "STA",
+            "kind": "bot",
+            "x": 76,
+            "y": 55
+          }
+        ],
+        "edges": [
+          {
+            "a": "rec",
+            "b": "form"
+          },
+          {
+            "a": "rec",
+            "b": "sta"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Point a question at one section",
+        "steps": [
+          {
+            "from": "Score",
+            "to": "Evaluations",
+            "title": "Form, calibration, dispute",
+            "detail": "The article lists them.",
+            "inspect": "Do not invent the click path"
+          },
+          {
+            "from": "Coach",
+            "to": "Appointments",
+            "title": "A separate section",
+            "detail": "Not the same object as a topic.",
+            "inspect": "Supervisors can create them"
+          },
+          {
+            "from": "Listen",
+            "to": "STA",
+            "title": "100 percent, as the article says",
+            "detail": "Re-open the sentence before you quote it.",
+            "inspect": "Programs come later"
+          },
+          {
+            "from": "Store",
+            "to": "Export",
+            "title": "AWS is named",
+            "detail": "This lab does not configure a bucket.",
+            "inspect": "Retention stays on the recording article"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "The quality article\u2019s job for managers is:",
+          "choices": [
+            "Forecast intervals",
+            "Choose a SIP transport",
+            "Issue an exam",
+            "Record and evaluate agents and interactions, and coach"
+          ],
+          "answer": 3,
+          "why": "Forecasting is the previous chapter."
+        },
+        {
+          "q": "Calibration, disputes, and annotations appear under:",
+          "choices": [
+            "Evaluations",
+            "The forecast editor",
+            "Direct routing",
+            "Number plans"
+          ],
+          "answer": 0,
+          "why": "The article lists them in that section."
+        },
+        {
+          "q": "Speech and text analytics, on that quality article, covers:",
+          "choices": [
+            "A 20-pair sample",
+            "Only bullseye calls",
+            "Only the first 100 agents",
+            "100 percent of interactions"
+          ],
+          "answer": 3,
+          "why": "Treat the sentence as the article\u2019s, and re-open it."
+        },
+        {
+          "q": "Coaching on that page is:",
+          "choices": [
+            "A bullseye ring",
+            "A forecast creation method",
+            "An OAuth grant",
+            "Appointments, in their own section"
+          ],
+          "answer": 3,
+          "why": "Do not fold coaching into a topic."
+        },
+        {
+          "q": "Exporting recordings, as the administration list names it, goes to:",
+          "choices": [
+            "A Wikipedia page",
+            "The exam catalog",
+            "AWS",
+            "The Edge group"
+          ],
+          "answer": 2,
+          "why": "This lab does not create the bucket."
+        },
+        {
+          "q": "This chapter adds, beyond the existing quality track:",
+          "choices": [
+            "Automation options, the topic dictionary, and program limits",
+            "A live organization login",
+            "A price",
+            "A sixth routing method"
+          ],
+          "answer": 0,
+          "why": "The earlier track remains the policy and coaching path."
+        }
+      ],
+      "cards": [
+        {
+          "front": "QM",
+          "back": "Record, evaluate, coach."
+        },
+        {
+          "front": "Evaluations",
+          "back": "Forms through disputes."
+        },
+        {
+          "front": "STA",
+          "back": "100 percent, on that article."
+        },
+        {
+          "front": "Export",
+          "back": "AWS is the named store."
+        }
+      ],
+      "lab": {
+        "title": "Sort six tasks",
+        "steps": [
+          "Publish a form.",
+          "Hold a calibration.",
+          "Compare a forecast.",
+          "Add a topic.",
+          "Open a dispute.",
+          "Change a bullseye ring.",
+          "Mark the ones that belong on the quality article."
+        ],
+        "success": "The forecast and the ring are not marked as quality tasks."
+      },
+      "fault": {
+        "title": "Hundred-percent sample",
+        "symptom": "A proposal promises a custom 10 percent sample because \u201canalytics is a sample.\u201d",
+        "log": "The quality article says 100 percent.",
+        "cause": "The proposal reused a different product\u2019s habit.",
+        "fix": "Quote the article, then re-open it before the proposal is sent."
+      }
+    },
+    {
+      "id": "y-form",
+      "title": "A question is human, AI scored, or assisted by topics",
+      "level": "Foundation",
+      "minutes": 12,
+      "summary": "The form article names three automation choices. Evaluation focus is Full Interaction or Evaluated Agent.",
+      "paras": [
+        "The create-and-publish article, as the automated-scoring article points at it, gives each question one of three choices: No Automation, AI Scoring, or Evaluation Assistance. No Automation is a person. AI Scoring is a model. Evaluation Assistance uses speech and text analytics topics to select the answer. Both AI Scoring and Evaluation Assistance support voice and digital interactions, on the automated-scoring article.",
+        "When you add the question, that article also asks for an Evaluation Focus: Full Interaction or Evaluated Agent. Publishing is still required for the form to be used. The quality article\u2019s list includes weights, copying a form, and assigning an evaluation. This lesson does not invent point values. If a weight is not on the page you have open, leave it off the design."
+      ],
+      "cites": [
+        {
+          "title": "Create and publish an evaluation form",
+          "url": "https://help.genesys.cloud/articles/create-publish-evaluation-form/"
+        },
+        {
+          "title": "Automated scoring options in evaluation forms",
+          "url": "https://help.genesys.cloud/articles/automated-scoring-options-in-evaluation-forms/"
+        },
+        {
+          "title": "About quality management",
+          "url": "https://help.genesys.cloud/articles/about-quality-management/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Three ways to answer. Focus says whose part of the interaction is in scope.",
+        "nodes": [
+          {
+            "id": "no",
+            "label": "No automation",
+            "kind": "agent",
+            "x": 16,
+            "y": 40
+          },
+          {
+            "id": "ai",
+            "label": "AI scoring",
+            "kind": "bot",
+            "x": 48,
+            "y": 22
+          },
+          {
+            "id": "ea",
+            "label": "Assistance",
+            "kind": "wem",
+            "x": 48,
+            "y": 68
+          },
+          {
+            "id": "foc",
+            "label": "Focus",
+            "kind": "architect",
+            "x": 80,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "no",
+            "b": "foc"
+          },
+          {
+            "a": "ai",
+            "b": "foc"
+          },
+          {
+            "a": "ea",
+            "b": "foc"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Label each question",
+        "steps": [
+          {
+            "from": "Human",
+            "to": "No Automation",
+            "title": "A person answers",
+            "detail": "Still a published form.",
+            "inspect": "Weights stay on their article"
+          },
+          {
+            "from": "Model",
+            "to": "AI Scoring",
+            "title": "Voice and digital",
+            "detail": "The next lesson is the confidence rule.",
+            "inspect": "Needs the permissions on that page"
+          },
+          {
+            "from": "Topics",
+            "to": "Evaluation Assistance",
+            "title": "Phrases match a topic",
+            "detail": "All conditions must be true.",
+            "inspect": "One answer per question"
+          },
+          {
+            "from": "Scope",
+            "to": "Focus",
+            "title": "Full interaction or evaluated agent",
+            "detail": "Pick one.",
+            "inspect": "Do not leave it implied"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "The three automation choices are:",
+          "choices": [
+            "Standard, bullseye, and preferred",
+            "Voice, SMS, and email",
+            "No Automation, AI Scoring, and Evaluation Assistance",
+            "Short-term, long-term, and blank"
+          ],
+          "answer": 2,
+          "why": "Those three are on the automated-scoring setup."
+        },
+        {
+          "q": "Evaluation Assistance selects an answer from:",
+          "choices": [
+            "Speech and text analytics topics",
+            "A forecast CSV",
+            "A preferred-agent score",
+            "A SIP response"
+          ],
+          "answer": 0,
+          "why": "AI Scoring is the model. Assistance is the topic conditions."
+        },
+        {
+          "q": "AI Scoring and Evaluation Assistance, on that article, support:",
+          "choices": [
+            "Only fax",
+            "Only forecasts",
+            "Only direct-routing SMS",
+            "Voice and digital interactions"
+          ],
+          "answer": 3,
+          "why": "The article says both media types."
+        },
+        {
+          "q": "Evaluation Focus choices named in the setup are:",
+          "choices": [
+            "Ring 1 and ring 2",
+            "15 and 30 minutes",
+            "CX 1 and CX 4",
+            "Full Interaction and Evaluated Agent"
+          ],
+          "answer": 3,
+          "why": "Set it when you add the question."
+        },
+        {
+          "q": "No Automation means:",
+          "choices": [
+            "The question is skipped",
+            "Topics fill it",
+            "The form cannot be published",
+            "A person reviews and answers"
+          ],
+          "answer": 3,
+          "why": "Publishing is still how the form is used."
+        },
+        {
+          "q": "A weight that is not on the page you opened should be:",
+          "choices": [
+            "Set to 100",
+            "Stored as a skill proficiency",
+            "Left out of the design",
+            "Copied from another form you remember"
+          ],
+          "answer": 2,
+          "why": "The quality article points at a weights article. Open that page before you type a number."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Three",
+          "back": "Person, model, or topics."
+        },
+        {
+          "front": "Focus",
+          "back": "Full interaction or evaluated agent."
+        },
+        {
+          "front": "Media",
+          "back": "Voice and digital, for the automated choices."
+        },
+        {
+          "front": "Weights",
+          "back": "Open the weights article."
+        }
+      ],
+      "lab": {
+        "title": "Mark a five-question form",
+        "steps": [
+          "Two human questions.",
+          "Two topic questions.",
+          "One model question.",
+          "The focus for the model question."
+        ],
+        "success": "Each question has one of the three labels, and the focus is written down."
+      },
+      "fault": {
+        "title": "Silent automation",
+        "symptom": "Every question is left on No Automation, and the design still says topics will fill the scores.",
+        "log": "Evaluation Assistance has to be selected on the question.",
+        "cause": "The topic existed, so the form was assumed to use it.",
+        "fix": "Set Evaluation Assistance on the answers that should move, and publish the form."
+      }
+    },
+    {
+      "id": "y-ai",
+      "title": "AI scoring waits for history, and a low week hides the answer",
+      "level": "Core",
+      "minutes": 14,
+      "summary": "A rolling window of 25 submissions. Below 75 percent, the answer is hidden. The transcript needs 300 characters.",
+      "paras": [
+        "The automated-scoring article says AI scoring runs only when the conversation meets at least one of its criteria, and the criterion written in the notes this lab could read is a transcript of at least 300 characters. If the criteria are not met, it does not evaluate. Questions and each answer are limited to 500 characters. Help text is limited to 6,000. You can save at most five answer options. The model\u2019s text must match an answer exactly, including accents.",
+        "Accuracy is how often people change the AI answer. The window is the 25 most recent submissions for that question. At 75 percent or above, the answer is shown. Below 75 percent, the question is flagged low-confidence and the answer is hidden, while Genesys Cloud keeps storing the model\u2019s response. The flag clears when the same window rises above 75 percent again. Republishing the form resets that history. History for a quiet question is deleted after 30 days without activity. The prerequisites named on the page are CX 1 WEM Add-on II, CX 2 WEM Add-on I, CX 2, CX 3, or CX 4, the evaluation-form permissions it lists, and AI Experience Tokens."
+      ],
+      "cites": [
+        {
+          "title": "Automated scoring options in evaluation forms",
+          "url": "https://help.genesys.cloud/articles/automated-scoring-options-in-evaluation-forms/"
+        },
+        {
+          "title": "Create and publish an evaluation form",
+          "url": "https://help.genesys.cloud/articles/create-publish-evaluation-form/"
+        },
+        {
+          "title": "Overview of Genesys Cloud",
+          "url": "https://help.mypurecloud.com/articles/overview-of-genesys-cloud/"
+        }
+      ],
+      "uncertainty": "This lesson states the 300-character criterion because that is the threshold written in the notes section opened in 2026-10. It does not add a seconds threshold.",
+      "figure": {
+        "caption": "Twenty-five human edits decide whether the next evaluator sees the model\u2019s answer.",
+        "nodes": [
+          {
+            "id": "tr",
+            "label": "300 characters",
+            "kind": "bot",
+            "x": 18,
+            "y": 40
+          },
+          {
+            "id": "win",
+            "label": "25 submissions",
+            "kind": "wem",
+            "x": 52,
+            "y": 28
+          },
+          {
+            "id": "hide",
+            "label": "Under 75%",
+            "kind": "agent",
+            "x": 52,
+            "y": 72
+          }
+        ],
+        "edges": [
+          {
+            "a": "tr",
+            "b": "win"
+          },
+          {
+            "a": "win",
+            "b": "hide"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Decide if the model answer is visible",
+        "steps": [
+          {
+            "from": "Length",
+            "to": "Transcript",
+            "title": "At least 300 characters",
+            "detail": "Otherwise this notes section says it does not evaluate.",
+            "inspect": "Do not add a second threshold from memory"
+          },
+          {
+            "from": "Window",
+            "to": "25",
+            "title": "Most recent submissions",
+            "detail": "People overriding the answer lowers accuracy.",
+            "inspect": "Per question"
+          },
+          {
+            "from": "Show",
+            "to": "75 percent",
+            "title": "At or above, visible",
+            "detail": "Below, hidden, still stored.",
+            "inspect": "The flag can return"
+          },
+          {
+            "from": "Reset",
+            "to": "Republish",
+            "title": "History clears",
+            "detail": "30 quiet days delete it too.",
+            "inspect": "Tokens and the listed licenses"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "The transcript length this lesson will state, because it is the criterion readable on the notes, is:",
+          "choices": [
+            "At least 30 words",
+            "At least 7 days",
+            "At least 500 topics",
+            "At least 300 characters"
+          ],
+          "answer": 3,
+          "why": "Other thresholds belong on the page only after you see them there."
+        },
+        {
+          "q": "Historical accuracy uses:",
+          "choices": [
+            "The first 100 agents",
+            "Six forecast weeks",
+            "20 agent-score pairs",
+            "The 25 most recent submissions for that question"
+          ],
+          "answer": 3,
+          "why": "The article calls it a rolling window."
+        },
+        {
+          "q": "Below 75 percent in that window, Genesys Cloud:",
+          "choices": [
+            "Deletes the recording",
+            "Publishes the form",
+            "Switches the queue to bullseye",
+            "Hides the AI answer and flags low confidence, and still stores the response"
+          ],
+          "answer": 3,
+          "why": "Above 75 percent, the answer is shown again."
+        },
+        {
+          "q": "Republishing the form:",
+          "choices": [
+            "Removes the topics",
+            "Extends history to 130 weeks",
+            "Resets the tracked history for questions with AI scoring",
+            "Keeps the 25 submissions"
+          ],
+          "answer": 2,
+          "why": "A question with no activity for 30 days also loses its history."
+        },
+        {
+          "q": "The answer-option cap for an AI scoring question is:",
+          "choices": [
+            "Fifty",
+            "One hundred",
+            "Five",
+            "Twenty"
+          ],
+          "answer": 2,
+          "why": "Questions and answers are 500 characters. Help text is 6,000."
+        },
+        {
+          "q": "Licenses named in the prerequisites include:",
+          "choices": [
+            "CX 2, CX 3, CX 4, and the two WEM add-ons listed there, plus AI Experience Tokens",
+            "Only a BYOC trunk",
+            "Only GC-GCP",
+            "Only the Edge"
+          ],
+          "answer": 0,
+          "why": "Re-open the prerequisite list before you buy."
+        }
+      ],
+      "cards": [
+        {
+          "front": "300 characters",
+          "back": "The transcript criterion this lab is willing to state."
+        },
+        {
+          "front": "25",
+          "back": "The rolling window."
+        },
+        {
+          "front": "75 percent",
+          "back": "Show above, hide below."
+        },
+        {
+          "front": "Reset",
+          "back": "Republish, or 30 quiet days."
+        }
+      ],
+      "lab": {
+        "title": "Say whether the answer shows",
+        "steps": [
+          "A 200-character transcript.",
+          "A 301-character transcript with 80 percent agreement over 25 submissions.",
+          "The same question after someone republishes the form.",
+          "The license line you still need to re-read."
+        ],
+        "success": "The short transcript does not evaluate, and the republish clears the streak."
+      },
+      "fault": {
+        "title": "Hidden and deleted",
+        "symptom": "A supervisor turns AI scoring off because the answer disappeared for a week, and deletes the question.",
+        "log": "Under 75 percent the answer is hidden and the response is still stored.",
+        "cause": "The flag was read as a failure of the recording.",
+        "fix": "Leave the question. Read the window. Fix the wording if people keep overriding it."
+      }
+    },
+    {
+      "id": "y-topics",
+      "title": "Phrases make a topic. Topics make a program",
+      "level": "Core",
+      "minutes": 12,
+      "summary": "A program is mapped to queues or flows, and it can turn sentiment and empathy on or off.",
+      "paras": [
+        "The programs, topics, and phrases article defines the dictionary. A phrase is a string of words for one way to say something, typed one by one or uploaded, and words outside the standard dictionary are added to the language model. A topic is a collection of phrases for a business intent, such as cancellation. A program is a package of topics mapped to queues or flows, and it may contain more than one language or dialect. The program can enable or disable customer sentiment analysis and agent empathy analysis for its own interactions.",
+        "Evaluation Assistance uses those topics as conditions. The automated-scoring article says a topic cannot appear in more than one condition, and only one answer on a question can have assistance conditions. If several topics sit in one Includes condition, one match makes the condition true. If several sit in one Excludes condition, the condition is true only when all of them are absent. When a question has several conditions, every condition must be true before the answer is filled in."
+      ],
+      "cites": [
+        {
+          "title": "Understand programs, topics, and phrases",
+          "url": "https://help.genesys.cloud/articles/understand-programs-topics-and-phrases/"
+        },
+        {
+          "title": "Work with a program",
+          "url": "https://help.genesys.cloud/articles/work-with-a-program/"
+        },
+        {
+          "title": "Automated scoring options in evaluation forms",
+          "url": "https://help.genesys.cloud/articles/automated-scoring-options-in-evaluation-forms/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Phrases roll up to a topic. Topics roll up to a program on a queue or a flow.",
+        "nodes": [
+          {
+            "id": "ph",
+            "label": "Phrase",
+            "kind": "architect",
+            "x": 14,
+            "y": 40
+          },
+          {
+            "id": "tp",
+            "label": "Topic",
+            "kind": "wem",
+            "x": 42,
+            "y": 40
+          },
+          {
+            "id": "pr",
+            "label": "Program",
+            "kind": "bot",
+            "x": 70,
+            "y": 28
+          },
+          {
+            "id": "q",
+            "label": "Queue or flow",
+            "kind": "queue",
+            "x": 70,
+            "y": 70
+          }
+        ],
+        "edges": [
+          {
+            "a": "ph",
+            "b": "tp"
+          },
+          {
+            "a": "tp",
+            "b": "pr"
+          },
+          {
+            "a": "pr",
+            "b": "q"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Build one cancellation detector",
+        "steps": [
+          {
+            "from": "Phrase",
+            "to": "Words",
+            "title": "One way to cancel",
+            "detail": "Upload or type.",
+            "inspect": "New words join the model"
+          },
+          {
+            "from": "Topic",
+            "to": "Intent",
+            "title": "The set of phrases",
+            "detail": "Cancellation is the article\u2019s example.",
+            "inspect": "Not a skill proficiency"
+          },
+          {
+            "from": "Program",
+            "to": "Package",
+            "title": "Queues or flows",
+            "detail": "Sentiment and empathy are switches here.",
+            "inspect": "More than one dialect is allowed"
+          },
+          {
+            "from": "Form",
+            "to": "Conditions",
+            "title": "All must be true",
+            "detail": "One answer only.",
+            "inspect": "A topic is used once"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "A topic is:",
+          "choices": [
+            "An OAuth scope",
+            "A collection of phrases for a business intent",
+            "A bullseye ring",
+            "A forecast week"
+          ],
+          "answer": 1,
+          "why": "The cancellation example is on the dictionary article."
+        },
+        {
+          "q": "A program tells speech analytics:",
+          "choices": [
+            "Which topics to look for, on the queues or flows it is mapped to",
+            "Which trunk to use",
+            "Which exam to sit",
+            "Which forecast method to run"
+          ],
+          "answer": 0,
+          "why": "It can also switch sentiment and empathy for those interactions."
+        },
+        {
+          "q": "Words that are not in the standard dictionary:",
+          "choices": [
+            "Can be put in a phrase and are added to the language model",
+            "Are rejected",
+            "Become wrap-up codes",
+            "Disable the program"
+          ],
+          "answer": 0,
+          "why": "The phrases article says that."
+        },
+        {
+          "q": "Several conditions on one assisted answer are filled in when:",
+          "choices": [
+            "The agent is preferred",
+            "Every condition is true",
+            "Any one condition is true",
+            "The forecast overlaps"
+          ],
+          "answer": 1,
+          "why": "The scoring article says all of them."
+        },
+        {
+          "q": "An Includes condition with three topics is true when:",
+          "choices": [
+            "None are found",
+            "The transcript has 300 characters",
+            "One of those topics is found",
+            "All three are found"
+          ],
+          "answer": 2,
+          "why": "An Excludes condition with several topics is true only when all of them are absent."
+        },
+        {
+          "q": "A topic used in two evaluation-assistance conditions is:",
+          "choices": [
+            "Required",
+            "Only valid on bullseye",
+            "How you publish a program",
+            "Not allowed"
+          ],
+          "answer": 3,
+          "why": "And only one answer on the question gets those conditions."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Phrase",
+          "back": "One way of saying it."
+        },
+        {
+          "front": "Topic",
+          "back": "The intent."
+        },
+        {
+          "front": "Program",
+          "back": "Topics on queues or flows."
+        },
+        {
+          "front": "Conditions",
+          "back": "All true, one answer, one use of each topic."
+        }
+      ],
+      "lab": {
+        "title": "Write a three-layer example",
+        "steps": [
+          "Two phrases.",
+          "The topic name.",
+          "The queue or flow on the program.",
+          "One Includes condition and what makes it true."
+        ],
+        "success": "The Includes condition does not require every topic if several were selected."
+      },
+      "fault": {
+        "title": "Both phrases required",
+        "symptom": "A form is built so the answer appears only when every cancellation phrase is spoken.",
+        "log": "An Includes condition with several topics is true when one of them is found.",
+        "cause": "The condition was read as an all-skills match.",
+        "fix": "Use one topic that contains the phrases, or separate conditions if you truly need all of them."
+      }
+    },
+    {
+      "id": "y-limits",
+      "title": "Programs have counts, and the organization switch wins",
+      "level": "Advanced",
+      "minutes": 14,
+      "summary": "One hundred programs. Five hundred topics per dialect. Twenty scoring rules. Sentiment off at the org turns it off everywhere.",
+      "paras": [
+        "The work-with-a-program article\u2019s create section states these limits: 100 programs in the organization, 20 tags on a program and on a topic, 500 queues and 500 flows on one program, and 20,000 queues and flows for the whole system. The program name is case sensitive and limited to 100 characters. The description is limited to 10,240 characters. A tag name is case sensitive and limited to 100 characters. Topic limits on the same article: 500 topics per dialect, 15 dialects in the editor, and you cannot publish a program that contains more than 500 unpublished topics. A program can include up to 20 enabled agent-scoring rules.",
+        "You save a draft, then publish. The program uses the topic version that was current at publish time. A default program with predefined topics is included. Quality administrators can manage queues, flows, and scoring, and cannot change speech and text analytics settings. In Genesys Cloud EX, programs map to queues only; picking a flow has no effect. Customer sentiment and agent empathy are on by default. If either is disabled for the organization, the program control is unavailable and the analysis does not run, while the program\u2019s own saved choice is kept for later."
+      ],
+      "cites": [
+        {
+          "title": "Work with a program",
+          "url": "https://help.genesys.cloud/articles/work-with-a-program/"
+        },
+        {
+          "title": "Understand programs, topics, and phrases",
+          "url": "https://help.genesys.cloud/articles/understand-programs-topics-and-phrases/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Publish uses the topic version from that moment. The organization switch overrides the program.",
+        "nodes": [
+          {
+            "id": "dr",
+            "label": "Draft",
+            "kind": "architect",
+            "x": 16,
+            "y": 40
+          },
+          {
+            "id": "pub",
+            "label": "Publish",
+            "kind": "wem",
+            "x": 48,
+            "y": 40
+          },
+          {
+            "id": "org",
+            "label": "Org switch",
+            "kind": "region",
+            "x": 80,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "dr",
+            "b": "pub"
+          },
+          {
+            "a": "org",
+            "b": "pub"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Check a program against the counts",
+        "steps": [
+          {
+            "from": "Size",
+            "to": "100 programs",
+            "title": "500 topics per dialect",
+            "detail": "15 dialects.",
+            "inspect": "20 scoring rules"
+          },
+          {
+            "from": "Map",
+            "to": "500 queues and 500 flows",
+            "title": "20,000 combined in the system",
+            "detail": "EX ignores flows.",
+            "inspect": "Name is 100 characters"
+          },
+          {
+            "from": "Publish",
+            "to": "Draft first",
+            "title": "Topic version is frozen then",
+            "detail": "More than 500 unpublished topics cannot publish.",
+            "inspect": "A default program already exists"
+          },
+          {
+            "from": "Switch",
+            "to": "Org off",
+            "title": "Overrides the program",
+            "detail": "The program value is kept.",
+            "inspect": "Quality admins do not edit STA settings"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "The maximum number of programs on that article is:",
+          "choices": [
+            "20,000",
+            "100",
+            "15",
+            "500"
+          ],
+          "answer": 1,
+          "why": "500 is the per-program queue cap and the per-dialect topic cap. 20,000 is the system total of queues and flows."
+        },
+        {
+          "q": "Topics per dialect are capped at:",
+          "choices": [
+            "100",
+            "15",
+            "500",
+            "20"
+          ],
+          "answer": 2,
+          "why": "The editor also limits you to 15 dialects."
+        },
+        {
+          "q": "Enabled agent-scoring rules on one program:",
+          "choices": [
+            "Up to 20",
+            "Up to 5",
+            "Up to 100",
+            "Unlimited"
+          ],
+          "answer": 0,
+          "why": "Tags are also capped at 20, on both programs and topics."
+        },
+        {
+          "q": "Publishing uses:",
+          "choices": [
+            "The queue routing method",
+            "The topic version applied at publish time",
+            "Whatever the topic says the next morning",
+            "The forecast"
+          ],
+          "answer": 1,
+          "why": "Save a draft before you publish."
+        },
+        {
+          "q": "If the organization disables sentiment:",
+          "choices": [
+            "Topics are deleted",
+            "Analysis does not run, even if the program still has it enabled",
+            "The program override wins",
+            "Only EX is affected"
+          ],
+          "answer": 1,
+          "why": "The program\u2019s setting is kept so you can turn it on again later."
+        },
+        {
+          "q": "In Genesys Cloud EX, a flow selected on a program:",
+          "choices": [
+            "Enables bullseye",
+            "Publishes an Architect bot",
+            "Has no effect, because programs map to queues",
+            "Replaces the queue"
+          ],
+          "answer": 2,
+          "why": "The article says every flow type may appear in the editor."
+        }
+      ],
+      "cards": [
+        {
+          "front": "100",
+          "back": "Programs."
+        },
+        {
+          "front": "500",
+          "back": "Topics per dialect, and queues or flows on one program."
+        },
+        {
+          "front": "20",
+          "back": "Tags, and enabled scoring rules."
+        },
+        {
+          "front": "Org",
+          "back": "An off switch overrides the program."
+        }
+      ],
+      "lab": {
+        "title": "Reject three designs",
+        "steps": [
+          "Program 101.",
+          "A dialect with 501 topics.",
+          "Sentiment on in the program and off in the organization, with a note that analysis will still run.",
+          "The note you write instead."
+        ],
+        "success": "The third design says analysis will not run."
+      },
+      "fault": {
+        "title": "Flow in EX",
+        "symptom": "An EX program is mapped to a flow and the team expects those calls to be tagged.",
+        "log": "The article says EX programs assign to queues and a selected flow has no effect.",
+        "cause": "The editor showed the flow types.",
+        "fix": "Map the queues. Leave the flow selection out of the EX design."
+      }
+    },
+    {
+      "id": "y-score",
+      "title": "Agent scoring picks which agent receives the evaluation",
+      "level": "Advanced",
+      "minutes": 12,
+      "summary": "Each, first, or last matched agent. The article also says the last participant is the evaluated agent.",
+      "paras": [
+        "The program article\u2019s agent-scoring section lists three generation choices: Each Matched Agent creates an evaluation for every matched agent, First Matched Agent only the first, and Last Matched Agent only the last. A later sentence on the same page says the last agent to participate is assigned as the evaluated agent. Read both sentences against the control you are about to set, because this lab will not collapse them into one rule.",
+        "Automated scoring there uses a published agent auto-evaluation form. For digital interactions, the article says evaluations are regenerated when a new response is added to the thread. Calibration, disputes, and coaching remain the quality article\u2019s process names. This lesson does not invent a calibration agenda. The quality track is where the coaching loop is practiced."
+      ],
+      "cites": [
+        {
+          "title": "Work with a program",
+          "url": "https://help.genesys.cloud/articles/work-with-a-program/"
+        },
+        {
+          "title": "About quality management",
+          "url": "https://help.genesys.cloud/articles/about-quality-management/"
+        },
+        {
+          "title": "Automated scoring options in evaluation forms",
+          "url": "https://help.genesys.cloud/articles/automated-scoring-options-in-evaluation-forms/"
+        }
+      ],
+      "uncertainty": "The program article lists Each, First, and Last Matched Agent, and also says the last agent to participate is assigned as the evaluated agent. Confirm which control you are setting.",
+      "figure": {
+        "caption": "The program decides who is scored. The form is already published.",
+        "nodes": [
+          {
+            "id": "rule",
+            "label": "Rule",
+            "kind": "wem",
+            "x": 18,
+            "y": 40
+          },
+          {
+            "id": "who",
+            "label": "Which agent",
+            "kind": "agent",
+            "x": 52,
+            "y": 40
+          },
+          {
+            "id": "form",
+            "label": "Published form",
+            "kind": "architect",
+            "x": 84,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "rule",
+            "b": "who"
+          },
+          {
+            "a": "who",
+            "b": "form"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Pick who is evaluated",
+        "steps": [
+          {
+            "from": "Each",
+            "to": "Every matched agent",
+            "title": "A separate evaluation",
+            "detail": "Use it when transfers matter.",
+            "inspect": "More evaluations"
+          },
+          {
+            "from": "First",
+            "to": "First matched agent",
+            "title": "One evaluation",
+            "detail": "The opener.",
+            "inspect": "Not the closer"
+          },
+          {
+            "from": "Last",
+            "to": "Last matched agent",
+            "title": "One evaluation",
+            "detail": "The page also says the last participant is assigned.",
+            "inspect": "Confirm the control"
+          },
+          {
+            "from": "Digital",
+            "to": "New response",
+            "title": "Regenerate",
+            "detail": "The thread changed.",
+            "inspect": "The form must already be published"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Each Matched Agent means:",
+          "choices": [
+            "A separate evaluation for every matched agent",
+            "One evaluation for the queue",
+            "A forecast per agent",
+            "A topic per phrase"
+          ],
+          "answer": 0,
+          "why": "First and Last each produce one evaluation."
+        },
+        {
+          "q": "A published form is required because:",
+          "choices": [
+            "The Edge stores the form",
+            "The scoring rule selects a published agent auto-evaluation form",
+            "Drafts are scored automatically",
+            "Topics replace the form"
+          ],
+          "answer": 1,
+          "why": "Publish the form before you expect scores."
+        },
+        {
+          "q": "The two \u201clast agent\u201d sentences on the program article should be:",
+          "choices": [
+            "Treated as a bullseye cap",
+            "Copied into a forecast",
+            "Read against the control you set, not merged by this lab",
+            "Ignored"
+          ],
+          "answer": 2,
+          "why": "One is a generation choice. Another sentence assigns the last participant."
+        },
+        {
+          "q": "A new digital response:",
+          "choices": [
+            "Deletes the program",
+            "Starts a schedule",
+            "Regenerates the automated evaluation",
+            "Freezes the first score"
+          ],
+          "answer": 2,
+          "why": "The article says the score follows the latest transcript context."
+        },
+        {
+          "q": "Calibration is:",
+          "choices": [
+            "Named on the quality article, and not given a timetable in this lesson",
+            "A forecast method",
+            "A ring delay",
+            "An OAuth grant"
+          ],
+          "answer": 0,
+          "why": "Open the calibration article before you write the meeting."
+        },
+        {
+          "q": "Quality administrators, on the program article, cannot:",
+          "choices": [
+            "Change speech and text analytics settings",
+            "Manage queues on the program",
+            "Manage flows on the program",
+            "Manage agent scoring"
+          ],
+          "answer": 0,
+          "why": "Speech and text analytics administrators have the STA settings."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Each",
+          "back": "One evaluation per matched agent."
+        },
+        {
+          "front": "First or last",
+          "back": "One evaluation."
+        },
+        {
+          "front": "Digital",
+          "back": "Regenerate when the thread grows."
+        },
+        {
+          "front": "STA settings",
+          "back": "Not a quality-admin edit."
+        }
+      ],
+      "lab": {
+        "title": "Choose a rule for a transfer",
+        "steps": [
+          "The customer spoke to two agents.",
+          "You want both scored.",
+          "You want only the closer.",
+          "The sentence you will re-read before you trust \u201clast.\u201d"
+        ],
+        "success": "Both-scored uses Each. Closer-only uses Last, with the confirm note."
+      },
+      "fault": {
+        "title": "One score for two agents",
+        "symptom": "A transfer is scored once, on the first agent, and the closer never sees a form.",
+        "log": "The rule was First Matched Agent.",
+        "cause": "Each was what the quality team asked for.",
+        "fix": "Change the rule to Each Matched Agent and confirm the published form."
+      }
+    }
+  ]
+}

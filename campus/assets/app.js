@@ -590,6 +590,8 @@ function showHome() {
     <div class="chips">${wings.map(([href, label]) => `<a class="btn" href="${href}">${label}</a>`).join("")}</div>
     <h2 data-dl="1">Studios <button type="button" class="dl-mini" data-export="html">Download</button></h2>
     <div class="grid">${studioCards()}</div>
+    <h2 data-dl="1">Chapters <button type="button" class="dl-mini" data-export="html">Download</button></h2>
+    <div class="grid">${state.manifest.tracks.filter((track) => ["skills", "forecast", "quality", "ecosystem"].includes(track.id)).map(trackCard).join("")}</div>
     <h2 data-dl="1">Tracks <button type="button" class="dl-mini" data-export="html">Download</button></h2>
     <div class="grid">${state.manifest.tracks.map(trackCard).join("")}</div>`;
   mountHomeViz();
@@ -1027,10 +1029,52 @@ async function showCerts() {
 function showEcosystem() {
   const tracks = state.manifest.tracks.map((track) => `<a class="card" href="#/track/${track.id}"><div class="stripe a${track.accent}"></div><h3>${esc(ht(track.id, track.title))}</h3><p>${esc(track.summary)}</p></a>`).join("");
   mount(`${crumbs([["#/", "Home"], ["#/ecosystem", "Ecosystem"]])}<p class="kicker">Map</p><h1>Ecosystem</h1>
-    <p>Genesys Cloud CX is the conversation platform. WEM, recording, emergency calling, CRM, and bots sit on documented edges of that platform. Diagrams, flows, charts, and cheat codes are separate wings of the same floor. Each lesson keeps its own citation. If a vendor page disagrees, the page wins.</p>
+    <p>Genesys Cloud CX is the conversation platform. WEM, recording, emergency calling, CRM, and bots sit on documented edges of that platform. Each lesson keeps its own citation. If a vendor page disagrees, the page wins.</p>
     <p class="muted">Lucky is a lifelong student and an AI enthusiast, from systems, networking, voice, and the contact center, growing into AI omni-channel agents. This floor is the notebook.</p>
+    <h2>Glossary</h2>
+    <p>Short definitions, each with the page it came from. The glossary does not win an argument with that page.</p>
+    <p><a class="btn primary" href="#/glossary">Open the glossary</a></p>
     <h2>Mind map</h2>
     <div class="markmap-host"><svg id="eco-map" role="img" aria-label="Mind map of the tracks"></svg></div>
+    <h2>Sister technologies</h2>
+    <div class="grid">
+      <a class="card" href="#/track/wfm"><h3>Workforce management</h3><p>Schedules and adherence. Forecasting is its own chapter.</p></a>
+      <a class="card" href="#/track/quality"><h3>Quality and speech</h3><p>Forms, topics, and programs.</p></a>
+      <a class="card" href="#/track/emergency"><h3>Emergency calling</h3><p>A classification, a route, and a test.</p></a>
+      <a class="card" href="#/track/byoc"><h3>SIP and RTP</h3><p>Signaling is not the audio. BYOC Cloud is the cited telephony door.</p></a>
+    </div>
+    <h2>Integration map</h2>
+    <div class="card" aria-hidden="true">
+      <svg viewBox="0 0 360 160">
+        <path d="M40 80 H120 L180 40 H250 L310 80" fill="none" stroke="#2ff7ff" stroke-width="2"></path>
+        <path d="M180 40 V120 H250" fill="none" stroke="#b388ff" stroke-width="2"></path>
+        <circle cx="40" cy="80" r="8" fill="#ff2fb3"></circle>
+        <circle cx="120" cy="80" r="8" fill="#2ff7ff"></circle>
+        <circle cx="180" cy="40" r="8" fill="#d6ff3c"></circle>
+        <circle cx="250" cy="40" r="8" fill="#b388ff"></circle>
+        <circle cx="310" cy="80" r="8" fill="#ff2fb3"></circle>
+        <circle cx="180" cy="120" r="8" fill="#7dffa8"></circle>
+        <g fill="#f4fbff" font-size="12" font-family="Palatino, Georgia, serif">
+          <text x="16" y="104">Carrier</text>
+          <text x="96" y="104">BYOC</text>
+          <text x="156" y="28">Flow</text>
+          <text x="228" y="28">Queue</text>
+          <text x="286" y="104">Agent</text>
+          <text x="150" y="146">CRM / bot</text>
+        </g>
+      </svg>
+    </div>
+    <div class="grid">
+      <a class="card" href="#/lesson/z-cpaas"><h3>BYOC bridge</h3><p>The telephony door this lab can cite. The article does not say CPaaS.</p></a>
+      <a class="card" href="#/lesson/z-crm"><h3>CRM bridge</h3><p>Salesforce and Zendesk pages that were opened. Other CRMs stay on AppFoundry.</p></a>
+      <a class="card" href="#/lesson/z-agents"><h3>AI agents</h3><p>Dialog Engine, Virtual Agent, and Copilot are three different assists.</p></a>
+      <a class="card" href="#/track/api"><h3>Platform API</h3><p>Samples stay in the browser. Nothing is sent.</p></a>
+    </div>
+    <h2>Future hooks</h2>
+    <div class="grid">
+      <a class="card" href="#/lesson/z-hooks"><h3>Dated announcements</h3><p>Journey Outcomes 2026-06-29. Salesforce Open CTI 2028-02-28. Re-open both.</p></a>
+      <a class="card" href="#/track/predictive"><h3>Predictive Engagement</h3><p>Not the ACD method named predictive routing.</p></a>
+    </div>
     <div class="toolbar">
       <a class="btn" href="#/glossary">Glossary</a>
       <a class="btn" href="#/certs">Certifications</a>
@@ -1246,7 +1290,8 @@ function ecosystemBlock() {
     <h3>Config and troubleshooting</h3><p>Publish the flow. A draft does not answer. No audio after a healthy flow is a media problem. An empty offer is tracking, schedule, or eligibility.</p>
     <h3>Integration maps</h3><p>Salesforce and Zendesk have their own embed articles. Other products stay on AppFoundry. This lab did not install them.</p>
     <h3>Cross-platform bridges</h3><p>Engage, PureConnect, and Cisco UCCE / UCCX are rebuild notes, not converters. CUCM appears as a learning bridge with Cisco citations.</p>
-    <h3>Future hooks</h3><p>Journey Outcomes listed a planned effective date of 2026-06-29 on the page read for this lab. If that page moves, the page wins. Confirm before relying.</p>
+    <h3>Bridges</h3><p>CRM: the Salesforce and Zendesk articles. Telephony: BYOC, which this lab does not rename to CPaaS. AI agents: Dialog Engine, Virtual Agent, and Copilot. <a href="#/ecosystem">Open the map</a>.</p>
+    <h3>Future hooks</h3><p>Journey Outcomes listed a planned effective date of 2026-06-29. Salesforce Open CTI listed 2028-02-28. If a page moves, the page wins.</p>
   </section>`;
 }
 

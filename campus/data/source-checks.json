@@ -99,6 +99,11 @@
     "lastChecked": "2026-10",
     "rule": "body-v1"
   },
+  "https://help.genesys.cloud/announcements/genesys-cloud/deprecation-salesforce-open-cti-integration/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
   "https://help.genesys.cloud/announcements/genesys-cloud/predictive-routing-supports-customer-defined-business-outcomes-with-custom-kpis/": {
     "status": 200,
     "lastChecked": "2026-10",
@@ -139,7 +144,17 @@
     "lastChecked": "2026-10",
     "rule": "body-v1"
   },
+  "https://help.genesys.cloud/articles/about-genesys-virtual-agent/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
   "https://help.genesys.cloud/articles/about-predictive-engagement/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/about-quality-management/": {
     "status": 200,
     "lastChecked": "2026-10",
     "rule": "body-v1"
@@ -169,12 +184,22 @@
     "lastChecked": "2026-10",
     "rule": "body-v1"
   },
+  "https://help.genesys.cloud/articles/add-a-forecast/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
   "https://help.genesys.cloud/articles/advanced-routing-overview/": {
     "status": 200,
     "lastChecked": "2026-10",
     "rule": "body-v1"
   },
   "https://help.genesys.cloud/articles/agent-copilot-overview/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/automated-scoring-options-in-evaluation-forms/": {
     "status": 200,
     "lastChecked": "2026-10",
     "rule": "body-v1"
@@ -259,12 +284,22 @@
     "lastChecked": "2026-10",
     "rule": "body-v1"
   },
+  "https://help.genesys.cloud/articles/create-publish-evaluation-form/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
   "https://help.genesys.cloud/articles/create-queues/": {
     "status": 200,
     "lastChecked": "2026-10",
     "rule": "body-v1"
   },
   "https://help.genesys.cloud/articles/define-an-action-maps-triggers/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/direct-routing-overview/": {
     "status": 200,
     "lastChecked": "2026-10",
     "rule": "body-v1"
@@ -364,6 +399,11 @@
     "lastChecked": "2026-10",
     "rule": "body-v1"
   },
+  "https://help.genesys.cloud/articles/understand-programs-topics-and-phrases/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
   "https://help.genesys.cloud/articles/use-architect-to-create-a-bot-for-an-inbound-flow/": {
     "status": 200,
     "lastChecked": "2026-10",
@@ -374,7 +414,17 @@
     "lastChecked": "2026-10",
     "rule": "body-v1"
   },
+  "https://help.genesys.cloud/articles/work-with-a-program/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
   "https://help.genesys.cloud/articles/work-with-forecasts/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/work-with-the-forecast-editor/": {
     "status": 200,
     "lastChecked": "2026-10",
     "rule": "body-v1"

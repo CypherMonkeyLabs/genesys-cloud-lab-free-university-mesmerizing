@@ -472,7 +472,7 @@ function goPath(kind) {
     sayLine("Ten-minute path: Foundations. Read the first lesson, then the quiz. Confirm before relying.");
   } else if (kind === "full") {
     location.hash = "#/tracks";
-    sayLine("Full course: seventeen tracks. Start at Foundations and follow the roadmap.");
+    sayLine("Full course: twenty tracks. Start at Foundations and follow the roadmap.");
   } else if (kind === "down") {
     location.hash = "#/downloads";
     sayLine("Downloads are on this page. The bundle is the zip.");

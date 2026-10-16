@@ -9,7 +9,7 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
 endobj
 4 0 obj
-<< /Length 2342 >>
+<< /Length 2302 >>
 stream
 BT
 /F1 14 Tf
@@ -33,7 +33,7 @@ BT
 0 -14 Td
 (Genesys Cloud Developer Center \(Developer docs\) https://developer.genesys.cloud/ Last checked 2026-10) Tj
 0 -14 Td
-(Client credentials grant \(Developer docs\) https://developer.genesys.cloud/api/rest/authorization/use-client-cr) Tj
+(Client credentials grant \(Developer docs\) confirm Last checked 2026-10) Tj
 0 -14 Td
 (  The response was the Developer Center shell, which is the same page for a missing path. The lab opened this ) Tj
 0 -14 Td
@@ -86,8 +86,8 @@ xref
 0000000058 00000 n 
 0000000115 00000 n 
 0000000241 00000 n 
-0000002635 00000 n 
+0000002595 00000 n 
 trailer << /Size 6 /Root 1 0 R >>
 startxref
-2705
+2665
 %%EOF

@@ -1259,6 +1259,806 @@
         "cause": "The author was being helpful.",
         "fix": "Delete all three. Link the emergency article, AppFoundry, and the lifecycle notice once you have it."
       }
+    },
+    {
+      "id": "z-cpaas",
+      "title": "The telephony door this lab can cite is BYOC, not a word the page did not use",
+      "level": "Foundation",
+      "minutes": 12,
+      "summary": "CPaaS is the classroom name for a communications API you bring. The opened page is About BYOC Cloud.",
+      "paras": [
+        "About BYOC Cloud says the solution lets you define SIP trunks between the Genesys Cloud AWS-based Edge and Media Tier and a third-party carrier over the public internet. That is the door this lab will teach when someone asks for a communications-platform bridge: your carrier, Genesys media, and the articles for trunks, number plans, ports, and emergency calling. The page does not use the word CPaaS. This lesson will not add it to the product.",
+        "BYOC Premises is the other door, with a customer Edge, and it has its own track. Genesys Cloud Voice is the Genesys carrier offer and stays on the voice-region article. AppFoundry lists a Telco and Devices category among others. A listing there is not a configuration this lab performed. The Developer Center is where a client would be written, and this lab\u2019s API explorer still does not send one."
+      ],
+      "cites": [
+        {
+          "title": "About BYOC Cloud",
+          "url": "https://help.genesys.cloud/articles/about-byoc-cloud/"
+        },
+        {
+          "title": "BYOC Premises Edge groups overview",
+          "url": "https://help.genesys.cloud/articles/edge-groups-overview/"
+        },
+        {
+          "title": "AppFoundry",
+          "url": "https://appfoundry.genesys.com/"
+        },
+        {
+          "title": "Genesys Cloud Developer Center",
+          "url": "https://developer.genesys.cloud/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "The cited door is a SIP trunk to the Genesys media tier. The classroom may call that a CPaaS-style bridge.",
+        "nodes": [
+          {
+            "id": "car",
+            "label": "Carrier",
+            "kind": "trunk",
+            "x": 14,
+            "y": 40
+          },
+          {
+            "id": "sip",
+            "label": "SIP trunk",
+            "kind": "phone",
+            "x": 46,
+            "y": 40
+          },
+          {
+            "id": "med",
+            "label": "Media tier",
+            "kind": "region",
+            "x": 78,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "car",
+            "b": "sip"
+          },
+          {
+            "a": "sip",
+            "b": "med"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Name the page before the category",
+        "steps": [
+          {
+            "from": "Ask",
+            "to": "CPaaS",
+            "title": "Classroom word",
+            "detail": "Do not paste it onto the article.",
+            "inspect": "The article says SIP trunks"
+          },
+          {
+            "from": "Cloud",
+            "to": "BYOC Cloud",
+            "title": "Public internet",
+            "detail": "No customer Edge on that path.",
+            "inspect": "Ports stay on the ports article"
+          },
+          {
+            "from": "Premises",
+            "to": "Edge",
+            "title": "A different track",
+            "detail": "Do not merge the pictures.",
+            "inspect": "Emergency is still yours to test"
+          },
+          {
+            "from": "Market",
+            "to": "AppFoundry",
+            "title": "Telco and Devices is a category",
+            "detail": "Not an install.",
+            "inspect": "Developer Center for a client"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "About BYOC Cloud describes:",
+          "choices": [
+            "A forecast",
+            "An evaluation form",
+            "A certification exam",
+            "SIP trunks between the Genesys media tier and a third-party carrier over the public internet"
+          ],
+          "answer": 3,
+          "why": "That is the sentence this lesson uses."
+        },
+        {
+          "q": "The word CPaaS on that page is:",
+          "choices": [
+            "The product name",
+            "A routing method",
+            "A required license field",
+            "Not used. This lab will not add it"
+          ],
+          "answer": 3,
+          "why": "Use it only as the classroom\u2019s question, then answer with the article\u2019s words."
+        },
+        {
+          "q": "BYOC Premises differs because:",
+          "choices": [
+            "It is Virtual Agent",
+            "A customer Edge is in the path",
+            "It is the same picture as BYOC Cloud",
+            "It is a speech program"
+          ],
+          "answer": 1,
+          "why": "The Edge track is the place to study it."
+        },
+        {
+          "q": "AppFoundry in this lesson is:",
+          "choices": [
+            "An RFC",
+            "A marketplace category list, not a trunk you configured",
+            "The BYOC quick start",
+            "A queue"
+          ],
+          "answer": 1,
+          "why": "Telco and Devices is one category on the home page that was opened."
+        },
+        {
+          "q": "A client that would place calls belongs on:",
+          "choices": [
+            "The Developer Center, and this lab will not send the request",
+            "The forecast editor",
+            "The glossary as a second source",
+            "A Wikipedia distribution method"
+          ],
+          "answer": 0,
+          "why": "The API track explains why the explorer stays quiet."
+        },
+        {
+          "q": "Emergency calling on a BYOC trunk is:",
+          "choices": [
+            "Still a separate article and a test",
+            "Included as a Genesys PSAP by this lesson",
+            "A topic phrase",
+            "A forecast checkbox"
+          ],
+          "answer": 0,
+          "why": "Do not let the bridge skip it."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Door",
+          "back": "SIP trunks to the Genesys media tier."
+        },
+        {
+          "front": "Word",
+          "back": "CPaaS is the classroom\u2019s, not the article\u2019s."
+        },
+        {
+          "front": "Premises",
+          "back": "A different Edge path."
+        },
+        {
+          "front": "Market",
+          "back": "AppFoundry lists categories. It does not configure them."
+        }
+      ],
+      "lab": {
+        "title": "Answer a CPaaS question",
+        "steps": [
+          "The word the person used.",
+          "The article you will open.",
+          "Whether an Edge is involved.",
+          "The emergency article you will not skip."
+        ],
+        "success": "The answer names BYOC Cloud or Premises and does not invent a CPaaS feature."
+      },
+      "fault": {
+        "title": "Renamed product",
+        "symptom": "A diagram labels the carrier trunk \u201cGenesys CPaaS\u201d and drops the emergency test.",
+        "log": "The opened page says SIP trunks. It does not say CPaaS.",
+        "cause": "The classroom word was written on the box.",
+        "fix": "Relabel the box BYOC Cloud and put the emergency article back on the diagram."
+      }
+    },
+    {
+      "id": "z-crm",
+      "title": "Salesforce and Zendesk are the embeds this lab opened",
+      "level": "Core",
+      "minutes": 13,
+      "summary": "Salesforce Open CTI is in maintenance and has a later retirement date. Zendesk\u2019s page does not say that.",
+      "paras": [
+        "About Genesys Cloud for Salesforce describes the embed inside Salesforce and says that, effective 23 March 2026, the integration is deprecated, in maintenance, and will not receive new features. The deprecation article opened beside it is a different sentence: announced 23 March 2026, planned effective date 28 February 2028, when Salesforce retires Open CTI and this integration retires with it. That announcement says there is no immediate impact, and it names two paths: CX Cloud from Genesys and Salesforce, or the Genesys Cloud user interface with no Salesforce CTI. It also says the two can run side by side, and that a migration\u2019s length varies.",
+        "About Genesys Cloud for Zendesk describes the embed inside Zendesk, with nothing to install on each computer, and lists support for call, callback, outbound dialing, email, message, and ACD voicemail. Both articles say not to run different embedded clients, including Salesforce and Zendesk, at the same time. Both mention Agent Copilot in the interaction window. Other CRMs stay on AppFoundry until you open a listing. This lab did not install either embed."
+      ],
+      "cites": [
+        {
+          "title": "About Genesys Cloud for Salesforce",
+          "url": "https://help.genesys.cloud/articles/about-genesys-cloud-for-salesforce/"
+        },
+        {
+          "title": "Deprecation: Salesforce open CTI integration",
+          "url": "https://help.genesys.cloud/announcements/genesys-cloud/deprecation-salesforce-open-cti-integration/"
+        },
+        {
+          "title": "About Genesys Cloud for Zendesk",
+          "url": "https://help.genesys.cloud/articles/about-genesys-cloud-for-zendesk/"
+        },
+        {
+          "title": "AppFoundry",
+          "url": "https://appfoundry.genesys.com/"
+        }
+      ],
+      "uncertainty": "Read in 2026-10. The about page says maintenance effective 23 March 2026. The deprecation table says planned retirement 28 February 2028. The announcement says migration length varies and does not give one duration for every customer.",
+      "figure": {
+        "caption": "Two documented embeds. One of them has a retirement table. The other page does not.",
+        "nodes": [
+          {
+            "id": "sf",
+            "label": "Salesforce",
+            "kind": "crm",
+            "x": 22,
+            "y": 28
+          },
+          {
+            "id": "zd",
+            "label": "Zendesk",
+            "kind": "crm",
+            "x": 22,
+            "y": 72
+          },
+          {
+            "id": "date",
+            "label": "2028-02-28",
+            "kind": "region",
+            "x": 70,
+            "y": 28
+          }
+        ],
+        "edges": [
+          {
+            "a": "sf",
+            "b": "date"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Read the date that matches the page",
+        "steps": [
+          {
+            "from": "About",
+            "to": "Salesforce",
+            "title": "Maintenance from the March 2026 sentence",
+            "detail": "No new features, on that page.",
+            "inspect": "Do not paste the date onto Zendesk"
+          },
+          {
+            "from": "Table",
+            "to": "Retirement",
+            "title": "28 February 2028",
+            "detail": "Announced 23 March 2026.",
+            "inspect": "No immediate impact, on the announcement"
+          },
+          {
+            "from": "Path",
+            "to": "Two choices",
+            "title": "CX Cloud, or Genesys Cloud itself",
+            "detail": "They can run together.",
+            "inspect": "Length varies. Do not promise one"
+          },
+          {
+            "from": "Other",
+            "to": "Zendesk",
+            "title": "Its own article",
+            "detail": "Do not run both clients.",
+            "inspect": "Anything else is AppFoundry"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "The Salesforce about page says the integration, from 23 March 2026, is:",
+          "choices": [
+            "A speech program",
+            "Deprecated and in maintenance, with no new features",
+            "Retired on that day",
+            "Unchanged"
+          ],
+          "answer": 1,
+          "why": "The retirement table is a different page."
+        },
+        {
+          "q": "The Open CTI deprecation table\u2019s planned effective date is:",
+          "choices": [
+            "23 March 2026",
+            "31 December 2026",
+            "28 February 2028",
+            "29 June 2026"
+          ],
+          "answer": 2,
+          "why": "23 March 2026 is the announced-on date. 29 June 2026 is Journey Outcomes. 31 December 2026 is the webcam note."
+        },
+        {
+          "q": "That announcement says the current service:",
+          "choices": [
+            "Deletes queues",
+            "Disables BYOC",
+            "Has no immediate impact",
+            "Stops the day you read it"
+          ],
+          "answer": 2,
+          "why": "Genesys Cloud core features are described as independent of Open CTI."
+        },
+        {
+          "q": "Paths named on the announcement are:",
+          "choices": [
+            "Two Wikipedia methods",
+            "CX Cloud from Genesys and Salesforce, or the Genesys Cloud user interface",
+            "Zendesk and a forecast",
+            "Bullseye and direct routing"
+          ],
+          "answer": 1,
+          "why": "The announcement says they can exist side by side."
+        },
+        {
+          "q": "Zendesk\u2019s about page, as opened for this lesson, lists:",
+          "choices": [
+            "A 2028 retirement date",
+            "Six bullseye rings",
+            "A forecast import",
+            "Call, callback, outbound dialing, email, message, and ACD voicemail"
+          ],
+          "answer": 3,
+          "why": "Do not copy the Salesforce dates onto it."
+        },
+        {
+          "q": "Running the Salesforce client and the Zendesk client together is:",
+          "choices": [
+            "How CX Cloud is installed",
+            "A forecast method",
+            "Warned against on both articles",
+            "Required"
+          ],
+          "answer": 2,
+          "why": "The note includes other embedded clients as well."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Maintenance",
+          "back": "The Salesforce about page, from 23 March 2026."
+        },
+        {
+          "front": "Retirement",
+          "back": "28 February 2028, on the deprecation table."
+        },
+        {
+          "front": "Paths",
+          "back": "CX Cloud, or Genesys Cloud without that CTI."
+        },
+        {
+          "front": "Zendesk",
+          "back": "A separate article. No date copied across."
+        }
+      ],
+      "lab": {
+        "title": "Correct a migration slide",
+        "steps": [
+          "Separate the maintenance sentence from the 2028 date.",
+          "Name the two paths.",
+          "Remove any Zendesk date you cannot point at.",
+          "Say this lab did not install the packages."
+        ],
+        "success": "The slide has two Salesforce sentences and no invented Zendesk date."
+      },
+      "fault": {
+        "title": "One date",
+        "symptom": "A plan retires Zendesk on 28 February 2028 because Salesforce\u2019s table used that day.",
+        "log": "The Zendesk page opened here does not say that.",
+        "cause": "The embeds were treated as one product.",
+        "fix": "Delete the Zendesk date. Keep the Salesforce table on the Salesforce row."
+      }
+    },
+    {
+      "id": "z-agents",
+      "title": "A bot, a Virtual Agent, and Copilot are three assists",
+      "level": "Core",
+      "minutes": 12,
+      "summary": "Dialog Engine builds the bot. Virtual Agent adds Genesys AI. Copilot sits with the person.",
+      "paras": [
+        "About Genesys Dialog Engine Bot Flows says you build bots in Architect and use them in call, chat, and message flows. The page says the feature is PCI DSS-compliant and can be used in secure call flows. It also points at Genesys Virtual Agent: an advanced conversational bot for voice and digital bot flows that can generate intents and utterances, search knowledge-base content on digital interactions, and summarize the bot conversation with a wrap-up code. Token metering has its own article. This lesson does not copy a price.",
+        "Agent Copilot, on its overview, assists a person during and after the interaction: knowledge articles, a transcript, scripts, next best action, a form, and notes that can include the reason, the resolution, and a possible wrap-up code. The overview says the benefit continues when an agent blind-transfers a call or a digital interaction. Copilot is not the bot that answered first, and Virtual Agent is not the panel on the human agent\u2019s screen. The Salesforce and Zendesk articles both say Copilot can be placed in the embedded interaction window."
+      ],
+      "cites": [
+        {
+          "title": "About Genesys Dialog Engine Bot Flows",
+          "url": "https://help.genesys.cloud/articles/about-genesys-dialog-engine-bot-flows/"
+        },
+        {
+          "title": "About Genesys Virtual Agent",
+          "url": "https://help.genesys.cloud/articles/about-genesys-virtual-agent/"
+        },
+        {
+          "title": "Genesys Agent Copilot overview",
+          "url": "https://help.genesys.cloud/articles/agent-copilot-overview/"
+        },
+        {
+          "title": "About Genesys Cloud for Salesforce",
+          "url": "https://help.genesys.cloud/articles/about-genesys-cloud-for-salesforce/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "The bot can answer before the queue. Copilot sits beside the person who received the interaction.",
+        "nodes": [
+          {
+            "id": "bot",
+            "label": "Bot",
+            "kind": "bot",
+            "x": 18,
+            "y": 40
+          },
+          {
+            "id": "q",
+            "label": "Queue",
+            "kind": "queue",
+            "x": 48,
+            "y": 40
+          },
+          {
+            "id": "co",
+            "label": "Copilot",
+            "kind": "agent",
+            "x": 80,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "bot",
+            "b": "q"
+          },
+          {
+            "a": "q",
+            "b": "co"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Place each assist",
+        "steps": [
+          {
+            "from": "Build",
+            "to": "Dialog Engine",
+            "title": "Architect bot flow",
+            "detail": "Call, chat, and message.",
+            "inspect": "Secure flows are allowed, on that page"
+          },
+          {
+            "from": "AI bot",
+            "to": "Virtual Agent",
+            "title": "Voice and digital",
+            "detail": "Knowledge search is described for digital.",
+            "inspect": "Summary and wrap-up after the bot"
+          },
+          {
+            "from": "Person",
+            "to": "Copilot",
+            "title": "During and after",
+            "detail": "Knowledge, transcript, script, form, notes.",
+            "inspect": "Blind transfer keeps the benefit"
+          },
+          {
+            "from": "Price",
+            "to": "Tokens",
+            "title": "Open the metering article",
+            "detail": "Do not type a rate here.",
+            "inspect": "CX package order stays on the overview"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Dialog Engine Bot Flows are used in:",
+          "choices": [
+            "Forecasts",
+            "Number plans",
+            "Edge groups",
+            "Call, chat, and message flows"
+          ],
+          "answer": 3,
+          "why": "The article says you integrate them into those Architect flows."
+        },
+        {
+          "q": "Virtual Agent, on its article, can search knowledge:",
+          "choices": [
+            "Inside a forecast",
+            "As a SIP header",
+            "On digital interactions",
+            "On every trunk"
+          ],
+          "answer": 2,
+          "why": "The during-contact section says the knowledge highlight is only digital."
+        },
+        {
+          "q": "Copilot\u2019s overview includes notes for:",
+          "choices": [
+            "A bullseye ring",
+            "The reason, the resolution, and a possible wrap-up code",
+            "The carrier ACL",
+            "The OAuth secret"
+          ],
+          "answer": 1,
+          "why": "The person still handles the interaction."
+        },
+        {
+          "q": "A blind transfer, on the Copilot overview:",
+          "choices": [
+            "Converts the call to email",
+            "Publishes a program",
+            "Keeps the Copilot benefit for the next agent",
+            "Ends the transcript"
+          ],
+          "answer": 2,
+          "why": "The sentence covers a call or a digital interaction."
+        },
+        {
+          "q": "Virtual Agent and Copilot differ because:",
+          "choices": [
+            "They are the same screen",
+            "Both are queue routing methods",
+            "Both are BYOC trunks",
+            "One is the bot, and the other assists the person"
+          ],
+          "answer": 3,
+          "why": "Do not draw one box for both."
+        },
+        {
+          "q": "A token price in this lesson is:",
+          "choices": [
+            "Not copied. The metering article is the place to read it",
+            "100 per interaction",
+            "Included in the Wikipedia ACD page",
+            "The same as a forecast week"
+          ],
+          "answer": 0,
+          "why": "The Virtual Agent page points at that article."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Dialog Engine",
+          "back": "The Architect bot."
+        },
+        {
+          "front": "Virtual Agent",
+          "back": "Genesys AI on voice and digital bot flows."
+        },
+        {
+          "front": "Copilot",
+          "back": "The person\u2019s panel."
+        },
+        {
+          "front": "Tokens",
+          "back": "Read the metering article. Do not invent a rate."
+        }
+      ],
+      "lab": {
+        "title": "Draw the handoff",
+        "steps": [
+          "Where the bot is allowed to fail.",
+          "What Virtual Agent may summarize.",
+          "What Copilot shows the person.",
+          "The article you will open before anyone types a token price."
+        ],
+        "success": "The failure still has a queue, and the price is a link."
+      },
+      "fault": {
+        "title": "One robot",
+        "symptom": "A design says Copilot will deflect the call before it queues, because it is \u201cthe AI.\u201d",
+        "log": "Copilot\u2019s overview assists the agent. Virtual Agent is the bot.",
+        "cause": "The names were swapped.",
+        "fix": "Put Virtual Agent in the flow, give it a failure path to the queue, and leave Copilot on the agent\u2019s window."
+      }
+    },
+    {
+      "id": "z-hooks",
+      "title": "Future hooks are dates on announcements, not a roadmap this lab invented",
+      "level": "Advanced",
+      "minutes": 12,
+      "summary": "Journey Outcomes, Salesforce Open CTI, and Customer Outcomes are three different sentences.",
+      "paras": [
+        "The Journey Outcomes announcement lists announced-on 18 May 2026 and planned effective date 29 June 2026. After that date the page says outcomes cannot be created, existing outcomes are not processed, action maps are not triggered by them, and reporting for them is not available. Customer Outcomes is described there as under development, and Outcome Scoring is not part of it. Architect flows that call getJourneyOutcome skip that branch. This lab did not sign in to see whether a given org still has the feature.",
+        "The Salesforce Open CTI announcement is the other dated hook: announced 23 March 2026, planned effective 28 February 2028, with no immediate impact stated on that page. The predictive-routing custom-KPI announcement is a third page, and the predictive track is where this lab keeps it. A future hook in a design should name the announcement, the date printed on it, and the sentence \u201cre-open before you rely.\u201d A hook without that page is a guess."
+      ],
+      "cites": [
+        {
+          "title": "Deprecation: Journey Outcomes",
+          "url": "https://help.genesys.cloud/announcements/genesys-cloud/deprecation-journey-outcomes/"
+        },
+        {
+          "title": "Deprecation: Salesforce open CTI integration",
+          "url": "https://help.genesys.cloud/announcements/genesys-cloud/deprecation-salesforce-open-cti-integration/"
+        },
+        {
+          "title": "Predictive Routing customer-defined outcomes",
+          "url": "https://help.genesys.cloud/announcements/genesys-cloud/predictive-routing-supports-customer-defined-business-outcomes-with-custom-kpis/"
+        },
+        {
+          "title": "About Genesys Virtual Agent",
+          "url": "https://help.genesys.cloud/articles/about-genesys-virtual-agent/"
+        }
+      ],
+      "uncertainty": "Checked in 2026-10. This lab did not sign in to an organization, so it cannot say whether Journey Outcomes is still present in any given org.",
+      "figure": {
+        "caption": "Each hook is an announcement with a date. Customer Outcomes is still described as under development.",
+        "nodes": [
+          {
+            "id": "jo",
+            "label": "2026-06-29",
+            "kind": "bot",
+            "x": 20,
+            "y": 30
+          },
+          {
+            "id": "sf",
+            "label": "2028-02-28",
+            "kind": "crm",
+            "x": 52,
+            "y": 30
+          },
+          {
+            "id": "co",
+            "label": "Customer Outcomes",
+            "kind": "architect",
+            "x": 80,
+            "y": 68
+          }
+        ],
+        "edges": [
+          {
+            "a": "jo",
+            "b": "co"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Attach a page to every date",
+        "steps": [
+          {
+            "from": "Outcomes",
+            "to": "29 June 2026",
+            "title": "Journey Outcomes",
+            "detail": "Announced 18 May 2026.",
+            "inspect": "getJourneyOutcome skips"
+          },
+          {
+            "from": "Replace",
+            "to": "Customer Outcomes",
+            "title": "Under development on that page",
+            "detail": "Outcome Scoring is not included.",
+            "inspect": "No shipment date copied from elsewhere"
+          },
+          {
+            "from": "CTI",
+            "to": "28 February 2028",
+            "title": "Salesforce Open CTI",
+            "detail": "Maintenance is the other Salesforce sentence.",
+            "inspect": "No immediate impact, on the announcement"
+          },
+          {
+            "from": "KPI",
+            "to": "Predictive routing",
+            "title": "Its own announcement",
+            "detail": "Not Journey Outcomes.",
+            "inspect": "The predictive track holds it"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "The Journey Outcomes planned effective date on the announcement is:",
+          "choices": [
+            "28 February 2028",
+            "23 March 2026",
+            "31 December 2026",
+            "29 June 2026"
+          ],
+          "answer": 3,
+          "why": "28 February 2028 is Salesforce Open CTI. 31 December 2026 is the webcam note."
+        },
+        {
+          "q": "After that Journey Outcomes date, the announcement says:",
+          "choices": [
+            "BYOC trunks close",
+            "Existing outcomes are not processed and do not trigger action maps",
+            "They keep running until Customer Outcomes ships",
+            "Queues stop"
+          ],
+          "answer": 1,
+          "why": "Flows that call getJourneyOutcome skip that branch."
+        },
+        {
+          "q": "Customer Outcomes, on that same announcement, is:",
+          "choices": [
+            "Under development, and Outcome Scoring is not part of it",
+            "Generally available on 29 June 2026",
+            "A queue routing method",
+            "The Zendesk embed"
+          ],
+          "answer": 0,
+          "why": "The page says you can follow it on the Aha! portal. This lesson does not invent a release date."
+        },
+        {
+          "q": "The Salesforce Open CTI planned effective date is:",
+          "choices": [
+            "Unstated",
+            "28 February 2028",
+            "29 June 2026",
+            "The same day as Journey Outcomes"
+          ],
+          "answer": 1,
+          "why": "The about page\u2019s maintenance sentence is 23 March 2026. Keep them apart."
+        },
+        {
+          "q": "A future hook this lab will accept in a design is:",
+          "choices": [
+            "A feature someone expects next quarter",
+            "A price",
+            "A GCX- code",
+            "An announcement, the date printed on it, and a note to re-open it"
+          ],
+          "answer": 3,
+          "why": "No page, no hook."
+        },
+        {
+          "q": "The predictive-routing custom-KPI note belongs:",
+          "choices": [
+            "Inside Journey Outcomes",
+            "On the forecast editor",
+            "On the bullseye ring",
+            "On its own announcement and in the predictive track"
+          ],
+          "answer": 3,
+          "why": "The names are easy to swap. The pages are not."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Journey Outcomes",
+          "back": "Planned 29 June 2026."
+        },
+        {
+          "front": "Customer Outcomes",
+          "back": "Described as under development. No date added here."
+        },
+        {
+          "front": "Salesforce CTI",
+          "back": "Planned 28 February 2028."
+        },
+        {
+          "front": "Hook",
+          "back": "A page, a printed date, and a re-open note."
+        }
+      ],
+      "lab": {
+        "title": "Strike the undated items",
+        "steps": [
+          "Journey Outcomes on 29 June 2026.",
+          "A Customer Outcomes release week you made up.",
+          "Salesforce retirement on 28 February 2028.",
+          "A Zendesk retirement you cannot cite."
+        ],
+        "success": "The made-up week and the Zendesk date are gone."
+      },
+      "fault": {
+        "title": "Helpful calendar",
+        "symptom": "A roadmap adds Customer Outcomes in July 2026 because Journey Outcomes ends in June.",
+        "log": "The announcement says Customer Outcomes is under development and does not give that month.",
+        "cause": "The empty box was filled.",
+        "fix": "Leave the month off. Link the announcement and write \u201cre-open.\u201d"
+      }
     }
   ]
 }

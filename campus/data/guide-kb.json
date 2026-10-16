@@ -2484,6 +2484,359 @@
       ],
       "answer": "Progress stays in this browser. Track JSON loads when you open a track. The service worker does not prefetch every track at install.",
       "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "track-skills",
+      "title": "Skills and ACD",
+      "href": "#/track/skills",
+      "keywords": [
+        "skills and acd",
+        "skills"
+      ],
+      "synonyms": [
+        "chapter",
+        "how genesys cloud matches a skill request to an agent, from the acd idea through filters, rings, and direct routing"
+      ],
+      "answer": "Skills and ACD: How Genesys Cloud matches a skill request to an agent, from the ACD idea through filters, rings, and direct routing. This track has 6 lessons in this lab.",
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-k-what",
+      "title": "ACD is the match, and skills are one way to make it",
+      "href": "#/lesson/k-what",
+      "keywords": [
+        "acd is the match, and skills are one way to make it"
+      ],
+      "synonyms": [
+        "skills and acd",
+        "foundation"
+      ],
+      "answer": "ACD is the match, and skills are one way to make it (Foundation, 12 min): Wikipedia describes an ACD as a distributor. Genesys Cloud puts that job on the queue\u2019s routing method.",
+      "source": "https://en.wikipedia.org/wiki/Automatic_call_distributor"
+    },
+    {
+      "id": "lesson-k-eval",
+      "title": "Three evaluation methods, and a seven-day lookback",
+      "href": "#/lesson/k-eval",
+      "keywords": [
+        "three evaluation methods, and a seven-day lookback"
+      ],
+      "synonyms": [
+        "skills and acd",
+        "foundation"
+      ],
+      "answer": "Three evaluation methods, and a seven-day lookback (Foundation, 13 min): All skills matching, best available skills, and disregard skills do different jobs. Proficiency covers ACD skills and language skills together.",
+      "source": "https://help.genesys.cloud/articles/acd-evaluation-routing-methods/"
+    },
+    {
+      "id": "lesson-k-rings",
+      "title": "Bullseye widens the pool in two documented ways",
+      "href": "#/lesson/k-rings",
+      "keywords": [
+        "bullseye widens the pool in two documented ways"
+      ],
+      "synonyms": [
+        "skills and acd",
+        "core"
+      ],
+      "answer": "Bullseye widens the pool in two documented ways (Core, 14 min): One way adds skill-expression groups. The other removes skills. The ring count is not the same sentence on every page.",
+      "source": "https://help.genesys.cloud/articles/bullseye-routing-overview/"
+    },
+    {
+      "id": "lesson-k-filter",
+      "title": "A skill expression filter replaces the queue\u2019s skill list",
+      "href": "#/lesson/k-filter",
+      "keywords": [
+        "a skill expression filter replaces the queue\u2019s skill list"
+      ],
+      "synonyms": [
+        "skills and acd",
+        "core"
+      ],
+      "answer": "A skill expression filter replaces the queue\u2019s skill list (Core, 13 min): It works for standard and predictive routing when evaluation is All skills matching. Other methods ignore it.",
+      "source": "https://help.genesys.cloud/articles/acd-evaluation-routing-methods/"
+    },
+    {
+      "id": "lesson-k-direct",
+      "title": "Direct routing still uses a queue",
+      "href": "#/lesson/k-direct",
+      "keywords": [
+        "direct routing still uses a queue"
+      ],
+      "synonyms": [
+        "skills and acd",
+        "advanced"
+      ],
+      "answer": "Direct routing still uses a queue (Advanced, 13 min): The customer reaches a dedicated person. Wrap-up still exists, because the interaction is ACD.",
+      "source": "https://help.genesys.cloud/articles/direct-routing-overview/"
+    },
+    {
+      "id": "lesson-k-scores",
+      "title": "Preferred scores are 0 to 100, and the list has a size",
+      "href": "#/lesson/k-scores",
+      "keywords": [
+        "preferred scores are 0 to 100, and the list has a size"
+      ],
+      "synonyms": [
+        "skills and acd",
+        "advanced"
+      ],
+      "answer": "Preferred scores are 0 to 100, and the list has a size (Advanced, 13 min): Architect\u2019s agent-score collection supports 20 pairs unless Customer Care raises it. More than 20 fails a call flow.",
+      "source": "https://help.genesys.cloud/articles/advanced-routing-overview/"
+    },
+    {
+      "id": "track-forecast",
+      "title": "Workforce and forecasting",
+      "href": "#/track/forecast",
+      "keywords": [
+        "workforce and forecasting",
+        "forecast"
+      ],
+      "synonyms": [
+        "chapter",
+        "forecast views, creation methods, the editor, and the short-term weeks that are allowed to build a schedule"
+      ],
+      "answer": "Workforce and forecasting: Forecast views, creation methods, the editor, and the short-term weeks that are allowed to build a schedule. This track has 6 lessons in this lab.",
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-n-place",
+      "title": "A forecast is a WFM plan for interactions, not a routing method",
+      "href": "#/lesson/n-place",
+      "keywords": [
+        "a forecast is a wfm plan for interactions, not a routing method"
+      ],
+      "synonyms": [
+        "workforce and forecasting",
+        "foundation"
+      ],
+      "answer": "A forecast is a WFM plan for interactions, not a routing method (Foundation, 12 min): Workforce management is one WEM product. The forecast article names the metrics and the permissions.",
+      "source": "https://help.genesys.cloud/articles/about-workforce-engagement-management-wem/"
+    },
+    {
+      "id": "lesson-n-views",
+      "title": "Short-term weeks can schedule. Long-term weeks cannot",
+      "href": "#/lesson/n-views",
+      "keywords": [
+        "short-term weeks can schedule. long-term weeks cannot"
+      ],
+      "synonyms": [
+        "workforce and forecasting",
+        "foundation"
+      ],
+      "answer": "Short-term weeks can schedule. Long-term weeks cannot (Foundation, 12 min): Six weeks of intervals on one side. Up to two years of days and weeks on the other.",
+      "source": "https://help.genesys.cloud/articles/work-with-forecasts/"
+    },
+    {
+      "id": "lesson-n-methods",
+      "title": "Four creation methods, and a 130-week outer limit",
+      "href": "#/lesson/n-methods",
+      "keywords": [
+        "four creation methods, and a 130-week outer limit"
+      ],
+      "synonyms": [
+        "workforce and forecasting",
+        "core"
+      ],
+      "answer": "Four creation methods, and a 130-week outer limit (Core, 13 min): Automatic best method, weighted history, imported source days, or a finished short-term file.",
+      "source": "https://help.genesys.cloud/articles/add-a-forecast/"
+    },
+    {
+      "id": "lesson-n-editor",
+      "title": "The editor shows history as read-only lines",
+      "href": "#/lesson/n-editor",
+      "keywords": [
+        "the editor shows history as read-only lines"
+      ],
+      "synonyms": [
+        "workforce and forecasting",
+        "core"
+      ],
+      "answer": "The editor shows history as read-only lines (Core, 11 min): Short-term granularity is 15, 30, or 60 minutes. Long-term granularity is daily or weekly.",
+      "source": "https://help.genesys.cloud/articles/work-with-the-forecast-editor/"
+    },
+    {
+      "id": "lesson-n-cover",
+      "title": "The schedule has to sit inside the short-term weeks",
+      "href": "#/lesson/n-cover",
+      "keywords": [
+        "the schedule has to sit inside the short-term weeks"
+      ],
+      "synonyms": [
+        "workforce and forecasting",
+        "advanced"
+      ],
+      "answer": "The schedule has to sit inside the short-term weeks (Advanced, 13 min): Generation offers a forecast only when those weeks cover the schedule, and only one schedule is generated at a time.",
+      "source": "https://help.genesys.cloud/articles/work-with-workforce-management-schedules/"
+    },
+    {
+      "id": "lesson-n-use",
+      "title": "Use the forecast, then go back to the floor",
+      "href": "#/lesson/n-use",
+      "keywords": [
+        "use the forecast, then go back to the floor"
+      ],
+      "synonyms": [
+        "workforce and forecasting",
+        "advanced"
+      ],
+      "answer": "Use the forecast, then go back to the floor (Advanced, 11 min): Intraday compares the plan with what happened. Adherence is a different WFM page.",
+      "source": "https://help.genesys.cloud/articles/workforce-management/"
+    },
+    {
+      "id": "track-quality",
+      "title": "Quality and speech analytics",
+      "href": "#/track/quality",
+      "keywords": [
+        "quality and speech analytics",
+        "quality"
+      ],
+      "synonyms": [
+        "chapter",
+        "evaluation forms, ai scoring, topics and programs, and the limits on the speech-analytics articles"
+      ],
+      "answer": "Quality and speech analytics: Evaluation forms, AI scoring, topics and programs, and the limits on the speech-analytics articles. This track has 6 lessons in this lab.",
+      "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-y-qm",
+      "title": "Quality evaluates the interaction. Speech analytics reads it",
+      "href": "#/lesson/y-qm",
+      "keywords": [
+        "quality evaluates the interaction. speech analytics reads it"
+      ],
+      "synonyms": [
+        "quality and speech analytics",
+        "foundation"
+      ],
+      "answer": "Quality evaluates the interaction. Speech analytics reads it (Foundation, 12 min): The quality article says speech and text analytics runs on 100 percent of interactions. That is a claim to re-open, not a sample size you invent.",
+      "source": "https://help.genesys.cloud/articles/about-quality-management/"
+    },
+    {
+      "id": "lesson-y-form",
+      "title": "A question is human, AI scored, or assisted by topics",
+      "href": "#/lesson/y-form",
+      "keywords": [
+        "a question is human, ai scored, or assisted by topics"
+      ],
+      "synonyms": [
+        "quality and speech analytics",
+        "foundation"
+      ],
+      "answer": "A question is human, AI scored, or assisted by topics (Foundation, 12 min): The form article names three automation choices. Evaluation focus is Full Interaction or Evaluated Agent.",
+      "source": "https://help.genesys.cloud/articles/create-publish-evaluation-form/"
+    },
+    {
+      "id": "lesson-y-ai",
+      "title": "AI scoring waits for history, and a low week hides the answer",
+      "href": "#/lesson/y-ai",
+      "keywords": [
+        "ai scoring waits for history, and a low week hides the answer"
+      ],
+      "synonyms": [
+        "quality and speech analytics",
+        "core"
+      ],
+      "answer": "AI scoring waits for history, and a low week hides the answer (Core, 14 min): A rolling window of 25 submissions. Below 75 percent, the answer is hidden. The transcript needs 300 characters.",
+      "source": "https://help.genesys.cloud/articles/automated-scoring-options-in-evaluation-forms/"
+    },
+    {
+      "id": "lesson-y-topics",
+      "title": "Phrases make a topic. Topics make a program",
+      "href": "#/lesson/y-topics",
+      "keywords": [
+        "phrases make a topic. topics make a program"
+      ],
+      "synonyms": [
+        "quality and speech analytics",
+        "core"
+      ],
+      "answer": "Phrases make a topic. Topics make a program (Core, 12 min): A program is mapped to queues or flows, and it can turn sentiment and empathy on or off.",
+      "source": "https://help.genesys.cloud/articles/understand-programs-topics-and-phrases/"
+    },
+    {
+      "id": "lesson-y-limits",
+      "title": "Programs have counts, and the organization switch wins",
+      "href": "#/lesson/y-limits",
+      "keywords": [
+        "programs have counts, and the organization switch wins"
+      ],
+      "synonyms": [
+        "quality and speech analytics",
+        "advanced"
+      ],
+      "answer": "Programs have counts, and the organization switch wins (Advanced, 14 min): One hundred programs. Five hundred topics per dialect. Twenty scoring rules. Sentiment off at the org turns it off everywhere.",
+      "source": "https://help.genesys.cloud/articles/work-with-a-program/"
+    },
+    {
+      "id": "lesson-y-score",
+      "title": "Agent scoring picks which agent receives the evaluation",
+      "href": "#/lesson/y-score",
+      "keywords": [
+        "agent scoring picks which agent receives the evaluation"
+      ],
+      "synonyms": [
+        "quality and speech analytics",
+        "advanced"
+      ],
+      "answer": "Agent scoring picks which agent receives the evaluation (Advanced, 12 min): Each, first, or last matched agent. The article also says the last participant is the evaluated agent.",
+      "source": "https://help.genesys.cloud/articles/work-with-a-program/"
+    },
+    {
+      "id": "lesson-z-cpaas",
+      "title": "The telephony door this lab can cite is BYOC, not a word the page did not use",
+      "href": "#/lesson/z-cpaas",
+      "keywords": [
+        "the telephony door this lab can cite is byoc, not a word the page did not use"
+      ],
+      "synonyms": [
+        "ecosystem",
+        "foundation"
+      ],
+      "answer": "The telephony door this lab can cite is BYOC, not a word the page did not use (Foundation, 12 min): CPaaS is the classroom name for a communications API you bring. The opened page is About BYOC Cloud.",
+      "source": "https://help.genesys.cloud/articles/about-byoc-cloud/"
+    },
+    {
+      "id": "lesson-z-crm",
+      "title": "Salesforce and Zendesk are the embeds this lab opened",
+      "href": "#/lesson/z-crm",
+      "keywords": [
+        "salesforce and zendesk are the embeds this lab opened"
+      ],
+      "synonyms": [
+        "ecosystem",
+        "core"
+      ],
+      "answer": "Salesforce and Zendesk are the embeds this lab opened (Core, 13 min): Salesforce Open CTI is in maintenance and has a later retirement date. Zendesk\u2019s page does not say that.",
+      "source": "https://help.genesys.cloud/articles/about-genesys-cloud-for-salesforce/"
+    },
+    {
+      "id": "lesson-z-agents",
+      "title": "A bot, a Virtual Agent, and Copilot are three assists",
+      "href": "#/lesson/z-agents",
+      "keywords": [
+        "a bot, a virtual agent, and copilot are three assists"
+      ],
+      "synonyms": [
+        "ecosystem",
+        "core"
+      ],
+      "answer": "A bot, a Virtual Agent, and Copilot are three assists (Core, 12 min): Dialog Engine builds the bot. Virtual Agent adds Genesys AI. Copilot sits with the person.",
+      "source": "https://help.genesys.cloud/articles/about-genesys-dialog-engine-bot-flows/"
+    },
+    {
+      "id": "lesson-z-hooks",
+      "title": "Future hooks are dates on announcements, not a roadmap this lab invented",
+      "href": "#/lesson/z-hooks",
+      "keywords": [
+        "future hooks are dates on announcements, not a roadmap this lab invented"
+      ],
+      "synonyms": [
+        "ecosystem",
+        "advanced"
+      ],
+      "answer": "Future hooks are dates on announcements, not a roadmap this lab invented (Advanced, 12 min): Journey Outcomes, Salesforce Open CTI, and Customer Outcomes are three different sentences.",
+      "source": "https://help.genesys.cloud/announcements/genesys-cloud/deprecation-journey-outcomes/"
     }
   ],
   "tours": [

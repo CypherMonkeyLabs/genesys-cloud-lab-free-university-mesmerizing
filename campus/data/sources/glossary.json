@@ -52,6 +52,38 @@
       "note": ""
     },
     {
+      "title": "Direct routing overview",
+      "url": "https://help.genesys.cloud/articles/direct-routing-overview/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Automated scoring options",
+      "url": "https://help.genesys.cloud/articles/automated-scoring-options-in-evaluation-forms/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Programs, topics, and phrases",
+      "url": "https://help.genesys.cloud/articles/understand-programs-topics-and-phrases/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "About Genesys Virtual Agent",
+      "url": "https://help.genesys.cloud/articles/about-genesys-virtual-agent/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
       "title": "Preferred agent routing",
       "url": "https://help.genesys.cloud/articles/preferred-agent-routing-behavior/",
       "kind": "resource-center",

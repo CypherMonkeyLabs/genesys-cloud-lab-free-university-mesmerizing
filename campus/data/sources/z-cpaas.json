@@ -1,0 +1,63 @@
+{
+  "id": "z-cpaas",
+  "title": "The telephony door this lab can cite is BYOC, not a word the page did not use",
+  "lastChecked": "2026-10",
+  "sources": [
+    {
+      "title": "About BYOC Cloud",
+      "url": "https://help.genesys.cloud/articles/about-byoc-cloud/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "BYOC Premises Edge groups overview",
+      "url": "https://help.genesys.cloud/articles/edge-groups-overview/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "AppFoundry",
+      "url": "https://appfoundry.genesys.com/",
+      "kind": "official",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Genesys Cloud Developer Center",
+      "url": "https://developer.genesys.cloud/",
+      "kind": "developer",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Genesys Community",
+      "url": "https://community.genesys.com/",
+      "kind": "community",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "Community home, not a thread about this room."
+    },
+    {
+      "title": "RFC 3261 SIP",
+      "url": "https://www.rfc-editor.org/rfc/rfc3261",
+      "kind": "rfc",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "Protocol specification."
+    },
+    {
+      "title": "Session Initiation Protocol",
+      "url": "https://en.wikipedia.org/wiki/Session_Initiation_Protocol",
+      "kind": "wikipedia",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "Background article. It is not a Genesys Cloud product page."
+    }
+  ]
+}
