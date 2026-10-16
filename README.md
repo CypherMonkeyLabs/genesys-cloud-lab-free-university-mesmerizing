@@ -87,6 +87,14 @@ Synthetic logs use the documentation ranges in RFC 5737 and fictional 555 number
 
 ![Phone width, paper theme, bottom navigation](docs/screenshots/mobile-home.png)
 
+![Landing page at 1440](docs/screenshots/audit-landing-1440.png)
+
+![Landing page at 390](docs/screenshots/audit-landing-390.png)
+
+![Lab home at 1440](docs/screenshots/audit-campus-1440.png)
+
+![Lab home at 390](docs/screenshots/audit-campus-390.png)
+
 ## License
 
 Code is MIT. Educational prose is CC BY-NC-SA 4.0. See [LICENSE](LICENSE). Three.js remains under the license in `campus/vendor/THREE-LICENSE.txt`.
