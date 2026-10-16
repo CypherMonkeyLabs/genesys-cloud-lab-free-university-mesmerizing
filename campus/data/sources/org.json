@@ -1,0 +1,127 @@
+{
+  "id": "org",
+  "title": "Organization and licensing",
+  "lastChecked": "2026-10",
+  "sources": [
+    {
+      "title": "AWS regions for Genesys Cloud",
+      "url": "https://help.genesys.cloud/articles/aws-regions-for-genesys-cloud-deployment/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "AWS regions for Genesys Cloud Voice",
+      "url": "https://help.genesys.cloud/articles/aws-regions-genesys-cloud-voice/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Divisions overview",
+      "url": "https://help.genesys.cloud/articles/divisions-overview/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Client credentials grant",
+      "url": "https://developer.genesys.cloud/api/rest/authorization/use-client-credentials",
+      "kind": "developer",
+      "lastChecked": "2026-10",
+      "status": "confirm",
+      "note": "The response was the Developer Center shell, which is the same page for a missing path. The lab opened this URL in 2026-10 and could not verify it. Confirm before relying."
+    },
+    {
+      "title": "Create an OAuth client",
+      "url": "https://help.genesys.cloud/articles/create-an-oauth-client/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Concurrent licensing model billing overview",
+      "url": "https://help.genesys.cloud/articles/concurrent-licensing-model-billing-overview/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Genesys Cloud fair use policy",
+      "url": "https://help.genesys.cloud/articles/genesys-cloud-fair-use-policy/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Overview of Genesys Cloud",
+      "url": "https://help.mypurecloud.com/articles/overview-of-genesys-cloud/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Genesys Agent Copilot overview",
+      "url": "https://help.genesys.cloud/articles/agent-copilot-overview/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Create and configure queues",
+      "url": "https://help.genesys.cloud/articles/create-queues/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Create a BYOC Premises Edge group with a phone trunk",
+      "url": "https://help.genesys.cloud/articles/create-edge-group-phone-trunk/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "In-queue flows overview",
+      "url": "https://help.genesys.cloud/articles/queue-call-flows/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Genesys Cloud Developer Center",
+      "url": "https://developer.genesys.cloud/",
+      "kind": "developer",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "General developer docs. This is the Developer Center home, not a page written for this room alone."
+    },
+    {
+      "title": "Genesys Community",
+      "url": "https://community.genesys.com/",
+      "kind": "community",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "Community home, not a thread about this room."
+    },
+    {
+      "title": "OAuth",
+      "url": "https://en.wikipedia.org/wiki/OAuth",
+      "kind": "wikipedia",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "Background article. It is not a Genesys Cloud product page."
+    }
+  ]
+}

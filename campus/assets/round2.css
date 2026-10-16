@@ -516,3 +516,52 @@ h2 .dl-mini { float: none; margin-left: auto; }
 [data-reduce="1"] .bottom-nav button:hover {
   transform: none;
 }
+.sources-deeper {
+  margin: 28px 0 12px;
+  padding: 16px 18px 8px;
+  border: 2px solid #0f766e;
+  border-radius: 16px;
+  background: #f0fdfa !important;
+  color: #042f2e !important;
+  -webkit-text-fill-color: #042f2e !important;
+}
+.sources-deeper h2,
+.sources-deeper p,
+.sources-deeper li,
+.sources-deeper .src-kind,
+.sources-deeper .src-checked,
+.sources-deeper .src-note {
+  color: #042f2e !important;
+  -webkit-text-fill-color: #042f2e !important;
+  background: none;
+  text-shadow: none;
+}
+.sources-deeper h2 { margin: 0 0 8px; font-size: 1.25rem; }
+.sources-deeper a {
+  color: #08306b !important;
+  -webkit-text-fill-color: #08306b !important;
+  text-decoration: underline;
+  overflow-wrap: anywhere;
+}
+.sources-deeper .src-kind {
+  display: inline-block;
+  min-width: 8.5rem;
+  margin-right: 6px;
+  font-weight: 800;
+  font-size: 0.82rem;
+}
+.sources-deeper .src-checked,
+.sources-deeper .src-note { display: inline; margin-left: 6px; }
+.sources-deeper .src-flag {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: #fde68a !important;
+  color: #422006 !important;
+  -webkit-text-fill-color: #422006 !important;
+  font-weight: 800;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}

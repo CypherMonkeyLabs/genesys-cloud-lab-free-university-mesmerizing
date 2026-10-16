@@ -1,4 +1,5 @@
 import { mountMascot } from "./mascot.js";
+import { attachSources } from "./sources.js";
 import { applyLang, pack, LANGS } from "./i18n.js";
 import { isoIcon, iconForTrack } from "./icons3d.js";
 import { heading } from "./headings.js";
@@ -336,6 +337,13 @@ function bindChrome() {
   });
 }
 
+function roomId(route) {
+  const [head, id] = route.parts;
+  if (!head) return "home";
+  if (id && (head === "lesson" || head === "track" || head === "boss" || head === "studio")) return id;
+  return head;
+}
+
 function parseRoute() {
   const raw = (location.hash || "#/").replace(/^#/, "");
   const [path, qs] = raw.split("?");
@@ -528,6 +536,7 @@ async function render() {
   stopRuntime();
   if (sessionStorage.getItem("gccx-listen") !== "1") window.scrollTo(0, 0);
   const route = parseRoute();
+  document.body.dataset.room = roomId(route);
   const [head, id] = route.parts;
   status("Loading");
   try {
@@ -585,6 +594,7 @@ function showHome() {
     <div class="grid">${state.manifest.tracks.map(trackCard).join("")}</div>`;
   mountHomeViz();
   window.gccxDecorate?.(document.getElementById("home"));
+  attachSources(homeEl);
   armReveal($("#home"));
   if (sessionStorage.getItem("gccx-listen") === "1") {
     sessionStorage.removeItem("gccx-listen");
@@ -783,6 +793,7 @@ function renderLesson(track, lesson) {
         <a href="#sec-eco">Ecosystem</a>
         <a href="#sec-read">Reading</a>
         <a href="#sec-sources">Sources</a>
+        <a href="#sec-sources-deeper">Go deeper</a>
         <a href="#sec-flow">Step-through</a>
         <a href="#sec-quiz">Quiz</a>
         <a href="#sec-cards">Flashcards</a>
@@ -1223,6 +1234,7 @@ function mount(html) {
   viewEl.hidden = false;
   viewEl.innerHTML = html;
   window.gccxDecorate?.(viewEl);
+  attachSources(viewEl);
   status("Ready");
   syncChrome();
   refreshLive();

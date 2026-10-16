@@ -9,7 +9,7 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
 endobj
 4 0 obj
-<< /Length 1683 >>
+<< /Length 3058 >>
 stream
 BT
 /F1 14 Tf
@@ -31,17 +31,45 @@ BT
 0 -14 Td
 () Tj
 0 -14 Td
-(Sources:) Tj
+(Sources and go deeper) Tj
 0 -14 Td
-(https://help.genesys.cloud/articles/choose-a-trunk-transport-protocol/) Tj
+(Last checked 2026-10) Tj
 0 -14 Td
-(https://help.genesys.cloud/articles/tls-trunk-transport-protocol-specification/) Tj
+(Choose a trunk transport protocol \(Resource Center\) https://help.genesys.cloud/articles/choose-a-trunk-transpo) Tj
 0 -14 Td
-(https://help.genesys.cloud/articles/ports-and-services-for-voip-phones-under-byoc-cloud/) Tj
+(TLS trunk transport for BYOC Cloud \(Resource Center\) https://help.genesys.cloud/articles/tls-trunk-transport-p) Tj
 0 -14 Td
-(https://help.genesys.cloud/faqs/why-does-the-port-range-16384-32767-rtp-media-need-to-be-opened-up-for-genesys) Tj
+(VoIP phone ports under BYOC Cloud \(Resource Center\) https://help.genesys.cloud/articles/ports-and-services-for) Tj
 0 -14 Td
-(https://help.genesys.cloud/articles/byoc-cloud-public-sip-ip-addresses/) Tj
+(RTP port range FAQ \(Resource Center\) https://help.genesys.cloud/faqs/why-does-the-port-range-16384-32767-rtp-m) Tj
+0 -14 Td
+(BYOC Cloud public SIP IP addresses \(Resource Center\) https://help.genesys.cloud/articles/byoc-cloud-public-sip) Tj
+0 -14 Td
+(Ports and services for your firewall \(Resource Center\) https://help.genesys.cloud/articles/genesys-cloud-ports) Tj
+0 -14 Td
+(RFC 3261 SIP \(RFC\) https://www.rfc-editor.org/rfc/rfc3261 Last checked 2026-10) Tj
+0 -14 Td
+(RFC 3550 RTP \(RFC\) https://www.rfc-editor.org/rfc/rfc3550 Last checked 2026-10) Tj
+0 -14 Td
+(Genesys Cloud Developer Center \(Developer docs\) https://developer.genesys.cloud/ Last checked 2026-10) Tj
+0 -14 Td
+(  General developer docs. This is the Developer Center home, not a page written for this room alone.) Tj
+0 -14 Td
+(Genesys Community \(Community\) https://community.genesys.com/ Last checked 2026-10) Tj
+0 -14 Td
+(  Community home, not a thread about this room.) Tj
+0 -14 Td
+(RFC 3711 SRTP \(RFC\) https://www.rfc-editor.org/rfc/rfc3711 Last checked 2026-10) Tj
+0 -14 Td
+(  Protocol specification.) Tj
+0 -14 Td
+(RFC 4733 DTMF \(RFC\) https://www.rfc-editor.org/rfc/rfc4733 Last checked 2026-10) Tj
+0 -14 Td
+(  Protocol specification.) Tj
+0 -14 Td
+(Session Initiation Protocol \(Wikipedia\) https://en.wikipedia.org/wiki/Session_Initiation_Protocol Last checked) Tj
+0 -14 Td
+(  Background article. It is not a Genesys Cloud product page.) Tj
 0 -14 Td
 () Tj
 0 -14 Td
@@ -74,8 +102,8 @@ xref
 0000000058 00000 n 
 0000000115 00000 n 
 0000000241 00000 n 
-0000001976 00000 n 
+0000003351 00000 n 
 trailer << /Size 6 /Root 1 0 R >>
 startxref
-2046
+3421
 %%EOF

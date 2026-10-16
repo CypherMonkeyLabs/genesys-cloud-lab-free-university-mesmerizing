@@ -9,7 +9,7 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
 endobj
 4 0 obj
-<< /Length 1327 >>
+<< /Length 3568 >>
 stream
 BT
 /F1 14 Tf
@@ -31,11 +31,49 @@ BT
 0 -14 Td
 () Tj
 0 -14 Td
-(Sources:) Tj
+(Sources and go deeper) Tj
 0 -14 Td
-(https://help.genesys.cloud/articles/about-predictive-engagement/) Tj
+(Last checked 2026-10) Tj
 0 -14 Td
-(https://help.genesys.cloud/announcements/genesys-cloud/deprecation-journey-outcomes/) Tj
+(About Predictive Engagement \(Resource Center\) https://help.genesys.cloud/articles/about-predictive-engagement/) Tj
+0 -14 Td
+(Genesys Predictive Engagement \(Resource Center\) https://help.genesys.cloud/usecases/genesys-predictive-engagem) Tj
+0 -14 Td
+(Deprecation: Journey Outcomes \(Resource Center\) https://help.genesys.cloud/announcements/genesys-cloud/depreca) Tj
+0 -14 Td
+(Advanced routing overview \(Resource Center\) https://help.genesys.cloud/articles/advanced-routing-overview/ Las) Tj
+0 -14 Td
+(Predictive Engagement tracking snippet \(Resource Center\) https://help.genesys.cloud/articles/predictive-engage) Tj
+0 -14 Td
+(Migrate from web chat to web messaging \(Resource Center\) https://help.genesys.cloud/articles/migrate-from-web-) Tj
+0 -14 Td
+(Configure and deploy Genesys Messenger \(Resource Center\) https://help.genesys.cloud/articles/configure-and-dep) Tj
+0 -14 Td
+(Best practices for segments \(Resource Center\) https://help.genesys.cloud/articles/best-practices-for-segments/) Tj
+0 -14 Td
+(Create an action map \(Resource Center\) https://help.genesys.cloud/articles/create-an-action-map/ Last checked ) Tj
+0 -14 Td
+(Define an action map's triggers \(Resource Center\) https://help.genesys.cloud/articles/define-an-action-maps-tr) Tj
+0 -14 Td
+(Action maps overview \(Resource Center\) https://help.genesys.cloud/articles/action-maps-overview-2/ Last checke) Tj
+0 -14 Td
+(About action maps \(Resource Center\) https://help.genesys.cloud/articles/about-action-maps/ Last checked 2026-1) Tj
+0 -14 Td
+(Predictive Routing customer-defined outcomes \(Resource Center\) https://help.genesys.cloud/announcements/genesy) Tj
+0 -14 Td
+(About Architect \(Resource Center\) https://help.genesys.cloud/articles/about-architect/ Last checked 2026-10) Tj
+0 -14 Td
+(Genesys Cloud Developer Center \(Developer docs\) https://developer.genesys.cloud/ Last checked 2026-10) Tj
+0 -14 Td
+(  General developer docs. This is the Developer Center home, not a page written for this room alone.) Tj
+0 -14 Td
+(Genesys Community \(Community\) https://community.genesys.com/ Last checked 2026-10) Tj
+0 -14 Td
+(  Community home, not a thread about this room.) Tj
+0 -14 Td
+(Automatic call distributor \(Wikipedia\) https://en.wikipedia.org/wiki/Automatic_call_distributor Last checked 2) Tj
+0 -14 Td
+(  Background article. It is not a Genesys Cloud product page.) Tj
 0 -14 Td
 () Tj
 0 -14 Td
@@ -68,8 +106,8 @@ xref
 0000000058 00000 n 
 0000000115 00000 n 
 0000000241 00000 n 
-0000001620 00000 n 
+0000003861 00000 n 
 trailer << /Size 6 /Root 1 0 R >>
 startxref
-1690
+3931
 %%EOF

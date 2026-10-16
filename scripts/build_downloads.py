@@ -9,6 +9,8 @@ import time
 import zlib
 from pathlib import Path
 
+from source_lib import html_block, load_checks, normalize, png_tail, text_lines
+
 ROOT = Path(__file__).resolve().parents[1]
 CAMPUS = ROOT / "campus"
 OUT = CAMPUS / "downloads"
@@ -154,8 +156,9 @@ def chunk(tag, data):
     return struct.pack(">I", len(data)) + tag + data + struct.pack(">I", zlib.crc32(tag + data) & 0xFFFFFFFF)
 
 
-def write_png(path, title, lines):
+def write_png(path, title, lines, tail=None):
     width, height = 640, 360
+    tail = tail or ["SOURCES AND GO DEEPER", "LAST CHECKED 2026-10"]
     scale = 2
     rows = [bytearray([245, 241, 232]) * width for _ in range(height)]
 
@@ -171,12 +174,17 @@ def write_png(path, title, lines):
 
     rect(0, 0, width, 70, (7, 16, 28))
     text(rows, 24, 22, title.upper(), 3, (255, 90, 54), width)
+    tail_top = height - 12 - 18 * len(tail)
     y = 100
     for line in lines:
+        if y > tail_top - 18:
+            break
         text(rows, 24, y, line.upper(), 2, (26, 12, 8), width)
         y += 18
-        if y > height - 40:
-            break
+    y = tail_top
+    for line in tail:
+        text(rows, 24, y, line.upper(), 2, (8, 47, 46), width)
+        y += 18
     raw = b"".join(b"\x00" + bytes(row) for row in rows)
     ihdr = struct.pack(">IIBBBBB", width, height, 8, 2, 0, 0, 0)
     png = b"\x89PNG\r\n\x1a\n" + chunk(b"IHDR", ihdr) + chunk(b"IDAT", zlib.compress(raw, 9)) + chunk(b"IEND", b"")
@@ -221,8 +229,8 @@ def disclaimer_html():
 
 
 def write_html(path, title, paragraphs, sources):
+    entries = normalize(sources)
     body = "\n".join(f"<p>{xml(p)}</p>" for p in paragraphs)
-    links = "\n".join(f'<li><a href="{url}">{xml(url)}</a></li>' for url in sources)
     icon_prefix = "../" if path.parent == OUT else "../../"
     path.write_text(f"""<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
@@ -235,12 +243,14 @@ h1 {{ font-size: 28px; color: #123528; }}
 a {{ color: #0f5c4c; }}
 .disclaimer-panel {{ border: 2px solid #1d6b4f; background: #e7f6ee; color: #123528; padding: 14px 16px; border-radius: 12px; margin-top: 28px; }}
 .disclaimer-panel h2 {{ font-size: 18px; margin: 0 0 8px; }}
+.sources-deeper {{ margin-top: 28px; padding: 14px 16px; border: 2px solid #0f766e; border-radius: 12px; background: #f0fdfa; color: #042f2e; }}
+.sources-deeper a {{ color: #08306b; }}
+.src-flag {{ background: #fde68a; color: #422006; font-weight: 800; padding: 0 6px; border-radius: 999px; }}
 @media print {{ body {{ background: #fff; }} }}
 </style></head><body>
 <h1>{xml(title)}</h1>
 {body}
-<h2>Sources</h2>
-<ul>{links}</ul>
+{html_block(entries)}
 {disclaimer_html()}
 </body></html>
 """, encoding="utf-8")
@@ -270,25 +280,30 @@ def write_png_from_html(html_path, png_path):
 
 
 def write_svg(path, title, lines, sources):
+    entries = normalize(sources)
     tspans = []
     y = 86
-    for line in lines[:28]:
-        tspans.append(f'<text x="40" y="{y}" font-size="16" fill="#1b140f">{xml(line)}</text>')
+    for line in lines[:24]:
+        tspans.append(f'<text x="40" y="{y}" font-size="16" fill="#1b140f">{xml(line[:90])}</text>')
         y += 22
+    src_lines = []
+    y += 12
+    for line in text_lines(entries):
+        src_lines.append(f'<text x="40" y="{y}" font-size="12" fill="#08306b">{xml(line[:120])}</text>')
+        y += 16
     foot_lines = []
-    fy = 700
+    y += 12
     for line in [DISCLAIMER[:180], *BRANDS, REPO, COPYRIGHT]:
-        foot_lines.append(f'<text x="40" y="{fy}" font-size="11" fill="#123528">{xml(line[:110])}</text>')
-        fy += 16
-    foot = "".join(foot_lines)
-    src = f'<text x="40" y="{fy}" font-size="12" fill="#8d1d08">{xml(sources[0] if sources else "")}</text>'
-    path.write_text(f"""<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000">
-<rect width="800" height="1000" fill="#f7f4ef"/>
+        foot_lines.append(f'<text x="40" y="{y}" font-size="11" fill="#123528">{xml(line[:110])}</text>')
+        y += 16
+    height = y + 24
+    path.write_text(f"""<svg xmlns="http://www.w3.org/2000/svg" width="800" height="{height}" viewBox="0 0 800 {height}">
+<rect width="800" height="{height}" fill="#f7f4ef"/>
 <rect width="800" height="64" fill="#07101c"/>
 <text x="40" y="42" fill="#ff5a36" font-size="24" font-family="Georgia, serif">{xml(title)}</text>
 {''.join(tspans)}
-{foot}
-{src}
+{''.join(src_lines)}
+{''.join(foot_lines)}
 </svg>
 """, encoding="utf-8")
 
@@ -575,15 +590,30 @@ def write_icon(path, size):
     path.write_bytes(b"\x89PNG\r\n\x1a\n" + chunk(b"IHDR", ihdr) + chunk(b"IDAT", zlib.compress(raw, 9)) + chunk(b"IEND", b""))
 
 
+def room_sources(room_id, fallback_pairs, blob):
+    path = CAMPUS / "data" / "sources" / f"{room_id}.json"
+    if path.exists():
+        data = json.loads(path.read_text(encoding="utf-8"))
+        if data.get("sources"):
+            return data["sources"]
+    from source_lib import enrich
+    return enrich(
+        [{"title": title, "url": url} for title, url in fallback_pairs],
+        blob,
+        load_checks(),
+    )
+
+
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     catalog = []
     for sid, title, summary, lines, sources in SHEETS:
+        entries = room_sources(sid, [(url, url) for url in sources], " ".join([title, summary] + lines))
         html_path = OUT / f"{sid}.html"
-        write_html(html_path, title, lines, sources)
-        write_pdf(OUT / f"{sid}.pdf", title, wrap(" ".join(lines), 90) + [""] + ["Sources:"] + sources + [""] + FOOT)
-        write_png(OUT / f"{sid}.png", title, lines[:12] + [""] + ["LEARNING-ONLY"] + BRANDS)
-        write_svg(OUT / f"{sid}.svg", title, lines + [DISCLAIMER[:160]], sources)
+        write_html(html_path, title, lines, entries)
+        write_pdf(OUT / f"{sid}.pdf", title, wrap(" ".join(lines), 90) + [""] + text_lines(entries) + [""] + FOOT)
+        write_png(OUT / f"{sid}.png", title, lines[:8] + ["LEARNING-ONLY"], png_tail(entries))
+        write_svg(OUT / f"{sid}.svg", title, lines, entries)
         catalog.append({
             "id": sid,
             "title": title,
@@ -592,31 +622,43 @@ def main():
             "pdf": f"downloads/{sid}.pdf",
             "png": f"downloads/{sid}.png",
             "svg": f"downloads/{sid}.svg",
-            "sources": sources,
+            "sources": [item["url"] for item in entries],
         })
 
     cards = []
     for path in sorted((CAMPUS / "data" / "tracks").glob("*.json")):
         track = json.loads(path.read_text(encoding="utf-8"))
         for lesson in track["lessons"]:
+            deeper = room_sources(
+                lesson["id"],
+                [(cite.get("title") or cite["url"], cite["url"]) for cite in lesson["cites"]],
+                lesson.get("title") or "",
+            )
             for card in lesson["cards"]:
                 cards.append({
                     "track": track["title"],
                     "lesson": lesson["title"],
+                    "lessonId": lesson["id"],
                     "front": card["front"],
                     "back": card["back"],
                     "sources": [cite["url"] for cite in lesson["cites"]],
+                    "deeper": deeper,
                 })
     deck = {"title": "Signal Floor flashcards", "footer": FOOT, "cards": cards}
     (OUT / "flashcards.json").write_text(json.dumps(deck, indent=2) + "\n", encoding="utf-8")
     blocks = []
     for card in cards:
-        blocks.append(f"<article><h2>{xml(card['front'])}</h2><p>{xml(card['back'])}</p><p>{xml(card['track'])} · {xml(card['lesson'])}</p></article>")
+        blocks.append(
+            f"<article><h2>{xml(card['front'])}</h2><p>{xml(card['back'])}</p>"
+            f"<p>{xml(card['track'])} · {xml(card['lesson'])}</p>{html_block(card['deeper'])}</article>"
+        )
     (OUT / "flashcards.html").write_text(
         "<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'><title>Flashcards</title>"
         "<link rel='icon' href='../favicon.ico' sizes='any'><link rel='icon' href='../favicon.svg' type='image/svg+xml'>"
         "<style>body{font:15px/1.4 Georgia,serif;margin:24px;background:#f7f4ef;color:#1b140f}"
         "article{break-inside:avoid;border:1px solid #ccc;padding:12px;margin:8px 0;background:#fff}"
+        ".sources-deeper{margin-top:12px;padding:10px;border:2px solid #0f766e;background:#f0fdfa;color:#042f2e}"
+        ".sources-deeper a{color:#08306b}.src-flag{background:#fde68a;color:#422006;font-weight:800}"
         "footer{margin-top:24px;font-size:13px}</style></head><body><h1>Signal Floor flashcards</h1>"
         + "\n".join(blocks)
         + "<footer>" + "\n".join(f"<p>{xml(line)}</p>" for line in visible_foot()) + "</footer></body></html>",
@@ -626,6 +668,7 @@ def main():
     for card in cards:
         card_lines.append(card["front"][:110])
         card_lines.append("  " + card["back"][:110])
+        card_lines.extend(text_lines(card["deeper"]))
         card_lines.append("")
     write_pdf(OUT / "flashcards.pdf", "Signal Floor flashcards", card_lines + [""] + FOOT)
 
@@ -634,9 +677,10 @@ def main():
     diagram_dir.mkdir(parents=True, exist_ok=True)
     for spec in diagrams:
         lines = [spec["caption"], f"Kind: {spec['kind']}", f"Flow: {'yes' if spec['flow'] else 'no'}", "Confirm before relying. The cited page wins."]
-        write_html(diagram_dir / f"{spec['id']}.html", spec["title"], lines, [spec["url"]])
-        write_svg(diagram_dir / f"{spec['id']}.svg", spec["title"], lines, [spec["url"]])
-        write_png(diagram_dir / f"{spec['id']}.png", spec["title"], [spec["caption"][:80], spec["cite"][:40]])
+        entries = room_sources(spec["id"], [(spec["cite"], spec["url"])], spec["title"] + " " + spec["caption"])
+        write_html(diagram_dir / f"{spec['id']}.html", spec["title"], lines, entries)
+        write_svg(diagram_dir / f"{spec['id']}.svg", spec["title"], lines, entries)
+        write_png(diagram_dir / f"{spec['id']}.png", spec["title"], [spec["caption"][:70]], png_tail(entries))
 
     template_dir = OUT / "templates"
     template_dir.mkdir(parents=True, exist_ok=True)
@@ -653,9 +697,14 @@ def main():
         TREE,
         REPO,
     ]
-    write_html(template_dir / "lab-checklist.html", "Lab checklist", checklist, ["https://help.genesys.cloud/articles/about-architect/"])
-    write_pdf(template_dir / "lab-checklist.pdf", "Lab checklist", checklist)
-    write_docx(template_dir / "lab-checklist.docx", "Lab checklist", checklist)
+    checklist_sources = room_sources(
+        "lab-checklist",
+        [("About Architect", "https://help.genesys.cloud/articles/about-architect/")],
+        "checklist architect trunk queue emergency",
+    )
+    write_html(template_dir / "lab-checklist.html", "Lab checklist", checklist, checklist_sources)
+    write_pdf(template_dir / "lab-checklist.pdf", "Lab checklist", checklist + [""] + text_lines(checklist_sources))
+    write_docx(template_dir / "lab-checklist.docx", "Lab checklist", checklist + text_lines(checklist_sources))
 
     write_pptx(OUT / "genesys-cx-deck.pptx", [
         ("Genesys Cloud CX Lab", ["Signal Floor", "Independent, free, learning-only", COPYRIGHT, WEB, ORG, TREE]),
@@ -668,6 +717,7 @@ def main():
         ]),
         ("Routing", ["On Queue", "Under utilization", "Skill result the evaluation method accepts", "Preferred agents can go first"]),
         ("Downloads", ["Sheets HTML PDF PNG SVG", "Flashcards HTML JSON PDF", "Checklist DOCX PDF HTML", "Diagram SVG PNG HTML", DISCLAIMER]),
+        ("Sources and go deeper", text_lines(checklist_sources)[:14]),
     ])
 
     write_icon(CAMPUS / "icon-192.png", 192)
@@ -705,6 +755,7 @@ def main():
         "PNG files are bitmap title cards from the build script, not browser screenshots of the live diagrams. "
         "PPTX and DOCX are minimal Office Open XML. Confirm before relying.</p>"
         f"<table><thead><tr><th>File</th><th>Result</th><th>Note</th></tr></thead><tbody>{table_rows}</tbody></table>"
+        + html_block(checklist_sources)
         + disclaimer_html()
         + "</body></html>",
         encoding="utf-8",

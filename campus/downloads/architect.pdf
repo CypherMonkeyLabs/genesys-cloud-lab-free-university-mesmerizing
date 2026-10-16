@@ -9,7 +9,7 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
 endobj
 4 0 obj
-<< /Length 1267 >>
+<< /Length 3335 >>
 stream
 BT
 /F1 14 Tf
@@ -29,13 +29,49 @@ BT
 0 -14 Td
 () Tj
 0 -14 Td
-(Sources:) Tj
+(Sources and go deeper) Tj
 0 -14 Td
-(https://help.genesys.cloud/articles/create-a-flow/) Tj
+(Last checked 2026-10) Tj
 0 -14 Td
-(https://help.genesys.cloud/articles/queue-call-flows/) Tj
+(Navigate the Architect home page \(Resource Center\) https://help.genesys.cloud/articles/navigate-the-architect-) Tj
 0 -14 Td
-(https://help.genesys.cloud/articles/about-genesys-dialog-engine-bot-flows/) Tj
+(Create a flow \(Resource Center\) https://help.genesys.cloud/articles/create-a-flow/ Last checked 2026-10) Tj
+0 -14 Td
+(About Architect \(Resource Center\) https://help.genesys.cloud/articles/about-architect/ Last checked 2026-10) Tj
+0 -14 Td
+(Use Architect to create a bot for an inbound flow \(Resource Center\) https://help.genesys.cloud/articles/use-ar) Tj
+0 -14 Td
+(In-queue flows overview \(Resource Center\) https://help.genesys.cloud/articles/queue-call-flows/ Last checked 2) Tj
+0 -14 Td
+(Salesforce OAuth client credentials migration \(Resource Center\) https://help.genesys.cloud/articles/salesforce) Tj
+0 -14 Td
+(About Genesys Cloud for Salesforce \(Resource Center\) https://help.genesys.cloud/articles/about-genesys-cloud-f) Tj
+0 -14 Td
+(About Genesys Cloud for Zendesk \(Resource Center\) https://help.genesys.cloud/articles/about-genesys-cloud-for-) Tj
+0 -14 Td
+(About recording \(Resource Center\) https://help.genesys.cloud/articles/about-recording/ Last checked 2026-10) Tj
+0 -14 Td
+(About Genesys Dialog Engine Bot Flows \(Resource Center\) https://help.genesys.cloud/articles/about-genesys-dial) Tj
+0 -14 Td
+(About Genesys Digital Bot Flows \(Resource Center\) https://help.genesys.cloud/articles/about-genesys-digital-bo) Tj
+0 -14 Td
+(Divisions overview \(Resource Center\) https://help.genesys.cloud/articles/divisions-overview/ Last checked 2026) Tj
+0 -14 Td
+(Genesys Cloud Developer Center \(Developer docs\) https://developer.genesys.cloud/ Last checked 2026-10) Tj
+0 -14 Td
+(  General developer docs. This is the Developer Center home, not a page written for this room alone.) Tj
+0 -14 Td
+(Genesys Community \(Community\) https://community.genesys.com/ Last checked 2026-10) Tj
+0 -14 Td
+(  Community home, not a thread about this room.) Tj
+0 -14 Td
+(RFC 3261 SIP \(RFC\) https://www.rfc-editor.org/rfc/rfc3261 Last checked 2026-10) Tj
+0 -14 Td
+(  Protocol specification.) Tj
+0 -14 Td
+(Interactive voice response \(Wikipedia\) https://en.wikipedia.org/wiki/Interactive_voice_response Last checked 2) Tj
+0 -14 Td
+(  Background article. It is not a Genesys Cloud product page.) Tj
 0 -14 Td
 () Tj
 0 -14 Td
@@ -68,8 +104,8 @@ xref
 0000000058 00000 n 
 0000000115 00000 n 
 0000000241 00000 n 
-0000001560 00000 n 
+0000003628 00000 n 
 trailer << /Size 6 /Root 1 0 R >>
 startxref
-1630
+3698
 %%EOF

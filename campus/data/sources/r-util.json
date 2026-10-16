@@ -1,0 +1,55 @@
+{
+  "id": "r-util",
+  "title": "Utilization and Not Responding",
+  "lastChecked": "2026-10",
+  "sources": [
+    {
+      "title": "Agent utilization",
+      "url": "https://help.genesys.cloud/articles/utilization/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Create and configure queues",
+      "url": "https://help.genesys.cloud/articles/create-queues/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Preferred agent routing behavior",
+      "url": "https://help.genesys.cloud/articles/preferred-agent-routing-behavior/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Genesys Cloud Developer Center",
+      "url": "https://developer.genesys.cloud/",
+      "kind": "developer",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "General developer docs. This is the Developer Center home, not a page written for this room alone."
+    },
+    {
+      "title": "Genesys Community",
+      "url": "https://community.genesys.com/",
+      "kind": "community",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "Community home, not a thread about this room."
+    },
+    {
+      "title": "Automatic call distributor",
+      "url": "https://en.wikipedia.org/wiki/Automatic_call_distributor",
+      "kind": "wikipedia",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "Background article. It is not a Genesys Cloud product page."
+    }
+  ]
+}

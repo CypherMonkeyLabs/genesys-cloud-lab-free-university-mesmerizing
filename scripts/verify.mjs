@@ -18,7 +18,9 @@ const ALLOW = new Set([
   "www.rfc-editor.org",
   "www.cisco.com",
   "www.genesys.com",
-  "genesys.com"
+  "genesys.com",
+  "community.genesys.com",
+  "en.wikipedia.org"
 ]);
 
 const problems = [];
@@ -92,6 +94,50 @@ if (CHARTS.length < 6) problems.push(`charts ${CHARTS.length}`);
 for (const item of DIAGRAMS) checkUrl(item.url, item.id);
 for (const item of PORTS) checkUrl(item.url, item.name);
 for (const url of PAGE_CITES) checkUrl(url, "page");
+
+const sourceDir = join(root, "campus/data/sources");
+const sourceIndexPath = join(sourceDir, "index.json");
+if (!existsSync(sourceIndexPath)) problems.push("sources index missing");
+else {
+  const sourceIndex = JSON.parse(readFileSync(sourceIndexPath, "utf8"));
+  const sourceRooms = new Set(sourceIndex.rooms || []);
+  const requiredRooms = [
+    "home", "tracks", "studio", "topology", "glossary", "certs", "ecosystem", "boss", "interview", "settings", "search",
+    "atlas", "ports", "game", "map", "sandbox", "daily", "badges", "cheat", "downloads", "flows", "charts", "play",
+    "roadmap", "security", "career", "whats-new", "playbooks", "deploy", "architecture", "reporting", "regions", "help", "legal",
+    "lab-checklist"
+  ];
+  for (const id of ids) requiredRooms.push(id);
+  for (const stub of manifest.tracks) requiredRooms.push(stub.id);
+  for (const studio of manifest.studios || []) requiredRooms.push(studio.id);
+  for (const boss of reference.bosses) requiredRooms.push(boss.id);
+  for (const id of requiredRooms) {
+    if (!sourceRooms.has(id)) problems.push(`sources index missing ${id}`);
+  }
+  for (const id of sourceRooms) {
+    const file = join(sourceDir, `${id}.json`);
+    if (!existsSync(file)) {
+      problems.push(`sources file missing ${id}`);
+      continue;
+    }
+    const data = JSON.parse(readFileSync(file, "utf8"));
+    if (data.id !== id) problems.push(`sources id ${id}`);
+    if (!/^\d{4}-\d{2}$/.test(data.lastChecked || "")) problems.push(`sources lastChecked ${id}`);
+    if (!Array.isArray(data.sources) || data.sources.length < 3) problems.push(`sources short ${id}`);
+    const kinds = new Set((data.sources || []).map((item) => item.kind));
+    if (!kinds.has("community")) problems.push(`${id} community`);
+    if (!kinds.has("wikipedia")) problems.push(`${id} wikipedia`);
+    const urls = (data.sources || []).map((item) => item.url || "");
+    if (!urls.some((url) => url.includes("developer.genesys.cloud"))) problems.push(`${id} developer`);
+    if (!urls.some((url) => url.includes("help.genesys.cloud") || url.includes("help.mypurecloud.com"))) problems.push(`${id} resource center`);
+    for (const src of data.sources || []) {
+      checkUrl(src.url, `sources ${id}`);
+      if (!/^\d{4}-\d{2}$/.test(src.lastChecked || "")) problems.push(`${id} item lastChecked`);
+      if (src.status !== "ok" && src.status !== "confirm") problems.push(`${id} status ${src.status}`);
+      if (!src.title) problems.push(`${id} blank title`);
+    }
+  }
+}
 const seenDiagram = new Set();
 for (const item of DIAGRAMS) {
   if (seenDiagram.has(item.id)) problems.push(`duplicate diagram ${item.id}`);
@@ -145,6 +191,9 @@ else {
       for (const needle of forbidden) {
         if (text.toLowerCase().includes(needle)) problems.push(`${sheet.html} forbids ${needle}`);
       }
+      if (!text.includes("Sources and go deeper") || !text.includes("Last checked 2026-10")) {
+        problems.push(`${sheet.html} sources block`);
+      }
     }
   }
   const cards = JSON.parse(readFileSync(join(downloadDir, "flashcards.json"), "utf8"));
@@ -159,7 +208,15 @@ else {
     for (const ext of [".png", ".svg"]) {
       if (!existsSync(join(diagramDir, name.replace(/\.html$/, ext)))) problems.push(`diagram missing ${name} ${ext}`);
     }
+    const text = readFileSync(join(diagramDir, name), "utf8");
+    if (!text.includes("Sources and go deeper") || !text.includes("Last checked 2026-10")) problems.push(`${name} sources block`);
   }
+  for (const rel of ["flashcards.html", "templates/lab-checklist.html", "test-table.html"]) {
+    const text = readFileSync(join(downloadDir, rel), "utf8");
+    if (!text.includes("Sources and go deeper") || !text.includes("Last checked 2026-10")) problems.push(`${rel} sources block`);
+  }
+  const deck = JSON.parse(readFileSync(join(downloadDir, "flashcards.json"), "utf8"));
+  if (!deck.cards.every((card) => Array.isArray(card.deeper) && card.deeper.length >= 3)) problems.push("flashcard deeper");
   if (statSync(join(downloadDir, "genesys-cx-offline-bundle.zip")).size < 1000) problems.push("zip");
   function walkDownloads(dir) {
     for (const name of readdirSync(dir)) {

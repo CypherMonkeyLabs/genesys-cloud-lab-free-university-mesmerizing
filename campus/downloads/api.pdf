@@ -9,7 +9,7 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
 endobj
 4 0 obj
-<< /Length 1128 >>
+<< /Length 2342 >>
 stream
 BT
 /F1 14 Tf
@@ -27,11 +27,33 @@ BT
 0 -14 Td
 () Tj
 0 -14 Td
-(Sources:) Tj
+(Sources and go deeper) Tj
 0 -14 Td
-(https://help.genesys.cloud/articles/create-an-oauth-client/) Tj
+(Last checked 2026-10) Tj
 0 -14 Td
-(https://developer.genesys.cloud/api/rest/authorization/use-client-credentials) Tj
+(Genesys Cloud Developer Center \(Developer docs\) https://developer.genesys.cloud/ Last checked 2026-10) Tj
+0 -14 Td
+(Client credentials grant \(Developer docs\) https://developer.genesys.cloud/api/rest/authorization/use-client-cr) Tj
+0 -14 Td
+(  The response was the Developer Center shell, which is the same page for a missing path. The lab opened this ) Tj
+0 -14 Td
+(AWS regions for Genesys Cloud \(Resource Center\) https://help.genesys.cloud/articles/aws-regions-for-genesys-cl) Tj
+0 -14 Td
+(Create an OAuth client \(Resource Center\) https://help.genesys.cloud/articles/create-an-oauth-client/ Last chec) Tj
+0 -14 Td
+(AWS regions for Genesys Cloud Voice \(Resource Center\) https://help.genesys.cloud/articles/aws-regions-genesys-) Tj
+0 -14 Td
+(Divisions overview \(Resource Center\) https://help.genesys.cloud/articles/divisions-overview/ Last checked 2026) Tj
+0 -14 Td
+(Create and configure queues \(Resource Center\) https://help.genesys.cloud/articles/create-queues/ Last checked ) Tj
+0 -14 Td
+(Genesys Community \(Community\) https://community.genesys.com/ Last checked 2026-10) Tj
+0 -14 Td
+(  Community home, not a thread about this room.) Tj
+0 -14 Td
+(OAuth \(Wikipedia\) https://en.wikipedia.org/wiki/OAuth Last checked 2026-10) Tj
+0 -14 Td
+(  Background article. It is not a Genesys Cloud product page.) Tj
 0 -14 Td
 () Tj
 0 -14 Td
@@ -64,8 +86,8 @@ xref
 0000000058 00000 n 
 0000000115 00000 n 
 0000000241 00000 n 
-0000001421 00000 n 
+0000002635 00000 n 
 trailer << /Size 6 /Root 1 0 R >>
 startxref
-1491
+2705
 %%EOF

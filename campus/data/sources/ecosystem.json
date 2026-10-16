@@ -1,0 +1,223 @@
+{
+  "id": "ecosystem",
+  "title": "Ecosystem",
+  "lastChecked": "2026-10",
+  "sources": [
+    {
+      "title": "Overview of Genesys Cloud",
+      "url": "https://help.mypurecloud.com/articles/overview-of-genesys-cloud/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "About Architect",
+      "url": "https://help.genesys.cloud/articles/about-architect/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Advanced routing overview",
+      "url": "https://help.genesys.cloud/articles/advanced-routing-overview/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "About BYOC Cloud",
+      "url": "https://help.genesys.cloud/articles/about-byoc-cloud/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "About Workforce Engagement Management",
+      "url": "https://help.genesys.cloud/articles/about-workforce-engagement-management-wem/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "About quality management",
+      "url": "https://help.genesys.cloud/50540/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Set up emergency services with BYOC",
+      "url": "https://help.genesys.cloud/articles/set-up-emergency-services-with-byoc/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Speech and text analytics overview",
+      "url": "https://help.genesys.cloud/articles/speech-and-text-analytics-overview/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "About Genesys Cloud for Salesforce",
+      "url": "https://help.genesys.cloud/articles/about-genesys-cloud-for-salesforce/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Cisco Unified Contact Center Enterprise",
+      "url": "https://www.cisco.com/c/en/us/support/customer-collaboration/unified-contact-center-enterprise/series.html",
+      "kind": "official",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Cisco Unified Contact Center Express",
+      "url": "https://www.cisco.com/c/en/us/support/customer-collaboration/unified-contact-center-express/series.html",
+      "kind": "official",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Number plan information",
+      "url": "https://help.genesys.cloud/articles/number-plan-information/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Genesys Cloud exams",
+      "url": "https://education.genesys.com/certification/cloud",
+      "kind": "official",
+      "lastChecked": "2026-10",
+      "status": "confirm",
+      "note": "The HTML shell did not include the catalog or announcement text. The lab opened this URL in 2026-10 and could not verify it. Confirm before relying."
+    },
+    {
+      "title": "Genesys technical certifications announcement",
+      "url": "https://education.genesys.com/explore/announcement/genesys-technical-certifications-important-announcement",
+      "kind": "official",
+      "lastChecked": "2026-10",
+      "status": "confirm",
+      "note": "The HTML shell did not include the catalog or announcement text. The lab opened this URL in 2026-10 and could not verify it. Confirm before relying."
+    },
+    {
+      "title": "Create an OAuth client",
+      "url": "https://help.genesys.cloud/articles/create-an-oauth-client/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Genesys Cloud fair use policy",
+      "url": "https://help.genesys.cloud/articles/genesys-cloud-fair-use-policy/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Dynamic Cloud Voice platform overview",
+      "url": "https://help.genesys.cloud/articles/dynamic-cloud-voice-platform-overview/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "RFC 5737 documentation addresses",
+      "url": "https://www.rfc-editor.org/rfc/rfc5737",
+      "kind": "rfc",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "RFC 3261 SIP",
+      "url": "https://www.rfc-editor.org/rfc/rfc3261",
+      "kind": "rfc",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Genesys Cloud for Zendesk",
+      "url": "https://help.genesys.cloud/articles/about-genesys-cloud-for-zendesk/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "AppFoundry",
+      "url": "https://appfoundry.genesys.com/",
+      "kind": "official",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Genesys Cloud Developer Center",
+      "url": "https://developer.genesys.cloud/",
+      "kind": "developer",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "General developer docs. This is the Developer Center home, not a page written for this room alone."
+    },
+    {
+      "title": "Genesys Community",
+      "url": "https://community.genesys.com/",
+      "kind": "community",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "Community home, not a thread about this room."
+    },
+    {
+      "title": "RFC 3550 RTP",
+      "url": "https://www.rfc-editor.org/rfc/rfc3550",
+      "kind": "rfc",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "Protocol specification."
+    },
+    {
+      "title": "RFC 3711 SRTP",
+      "url": "https://www.rfc-editor.org/rfc/rfc3711",
+      "kind": "rfc",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "Protocol specification."
+    },
+    {
+      "title": "RFC 4733 DTMF",
+      "url": "https://www.rfc-editor.org/rfc/rfc4733",
+      "kind": "rfc",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "Protocol specification."
+    },
+    {
+      "title": "Automatic call distributor",
+      "url": "https://en.wikipedia.org/wiki/Automatic_call_distributor",
+      "kind": "wikipedia",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "Background article. It is not a Genesys Cloud product page."
+    }
+  ]
+}

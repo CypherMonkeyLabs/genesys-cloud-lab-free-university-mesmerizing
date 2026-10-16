@@ -9,7 +9,7 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
 endobj
 4 0 obj
-<< /Length 1245 >>
+<< /Length 2397 >>
 stream
 BT
 /F1 14 Tf
@@ -29,11 +29,33 @@ BT
 0 -14 Td
 () Tj
 0 -14 Td
-(Sources:) Tj
+(Sources and go deeper) Tj
 0 -14 Td
-(https://education.genesys.com/certification/cloud) Tj
+(Last checked 2026-10) Tj
 0 -14 Td
-(https://education.genesys.com/explore/announcement/genesys-technical-certifications-important-announcement) Tj
+(Genesys Cloud Professional Certification \(GC-GCP\) \(Official page\) https://education.genesys.com/certification/) Tj
+0 -14 Td
+(  The HTML shell did not include the catalog or announcement text. The lab opened this URL in 2026-10 and coul) Tj
+0 -14 Td
+(Genesys technical certifications announcement \(Official page\) https://education.genesys.com/explore/announceme) Tj
+0 -14 Td
+(  The HTML shell did not include the catalog or announcement text. The lab opened this URL in 2026-10 and coul) Tj
+0 -14 Td
+(Genesys Cloud Developer Center \(Developer docs\) https://developer.genesys.cloud/ Last checked 2026-10) Tj
+0 -14 Td
+(  General developer docs. This is the Developer Center home, not a page written for this room alone.) Tj
+0 -14 Td
+(Genesys Cloud Resource Center \(Resource Center\) https://help.genesys.cloud/ Last checked 2026-10) Tj
+0 -14 Td
+(  Resource Center home. Confirm the matching article for this room.) Tj
+0 -14 Td
+(Genesys Community \(Community\) https://community.genesys.com/ Last checked 2026-10) Tj
+0 -14 Td
+(  Community home, not a thread about this room.) Tj
+0 -14 Td
+(Genesys \(company\) \(Wikipedia\) https://en.wikipedia.org/wiki/Genesys_\(company\) Last checked 2026-10) Tj
+0 -14 Td
+(  Background article. It is not a Genesys Cloud product page.) Tj
 0 -14 Td
 () Tj
 0 -14 Td
@@ -66,8 +88,8 @@ xref
 0000000058 00000 n 
 0000000115 00000 n 
 0000000241 00000 n 
-0000001538 00000 n 
+0000002690 00000 n 
 trailer << /Size 6 /Root 1 0 R >>
 startxref
-1608
+2760
 %%EOF

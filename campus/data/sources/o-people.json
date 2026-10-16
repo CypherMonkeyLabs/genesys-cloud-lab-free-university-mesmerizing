@@ -1,0 +1,55 @@
+{
+  "id": "o-people",
+  "title": "People, queues, and the 5,000 member line",
+  "lastChecked": "2026-10",
+  "sources": [
+    {
+      "title": "Create and configure queues",
+      "url": "https://help.genesys.cloud/articles/create-queues/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Divisions overview",
+      "url": "https://help.genesys.cloud/articles/divisions-overview/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Create a BYOC Premises Edge group with a phone trunk",
+      "url": "https://help.genesys.cloud/articles/create-edge-group-phone-trunk/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Genesys Cloud Developer Center",
+      "url": "https://developer.genesys.cloud/",
+      "kind": "developer",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "General developer docs. This is the Developer Center home, not a page written for this room alone."
+    },
+    {
+      "title": "Genesys Community",
+      "url": "https://community.genesys.com/",
+      "kind": "community",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "Community home, not a thread about this room."
+    },
+    {
+      "title": "WebRTC",
+      "url": "https://en.wikipedia.org/wiki/WebRTC",
+      "kind": "wikipedia",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "Background article. It is not a Genesys Cloud product page."
+    }
+  ]
+}

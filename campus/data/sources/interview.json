@@ -1,0 +1,223 @@
+{
+  "id": "interview",
+  "title": "Interview drill",
+  "lastChecked": "2026-10",
+  "sources": [
+    {
+      "title": "AWS regions",
+      "url": "https://help.genesys.cloud/articles/aws-regions-for-genesys-cloud-deployment/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Overview",
+      "url": "https://help.mypurecloud.com/articles/overview-of-genesys-cloud/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Divisions overview",
+      "url": "https://help.genesys.cloud/articles/divisions-overview/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Create queues",
+      "url": "https://help.genesys.cloud/articles/create-queues/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Advanced routing",
+      "url": "https://help.genesys.cloud/articles/advanced-routing-overview/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Evaluation methods",
+      "url": "https://help.genesys.cloud/articles/acd-evaluation-routing-methods/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Bullseye routing",
+      "url": "https://help.genesys.cloud/articles/bullseye-routing-overview/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Preferred agent routing",
+      "url": "https://help.genesys.cloud/articles/preferred-agent-routing-behavior/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Create a flow",
+      "url": "https://help.genesys.cloud/articles/create-a-flow/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Inbound bot",
+      "url": "https://help.genesys.cloud/articles/use-architect-to-create-a-bot-for-an-inbound-flow/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "About BYOC Cloud",
+      "url": "https://help.genesys.cloud/articles/about-byoc-cloud/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Edge groups",
+      "url": "https://help.genesys.cloud/articles/edge-groups-overview/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "BYOC emergency",
+      "url": "https://help.genesys.cloud/articles/set-up-emergency-services-with-byoc/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "About recording",
+      "url": "https://help.genesys.cloud/articles/about-recording/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "STA FAQ",
+      "url": "https://help.genesys.cloud/faqs/category/speech-and-text-analytics/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Agent Copilot",
+      "url": "https://help.genesys.cloud/articles/agent-copilot-overview/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Client credentials",
+      "url": "https://developer.genesys.cloud/api/rest/authorization/use-client-credentials",
+      "kind": "developer",
+      "lastChecked": "2026-10",
+      "status": "confirm",
+      "note": "The response was the Developer Center shell, which is the same page for a missing path. The lab opened this URL in 2026-10 and could not verify it. Confirm before relying."
+    },
+    {
+      "title": "OAuth client",
+      "url": "https://help.genesys.cloud/articles/create-an-oauth-client/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Salesforce OAuth migration",
+      "url": "https://help.genesys.cloud/articles/salesforce-oauth-client-credentials-flow-migration-guide/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "About Architect",
+      "url": "https://help.genesys.cloud/articles/about-architect/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Cisco UCCE",
+      "url": "https://www.cisco.com/c/en/us/support/customer-collaboration/unified-contact-center-enterprise/series.html",
+      "kind": "official",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Genesys Cloud exams",
+      "url": "https://education.genesys.com/certification/cloud",
+      "kind": "official",
+      "lastChecked": "2026-10",
+      "status": "confirm",
+      "note": "The HTML shell did not include the catalog or announcement text. The lab opened this URL in 2026-10 and could not verify it. Confirm before relying."
+    },
+    {
+      "title": "About Predictive Engagement",
+      "url": "https://help.genesys.cloud/articles/about-predictive-engagement/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Trunk transport",
+      "url": "https://help.genesys.cloud/articles/choose-a-trunk-transport-protocol/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Genesys Cloud Developer Center",
+      "url": "https://developer.genesys.cloud/",
+      "kind": "developer",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "General developer docs. This is the Developer Center home, not a page written for this room alone."
+    },
+    {
+      "title": "Genesys Community",
+      "url": "https://community.genesys.com/",
+      "kind": "community",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "Community home, not a thread about this room."
+    },
+    {
+      "title": "OAuth",
+      "url": "https://en.wikipedia.org/wiki/OAuth",
+      "kind": "wikipedia",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "Background article. It is not a Genesys Cloud product page."
+    }
+  ]
+}

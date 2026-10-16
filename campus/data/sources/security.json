@@ -1,0 +1,79 @@
+{
+  "id": "security",
+  "title": "Security",
+  "lastChecked": "2026-10",
+  "sources": [
+    {
+      "title": "TLS trunk transport for BYOC Cloud",
+      "url": "https://help.genesys.cloud/articles/tls-trunk-transport-protocol-specification/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Create an OAuth client",
+      "url": "https://help.genesys.cloud/articles/create-an-oauth-client/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Client credentials",
+      "url": "https://developer.genesys.cloud/api/rest/authorization/use-client-credentials",
+      "kind": "developer",
+      "lastChecked": "2026-10",
+      "status": "confirm",
+      "note": "The response was the Developer Center shell, which is the same page for a missing path. The lab opened this URL in 2026-10 and could not verify it. Confirm before relying."
+    },
+    {
+      "title": "Divisions overview",
+      "url": "https://help.genesys.cloud/articles/divisions-overview/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Genesys Cloud Developer Center",
+      "url": "https://developer.genesys.cloud/",
+      "kind": "developer",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "General developer docs. This is the Developer Center home, not a page written for this room alone."
+    },
+    {
+      "title": "Genesys Community",
+      "url": "https://community.genesys.com/",
+      "kind": "community",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "Community home, not a thread about this room."
+    },
+    {
+      "title": "RFC 3550 RTP",
+      "url": "https://www.rfc-editor.org/rfc/rfc3550",
+      "kind": "rfc",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "Protocol specification."
+    },
+    {
+      "title": "RFC 3711 SRTP",
+      "url": "https://www.rfc-editor.org/rfc/rfc3711",
+      "kind": "rfc",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "Protocol specification."
+    },
+    {
+      "title": "OAuth",
+      "url": "https://en.wikipedia.org/wiki/OAuth",
+      "kind": "wikipedia",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "Background article. It is not a Genesys Cloud product page."
+    }
+  ]
+}

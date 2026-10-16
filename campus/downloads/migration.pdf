@@ -3,13 +3,13 @@
 << /Type /Catalog /Pages 2 0 R >>
 endobj
 2 0 obj
-<< /Type /Pages /Count 1 /Kids [3 0 R] >>
+<< /Type /Pages /Count 2 /Kids [3 0 R 5 0 R] >>
 endobj
 3 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 7 0 R >> >> >>
 endobj
 4 0 obj
-<< /Length 1158 >>
+<< /Length 3836 >>
 stream
 BT
 /F1 14 Tf
@@ -27,11 +27,59 @@ BT
 0 -14 Td
 () Tj
 0 -14 Td
-(Sources:) Tj
+(Sources and go deeper) Tj
 0 -14 Td
-(https://help.genesys.cloud/articles/about-architect/) Tj
+(Last checked 2026-10) Tj
 0 -14 Td
-(https://www.cisco.com/c/en/us/support/customer-collaboration/unified-contact-center-enterprise/series.html) Tj
+(About Architect \(Resource Center\) https://help.genesys.cloud/articles/about-architect/ Last checked 2026-10) Tj
+0 -14 Td
+(Create and configure queues \(Resource Center\) https://help.genesys.cloud/articles/create-queues/ Last checked ) Tj
+0 -14 Td
+(Create a flow \(Resource Center\) https://help.genesys.cloud/articles/create-a-flow/ Last checked 2026-10) Tj
+0 -14 Td
+(Cisco Unified Contact Center Enterprise \(Official page\) https://www.cisco.com/c/en/us/support/customer-collabo) Tj
+0 -14 Td
+(About Workforce Engagement Management \(Resource Center\) https://help.genesys.cloud/articles/about-workforce-en) Tj
+0 -14 Td
+(In-queue flows overview \(Resource Center\) https://help.genesys.cloud/articles/queue-call-flows/ Last checked 2) Tj
+0 -14 Td
+(Cisco Unified Contact Center Express \(Official page\) https://www.cisco.com/c/en/us/support/customer-collaborat) Tj
+0 -14 Td
+(Advanced routing overview \(Resource Center\) https://help.genesys.cloud/articles/advanced-routing-overview/ Las) Tj
+0 -14 Td
+(Bullseye routing overview \(Resource Center\) https://help.genesys.cloud/articles/bullseye-routing-overview/ Las) Tj
+0 -14 Td
+(Routing and evaluation methods \(Resource Center\) https://help.genesys.cloud/articles/acd-evaluation-routing-me) Tj
+0 -14 Td
+(About Genesys Cloud for Salesforce \(Resource Center\) https://help.genesys.cloud/articles/about-genesys-cloud-f) Tj
+0 -14 Td
+(About BYOC Cloud \(Resource Center\) https://help.genesys.cloud/articles/about-byoc-cloud/ Last checked 2026-10) Tj
+0 -14 Td
+(Dynamic Cloud Voice platform overview \(Resource Center\) https://help.genesys.cloud/articles/dynamic-cloud-voic) Tj
+0 -14 Td
+(Number plan information \(Resource Center\) https://help.genesys.cloud/articles/number-plan-information/ Last ch) Tj
+0 -14 Td
+(BYOC Premises Edge groups overview \(Resource Center\) https://help.genesys.cloud/articles/edge-groups-overview/) Tj
+0 -14 Td
+(Set up emergency services with BYOC \(Resource Center\) https://help.genesys.cloud/articles/set-up-emergency-ser) Tj
+0 -14 Td
+(About recording \(Resource Center\) https://help.genesys.cloud/articles/about-recording/ Last checked 2026-10) Tj
+0 -14 Td
+(Genesys Cloud Developer Center \(Developer docs\) https://developer.genesys.cloud/ Last checked 2026-10) Tj
+0 -14 Td
+(  General developer docs. This is the Developer Center home, not a page written for this room alone.) Tj
+0 -14 Td
+(Genesys Community \(Community\) https://community.genesys.com/ Last checked 2026-10) Tj
+0 -14 Td
+(  Community home, not a thread about this room.) Tj
+0 -14 Td
+(RFC 3261 SIP \(RFC\) https://www.rfc-editor.org/rfc/rfc3261 Last checked 2026-10) Tj
+0 -14 Td
+(  Protocol specification.) Tj
+0 -14 Td
+(Interactive voice response \(Wikipedia\) https://en.wikipedia.org/wiki/Interactive_voice_response Last checked 2) Tj
+0 -14 Td
+(  Background article. It is not a Genesys Cloud product page.) Tj
 0 -14 Td
 () Tj
 0 -14 Td
@@ -49,23 +97,40 @@ BT
 0 -14 Td
 (This is an independent, free, learning-only student project. It respects every company and vendor, and every t) Tj
 0 -14 Td
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 6 0 R /Resources << /Font << /F1 7 0 R >> >> >>
+endobj
+6 0 obj
+<< /Length 124 >>
+stream
+BT
+/F1 14 Tf
+48 760 Td
+(Migration cutover) Tj
+/F1 9 Tf
+0 -20 Td
 (MIT code. CC BY-NC-SA content. No tracking.) Tj
 0 -14 Td
 ET
 endstream
 endobj
-5 0 obj
+7 0 obj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
 endobj
 xref
-0 6
+0 8
 0000000000 65535 f 
 0000000009 00000 n 
 0000000058 00000 n 
-0000000115 00000 n 
-0000000241 00000 n 
-0000001451 00000 n 
-trailer << /Size 6 /Root 1 0 R >>
+0000000121 00000 n 
+0000000247 00000 n 
+0000004135 00000 n 
+0000004261 00000 n 
+0000004436 00000 n 
+trailer << /Size 8 /Root 1 0 R >>
 startxref
-1521
+4506
 %%EOF

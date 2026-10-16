@@ -25,6 +25,9 @@ function standaloneHtml(title, inner) {
 <style>
 body{font:18px/1.5 Georgia,serif;margin:32px auto;max-width:760px;color:#1b1230;background:#fff7fb}
 .disclaimer-panel{border:2px solid #0f766e;border-radius:16px;padding:16px;background:linear-gradient(135deg,#dcfce7,#dbeafe);color:#0b1f2a}
+.sources-deeper{margin-top:28px;padding:16px;border:2px solid #0f766e;border-radius:16px;background:#f0fdfa;color:#042f2e}
+.sources-deeper a{color:#08306b}
+.src-flag{background:#fde68a;color:#422006;font-weight:800;padding:0 6px;border-radius:999px}
 a{color:#5b21b6}
 </style></head><body>
 <h1>${esc(title)}</h1>
@@ -48,13 +51,69 @@ function slug(text) {
   return String(text || "room").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 40) || "room";
 }
 
+function liveSources() {
+  const home = document.getElementById("home");
+  const view = document.getElementById("view");
+  const root = home && !home.hidden ? home : view;
+  return root?.querySelector(".sources-deeper") || document.querySelector(".sources-deeper");
+}
+
+function ensureSources(scope) {
+  if (scope.querySelector(".sources-deeper")) return;
+  const block = liveSources();
+  if (block) scope.appendChild(block.cloneNode(true));
+}
+
+function svgBox(svg) {
+  const viewBox = svg.getAttribute("viewBox");
+  if (viewBox) {
+    const parts = viewBox.split(/[\s,]+/).map(Number);
+    if (parts.length === 4 && parts[2] > 0 && parts[3] > 0) return { w: parts[2], h: parts[3] };
+  }
+  return {
+    w: parseFloat(svg.getAttribute("width")) || 800,
+    h: parseFloat(svg.getAttribute("height")) || 360
+  };
+}
+
+function svgWithSources(svg, title) {
+  const block = liveSources();
+  const links = block ? [...block.querySelectorAll("a")] : [];
+  const box = svg ? svgBox(svg) : { w: 640, h: 120 };
+  const head = 72;
+  const picture = svg ? box.h + 16 : 80;
+  const height = head + picture + 56 + links.length * 22 + 48;
+  const width = Math.max(720, box.w || 720);
+  const pictureMarkup = svg
+    ? `<g transform="translate(24,${head})">${svg.outerHTML}</g>`
+    : `<text x="24" y="${head + 28}" font-size="16" fill="#3d3358">${esc(DISCLAIMER.slice(0, 180))}</text>`;
+  const rows = links.map((link, index) => {
+    const flag = link.parentElement?.querySelector(".src-flag") ? " confirm" : "";
+    const label = `${link.textContent.trim()} ${link.getAttribute("href") || ""}${flag}`.slice(0, 140);
+    const y = head + picture + 36 + index * 22;
+    return `<text x="24" y="${y}" font-size="14" fill="#08306b">${esc(label)}</text>`;
+  }).join("");
+  const checkedY = head + picture + 16;
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">
+<rect width="${width}" height="${height}" fill="#f0fdfa"/>
+<text x="24" y="42" font-size="22" fill="#042f2e">${esc(title)}</text>
+${pictureMarkup}
+<text x="24" y="${checkedY}" font-size="18" fill="#042f2e">Sources and go deeper</text>
+<text x="320" y="${checkedY}" font-size="14" fill="#042f2e">Last checked 2026-10</text>
+${rows}
+</svg>`;
+}
+
 async function exportNode(node, kind) {
+  if (window.gccxSourcesReady) {
+    try { await window.gccxSourcesReady; } catch (err) { /* the export still carries the disclaimer */ }
+  }
   const scope = sectionOf(node);
   scope.querySelectorAll("button, .dl-bar, .dl-mini").forEach((el) => el.remove());
+  ensureSources(scope);
   const title = scope.querySelector("h1, h2")?.textContent?.trim() || document.title;
   if (kind === "svg") {
-    const svg = scope.querySelector("svg");
-    const body = svg ? svg.outerHTML : `<svg xmlns="http://www.w3.org/2000/svg" width="640" height="200"><rect width="640" height="200" fill="#fff7fb"/><text x="24" y="48" font-size="22" fill="#1b1230">${esc(title)}</text><text x="24" y="90" font-size="14" fill="#3d3358">${esc(DISCLAIMER.slice(0, 180))}</text></svg>`;
+    const body = svgWithSources(scope.querySelector("svg"), title);
     downloadBlob(slug(title) + ".svg", new Blob([body], { type: "image/svg+xml" }));
     return;
   }
@@ -71,18 +130,23 @@ async function exportNode(node, kind) {
     g.font = "28px Georgia, serif";
     g.fillText(title.slice(0, 48), 32, 64);
     g.font = "16px Georgia, serif";
-    const words = (scope.innerText || title).replace(/\s+/g, " ").slice(0, 420).split(" ");
+    const words = (scope.innerText || title).replace(/\s+/g, " ").slice(0, 280).split(" ");
     let line = "";
     let y = 110;
     words.forEach((word) => {
       const trial = line ? line + " " + word : word;
       if (trial.length > 70) {
-        g.fillText(line, 32, y);
+        if (y < 430) g.fillText(line, 32, y);
         y += 26;
         line = word;
       } else line = trial;
     });
-    if (line && y < 480) g.fillText(line, 32, y);
+    if (line && y < 430) g.fillText(line, 32, y);
+    g.font = "bold 18px Georgia, serif";
+    g.fillText("Sources and go deeper", 32, 470);
+    g.font = "16px Georgia, serif";
+    g.fillText("Last checked 2026-10", 32, 498);
+    if (scope.querySelector(".src-flag")) g.fillText("confirm", 280, 498);
     const blob = await new Promise((resolve) => canvas.toBlob(resolve, "image/png"));
     if (blob) downloadBlob(slug(title) + ".png", blob);
     return;

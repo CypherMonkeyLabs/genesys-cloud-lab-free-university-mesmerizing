@@ -1,0 +1,47 @@
+{
+  "id": "n-owner",
+  "title": "Name the emergency owner before the DID",
+  "lastChecked": "2026-10",
+  "sources": [
+    {
+      "title": "Set up emergency services with BYOC",
+      "url": "https://help.genesys.cloud/articles/set-up-emergency-services-with-byoc/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "AWS regions for Genesys Cloud Voice",
+      "url": "https://help.genesys.cloud/articles/aws-regions-genesys-cloud-voice/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Genesys Cloud Developer Center",
+      "url": "https://developer.genesys.cloud/",
+      "kind": "developer",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "General developer docs. This is the Developer Center home, not a page written for this room alone."
+    },
+    {
+      "title": "Genesys Community",
+      "url": "https://community.genesys.com/",
+      "kind": "community",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "Community home, not a thread about this room."
+    },
+    {
+      "title": "Genesys (company)",
+      "url": "https://en.wikipedia.org/wiki/Genesys_(company)",
+      "kind": "wikipedia",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "Background article. It is not a Genesys Cloud product page."
+    }
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "id": "wfm",
+  "title": "Workforce management",
+  "lastChecked": "2026-10",
+  "sources": [
+    {
+      "title": "About Workforce Engagement Management",
+      "url": "https://help.genesys.cloud/articles/about-workforce-engagement-management-wem/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Overview of Genesys Cloud",
+      "url": "https://help.mypurecloud.com/articles/overview-of-genesys-cloud/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Genesys Cloud exams",
+      "url": "https://education.genesys.com/certification/cloud",
+      "kind": "official",
+      "lastChecked": "2026-10",
+      "status": "confirm",
+      "note": "The HTML shell did not include the catalog or announcement text. The lab opened this URL in 2026-10 and could not verify it. Confirm before relying."
+    },
+    {
+      "title": "Bullseye routing overview",
+      "url": "https://help.genesys.cloud/articles/bullseye-routing-overview/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Create and configure queues",
+      "url": "https://help.genesys.cloud/articles/create-queues/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Advanced routing overview",
+      "url": "https://help.genesys.cloud/articles/advanced-routing-overview/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Genesys technical certifications announcement",
+      "url": "https://education.genesys.com/explore/announcement/genesys-technical-certifications-important-announcement",
+      "kind": "official",
+      "lastChecked": "2026-10",
+      "status": "confirm",
+      "note": "The HTML shell did not include the catalog or announcement text. The lab opened this URL in 2026-10 and could not verify it. Confirm before relying."
+    },
+    {
+      "title": "Workforce management overview",
+      "url": "https://help.genesys.cloud/articles/workforce-management/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Work with forecasts",
+      "url": "https://help.genesys.cloud/articles/work-with-forecasts/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Work with workforce management schedules",
+      "url": "https://help.genesys.cloud/articles/work-with-workforce-management-schedules/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Generate a schedule from a forecast",
+      "url": "https://help.genesys.cloud/articles/generate-a-schedule-from-a-forecast/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Choose a forecast for an existing schedule",
+      "url": "https://help.genesys.cloud/articles/choose-forecast-for-an-existing-schedule/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Genesys Cloud Developer Center",
+      "url": "https://developer.genesys.cloud/",
+      "kind": "developer",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "General developer docs. This is the Developer Center home, not a page written for this room alone."
+    },
+    {
+      "title": "Genesys Community",
+      "url": "https://community.genesys.com/",
+      "kind": "community",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "Community home, not a thread about this room."
+    },
+    {
+      "title": "Automatic call distributor",
+      "url": "https://en.wikipedia.org/wiki/Automatic_call_distributor",
+      "kind": "wikipedia",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "Background article. It is not a Genesys Cloud product page."
+    }
+  ]
+}

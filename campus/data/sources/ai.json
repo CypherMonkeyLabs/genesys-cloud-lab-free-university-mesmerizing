@@ -1,0 +1,119 @@
+{
+  "id": "ai",
+  "title": "Genesys AI and bots",
+  "lastChecked": "2026-10",
+  "sources": [
+    {
+      "title": "About Genesys Dialog Engine Bot Flows",
+      "url": "https://help.genesys.cloud/articles/about-genesys-dialog-engine-bot-flows/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "About Genesys Digital Bot Flows",
+      "url": "https://help.genesys.cloud/articles/about-genesys-digital-bot-flows/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Genesys Agent Copilot overview",
+      "url": "https://help.genesys.cloud/articles/agent-copilot-overview/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Overview of Genesys Cloud",
+      "url": "https://help.mypurecloud.com/articles/overview-of-genesys-cloud/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Use Architect to create a bot for an inbound flow",
+      "url": "https://help.genesys.cloud/articles/use-architect-to-create-a-bot-for-an-inbound-flow/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "About Architect",
+      "url": "https://help.genesys.cloud/articles/about-architect/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Create a flow",
+      "url": "https://help.genesys.cloud/articles/create-a-flow/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Speech and text analytics FAQs",
+      "url": "https://help.genesys.cloud/faqs/category/speech-and-text-analytics/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Genesys Cloud fair use policy",
+      "url": "https://help.genesys.cloud/articles/genesys-cloud-fair-use-policy/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Genesys Cloud exams",
+      "url": "https://education.genesys.com/certification/cloud",
+      "kind": "official",
+      "lastChecked": "2026-10",
+      "status": "confirm",
+      "note": "The HTML shell did not include the catalog or announcement text. The lab opened this URL in 2026-10 and could not verify it. Confirm before relying."
+    },
+    {
+      "title": "Genesys technical certifications announcement",
+      "url": "https://education.genesys.com/explore/announcement/genesys-technical-certifications-important-announcement",
+      "kind": "official",
+      "lastChecked": "2026-10",
+      "status": "confirm",
+      "note": "The HTML shell did not include the catalog or announcement text. The lab opened this URL in 2026-10 and could not verify it. Confirm before relying."
+    },
+    {
+      "title": "Genesys Cloud Developer Center",
+      "url": "https://developer.genesys.cloud/",
+      "kind": "developer",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "General developer docs. This is the Developer Center home, not a page written for this room alone."
+    },
+    {
+      "title": "Genesys Community",
+      "url": "https://community.genesys.com/",
+      "kind": "community",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "Community home, not a thread about this room."
+    },
+    {
+      "title": "Interactive voice response",
+      "url": "https://en.wikipedia.org/wiki/Interactive_voice_response",
+      "kind": "wikipedia",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "Background article. It is not a Genesys Cloud product page."
+    }
+  ]
+}

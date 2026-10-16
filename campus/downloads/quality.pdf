@@ -9,7 +9,7 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
 endobj
 4 0 obj
-<< /Length 1216 >>
+<< /Length 2020 >>
 stream
 BT
 /F1 14 Tf
@@ -27,13 +27,27 @@ BT
 0 -14 Td
 () Tj
 0 -14 Td
-(Sources:) Tj
+(Sources and go deeper) Tj
 0 -14 Td
-(https://help.genesys.cloud/50540/) Tj
+(Last checked 2026-10) Tj
 0 -14 Td
-(https://help.genesys.cloud/articles/about-recording/) Tj
+(About quality management \(Resource Center\) https://help.genesys.cloud/50540/ Last checked 2026-10) Tj
 0 -14 Td
-(https://help.genesys.cloud/faqs/category/speech-and-text-analytics/) Tj
+(About recording \(Resource Center\) https://help.genesys.cloud/articles/about-recording/ Last checked 2026-10) Tj
+0 -14 Td
+(Speech and text analytics FAQs \(Resource Center\) https://help.genesys.cloud/faqs/category/speech-and-text-anal) Tj
+0 -14 Td
+(Genesys Cloud Developer Center \(Developer docs\) https://developer.genesys.cloud/ Last checked 2026-10) Tj
+0 -14 Td
+(  General developer docs. This is the Developer Center home, not a page written for this room alone.) Tj
+0 -14 Td
+(Genesys Community \(Community\) https://community.genesys.com/ Last checked 2026-10) Tj
+0 -14 Td
+(  Community home, not a thread about this room.) Tj
+0 -14 Td
+(Genesys \(company\) \(Wikipedia\) https://en.wikipedia.org/wiki/Genesys_\(company\) Last checked 2026-10) Tj
+0 -14 Td
+(  Background article. It is not a Genesys Cloud product page.) Tj
 0 -14 Td
 () Tj
 0 -14 Td
@@ -66,8 +80,8 @@ xref
 0000000058 00000 n 
 0000000115 00000 n 
 0000000241 00000 n 
-0000001509 00000 n 
+0000002313 00000 n 
 trailer << /Size 6 /Root 1 0 R >>
 startxref
-1579
+2383
 %%EOF

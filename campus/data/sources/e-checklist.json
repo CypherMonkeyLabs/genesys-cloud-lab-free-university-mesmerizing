@@ -1,0 +1,63 @@
+{
+  "id": "e-checklist",
+  "title": "Premises turn-up checklist",
+  "lastChecked": "2026-10",
+  "sources": [
+    {
+      "title": "BYOC Premises Edge groups overview",
+      "url": "https://help.genesys.cloud/articles/edge-groups-overview/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Create a BYOC Premises Edge group with a phone trunk",
+      "url": "https://help.genesys.cloud/articles/create-edge-group-phone-trunk/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Set up emergency services with BYOC",
+      "url": "https://help.genesys.cloud/articles/set-up-emergency-services-with-byoc/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Number plan information",
+      "url": "https://help.genesys.cloud/articles/number-plan-information/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Genesys Cloud Developer Center",
+      "url": "https://developer.genesys.cloud/",
+      "kind": "developer",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "General developer docs. This is the Developer Center home, not a page written for this room alone."
+    },
+    {
+      "title": "Genesys Community",
+      "url": "https://community.genesys.com/",
+      "kind": "community",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "Community home, not a thread about this room."
+    },
+    {
+      "title": "Genesys (company)",
+      "url": "https://en.wikipedia.org/wiki/Genesys_(company)",
+      "kind": "wikipedia",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "Background article. It is not a Genesys Cloud product page."
+    }
+  ]
+}

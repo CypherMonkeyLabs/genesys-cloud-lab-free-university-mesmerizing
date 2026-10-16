@@ -1,0 +1,223 @@
+{
+  "id": "foundations",
+  "title": "Foundations",
+  "lastChecked": "2026-10",
+  "sources": [
+    {
+      "title": "Overview of Genesys Cloud",
+      "url": "https://help.mypurecloud.com/articles/overview-of-genesys-cloud/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Genesys Agent Copilot overview",
+      "url": "https://help.genesys.cloud/articles/agent-copilot-overview/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "AWS regions for Genesys Cloud",
+      "url": "https://help.genesys.cloud/articles/aws-regions-for-genesys-cloud-deployment/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "AWS regions for Genesys Cloud Voice",
+      "url": "https://help.genesys.cloud/articles/aws-regions-genesys-cloud-voice/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "RFC 3261 SIP",
+      "url": "https://www.rfc-editor.org/rfc/rfc3261",
+      "kind": "rfc",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "RFC 3550 RTP",
+      "url": "https://www.rfc-editor.org/rfc/rfc3550",
+      "kind": "rfc",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "RFC 3711 SRTP",
+      "url": "https://www.rfc-editor.org/rfc/rfc3711",
+      "kind": "rfc",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "RFC 4733 DTMF",
+      "url": "https://www.rfc-editor.org/rfc/rfc4733",
+      "kind": "rfc",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "BYOC Cloud overview",
+      "url": "https://help.genesys.cloud/articles/byoc-cloud-overview/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "RFC 5737 documentation addresses",
+      "url": "https://www.rfc-editor.org/rfc/rfc5737",
+      "kind": "rfc",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Create and configure queues",
+      "url": "https://help.genesys.cloud/articles/create-queues/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Advanced routing overview",
+      "url": "https://help.genesys.cloud/articles/advanced-routing-overview/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Agent utilization",
+      "url": "https://help.genesys.cloud/articles/utilization/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Navigate the Architect home page",
+      "url": "https://help.genesys.cloud/articles/navigate-the-architect-home-page/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "In-queue flows overview",
+      "url": "https://help.genesys.cloud/articles/queue-call-flows/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Divisions overview",
+      "url": "https://help.genesys.cloud/articles/divisions-overview/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Genesys Cloud exams",
+      "url": "https://education.genesys.com/certification/cloud",
+      "kind": "official",
+      "lastChecked": "2026-10",
+      "status": "confirm",
+      "note": "The HTML shell did not include the catalog or announcement text. The lab opened this URL in 2026-10 and could not verify it. Confirm before relying."
+    },
+    {
+      "title": "Genesys technical certifications announcement",
+      "url": "https://education.genesys.com/explore/announcement/genesys-technical-certifications-important-announcement",
+      "kind": "official",
+      "lastChecked": "2026-10",
+      "status": "confirm",
+      "note": "The HTML shell did not include the catalog or announcement text. The lab opened this URL in 2026-10 and could not verify it. Confirm before relying."
+    },
+    {
+      "title": "Client credentials grant",
+      "url": "https://developer.genesys.cloud/api/rest/authorization/use-client-credentials",
+      "kind": "developer",
+      "lastChecked": "2026-10",
+      "status": "confirm",
+      "note": "The response was the Developer Center shell, which is the same page for a missing path. The lab opened this URL in 2026-10 and could not verify it. Confirm before relying."
+    },
+    {
+      "title": "Genesys Cloud fair use policy",
+      "url": "https://help.genesys.cloud/articles/genesys-cloud-fair-use-policy/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "BYOC Cloud quick start guide",
+      "url": "https://help.genesys.cloud/articles/byoc-cloud-configuration-overview/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Set up emergency services with BYOC",
+      "url": "https://help.genesys.cloud/articles/set-up-emergency-services-with-byoc/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Dynamic Cloud Voice platform overview",
+      "url": "https://help.genesys.cloud/articles/dynamic-cloud-voice-platform-overview/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Monitor cloud media resources",
+      "url": "https://help.genesys.cloud/articles/monitor-cloud-media-resources/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Genesys Cloud Developer Center",
+      "url": "https://developer.genesys.cloud/",
+      "kind": "developer",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "General developer docs. This is the Developer Center home, not a page written for this room alone."
+    },
+    {
+      "title": "Genesys Community",
+      "url": "https://community.genesys.com/",
+      "kind": "community",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "Community home, not a thread about this room."
+    },
+    {
+      "title": "Session Initiation Protocol",
+      "url": "https://en.wikipedia.org/wiki/Session_Initiation_Protocol",
+      "kind": "wikipedia",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "Background article. It is not a Genesys Cloud product page."
+    }
+  ]
+}

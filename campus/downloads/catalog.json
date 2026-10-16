@@ -13,7 +13,15 @@
         "https://help.genesys.cloud/articles/tls-trunk-transport-protocol-specification/",
         "https://help.genesys.cloud/articles/ports-and-services-for-voip-phones-under-byoc-cloud/",
         "https://help.genesys.cloud/faqs/why-does-the-port-range-16384-32767-rtp-media-need-to-be-opened-up-for-genesys-cloud-voice-byoc-cloud/",
-        "https://help.genesys.cloud/articles/byoc-cloud-public-sip-ip-addresses/"
+        "https://help.genesys.cloud/articles/byoc-cloud-public-sip-ip-addresses/",
+        "https://help.genesys.cloud/articles/genesys-cloud-ports-services/",
+        "https://www.rfc-editor.org/rfc/rfc3261",
+        "https://www.rfc-editor.org/rfc/rfc3550",
+        "https://developer.genesys.cloud/",
+        "https://community.genesys.com/",
+        "https://www.rfc-editor.org/rfc/rfc3711",
+        "https://www.rfc-editor.org/rfc/rfc4733",
+        "https://en.wikipedia.org/wiki/Session_Initiation_Protocol"
       ]
     },
     {
@@ -27,7 +35,10 @@
       "sources": [
         "https://help.genesys.cloud/articles/about-architect/",
         "https://help.genesys.cloud/articles/create-a-flow/",
-        "https://help.genesys.cloud/articles/advanced-routing-overview/"
+        "https://help.genesys.cloud/articles/advanced-routing-overview/",
+        "https://developer.genesys.cloud/",
+        "https://community.genesys.com/",
+        "https://en.wikipedia.org/wiki/Automatic_call_distributor"
       ]
     },
     {
@@ -39,9 +50,22 @@
       "png": "downloads/architect.png",
       "svg": "downloads/architect.svg",
       "sources": [
+        "https://help.genesys.cloud/articles/navigate-the-architect-home-page/",
         "https://help.genesys.cloud/articles/create-a-flow/",
+        "https://help.genesys.cloud/articles/about-architect/",
+        "https://help.genesys.cloud/articles/use-architect-to-create-a-bot-for-an-inbound-flow/",
         "https://help.genesys.cloud/articles/queue-call-flows/",
-        "https://help.genesys.cloud/articles/about-genesys-dialog-engine-bot-flows/"
+        "https://help.genesys.cloud/articles/salesforce-oauth-client-credentials-flow-migration-guide/",
+        "https://help.genesys.cloud/articles/about-genesys-cloud-for-salesforce/",
+        "https://help.genesys.cloud/articles/about-genesys-cloud-for-zendesk/",
+        "https://help.genesys.cloud/articles/about-recording/",
+        "https://help.genesys.cloud/articles/about-genesys-dialog-engine-bot-flows/",
+        "https://help.genesys.cloud/articles/about-genesys-digital-bot-flows/",
+        "https://help.genesys.cloud/articles/divisions-overview/",
+        "https://developer.genesys.cloud/",
+        "https://community.genesys.com/",
+        "https://www.rfc-editor.org/rfc/rfc3261",
+        "https://en.wikipedia.org/wiki/Interactive_voice_response"
       ]
     },
     {
@@ -53,9 +77,13 @@
       "png": "downloads/routing.png",
       "svg": "downloads/routing.svg",
       "sources": [
-        "https://help.genesys.cloud/articles/acd-evaluation-routing-methods/",
         "https://help.genesys.cloud/articles/bullseye-routing-overview/",
-        "https://help.genesys.cloud/articles/create-queues/"
+        "https://help.genesys.cloud/articles/acd-evaluation-routing-methods/",
+        "https://help.genesys.cloud/articles/advanced-routing-overview/",
+        "https://help.genesys.cloud/articles/create-queues/",
+        "https://developer.genesys.cloud/",
+        "https://community.genesys.com/",
+        "https://en.wikipedia.org/wiki/Automatic_call_distributor"
       ]
     },
     {
@@ -67,9 +95,21 @@
       "png": "downloads/byoc.png",
       "svg": "downloads/byoc.svg",
       "sources": [
+        "https://help.genesys.cloud/articles/byoc-cloud-overview/",
         "https://help.genesys.cloud/articles/about-byoc-cloud/",
+        "https://help.genesys.cloud/articles/set-up-emergency-services-with-byoc/",
         "https://help.genesys.cloud/articles/byoc-cloud-configuration-overview/",
-        "https://help.genesys.cloud/articles/edge-groups-overview/"
+        "https://help.genesys.cloud/articles/dynamic-cloud-voice-platform-overview/",
+        "https://help.genesys.cloud/articles/number-plan-information/",
+        "https://help.genesys.cloud/articles/monitor-cloud-media-resources/",
+        "https://www.rfc-editor.org/rfc/rfc3261",
+        "https://help.genesys.cloud/articles/aws-regions-genesys-cloud-voice/",
+        "https://help.mypurecloud.com/articles/overview-of-genesys-cloud/",
+        "https://help.genesys.cloud/articles/edge-groups-overview/",
+        "https://developer.genesys.cloud/",
+        "https://community.genesys.com/",
+        "https://www.rfc-editor.org/rfc/rfc3550",
+        "https://en.wikipedia.org/wiki/Session_Initiation_Protocol"
       ]
     },
     {
@@ -82,7 +122,14 @@
       "svg": "downloads/emergency.svg",
       "sources": [
         "https://help.genesys.cloud/articles/set-up-emergency-services-with-byoc/",
-        "https://help.genesys.cloud/articles/number-plan-information/"
+        "https://help.genesys.cloud/articles/aws-regions-genesys-cloud-voice/",
+        "https://help.genesys.cloud/articles/number-plan-information/",
+        "https://help.genesys.cloud/articles/byoc-cloud-configuration-overview/",
+        "https://help.genesys.cloud/articles/aws-regions-for-genesys-cloud-deployment/",
+        "https://www.rfc-editor.org/rfc/rfc5737",
+        "https://developer.genesys.cloud/",
+        "https://community.genesys.com/",
+        "https://en.wikipedia.org/wiki/Genesys_(company)"
       ]
     },
     {
@@ -94,9 +141,21 @@
       "png": "downloads/wfm.png",
       "svg": "downloads/wfm.svg",
       "sources": [
+        "https://help.genesys.cloud/articles/about-workforce-engagement-management-wem/",
+        "https://help.mypurecloud.com/articles/overview-of-genesys-cloud/",
+        "https://education.genesys.com/certification/cloud",
+        "https://help.genesys.cloud/articles/bullseye-routing-overview/",
+        "https://help.genesys.cloud/articles/create-queues/",
+        "https://help.genesys.cloud/articles/advanced-routing-overview/",
+        "https://education.genesys.com/explore/announcement/genesys-technical-certifications-important-announcement",
         "https://help.genesys.cloud/articles/workforce-management/",
         "https://help.genesys.cloud/articles/work-with-forecasts/",
-        "https://help.genesys.cloud/articles/work-with-workforce-management-schedules/"
+        "https://help.genesys.cloud/articles/work-with-workforce-management-schedules/",
+        "https://help.genesys.cloud/articles/generate-a-schedule-from-a-forecast/",
+        "https://help.genesys.cloud/articles/choose-forecast-for-an-existing-schedule/",
+        "https://developer.genesys.cloud/",
+        "https://community.genesys.com/",
+        "https://en.wikipedia.org/wiki/Automatic_call_distributor"
       ]
     },
     {
@@ -110,7 +169,10 @@
       "sources": [
         "https://help.genesys.cloud/50540/",
         "https://help.genesys.cloud/articles/about-recording/",
-        "https://help.genesys.cloud/faqs/category/speech-and-text-analytics/"
+        "https://help.genesys.cloud/faqs/category/speech-and-text-analytics/",
+        "https://developer.genesys.cloud/",
+        "https://community.genesys.com/",
+        "https://en.wikipedia.org/wiki/Genesys_(company)"
       ]
     },
     {
@@ -122,8 +184,15 @@
       "png": "downloads/api.png",
       "svg": "downloads/api.svg",
       "sources": [
+        "https://developer.genesys.cloud/",
+        "https://developer.genesys.cloud/api/rest/authorization/use-client-credentials",
+        "https://help.genesys.cloud/articles/aws-regions-for-genesys-cloud-deployment/",
         "https://help.genesys.cloud/articles/create-an-oauth-client/",
-        "https://developer.genesys.cloud/api/rest/authorization/use-client-credentials"
+        "https://help.genesys.cloud/articles/aws-regions-genesys-cloud-voice/",
+        "https://help.genesys.cloud/articles/divisions-overview/",
+        "https://help.genesys.cloud/articles/create-queues/",
+        "https://community.genesys.com/",
+        "https://en.wikipedia.org/wiki/OAuth"
       ]
     },
     {
@@ -136,7 +205,22 @@
       "svg": "downloads/predictive.svg",
       "sources": [
         "https://help.genesys.cloud/articles/about-predictive-engagement/",
-        "https://help.genesys.cloud/announcements/genesys-cloud/deprecation-journey-outcomes/"
+        "https://help.genesys.cloud/usecases/genesys-predictive-engagement/",
+        "https://help.genesys.cloud/announcements/genesys-cloud/deprecation-journey-outcomes/",
+        "https://help.genesys.cloud/articles/advanced-routing-overview/",
+        "https://help.genesys.cloud/articles/predictive-engagement-tracking-snippet/",
+        "https://help.genesys.cloud/articles/migrate-from-web-chat-to-web-messaging-for-digital-user-tracking-and-predictive-engagement/",
+        "https://help.genesys.cloud/articles/configure-and-deploy-genesys-messenger/",
+        "https://help.genesys.cloud/articles/best-practices-for-segments/",
+        "https://help.genesys.cloud/articles/create-an-action-map/",
+        "https://help.genesys.cloud/articles/define-an-action-maps-triggers/",
+        "https://help.genesys.cloud/articles/action-maps-overview-2/",
+        "https://help.genesys.cloud/articles/about-action-maps/",
+        "https://help.genesys.cloud/announcements/genesys-cloud/predictive-routing-supports-customer-defined-business-outcomes-with-custom-kpis/",
+        "https://help.genesys.cloud/articles/about-architect/",
+        "https://developer.genesys.cloud/",
+        "https://community.genesys.com/",
+        "https://en.wikipedia.org/wiki/Automatic_call_distributor"
       ]
     },
     {
@@ -149,7 +233,26 @@
       "svg": "downloads/migration.svg",
       "sources": [
         "https://help.genesys.cloud/articles/about-architect/",
-        "https://www.cisco.com/c/en/us/support/customer-collaboration/unified-contact-center-enterprise/series.html"
+        "https://help.genesys.cloud/articles/create-queues/",
+        "https://help.genesys.cloud/articles/create-a-flow/",
+        "https://www.cisco.com/c/en/us/support/customer-collaboration/unified-contact-center-enterprise/series.html",
+        "https://help.genesys.cloud/articles/about-workforce-engagement-management-wem/",
+        "https://help.genesys.cloud/articles/queue-call-flows/",
+        "https://www.cisco.com/c/en/us/support/customer-collaboration/unified-contact-center-express/series.html",
+        "https://help.genesys.cloud/articles/advanced-routing-overview/",
+        "https://help.genesys.cloud/articles/bullseye-routing-overview/",
+        "https://help.genesys.cloud/articles/acd-evaluation-routing-methods/",
+        "https://help.genesys.cloud/articles/about-genesys-cloud-for-salesforce/",
+        "https://help.genesys.cloud/articles/about-byoc-cloud/",
+        "https://help.genesys.cloud/articles/dynamic-cloud-voice-platform-overview/",
+        "https://help.genesys.cloud/articles/number-plan-information/",
+        "https://help.genesys.cloud/articles/edge-groups-overview/",
+        "https://help.genesys.cloud/articles/set-up-emergency-services-with-byoc/",
+        "https://help.genesys.cloud/articles/about-recording/",
+        "https://developer.genesys.cloud/",
+        "https://community.genesys.com/",
+        "https://www.rfc-editor.org/rfc/rfc3261",
+        "https://en.wikipedia.org/wiki/Interactive_voice_response"
       ]
     },
     {
@@ -162,7 +265,11 @@
       "svg": "downloads/certs.svg",
       "sources": [
         "https://education.genesys.com/certification/cloud",
-        "https://education.genesys.com/explore/announcement/genesys-technical-certifications-important-announcement"
+        "https://education.genesys.com/explore/announcement/genesys-technical-certifications-important-announcement",
+        "https://developer.genesys.cloud/",
+        "https://help.genesys.cloud/",
+        "https://community.genesys.com/",
+        "https://en.wikipedia.org/wiki/Genesys_(company)"
       ]
     },
     {
@@ -176,7 +283,11 @@
       "sources": [
         "https://help.genesys.cloud/announcements/genesys-cloud/deprecation-journey-outcomes/",
         "https://help.genesys.cloud/announcements/genesys-cloud/predictive-routing-supports-customer-defined-business-outcomes-with-custom-kpis/",
-        "https://help.genesys.cloud/articles/create-an-oauth-client/"
+        "https://help.genesys.cloud/articles/create-an-oauth-client/",
+        "https://help.genesys.cloud/articles/migrate-from-web-chat-to-web-messaging-for-digital-user-tracking-and-predictive-engagement/",
+        "https://developer.genesys.cloud/",
+        "https://community.genesys.com/",
+        "https://en.wikipedia.org/wiki/OAuth"
       ]
     }
   ],

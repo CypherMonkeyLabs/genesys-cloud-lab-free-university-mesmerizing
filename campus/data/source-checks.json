@@ -1,0 +1,447 @@
+{
+  "https://appfoundry.genesys.com/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://community.genesys.com/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://developer.genesys.cloud/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://developer.genesys.cloud/api/rest/authorization/use-client-credentials": {
+    "status": 0,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://education.genesys.com/certification/cloud": {
+    "status": 0,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://education.genesys.com/explore/announcement/genesys-technical-certifications-important-announcement": {
+    "status": 0,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://en.wikipedia.org/wiki/Automatic_call_distributor": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://en.wikipedia.org/wiki/Call_centre": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://en.wikipedia.org/wiki/Dual-tone_multi-frequency_signaling": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://en.wikipedia.org/wiki/Genesys_(company)": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://en.wikipedia.org/wiki/Interactive_voice_response": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://en.wikipedia.org/wiki/OAuth": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://en.wikipedia.org/wiki/Real-time_Transport_Protocol": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://en.wikipedia.org/wiki/Secure_Real-time_Transport_Protocol": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://en.wikipedia.org/wiki/Session_Initiation_Protocol": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://en.wikipedia.org/wiki/Transport_Layer_Security": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://en.wikipedia.org/wiki/WebRTC": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/50540/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/announcements/genesys-cloud/deprecation-journey-outcomes/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/announcements/genesys-cloud/predictive-routing-supports-customer-defined-business-outcomes-with-custom-kpis/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/about-action-maps/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/about-architect/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/about-byoc-cloud/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/about-genesys-cloud-for-salesforce/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/about-genesys-cloud-for-zendesk/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/about-genesys-dialog-engine-bot-flows/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/about-genesys-digital-bot-flows/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/about-predictive-engagement/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/about-recording/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/about-speech-and-text-analytics/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/about-workforce-engagement-management-wem/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/acd-evaluation-routing-methods/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/action-maps-overview-2/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/advanced-routing-overview/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/agent-copilot-overview/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/aws-regions-for-genesys-cloud-deployment/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/aws-regions-genesys-cloud-voice/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/best-practices-for-segments/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/bullseye-routing-overview/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/byoc-cloud-configuration-overview/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/byoc-cloud-overview/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/byoc-cloud-public-sip-ip-addresses/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/choose-a-trunk-transport-protocol/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/choose-forecast-for-an-existing-schedule/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/concurrent-licensing-model-billing-overview/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/configure-and-deploy-genesys-messenger/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/configure-oauth-settings/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/create-a-flow/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/create-an-action-map/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/create-an-oauth-client/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/create-edge-group-phone-trunk/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/create-queues/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/define-an-action-maps-triggers/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/divisions-overview/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/dynamic-cloud-voice-platform-overview/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/edge-groups-overview/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/generate-a-schedule-from-a-forecast/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/genesys-cloud-fair-use-policy/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/genesys-cloud-ports-services/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/migrate-from-web-chat-to-web-messaging-for-digital-user-tracking-and-predictive-engagement/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/monitor-cloud-media-resources/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/navigate-the-architect-home-page/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/number-plan-information/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/ports-and-services-for-voip-phones-under-byoc-cloud/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/predictive-engagement-tracking-snippet/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/preferred-agent-routing-behavior/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/queue-call-flows/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/salesforce-oauth-client-credentials-flow-migration-guide/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/set-up-emergency-services-with-byoc/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/specify-routing-settings/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/speech-and-text-analytics-overview/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/tls-trunk-transport-protocol-specification/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/use-architect-to-create-a-bot-for-an-inbound-flow/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/utilization/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/work-with-forecasts/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/work-with-workforce-management-schedules/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/articles/workforce-management/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/faqs/category/speech-and-text-analytics/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/faqs/why-does-the-port-range-16384-32767-rtp-media-need-to-be-opened-up-for-genesys-cloud-voice-byoc-cloud/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.genesys.cloud/usecases/genesys-predictive-engagement/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://help.mypurecloud.com/articles/overview-of-genesys-cloud/": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://www.cisco.com/c/en/us/support/customer-collaboration/unified-contact-center-enterprise/series.html": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://www.cisco.com/c/en/us/support/customer-collaboration/unified-contact-center-express/series.html": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://www.rfc-editor.org/rfc/rfc3261": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://www.rfc-editor.org/rfc/rfc3550": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://www.rfc-editor.org/rfc/rfc3711": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://www.rfc-editor.org/rfc/rfc4733": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  },
+  "https://www.rfc-editor.org/rfc/rfc5737": {
+    "status": 200,
+    "lastChecked": "2026-10",
+    "rule": "body-v1"
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "id": "architect",
+  "title": "Architect flows",
+  "lastChecked": "2026-10",
+  "sources": [
+    {
+      "title": "Navigate the Architect home page",
+      "url": "https://help.genesys.cloud/articles/navigate-the-architect-home-page/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Create a flow",
+      "url": "https://help.genesys.cloud/articles/create-a-flow/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "About Architect",
+      "url": "https://help.genesys.cloud/articles/about-architect/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Use Architect to create a bot for an inbound flow",
+      "url": "https://help.genesys.cloud/articles/use-architect-to-create-a-bot-for-an-inbound-flow/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "In-queue flows overview",
+      "url": "https://help.genesys.cloud/articles/queue-call-flows/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Salesforce OAuth client credentials migration",
+      "url": "https://help.genesys.cloud/articles/salesforce-oauth-client-credentials-flow-migration-guide/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "About Genesys Cloud for Salesforce",
+      "url": "https://help.genesys.cloud/articles/about-genesys-cloud-for-salesforce/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "About Genesys Cloud for Zendesk",
+      "url": "https://help.genesys.cloud/articles/about-genesys-cloud-for-zendesk/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "About recording",
+      "url": "https://help.genesys.cloud/articles/about-recording/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "About Genesys Dialog Engine Bot Flows",
+      "url": "https://help.genesys.cloud/articles/about-genesys-dialog-engine-bot-flows/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "About Genesys Digital Bot Flows",
+      "url": "https://help.genesys.cloud/articles/about-genesys-digital-bot-flows/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Divisions overview",
+      "url": "https://help.genesys.cloud/articles/divisions-overview/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Genesys Cloud Developer Center",
+      "url": "https://developer.genesys.cloud/",
+      "kind": "developer",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "General developer docs. This is the Developer Center home, not a page written for this room alone."
+    },
+    {
+      "title": "Genesys Community",
+      "url": "https://community.genesys.com/",
+      "kind": "community",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "Community home, not a thread about this room."
+    },
+    {
+      "title": "RFC 3261 SIP",
+      "url": "https://www.rfc-editor.org/rfc/rfc3261",
+      "kind": "rfc",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "Protocol specification."
+    },
+    {
+      "title": "Interactive voice response",
+      "url": "https://en.wikipedia.org/wiki/Interactive_voice_response",
+      "kind": "wikipedia",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "Background article. It is not a Genesys Cloud product page."
+    }
+  ]
+}

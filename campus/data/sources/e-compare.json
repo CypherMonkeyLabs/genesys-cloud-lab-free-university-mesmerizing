@@ -1,0 +1,71 @@
+{
+  "id": "e-compare",
+  "title": "Choose Cloud, Premises, or both",
+  "lastChecked": "2026-10",
+  "sources": [
+    {
+      "title": "BYOC Cloud overview",
+      "url": "https://help.genesys.cloud/articles/byoc-cloud-overview/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "BYOC Premises Edge groups overview",
+      "url": "https://help.genesys.cloud/articles/edge-groups-overview/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "AWS regions for Genesys Cloud Voice",
+      "url": "https://help.genesys.cloud/articles/aws-regions-genesys-cloud-voice/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Set up emergency services with BYOC",
+      "url": "https://help.genesys.cloud/articles/set-up-emergency-services-with-byoc/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Genesys Cloud Developer Center",
+      "url": "https://developer.genesys.cloud/",
+      "kind": "developer",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "General developer docs. This is the Developer Center home, not a page written for this room alone."
+    },
+    {
+      "title": "Genesys Community",
+      "url": "https://community.genesys.com/",
+      "kind": "community",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "Community home, not a thread about this room."
+    },
+    {
+      "title": "RFC 3550 RTP",
+      "url": "https://www.rfc-editor.org/rfc/rfc3550",
+      "kind": "rfc",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "Protocol specification."
+    },
+    {
+      "title": "Real-time Transport Protocol",
+      "url": "https://en.wikipedia.org/wiki/Real-time_Transport_Protocol",
+      "kind": "wikipedia",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "Background article. It is not a Genesys Cloud product page."
+    }
+  ]
+}

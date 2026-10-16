@@ -1,0 +1,143 @@
+{
+  "id": "studio",
+  "title": "Studios",
+  "lastChecked": "2026-10",
+  "sources": [
+    {
+      "title": "Architect home",
+      "url": "https://help.genesys.cloud/articles/navigate-the-architect-home-page/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Create a flow",
+      "url": "https://help.genesys.cloud/articles/create-a-flow/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "About Architect",
+      "url": "https://help.genesys.cloud/articles/about-architect/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Bullseye routing overview",
+      "url": "https://help.genesys.cloud/articles/bullseye-routing-overview/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Evaluation methods",
+      "url": "https://help.genesys.cloud/articles/acd-evaluation-routing-methods/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Advanced routing overview",
+      "url": "https://help.genesys.cloud/articles/advanced-routing-overview/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Client credentials",
+      "url": "https://developer.genesys.cloud/api/rest/authorization/use-client-credentials",
+      "kind": "developer",
+      "lastChecked": "2026-10",
+      "status": "confirm",
+      "note": "The response was the Developer Center shell, which is the same page for a missing path. The lab opened this URL in 2026-10 and could not verify it. Confirm before relying."
+    },
+    {
+      "title": "Create an OAuth client",
+      "url": "https://help.genesys.cloud/articles/create-an-oauth-client/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Create queues",
+      "url": "https://help.genesys.cloud/articles/create-queues/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "AWS regions",
+      "url": "https://help.genesys.cloud/articles/aws-regions-for-genesys-cloud-deployment/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Number plan information",
+      "url": "https://help.genesys.cloud/articles/number-plan-information/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Cisco Unified Contact Center Enterprise",
+      "url": "https://www.cisco.com/c/en/us/support/customer-collaboration/unified-contact-center-enterprise/series.html",
+      "kind": "official",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Dynamic Cloud Voice",
+      "url": "https://help.genesys.cloud/articles/dynamic-cloud-voice-platform-overview/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Genesys Cloud for Salesforce",
+      "url": "https://help.genesys.cloud/articles/about-genesys-cloud-for-salesforce/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Genesys Cloud Developer Center",
+      "url": "https://developer.genesys.cloud/",
+      "kind": "developer",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "General developer docs. This is the Developer Center home, not a page written for this room alone."
+    },
+    {
+      "title": "Genesys Community",
+      "url": "https://community.genesys.com/",
+      "kind": "community",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "Community home, not a thread about this room."
+    },
+    {
+      "title": "OAuth",
+      "url": "https://en.wikipedia.org/wiki/OAuth",
+      "kind": "wikipedia",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "Background article. It is not a Genesys Cloud product page."
+    }
+  ]
+}

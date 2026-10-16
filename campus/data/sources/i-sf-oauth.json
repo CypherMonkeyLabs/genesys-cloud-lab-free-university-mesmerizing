@@ -1,0 +1,55 @@
+{
+  "id": "i-sf-oauth",
+  "title": "Salesforce data actions move to OAuth client credentials",
+  "lastChecked": "2026-10",
+  "sources": [
+    {
+      "title": "Salesforce OAuth client credentials migration",
+      "url": "https://help.genesys.cloud/articles/salesforce-oauth-client-credentials-flow-migration-guide/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Configure OAuth settings",
+      "url": "https://help.genesys.cloud/articles/configure-oauth-settings/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "About Genesys Cloud for Salesforce",
+      "url": "https://help.genesys.cloud/articles/about-genesys-cloud-for-salesforce/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Genesys Cloud Developer Center",
+      "url": "https://developer.genesys.cloud/",
+      "kind": "developer",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "General developer docs. This is the Developer Center home, not a page written for this room alone."
+    },
+    {
+      "title": "Genesys Community",
+      "url": "https://community.genesys.com/",
+      "kind": "community",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "Community home, not a thread about this room."
+    },
+    {
+      "title": "OAuth",
+      "url": "https://en.wikipedia.org/wiki/OAuth",
+      "kind": "wikipedia",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "Background article. It is not a Genesys Cloud product page."
+    }
+  ]
+}
