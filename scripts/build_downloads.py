@@ -13,11 +13,15 @@ ROOT = Path(__file__).resolve().parents[1]
 CAMPUS = ROOT / "campus"
 OUT = CAMPUS / "downloads"
 REPO = "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+ORG = "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
+COPYRIGHT = "© 2026 CypherMonkeyLabs"
 FOOT = [
     "CypherMonkey Labs · Signal Floor",
+    COPYRIGHT,
     "https://cyphermonkeylabs.com",
     "https://linktr.ee/cyphermonkey",
     REPO,
+    ORG,
     "Independent educational project. Not affiliated with or endorsed by any vendor.",
     "Trademarks belong to their owners. MIT code. CC BY-NC-SA content.",
     "Concerns: https://cyphermonkeylabs.com/#contact",
@@ -175,12 +179,21 @@ def text(rows, x, y, line, scale, rgb, width):
         cursor += 6 * scale
 
 
+def visible_foot():
+    lines = []
+    for line in FOOT:
+        lines.append(line + " 🐒" if line == COPYRIGHT else line)
+    return lines
+
+
 def write_html(path, title, paragraphs, sources):
     body = "\n".join(f"<p>{p}</p>" for p in paragraphs)
     links = "\n".join(f'<li><a href="{url}">{url}</a></li>' for url in sources)
-    foot = "\n".join(f"<p>{line}</p>" for line in FOOT)
+    foot = "\n".join(f"<p>{line}</p>" for line in visible_foot())
     path.write_text(f"""<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <title>{title}</title>
 <style>
 body {{ font: 16px/1.45 Georgia, serif; margin: 32px auto; max-width: 720px; color: #1b140f; background: #f7f4ef; }}
@@ -409,11 +422,12 @@ def main():
         blocks.append(f"<article><h2>{xml(card['front'])}</h2><p>{xml(card['back'])}</p><p>{xml(card['track'])} · {xml(card['lesson'])}</p></article>")
     (OUT / "flashcards.html").write_text(
         "<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'><title>Flashcards</title>"
+        "<link rel='icon' href='../favicon.ico' sizes='any'><link rel='icon' href='../favicon.svg' type='image/svg+xml'>"
         "<style>body{font:15px/1.4 Georgia,serif;margin:24px;background:#f7f4ef;color:#1b140f}"
         "article{break-inside:avoid;border:1px solid #ccc;padding:12px;margin:8px 0;background:#fff}"
         "footer{margin-top:24px;font-size:13px}</style></head><body><h1>Signal Floor flashcards</h1>"
         + "\n".join(blocks)
-        + "<footer>" + "\n".join(f"<p>{xml(line)}</p>" for line in FOOT) + "</footer></body></html>",
+        + "<footer>" + "\n".join(f"<p>{xml(line)}</p>" for line in visible_foot()) + "</footer></body></html>",
         encoding="utf-8",
     )
     (OUT / "catalog.json").write_text(json.dumps({"sheets": catalog, "cards": len(cards), "footer": FOOT}, indent=2) + "\n", encoding="utf-8")

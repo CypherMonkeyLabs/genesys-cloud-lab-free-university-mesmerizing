@@ -7,7 +7,9 @@
 <meta name="description" content="A free operations lab for Genesys Cloud CX: Architect flows, ACD routing, queues and skills, BYOC Cloud and Premises, the Edge, WEM, speech and text analytics, bots, Platform APIs, AppFoundry, and migration.">
 <meta name="theme-color" content="#071018">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%23071018' width='32' height='32' rx='6'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%23ff5a36'/%3E%3C/svg%3E">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="favicon.svg">
 <script>
 try {
   var s = JSON.parse(localStorage.getItem('gccx-settings') || '{}');
@@ -15,7 +17,7 @@ try {
   if (theme === "paper" || theme === "harbor") theme = "neon";
   document.documentElement.dataset.theme = theme;
   if (s.font) document.documentElement.dataset.font = s.font;
-  if (s.reduce) document.documentElement.dataset.reduce = '1';
+  if (s.reduce || window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.dataset.reduce = '1';
 } catch (e) {}
 </script>
 <style>
@@ -281,6 +283,20 @@ th, td { border-bottom: 1px solid var(--cc-line); text-align: left; padding: 8px
 @media (prefers-reduced-motion: reduce) {
   .pulse { animation: none; }
 }
+.stat b { font-variant-numeric: tabular-nums; min-width: 3ch; display: inline-block; }
+#mascot-slot { width: 168px; height: 190px; }
+.chrome { position: sticky; top: 0; z-index: 40; }
+.hero-bleed { min-height: calc(100svh - 168px); }
+@media (max-width: 820px) {
+  #mascot-slot { width: 96px; height: 110px; }
+  .hero-bleed { min-height: calc(100svh - 120px); }
+  .hero-bleed:not(.hero-live) .hero-canvas { visibility: hidden; }
+  .hero-bleed:not(.hero-live) .hero-fallback { display: block !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-canvas { visibility: hidden !important; }
+  .hero-fallback { display: block !important; }
+}
 </style>
 <link rel="stylesheet" href="assets/university.css">
 </head>
@@ -391,31 +407,31 @@ th, td { border-bottom: 1px solid var(--cc-line); text-align: left; padding: 8px
     </label>
   </div>
   <nav class="menu-nav" aria-label="All sections">
-    <a href="#/" data-i18n="home">Home</a>
-    <a href="#/tracks" data-i18n="learn">Learn</a>
-    <a href="#/atlas" data-i18n="diagrams">Diagrams</a>
-    <a href="#/flows" data-i18n="flows">Flows</a>
-    <a href="#/charts" data-i18n="charts">Charts</a>
-    <a href="#/cheat" data-i18n="cheat">Cheat Codes</a>
-    <a href="#/play" data-i18n="play">Play</a>
-    <a href="#/ecosystem" data-i18n="ecosystem">Ecosystem</a>
-    <a href="#/downloads" data-i18n="downloads">Downloads</a>
-    <a href="#/career" data-i18n="careers">Careers</a>
-    <a href="#/regions" data-i18n="regions">Regions</a>
-    <a href="#/ports">Ports</a>
-    <a href="#/roadmap">Roadmap</a>
-    <a href="#/security">Security</a>
-    <a href="#/whats-new">What’s new</a>
-    <a href="#/playbooks">Playbooks</a>
-    <a href="#/deploy">Deployment</a>
-    <a href="#/architecture">Architecture</a>
-    <a href="#/reporting">Reporting</a>
-    <a href="#/certs">Certifications</a>
-    <a href="#/glossary">Glossary</a>
-    <a href="#/interview">Interview</a>
-    <a href="#/boss">Boss incidents</a>
-    <a href="#/studio">Studios</a>
-    <a href="#/settings" data-i18n="settings">Settings</a>
+    <a href="#/"><span class="nav-glyph" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M4 11 L12 4 L20 11 V20 H15 V14 H9 V20 H4 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="nav-copy"><b data-i18n="home">Home</b><small>Signal Floor, the start of the lab</small></span></a>
+    <a href="#/tracks"><span class="nav-glyph" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M5 4 H15 L19 8 V20 H5 Z M15 4 V8 H19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="nav-copy"><b data-i18n="learn">Learn</b><small>Tracks, lessons, quizzes, and labs</small></span></a>
+    <a href="#/atlas"><span class="nav-glyph" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M5 7 h4 v4 H5 Z M15 13 h4 v4 h-4 Z M9 9 L15 15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="nav-copy"><b data-i18n="diagrams">Diagrams</b><small>Cited teaching sketches in the atlas</small></span></a>
+    <a href="#/flows"><span class="nav-glyph" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M4 8 H14 M14 8 L11 5 M14 8 L11 11 M4 16 H20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="nav-copy"><b data-i18n="flows">Flows</b><small>Animated call, routing, and cutover pictures</small></span></a>
+    <a href="#/charts"><span class="nav-glyph" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M4 19 V5 M4 19 H20 M8 16 V12 M12 16 V8 M16 16 V10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="nav-copy"><b data-i18n="charts">Charts</b><small>Counts from this lab, not production metrics</small></span></a>
+    <a href="#/cheat"><span class="nav-glyph" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M7 3 H17 V21 L12 17 L7 21 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="nav-copy"><b data-i18n="cheat">Cheat Codes</b><small>One-page sheets as HTML, PDF, and PNG</small></span></a>
+    <a href="#/play"><span class="nav-glyph" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M8 5 L19 12 L8 19 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="nav-copy"><b data-i18n="play">Play</b><small>Port game, daily drill, sandbox, badges</small></span></a>
+    <a href="#/ecosystem"><span class="nav-glyph" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 5 a3 3 0 1 0 0.1 0 M5 19 a3 3 0 1 0 0.1 0 M19 19 a3 3 0 1 0 0.1 0 M12 8 L6 16 M12 8 L18 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="nav-copy"><b data-i18n="ecosystem">Ecosystem</b><small>Tracks, glossary, and sister systems</small></span></a>
+    <a href="#/downloads"><span class="nav-glyph" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 4 V14 M8 10 L12 14 L16 10 M5 18 H19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="nav-copy"><b data-i18n="downloads">Downloads</b><small>Sheets, flashcards, and the offline zip</small></span></a>
+    <a href="#/career"><span class="nav-glyph" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 12 a3 3 0 1 0 -0.1 0 M6 19 c1.2-3 10.8-3 12 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="nav-copy"><b data-i18n="careers">Careers</b><small>Practice paths, not a job offer</small></span></a>
+    <a href="#/regions"><span class="nav-glyph" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 4 a8 8 0 1 0 0.1 0 M4 12 H20 M12 4 c3 2.5 3 13.5 0 16 M12 4 c-3 2.5-3 13.5 0 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="nav-copy"><b data-i18n="regions">Regions</b><small>One core AWS region, satellite media</small></span></a>
+    <a href="#/ports"><span class="nav-glyph" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M8 7 H16 V17 H8 Z M12 7 V4 M10 17 v3 M14 17 v3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="nav-copy"><b>Ports</b><small>Signaling ports and the RTP range</small></span></a>
+    <a href="#/roadmap"><span class="nav-glyph" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M5 19 V6 M5 19 H19 M8 15 l3-4 3 2 4-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="nav-copy"><b>Roadmap</b><small>A month of study, in order</small></span></a>
+    <a href="#/security"><span class="nav-glyph" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 3 L19 6 V12 c0 4-3 6.5-7 8 c-4-1.5-7-4-7-8 V6 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="nav-copy"><b>Security</b><small>TLS, SRTP, grants, and divisions</small></span></a>
+    <a href="#/whats-new"><span class="nav-glyph" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 7 v5 l3 2 M12 21 a9 9 0 1 0 -0.1 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="nav-copy"><b>What’s new</b><small>Pages as read on 15 October 2026</small></span></a>
+    <a href="#/playbooks"><span class="nav-glyph" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M6 4 H18 V20 H6 Z M8 8 H16 M8 12 H16 M8 16 H13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="nav-copy"><b>Playbooks</b><small>A symptom, then the track that explains it</small></span></a>
+    <a href="#/deploy"><span class="nav-glyph" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M4 16 L12 4 L20 16 H4 M12 16 V21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="nav-copy"><b>Deployment</b><small>Object order for a first build</small></span></a>
+    <a href="#/architecture"><span class="nav-glyph" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M4 14 L12 6 L20 14 V20 H4 Z M10 20 V14 H14 V20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="nav-copy"><b>Architecture</b><small>How the pieces sit on one floor</small></span></a>
+    <a href="#/reporting"><span class="nav-glyph" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M5 19 V10 M10 19 V6 M15 19 V13 M20 19 V8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="nav-copy"><b>Reporting</b><small>Service level, WFM, and speech analytics</small></span></a>
+    <a href="#/certs"><span class="nav-glyph" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M8 4 H16 V8 a4 4 0 0 1-8 0 Z M8 18 H16 M9 14 H15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="nav-copy"><b>Certifications</b><small>Catalog names, no invented exam codes</small></span></a>
+    <a href="#/glossary"><span class="nav-glyph" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M6 5 H18 M6 9 H18 M6 13 H14 M6 17 H11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="nav-copy"><b>Glossary</b><small>Short definitions, each with a source</small></span></a>
+    <a href="#/interview"><span class="nav-glyph" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M8 8 a4 4 0 1 0 0.1 0 M6 20 c1-4 11-4 12 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="nav-copy"><b>Interview</b><small>Drill questions with citations</small></span></a>
+    <a href="#/boss"><span class="nav-glyph" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 4 L20 18 H4 Z M12 10 V14 M12 16.5 v.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="nav-copy"><b>Boss incidents</b><small>Synthetic faults and the fix path</small></span></a>
+    <a href="#/studio"><span class="nav-glyph" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M4 8 H20 V18 H4 Z M8 8 V6 H16 V8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="nav-copy"><b>Studios</b><small>Routing, API, and builder practice</small></span></a>
+    <a href="#/settings"><span class="nav-glyph" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 8 a4 4 0 1 0 0.1 0 M12 3 v2 M12 19 v2 M3 12 h2 M19 12 h2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="nav-copy"><b data-i18n="settings">Settings</b><small>Theme, sound, motion, and type size</small></span></a>
   </nav>
   <p class="menu-note">Sound and reduced motion are in Settings. One panel, every screen size.</p>
   <div class="menu-else">
@@ -470,6 +486,7 @@ th, td { border-bottom: 1px solid var(--cc-line); text-align: left; padding: 8px
               <a class="btn" href="#/flows">Flows</a>
               <a class="btn" href="#/charts">Charts</a>
               <a class="btn" href="#/tracks">Tracks</a>
+              <button type="button" class="btn" id="hero-play" hidden>Play the 3D floor</button>
             </div>
           </div>
           <div class="hero-side">
@@ -500,8 +517,21 @@ th, td { border-bottom: 1px solid var(--cc-line); text-align: left; padding: 8px
         <h2>Flows</h2>
         <p class="muted">Animated call, routing, and cutover pictures load with the atlas.</p>
       </section>
-      <section id="home-charts" aria-label="Lab charts">
+      <section id="home-charts" class="chart-hold" aria-label="Lab charts">
         <h2>Charts</h2>
+        <p class="muted">Six charts from this lab’s own counts. They draw when this section is near the screen.</p>
+      </section>
+<nav class="brand-links" aria-label="Lucky and Cypher Monkey Labs">
+  <a href="https://github.com/cipher0x9" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 .5A11.5 11.5 0 0 0 8.1 22.9c.6.1.8-.2.8-.6v-2.1c-3.3.7-4-1.6-4-1.6-.5-1.2-1.2-1.5-1.2-1.5-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 1.6 2.6 1.2 3.2.9.1-.7.4-1.2.7-1.4-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.9 1.2 1.9 1.2 3.2 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6A11.5 11.5 0 0 0 12 .5z"/></svg><span>Visit my GitHub</span></a>
+  <a href="https://github.com/CypherMonkeyLabs" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 .5A11.5 11.5 0 0 0 8.1 22.9c.6.1.8-.2.8-.6v-2.1c-3.3.7-4-1.6-4-1.6-.5-1.2-1.2-1.5-1.2-1.5-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 1.6 2.6 1.2 3.2.9.1-.7.4-1.2.7-1.4-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.9 1.2 1.9 1.2 3.2 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6A11.5 11.5 0 0 0 12 .5z"/></svg><span>Visit the Labs org</span></a>
+  <a href="https://cyphermonkeylabs.com" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="#ff5a36"/><circle cx="12" cy="11" r="3.2" fill="#1a0c08"/><circle cx="10.8" cy="10.4" r=".55" fill="#fff"/><circle cx="13.2" cy="10.4" r=".55" fill="#fff"/><path d="M10.4 12.4c.5.7 2.7.7 3.2 0" fill="none" stroke="#fff" stroke-width=".7" stroke-linecap="round"/></svg><span>Visit Cypher Monkey Labs</span></a>
+  <a href="https://x.com/Cypher0x9" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>X</span></a>
+  <a href="https://huggingface.co/Cypher0x9" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="12" cy="12" r="9.2" fill="#FFD21E" stroke="#1a1408" stroke-width="1.2"/><circle cx="8.7" cy="10.4" r="1.15" fill="#1a1408"/><circle cx="15.3" cy="10.4" r="1.15" fill="#1a1408"/><path d="M8.2 14.2c1.1 1.5 6.5 1.5 7.6 0" fill="none" stroke="#1a1408" stroke-width="1.3" stroke-linecap="round"/></svg><span>Hugging Face</span></a>
+</nav>
+      <section class="who-band" aria-label="About Lucky">
+        <p class="kicker">The student</p>
+        <h2>Lucky</h2>
+        <p>Lucky is a lifelong student and an AI enthusiast, from systems, networking, voice, and the contact center, growing into AI omni-channel agents. Signal Floor is the notebook: cited pages, not a live organization.</p>
       </section>
       <div id="home-dynamic"></div>
     </section>
@@ -510,11 +540,11 @@ th, td { border-bottom: 1px solid var(--cc-line); text-align: left; padding: 8px
 </div>
 <div class="bottom-nav quick-bar">
   <nav aria-label="Quick">
-    <a href="#/tracks" id="nav-learn" data-i18n="learn">Learn</a>
-    <a href="#/atlas" data-i18n="diagrams">Diagrams</a>
-    <a href="#/play" data-i18n="play">Play</a>
-    <button type="button" id="quick-menu" data-i18n="menu">Menu</button>
-    <a href="#listen" id="nav-listen" data-i18n="listenbar">Listen</a>
+    <a href="#/tracks" id="nav-learn"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 4 H15 L19 8 V20 H5 Z M15 4 V8 H19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="learn">Learn</span></a>
+    <a href="#/atlas"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 7 h4 v4 H5 Z M15 13 h4 v4 h-4 Z M9 9 L15 15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="diagrams">Diagrams</span></a>
+    <a href="#/play"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M8 5 L19 12 L8 19 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="play">Play</span></a>
+    <button type="button" id="quick-menu"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M4 7 H20 M4 12 H20 M4 17 H20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="menu">Menu</span></button>
+    <a href="#listen" id="nav-listen"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M4 10 v4 h3 l5 4 V6 L7 10 Z M16 9 a4 4 0 0 1 0 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="listenbar">Listen</span></a>
   </nav>
 </div>
 <dialog id="lx" class="lx" aria-label="Diagram lightbox">
@@ -528,6 +558,28 @@ th, td { border-bottom: 1px solid var(--cc-line); text-align: left; padding: 8px
   <p id="lx-why"></p>
   <p id="lx-legend" class="muted"></p>
 </dialog>
+<div class="guide" id="guide">
+  <button type="button" class="guide-launch" id="guide-launch" aria-expanded="false" aria-controls="guide-panel">
+    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 3 a7 7 0 0 0-4 12.7 V18 h8 v-2.3 A7 7 0 0 0 12 3 Z M10 21 h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <span>Guide Bot</span>
+  </button>
+  <section id="guide-panel" class="guide-panel" hidden aria-label="Guide Bot">
+    <header class="guide-head">
+      <div>
+        <p class="kicker" id="guide-title">Guide Bot</p>
+        <p class="guide-sub">Answers only from this lab’s pages. It will say when it does not know.</p>
+      </div>
+      <button type="button" class="menu-close" id="guide-close">Close</button>
+    </header>
+    <div id="guide-log" class="guide-log" role="log" aria-live="polite"></div>
+    <div id="guide-chips" class="guide-chips"></div>
+    <form id="guide-form" class="guide-form">
+      <label class="skip" for="guide-q">Ask the guide</label>
+      <input id="guide-q" name="q" type="text" autocomplete="off" maxlength="240" placeholder="Ask about a page in this lab">
+      <button class="btn primary" type="submit">Send</button>
+    </form>
+  </section>
+</div>
 <div id="status" aria-live="polite"></div>
 <div id="egg" class="egg" hidden>
   <div class="panel card">
@@ -539,6 +591,15 @@ th, td { border-bottom: 1px solid var(--cc-line); text-align: left; padding: 8px
 </div>
 <footer class="site-footer">
   <p><strong>CypherMonkey Labs · Signal Floor</strong></p>
+  <p>Lucky is a lifelong student and an AI enthusiast, from systems, networking, voice, and the contact center, growing into AI omni-channel agents.</p>
+  <nav class="brand-links" aria-label="Lucky and Cypher Monkey Labs">
+  <a href="https://github.com/cipher0x9" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 .5A11.5 11.5 0 0 0 8.1 22.9c.6.1.8-.2.8-.6v-2.1c-3.3.7-4-1.6-4-1.6-.5-1.2-1.2-1.5-1.2-1.5-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 1.6 2.6 1.2 3.2.9.1-.7.4-1.2.7-1.4-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.9 1.2 1.9 1.2 3.2 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6A11.5 11.5 0 0 0 12 .5z"/></svg><span>Visit my GitHub</span></a>
+  <a href="https://github.com/CypherMonkeyLabs" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 .5A11.5 11.5 0 0 0 8.1 22.9c.6.1.8-.2.8-.6v-2.1c-3.3.7-4-1.6-4-1.6-.5-1.2-1.2-1.5-1.2-1.5-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 1.6 2.6 1.2 3.2.9.1-.7.4-1.2.7-1.4-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.9 1.2 1.9 1.2 3.2 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6A11.5 11.5 0 0 0 12 .5z"/></svg><span>Visit the Labs org</span></a>
+  <a href="https://cyphermonkeylabs.com" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="#ff5a36"/><circle cx="12" cy="11" r="3.2" fill="#1a0c08"/><circle cx="10.8" cy="10.4" r=".55" fill="#fff"/><circle cx="13.2" cy="10.4" r=".55" fill="#fff"/><path d="M10.4 12.4c.5.7 2.7.7 3.2 0" fill="none" stroke="#fff" stroke-width=".7" stroke-linecap="round"/></svg><span>Visit Cypher Monkey Labs</span></a>
+  <a href="https://x.com/Cypher0x9" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>X</span></a>
+  <a href="https://huggingface.co/Cypher0x9" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="12" cy="12" r="9.2" fill="#FFD21E" stroke="#1a1408" stroke-width="1.2"/><circle cx="8.7" cy="10.4" r="1.15" fill="#1a1408"/><circle cx="15.3" cy="10.4" r="1.15" fill="#1a1408"/><path d="M8.2 14.2c1.1 1.5 6.5 1.5 7.6 0" fill="none" stroke="#1a1408" stroke-width="1.3" stroke-linecap="round"/></svg><span>Hugging Face</span></a>
+</nav>
+  <p class="copy">© 2026 CypherMonkeyLabs 🐒</p>
   <p>Independent educational project. Not affiliated with or endorsed by Genesys, Cisco, Salesforce, Zendesk, or any other vendor. Trademarks belong to their owners. MIT code. CC BY-NC-SA content.</p>
   <p>
     <a href="https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing">Rate this lab</a>

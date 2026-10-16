@@ -22,18 +22,31 @@ let scrollY = 0;
 let listeners = false;
 let heroSeen = true;
 
+function narrowScreen() {
+  return window.matchMedia("(max-width: 820px), (pointer: coarse)").matches;
+}
+
+function motionOff(extra) {
+  return !!(extra || document.documentElement.dataset.reduce === "1" || window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+}
+
+function cappedRatio() {
+  const dpr = window.devicePixelRatio || 1;
+  return narrowScreen() ? Math.min(dpr, 1) : Math.min(dpr, 1.5);
+}
+
 export function mountHero(canvas, reduce) {
   canvasEl = canvas;
   if (!canvas) return;
+  if (motionOff(reduce)) {
+    showFallback(canvas);
+    stop();
+    return;
+  }
   if (canvas.dataset.live === "1" || canvas.dataset.booting === "1") {
     canvas.classList.remove("is-fallback");
     hideFallback(canvas);
     start();
-    return;
-  }
-  const motionOff = reduce || document.documentElement.dataset.reduce === "1" || window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (motionOff || !hasWebGL()) {
-    showFallback(canvas);
     return;
   }
   canvas.dataset.booting = "1";
@@ -53,12 +66,14 @@ function hasWebGL() {
 
 function showFallback(canvas) {
   canvas.classList.add("is-fallback");
+  canvas.parentElement?.classList.remove("hero-live");
   const fb = canvas.parentElement?.querySelector(".hero-fallback");
   if (fb) fb.hidden = false;
   stop();
 }
 
 function hideFallback(canvas) {
+  canvas.parentElement?.classList.add("hero-live");
   const fb = canvas.parentElement?.querySelector(".hero-fallback");
   if (fb) fb.hidden = true;
 }
@@ -93,13 +108,19 @@ function inkFor(bg) {
 }
 
 function boot(THREE, canvas) {
+  const mobile = narrowScreen();
   try {
-    renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false, powerPreference: "high-performance" });
+    renderer = new THREE.WebGLRenderer({
+      canvas,
+      antialias: !mobile,
+      alpha: false,
+      powerPreference: mobile ? "low-power" : "high-performance"
+    });
   } catch (err) {
     showFallback(canvas);
     return;
   }
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.setPixelRatio(cappedRatio());
   renderer.setClearColor(palette().bg, 1);
   scene = new THREE.Scene();
   camera = new THREE.PerspectiveCamera(52, 1, 0.1, 80);
@@ -246,7 +267,7 @@ function boot(THREE, canvas) {
     satellites.add(sat);
   }
 
-  const count = 900;
+  const count = narrowScreen() ? 80 : 420;
   const positions = new Float32Array(count * 3);
   for (let i = 0; i < count; i += 1) {
     positions[i * 3] = (Math.random() - 0.5) * 18;
@@ -367,6 +388,7 @@ function resize() {
   const w = parent?.clientWidth || window.innerWidth;
   const h = parent?.clientHeight || window.innerHeight;
   if (w < 2 || h < 2) return;
+  renderer.setPixelRatio(cappedRatio());
   renderer.setSize(w, h, false);
   camera.aspect = w / h;
   camera.updateProjectionMatrix();
@@ -588,7 +610,8 @@ function addDepth(THREE, colors, count, size, z0, z1, spread, rise, role) {
 }
 
 function attachBloom(THREE) {
-  Promise.all([
+  if (narrowScreen() || motionOff()) return;
+  const arm = () => Promise.all([
     import("../vendor/three-post/postprocessing/EffectComposer.js"),
     import("../vendor/three-post/postprocessing/RenderPass.js"),
     import("../vendor/three-post/postprocessing/UnrealBloomPass.js")
@@ -608,6 +631,8 @@ function attachBloom(THREE) {
   }).catch(() => {
     composer = null;
   });
+  const ric = window.requestIdleCallback || ((cb) => setTimeout(cb, 600));
+  ric(() => arm(), { timeout: 1800 });
 }
 
 function paintFrame() {
@@ -627,12 +652,24 @@ function homeVisible() {
 
 function start() {
   if (running || !renderer) return;
+  if (motionOff()) {
+    showFallback(canvasEl);
+    return;
+  }
   running = true;
   clock.start();
-  const loop = () => {
+  let last = 0;
+  const loop = (now) => {
     if (!running) return;
     frame = requestAnimationFrame(loop);
+    if (motionOff()) {
+      showFallback(canvasEl);
+      return;
+    }
     if (!homeVisible() || !heroSeen || document.hidden) return;
+    const minGap = narrowScreen() ? 34 : 16;
+    if (now - last < minGap) return;
+    last = now;
     const t = clock.getElapsedTime();
     if (gridMat) gridMat.uniforms.time.value = t;
     if (orbit) orbit.rotation.y = t * 0.22;

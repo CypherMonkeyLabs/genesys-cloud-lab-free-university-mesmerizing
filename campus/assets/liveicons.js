@@ -10,10 +10,14 @@ let frame = 0;
 let booting = null;
 let reduce = false;
 
+function narrowScreen() {
+  return window.matchMedia("(max-width: 820px), (pointer: coarse)").matches;
+}
+
 export function scan(root = document) {
   reduce = document.documentElement.dataset.reduce === "1" || window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const stages = [...root.querySelectorAll(".iso-stage[data-kind]")];
-  if (!stages.length || reduce || !hasWebGL()) return;
+  if (!stages.length || reduce || narrowScreen() || !hasWebGL()) return;
   boot().then(() => {
     stages.forEach(register);
     start();
@@ -38,7 +42,7 @@ function boot() {
     glCanvas.width = 360;
     glCanvas.height = 320;
     renderer = new THREE.WebGLRenderer({ canvas: glCanvas, antialias: true, alpha: true, preserveDrawingBuffer: true });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    renderer.setPixelRatio(1);
     renderer.setSize(360, 320, false);
     renderer.setClearColor(0x000000, 0);
     scene = new THREE.Scene();
@@ -212,27 +216,31 @@ function stageOnScreen(stage) {
 }
 
 function start() {
-  if (frame || !renderer) return;
-  const loop = () => {
+  if (frame || !renderer || reduce || narrowScreen()) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  let cursor = 0;
+  let last = 0;
+  const loop = (now) => {
     frame = requestAnimationFrame(loop);
-    if (document.hidden) return;
-    const t = performance.now() * 0.001;
+    if (document.hidden || reduce) return;
+    if (now - last < 48) return;
+    last = now;
+    const t = now * 0.001;
     const live = entries.filter((entry) => entry.stage.isConnected && stageOnScreen(entry.stage));
     if (!live.length) return;
-    live.forEach((entry) => {
-      entries.forEach((other) => { other.group.visible = false; });
-      entry.group.visible = true;
-      entry.group.rotation.y = t * entry.spin;
-      entry.group.rotation.x = Math.sin(t * 0.7) * 0.18;
-      renderer.render(scene, camera);
-      const ctx = entry.face.getContext("2d");
-      if (!ctx) return;
-      ctx.clearRect(0, 0, entry.face.width, entry.face.height);
-      ctx.drawImage(glCanvas, 0, 0, entry.face.width, entry.face.height);
-      entry.stage.classList.add("has-live");
-    });
+    const entry = live[cursor % live.length];
+    cursor += 1;
+    entries.forEach((other) => { other.group.visible = other === entry; });
+    entry.group.rotation.y = t * entry.spin;
+    entry.group.rotation.x = Math.sin(t * 0.7) * 0.18;
+    renderer.render(scene, camera);
+    const ctx = entry.face.getContext("2d");
+    if (!ctx) return;
+    ctx.clearRect(0, 0, entry.face.width, entry.face.height);
+    ctx.drawImage(glCanvas, 0, 0, entry.face.width, entry.face.height);
+    entry.stage.classList.add("has-live");
   };
-  loop();
+  loop(0);
 }
 
 if (typeof document !== "undefined") {

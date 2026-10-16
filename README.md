@@ -65,7 +65,7 @@ Verified by `node scripts/verify.mjs` on 15 October 2026:
 
 The shell is `campus/index.html`, `campus/assets/app.js`, `campus/data/manifest.json`, and the web manifest. Studios, charts, Markmap, topology, Three.js, track JSON, and `reference.json` stay off that first paint. Three.js loads with the hero wireframe and the topology view. Mermaid is not shipped to the browser; `scripts/build_mermaid.mjs` writes the SVGs.
 
-Lighthouse mobile, captured against `http://127.0.0.1:8741/campus/` on 14 October 2026: performance 100, accessibility 100.
+Lighthouse mobile, captured against `http://127.0.0.1:8741/campus/` on 16 October 2026 before this pass: performance 53, accessibility 100, total blocking time about 82 s. The cost was the home-screen WebGL icon loop and the bloomed hero, which never went idle. The 3D floor now waits for an idle desktop moment, or for the mobile “Play the 3D floor” control, caps `devicePixelRatio` at 1 on small screens, skips bloom there, and stays on the flat drawing when `prefers-reduced-motion` is set.
 
 ## Citations
 
@@ -99,4 +99,4 @@ Code is MIT. Educational prose is CC BY-NC-SA 4.0. See [LICENSE](LICENSE). Three
 - No named customer story is included. Salesforce and Zendesk are the documented embeds. Other CRMs stay on AppFoundry.
 - The labs site contact link is `https://cyphermonkeylabs.com/#contact`. That site returned HTTP 500 when it was fetched during this build, so the form anchor is unverified.
 - The footer sibling strip uses `https://cipher0x9.github.io/<repo>/`. Those eight pages returned HTTP 200 on 15 October 2026. Origin `main` for this repo was readable and is the earlier lab, not a richer copy, so it was not merged over this branch.
-- The first screen is a full-bleed three.js call-path globe with a vendored Unreal Bloom pass, a second labelled orbit, light trails, and depth particles. Track cards blit a unique mesh from one shared WebGL context, with the isometric drawing kept as the fallback. Lesson prose stays English; track and lesson headings follow the language switcher. The audio player is wired to audio/tour.mp3 and audio/practice.mp3 so a later recording can replace those files. The clips in the repo are espeak-ng placeholders.
+- The first screen reserves a full-bleed call-path stage. Desktop loads the three.js globe after idle, with bloom deferred again. Mobile shows the labelled drawing until “Play the 3D floor”, then runs the globe at a pixel ratio of 1 and without bloom. Track-card meshes stay on the isometric drawing on small screens. A scripted Guide Bot answers from `campus/data/guide-kb.json` and will not invent a fact that is not in those notes. Lesson prose stays English; track and lesson headings follow the language switcher. The audio player is wired to audio/tour.mp3 and audio/practice.mp3 so a later recording can replace those files. The clips in the repo are espeak-ng placeholders.

@@ -1,0 +1,2711 @@
+{
+  "endpoint": null,
+  "entries": [
+    {
+      "id": "track-foundations",
+      "title": "Foundations",
+      "href": "#/track/foundations",
+      "keywords": [
+        "foundations",
+        "foundations"
+      ],
+      "synonyms": [
+        "start here"
+      ],
+      "answer": "Foundations: What Genesys Cloud CX is, where an organization lives, and how a voice conversation is supposed to move. This track has 8 lessons in this lab.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-f-platform",
+      "title": "What Genesys Cloud CX is",
+      "href": "#/lesson/f-platform",
+      "keywords": [
+        "what genesys cloud cx is"
+      ],
+      "synonyms": [
+        "foundation",
+        "foundations"
+      ],
+      "answer": "What Genesys Cloud CX is (Foundation, 14 min): Genesys Cloud CX is a subscription contact-center platform with four nested packages, not a single feature switch.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-f-regions",
+      "title": "Core regions and satellite media",
+      "href": "#/lesson/f-regions",
+      "keywords": [
+        "core regions and satellite media"
+      ],
+      "synonyms": [
+        "foundation",
+        "foundations"
+      ],
+      "answer": "Core regions and satellite media (Foundation, 16 min): An organization is born in one core AWS region. Satellite regions carry media. They do not host the org.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-f-sip",
+      "title": "SIP, RTP, and what the trunk is doing",
+      "href": "#/lesson/f-sip",
+      "keywords": [
+        "sip, rtp, and what the trunk is doing"
+      ],
+      "synonyms": [
+        "foundation",
+        "foundations"
+      ],
+      "answer": "SIP, RTP, and what the trunk is doing (Foundation, 15 min): SIP sets the call up. RTP moves the audio. They are different protocols, and Genesys trunks speak both.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-f-acd-idea",
+      "title": "What ACD is before you name a queue",
+      "href": "#/lesson/f-acd-idea",
+      "keywords": [
+        "what acd is before you name a queue"
+      ],
+      "synonyms": [
+        "foundation",
+        "foundations"
+      ],
+      "answer": "What ACD is before you name a queue (Foundation, 12 min): ACD picks an agent for a waiting interaction. The queue is the waiting line. Skills, utilization, and On Queue decide who is eligible.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-f-digital",
+      "title": "Digital conversations beside voice",
+      "href": "#/lesson/f-digital",
+      "keywords": [
+        "digital conversations beside voice"
+      ],
+      "synonyms": [
+        "foundation",
+        "foundations"
+      ],
+      "answer": "Digital conversations beside voice (Foundation, 12 min): Voice is one media. Architect also has inbound message, email, and chat flows, and queues track those medias separately.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-f-access",
+      "title": "Divisions, before roles get complicated",
+      "href": "#/lesson/f-access",
+      "keywords": [
+        "divisions, before roles get complicated"
+      ],
+      "synonyms": [
+        "foundation",
+        "foundations"
+      ],
+      "answer": "Divisions, before roles get complicated (Foundation, 13 min): A division groups objects inside one organization. It is not a second org, and the Home division cannot be deleted.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-f-read",
+      "title": "How to read a Genesys page without inventing the rest",
+      "href": "#/lesson/f-read",
+      "keywords": [
+        "how to read a genesys page without inventing the rest"
+      ],
+      "synonyms": [
+        "foundation",
+        "foundations"
+      ],
+      "answer": "How to read a Genesys page without inventing the rest (Foundation, 11 min): This lab cites the Resource Center, the Developer Center, Genesys Education, and RFCs. The page wins when they differ.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-f-prereq",
+      "title": "Prerequisites before the first trunk",
+      "href": "#/lesson/f-prereq",
+      "keywords": [
+        "prerequisites before the first trunk"
+      ],
+      "synonyms": [
+        "foundation",
+        "foundations"
+      ],
+      "answer": "Prerequisites before the first trunk (Foundation, 13 min): BYOC Cloud needs a public carrier address, an open port plan, and a real location. The org subscription has to include the telephony product you intend to use.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "track-org",
+      "title": "Organization and licensing",
+      "href": "#/track/org",
+      "keywords": [
+        "organization and licensing",
+        "org"
+      ],
+      "synonyms": [
+        "admin"
+      ],
+      "answer": "Organization and licensing: Regions, roles, divisions, named and concurrent licenses, packages, and fair use. This track has 7 lessons in this lab.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-o-place",
+      "title": "Place the organization in a core region",
+      "href": "#/lesson/o-place",
+      "keywords": [
+        "place the organization in a core region"
+      ],
+      "synonyms": [
+        "core",
+        "organization and licensing"
+      ],
+      "answer": "Place the organization in a core region (Core, 12 min): You do not move an org between regions as a setting. You create it in a core region and live with that login host.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-o-roles",
+      "title": "Roles are permission lists paired with divisions",
+      "href": "#/lesson/o-roles",
+      "keywords": [
+        "roles are permission lists paired with divisions"
+      ],
+      "synonyms": [
+        "core",
+        "organization and licensing"
+      ],
+      "answer": "Roles are permission lists paired with divisions (Core, 13 min): A role without a division grant does not open objects. An OAuth client inherits only a subset of its creator\u2019s pairs.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-o-concurrent",
+      "title": "Named licenses and the concurrent peak",
+      "href": "#/lesson/o-concurrent",
+      "keywords": [
+        "named licenses and the concurrent peak"
+      ],
+      "synonyms": [
+        "core",
+        "organization and licensing"
+      ],
+      "answer": "Named licenses and the concurrent peak (Core, 12 min): Concurrent billing charges the peak of simultaneous users, and it ignores peaks shorter than 30 minutes.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-o-packages",
+      "title": "Pick CX 1, CX 2, CX 3, or CX 4 on purpose",
+      "href": "#/lesson/o-packages",
+      "keywords": [
+        "pick cx 1, cx 2, cx 3, or cx 4 on purpose"
+      ],
+      "synonyms": [
+        "core",
+        "organization and licensing"
+      ],
+      "answer": "Pick CX 1, CX 2, CX 3, or CX 4 on purpose (Core, 12 min): Match the package to the job. Do not buy CX 1 and then design a WFM project.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-o-people",
+      "title": "People, queues, and the 5,000 member line",
+      "href": "#/lesson/o-people",
+      "keywords": [
+        "people, queues, and the 5,000 member line"
+      ],
+      "synonyms": [
+        "core",
+        "organization and licensing"
+      ],
+      "answer": "People, queues, and the 5,000 member line (Core, 11 min): Users live in the org. Queue membership is not the same thing as a division, and it has a hard cap.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-o-fair",
+      "title": "Fair use is a pool, not a mystery invoice",
+      "href": "#/lesson/o-fair",
+      "keywords": [
+        "fair use is a pool, not a mystery invoice"
+      ],
+      "synonyms": [
+        "core",
+        "organization and licensing"
+      ],
+      "answer": "Fair use is a pool, not a mystery invoice (Core, 12 min): Licenses include monthly allowances. Overage is priced on the policy page. Copying the numbers into a design doc freezes them wrong.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-o-bootstrap",
+      "title": "A first-week admin checklist",
+      "href": "#/lesson/o-bootstrap",
+      "keywords": [
+        "a first-week admin checklist"
+      ],
+      "synonyms": [
+        "core",
+        "organization and licensing"
+      ],
+      "answer": "A first-week admin checklist (Core, 14 min): Week one is region, divisions, roles, packages, one queue, and a published in-queue flow. Telephony can follow.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "track-architect",
+      "title": "Architect flows",
+      "href": "#/track/architect",
+      "keywords": [
+        "architect flows",
+        "architect"
+      ],
+      "synonyms": [
+        "design"
+      ],
+      "answer": "Architect flows: Flow types, tasks, in-queue experiences, data actions, bots, secure calls, and publish. This track has 8 lessons in this lab.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-a-types",
+      "title": "The flow types on the Architect home page",
+      "href": "#/lesson/a-types",
+      "keywords": [
+        "the flow types on the architect home page"
+      ],
+      "synonyms": [
+        "core",
+        "architect flows"
+      ],
+      "answer": "The flow types on the Architect home page (Core, 13 min): Architect is a list of flow types. Picking the wrong tab is the first defect.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-a-task",
+      "title": "Tasks, menus, and a way out",
+      "href": "#/lesson/a-task",
+      "keywords": [
+        "tasks, menus, and a way out"
+      ],
+      "synonyms": [
+        "core",
+        "architect flows"
+      ],
+      "answer": "Tasks, menus, and a way out (Core, 13 min): An inbound call flow plays audio, collects input, and must transfer, hand off, or disconnect.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-a-inqueue",
+      "title": "In-queue flows are the hold experience",
+      "href": "#/lesson/a-inqueue",
+      "keywords": [
+        "in-queue flows are the hold experience"
+      ],
+      "synonyms": [
+        "core",
+        "architect flows"
+      ],
+      "answer": "In-queue flows are the hold experience (Core, 12 min): The caller is already queued. The in-queue flow is what they hear or read while ACD looks for an agent.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-a-data",
+      "title": "Data actions and participant data",
+      "href": "#/lesson/a-data",
+      "keywords": [
+        "data actions and participant data"
+      ],
+      "synonyms": [
+        "core",
+        "architect flows"
+      ],
+      "answer": "Data actions and participant data (Core, 12 min): A data action calls a system outside the flow. Participant data carries a value to the agent.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-a-common",
+      "title": "Common modules are how you stop copying tasks",
+      "href": "#/lesson/a-common",
+      "keywords": [
+        "common modules are how you stop copying tasks"
+      ],
+      "synonyms": [
+        "core",
+        "architect flows"
+      ],
+      "answer": "Common modules are how you stop copying tasks (Core, 11 min): A common module is a flow type you call from other flows. The name is still unique inside that type.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-a-secure",
+      "title": "Secure call flows keep digits away from the recording",
+      "href": "#/lesson/a-secure",
+      "keywords": [
+        "secure call flows keep digits away from the recording"
+      ],
+      "synonyms": [
+        "core",
+        "architect flows"
+      ],
+      "answer": "Secure call flows keep digits away from the recording (Core, 12 min): A secure flow is how a caller enters a card number without that audio being recorded or shown to the agent.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-a-botcall",
+      "title": "Call a bot from the inbound flow",
+      "href": "#/lesson/a-botcall",
+      "keywords": [
+        "call a bot from the inbound flow"
+      ],
+      "synonyms": [
+        "core",
+        "architect flows"
+      ],
+      "answer": "Call a bot from the inbound flow (Core, 13 min): Dialog Engine bot flows and digital bot flows are Architect flow types. The inbound flow calls them. It does not become them.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-a-publish",
+      "title": "Publish, division, and Flow Insights",
+      "href": "#/lesson/a-publish",
+      "keywords": [
+        "publish, division, and flow insights"
+      ],
+      "synonyms": [
+        "core",
+        "architect flows"
+      ],
+      "answer": "Publish, division, and Flow Insights (Core, 12 min): A saved flow is a draft. The runtime uses the published version. Insights tell you whether anyone hit it.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "track-acd",
+      "title": "ACD routing",
+      "href": "#/track/acd",
+      "keywords": [
+        "acd routing",
+        "acd"
+      ],
+      "synonyms": [
+        "routing"
+      ],
+      "answer": "ACD routing: Standard, bullseye, preferred, predictive, and conditional routing, plus the two scoring methods. This track has 8 lessons in this lab.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-r-methods",
+      "title": "Five routing methods",
+      "href": "#/lesson/r-methods",
+      "keywords": [
+        "five routing methods"
+      ],
+      "synonyms": [
+        "core",
+        "acd routing"
+      ],
+      "answer": "Five routing methods (Core, 12 min): Standard, predictive, bullseye, preferred agent, and conditional group routing are the methods on a queue.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-r-eval",
+      "title": "All skills, best available, or disregard",
+      "href": "#/lesson/r-eval",
+      "keywords": [
+        "all skills, best available, or disregard"
+      ],
+      "synonyms": [
+        "core",
+        "acd routing"
+      ],
+      "answer": "All skills, best available, or disregard (Core, 13 min): The evaluation method is how standard and bullseye decide that an agent \u201chas the skills.\u201d",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-r-score",
+      "title": "Conversation score and priority score",
+      "href": "#/lesson/r-score",
+      "keywords": [
+        "conversation score and priority score"
+      ],
+      "synonyms": [
+        "core",
+        "acd routing"
+      ],
+      "answer": "Conversation score and priority score (Core, 12 min): One priority point on conversation score is worth 60,000 milliseconds of arrival time.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-r-bullseye",
+      "title": "Bullseye rings widen the target",
+      "href": "#/lesson/r-bullseye",
+      "keywords": [
+        "bullseye rings widen the target"
+      ],
+      "synonyms": [
+        "core",
+        "acd routing"
+      ],
+      "answer": "Bullseye rings widen the target (Core, 14 min): Up to five rings. A delay from 2 seconds to 72 hours. Up to 50 skills removed on a ring.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-r-preferred",
+      "title": "Preferred agents are tried first",
+      "href": "#/lesson/r-preferred",
+      "keywords": [
+        "preferred agents are tried first"
+      ],
+      "synonyms": [
+        "core",
+        "acd routing"
+      ],
+      "answer": "Preferred agents are tried first (Core, 13 min): A preferred agent is considered even without the required skills, and only if they are a member of the queue and On Queue.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-r-predict",
+      "title": "Predictive routing is a KPI model with a timeout",
+      "href": "#/lesson/r-predict",
+      "keywords": [
+        "predictive routing is a kpi model with a timeout"
+      ],
+      "synonyms": [
+        "advanced",
+        "acd routing"
+      ],
+      "answer": "Predictive routing is a KPI model with a timeout (Advanced, 14 min): Predictive routing can run for everyone, in a comparison test, or at a fixed 80/20 split you cannot edit.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-r-conditional",
+      "title": "Conditional group routing borrows agents carefully",
+      "href": "#/lesson/r-conditional",
+      "keywords": [
+        "conditional group routing borrows agents carefully"
+      ],
+      "synonyms": [
+        "advanced",
+        "acd routing"
+      ],
+      "answer": "Conditional group routing borrows agents carefully (Advanced, 12 min): A rule is a KPI plus agent availability. The other queue must be able to spare the people.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-r-util",
+      "title": "Utilization and Not Responding",
+      "href": "#/lesson/r-util",
+      "keywords": [
+        "utilization and not responding"
+      ],
+      "synonyms": [
+        "core",
+        "acd routing"
+      ],
+      "answer": "Utilization and Not Responding (Core, 13 min): A fully utilized agent is skipped. An agent who ignores an alert becomes Not Responding.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "track-queues",
+      "title": "Queues, skills, and wrap-up",
+      "href": "#/track/queues",
+      "keywords": [
+        "queues, skills, and wrap-up",
+        "queues"
+      ],
+      "synonyms": [
+        "acd objects"
+      ],
+      "answer": "Queues, skills, and wrap-up: Queue media settings, skills, wrap-up codes, callbacks, and service level. This track has 7 lessons in this lab.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-q-create",
+      "title": "Create the queue in a division",
+      "href": "#/lesson/q-create",
+      "keywords": [
+        "create the queue in a division"
+      ],
+      "synonyms": [
+        "core",
+        "queues, skills, and wrap-up"
+      ],
+      "answer": "Create the queue in a division (Core, 11 min): The queue is a named waiting line in one division, with at most 5,000 members.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-q-skills",
+      "title": "Skills and proficiency are on the agent",
+      "href": "#/lesson/q-skills",
+      "keywords": [
+        "skills and proficiency are on the agent"
+      ],
+      "synonyms": [
+        "core",
+        "queues, skills, and wrap-up"
+      ],
+      "answer": "Skills and proficiency are on the agent (Core, 12 min): The queue asks for skills. The agent profile holds them. Evaluation decides whether proficiency matters.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-q-acw",
+      "title": "After call work and the system wrap-up codes",
+      "href": "#/lesson/q-acw",
+      "keywords": [
+        "after call work and the system wrap-up codes"
+      ],
+      "synonyms": [
+        "core",
+        "queues, skills, and wrap-up"
+      ],
+      "answer": "After call work and the system wrap-up codes (Core, 13 min): ACW is optional, discretionary, or time-boxed. The platform has its own codes when agents do not finish.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-q-wrapdiv",
+      "title": "Wrap-up codes live in divisions too",
+      "href": "#/lesson/q-wrapdiv",
+      "keywords": [
+        "wrap-up codes live in divisions too"
+      ],
+      "synonyms": [
+        "core",
+        "queues, skills, and wrap-up"
+      ],
+      "answer": "Wrap-up codes live in divisions too (Core, 11 min): The codes an agent sees are the codes their role can see, and Genesys wants them in the queue\u2019s division.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-q-sl",
+      "title": "Service level is a percentage and a target in seconds",
+      "href": "#/lesson/q-sl",
+      "keywords": [
+        "service level is a percentage and a target in seconds"
+      ],
+      "synonyms": [
+        "core",
+        "queues, skills, and wrap-up"
+      ],
+      "answer": "Service level is a percentage and a target in seconds (Core, 11 min): Each media has a service level percentage and a target duration. That pair is what conditional routing and WFM both mean by \u201cthe goal.\u201d",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-q-callback",
+      "title": "Callbacks are interactions with their own rules",
+      "href": "#/lesson/q-callback",
+      "keywords": [
+        "callbacks are interactions with their own rules"
+      ],
+      "synonyms": [
+        "core",
+        "queues, skills, and wrap-up"
+      ],
+      "answer": "Callbacks are interactions with their own rules (Core, 12 min): A callback is queued work. It still needs a wrap-up code, and it counts as its own utilization slot.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-q-members",
+      "title": "Membership, On Queue, and the copy trap",
+      "href": "#/lesson/q-members",
+      "keywords": [
+        "membership, on queue, and the copy trap"
+      ],
+      "synonyms": [
+        "core",
+        "queues, skills, and wrap-up"
+      ],
+      "answer": "Membership, On Queue, and the copy trap (Core, 11 min): A copied queue can duplicate a bullseye you did not mean to clone.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "track-byoc",
+      "title": "BYOC Cloud and SIP trunks",
+      "href": "#/track/byoc",
+      "keywords": [
+        "byoc cloud and sip trunks",
+        "byoc"
+      ],
+      "synonyms": [
+        "telephony"
+      ],
+      "answer": "BYOC Cloud and SIP trunks: Carrier and PBX trunks, RTP over the internet, Dynamic Cloud Voice, and the quick-start order. This track has 7 lessons in this lab.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-b-what",
+      "title": "BYOC Cloud is your carrier, Genesys\u2019 media",
+      "href": "#/lesson/b-what",
+      "keywords": [
+        "byoc cloud is your carrier, genesys\u2019 media"
+      ],
+      "synonyms": [
+        "core",
+        "byoc cloud and sip trunks"
+      ],
+      "answer": "BYOC Cloud is your carrier, Genesys\u2019 media (Core, 12 min): You bring the carrier contract. Genesys terminates a SIP trunk on the AWS media tier. Audio is RTP on the internet.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-b-types",
+      "title": "Carrier trunks and PBX trunks",
+      "href": "#/lesson/b-types",
+      "keywords": [
+        "carrier trunks and pbx trunks"
+      ],
+      "synonyms": [
+        "core",
+        "byoc cloud and sip trunks"
+      ],
+      "answer": "Carrier trunks and PBX trunks (Core, 12 min): BYOC Carrier and BYOC PBX are the two types. Carrier has subtypes. PBX has one.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-b-order",
+      "title": "The quick-start order",
+      "href": "#/lesson/b-order",
+      "keywords": [
+        "the quick-start order"
+      ],
+      "synonyms": [
+        "core",
+        "byoc cloud and sip trunks"
+      ],
+      "answer": "The quick-start order (Core, 12 min): Location, trunk, outbound route, number plan. The product on the subscription comes before all of that.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-b-dcvp",
+      "title": "Dynamic Cloud Voice is the current platform",
+      "href": "#/lesson/b-dcvp",
+      "keywords": [
+        "dynamic cloud voice is the current platform"
+      ],
+      "synonyms": [
+        "advanced",
+        "byoc cloud and sip trunks"
+      ],
+      "answer": "Dynamic Cloud Voice is the current platform (Advanced, 13 min): New trunks start there. Moving an old trunk means allow lists, Amazon root CAs, TLS ciphers, and a toggle.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-b-plans",
+      "title": "Number plans classify what people dial",
+      "href": "#/lesson/b-plans",
+      "keywords": [
+        "number plans classify what people dial"
+      ],
+      "synonyms": [
+        "core",
+        "byoc cloud and sip trunks"
+      ],
+      "answer": "Number plans classify what people dial (Core, 13 min): A site can hold 200 plans. DIDs do not need one for basic routing. Emergency, extension, and 988 already exist as defaults.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-b-monitor",
+      "title": "Watch the trunk, not only the flow",
+      "href": "#/lesson/b-monitor",
+      "keywords": [
+        "watch the trunk, not only the flow"
+      ],
+      "synonyms": [
+        "core",
+        "byoc cloud and sip trunks"
+      ],
+      "answer": "Watch the trunk, not only the flow (Core, 11 min): When audio fails and Architect Insights still shows runs, the trunk is the next object.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-b-gcv",
+      "title": "Genesys Cloud Voice is the other door",
+      "href": "#/lesson/b-gcv",
+      "keywords": [
+        "genesys cloud voice is the other door"
+      ],
+      "synonyms": [
+        "core",
+        "byoc cloud and sip trunks"
+      ],
+      "answer": "Genesys Cloud Voice is the other door (Core, 12 min): If Genesys is the carrier, you buy numbers in a region that offers voice, and emergency is part of that product story rather than your trunk.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "track-edge",
+      "title": "The Edge and BYOC Premises",
+      "href": "#/track/edge",
+      "keywords": [
+        "the edge and byoc premises",
+        "edge"
+      ],
+      "synonyms": [
+        "premises"
+      ],
+      "answer": "The Edge and BYOC Premises: Premises Edges, Edge groups, phone trunks, sites, and what happens when the local Edge is down. This track has 7 lessons in this lab.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-e-role",
+      "title": "The premises Edge is the local media hop",
+      "href": "#/lesson/e-role",
+      "keywords": [
+        "the premises edge is the local media hop"
+      ],
+      "synonyms": [
+        "core",
+        "the edge and byoc premises"
+      ],
+      "answer": "The premises Edge is the local media hop (Core, 12 min): BYOC Premises puts an Edge on your network. Phones and trunks registered there do not need a public address the way BYOC Cloud does.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-e-site",
+      "title": "Local site routing stays home until it cannot",
+      "href": "#/lesson/e-site",
+      "keywords": [
+        "local site routing stays home until it cannot"
+      ],
+      "synonyms": [
+        "core",
+        "the edge and byoc premises"
+      ],
+      "answer": "Local site routing stays home until it cannot (Core, 12 min): Genesys uses Edges in the same site when it can. Another site is the exception.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-e-phone",
+      "title": "Phone trunks, WebRTC, and inherit",
+      "href": "#/lesson/e-phone",
+      "keywords": [
+        "phone trunks, webrtc, and inherit"
+      ],
+      "synonyms": [
+        "core",
+        "the edge and byoc premises"
+      ],
+      "answer": "Phone trunks, WebRTC, and inherit (Core, 11 min): WebRTC and SIP phones are phone trunks on the Edge group. Inherit is the default you should verify.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-e-fail",
+      "title": "When the local Edge is offline",
+      "href": "#/lesson/e-fail",
+      "keywords": [
+        "when the local edge is offline"
+      ],
+      "synonyms": [
+        "core",
+        "the edge and byoc premises"
+      ],
+      "answer": "When the local Edge is offline (Core, 12 min): The documented failover is another site, if that site actually has the resource.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-e-compare",
+      "title": "Choose Cloud, Premises, or both",
+      "href": "#/lesson/e-compare",
+      "keywords": [
+        "choose cloud, premises, or both"
+      ],
+      "synonyms": [
+        "core",
+        "the edge and byoc premises"
+      ],
+      "answer": "Choose Cloud, Premises, or both (Core, 12 min): Use premises when the phones and the carrier are on your network. Use cloud when they are not. Use both only where each number has an owner.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-e-webrtc-net",
+      "title": "A browser phone is still a network endpoint",
+      "href": "#/lesson/e-webrtc-net",
+      "keywords": [
+        "a browser phone is still a network endpoint"
+      ],
+      "synonyms": [
+        "core",
+        "the edge and byoc premises"
+      ],
+      "answer": "A browser phone is still a network endpoint (Core, 11 min): WebRTC removes the desk set. It does not remove media engineering.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-e-checklist",
+      "title": "Premises turn-up checklist",
+      "href": "#/lesson/e-checklist",
+      "keywords": [
+        "premises turn-up checklist"
+      ],
+      "synonyms": [
+        "core",
+        "the edge and byoc premises"
+      ],
+      "answer": "Premises turn-up checklist (Core, 12 min): Group, inherit, site, trunk, failover test, emergency owner.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "track-emergency",
+      "title": "Numbers and emergency calling",
+      "href": "#/track/emergency",
+      "keywords": [
+        "numbers and emergency calling",
+        "emergency"
+      ],
+      "synonyms": [
+        "safety"
+      ],
+      "answer": "Numbers and emergency calling: E.164, emergency classifications, BYOC warnings, and Genesys Cloud Voice coverage. This track has 6 lessons in this lab.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-n-owner",
+      "title": "Name the emergency owner before the DID",
+      "href": "#/lesson/n-owner",
+      "keywords": [
+        "name the emergency owner before the did"
+      ],
+      "synonyms": [
+        "core",
+        "numbers and emergency calling"
+      ],
+      "answer": "Name the emergency owner before the DID (Core, 12 min): Genesys is not responsible for emergency calls that ride a BYOC trunk. That sentence belongs in the design, not in the postmortem.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-n-plan",
+      "title": "Emergency is a classification and a route",
+      "href": "#/lesson/n-plan",
+      "keywords": [
+        "emergency is a classification and a route"
+      ],
+      "synonyms": [
+        "core",
+        "numbers and emergency calling"
+      ],
+      "answer": "Emergency is a classification and a route (Core, 12 min): The default Emergency plan matches 911 and 933 in the US and Canada, and 142 in Switzerland. It still needs a route.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-n-location",
+      "title": "The location is a physical place",
+      "href": "#/lesson/n-location",
+      "keywords": [
+        "the location is a physical place"
+      ],
+      "synonyms": [
+        "core",
+        "numbers and emergency calling"
+      ],
+      "answer": "The location is a physical place (Core, 11 min): The quick start adds a location because services, including emergency, need a real site.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-n-gcv-limits",
+      "title": "Voice coverage is a table, not a promise",
+      "href": "#/lesson/n-gcv-limits",
+      "keywords": [
+        "voice coverage is a table, not a promise"
+      ],
+      "synonyms": [
+        "advanced",
+        "numbers and emergency calling"
+      ],
+      "answer": "Voice coverage is a table, not a promise (Advanced, 12 min): Country rows decide DID, toll-free, domestic, and international. FedRAMP and the sovereign region add harder edges.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-n-e164",
+      "title": "Normalize toward E.164 on purpose",
+      "href": "#/lesson/n-e164",
+      "keywords": [
+        "normalize toward e.164 on purpose"
+      ],
+      "synonyms": [
+        "core",
+        "numbers and emergency calling"
+      ],
+      "answer": "Normalize toward E.164 on purpose (Core, 11 min): Intra-country and inter-country plans normalize. Digit-length extensions and E.164 lists do not.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-n-test",
+      "title": "Test emergency like a change, not like a demo",
+      "href": "#/lesson/n-test",
+      "keywords": [
+        "test emergency like a change, not like a demo"
+      ],
+      "synonyms": [
+        "core",
+        "numbers and emergency calling"
+      ],
+      "answer": "Test emergency like a change, not like a demo (Core, 12 min): A live emergency test is a carrier and public-safety conversation. The call simulator is the part you can do alone.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "track-wfm",
+      "title": "Workforce management",
+      "href": "#/track/wfm",
+      "keywords": [
+        "workforce management",
+        "wfm"
+      ],
+      "synonyms": [
+        "wem"
+      ],
+      "answer": "Workforce management: Business units, forecasts, schedules, adherence, and time off. WFM is a CX 3 capability. This track has 9 lessons in this lab.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-w-map",
+      "title": "WEM is a set of products, and WFM is one of them",
+      "href": "#/lesson/w-map",
+      "keywords": [
+        "wem is a set of products, and wfm is one of them"
+      ],
+      "synonyms": [
+        "core",
+        "workforce management"
+      ],
+      "answer": "WEM is a set of products, and WFM is one of them (Core, 12 min): Recording, screen recording, quality, performance, speech and text analytics, and workforce management are the WEM list.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-w-bu",
+      "title": "Business units and management units",
+      "href": "#/lesson/w-bu",
+      "keywords": [
+        "business units and management units"
+      ],
+      "synonyms": [
+        "core",
+        "workforce management"
+      ],
+      "answer": "Business units and management units (Core, 12 min): A business unit is the planning container. A management unit is the group of agents you actually schedule.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-w-goal",
+      "title": "Service goal templates are the planning target",
+      "href": "#/lesson/w-goal",
+      "keywords": [
+        "service goal templates are the planning target"
+      ],
+      "synonyms": [
+        "core",
+        "workforce management"
+      ],
+      "answer": "Service goal templates are the planning target (Core, 11 min): The queue\u2019s service level and the WFM template should describe the same promise.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-w-sched",
+      "title": "Schedules are the plan agents work",
+      "href": "#/lesson/w-sched",
+      "keywords": [
+        "schedules are the plan agents work"
+      ],
+      "synonyms": [
+        "core",
+        "workforce management"
+      ],
+      "answer": "Schedules are the plan agents work (Core, 11 min): A schedule is built from the management unit, the goals, and activity codes. It is not a routing method.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-w-intra",
+      "title": "Intraday and adherence compare the plan to the floor",
+      "href": "#/lesson/w-intra",
+      "keywords": [
+        "intraday and adherence compare the plan to the floor"
+      ],
+      "synonyms": [
+        "core",
+        "workforce management"
+      ],
+      "answer": "Intraday and adherence compare the plan to the floor (Core, 12 min): Adherence is the gap between the activity you scheduled and the status the agent is actually in.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-w-off",
+      "title": "Time off is a schedule change with a rule",
+      "href": "#/lesson/w-off",
+      "keywords": [
+        "time off is a schedule change with a rule"
+      ],
+      "synonyms": [
+        "core",
+        "workforce management"
+      ],
+      "answer": "Time off is a schedule change with a rule (Core, 11 min): Time-off requests are part of WFM. An approved request that nobody reflects on the schedule is a rumor.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-w-cert",
+      "title": "The workforce certification is a named exam",
+      "href": "#/lesson/w-cert",
+      "keywords": [
+        "the workforce certification is a named exam"
+      ],
+      "synonyms": [
+        "core",
+        "workforce management"
+      ],
+      "answer": "The workforce certification is a named exam (Core, 10 min): The catalog lists a Workforce Management specialist certification and a preparation course. It does not list a code this lab is willing to invent.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-w-forecast",
+      "title": "A forecast has a short view and a long view",
+      "href": "#/lesson/w-forecast",
+      "keywords": [
+        "a forecast has a short view and a long view"
+      ],
+      "synonyms": [
+        "advanced",
+        "workforce management"
+      ],
+      "answer": "A forecast has a short view and a long view (Advanced, 13 min): Short-term data can build a schedule. The long-term view is for seasonality and does not generate one.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-w-generate",
+      "title": "Generate one schedule from a forecast that covers it",
+      "href": "#/lesson/w-generate",
+      "keywords": [
+        "generate one schedule from a forecast that covers it"
+      ],
+      "synonyms": [
+        "advanced",
+        "workforce management"
+      ],
+      "answer": "Generate one schedule from a forecast that covers it (Advanced, 13 min): The schedule period has to sit inside the short-term forecast, and a business unit generates one schedule at a time.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "track-qm",
+      "title": "Quality and recording",
+      "href": "#/track/qm",
+      "keywords": [
+        "quality and recording",
+        "qm"
+      ],
+      "synonyms": [
+        "wem"
+      ],
+      "answer": "Quality and recording: Evaluation forms, calibration, coaching, recording policies, and the prerequisites for AI scoring. This track has 6 lessons in this lab.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-m-overview",
+      "title": "Quality management evaluates the conversation",
+      "href": "#/lesson/m-overview",
+      "keywords": [
+        "quality management evaluates the conversation"
+      ],
+      "synonyms": [
+        "core",
+        "quality and recording"
+      ],
+      "answer": "Quality management evaluates the conversation (Core, 11 min): QM records and scores interactions, and it can coach. It is not the schedule.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-m-form",
+      "title": "Forms have questions and weights",
+      "href": "#/lesson/m-form",
+      "keywords": [
+        "forms have questions and weights"
+      ],
+      "synonyms": [
+        "core",
+        "quality and recording"
+      ],
+      "answer": "Forms have questions and weights (Core, 11 min): The form is the rubric. Weights decide which questions move the score.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-m-policy",
+      "title": "Recording policies choose calls and retention",
+      "href": "#/lesson/m-policy",
+      "keywords": [
+        "recording policies choose calls and retention"
+      ],
+      "synonyms": [
+        "core",
+        "quality and recording"
+      ],
+      "answer": "Recording policies choose calls and retention (Core, 11 min): A policy decides which ACD calls are recorded and how long they are kept. A secure flow is a hole in a segment, not a substitute for the policy.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-m-coach",
+      "title": "Coaching and disputes close the loop",
+      "href": "#/lesson/m-coach",
+      "keywords": [
+        "coaching and disputes close the loop"
+      ],
+      "synonyms": [
+        "core",
+        "quality and recording"
+      ],
+      "answer": "Coaching and disputes close the loop (Core, 11 min): A score that the agent cannot see and cannot dispute is not a quality program.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-m-ai",
+      "title": "AI scoring needs STA, QM, and tokens",
+      "href": "#/lesson/m-ai",
+      "keywords": [
+        "ai scoring needs sta, qm, and tokens"
+      ],
+      "synonyms": [
+        "advanced",
+        "quality and recording"
+      ],
+      "answer": "AI scoring needs STA, QM, and tokens (Advanced, 12 min): The FAQ is blunt: AI scoring requires Speech and Text Analytics, Quality Management, and AI Experience Tokens.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-m-export",
+      "title": "Retention, export, and the reason you recorded",
+      "href": "#/lesson/m-export",
+      "keywords": [
+        "retention, export, and the reason you recorded"
+      ],
+      "synonyms": [
+        "advanced",
+        "quality and recording"
+      ],
+      "answer": "Retention, export, and the reason you recorded (Advanced, 11 min): Export and AWS recording paths exist so a recording can leave the platform under a policy, not as a side copy.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "track-sta",
+      "title": "Speech and text analytics",
+      "href": "#/track/sta",
+      "keywords": [
+        "speech and text analytics",
+        "sta"
+      ],
+      "synonyms": [
+        "listen after"
+      ],
+      "answer": "Speech and text analytics: What gets transcribed, how sentiment and topics are used, and why analysis is not the same thing as the live conversation. This track has 6 lessons in this lab.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-s-scope",
+      "title": "STA reads the conversation after the channel has it",
+      "href": "#/lesson/s-scope",
+      "keywords": [
+        "sta reads the conversation after the channel has it"
+      ],
+      "synonyms": [
+        "core",
+        "speech and text analytics"
+      ],
+      "answer": "STA reads the conversation after the channel has it (Core, 12 min): Speech and text analytics covers voice and digital interactions. It is not a second ACD.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-s-sentiment",
+      "title": "Sentiment is a label on the text, not a mood you can argue with",
+      "href": "#/lesson/s-sentiment",
+      "keywords": [
+        "sentiment is a label on the text, not a mood you can argue with"
+      ],
+      "synonyms": [
+        "core",
+        "speech and text analytics"
+      ],
+      "answer": "Sentiment is a label on the text, not a mood you can argue with (Core, 11 min): Sentiment scores the customer\u2019s language. Use it as a filter, then listen.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-s-topics",
+      "title": "Topics, programs, and phrases are the dictionary",
+      "href": "#/lesson/s-topics",
+      "keywords": [
+        "topics, programs, and phrases are the dictionary"
+      ],
+      "synonyms": [
+        "core",
+        "speech and text analytics"
+      ],
+      "answer": "Topics, programs, and phrases are the dictionary (Core, 12 min): A program groups topics. A topic is phrases you expect to hear or read.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-s-empathy",
+      "title": "Agent empathy is a detected behavior, still a form question",
+      "href": "#/lesson/s-empathy",
+      "keywords": [
+        "agent empathy is a detected behavior, still a form question"
+      ],
+      "synonyms": [
+        "core",
+        "speech and text analytics"
+      ],
+      "answer": "Agent empathy is a detected behavior, still a form question (Core, 11 min): Empathy detection points at calls. Calibration still decides what empathy means for your company.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-s-search",
+      "title": "Content search is how you test the dictionary",
+      "href": "#/lesson/s-search",
+      "keywords": [
+        "content search is how you test the dictionary"
+      ],
+      "synonyms": [
+        "core",
+        "speech and text analytics"
+      ],
+      "answer": "Content search is how you test the dictionary (Core, 11 min): Search the transcript before you trust a topic count.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-s-timing",
+      "title": "Full analysis and a faster transcript are different clocks",
+      "href": "#/lesson/s-timing",
+      "keywords": [
+        "full analysis and a faster transcript are different clocks"
+      ],
+      "synonyms": [
+        "advanced",
+        "speech and text analytics"
+      ],
+      "answer": "Full analysis and a faster transcript are different clocks (Advanced, 12 min): Some views wait until the interaction is complete. A lower-latency transcript path is a different API.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "track-ai",
+      "title": "Genesys AI and bots",
+      "href": "#/track/ai",
+      "keywords": [
+        "genesys ai and bots",
+        "ai"
+      ],
+      "synonyms": [
+        "beside the agent"
+      ],
+      "answer": "Genesys AI and bots: Dialog Engine and digital bots, failure paths, Agent Copilot, tokens, and the AI exams as the catalog names them. This track has 7 lessons in this lab.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-g-kinds",
+      "title": "Two Architect bot types, plus Copilot beside the agent",
+      "href": "#/lesson/g-kinds",
+      "keywords": [
+        "two architect bot types, plus copilot beside the agent"
+      ],
+      "synonyms": [
+        "core",
+        "genesys ai and bots"
+      ],
+      "answer": "Two Architect bot types, plus Copilot beside the agent (Core, 12 min): A bot flow talks to the customer. Agent Copilot talks to the agent. They are different products on different pages.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-g-dialog",
+      "title": "Dialog Engine bot flows are voice and digital intents",
+      "href": "#/lesson/g-dialog",
+      "keywords": [
+        "dialog engine bot flows are voice and digital intents"
+      ],
+      "synonyms": [
+        "core",
+        "genesys ai and bots"
+      ],
+      "answer": "Dialog Engine bot flows are voice and digital intents (Core, 12 min): You build the bot in Architect, then the inbound flow calls it.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-g-digital",
+      "title": "Digital bot flows are a different call",
+      "href": "#/lesson/g-digital",
+      "keywords": [
+        "digital bot flows are a different call"
+      ],
+      "synonyms": [
+        "core",
+        "genesys ai and bots"
+      ],
+      "answer": "Digital bot flows are a different call (Core, 11 min): Message experiences use Digital Bot Flows and Call Digital Bot Flow.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-g-fail",
+      "title": "Every bot has a failure output to a queue",
+      "href": "#/lesson/g-fail",
+      "keywords": [
+        "every bot has a failure output to a queue"
+      ],
+      "synonyms": [
+        "core",
+        "genesys ai and bots"
+      ],
+      "answer": "Every bot has a failure output to a queue (Core, 11 min): No-match, timeout, and error are normal. The queue is the design.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-g-copilot",
+      "title": "Agent Copilot assists the person who stayed on the interaction",
+      "href": "#/lesson/g-copilot",
+      "keywords": [
+        "agent copilot assists the person who stayed on the interaction"
+      ],
+      "synonyms": [
+        "core",
+        "genesys ai and bots"
+      ],
+      "answer": "Agent Copilot assists the person who stayed on the interaction (Core, 12 min): Knowledge, transcripts, scripts, next best action, and notes. The benefit is described as surviving a blind transfer.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-g-tokens",
+      "title": "Tokens are a published allotment, and a FAQ ratio you re-read",
+      "href": "#/lesson/g-tokens",
+      "keywords": [
+        "tokens are a published allotment, and a faq ratio you re-read"
+      ],
+      "synonyms": [
+        "advanced",
+        "genesys ai and bots"
+      ],
+      "answer": "Tokens are a published allotment, and a FAQ ratio you re-read (Advanced, 12 min): The overview publishes CX 4 token counts. The STA FAQ publishes how AI scoring spends them.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-g-cert",
+      "title": "The AI exams are named on the catalog, one exam each",
+      "href": "#/lesson/g-cert",
+      "keywords": [
+        "the ai exams are named on the catalog, one exam each"
+      ],
+      "synonyms": [
+        "core",
+        "genesys ai and bots"
+      ],
+      "answer": "The AI exams are named on the catalog, one exam each (Core, 10 min): Two AI certifications. No invented exam codes.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "track-api",
+      "title": "Platform APIs",
+      "href": "#/track/api",
+      "keywords": [
+        "platform apis",
+        "api"
+      ],
+      "synonyms": [
+        "no live calls"
+      ],
+      "answer": "Platform APIs: OAuth grants, client credentials limits, region hosts, and why this lab\u2019s explorer never sends a request. This track has 7 lessons in this lab.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-p-center",
+      "title": "The Developer Center is the map. This lab is not a client.",
+      "href": "#/lesson/p-center",
+      "keywords": [
+        "the developer center is the map. this lab is not a client."
+      ],
+      "synonyms": [
+        "core",
+        "platform apis"
+      ],
+      "answer": "The Developer Center is the map. This lab is not a client. (Core, 11 min): Read the public docs. Do not point a tutorial at a production org.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-p-grants",
+      "title": "Pick the grant that matches who the call runs as",
+      "href": "#/lesson/p-grants",
+      "keywords": [
+        "pick the grant that matches who the call runs as"
+      ],
+      "synonyms": [
+        "core",
+        "platform apis"
+      ],
+      "answer": "Pick the grant that matches who the call runs as (Core, 12 min): Client credentials, authorization code with PKCE, and SAML2 Bearer are the grants to learn. Implicit is the one leaving.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-p-cc",
+      "title": "Client credentials have no user, so users/me is the wrong call",
+      "href": "#/lesson/p-cc",
+      "keywords": [
+        "client credentials have no user, so users/me is the wrong call"
+      ],
+      "synonyms": [
+        "core",
+        "platform apis"
+      ],
+      "answer": "Client credentials have no user, so users/me is the wrong call (Core, 12 min): The token is the client. The guide shows that limit on purpose.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-p-implicit",
+      "title": "Implicit grant is a migration, not a new design",
+      "href": "#/lesson/p-implicit",
+      "keywords": [
+        "implicit grant is a migration, not a new design"
+      ],
+      "synonyms": [
+        "core",
+        "platform apis"
+      ],
+      "answer": "Implicit grant is a migration, not a new design (Core, 11 min): The OAuth article dates the deprecation: after 25 May 2026.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-p-hosts",
+      "title": "Login host and API host are a pair you look up",
+      "href": "#/lesson/p-hosts",
+      "keywords": [
+        "login host and api host are a pair you look up"
+      ],
+      "synonyms": [
+        "core",
+        "platform apis"
+      ],
+      "answer": "Login host and API host are a pair you look up (Core, 12 min): US East is the pair this lab will quote in full. Other rows stay on the regions article.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-p-roles",
+      "title": "Role and division pairs are the real permission",
+      "href": "#/lesson/p-roles",
+      "keywords": [
+        "role and division pairs are the real permission"
+      ],
+      "synonyms": [
+        "core",
+        "platform apis"
+      ],
+      "answer": "Role and division pairs are the real permission (Core, 12 min): A token opens the door the role allows, in the division the pair names.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-p-scim",
+      "title": "SCIM and other directory sync still start with an OAuth client",
+      "href": "#/lesson/p-scim",
+      "keywords": [
+        "scim and other directory sync still start with an oauth client"
+      ],
+      "synonyms": [
+        "core",
+        "platform apis"
+      ],
+      "answer": "SCIM and other directory sync still start with an OAuth client (Core, 11 min): The OAuth article points SCIM at a client. The client still has roles and a grant.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "track-crm",
+      "title": "AppFoundry and CRM",
+      "href": "#/track/crm",
+      "keywords": [
+        "appfoundry and crm",
+        "crm"
+      ],
+      "synonyms": [
+        "beside the desktop"
+      ],
+      "answer": "AppFoundry and CRM: The marketplace, the documented Salesforce and Zendesk embeds, and OAuth migrations that do not invent other CRMs. This track has 6 lessons in this lab.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-i-market",
+      "title": "AppFoundry is the marketplace, not a feature you assume is installed",
+      "href": "#/lesson/i-market",
+      "keywords": [
+        "appfoundry is the marketplace, not a feature you assume is installed"
+      ],
+      "synonyms": [
+        "core",
+        "appfoundry and crm"
+      ],
+      "answer": "AppFoundry is the marketplace, not a feature you assume is installed (Core, 11 min): An app is present only after someone installs it into the org.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-i-sf",
+      "title": "Genesys Cloud for Salesforce is a documented embed",
+      "href": "#/lesson/i-sf",
+      "keywords": [
+        "genesys cloud for salesforce is a documented embed"
+      ],
+      "synonyms": [
+        "core",
+        "appfoundry and crm"
+      ],
+      "answer": "Genesys Cloud for Salesforce is a documented embed (Core, 12 min): Screen pop, click-to-dial, logging, and the assist features that page names.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-i-sf-oauth",
+      "title": "Salesforce data actions move to OAuth client credentials",
+      "href": "#/lesson/i-sf-oauth",
+      "keywords": [
+        "salesforce data actions move to oauth client credentials"
+      ],
+      "synonyms": [
+        "core",
+        "appfoundry and crm"
+      ],
+      "answer": "Salesforce data actions move to OAuth client credentials (Core, 12 min): Consumer key, secret, and My Domain URL. The request body of the action stays.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-i-zd",
+      "title": "Zendesk has its own about page, with a similar embed idea",
+      "href": "#/lesson/i-zd",
+      "keywords": [
+        "zendesk has its own about page, with a similar embed idea"
+      ],
+      "synonyms": [
+        "core",
+        "appfoundry and crm"
+      ],
+      "answer": "Zendesk has its own about page, with a similar embed idea (Core, 11 min): Do not copy the Salesforce field list onto Zendesk.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-i-other",
+      "title": "Dynamics, ServiceNow, and the rest stay on the marketplace",
+      "href": "#/lesson/i-other",
+      "keywords": [
+        "dynamics, servicenow, and the rest stay on the marketplace"
+      ],
+      "synonyms": [
+        "core",
+        "appfoundry and crm"
+      ],
+      "answer": "Dynamics, ServiceNow, and the rest stay on the marketplace (Core, 11 min): No invented feature lists for CRMs this lab did not open.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-i-fail",
+      "title": "A CRM failure is not an ACD failure",
+      "href": "#/lesson/i-fail",
+      "keywords": [
+        "a crm failure is not an acd failure"
+      ],
+      "synonyms": [
+        "core",
+        "appfoundry and crm"
+      ],
+      "answer": "A CRM failure is not an ACD failure (Core, 11 min): Screen pop can die while the queue is healthy.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "track-migration",
+      "title": "Migration",
+      "href": "#/track/migration",
+      "keywords": [
+        "migration",
+        "migration"
+      ],
+      "synonyms": [
+        "rebuild"
+      ],
+      "answer": "Migration: Engage, PureConnect, and Cisco UCCE move by rebuilding Architect flows and queues. This is a learning bridge, not a converter. This track has 8 lessons in this lab.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-x-rebuild",
+      "title": "Nothing imports your old routing by magic",
+      "href": "#/lesson/x-rebuild",
+      "keywords": [
+        "nothing imports your old routing by magic"
+      ],
+      "synonyms": [
+        "core",
+        "migration"
+      ],
+      "answer": "Nothing imports your old routing by magic (Core, 12 min): You rebuild flows, queues, and trunks. You do not flip a converter this lab has not found.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-x-engage",
+      "title": "Engage and PureConnect become flows and queues",
+      "href": "#/lesson/x-engage",
+      "keywords": [
+        "engage and pureconnect become flows and queues"
+      ],
+      "synonyms": [
+        "core",
+        "migration"
+      ],
+      "answer": "Engage and PureConnect become flows and queues (Core, 12 min): Strategies, IRDs, and handlers are read as behavior, then redrawn.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-x-ivr",
+      "title": "IVR becomes Architect tasks, menus, and audio",
+      "href": "#/lesson/x-ivr",
+      "keywords": [
+        "ivr becomes architect tasks, menus, and audio"
+      ],
+      "synonyms": [
+        "core",
+        "migration"
+      ],
+      "answer": "IVR becomes Architect tasks, menus, and audio (Core, 12 min): CVP, UCCX prompts, and Engage voice all become the same kind of flow.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-x-ucce",
+      "title": "UCCE skill groups and precision queues are not Genesys queues",
+      "href": "#/lesson/x-ucce",
+      "keywords": [
+        "ucce skill groups and precision queues are not genesys queues"
+      ],
+      "synonyms": [
+        "core",
+        "migration"
+      ],
+      "answer": "UCCE skill groups and precision queues are not Genesys queues (Core, 13 min): Membership, skills, and bullseye are three ideas you reassemble.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-x-uccx",
+      "title": "UCCX is a smaller center with the same rebuild rule",
+      "href": "#/lesson/x-uccx",
+      "keywords": [
+        "uccx is a smaller center with the same rebuild rule"
+      ],
+      "synonyms": [
+        "core",
+        "migration"
+      ],
+      "answer": "UCCX is a smaller center with the same rebuild rule (Core, 11 min): Scripts, CSQs, and the Finesse desktop do not move as files.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-x-cucm",
+      "title": "CUCM stays. BYOC is the door, not a replacement cluster.",
+      "href": "#/lesson/x-cucm",
+      "keywords": [
+        "cucm stays. byoc is the door, not a replacement cluster."
+      ],
+      "synonyms": [
+        "core",
+        "migration"
+      ],
+      "answer": "CUCM stays. BYOC is the door, not a replacement cluster. (Core, 12 min): A dial plan and a trunk are Genesys number plans and a BYOC trunk. CUCM is still yours.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-x-webex",
+      "title": "Webex is a neighbor, not a page this lab pretends to summarize",
+      "href": "#/lesson/x-webex",
+      "keywords": [
+        "webex is a neighbor, not a page this lab pretends to summarize"
+      ],
+      "synonyms": [
+        "core",
+        "migration"
+      ],
+      "answer": "Webex is a neighbor, not a page this lab pretends to summarize (Core, 10 min): Use Cisco\u2019s product pages. Do not cite a Webex help URL this lab did not confirm.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-x-cut",
+      "title": "Cut over one number, then the queue, then the people",
+      "href": "#/lesson/x-cut",
+      "keywords": [
+        "cut over one number, then the queue, then the people"
+      ],
+      "synonyms": [
+        "core",
+        "migration"
+      ],
+      "answer": "Cut over one number, then the queue, then the people (Core, 12 min): A weekend big-bang is how untested emergency routes meet a full staff.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "track-ecosystem",
+      "title": "Ecosystem",
+      "href": "#/track/ecosystem",
+      "keywords": [
+        "ecosystem",
+        "ecosystem"
+      ],
+      "synonyms": [
+        "the map"
+      ],
+      "answer": "Ecosystem: How the tracks fit, how to read certifications, and what this lab refuses to invent. This track has 6 lessons in this lab.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-z-map",
+      "title": "The conversation crosses a short list of systems",
+      "href": "#/lesson/z-map",
+      "keywords": [
+        "the conversation crosses a short list of systems"
+      ],
+      "synonyms": [
+        "foundation",
+        "ecosystem"
+      ],
+      "answer": "The conversation crosses a short list of systems (Foundation, 12 min): Carrier, trunk or Edge, Architect, queue, agent, then the systems beside the agent.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-z-sisters",
+      "title": "WFM, QM, E911, analytics, CRM, and bots are sisters",
+      "href": "#/lesson/z-sisters",
+      "keywords": [
+        "wfm, qm, e911, analytics, crm, and bots are sisters"
+      ],
+      "synonyms": [
+        "core",
+        "ecosystem"
+      ],
+      "answer": "WFM, QM, E911, analytics, CRM, and bots are sisters (Core, 12 min): Each sister has a track and a page. None of them is a setting on the queue tab alone.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-z-bridge",
+      "title": "The Cisco bridge is a translation, with both citations showing",
+      "href": "#/lesson/z-bridge",
+      "keywords": [
+        "the cisco bridge is a translation, with both citations showing"
+      ],
+      "synonyms": [
+        "core",
+        "ecosystem"
+      ],
+      "answer": "The Cisco bridge is a translation, with both citations showing (Core, 11 min): UCCE, UCCX, CUCM, and Webex are named so a Cisco engineer can find the door.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-z-certs",
+      "title": "Read the catalog by name, then the announcement",
+      "href": "#/lesson/z-certs",
+      "keywords": [
+        "read the catalog by name, then the announcement"
+      ],
+      "synonyms": [
+        "core",
+        "ecosystem"
+      ],
+      "answer": "Read the catalog by name, then the announcement (Core, 11 min): GC-GCP and GC-GCD are catalog codes. Specialist rows are names. AI rows are two exams.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-z-interview",
+      "title": "Interview answers cite a page, not a vibe",
+      "href": "#/lesson/z-interview",
+      "keywords": [
+        "interview answers cite a page, not a vibe"
+      ],
+      "synonyms": [
+        "core",
+        "ecosystem"
+      ],
+      "answer": "Interview answers cite a page, not a vibe (Core, 11 min): The drill in this lab is a set of questions with a model answer and a link.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-z-refuse",
+      "title": "What this lab will not invent",
+      "href": "#/lesson/z-refuse",
+      "keywords": [
+        "what this lab will not invent"
+      ],
+      "synonyms": [
+        "foundation",
+        "ecosystem"
+      ],
+      "answer": "What this lab will not invent (Foundation, 10 min): Prices, unconfirmed hosts, exam codes, lifecycle dates, and CRM feature lists stay off the page.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "track-predictive",
+      "title": "Predictive Engagement",
+      "href": "#/track/predictive",
+      "keywords": [
+        "predictive engagement",
+        "predictive"
+      ],
+      "synonyms": [
+        "on the site"
+      ],
+      "answer": "Predictive Engagement: Website journeys, segments, action maps, Messenger, and the Journey Outcomes deprecation. This is not ACD predictive routing. This track has 7 lessons in this lab.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-pe-what",
+      "title": "Predictive Engagement watches the site, not the queue math",
+      "href": "#/lesson/pe-what",
+      "keywords": [
+        "predictive engagement watches the site, not the queue math"
+      ],
+      "synonyms": [
+        "core",
+        "predictive engagement"
+      ],
+      "answer": "Predictive Engagement watches the site, not the queue math (Core, 13 min): It predicts what a visitor is trying to do and offers a message, a chat, content, or a flow. Predictive routing is a different feature on the queue.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-pe-track",
+      "title": "Messenger tracks web messaging. The old snippet tracks web chat.",
+      "href": "#/lesson/pe-track",
+      "keywords": [
+        "messenger tracks web messaging. the old snippet tracks web chat."
+      ],
+      "synonyms": [
+        "core",
+        "predictive engagement"
+      ],
+      "answer": "Messenger tracks web messaging. The old snippet tracks web chat. (Core, 14 min): Genesys tells Genesys Cloud CX customers to use web messaging. Leaving both snippets on the page double-counts the visit.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-pe-segments",
+      "title": "A segment matches visitors who meet every condition you listed",
+      "href": "#/lesson/pe-segments",
+      "keywords": [
+        "a segment matches visitors who meet every condition you listed"
+      ],
+      "synonyms": [
+        "core",
+        "predictive engagement"
+      ],
+      "answer": "A segment matches visitors who meet every condition you listed (Core, 12 min): At least one condition. More conditions, fewer visitors. Conditions are not shared with the next segment.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-pe-map",
+      "title": "An action map is qualified before it is offered",
+      "href": "#/lesson/pe-map",
+      "keywords": [
+        "an action map is qualified before it is offered"
+      ],
+      "synonyms": [
+        "core",
+        "predictive engagement"
+      ],
+      "answer": "An action map is qualified before it is offered (Core, 14 min): Segment, visitor activity, and outcome probability are the trigger kinds. Priority breaks a tie. Web chat is the legacy action.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-pe-outcomes",
+      "title": "Journey Outcomes have a published end date",
+      "href": "#/lesson/pe-outcomes",
+      "keywords": [
+        "journey outcomes have a published end date"
+      ],
+      "synonyms": [
+        "advanced",
+        "predictive engagement"
+      ],
+      "answer": "Journey Outcomes have a published end date (Advanced, 14 min): Announced 18 May 2026. Planned effective date 29 June 2026. Outcome scoring is not part of the Customer Outcomes replacement.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-pe-flow",
+      "title": "An Architect flow can be the action, and it can also be the thing you must edit",
+      "href": "#/lesson/pe-flow",
+      "keywords": [
+        "an architect flow can be the action, and it can also be the thing you must edit"
+      ],
+      "synonyms": [
+        "advanced",
+        "predictive engagement"
+      ],
+      "answer": "An Architect flow can be the action, and it can also be the thing you must edit (Advanced, 12 min): Advanced orchestration is an action type. Flows that still call getJourneyOutcome need a path that does not depend on it.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lesson-pe-report",
+      "title": "Prove the map with Live Now and the performance reports",
+      "href": "#/lesson/pe-report",
+      "keywords": [
+        "prove the map with live now and the performance reports"
+      ],
+      "synonyms": [
+        "core",
+        "predictive engagement"
+      ],
+      "answer": "Prove the map with Live Now and the performance reports (Core, 12 min): Visitor activity and action-map performance are the Predictive Engagement reports. Outcome columns age out with the deprecation.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lab",
+      "title": "What this lab is",
+      "href": "#/",
+      "keywords": [
+        "signal floor",
+        "lab",
+        "university"
+      ],
+      "synonyms": [
+        "genesys cloud cx lab",
+        "free"
+      ],
+      "answer": "Signal Floor is a free, static operations lab for Genesys Cloud CX. It runs in the browser, stores progress locally, and does not call a live organization.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "lucky",
+      "title": "Lucky",
+      "href": "#/",
+      "keywords": [
+        "lucky",
+        "student"
+      ],
+      "synonyms": [
+        "author",
+        "cyphermonkey",
+        "omni-channel"
+      ],
+      "answer": "Lucky is a lifelong student and an AI enthusiast, from systems, networking, voice, and the contact center, growing into AI omni-channel agents. The copyright line on this floor is \u00a9 2026 CypherMonkeyLabs.",
+      "source": "https://cyphermonkeylabs.com"
+    },
+    {
+      "id": "links",
+      "title": "Where to find Lucky",
+      "href": "#/",
+      "keywords": [
+        "github",
+        "huggingface",
+        "twitter"
+      ],
+      "synonyms": [
+        "x.com",
+        "labs org",
+        "cyphermonkeylabs"
+      ],
+      "answer": "Visit my GitHub is https://github.com/cipher0x9. Visit the Labs org is https://github.com/CypherMonkeyLabs. Visit Cypher Monkey Labs is https://cyphermonkeylabs.com. X is https://x.com/Cypher0x9. Hugging Face is https://huggingface.co/Cypher0x9. This page does not list an email address or a LinkedIn page.",
+      "source": "https://cyphermonkeylabs.com"
+    },
+    {
+      "id": "copyright",
+      "title": "Copyright",
+      "href": "#/",
+      "keywords": [
+        "copyright",
+        "license"
+      ],
+      "synonyms": [
+        "mit",
+        "cc by-nc-sa"
+      ],
+      "answer": "The footer says \u00a9 2026 CypherMonkeyLabs. Code is MIT. Educational prose is CC BY-NC-SA 4.0. The project is not affiliated with or endorsed by Genesys, Cisco, Salesforce, or Zendesk.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "search",
+      "title": "Search",
+      "href": "#/search",
+      "keywords": [
+        "search"
+      ],
+      "synonyms": [
+        "find a lesson",
+        "lookup"
+      ],
+      "answer": "Search reads lesson titles and summaries in this browser, plus glossary lines. Nothing is sent to a server.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "diagrams",
+      "title": "Diagrams",
+      "href": "#/atlas",
+      "keywords": [
+        "diagrams",
+        "atlas"
+      ],
+      "synonyms": [
+        "sketch",
+        "figure"
+      ],
+      "answer": "The diagram atlas is a set of teaching sketches. Each caption names the limit of the drawing. The link is the source. Enlarge a picture to play, pause, or step the marker.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "flows",
+      "title": "Flows",
+      "href": "#/flows",
+      "keywords": [
+        "flows",
+        "animated"
+      ],
+      "synonyms": [
+        "mermaid",
+        "call flow"
+      ],
+      "answer": "Flows are the animated pictures from the atlas, plus sequence drawings generated with Mermaid at build time. The runtime does not load Mermaid.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "charts",
+      "title": "Charts",
+      "href": "#/charts",
+      "keywords": [
+        "charts",
+        "chart"
+      ],
+      "synonyms": [
+        "metrics",
+        "counts"
+      ],
+      "answer": "Charts count lessons, minutes, levels, quiz items, diagram kinds, and port-table rows from this lab. They are not Genesys production metrics.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "cheats",
+      "title": "Cheat codes",
+      "href": "#/cheat",
+      "keywords": [
+        "cheat",
+        "cheatsheet",
+        "downloads"
+      ],
+      "synonyms": [
+        "pdf",
+        "flashcards",
+        "sheets"
+      ],
+      "answer": "Cheat codes are one-page sheets as HTML, PDF, and PNG, plus a flashcard deck and an offline zip. Each file links back to a public source instead of pasting the vendor document.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "sip",
+      "title": "SIP and RTP",
+      "href": "#/lesson/f-sip",
+      "keywords": [
+        "sip",
+        "rtp",
+        "srtp"
+      ],
+      "synonyms": [
+        "signaling",
+        "5060",
+        "5061",
+        "audio",
+        "trunk"
+      ],
+      "answer": "SIP sets the call up. RTP moves the audio. They are different protocols. TLS trunks use TCP 5061. UDP or TCP trunks commonly use 5060. Both ends must match. Media is UDP 16384-65535, opened outbound, RTP or SRTP.",
+      "source": "https://help.genesys.cloud/articles/choose-a-trunk-transport-protocol/"
+    },
+    {
+      "id": "phones",
+      "title": "Phone signaling ports",
+      "href": "#/ports",
+      "keywords": [
+        "8061",
+        "phones"
+      ],
+      "synonyms": [
+        "managed",
+        "unmanaged",
+        "provisioning"
+      ],
+      "answer": "Managed phones signal on TCP 8061. Unmanaged phones use TCP 5061. Phone provisioning uses TCP 443, and the phone article also lists TCP 80.",
+      "source": "https://help.genesys.cloud/articles/ports-and-services-for-voip-phones-under-byoc-cloud/"
+    },
+    {
+      "id": "secure-trunk",
+      "title": "Secure BYOC",
+      "href": "#/security",
+      "keywords": [
+        "ipsec",
+        "tls"
+      ],
+      "synonyms": [
+        "srtp",
+        "secure trunk"
+      ],
+      "answer": "Secure BYOC Cloud does not use IPsec. Use SIP TLS 1.2 and SRTP. Signaling addresses and SDP media addresses are different. Do not paste an address from this lab. Synthetic logs use RFC 5737.",
+      "source": "https://help.genesys.cloud/articles/tls-trunk-transport-protocol-specification/"
+    },
+    {
+      "id": "publish",
+      "title": "Publish versus draft",
+      "href": "#/track/architect",
+      "keywords": [
+        "publish",
+        "draft"
+      ],
+      "synonyms": [
+        "architect",
+        "inbound flow"
+      ],
+      "answer": "Save is a draft. Publish is what answers. A published Architect flow decides. A draft does not answer. The in-queue flow is the hold experience and must be published too.",
+      "source": "https://help.genesys.cloud/articles/create-a-flow/"
+    },
+    {
+      "id": "routing",
+      "title": "ACD evaluation",
+      "href": "#/studio/routing",
+      "keywords": [
+        "routing",
+        "acd",
+        "idle"
+      ],
+      "synonyms": [
+        "all-skills",
+        "all skills",
+        "longest idle"
+      ],
+      "answer": "All-skills matching needs every required skill, then the longest idle. Preferred agents are first only if they are members and On Queue. Utilized or off-queue agents are skipped.",
+      "source": "https://help.genesys.cloud/articles/acd-evaluation-routing-methods/"
+    },
+    {
+      "id": "bullseye",
+      "title": "Bullseye routing",
+      "href": "#/studio/routing",
+      "keywords": [
+        "bullseye",
+        "rings"
+      ],
+      "synonyms": [
+        "bulls eye",
+        "ring delay"
+      ],
+      "answer": "Bullseye routing uses up to five rings. A long delay means the outer ring is still closed. A skill can drop after the ring delay.",
+      "source": "https://help.genesys.cloud/articles/bullseye-routing-overview/"
+    },
+    {
+      "id": "score",
+      "title": "Conversation score",
+      "href": "#/studio/routing",
+      "keywords": [
+        "priority",
+        "score"
+      ],
+      "synonyms": [
+        "60000",
+        "conversation score"
+      ],
+      "answer": "One conversation-score priority point is 60,000 ms. In this lab\u2019s router, a priority of 5 beats a priority of 0 that arrived four minutes earlier.",
+      "source": "https://help.genesys.cloud/articles/acd-evaluation-routing-methods/"
+    },
+    {
+      "id": "predictive",
+      "title": "Predictive routing versus engagement",
+      "href": "#/track/predictive",
+      "keywords": [
+        "predictive"
+      ],
+      "synonyms": [
+        "engagement",
+        "action map",
+        "website"
+      ],
+      "answer": "Predictive routing is the queue method. Predictive Engagement is the website product. They are not the same feature.",
+      "source": "https://help.genesys.cloud/articles/about-predictive-engagement/"
+    },
+    {
+      "id": "byoc",
+      "title": "BYOC",
+      "href": "#/track/byoc",
+      "keywords": [
+        "byoc",
+        "pstn"
+      ],
+      "synonyms": [
+        "carrier",
+        "premises",
+        "cloud voice"
+      ],
+      "answer": "BYOC Cloud is your carrier and Genesys media, with no customer Edge on that path. BYOC Premises keeps phones and trunks on your Edge. Genesys Cloud Voice is the door where Genesys is the carrier.",
+      "source": "https://help.genesys.cloud/articles/about-byoc-cloud/"
+    },
+    {
+      "id": "emergency",
+      "title": "Emergency calling",
+      "href": "#/track/emergency",
+      "keywords": [
+        "emergency",
+        "911"
+      ],
+      "synonyms": [
+        "e911",
+        "location"
+      ],
+      "answer": "On BYOC, Genesys is not the emergency provider. You classify, route, and test. A live emergency test is a carrier and public-safety conversation, not a demo.",
+      "source": "https://help.genesys.cloud/articles/set-up-emergency-services-with-byoc/"
+    },
+    {
+      "id": "wfm",
+      "title": "Workforce management",
+      "href": "#/track/wfm",
+      "keywords": [
+        "wfm",
+        "forecast",
+        "schedule"
+      ],
+      "synonyms": [
+        "wem",
+        "short-term",
+        "long-term"
+      ],
+      "answer": "WFM is part of WEM and arrives with CX 3 on the overview. Short-term forecasts use interval data, up to six weeks, and can generate a schedule. Long-term forecasts use day and week data, up to two years, and cannot generate a schedule. Swapping the forecast does not move agent shifts until you reschedule.",
+      "source": "https://help.genesys.cloud/articles/workforce-management/"
+    },
+    {
+      "id": "quality",
+      "title": "Quality management",
+      "href": "#/track/qm",
+      "keywords": [
+        "quality",
+        "recording"
+      ],
+      "synonyms": [
+        "evaluation",
+        "scorecard"
+      ],
+      "answer": "Quality management evaluates. It does not build the schedule. A recording policy decides which calls are kept. A form decides the score. A secure flow can suppress a payment segment. It does not replace the policy.",
+      "source": "https://help.genesys.cloud/articles/about-recording/"
+    },
+    {
+      "id": "oauth",
+      "title": "OAuth grants",
+      "href": "#/track/api",
+      "keywords": [
+        "oauth",
+        "grant",
+        "pkce"
+      ],
+      "synonyms": [
+        "client credentials",
+        "implicit",
+        "users/me"
+      ],
+      "answer": "Client credentials are for a service. That token cannot call /api/v2/users/me. User-facing apps use authorization code with PKCE. Token Implicit Grant is documented as deprecated after 25 May 2026. This lab\u2019s API explorer never sends the sample.",
+      "source": "https://help.genesys.cloud/articles/create-an-oauth-client/"
+    },
+    {
+      "id": "journey",
+      "title": "Journey Outcomes",
+      "href": "#/whats-new",
+      "keywords": [
+        "journey",
+        "outcomes"
+      ],
+      "synonyms": [
+        "deprecation",
+        "2026"
+      ],
+      "answer": "Journey Outcomes deprecation was announced 2026-05-18, with a planned effective date of 2026-06-29, on the page this lab read. This lab has not confirmed later edits. If the page moved, the page wins.",
+      "source": "https://help.genesys.cloud/announcements/genesys-cloud/deprecation-journey-outcomes/"
+    },
+    {
+      "id": "certs",
+      "title": "Certifications",
+      "href": "#/certs",
+      "keywords": [
+        "certification",
+        "gc-gcp",
+        "gc-gcd"
+      ],
+      "synonyms": [
+        "gcx",
+        "exam"
+      ],
+      "answer": "Say the catalog names. This lab does not invent a GCX- code. GC-GCP is the professional exam. GC-GCD is the developer exam. This lab\u2019s quiz is not Genesys\u2019 practice exam.",
+      "source": "https://education.genesys.com/certification/cloud"
+    },
+    {
+      "id": "crm",
+      "title": "CRM embeds",
+      "href": "#/track/crm",
+      "keywords": [
+        "salesforce",
+        "zendesk",
+        "crm"
+      ],
+      "synonyms": [
+        "appfoundry",
+        "screen pop"
+      ],
+      "answer": "Salesforce and Zendesk are the documented embeds named in this lab. Other CRMs stay on AppFoundry. A dead screen pop means the embed failed. The queue did not.",
+      "source": "https://help.genesys.cloud/articles/about-genesys-cloud-for-salesforce/"
+    },
+    {
+      "id": "regions",
+      "title": "Regions",
+      "href": "#/regions",
+      "keywords": [
+        "region",
+        "satellite"
+      ],
+      "synonyms": [
+        "aws",
+        "residency",
+        "core region"
+      ],
+      "answer": "An organization is created in one core AWS region. Satellite regions carry media and cannot host the org. This lab names only the hosts it has already checked.",
+      "source": "https://help.genesys.cloud/articles/aws-regions-for-genesys-cloud-deployment/"
+    },
+    {
+      "id": "divisions",
+      "title": "Divisions",
+      "href": "#/track/org",
+      "keywords": [
+        "division",
+        "home division"
+      ],
+      "synonyms": [
+        "role",
+        "permissions"
+      ],
+      "answer": "A division groups objects inside one organization. It is not a second org, and the Home division cannot be deleted. A role works only in the divisions it is paired with.",
+      "source": "https://help.genesys.cloud/articles/divisions-overview/"
+    },
+    {
+      "id": "migration",
+      "title": "Migration",
+      "href": "#/track/migration",
+      "keywords": [
+        "migration",
+        "ucce",
+        "pureconnect"
+      ],
+      "synonyms": [
+        "cutover",
+        "converter",
+        "engage"
+      ],
+      "answer": "Rebuild the behavior. This lab has not found a converter. UCCE skill groups are membership plus skills, not one Genesys object. Cut over one number, then the queue, then the people.",
+      "source": "https://help.genesys.cloud/articles/about-architect/"
+    },
+    {
+      "id": "motion",
+      "title": "Reduced motion",
+      "href": "#/settings",
+      "keywords": [
+        "motion",
+        "animation"
+      ],
+      "synonyms": [
+        "reduced motion",
+        "prefers-reduced-motion"
+      ],
+      "answer": "If the device asks for reduced motion, or Settings turns reduce on, the 3D floor stays on the flat drawing and looping animations stop. Sound and reduced motion are in Settings.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "guide",
+      "title": "Guide Bot",
+      "href": "#/",
+      "keywords": [
+        "guide",
+        "bot"
+      ],
+      "synonyms": [
+        "chat",
+        "assistant"
+      ],
+      "answer": "Guide Bot is a scripted widget in this browser. It matches these notes with keywords and synonyms. It can run a short tour or a quiz and show the score. It does not invent a fact that is not in the notes. A future cloud agent can be attached by setting window.GCCX_GUIDE_ENDPOINT to an https URL that returns grounded:true plus an answer and an https source. This build does not call one unless that hook is set.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "ecosystem",
+      "title": "Ecosystem",
+      "href": "#/ecosystem",
+      "keywords": [
+        "ecosystem",
+        "glossary"
+      ],
+      "synonyms": [
+        "mind map",
+        "sister"
+      ],
+      "answer": "The Ecosystem page maps every track. WEM, recording, emergency calling, CRM, and bots sit on documented edges of Genesys Cloud CX. The glossary, certifications, and boss incidents are linked from that page.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    },
+    {
+      "id": "packages",
+      "title": "CX packages",
+      "href": "#/lesson/f-platform",
+      "keywords": [
+        "packages",
+        "cx 1",
+        "cx 3"
+      ],
+      "synonyms": [
+        "subscription",
+        "platform"
+      ],
+      "answer": "Genesys Cloud CX is a subscription contact-center platform with four nested packages, not a single feature switch. WFM is described as arriving with CX 3 on the workforce overview.",
+      "source": "https://help.genesys.cloud/articles/workforce-management/"
+    },
+    {
+      "id": "digital",
+      "title": "Digital beside voice",
+      "href": "#/lesson/f-digital",
+      "keywords": [
+        "digital",
+        "email",
+        "chat",
+        "messaging"
+      ],
+      "synonyms": [
+        "web messaging",
+        "sms"
+      ],
+      "answer": "Voice is one media. Architect also has inbound message, email, and chat flows, and queues track those medias separately. Digital conversations skip the trunk and still need a flow and a queue.",
+      "source": "https://help.genesys.cloud/articles/about-architect/"
+    },
+    {
+      "id": "botflow",
+      "title": "Bot flows",
+      "href": "#/track/architect",
+      "keywords": [
+        "bot",
+        "dialog"
+      ],
+      "synonyms": [
+        "no-match",
+        "timeout"
+      ],
+      "answer": "Call a bot from the inbound flow. Bind no-match, timeout, and error to a queue. A secure flow keeps payment audio out of the recording. It is not a place to store the digits.",
+      "source": "https://help.genesys.cloud/articles/about-genesys-dialog-engine-bot-flows/"
+    },
+    {
+      "id": "edge",
+      "title": "The Edge",
+      "href": "#/track/edge",
+      "keywords": [
+        "edge"
+      ],
+      "synonyms": [
+        "premises",
+        "failover",
+        "site"
+      ],
+      "answer": "BYOC Premises keeps phones and trunks on your Edge. Another site is failover only. The topology view can show the Edge path and a failure toggle.",
+      "source": "https://help.genesys.cloud/articles/edge-groups-overview/"
+    },
+    {
+      "id": "progress",
+      "title": "Progress",
+      "href": "#/",
+      "keywords": [
+        "progress",
+        "localstorage"
+      ],
+      "synonyms": [
+        "offline",
+        "browser"
+      ],
+      "answer": "Progress stays in this browser. Track JSON loads when you open a track. The service worker does not prefetch every track at install.",
+      "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+    }
+  ],
+  "tours": [
+    {
+      "id": "floor",
+      "title": "Tour the floor",
+      "steps": [
+        {
+          "text": "Signal Floor is a free operations lab. It runs in the browser and does not call a live organization. The wings below are Diagrams, Flows, Charts, Cheat Codes, and Ecosystem.",
+          "href": "#/",
+          "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+        },
+        {
+          "text": "Diagrams are teaching sketches. Each caption names the limit of the drawing and links a source.",
+          "href": "#/atlas",
+          "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+        },
+        {
+          "text": "Flows are the animated pictures from the atlas, plus Mermaid drawings made at build time. The browser does not load Mermaid.",
+          "href": "#/flows",
+          "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+        },
+        {
+          "text": "Charts count lessons, minutes, levels, quiz items, diagram kinds, and port rows in this lab. They are not production metrics.",
+          "href": "#/charts",
+          "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+        },
+        {
+          "text": "Cheat codes are one-page sheets as HTML, PDF, and PNG, plus flashcards and an offline zip.",
+          "href": "#/cheat",
+          "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+        },
+        {
+          "text": "Ecosystem lists every track. WEM, recording, emergency calling, CRM, and bots sit on documented edges of the platform.",
+          "href": "#/ecosystem",
+          "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+        }
+      ]
+    },
+    {
+      "id": "voice",
+      "title": "Tour a voice call",
+      "steps": [
+        {
+          "text": "Foundations. What Genesys Cloud CX is, where an organization lives, and how a voice conversation is supposed to move.",
+          "href": "#/track/foundations",
+          "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+        },
+        {
+          "text": "Architect flows. Flow types, tasks, in-queue experiences, data actions, bots, secure calls, and publish. A draft does not answer. Publish the flow.",
+          "href": "#/track/architect",
+          "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+        },
+        {
+          "text": "ACD routing. Standard, bullseye, preferred, predictive, and conditional routing, plus the two scoring methods.",
+          "href": "#/track/acd",
+          "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+        },
+        {
+          "text": "Queues, skills, and wrap-up. Queue media settings, skills, wrap-up codes, callbacks, and service level.",
+          "href": "#/track/queues",
+          "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+        },
+        {
+          "text": "BYOC Cloud and SIP trunks. Carrier and PBX trunks, RTP over the internet, Dynamic Cloud Voice, and the quick-start order.",
+          "href": "#/track/byoc",
+          "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+        },
+        {
+          "text": "Ports: TLS trunks use TCP 5061. UDP or TCP trunks commonly use 5060. Media is UDP 16384-65535. Copy live addresses from the current article, not from this lab.",
+          "href": "#/ports",
+          "source": "https://help.genesys.cloud/articles/choose-a-trunk-transport-protocol/"
+        }
+      ]
+    },
+    {
+      "id": "ai-path",
+      "title": "Tour the AI path",
+      "steps": [
+        {
+          "text": "Genesys AI and bots. Dialog Engine and digital bots, failure paths, Agent Copilot, tokens, and the AI exams as the catalog names them.",
+          "href": "#/track/ai",
+          "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+        },
+        {
+          "text": "Speech and text analytics. What gets transcribed, how sentiment and topics are used, and why analysis is not the same thing as the live conversation.",
+          "href": "#/track/sta",
+          "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+        },
+        {
+          "text": "Predictive Engagement. Website journeys, segments, action maps, Messenger, and the Journey Outcomes deprecation. This is not ACD predictive routing.",
+          "href": "#/track/predictive",
+          "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+        },
+        {
+          "text": "Platform APIs. OAuth grants, client credentials limits, region hosts, and why this lab\u2019s explorer never sends a request.",
+          "href": "#/track/api",
+          "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+        },
+        {
+          "text": "AppFoundry and CRM. The marketplace, the documented Salesforce and Zendesk embeds, and OAuth migrations that do not invent other CRMs.",
+          "href": "#/track/crm",
+          "source": "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+        }
+      ]
+    }
+  ],
+  "quizzes": [
+    {
+      "id": "routing",
+      "title": "Routing check",
+      "questions": [
+        {
+          "q": "All-skills matching, with no preferred agent, picks whom?",
+          "choices": [
+            "The longest idle agent who has every required skill",
+            "The agent with the highest skill rating",
+            "Any agent who is On Queue",
+            "The agent who logged in last"
+          ],
+          "answer": 0,
+          "why": "All-skills matching needs every required skill, then the longest idle.",
+          "href": "#/studio/routing",
+          "source": "https://help.genesys.cloud/articles/acd-evaluation-routing-methods/"
+        },
+        {
+          "q": "How many rings can bullseye routing use?",
+          "choices": [
+            "Up to five",
+            "Exactly two",
+            "Unlimited",
+            "One, then it overflows to voicemail"
+          ],
+          "answer": 0,
+          "why": "The bullseye overview, as this lab cites it, allows up to five rings.",
+          "href": "#/studio/routing",
+          "source": "https://help.genesys.cloud/articles/bullseye-routing-overview/"
+        },
+        {
+          "q": "What is one conversation-score priority point worth?",
+          "choices": [
+            "60,000 ms",
+            "1 second",
+            "5 minutes",
+            "It only changes skill requirements"
+          ],
+          "answer": 0,
+          "why": "This lab\u2019s router treats one priority point as 60,000 ms.",
+          "href": "#/studio/routing",
+          "source": "https://help.genesys.cloud/articles/acd-evaluation-routing-methods/"
+        },
+        {
+          "q": "When is a preferred agent offered first?",
+          "choices": [
+            "Only if they are a member and On Queue",
+            "Always, even if off queue",
+            "Only if they have been idle the longest",
+            "Only on digital interactions"
+          ],
+          "answer": 0,
+          "why": "Preferred agents are first only if they are members and On Queue.",
+          "href": "#/studio/routing",
+          "source": "https://help.genesys.cloud/articles/acd-evaluation-routing-methods/"
+        }
+      ]
+    },
+    {
+      "id": "voice-quiz",
+      "title": "Voice check",
+      "questions": [
+        {
+          "q": "Which protocol moves the audio?",
+          "choices": [
+            "RTP",
+            "SIP",
+            "HTTP",
+            "SMTP"
+          ],
+          "answer": 0,
+          "why": "SIP sets the call up. RTP moves the audio.",
+          "href": "#/lesson/f-sip",
+          "source": "https://help.genesys.cloud/articles/choose-a-trunk-transport-protocol/"
+        },
+        {
+          "q": "Which port do TLS trunks commonly use?",
+          "choices": [
+            "TCP 5061",
+            "UDP 443",
+            "TCP 80",
+            "UDP 123"
+          ],
+          "answer": 0,
+          "why": "TLS trunks use TCP 5061. UDP or TCP trunks commonly use 5060.",
+          "href": "#/ports",
+          "source": "https://help.genesys.cloud/articles/tls-trunk-transport-protocol-specification/"
+        },
+        {
+          "q": "What answers a call in Architect?",
+          "choices": [
+            "A published flow",
+            "A saved draft",
+            "An unpublished in-queue flow",
+            "A glossary card"
+          ],
+          "answer": 0,
+          "why": "Save is a draft. Publish is what answers.",
+          "href": "#/track/architect",
+          "source": "https://help.genesys.cloud/articles/create-a-flow/"
+        },
+        {
+          "q": "Can a client-credentials token call /api/v2/users/me?",
+          "choices": [
+            "No. That grant has no user.",
+            "Yes. It returns the admin.",
+            "Only on Tuesdays",
+            "Only from a secure flow"
+          ],
+          "answer": 0,
+          "why": "Client credentials are for a service. The token cannot call /api/v2/users/me.",
+          "href": "#/track/api",
+          "source": "https://developer.genesys.cloud/api/rest/authorization/use-client-credentials"
+        }
+      ]
+    }
+  ]
+}
