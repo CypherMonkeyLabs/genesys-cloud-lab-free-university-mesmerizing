@@ -12,7 +12,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CAMPUS = ROOT / "campus"
 OUT = CAMPUS / "downloads"
-REPO = "https://github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing"
+REPO = "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
 FOOT = [
     "CypherMonkey Labs · Signal Floor",
     "https://cyphermonkeylabs.com",
