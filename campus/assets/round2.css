@@ -595,7 +595,7 @@ body[data-home="1"] .hero-bleed {
 }
 .hero-copy {
   scroll-margin-top: calc(var(--chrome-h, 64px) + 28px);
-  background: linear-gradient(145deg, rgba(15, 10, 40, 0.88), rgba(76, 29, 149, 0.62)) !important;
+  background: linear-gradient(145deg, rgba(15, 10, 40, 0.96), rgba(49, 20, 110, 0.94)) !important;
   color: #f8fafc !important;
   border: 1px solid rgba(255, 255, 255, 0.38);
   box-shadow: 0 0 28px rgba(34, 211, 238, 0.35), 0 16px 32px rgba(15, 10, 40, 0.35);
@@ -682,7 +682,9 @@ body[data-home="1"] .hero-bleed {
 }
 #home-icons .live-icon { display: none !important; }
 #home-icons .iso-stage.has-live svg.iso { opacity: 1 !important; }
+#home-icons .tile-copy { display: flex; flex-direction: column; min-width: 0; align-items: center; }
 #home-icons .icon-tile b { font-size: 1.35rem; line-height: 1.1; }
+body[data-home="1"] .audio-dock { margin-top: calc(var(--bar-h, 64px) + 88px); }
 #home-icons .tile-label,
 #home-icons .tile-note { position: relative; z-index: 2; }
 [data-theme="bloom"] #home-icons .icon-tile:nth-child(1) { background: linear-gradient(160deg, #3b0764, #5b21b6 70%) !important; }
@@ -734,12 +736,82 @@ body[data-home="1"] .hero-bleed {
 }
 body[data-home="1"] main { padding-bottom: calc(var(--bar-h, 64px) + 72px) !important; }
 .site-footer.lab-footer { padding-bottom: calc(var(--bar-h, 64px) + 78px); }
+.hero-copy { padding: 12px 14px 10px; }
+.hero-copy h1 { margin-bottom: 6px; }
+.hero-copy .lede { margin: 0 0 8px; }
+.hero-copy .statrow { flex-wrap: nowrap; align-items: center; }
+.hero-copy .stat { min-width: 0; flex: 1 1 auto; padding: 8px 10px; }
+.hero-copy .stat b { display: block; }
+.hero-copy .stat span { display: block; font-size: 0.78rem; }
+.hero-copy .ring {
+  width: 64px;
+  height: 64px;
+  flex: 0 0 auto;
+  background: conic-gradient(#fde68a calc(var(--p) * 1%), rgba(255, 255, 255, 0.35) 0);
+}
+.hero-copy .ring span {
+  width: 46px;
+  height: 46px;
+  background: #1e1b4b;
+  color: #ffffff;
+  font-size: 0.85rem;
+}
+@media (min-width: 701px) {
+  #home-icons.icon-parade {
+    width: calc(100% - 210px);
+    margin-left: 16px;
+    margin-right: 0;
+  }
+  #home-icons .iso-stage { width: 104px; height: 88px; }
+  #home-icons .icon-tile svg,
+  #home-icons .icon-tile svg.iso { width: 96px !important; height: 82px !important; }
+  #home-icons .icon-tile { min-height: 0; padding-top: 8px; padding-bottom: 8px; }
+}
 @media (max-width: 700px) {
   .brand .mark.lab-logo,
   .brand .mark.lab-logo svg { width: 44px; height: 44px; }
   .ticker { left: 8px; right: 8px; bottom: calc(var(--bar-h, 64px) + 14px); }
-  #home-icons .icon-tile { min-height: 168px; }
-  #home-icons .icon-tile svg.iso { width: 96px !important; height: 84px !important; }
+  body[data-home="1"] .hero-bleed { padding-top: 6px; }
+  .hero-scrim { padding: 8px 8px 0; }
+  .hero-copy, .hero-scrim, .hero-bleed, #home-icons { max-width: 100%; min-width: 0; }
+  .hero-copy { padding-right: 76px; }
+  .hero-copy h1 { font-size: 1.6rem; }
+  .hero-copy .lede {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 0.95rem;
+  }
+  .hero-copy .statrow { flex-wrap: nowrap; overflow: visible; }
+  .hero-copy .stat { flex: 1 1 0; max-width: none; min-width: 0; padding: 4px 3px; }
+  .hero-copy .stat b { font-size: 1.05rem; }
+  .hero-copy .stat span { font-size: 0.68rem; line-height: 1.15; }
+  .hero-copy .chips { flex-wrap: nowrap; overflow-x: auto; max-width: 100%; }
+  .hero-copy .chips .btn { flex: 0 0 auto; }
+  #hero-play { display: none !important; }
+  #home-icons.icon-parade {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 8px;
+    width: auto;
+    margin: 8px 8px 0;
+  }
+  #home-icons .icon-tile {
+    flex-direction: row;
+    align-items: center;
+    min-width: 0;
+    min-height: 72px;
+    padding: 6px 8px;
+    gap: 6px;
+    text-align: left;
+  }
+  #home-icons .iso-stage { width: 58px; height: 52px; margin: 0; flex: none; }
+  #home-icons .icon-tile svg,
+  #home-icons .icon-tile svg.iso { width: 54px !important; height: 48px !important; }
+  #home-icons .tile-copy { align-items: flex-start; flex: 1 1 auto; }
+  #home-icons .icon-tile b { font-size: 1rem; }
+  #home-icons .tile-label { font-size: 0.92rem; line-height: 1.15; }
+  #home-icons .tile-note { font-size: 0.72rem; line-height: 1.15; }
 }
 .sources-deeper .src-flag {
   display: inline-block;

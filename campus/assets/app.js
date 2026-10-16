@@ -685,6 +685,19 @@ async function mountHomeViz() {
   if (homeEl.hidden) return;
   scheduleHero();
   paintIcons($("#home-icons"), null);
+  try {
+    const { DIAGRAMS } = await import("./diagrams.js");
+    if (!homeEl.hidden) {
+      paintIcons($("#home-icons"), null, {
+        diagrams: DIAGRAMS.length,
+        flows: DIAGRAMS.filter((item) => item.flow).length,
+        charts: 6,
+        sheets: 13
+      });
+    }
+  } catch (err) {
+    status(err.message || "Icon counts did not load");
+  }
   scheduleHomeViz();
 }
 
@@ -712,7 +725,7 @@ function paintIcons(host, track, counts = {}) {
       ["#/tracks", track ? ht(track.id, track.title) : "Lessons", lessons.length, "prism", `${minutes} min`],
       ["#/tracks", "Finished", done, "star", track ? "This track" : "This browser"]
     ];
-  host.innerHTML = tiles.map(([href, label, num, kind, note], index) => `<a class="icon-tile" href="${href}">${iconStage(kind, index)}<b data-count="${esc(num)}">${esc(num)}</b><span class="tile-label">${esc(label)}</span><span class="tile-note">${esc(note)}</span></a>`).join("");
+  host.innerHTML = tiles.map(([href, label, num, kind, note], index) => `<a class="icon-tile" href="${href}">${iconStage(kind, index)}<span class="tile-copy"><b data-count="${esc(num)}">${esc(num)}</b><span class="tile-label">${esc(label)}</span><span class="tile-note">${esc(note)}</span></span></a>`).join("");
   host.querySelectorAll("[data-count]").forEach((el) => countUp(el, el.dataset.count));
   refreshLive();
 }
