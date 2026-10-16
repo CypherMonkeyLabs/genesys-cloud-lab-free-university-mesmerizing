@@ -1,1 +1,1 @@
-Architect clips: two-voice study dialogue (Architect and Apprentice), TTS by Kokoro (kokoro-onnx 0.6.1) voices am_michael and af_heart over a soft ambient pad. Not a recording of a person.
+Architect clips: two-voice study dialogue (Architect and Apprentice). Waveforms are Kokoro (kokoro-onnx 0.6.1, Apache-2.0) voices am_michael and af_heart over a soft generated pad. Not a recording of a person. Rebuild with `python3 scripts/build_audio.py` after the v1.0 ONNX files are in `KOKORO_DIR` (default `/tmp/kokoro`).

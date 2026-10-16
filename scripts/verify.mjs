@@ -146,6 +146,7 @@ for (const item of DIAGRAMS) {
 }
 
 const html = readFileSync(join(root, "campus/index.html"), "utf8");
+const published = "https://cyphermonkeylabs.com/genesys-cloud-lab-free-university-mesmerizing/";
 const brandLinks = [
   "https://cyphermonkeylabs.com",
   "https://github.com/CypherMonkeyLabs",
@@ -157,6 +158,29 @@ for (const needle of [...brandLinks, "learning-only", "© 2026 CypherMonkeyLabs"
 const forbidden = ["dev.to", "linkedin.com", "huggingface.co", "x.com/", "mailto:", "github.com/cipher0x9", "twitter.com"];
 for (const needle of forbidden) {
   if (html.toLowerCase().includes(needle)) problems.push(`chrome forbids ${needle}`);
+}
+if (!html.includes(`<link rel="canonical" href="${published}campus/">`)) problems.push("campus canonical");
+const rootHtml = readFileSync(join(root, "index.html"), "utf8");
+if (!rootHtml.includes(`<link rel="canonical" href="${published}">`)) problems.push("root canonical");
+if (rootHtml.toLowerCase().includes("http-equiv=\"refresh\"") || rootHtml.toLowerCase().includes("http-equiv='refresh'")) {
+  problems.push("root meta refresh");
+}
+if (!rootHtml.includes('href="campus/"') || !rootHtml.includes("<h1>")) problems.push("root landing");
+if (!rootHtml.includes("Sources and go deeper") || !rootHtml.includes("Last checked 2026-10")) problems.push("root sources");
+for (const needle of [...brandLinks, "learning-only"]) {
+  if (!rootHtml.includes(needle)) problems.push(`root missing ${needle}`);
+}
+for (const needle of forbidden) {
+  if (rootHtml.toLowerCase().includes(needle)) problems.push(`root forbids ${needle}`);
+}
+if (html.toLowerCase().includes("espeak") || rootHtml.toLowerCase().includes("espeak")) problems.push("espeak copy");
+for (const clip of ["campus/audio/tour.mp3", "campus/audio/practice.mp3"]) {
+  if (statSync(join(root, clip)).size < 200000) problems.push(`${clip} tiny`);
+}
+for (const script of ["campus/audio/scripts/tour.md", "campus/audio/scripts/practice.md"]) {
+  const text = readFileSync(join(root, script), "utf8");
+  if (!text.includes("Kokoro")) problems.push(`${script} kokoro`);
+  if (text.toLowerCase().includes("espeak")) problems.push(`${script} espeak`);
 }
 for (const id of ["menu-open", "nav-home", "tour-learn", "tour-diagrams", "tour-play", "tour-listen", "tour-downloads", "nav-guide", "font-color", "menu-font-color"]) {
   if (!html.includes(`id="${id}"`)) problems.push(`missing ${id}`);

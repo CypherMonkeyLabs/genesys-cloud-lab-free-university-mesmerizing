@@ -1,6 +1,6 @@
 # How to view the floor
 
-Two architect voices. Generated offline with espeak-ng. Not a Genesys recording.
+Two voices. A is the Architect (Kokoro am_michael). B is the Apprentice (Kokoro af_heart). Generated offline. Not a Genesys recording.
 
 - A: Welcome to the Signal Floor, a free lab for Genesys Cloud CX.
 - B: I am the second architect on this desk. This clip shows how to view the floor. The next clip shows how to practise and share it.

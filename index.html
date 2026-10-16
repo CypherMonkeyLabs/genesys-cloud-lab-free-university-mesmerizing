@@ -7,10 +7,205 @@
 <meta name="description" content="Signal Floor is a free Genesys Cloud CX lab for Architect, ACD routing, BYOC, the Edge, WEM, and Platform APIs.">
 <link rel="icon" href="campus/favicon.ico" sizes="any">
 <link rel="icon" href="campus/favicon.svg" type="image/svg+xml">
-<link rel="canonical" href="campus/">
-<meta http-equiv="refresh" content="0; url=campus/">
+<link rel="canonical" href="https://cyphermonkeylabs.com/genesys-cloud-lab-free-university-mesmerizing/">
+<meta property="og:title" content="Genesys Cloud CX Lab">
+<meta property="og:description" content="A free operations lab for Architect, ACD, BYOC, the Edge, WEM, and Platform APIs. Every lesson links to a public source.">
+<meta property="og:url" content="https://cyphermonkeylabs.com/genesys-cloud-lab-free-university-mesmerizing/">
+<meta property="og:type" content="website">
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #071018;
+    --bg-2: #102033;
+    --ink: #f6f1e8;
+    --muted: #c9d3dc;
+    --line: rgba(246, 241, 232, 0.16);
+    --coral: #ff5a36;
+    --lime: #d6f25c;
+    --violet: #b3a6ff;
+    --on: #1a0c08;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background:
+      radial-gradient(900px 420px at 10% -10%, rgba(255, 90, 54, 0.28), transparent 60%),
+      radial-gradient(700px 380px at 100% 0%, rgba(179, 166, 255, 0.22), transparent 55%),
+      var(--bg);
+    color: var(--ink);
+    font: 17px/1.5 "Avenir Next", "Segoe UI", "Helvetica Neue", sans-serif;
+  }
+  a { color: #ffd0c4; }
+  a:focus-visible, .enter:focus-visible { outline: 3px solid var(--lime); outline-offset: 3px; }
+  .wrap { width: min(1080px, calc(100% - 32px)); margin: 0 auto; }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 22px 0 8px;
+  }
+  .mark { display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; }
+  .mark b { display: block; font-family: Palatino, Georgia, serif; font-size: 1.05rem; letter-spacing: -0.02em; }
+  .mark span { display: block; color: var(--muted); font-size: 0.78rem; }
+  .dot {
+    width: 42px; height: 42px; border-radius: 14px;
+    background: linear-gradient(145deg, var(--coral), #7c2d12);
+    box-shadow: 0 0 0 4px rgba(214, 242, 92, 0.18);
+  }
+  .hero {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 28px;
+    align-items: center;
+    padding: 28px 0 12px;
+  }
+  .kicker { margin: 0 0 8px; color: var(--lime); font-weight: 750; letter-spacing: 0.04em; text-transform: uppercase; font-size: 0.78rem; }
+  h1 { margin: 0 0 10px; font-family: Palatino, Georgia, serif; font-size: clamp(2.2rem, 5vw, 4rem); line-height: 0.98; letter-spacing: -0.03em; }
+  .lede { margin: 0 0 18px; color: var(--muted); font-size: 1.08rem; max-width: 42rem; }
+  .enter {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 48px; padding: 0 18px; border-radius: 999px;
+    background: var(--lime); color: var(--on); font-weight: 800; text-decoration: none;
+  }
+  .ghost {
+    display: inline-flex; align-items: center; min-height: 48px; margin-left: 8px;
+    padding: 0 14px; color: var(--ink); text-decoration: none;
+  }
+  .stage {
+    background: linear-gradient(180deg, #12263a, #0b1622);
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    padding: 14px;
+  }
+  .stage svg { width: 100%; height: auto; display: block; }
+  .counts { display: flex; flex-wrap: wrap; gap: 10px; margin: 22px 0 8px; }
+  .counts div { min-width: 108px; padding: 10px 12px; border-radius: 14px; background: rgba(18, 28, 43, 0.85); border: 1px solid var(--line); }
+  .counts b { display: block; font-family: Palatino, Georgia, serif; font-size: 1.4rem; }
+  .counts span { color: var(--muted); font-size: 0.82rem; }
+  section { margin: 22px 0; }
+  h2 { font-family: Palatino, Georgia, serif; font-size: 1.7rem; margin: 0 0 8px; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .card { padding: 14px 16px; border-radius: 16px; background: rgba(18, 28, 43, 0.72); border: 1px solid var(--line); }
+  .card h3 { margin: 0 0 6px; font-size: 1rem; }
+  .card p { margin: 0; color: var(--muted); }
+  ol { margin: 0; padding-left: 1.2rem; }
+  ol li { margin: 6px 0; }
+  .sources-deeper { margin-top: 28px; padding: 16px 18px; border: 2px solid #0f766e; border-radius: 16px; background: #f0fdfa; color: #042f2e; }
+  .sources-deeper h2 { color: #042f2e; }
+  .sources-deeper a { color: #08306b; }
+  .sources-deeper li { margin: 8px 0; }
+  .src-kind { font-weight: 800; }
+  footer { margin: 28px 0 40px; }
+  .disclaimer-panel { padding: 16px 18px; border-radius: 16px; background: #d1fae5; color: #052e2b; }
+  .disclaimer-panel h2 { font-size: 1.15rem; }
+  .disclaimer-panel a { color: #0b3a8f; }
+  .brand-icons { display: flex; flex-wrap: wrap; gap: 12px; margin: 16px 0; }
+  .brand-icons a { color: var(--ink); font-weight: 750; }
+  .copy { color: var(--muted); }
+  @media (max-width: 800px) {
+    .hero, .grid { grid-template-columns: 1fr; }
+    .ghost { margin-left: 0; }
+    header { align-items: flex-start; }
+  }
+</style>
 </head>
 <body>
-<p><a href="campus/">Enter the Genesys Cloud CX Lab</a></p>
+<div class="wrap">
+  <header>
+    <a class="mark" href="campus/">
+      <span class="dot" aria-hidden="true"></span>
+      <span><b>Signal Floor</b><span>Genesys Cloud CX Lab</span></span>
+    </a>
+    <a href="campus/">Enter the lab</a>
+  </header>
+  <main>
+    <section class="hero">
+      <div>
+        <p class="kicker">Free operations university</p>
+        <h1>Genesys Cloud CX Lab</h1>
+        <p class="lede">Architect flows, bullseye routing, BYOC trunks, the Edge, WEM, Predictive Engagement, and the Platform API. The lab runs in the browser. It does not sign in to an organization. Every lesson links to a public source.</p>
+        <p>
+          <a class="enter" href="campus/">Enter the lab</a>
+          <a class="ghost" href="campus/#/tracks">Browse the tracks</a>
+        </p>
+        <div class="counts" aria-label="Lab size">
+          <div><b>17</b><span>tracks</span></div>
+          <div><b>120</b><span>lessons</span></div>
+          <div><b>720</b><span>quiz items</span></div>
+        </div>
+      </div>
+      <div class="stage" aria-hidden="true">
+        <svg viewBox="0 0 360 210">
+          <path d="M40 150 H120 L170 70 H250 L300 150" fill="none" stroke="#2ff7ff" stroke-width="2"></path>
+          <circle cx="40" cy="150" r="10" fill="#ff2fb3"></circle>
+          <circle cx="120" cy="150" r="8" fill="#2ff7ff"></circle>
+          <circle cx="170" cy="70" r="12" fill="#d6ff3c"></circle>
+          <circle cx="250" cy="70" r="8" fill="#b388ff"></circle>
+          <circle cx="300" cy="150" r="10" fill="#ff2fb3"></circle>
+          <g fill="#f4fbff" font-size="13" font-family="Palatino, Georgia, serif">
+            <text x="16" y="180">Carrier</text>
+            <text x="98" y="180">Trunk</text>
+            <text x="138" y="56">Architect</text>
+            <text x="228" y="56">Queue</text>
+            <text x="274" y="180">Agent</text>
+          </g>
+        </svg>
+      </div>
+    </section>
+    <section>
+      <h2>What you practise</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Build the path</h3>
+          <p>Publish an Architect-style flow, then route with bullseye rings, preferred agents, and evaluation methods. Drafts do not answer.</p>
+        </article>
+        <article class="card">
+          <h3>Hear the difference</h3>
+          <p>SIP sets the call up. RTP moves the audio. The Edge, BYOC Cloud, and BYOC Premises stay separate objects.</p>
+        </article>
+        <article class="card">
+          <h3>Check the page</h3>
+          <p>Quizzes, labs, and faults stay in this browser. When a sentence and a help article disagree, the article wins.</p>
+        </article>
+      </div>
+    </section>
+    <section>
+      <h2>Start in five minutes</h2>
+      <ol>
+        <li>Open the lab. Progress stays on this device.</li>
+        <li>Pick a track. Each lesson has a figure, a step-through, six questions, flashcards, a lab, and a fault.</li>
+        <li>Open the citation before you rely on a price, an exam code, or a login host.</li>
+      </ol>
+    </section>
+    <section class="sources-deeper" id="sec-sources-deeper">
+      <h2>Sources and go deeper</h2>
+      <p>Each link was opened for this lab. Last checked 2026-10. The floor is a classroom. The cited page is the source.</p>
+      <ul>
+        <li><span class="src-kind">Resource Center</span> <a href="https://help.mypurecloud.com/articles/overview-of-genesys-cloud/">Overview of Genesys Cloud</a> <span class="src-checked">Last checked 2026-10</span></li>
+        <li><span class="src-kind">Resource Center</span> <a href="https://help.genesys.cloud/articles/about-architect/">About Architect</a> <span class="src-checked">Last checked 2026-10</span></li>
+        <li><span class="src-kind">Resource Center</span> <a href="https://help.genesys.cloud/articles/advanced-routing-overview/">Advanced routing overview</a> <span class="src-checked">Last checked 2026-10</span></li>
+        <li><span class="src-kind">Developer docs</span> <a href="https://developer.genesys.cloud/">Genesys Cloud Developer Center</a> <span class="src-checked">Last checked 2026-10</span></li>
+        <li><span class="src-kind">Community</span> <a href="https://community.genesys.com/">Genesys Community</a> <span class="src-checked">Last checked 2026-10</span></li>
+        <li><span class="src-kind">RFC</span> <a href="https://www.rfc-editor.org/rfc/rfc3261">RFC 3261 SIP</a> <span class="src-checked">Last checked 2026-10</span></li>
+        <li><span class="src-kind">Wikipedia</span> <a href="https://en.wikipedia.org/wiki/Session_Initiation_Protocol">Session Initiation Protocol</a> <span class="src-checked">Last checked 2026-10</span></li>
+      </ul>
+    </section>
+  </main>
+  <footer>
+    <aside class="disclaimer-panel">
+      <h2>A note from the student behind this lab</h2>
+      <p>This is an independent, free, learning-only student project. It respects every company and vendor, and every trademark belongs to its owner. It is not affiliated with or endorsed by any of them.</p>
+      <p>If anyone has a concern, the content will be removed or corrected promptly via the contact form at <a href="https://cyphermonkeylabs.com/#contact">https://cyphermonkeylabs.com/#contact</a>. Nothing here is sold, and I am happy to volunteer for any organization.</p>
+    </aside>
+    <p>CypherMonkey Labs</p>
+    <nav class="brand-icons" aria-label="CypherMonkey Labs">
+      <a href="https://cyphermonkeylabs.com">cyphermonkeylabs.com</a>
+      <a href="https://github.com/CypherMonkeyLabs">GitHub</a>
+      <a href="https://linktr.ee/cypherMonkey">Linktree</a>
+    </nav>
+    <p class="copy">© 2026 CypherMonkeyLabs. MIT code. CC BY-NC-SA content.</p>
+  </footer>
+</div>
 </body>
 </html>

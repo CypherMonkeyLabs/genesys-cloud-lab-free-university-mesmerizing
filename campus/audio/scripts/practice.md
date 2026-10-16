@@ -1,6 +1,6 @@
 # How to practise and share
 
-Two architect voices. Generated offline with espeak-ng. Not a Genesys recording.
+Two voices. A is the Architect (Kokoro am_michael). B is the Apprentice (Kokoro af_heart). Generated offline. Not a Genesys recording.
 
 - A: Practise on a track. Each lesson has a figure, a step-through, a six-question quiz, flashcards, a lab, and a fault with a fix.
 - B: Finish the quiz and the lab in this browser. Progress stays on this device. The lab does not call Genesys Cloud.

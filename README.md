@@ -14,7 +14,7 @@ python3 scripts/build_downloads.py
 python3 -m http.server 8741
 ```
 
-Open [http://127.0.0.1:8741/campus/](http://127.0.0.1:8741/campus/). The root page only redirects into `campus/`, which is the GitHub Pages folder.
+Open [http://127.0.0.1:8741/](http://127.0.0.1:8741/) for the landing page, then [http://127.0.0.1:8741/campus/](http://127.0.0.1:8741/campus/) for the lab. The published canonical URLs are absolute: `https://cyphermonkeylabs.com/genesys-cloud-lab-free-university-mesmerizing/` and `.../campus/`.
 
 Check the curriculum without a browser:
 
@@ -87,6 +87,18 @@ Synthetic logs use the documentation ranges in RFC 5737 and fictional 555 number
 
 ![Phone width, paper theme, bottom navigation](docs/screenshots/mobile-home.png)
 
+![Landing page at 1440](docs/screenshots/audit-landing-1440.png)
+
+![Landing page at 390](docs/screenshots/audit-landing-390.png)
+
+![Lab home at 1440](docs/screenshots/audit-campus-1440.png)
+
+![Lab home at 390](docs/screenshots/audit-campus-390.png)
+
+![Architect desk at 1440](docs/screenshots/audit-listen-1440.png)
+
+![Architect desk at 390](docs/screenshots/audit-listen-390.png)
+
 ## License
 
 Code is MIT. Educational prose is CC BY-NC-SA 4.0. See [LICENSE](LICENSE). Three.js remains under the license in `campus/vendor/THREE-LICENSE.txt`.
@@ -94,7 +106,7 @@ Code is MIT. Educational prose is CC BY-NC-SA 4.0. See [LICENSE](LICENSE). Three
 ## Gaps left on purpose
 
 - The contact form at `https://cyphermonkeylabs.com/#contact` returned HTTP 500 when this lab last checked it. The link is the removal path. Whether the form works now is unverified.
-- Speech is the browser's own voice. There are no pre-recorded neural clips. The files in `audio/` are placeholders.
+- Lesson narration still uses the browser's own voice. The two desk clips in `audio/` are Kokoro (Apache-2.0), not a recording of a person.
 - Diagram PNG downloads are bitmap title cards from the build script, not full illustrations of the live SVG figures. PPTX and DOCX are minimal Office Open XML. They were not opened in PowerPoint or Word here.
 - A Chrome extension, Capacitor iOS/Android projects, and an embed widget script are described in `docs/PUBLISHING.md` as prepared, not built. The PWA (manifest and service worker) is built.
 - There is no business-requirements pack. The downloadable template is a lab checklist.
@@ -105,4 +117,4 @@ Code is MIT. Educational prose is CC BY-NC-SA 4.0. See [LICENSE](LICENSE). Three
 - No named customer story is included. Salesforce and Zendesk are the documented embeds. Other CRMs stay on AppFoundry.
 - The labs site contact link is `https://cyphermonkeylabs.com/#contact`. That site returned HTTP 500 when it was fetched during this build, so the form anchor is unverified.
 - The footer sibling strip uses `https://cyphermonkeylabs.com/<repo>/`. The earlier GitHub Pages copies of those eight pages returned HTTP 200 on 15 October 2026. Origin `main` for this repo was readable and is the earlier lab, not a richer copy, so it was not merged over this branch.
-- The first screen reserves a full-bleed call-path stage. Desktop loads the three.js globe after idle, with bloom deferred again. Mobile shows the labelled drawing until “Play the 3D floor”, then runs the globe at a pixel ratio of 1 and without bloom. Track-card meshes stay on the isometric drawing on small screens. A scripted Guide Bot answers from `campus/data/guide-kb.json` and will not invent a fact that is not in those notes. Lesson prose stays English; track and lesson headings follow the language switcher. The audio player is wired to audio/tour.mp3 and audio/practice.mp3 so a later recording can replace those files. The clips in the repo are espeak-ng placeholders.
+- The first screen reserves a full-bleed call-path stage. Desktop loads the three.js globe after idle, with bloom deferred again. Mobile shows the labelled drawing until “Play the 3D floor”, then runs the globe at a pixel ratio of 1 and without bloom. Track-card meshes stay on the isometric drawing on small screens. A scripted Guide Bot answers from `campus/data/guide-kb.json` and will not invent a fact that is not in those notes. Lesson prose stays English; track and lesson headings follow the language switcher. The audio player is wired to audio/tour.mp3 and audio/practice.mp3. Those clips are Kokoro voices am_michael and af_heart. Rebuild them with `python3 scripts/build_audio.py`.
