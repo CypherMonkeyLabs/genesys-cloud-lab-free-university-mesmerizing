@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Genesys Cloud CX Lab</title>
-<meta name="description" content="A free operations lab for Genesys Cloud CX: Architect flows, ACD routing, queues and skills, BYOC Cloud and Premises, the Edge, WEM, speech and text analytics, bots, Platform APIs, AppFoundry, and migration.">
+<meta name="description" content="A free operations lab for Genesys Cloud CX: Architect flows, skills and ACD, workforce forecasting, quality and speech analytics, BYOC, the Edge, and Platform APIs.">
 <meta name="theme-color" content="#071018">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="favicon.ico" sizes="any">
@@ -457,12 +457,15 @@ th, td { border-bottom: 1px solid var(--cc-line); text-align: left; padding: 8px
   <nav class="menu-nav" aria-label="All sections">
     <a href="#/"><span class="nav-glyph" aria-hidden="true">⌂</span><span class="nav-copy"><b>Home</b><small>Signal Floor, the start of the lab</small></span></a>
     <a href="#/tracks"><span class="nav-glyph" aria-hidden="true">📘</span><span class="nav-copy"><b>Learn</b><small>Tracks, lessons, quizzes, and labs</small></span></a>
+    <a href="#/track/skills"><span class="nav-glyph" aria-hidden="true">◎</span><span class="nav-copy"><b>Skills and ACD</b><small>How a skill request becomes an agent</small></span></a>
+    <a href="#/track/forecast"><span class="nav-glyph" aria-hidden="true">◷</span><span class="nav-copy"><b>Workforce and forecasting</b><small>Short-term weeks that can build a schedule</small></span></a>
+    <a href="#/track/quality"><span class="nav-glyph" aria-hidden="true">◉</span><span class="nav-copy"><b>Quality and speech analytics</b><small>Forms, topics, and program limits</small></span></a>
     <a href="#/atlas"><span class="nav-glyph" aria-hidden="true">🗺️</span><span class="nav-copy"><b>Diagrams</b><small>Cited teaching sketches</small></span></a>
     <a href="#/flows"><span class="nav-glyph" aria-hidden="true">↝</span><span class="nav-copy"><b>Flows</b><small>Animated call and routing pictures</small></span></a>
     <a href="#/play"><span class="nav-glyph" aria-hidden="true">▶</span><span class="nav-copy"><b>Play</b><small>Port game, daily drill, sandbox, badges</small></span></a>
     <a href="#listen"><span class="nav-glyph" aria-hidden="true">🔊</span><span class="nav-copy"><b>Listen</b><small>Audio desk on the home page</small></span></a>
     <a href="#/downloads"><span class="nav-glyph" aria-hidden="true">⬇</span><span class="nav-copy"><b>Downloads</b><small>Sheets, cards, deck, and the zip</small></span></a>
-    <a href="#/ecosystem"><span class="nav-glyph" aria-hidden="true">🌐</span><span class="nav-copy"><b>Ecosystem</b><small>Glossary, map, and sister notes</small></span></a>
+    <a href="#/ecosystem"><span class="nav-glyph" aria-hidden="true">🌐</span><span class="nav-copy"><b>Ecosystem</b><small>Glossary, map, sisters, CRM, and future hooks</small></span></a>
     <a href="#/help"><span class="nav-glyph" aria-hidden="true">?</span><span class="nav-copy"><b>Help</b><small>Menu, course, bot, and downloads</small></span></a>
     <a href="#/legal"><span class="nav-glyph" aria-hidden="true">§</span><span class="nav-copy"><b>Legal</b><small>Copyright, privacy, and removal</small></span></a>
     <a href="#/certs"><span class="nav-glyph" aria-hidden="true">★</span><span class="nav-copy"><b>Certifications</b><small>Catalog names, no invented exam codes</small></span></a>
@@ -499,11 +502,11 @@ th, td { border-bottom: 1px solid var(--cc-line); text-align: left; padding: 8px
             <p class="kicker" data-i18n="kicker">Free operations university</p>
             <h1>Genesys Cloud CX Lab</h1>
             <p class="greet" id="hero-greet" data-i18n="greet">Welcome to the signal floor.</p>
-            <p class="lede" data-i18n="lede">Architect flows, bullseye routing, BYOC trunks, the Edge, WEM, Predictive Engagement, and the Platform API. Every lesson links to a public source.</p>
+            <p class="lede" data-i18n="lede">Architect flows, skills and ACD, workforce forecasting, quality and speech analytics, BYOC trunks, the Edge, and the Platform API. Every lesson links to a public source.</p>
             <div class="statrow" style="margin:10px 0">
-              <div class="stat"><b id="stat-tracks" data-n="17">17</b><span>tracks</span></div>
-              <div class="stat"><b id="stat-lessons" data-n="120">120</b><span>lessons</span></div>
-              <div class="stat"><b id="stat-quiz" data-n="720">720</b><span>quiz items</span></div>
+              <div class="stat"><b id="stat-tracks" data-n="20">20</b><span>tracks</span></div>
+              <div class="stat"><b id="stat-lessons" data-n="142">142</b><span>lessons</span></div>
+              <div class="stat"><b id="stat-quiz" data-n="852">852</b><span>quiz items</span></div>
               <div class="stat"><b id="stat-done">0</b><span>finished</span></div>
               <div class="ring" id="progress-ring" style="--p:0"><span id="stat-pct">0%</span></div>
             </div>
@@ -555,7 +558,7 @@ th, td { border-bottom: 1px solid var(--cc-line); text-align: left; padding: 8px
       </section>
       <section class="learn5" id="home-learn"><h2 data-dl="1">Learn it in 5 minutes <button type="button" class="dl-mini" data-export="html">Download</button></h2>
 <ol><li>Genesys Cloud CX is the contact-center platform. This lab does not sign in.</li><li>SIP sets the call up. RTP moves the audio.</li><li>Publish the Architect flow. A draft does not answer.</li><li>Bullseye, preferred agents, and evaluation methods are separate routing choices.</li><li>Confirm before relying. The cited page wins.</li></ol></section>
-<section class="eco-panel" id="home-eco"><h2>Ecosystem</h2><p>Glossary, mind map, sister technologies, troubleshooting, integrations, the Cisco learning bridge, and the 2026 notes are on each lesson. <a href="#/ecosystem">Open the map</a>.</p></section>
+<section class="eco-panel" id="home-eco"><h2>Ecosystem</h2><p>Glossary, mind map, sister technologies, integration maps, bridges to CRM, BYOC, and AI agents, and future hooks. <a href="#/ecosystem">Open the map</a>.</p></section>
 <div id="home-dynamic"></div>
     </section>
     <section id="view" hidden></section>
@@ -598,6 +601,7 @@ th, td { border-bottom: 1px solid var(--cc-line); text-align: left; padding: 8px
       <h2 id="disc-title">A note from the student behind this lab</h2>
       <p>This is an <strong>independent, free, learning-only student project</strong>. It respects every company and vendor, and every trademark belongs to its owner. It is <strong>not affiliated with or endorsed by</strong> any of them.</p>
       <p>If anyone has a concern, the content will be removed or corrected promptly via the contact form at <a href="https://cyphermonkeylabs.com/#contact">https://cyphermonkeylabs.com/#contact</a>. Nothing here is sold, and I am happy to volunteer for any organization.</p>
+      <p>Chapters on skills and ACD, workforce forecasting, quality and speech analytics, and the ecosystem were checked against public pages in October 2026. Where two of those pages disagree, the lesson says so. This lab does not sign in to an organization.</p>
     </div>
   </aside>
   <p class="footer-brand">CypherMonkey Labs</p>

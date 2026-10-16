@@ -1,0 +1,1248 @@
+{
+  "id": "skills",
+  "title": "Skills and ACD",
+  "kicker": "Chapter",
+  "accent": 1,
+  "summary": "How Genesys Cloud matches a skill request to an agent, from the ACD idea through filters, rings, and direct routing.",
+  "lessons": [
+    {
+      "id": "k-what",
+      "title": "ACD is the match, and skills are one way to make it",
+      "level": "Foundation",
+      "minutes": 12,
+      "summary": "Wikipedia describes an ACD as a distributor. Genesys Cloud puts that job on the queue\u2019s routing method.",
+      "paras": [
+        "The Wikipedia article describes an automatic call distributor as a system that answers and distributes incoming calls, and it describes skills-based routing as routing by an operator\u2019s knowledge. Genesys Cloud\u2019s evaluation article is more specific: ACD uses the queue\u2019s routing method to match interactions and agents. When the method is skills-based, the evaluation method decides how a skill request is processed. A customer can request skills from the IVR.",
+        "The queue settings article lists five routing methods: standard, predictive, bullseye, preferred agent, and conditional group. The advanced routing overview describes those and also describes direct routing, which sends the interaction to a dedicated person instead of the next available agent. Direct routing is not a sixth choice in that five-method list. The ACD track in this lab drills the five methods. This chapter adds the filter, the ring-count conflict, and direct routing."
+      ],
+      "cites": [
+        {
+          "title": "Automatic call distributor",
+          "url": "https://en.wikipedia.org/wiki/Automatic_call_distributor"
+        },
+        {
+          "title": "Routing and evaluation methods",
+          "url": "https://help.genesys.cloud/articles/acd-evaluation-routing-methods/"
+        },
+        {
+          "title": "Advanced routing overview",
+          "url": "https://help.genesys.cloud/articles/advanced-routing-overview/"
+        },
+        {
+          "title": "Specify routing and evaluation methods",
+          "url": "https://help.genesys.cloud/articles/specify-routing-settings/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "The queue method decides the match. Skills are an input, not the whole ACD.",
+        "nodes": [
+          {
+            "id": "in",
+            "label": "Interaction",
+            "kind": "phone",
+            "x": 14,
+            "y": 40
+          },
+          {
+            "id": "q",
+            "label": "Queue method",
+            "kind": "queue",
+            "x": 48,
+            "y": 28
+          },
+          {
+            "id": "ev",
+            "label": "Evaluation",
+            "kind": "architect",
+            "x": 48,
+            "y": 68
+          },
+          {
+            "id": "ag",
+            "label": "Agent",
+            "kind": "agent",
+            "x": 82,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "in",
+            "b": "q"
+          },
+          {
+            "a": "q",
+            "b": "ev"
+          },
+          {
+            "a": "ev",
+            "b": "ag"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Name the method before you name a skill",
+        "steps": [
+          {
+            "from": "Idea",
+            "to": "ACD",
+            "title": "Distribute the contact",
+            "detail": "Wikipedia\u2019s general description.",
+            "inspect": "Not a Genesys setting"
+          },
+          {
+            "from": "Queue",
+            "to": "Method",
+            "title": "Five on the settings page",
+            "detail": "Standard is the default.",
+            "inspect": "Direct routing is separate"
+          },
+          {
+            "from": "Skill",
+            "to": "Request",
+            "title": "From the IVR or the flow",
+            "detail": "Evaluation decides what \u201chas the skills\u201d means.",
+            "inspect": "Disregard skills ignores them"
+          },
+          {
+            "from": "Lab",
+            "to": "Track",
+            "title": "The ACD track drills the five",
+            "detail": "This chapter continues past that list.",
+            "inspect": "Open both"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "On the evaluation article, Genesys Cloud ACD matches interactions by:",
+          "choices": [
+            "The trunk transport",
+            "The exam catalog",
+            "A Wikipedia distribution list",
+            "The queue\u2019s routing method"
+          ],
+          "answer": 3,
+          "why": "Skills matter when that method is skills-based."
+        },
+        {
+          "q": "The settings article\u2019s routing-method list has:",
+          "choices": [
+            "Only bullseye",
+            "Only skills",
+            "Five methods, and standard is the default",
+            "Direct routing as method six"
+          ],
+          "answer": 2,
+          "why": "Direct routing is described on the advanced routing overview, not in that five-item list."
+        },
+        {
+          "q": "A skill request can come from:",
+          "choices": [
+            "The certification webcam rule",
+            "The IVR, as the evaluation article says",
+            "The fair-use price table",
+            "An RFC address range"
+          ],
+          "answer": 1,
+          "why": "The evaluation method then processes it."
+        },
+        {
+          "q": "Wikipedia\u2019s skills-based routing, as that page describes it, is:",
+          "choices": [
+            "A SIP response code",
+            "Routing by an operator\u2019s knowledge",
+            "A Genesys ring cap",
+            "A token allotment"
+          ],
+          "answer": 1,
+          "why": "Use it as the general idea. Use the Genesys article for the product."
+        },
+        {
+          "q": "Disregard skills is:",
+          "choices": [
+            "An evaluation method, not a wipe of the agent profile",
+            "The deletion of every skill in the org",
+            "Direct routing",
+            "A forecast method"
+          ],
+          "answer": 0,
+          "why": "The settings article lists it next to all-skills and best-available."
+        },
+        {
+          "q": "This chapter sits next to the ACD track because:",
+          "choices": [
+            "The track drills the five methods, and this chapter continues into filters and direct routing",
+            "It replaces the queue",
+            "It signs in to an organization",
+            "It sets a price"
+          ],
+          "answer": 0,
+          "why": "Nothing here calls an API."
+        }
+      ],
+      "cards": [
+        {
+          "front": "ACD",
+          "back": "The queue\u2019s routing method."
+        },
+        {
+          "front": "Five",
+          "back": "Standard, predictive, bullseye, preferred, conditional."
+        },
+        {
+          "front": "Direct",
+          "back": "Described separately."
+        },
+        {
+          "front": "Skills",
+          "back": "Processed by the evaluation method."
+        }
+      ],
+      "lab": {
+        "title": "Separate the idea from the setting",
+        "steps": [
+          "Write one sentence from the Wikipedia description.",
+          "Name the five methods from the settings article.",
+          "Say where direct routing is described.",
+          "Say which evaluation method ignores skills."
+        ],
+        "success": "The five names and the direct-routing distinction are both written down."
+      },
+      "fault": {
+        "title": "Sixth method",
+        "symptom": "A design calls direct routing \u201cstandard routing method number six\u201d on the queue.",
+        "log": "The settings list has five methods. Direct routing has its own overview.",
+        "cause": "The lists were merged.",
+        "fix": "Keep direct routing on its own row and pick one of the five for the queue method."
+      }
+    },
+    {
+      "id": "k-eval",
+      "title": "Three evaluation methods, and a seven-day lookback",
+      "level": "Foundation",
+      "minutes": 13,
+      "summary": "All skills matching, best available skills, and disregard skills do different jobs. Proficiency covers ACD skills and language skills together.",
+      "paras": [
+        "All skills matching selects the agent who has every required skill and the longest time since the last interaction. It does not use the skill rating. Best available skills considers the 100 agents with the longest time since the last interaction, keeps those who have every required skill, and assigns the interaction to the highest average proficiency. Equal averages go to the longest idle of that group. Disregard skills, next agent, selects the longest idle agent and does not consider skills.",
+        "The evaluation article says Genesys Cloud looks back 7 days when it chooses the next agent. An agent who has not been on queue for more than 7 days is not ranked by an older last-handled time. Proficiency scores are considered for ACD skills and language skills together. Status changes and on-queue behavior do not change that idle priority. If the agent belongs to several queues, idle time counts across those queues, not only the queue being evaluated."
+      ],
+      "cites": [
+        {
+          "title": "Routing and evaluation methods",
+          "url": "https://help.genesys.cloud/articles/acd-evaluation-routing-methods/"
+        },
+        {
+          "title": "Bullseye routing overview",
+          "url": "https://help.genesys.cloud/articles/bullseye-routing-overview/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "All-skills sorts by idle time. Best-available sorts by proficiency inside a window of 100.",
+        "nodes": [
+          {
+            "id": "all",
+            "label": "All skills",
+            "kind": "agent",
+            "x": 18,
+            "y": 40
+          },
+          {
+            "id": "best",
+            "label": "Best of 100",
+            "kind": "agent",
+            "x": 50,
+            "y": 40
+          },
+          {
+            "id": "none",
+            "label": "Disregard",
+            "kind": "queue",
+            "x": 82,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "all",
+            "b": "best"
+          },
+          {
+            "a": "best",
+            "b": "none"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Score the same three agents three ways",
+        "steps": [
+          {
+            "from": "All skills",
+            "to": "Pool",
+            "title": "Every required skill",
+            "detail": "Then longest idle.",
+            "inspect": "Rating is ignored"
+          },
+          {
+            "from": "Best",
+            "to": "Window",
+            "title": "100 longest idle",
+            "detail": "Then highest average proficiency.",
+            "inspect": "Idle breaks a tie"
+          },
+          {
+            "from": "Disregard",
+            "to": "Anyone",
+            "title": "Longest idle",
+            "detail": "Skills do not filter.",
+            "inspect": "Rings mean less"
+          },
+          {
+            "from": "Lookback",
+            "to": "7 days",
+            "title": "Older idle is dropped",
+            "detail": "A quiet agent is not infinitely idle.",
+            "inspect": "Language skills share the average"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "All skills matching ignores:",
+          "choices": [
+            "Whether the agent has every skill",
+            "Idle time",
+            "The 7-day lookback",
+            "The skill rating"
+          ],
+          "answer": 3,
+          "why": "It sorts the full-skill agents by time since last interaction."
+        },
+        {
+          "q": "Best available skills starts with:",
+          "choices": [
+            "The 100 agents with the longest time since last interaction",
+            "Every agent in the organization",
+            "Only preferred agents",
+            "Only language skills"
+          ],
+          "answer": 0,
+          "why": "Then it averages proficiency among those who have the required skills."
+        },
+        {
+          "q": "A proficiency tie in best available skills goes to:",
+          "choices": [
+            "The home division",
+            "The lowest license",
+            "The longest time since last interaction",
+            "The shortest name"
+          ],
+          "answer": 2,
+          "why": "The evaluation article states that tie-break."
+        },
+        {
+          "q": "The lookback for last-handled time is:",
+          "choices": [
+            "7 days",
+            "7 minutes",
+            "30 days",
+            "All history"
+          ],
+          "answer": 0,
+          "why": "An agent idle for more than 7 days is not treated as older than one idle for 5."
+        },
+        {
+          "q": "Proficiency averages include:",
+          "choices": [
+            "ACD skills and language skills together",
+            "Only the queue name",
+            "Only wrap-up codes",
+            "Only the division"
+          ],
+          "answer": 0,
+          "why": "The evaluation article says both."
+        },
+        {
+          "q": "Idle time for an agent on two queues is:",
+          "choices": [
+            "Ignored under all skills matching",
+            "Calculated across the agent\u2019s queues",
+            "Only the queue on the screen",
+            "Reset by a status change"
+          ],
+          "answer": 1,
+          "why": "The note says it is not restricted to the queue under evaluation."
+        }
+      ],
+      "cards": [
+        {
+          "front": "All",
+          "back": "Longest idle with every skill."
+        },
+        {
+          "front": "Best",
+          "back": "100 longest idle, then average proficiency."
+        },
+        {
+          "front": "Disregard",
+          "back": "Longest idle, skills ignored."
+        },
+        {
+          "front": "7 days",
+          "back": "Older last-handled time drops out."
+        }
+      ],
+      "lab": {
+        "title": "Write the winner for one interaction",
+        "steps": [
+          "List the required skills.",
+          "Pick all-skills or best-available.",
+          "Name the winner and the reason.",
+          "Say what changes if the winner has been off queue for 10 days."
+        ],
+        "success": "The winner follows one method, and the 7-day note is included."
+      },
+      "fault": {
+        "title": "Rating surprise",
+        "symptom": "The highest-rated bilingual agent waits while a lower-rated peer takes the call.",
+        "log": "Evaluation: all skills matching. Both have the skills.",
+        "cause": "All skills matching does not sort by rating.",
+        "fix": "Switch to best available skills if the rating is the policy, and retest."
+      }
+    },
+    {
+      "id": "k-rings",
+      "title": "Bullseye widens the pool in two documented ways",
+      "level": "Core",
+      "minutes": 14,
+      "summary": "One way adds skill-expression groups. The other removes skills. The ring count is not the same sentence on every page.",
+      "paras": [
+        "The bullseye overview describes expansion as concentric rings. Option 1 adds agents from groups on the next ring, and it tells you to use skill expression groups with the same skills at different proficiencies so WEM forecasting and scheduling can keep the planning group intact. Agents who lack the skills are not evaluated. Option 2 removes skills from the evaluation on the next ring. The skills stay on the interaction. Removal works best with all skills matching or best available skills. The settings article caps removals at 50 skills on one ring, and the delay is from 2 seconds to 259,200 seconds (72 hours).",
+        "The same settings article first says define up to five rings, then in the skill-removal steps says add rings up to six. Preferred-agent rings on that page also say up to six. The advanced routing overview says create up to six rings. The bullseye examples expand through ring 6. This lab will not pick a single cap those pages do not share. Count the rings the queue UI offers before you design a sixth. Inner-ring agents keep priority after an outer ring opens. Preferred agents are considered even without the required skills."
+      ],
+      "cites": [
+        {
+          "title": "Bullseye routing overview",
+          "url": "https://help.genesys.cloud/articles/bullseye-routing-overview/"
+        },
+        {
+          "title": "Specify routing and evaluation methods",
+          "url": "https://help.genesys.cloud/articles/specify-routing-settings/"
+        },
+        {
+          "title": "Advanced routing overview",
+          "url": "https://help.genesys.cloud/articles/advanced-routing-overview/"
+        }
+      ],
+      "uncertainty": "Opened in 2026-10: the settings article says define up to five rings and, later, up to six. The advanced routing overview says create up to six rings.",
+      "figure": {
+        "caption": "Option 1 keeps the skill and lowers proficiency. Option 2 removes a skill on the way out.",
+        "nodes": [
+          {
+            "id": "r1",
+            "label": "Ring 1",
+            "kind": "agent",
+            "x": 22,
+            "y": 36
+          },
+          {
+            "id": "opt",
+            "label": "Two options",
+            "kind": "architect",
+            "x": 52,
+            "y": 36
+          },
+          {
+            "id": "wem",
+            "label": "WEM groups",
+            "kind": "wem",
+            "x": 82,
+            "y": 22
+          },
+          {
+            "id": "drop",
+            "label": "Remove skill",
+            "kind": "queue",
+            "x": 82,
+            "y": 68
+          }
+        ],
+        "edges": [
+          {
+            "a": "r1",
+            "b": "opt"
+          },
+          {
+            "a": "opt",
+            "b": "wem"
+          },
+          {
+            "a": "opt",
+            "b": "drop"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Choose an expansion style before you count rings",
+        "steps": [
+          {
+            "from": "WEM",
+            "to": "Option 1",
+            "title": "Same skills, lower proficiency",
+            "detail": "Skill expression groups.",
+            "inspect": "Planning group stays intact"
+          },
+          {
+            "from": "Relax",
+            "to": "Option 2",
+            "title": "Skills to remove on exit",
+            "detail": "Up to 50 on a ring.",
+            "inspect": "Best with strict evaluation"
+          },
+          {
+            "from": "Time",
+            "to": "Delay",
+            "title": "2 seconds to 72 hours",
+            "detail": "The ring does not skip the wait.",
+            "inspect": "259,200 seconds"
+          },
+          {
+            "from": "Count",
+            "to": "Confirm",
+            "title": "Five in the first instruction, six later",
+            "detail": "Read the control you will click.",
+            "inspect": "Do not memorize one number"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Option 1 stays compatible with WEM forecasting by:",
+          "choices": [
+            "Disregard skills",
+            "A blank forecast",
+            "Skill expression groups that share the skills at different proficiencies",
+            "Removing every skill"
+          ],
+          "answer": 2,
+          "why": "The bullseye overview and the settings article both say this."
+        },
+        {
+          "q": "Option 2 removes a skill from:",
+          "choices": [
+            "The organization",
+            "The forecast",
+            "The evaluation on the next ring, not from the interaction",
+            "The agent\u2019s profile permanently"
+          ],
+          "answer": 2,
+          "why": "The overview says the skills remain on the interaction."
+        },
+        {
+          "q": "The removal cap on one ring is:",
+          "choices": [
+            "500 skills",
+            "50 skills",
+            "5 skills",
+            "6 skills"
+          ],
+          "answer": 1,
+          "why": "The settings article states 50."
+        },
+        {
+          "q": "The ring delay range on the settings article is:",
+          "choices": [
+            "15, 30, or 60 minutes",
+            "2 seconds to 259,200 seconds",
+            "0 to 30 seconds",
+            "7 days to 30 days"
+          ],
+          "answer": 1,
+          "why": "259,200 seconds is 72 hours. The minute values are forecast granularity."
+        },
+        {
+          "q": "The bullseye ring cap across the pages opened for this lesson is:",
+          "choices": [
+            "Not one number: the first instruction says five, later steps and the overview say six",
+            "Always three",
+            "Always 50",
+            "Unlimited"
+          ],
+          "answer": 0,
+          "why": "Confirm the rings the queue offers."
+        },
+        {
+          "q": "After ring 2 opens, a free ring 1 agent:",
+          "choices": [
+            "Is removed from the queue",
+            "Loses the skill",
+            "Becomes a forecast",
+            "Still has priority over ring 2"
+          ],
+          "answer": 3,
+          "why": "The overview\u2019s walkthrough says inner rings keep priority."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Option 1",
+          "back": "Same skills, lower proficiency."
+        },
+        {
+          "front": "Option 2",
+          "back": "Remove up to 50 skills."
+        },
+        {
+          "front": "Delay",
+          "back": "2 seconds to 72 hours."
+        },
+        {
+          "front": "Cap",
+          "back": "Five and six both appear. Confirm."
+        }
+      ],
+      "lab": {
+        "title": "Write one ring plan",
+        "steps": [
+          "Pick option 1 or option 2.",
+          "Write the delay.",
+          "Write the proficiency or the skill you remove.",
+          "Write \u201cconfirm the ring count in the queue\u201d instead of a single cap."
+        ],
+        "success": "The plan names one expansion style and does not invent a ring cap."
+      },
+      "fault": {
+        "title": "Sixth ring on a slide",
+        "symptom": "The design shows six rings because the overview says six, and the queue screen the team captured stops at five.",
+        "log": "Both sentences exist.",
+        "cause": "The slide picked one page.",
+        "fix": "Match the slide to the control that org actually offers, and cite the sentence you used."
+      }
+    },
+    {
+      "id": "k-filter",
+      "title": "A skill expression filter replaces the queue\u2019s skill list",
+      "level": "Core",
+      "minutes": 13,
+      "summary": "It works for standard and predictive routing when evaluation is All skills matching. Other methods ignore it.",
+      "paras": [
+        "The evaluation article describes an optional ACD skill expression filter. You define a combination of skills and proficiencies in Architect, or supply it through the API, and Genesys Cloud applies it when the conversation transfers to a queue or while it waits. The filter is used instead of the ACD skills and language skills configured on the queue, and only when the routing method is standard or predictive and the evaluation method is All skills matching.",
+        "The same article says the filter does not work with preferred agent routing, last agent routing, direct routing, or bullseye routing. If no filter is defined, or the filter is invalid, routing uses the queue\u2019s method and skill configuration. A filter is invalid when the expression has a syntax error, a skill or language skill cannot be resolved, or the expression cannot be evaluated at runtime."
+      ],
+      "cites": [
+        {
+          "title": "Routing and evaluation methods",
+          "url": "https://help.genesys.cloud/articles/acd-evaluation-routing-methods/"
+        },
+        {
+          "title": "Advanced routing overview",
+          "url": "https://help.genesys.cloud/articles/advanced-routing-overview/"
+        },
+        {
+          "title": "About Architect",
+          "url": "https://help.genesys.cloud/articles/about-architect/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "A valid filter narrows the pool. An invalid filter falls back to the queue.",
+        "nodes": [
+          {
+            "id": "arch",
+            "label": "Expression",
+            "kind": "architect",
+            "x": 16,
+            "y": 40
+          },
+          {
+            "id": "q",
+            "label": "All skills",
+            "kind": "queue",
+            "x": 48,
+            "y": 40
+          },
+          {
+            "id": "bad",
+            "label": "Invalid",
+            "kind": "phone",
+            "x": 78,
+            "y": 22
+          },
+          {
+            "id": "ok",
+            "label": "Queue skills",
+            "kind": "agent",
+            "x": 78,
+            "y": 68
+          }
+        ],
+        "edges": [
+          {
+            "a": "arch",
+            "b": "q"
+          },
+          {
+            "a": "bad",
+            "b": "ok"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Decide whether the filter is even allowed",
+        "steps": [
+          {
+            "from": "Method",
+            "to": "Standard or predictive",
+            "title": "Required",
+            "detail": "Bullseye does not use the filter.",
+            "inspect": "Neither does direct routing"
+          },
+          {
+            "from": "Evaluation",
+            "to": "All skills matching",
+            "title": "Required",
+            "detail": "Best available and disregard are not the documented pair.",
+            "inspect": "Check the queue"
+          },
+          {
+            "from": "Source",
+            "to": "Architect or API",
+            "title": "The expression",
+            "detail": "It replaces the queue skill list when valid.",
+            "inspect": "Language skills included"
+          },
+          {
+            "from": "Failure",
+            "to": "Invalid",
+            "title": "Syntax or unknown skill",
+            "detail": "The queue configuration is used.",
+            "inspect": "Do not assume a silent empty pool"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "A skill expression filter is applied when the queue uses:",
+          "choices": [
+            "Bullseye and disregard skills",
+            "Preferred agent routing",
+            "Direct routing",
+            "Standard or predictive routing, and All skills matching"
+          ],
+          "answer": 3,
+          "why": "The evaluation article limits the pair."
+        },
+        {
+          "q": "When the filter is valid, Genesys Cloud evaluates:",
+          "choices": [
+            "The filter, instead of the queue\u2019s ACD and language skills",
+            "Only the queue skills, and ignores the filter",
+            "Only preferred agents",
+            "A forecast"
+          ],
+          "answer": 0,
+          "why": "That replacement is the point of the filter."
+        },
+        {
+          "q": "The filter does not work with:",
+          "choices": [
+            "Preferred agent, last agent, direct, or bullseye routing",
+            "Standard routing",
+            "All skills matching",
+            "An Architect transfer"
+          ],
+          "answer": 0,
+          "why": "The article lists those four exclusions."
+        },
+        {
+          "q": "An expression that names a skill the org cannot resolve is:",
+          "choices": [
+            "Invalid, so the queue\u2019s own skill configuration is used",
+            "A successful empty match",
+            "A new bullseye ring",
+            "A published bot"
+          ],
+          "answer": 0,
+          "why": "Invalid also includes syntax errors and a runtime evaluation failure."
+        },
+        {
+          "q": "You can supply the filter from:",
+          "choices": [
+            "Only a cheat sheet",
+            "Only a forecast CSV",
+            "Only the Edge",
+            "Architect, and also the API"
+          ],
+          "answer": 3,
+          "why": "The article names both."
+        },
+        {
+          "q": "With no filter defined, routing uses:",
+          "choices": [
+            "Direct routing",
+            "The long-term forecast",
+            "The routing method and skills on the queue",
+            "Disregard skills automatically"
+          ],
+          "answer": 2,
+          "why": "The filter is optional."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Pair",
+          "back": "Standard or predictive, plus all skills matching."
+        },
+        {
+          "front": "Replaces",
+          "back": "The queue\u2019s ACD and language skills."
+        },
+        {
+          "front": "Excludes",
+          "back": "Preferred, last agent, direct, bullseye."
+        },
+        {
+          "front": "Invalid",
+          "back": "Fall back to the queue."
+        }
+      ],
+      "lab": {
+        "title": "Accept or reject three filters",
+        "steps": [
+          "A standard queue with all skills matching.",
+          "A bullseye queue.",
+          "An expression that names a missing skill.",
+          "Write the fallback for the third."
+        ],
+        "success": "Only the first filter is eligible, and the third names the fallback."
+      },
+      "fault": {
+        "title": "Silent filter",
+        "symptom": "Bullseye is on, and an Architect expression was added so VIP language would apply. The queue still uses its ring skills.",
+        "log": "The article says the filter does not work with bullseye.",
+        "cause": "The expression was treated as universal.",
+        "fix": "Remove it from the bullseye design or change the queue method to a pair the filter supports."
+      }
+    },
+    {
+      "id": "k-direct",
+      "title": "Direct routing still uses a queue",
+      "level": "Advanced",
+      "minutes": 13,
+      "summary": "The customer reaches a dedicated person. Wrap-up still exists, because the interaction is ACD.",
+      "paras": [
+        "The direct routing overview says you route voice, SMS, and email to dedicated personnel, and the customer does not wait for the next available agent. The interaction is still ACD, still goes through a queue, and wrap-up codes are available. Direct routing is not supported for non-ACD interactions. The people who receive it must be On queue, or Off queue and Available with the Routing > Conversation \u2013 Accept Off-Queue permission.",
+        "If that person is unavailable, Genesys Cloud routes to a backup agent or queue. Backup queues and voicemail need an in-queue flow. A backup queue then uses its own routing method, and only On queue agents there receive it. A backup agent must be On queue, or Off queue and Available. Designating the direct number and the agent-level backup is done through APIs, as the overview states. The call path the article describes is: the number\u2019s flow, a data action that finds the user, Transfer to ACD, then the in-queue flow if the agent does not answer."
+      ],
+      "cites": [
+        {
+          "title": "Direct routing overview",
+          "url": "https://help.genesys.cloud/articles/direct-routing-overview/"
+        },
+        {
+          "title": "Advanced routing overview",
+          "url": "https://help.genesys.cloud/articles/advanced-routing-overview/"
+        },
+        {
+          "title": "In-queue flows overview",
+          "url": "https://help.genesys.cloud/articles/queue-call-flows/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "The named person is alerted through a queue. A backup is a second hop.",
+        "nodes": [
+          {
+            "id": "num",
+            "label": "Number",
+            "kind": "phone",
+            "x": 12,
+            "y": 40
+          },
+          {
+            "id": "flow",
+            "label": "Flow",
+            "kind": "architect",
+            "x": 38,
+            "y": 40
+          },
+          {
+            "id": "ag",
+            "label": "Direct agent",
+            "kind": "agent",
+            "x": 64,
+            "y": 22
+          },
+          {
+            "id": "bk",
+            "label": "Backup",
+            "kind": "queue",
+            "x": 64,
+            "y": 70
+          }
+        ],
+        "edges": [
+          {
+            "a": "num",
+            "b": "flow"
+          },
+          {
+            "a": "flow",
+            "b": "ag"
+          },
+          {
+            "a": "ag",
+            "b": "bk"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Trace one direct call",
+        "steps": [
+          {
+            "from": "Customer",
+            "to": "Number",
+            "title": "Mapped flow",
+            "detail": "Not a queue menu.",
+            "inspect": "Voice, SMS, or email"
+          },
+          {
+            "from": "Flow",
+            "to": "Data action",
+            "title": "User id",
+            "detail": "Then Transfer to ACD.",
+            "inspect": "The queue still exists"
+          },
+          {
+            "from": "Agent",
+            "to": "Status",
+            "title": "On queue, or off queue and available",
+            "detail": "The off-queue case needs the permission.",
+            "inspect": "Wrap-up is still ACD"
+          },
+          {
+            "from": "Miss",
+            "to": "In-queue flow",
+            "title": "Backup agent or queue",
+            "detail": "The backup queue uses its own method.",
+            "inspect": "APIs designate the number"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "Direct routing media on the overview are:",
+          "choices": [
+            "Chat only",
+            "Web messaging only",
+            "Forecasts",
+            "Voice, SMS, and email"
+          ],
+          "answer": 3,
+          "why": "The overview says those three."
+        },
+        {
+          "q": "A direct-routing interaction is:",
+          "choices": [
+            "An ACD interaction through a queue, with wrap-up",
+            "A non-ACD call",
+            "A bullseye ring",
+            "A schedule"
+          ],
+          "answer": 0,
+          "why": "The overview says non-ACD interactions are not supported."
+        },
+        {
+          "q": "An agent who is Off queue can receive it when:",
+          "choices": [
+            "They fail the 7-day lookback",
+            "They are only a forecast",
+            "Their status is Available and they have Routing > Conversation \u2013 Accept Off-Queue",
+            "They are logged out"
+          ],
+          "answer": 2,
+          "why": "On queue also qualifies, without that extra clause."
+        },
+        {
+          "q": "A backup queue routes with:",
+          "choices": [
+            "The direct agent\u2019s personal score",
+            "Disregard skills always",
+            "A long-term forecast",
+            "The routing method configured on that backup queue, to On queue agents"
+          ],
+          "answer": 3,
+          "why": "The overview separates backup agents from backup queues."
+        },
+        {
+          "q": "Designating the direct number, on this overview, is done:",
+          "choices": [
+            "Through APIs",
+            "Only by renaming the queue",
+            "By a bullseye ring",
+            "By publishing a bot"
+          ],
+          "answer": 0,
+          "why": "Agent-level backup configuration is also listed as an API prerequisite."
+        },
+        {
+          "q": "Voicemail for a missed direct voice call depends on:",
+          "choices": [
+            "A skill expression filter",
+            "Option 1 bullseye groups",
+            "The forecast editor",
+            "An in-queue flow"
+          ],
+          "answer": 3,
+          "why": "The overview says backup distribution to voicemail needs that flow."
+        }
+      ],
+      "cards": [
+        {
+          "front": "Media",
+          "back": "Voice, SMS, email."
+        },
+        {
+          "front": "Still ACD",
+          "back": "Queue and wrap-up."
+        },
+        {
+          "front": "Status",
+          "back": "On queue, or off queue and available with the permission."
+        },
+        {
+          "front": "Backup",
+          "back": "In-queue flow, then agent or queue."
+        }
+      ],
+      "lab": {
+        "title": "Write the miss path",
+        "steps": [
+          "The media.",
+          "The agent status you will allow.",
+          "Whether the backup is an agent or a queue.",
+          "The in-queue flow\u2019s job."
+        ],
+        "success": "The miss path names a backup and does not call the interaction non-ACD."
+      },
+      "fault": {
+        "title": "Personal line",
+        "symptom": "A premium caller\u2019s DID is forwarded as a non-ACD call so wrap-up will not be required.",
+        "log": "The overview does not support direct routing for non-ACD interactions.",
+        "cause": "The queue was removed to save a step.",
+        "fix": "Put Transfer to ACD back, and decide the wrap-up mode on that queue."
+      }
+    },
+    {
+      "id": "k-scores",
+      "title": "Preferred scores are 0 to 100, and the list has a size",
+      "level": "Advanced",
+      "minutes": 13,
+      "summary": "Architect\u2019s agent-score collection supports 20 pairs unless Customer Care raises it. More than 20 fails a call flow.",
+      "paras": [
+        "The advanced routing overview says a preferred-agent score is the agent\u2019s priority, from 0 to 100, and the highest score is the most preferred. Its example sets a case owner to 100 and backup agents to 90. If you do not have a preference, it says set the score to 100. In Architect, an agent-score collection supports up to 20 pairs. You can ask Customer Care to raise that maximum to 100. If a call flow supplies more than 20 pairs, the action takes the Failure path, and errorType is the string TooManyPreferredAgents. Email, chat, and message flows use their flow error handling instead.",
+        "The same overview says that for email, messaging, and inbound callbacks, preferred agent routing means Genesys Cloud no longer tries the last agent who handled the interaction. Scheduled callbacks are unaffected. Preferred-agent rings on the settings article expand up to six rings, with the same 2-second to 72-hour timing note used elsewhere on that page. Bullseye still considers preferred agents whether or not they have the required skills."
+      ],
+      "cites": [
+        {
+          "title": "Advanced routing overview",
+          "url": "https://help.genesys.cloud/articles/advanced-routing-overview/"
+        },
+        {
+          "title": "Specify routing and evaluation methods",
+          "url": "https://help.genesys.cloud/articles/specify-routing-settings/"
+        },
+        {
+          "title": "Bullseye routing overview",
+          "url": "https://help.genesys.cloud/articles/bullseye-routing-overview/"
+        }
+      ],
+      "uncertainty": "",
+      "figure": {
+        "caption": "Higher score first. A list past 20 pairs fails the call flow.",
+        "nodes": [
+          {
+            "id": "own",
+            "label": "Score 100",
+            "kind": "agent",
+            "x": 22,
+            "y": 28
+          },
+          {
+            "id": "bak",
+            "label": "Score 90",
+            "kind": "agent",
+            "x": 22,
+            "y": 70
+          },
+          {
+            "id": "list",
+            "label": "20 pairs",
+            "kind": "architect",
+            "x": 58,
+            "y": 40
+          },
+          {
+            "id": "fail",
+            "label": "Failure",
+            "kind": "phone",
+            "x": 86,
+            "y": 40
+          }
+        ],
+        "edges": [
+          {
+            "a": "own",
+            "b": "list"
+          },
+          {
+            "a": "bak",
+            "b": "list"
+          },
+          {
+            "a": "list",
+            "b": "fail"
+          }
+        ]
+      },
+      "flow": {
+        "title": "Set two scores and a limit",
+        "steps": [
+          {
+            "from": "Owner",
+            "to": "100",
+            "title": "Most preferred",
+            "detail": "Backups at 90 in the example.",
+            "inspect": "0 to 100"
+          },
+          {
+            "from": "List",
+            "to": "MakeList",
+            "title": "Up to 20 pairs",
+            "detail": "Ask Customer Care to raise the maximum to 100.",
+            "inspect": "Not a silent truncation"
+          },
+          {
+            "from": "Overflow",
+            "to": "Call flow",
+            "title": "Failure",
+            "detail": "errorType TooManyPreferredAgents.",
+            "inspect": "Other flow types use their own error handling"
+          },
+          {
+            "from": "Last agent",
+            "to": "Email and messaging",
+            "title": "Not retried",
+            "detail": "Inbound callbacks too.",
+            "inspect": "Scheduled callbacks stay as they are"
+          }
+        ]
+      },
+      "quiz": [
+        {
+          "q": "A preferred-agent score runs from:",
+          "choices": [
+            "1 to 7 days",
+            "0 to 100, and the highest is the most preferred",
+            "1 to 5, like a bullseye ring",
+            "0 to 50 skills"
+          ],
+          "answer": 1,
+          "why": "The advanced routing overview states that range."
+        },
+        {
+          "q": "The Architect collection supports, before a Customer Care increase:",
+          "choices": [
+            "20 agent-score pairs",
+            "5 pairs",
+            "6 pairs",
+            "500 pairs"
+          ],
+          "answer": 0,
+          "why": "The increase maximum on that page is 100."
+        },
+        {
+          "q": "A call flow that supplies more than 20 pairs:",
+          "choices": [
+            "Publishes the flow",
+            "Takes Failure, with errorType TooManyPreferredAgents",
+            "Drops the extras and alerts the rest",
+            "Switches to bullseye"
+          ],
+          "answer": 1,
+          "why": "Email, chat, and message flows use their flow error handling."
+        },
+        {
+          "q": "With preferred agent routing, email and messaging:",
+          "choices": [
+            "Skip the queue",
+            "Are no longer routed to the last agent who handled them",
+            "Always use last-agent routing",
+            "Become non-ACD"
+          ],
+          "answer": 1,
+          "why": "Inbound callbacks are in that sentence. Scheduled callbacks are not."
+        },
+        {
+          "q": "If you have no preference among preferred agents, the overview says set the score to:",
+          "choices": [
+            "0",
+            "50",
+            "7",
+            "100"
+          ],
+          "answer": 3,
+          "why": "The example uses 90 only for backups when you do have a preference."
+        },
+        {
+          "q": "Preferred agents inside bullseye are considered:",
+          "choices": [
+            "Whether or not they have the required skills",
+            "Only after every skill is removed",
+            "Only on the long-term forecast",
+            "Only if the filter is valid"
+          ],
+          "answer": 0,
+          "why": "The bullseye overview says so."
+        }
+      ],
+      "cards": [
+        {
+          "front": "0 to 100",
+          "back": "Highest is most preferred."
+        },
+        {
+          "front": "20",
+          "back": "The collection size, unless Customer Care raises it."
+        },
+        {
+          "front": "Too many",
+          "back": "Call-flow Failure."
+        },
+        {
+          "front": "Last agent",
+          "back": "Not used for email, messaging, or inbound callbacks under preferred routing."
+        }
+      ],
+      "lab": {
+        "title": "Check a preferred list",
+        "steps": [
+          "The highest score.",
+          "The number of pairs.",
+          "What a 21st pair does in a call flow.",
+          "Whether scheduled callbacks change."
+        ],
+        "success": "The list is within 20, or the failure path is drawn."
+      },
+      "fault": {
+        "title": "Twenty-first agent",
+        "symptom": "A call flow builds a preferred list of 25 account owners and the VIP calls fail in Architect.",
+        "log": "errorType would be TooManyPreferredAgents.",
+        "cause": "The collection limit was treated as a display limit.",
+        "fix": "Cut the list to 20 or ask Customer Care about the increase to 100, and handle Failure."
+      }
+    }
+  ]
+}

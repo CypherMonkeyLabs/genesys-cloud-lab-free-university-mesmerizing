@@ -78,6 +78,17 @@ C = {
     "wfm-schedules": ("Work with workforce management schedules", "https://help.genesys.cloud/articles/work-with-workforce-management-schedules/"),
     "wfm-from-forecast": ("Generate a schedule from a forecast", "https://help.genesys.cloud/articles/generate-a-schedule-from-a-forecast/"),
     "wfm-choose": ("Choose a forecast for an existing schedule", "https://help.genesys.cloud/articles/choose-forecast-for-an-existing-schedule/"),
+    "direct": ("Direct routing overview", "https://help.genesys.cloud/articles/direct-routing-overview/"),
+    "forecast-add": ("Add a forecast", "https://help.genesys.cloud/articles/add-a-forecast/"),
+    "forecast-editor": ("Work with the forecast editor", "https://help.genesys.cloud/articles/work-with-the-forecast-editor/"),
+    "qm-article": ("About quality management", "https://help.genesys.cloud/articles/about-quality-management/"),
+    "qm-form": ("Create and publish an evaluation form", "https://help.genesys.cloud/articles/create-publish-evaluation-form/"),
+    "qm-score": ("Automated scoring options in evaluation forms", "https://help.genesys.cloud/articles/automated-scoring-options-in-evaluation-forms/"),
+    "sta-dict": ("Understand programs, topics, and phrases", "https://help.genesys.cloud/articles/understand-programs-topics-and-phrases/"),
+    "sta-program": ("Work with a program", "https://help.genesys.cloud/articles/work-with-a-program/"),
+    "virtual": ("About Genesys Virtual Agent", "https://help.genesys.cloud/articles/about-genesys-virtual-agent/"),
+    "sf-retire": ("Deprecation: Salesforce open CTI integration", "https://help.genesys.cloud/announcements/genesys-cloud/deprecation-salesforce-open-cti-integration/"),
+    "wiki-acd": ("Automatic call distributor", "https://en.wikipedia.org/wiki/Automatic_call_distributor"),
 }
 
 

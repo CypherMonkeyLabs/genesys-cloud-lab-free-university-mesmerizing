@@ -121,9 +121,39 @@
     },
     {
       "term": "Bullseye routing",
-      "def": "Up to five rings. Delay from 2 seconds to 72 hours. Remove up to 50 skills as rings expand.",
+      "def": "Concentric rings that widen the agent pool. The settings article first says define up to five rings; a later step and the advanced routing overview say six. Delay from 2 seconds to 72 hours. Remove up to 50 skills on a ring. Confirm the control in the queue.",
       "url": "https://help.genesys.cloud/articles/bullseye-routing-overview/",
       "source": "Bullseye routing"
+    },
+    {
+      "term": "Skill expression filter",
+      "def": "An optional Architect or API filter for standard or predictive routing when evaluation is All skills matching. It does not apply to preferred, last-agent, direct, or bullseye routing. An invalid filter falls back to the queue.",
+      "url": "https://help.genesys.cloud/articles/acd-evaluation-routing-methods/",
+      "source": "Evaluation methods"
+    },
+    {
+      "term": "Direct routing",
+      "def": "An ACD interaction to a dedicated person for voice, SMS, or email, with wrap-up. It is not one of the five queue routing methods, and it is not supported for non-ACD interactions.",
+      "url": "https://help.genesys.cloud/articles/direct-routing-overview/",
+      "source": "Direct routing overview"
+    },
+    {
+      "term": "Evaluation Assistance",
+      "def": "An evaluation-form answer filled from speech and text analytics topics. Every condition on that answer must be true. A topic is used in only one condition.",
+      "url": "https://help.genesys.cloud/articles/automated-scoring-options-in-evaluation-forms/",
+      "source": "Automated scoring options"
+    },
+    {
+      "term": "Speech program",
+      "def": "A package of topics mapped to queues or flows. It can turn customer sentiment and agent empathy analysis on or off. An organization-level off switch overrides the program.",
+      "url": "https://help.genesys.cloud/articles/understand-programs-topics-and-phrases/",
+      "source": "Programs, topics, and phrases"
+    },
+    {
+      "term": "Virtual Agent",
+      "def": "A Genesys AI bot for voice and digital bot flows. It can generate intents and utterances, search knowledge on digital, and summarize the bot conversation with a wrap-up code.",
+      "url": "https://help.genesys.cloud/articles/about-genesys-virtual-agent/",
+      "source": "About Genesys Virtual Agent"
     },
     {
       "term": "Preferred agent routing",

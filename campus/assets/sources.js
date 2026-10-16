@@ -45,19 +45,23 @@ function renderSources(data) {
     const kind = document.createElement("span");
     kind.className = "src-kind";
     kind.textContent = kindLabel(src.kind);
-    const link = document.createElement("a");
-    link.href = src.url;
-    link.rel = "noopener noreferrer";
-    link.textContent = src.title || src.url;
     const when = document.createElement("span");
     when.className = "src-checked";
     when.textContent = `Last checked ${src.lastChecked || checked}`;
-    item.append(kind, document.createTextNode(" "), link, document.createTextNode(" "), when);
+    item.append(kind, document.createTextNode(" "));
     if (src.status === "confirm") {
+      const title = document.createElement("span");
+      title.textContent = src.title || "Untitled source";
       const flag = document.createElement("strong");
       flag.className = "src-flag";
       flag.textContent = "confirm";
-      item.append(document.createTextNode(" "), flag);
+      item.append(title, document.createTextNode(" "), when, document.createTextNode(" "), flag);
+    } else {
+      const link = document.createElement("a");
+      link.href = src.url;
+      link.rel = "noopener noreferrer";
+      link.textContent = src.title || src.url;
+      item.append(link, document.createTextNode(" "), when);
     }
     if (src.note) {
       const note = document.createElement("span");

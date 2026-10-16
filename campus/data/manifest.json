@@ -1,7 +1,7 @@
 {
   "title": "Genesys Cloud CX Lab",
-  "updated": "2026-10-15",
-  "quizCount": 720,
+  "updated": "2026-10-16",
+  "quizCount": 852,
   "tracks": [
     {
       "id": "foundations",
@@ -320,6 +320,58 @@
       ]
     },
     {
+      "id": "skills",
+      "title": "Skills and ACD",
+      "kicker": "Chapter",
+      "accent": 1,
+      "summary": "How Genesys Cloud matches a skill request to an agent, from the ACD idea through filters, rings, and direct routing.",
+      "file": "data/tracks/skills.json",
+      "lessons": [
+        {
+          "id": "k-what",
+          "title": "ACD is the match, and skills are one way to make it",
+          "level": "Foundation",
+          "minutes": 12,
+          "summary": "Wikipedia describes an ACD as a distributor. Genesys Cloud puts that job on the queue\u2019s routing method."
+        },
+        {
+          "id": "k-eval",
+          "title": "Three evaluation methods, and a seven-day lookback",
+          "level": "Foundation",
+          "minutes": 13,
+          "summary": "All skills matching, best available skills, and disregard skills do different jobs. Proficiency covers ACD skills and language skills together."
+        },
+        {
+          "id": "k-rings",
+          "title": "Bullseye widens the pool in two documented ways",
+          "level": "Core",
+          "minutes": 14,
+          "summary": "One way adds skill-expression groups. The other removes skills. The ring count is not the same sentence on every page."
+        },
+        {
+          "id": "k-filter",
+          "title": "A skill expression filter replaces the queue\u2019s skill list",
+          "level": "Core",
+          "minutes": 13,
+          "summary": "It works for standard and predictive routing when evaluation is All skills matching. Other methods ignore it."
+        },
+        {
+          "id": "k-direct",
+          "title": "Direct routing still uses a queue",
+          "level": "Advanced",
+          "minutes": 13,
+          "summary": "The customer reaches a dedicated person. Wrap-up still exists, because the interaction is ACD."
+        },
+        {
+          "id": "k-scores",
+          "title": "Preferred scores are 0 to 100, and the list has a size",
+          "level": "Advanced",
+          "minutes": 13,
+          "summary": "Architect\u2019s agent-score collection supports 20 pairs unless Customer Care raises it. More than 20 fails a call flow."
+        }
+      ]
+    },
+    {
       "id": "byoc",
       "title": "BYOC Cloud and SIP trunks",
       "kicker": "Telephony",
@@ -563,6 +615,58 @@
       ]
     },
     {
+      "id": "forecast",
+      "title": "Workforce and forecasting",
+      "kicker": "Chapter",
+      "accent": 2,
+      "summary": "Forecast views, creation methods, the editor, and the short-term weeks that are allowed to build a schedule.",
+      "file": "data/tracks/forecast.json",
+      "lessons": [
+        {
+          "id": "n-place",
+          "title": "A forecast is a WFM plan for interactions, not a routing method",
+          "level": "Foundation",
+          "minutes": 12,
+          "summary": "Workforce management is one WEM product. The forecast article names the metrics and the permissions."
+        },
+        {
+          "id": "n-views",
+          "title": "Short-term weeks can schedule. Long-term weeks cannot",
+          "level": "Foundation",
+          "minutes": 12,
+          "summary": "Six weeks of intervals on one side. Up to two years of days and weeks on the other."
+        },
+        {
+          "id": "n-methods",
+          "title": "Four creation methods, and a 130-week outer limit",
+          "level": "Core",
+          "minutes": 13,
+          "summary": "Automatic best method, weighted history, imported source days, or a finished short-term file."
+        },
+        {
+          "id": "n-editor",
+          "title": "The editor shows history as read-only lines",
+          "level": "Core",
+          "minutes": 11,
+          "summary": "Short-term granularity is 15, 30, or 60 minutes. Long-term granularity is daily or weekly."
+        },
+        {
+          "id": "n-cover",
+          "title": "The schedule has to sit inside the short-term weeks",
+          "level": "Advanced",
+          "minutes": 13,
+          "summary": "Generation offers a forecast only when those weeks cover the schedule, and only one schedule is generated at a time."
+        },
+        {
+          "id": "n-use",
+          "title": "Use the forecast, then go back to the floor",
+          "level": "Advanced",
+          "minutes": 11,
+          "summary": "Intraday compares the plan with what happened. Adherence is a different WFM page."
+        }
+      ]
+    },
+    {
       "id": "qm",
       "title": "Quality and recording",
       "kicker": "WEM",
@@ -663,6 +767,58 @@
           "level": "Advanced",
           "minutes": 12,
           "summary": "Some views wait until the interaction is complete. A lower-latency transcript path is a different API."
+        }
+      ]
+    },
+    {
+      "id": "quality",
+      "title": "Quality and speech analytics",
+      "kicker": "Chapter",
+      "accent": 3,
+      "summary": "Evaluation forms, AI scoring, topics and programs, and the limits on the speech-analytics articles.",
+      "file": "data/tracks/quality.json",
+      "lessons": [
+        {
+          "id": "y-qm",
+          "title": "Quality evaluates the interaction. Speech analytics reads it",
+          "level": "Foundation",
+          "minutes": 12,
+          "summary": "The quality article says speech and text analytics runs on 100 percent of interactions. That is a claim to re-open, not a sample size you invent."
+        },
+        {
+          "id": "y-form",
+          "title": "A question is human, AI scored, or assisted by topics",
+          "level": "Foundation",
+          "minutes": 12,
+          "summary": "The form article names three automation choices. Evaluation focus is Full Interaction or Evaluated Agent."
+        },
+        {
+          "id": "y-ai",
+          "title": "AI scoring waits for history, and a low week hides the answer",
+          "level": "Core",
+          "minutes": 14,
+          "summary": "A rolling window of 25 submissions. Below 75 percent, the answer is hidden. The transcript needs 300 characters."
+        },
+        {
+          "id": "y-topics",
+          "title": "Phrases make a topic. Topics make a program",
+          "level": "Core",
+          "minutes": 12,
+          "summary": "A program is mapped to queues or flows, and it can turn sentiment and empathy on or off."
+        },
+        {
+          "id": "y-limits",
+          "title": "Programs have counts, and the organization switch wins",
+          "level": "Advanced",
+          "minutes": 14,
+          "summary": "One hundred programs. Five hundred topics per dialect. Twenty scoring rules. Sentiment off at the org turns it off everywhere."
+        },
+        {
+          "id": "y-score",
+          "title": "Agent scoring picks which agent receives the evaluation",
+          "level": "Advanced",
+          "minutes": 12,
+          "summary": "Each, first, or last matched agent. The article also says the last participant is the evaluated agent."
         }
       ]
     },
@@ -951,6 +1107,34 @@
           "level": "Foundation",
           "minutes": 10,
           "summary": "Prices, unconfirmed hosts, exam codes, lifecycle dates, and CRM feature lists stay off the page."
+        },
+        {
+          "id": "z-cpaas",
+          "title": "The telephony door this lab can cite is BYOC, not a word the page did not use",
+          "level": "Foundation",
+          "minutes": 12,
+          "summary": "CPaaS is the classroom name for a communications API you bring. The opened page is About BYOC Cloud."
+        },
+        {
+          "id": "z-crm",
+          "title": "Salesforce and Zendesk are the embeds this lab opened",
+          "level": "Core",
+          "minutes": 13,
+          "summary": "Salesforce Open CTI is in maintenance and has a later retirement date. Zendesk\u2019s page does not say that."
+        },
+        {
+          "id": "z-agents",
+          "title": "A bot, a Virtual Agent, and Copilot are three assists",
+          "level": "Core",
+          "minutes": 12,
+          "summary": "Dialog Engine builds the bot. Virtual Agent adds Genesys AI. Copilot sits with the person."
+        },
+        {
+          "id": "z-hooks",
+          "title": "Future hooks are dates on announcements, not a roadmap this lab invented",
+          "level": "Advanced",
+          "minutes": 12,
+          "summary": "Journey Outcomes, Salesforce Open CTI, and Customer Outcomes are three different sentences."
         }
       ]
     },

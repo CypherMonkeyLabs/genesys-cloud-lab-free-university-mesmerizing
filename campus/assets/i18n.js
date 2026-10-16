@@ -15,7 +15,7 @@ const STR = {
   en: {
     greet: "Welcome to the signal floor.",
     kicker: "Free operations university",
-    lede: "Architect flows, bullseye routing, BYOC trunks, the Edge, WEM, Predictive Engagement, and the Platform API. Every lesson links to a public source.",
+    lede: "Architect flows, skills and ACD, workforce forecasting, quality and speech analytics, BYOC trunks, the Edge, and the Platform API. Every lesson links to a public source.",
     diagrams: "Diagrams",
     flows: "Flows",
     charts: "Charts",

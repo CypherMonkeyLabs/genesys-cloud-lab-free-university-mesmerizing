@@ -167,8 +167,15 @@
       "png": "downloads/quality.png",
       "svg": "downloads/quality.svg",
       "sources": [
-        "https://help.genesys.cloud/50540/",
+        "https://help.genesys.cloud/articles/about-quality-management/",
         "https://help.genesys.cloud/articles/about-recording/",
+        "https://help.genesys.cloud/articles/speech-and-text-analytics-overview/",
+        "https://help.genesys.cloud/articles/create-publish-evaluation-form/",
+        "https://help.genesys.cloud/articles/automated-scoring-options-in-evaluation-forms/",
+        "https://help.mypurecloud.com/articles/overview-of-genesys-cloud/",
+        "https://help.genesys.cloud/articles/understand-programs-topics-and-phrases/",
+        "https://help.genesys.cloud/articles/work-with-a-program/",
+        "https://help.genesys.cloud/50540/",
         "https://help.genesys.cloud/faqs/category/speech-and-text-analytics/",
         "https://developer.genesys.cloud/",
         "https://community.genesys.com/",
@@ -291,7 +298,7 @@
       ]
     }
   ],
-  "cards": 480,
+  "cards": 568,
   "diagrams": 63,
   "footer": [
     "CypherMonkey Labs",

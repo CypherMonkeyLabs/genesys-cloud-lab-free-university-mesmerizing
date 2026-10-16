@@ -1,11 +1,11 @@
 {
   "id": "quality",
-  "title": "Recording and quality",
+  "title": "Quality and speech analytics",
   "lastChecked": "2026-10",
   "sources": [
     {
       "title": "About quality management",
-      "url": "https://help.genesys.cloud/50540/",
+      "url": "https://help.genesys.cloud/articles/about-quality-management/",
       "kind": "resource-center",
       "lastChecked": "2026-10",
       "status": "ok",
@@ -14,6 +14,62 @@
     {
       "title": "About recording",
       "url": "https://help.genesys.cloud/articles/about-recording/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Speech and text analytics overview",
+      "url": "https://help.genesys.cloud/articles/speech-and-text-analytics-overview/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Create and publish an evaluation form",
+      "url": "https://help.genesys.cloud/articles/create-publish-evaluation-form/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Automated scoring options in evaluation forms",
+      "url": "https://help.genesys.cloud/articles/automated-scoring-options-in-evaluation-forms/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Overview of Genesys Cloud",
+      "url": "https://help.mypurecloud.com/articles/overview-of-genesys-cloud/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Understand programs, topics, and phrases",
+      "url": "https://help.genesys.cloud/articles/understand-programs-topics-and-phrases/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Work with a program",
+      "url": "https://help.genesys.cloud/articles/work-with-a-program/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "About quality management",
+      "url": "https://help.genesys.cloud/50540/",
       "kind": "resource-center",
       "lastChecked": "2026-10",
       "status": "ok",

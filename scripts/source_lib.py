@@ -380,19 +380,25 @@ def candidate_urls(blob):
 def html_block(sources):
     items = []
     for src in sources:
-        flag = ""
-        if src.get("status") == "confirm":
-            flag = ' <strong class="src-flag">confirm</strong>'
         note = ""
         if src.get("note"):
             note = f' <span class="src-note">{xml(src["note"])}</span>'
         kind = KIND_LABEL.get(src.get("kind"), "Official page")
+        if src.get("status") == "confirm":
+            body = (
+                f'<span>{xml(src["title"])}</span> '
+                f'<span class="src-checked">Last checked {xml(src["lastChecked"])}</span>'
+                ' <strong class="src-flag">confirm</strong>'
+            )
+        else:
+            body = (
+                f'<a href="{xml(src["url"])}">{xml(src["title"])}</a> '
+                f'<span class="src-checked">Last checked {xml(src["lastChecked"])}</span>'
+            )
         items.append(
             "<li>"
             f'<span class="src-kind">{xml(kind)}</span> '
-            f'<a href="{xml(src["url"])}">{xml(src["title"])}</a> '
-            f'<span class="src-checked">Last checked {xml(src["lastChecked"])}</span>'
-            f"{flag}{note}</li>"
+            f"{body}{note}</li>"
         )
     checked = sources[0]["lastChecked"] if sources else LAST_CHECKED
     return (
@@ -407,9 +413,11 @@ def html_block(sources):
 def text_lines(sources):
     lines = ["Sources and go deeper", f"Last checked {LAST_CHECKED}"]
     for src in sources:
-        flag = " confirm" if src.get("status") == "confirm" else ""
         kind = KIND_LABEL.get(src.get("kind"), "Official page")
-        lines.append(f"{src['title']} ({kind}) {src['url']} Last checked {src['lastChecked']}{flag}")
+        if src.get("status") == "confirm":
+            lines.append(f"{src['title']} ({kind}) confirm Last checked {src['lastChecked']}")
+        else:
+            lines.append(f"{src['title']} ({kind}) {src['url']} Last checked {src['lastChecked']}")
         if src.get("note"):
             lines.append("  " + src["note"])
     return lines

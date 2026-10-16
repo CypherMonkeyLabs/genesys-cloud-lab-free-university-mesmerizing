@@ -1,0 +1,87 @@
+{
+  "id": "forecast",
+  "title": "Workforce and forecasting",
+  "lastChecked": "2026-10",
+  "sources": [
+    {
+      "title": "About Workforce Engagement Management",
+      "url": "https://help.genesys.cloud/articles/about-workforce-engagement-management-wem/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Work with forecasts",
+      "url": "https://help.genesys.cloud/articles/work-with-forecasts/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Workforce management overview",
+      "url": "https://help.genesys.cloud/articles/workforce-management/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Work with workforce management schedules",
+      "url": "https://help.genesys.cloud/articles/work-with-workforce-management-schedules/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Work with the forecast editor",
+      "url": "https://help.genesys.cloud/articles/work-with-the-forecast-editor/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Add a forecast",
+      "url": "https://help.genesys.cloud/articles/add-a-forecast/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Generate a schedule from a forecast",
+      "url": "https://help.genesys.cloud/articles/generate-a-schedule-from-a-forecast/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Genesys Cloud Developer Center",
+      "url": "https://developer.genesys.cloud/",
+      "kind": "developer",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "General developer docs. This is the Developer Center home, not a page written for this room alone."
+    },
+    {
+      "title": "Genesys Community",
+      "url": "https://community.genesys.com/",
+      "kind": "community",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "Community home, not a thread about this room."
+    },
+    {
+      "title": "Automatic call distributor",
+      "url": "https://en.wikipedia.org/wiki/Automatic_call_distributor",
+      "kind": "wikipedia",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "Background article. It is not a Genesys Cloud product page."
+    }
+  ]
+}

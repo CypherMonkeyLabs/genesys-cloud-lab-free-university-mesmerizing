@@ -2,7 +2,7 @@
 
 Signal Floor is a free, static operations university for Genesys Cloud CX. It runs in the browser, stores progress locally, and does not call a live organization.
 
-The curriculum covers organization setup, Architect flows, ACD routing, queues and skills, BYOC Cloud and Premises, SIP trunks, the Edge, emergency calling, workforce management (including forecasts and schedule generation), quality management, speech and text analytics, Genesys AI and bots, Predictive Engagement, Platform APIs, AppFoundry and CRM embeds, and migration from Genesys Engage, PureConnect, and Cisco UCCE / UCCX. CUCM and Webex appear as a learning bridge with Cisco citations, not as a converter.
+The curriculum covers organization setup, Architect flows, ACD routing, queues and skills, a skills-and-ACD chapter (evaluation, bullseye expansion, skill expression filters, and direct routing), BYOC Cloud and Premises, SIP trunks, the Edge, emergency calling, workforce management, a forecasting chapter (views, creation methods, the editor, and schedule coverage), quality management, speech and text analytics, a quality-and-speech chapter (forms, AI scoring, programs, and limits), Genesys AI and bots, Predictive Engagement, Platform APIs, AppFoundry and CRM embeds, and migration from Genesys Engage, PureConnect, and Cisco UCCE / UCCX. The ecosystem page holds the glossary, mind map, sister technologies, integration map, and the CRM, BYOC, and AI-agent bridges. CUCM and Webex appear as a learning bridge with Cisco citations, not as a converter.
 
 ## Run it
 
@@ -42,16 +42,16 @@ Track JSON loads when you open a track. Three.js loads when you open the topolog
 
 ## Counts
 
-Verified by `node scripts/verify.mjs` on 15 October 2026:
+Verified by `node scripts/verify.mjs` on 16 October 2026:
 
 | | |
 | --- | ---: |
-| Tracks | 17 |
-| Lessons | 120 |
-| Quiz items | 720 |
-| Labs | 120 |
-| Faults | 120 |
-| Glossary entries | 50 |
+| Tracks | 20 |
+| Lessons | 142 |
+| Quiz items | 852 |
+| Labs | 142 |
+| Faults | 142 |
+| Glossary entries | 55 |
 | Boss incidents | 8 |
 | Interview questions | 26 |
 | Diagrams in the atlas | 63 |
@@ -59,13 +59,13 @@ Verified by `node scripts/verify.mjs` on 15 October 2026:
 | Charts | 6 |
 | Mermaid SVGs (build time) | 6 |
 | Cheat sheets | 13 |
-| Flashcards in the download deck | 480 |
+| Flashcards in the download deck | 568 |
 | Studios | 5 |
-| First-load shell | 105,011 bytes |
+| First-load shell | 149,966 bytes |
 
 The shell is `campus/index.html`, `campus/assets/app.js`, `campus/data/manifest.json`, and the web manifest. Studios, charts, Markmap, topology, Three.js, track JSON, and `reference.json` stay off that first paint. Three.js loads with the hero wireframe and the topology view. Mermaid is not shipped to the browser; `scripts/build_mermaid.mjs` writes the SVGs.
 
-Lighthouse mobile against `http://127.0.0.1:8741/campus/` on 16 October 2026, gzip server, Lighthouse 12 default mobile emulation: performance 98, accessibility 100, best-practices 100, SEO 100, total blocking time 0 ms, largest contentful paint about 2.1 s. Cumulative layout shift on that run is 0.046, on the home hero. The icon row reserves its phone height so filling the counters does not grow the page.
+Lighthouse mobile against `http://127.0.0.1:8741/campus/` on 16 October 2026, gzip server, Lighthouse 12 default mobile emulation, was recorded before the chapter expansion: performance 98, accessibility 100, best-practices 100, SEO 100, total blocking time 0 ms, largest contentful paint about 2.1 s. Cumulative layout shift on that run is 0.046, on the home hero. The icon row reserves its phone height so filling the counters does not grow the page. This chapter pass checked the landing page, the menu, a skills lesson, and the ecosystem map at 390×844 and 1440×900. It did not repeat Lighthouse.
 
 ## Citations
 
