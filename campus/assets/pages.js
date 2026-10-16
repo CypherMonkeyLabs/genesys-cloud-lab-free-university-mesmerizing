@@ -43,7 +43,9 @@ const HANDLERS = {
   deploy: showDeploy,
   architecture: showArchitecture,
   reporting: showReporting,
-  regions: showRegions
+  regions: showRegions,
+  help: showHelp,
+  legal: showLegal
 };
 
 export function mountPage(name, ctx) {
@@ -107,6 +109,7 @@ function showAtlas(ctx) {
       <h3>${ctx.esc(spec.title)}</h3>
       <p class="lx-why">${ctx.esc(spec.caption)}</p>
       <p><button class="btn tiny lx-open" type="button">Enlarge</button> <a href="${ctx.esc(spec.url)}">${ctx.esc(spec.cite)}</a></p>
+      <p class="dl-bar"><a class="dl-mini" href="downloads/diagrams/${ctx.esc(spec.id)}.svg">SVG</a> <a class="dl-mini" href="downloads/diagrams/${ctx.esc(spec.id)}.png">PNG</a> <a class="dl-mini" href="downloads/diagrams/${ctx.esc(spec.id)}.html">HTML</a></p>
     </article>`).join("");
   ctx.root.innerHTML = `<p class="kicker">Atlas</p><h1>${DIAGRAMS.length} live diagrams</h1>
     <p>Each picture is a teaching sketch. The caption names the limit of the drawing. The link is the source. Enlarge to play, pause, or step the marker.</p>
@@ -362,7 +365,20 @@ async function showCheat(ctx) {
     <p class="muted">${(sheet.sources || []).map((url) => `<a href="${ctx.esc(url)}">${ctx.esc(hostOf(url))}</a>`).join(" · ")}</p></article>`).join("");
   ctx.root.innerHTML = `<p class="kicker">Downloads</p><h1>Cheat codes</h1>
     <p>One-page sheets, a printable flashcard deck, and a zip of this lab. Each file carries the lab footer. They summarize and link. They are not copies of the Resource Center.</p>
-    <div class="toolbar"><a class="btn primary" href="downloads/flashcards.html">Printable flashcards</a><a class="btn" href="downloads/flashcards.json">Flashcards JSON</a><a class="btn" href="downloads/genesys-cx-offline-bundle.zip">Offline bundle</a></div>
+    <div class="dl-bar" data-dl-scope="downloads"><span class="dl-kicker">Download</span><button type="button" class="dl-mini" data-export="html">HTML</button><a class="dl-mini" href="downloads/genesys-cx-offline-bundle.zip">Bundle</a></div>
+    <div class="toolbar">
+      <a class="btn primary" href="downloads/flashcards.html">Flashcards HTML</a>
+      <a class="btn" href="downloads/flashcards.json">JSON</a>
+      <a class="btn" href="downloads/flashcards.pdf">PDF</a>
+      <a class="btn" href="downloads/genesys-cx-deck.pptx">PPTX deck</a>
+      <a class="btn" href="downloads/templates/lab-checklist.docx">DOCX</a>
+      <a class="btn" href="downloads/templates/lab-checklist.pdf">Template PDF</a>
+      <a class="btn" href="downloads/templates/lab-checklist.html">Template HTML</a>
+      <a class="btn" href="downloads/test-table.html">Test table</a>
+      <a class="btn" href="downloads/genesys-cx-offline-bundle.zip">Offline bundle</a>
+      <button type="button" class="btn open-app">Open app</button>
+      <a class="btn" href="https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing">View repo</a>
+    </div>
     <div class="grid">${cards || "<p>The download catalog has not been generated.</p>"}</div>`;
 }
 
@@ -478,6 +494,80 @@ function one(ctx, id) {
   const spec = DIAGRAMS.find((item) => item.id === id);
   if (!spec) return "";
   return `<article class="card">${renderDiagram(spec)}<h3>${ctx.esc(spec.title)}</h3><p>${ctx.esc(spec.caption)}</p><p><a href="${ctx.esc(spec.url)}">${ctx.esc(spec.cite)}</a></p></article>`;
+}
+
+function showHelp(ctx) {
+  ctx.setTitle("Help");
+  ctx.root.innerHTML = `<p class="kicker">How to use this lab</p><h1>Help</h1>
+    ${ctx.downloadBar ? "" : ""}
+    <div class="dl-bar" data-dl-scope="help"><span class="dl-kicker">Download</span><button type="button" class="dl-mini" data-export="html">HTML</button><a class="dl-mini" href="downloads/genesys-cx-offline-bundle.zip">Bundle</a></div>
+    <section class="learn5" id="sec-learn5"><h2>Learn it in 5 minutes</h2>
+      <ol>
+        <li>Menu, at the top left, opens every room. Esc or a tap outside closes it.</li>
+        <li>Learn opens the tracks. Each lesson has a figure, a worked example, a quiz, and sources.</li>
+        <li>Diagrams, Play, Listen, and Downloads are on the banner. On a phone they sit in the bottom bar with Guide.</li>
+        <li>The monkey reads a room aloud, takes a question, and can listen if the browser allows a microphone.</li>
+        <li>Downloads stay on this device. Nothing is sent to an organization.</li>
+      </ol>
+    </section>
+    <h2>Menu</h2><p>One drawer lists the rooms with an icon, a name, and a one-line description. Search inside the drawer looks at lesson titles.</p>
+    <h2>Course</h2><p>Start with Foundations, then Architect, routing, and the trunk. The roadmap is a study order, not a vendor plan.</p>
+    <h2>Bot</h2><p>After the first-open tour, the guide offers a 10-minute path, the full course, or a download. It docks on the right. Drag it if you want it elsewhere. Idle offers stop when you choose Stop offering.</p>
+    <p><button type="button" class="btn primary" data-replay-tour>Replay the tour</button></p>
+    <h2>Downloads</h2><p>Every room has a download button. Sheets are HTML, PDF, PNG, and SVG. Flashcards are HTML, JSON, and PDF. The checklist template is DOCX, PDF, and HTML. The deck is PPTX. The test table lists what was generated.</p>
+    <h2>Worked example</h2><p>Open Menu, choose Learn, open Foundations, and finish the first quiz. The score stays in this browser.</p>
+    <h2>Quiz</h2>
+    <form class="panel" data-mini-quiz data-answer="0">
+      <p>Where do you reopen the first-open tour?</p>
+      <label><input type="radio" name="hq" value="0"> Help, Replay the tour</label>
+      <label><input type="radio" name="hq" value="1"> A vendor support case</label>
+      <button type="button" class="btn" data-quiz-check>Check</button>
+      <p class="muted" data-quiz-note></p>
+    </form>
+    <h2>Sources</h2><ul><li><a href="https://help.genesys.cloud/articles/about-architect/">About Architect</a></li></ul>
+    <section class="eco-panel" id="sec-eco"><h2>Ecosystem</h2><p>The same glossary, mind map, sister technologies, troubleshooting notes, integration map, cross-platform bridge, and future-hook notes appear on each lesson. Confirm before relying.</p><p><a href="#/ecosystem">Open the ecosystem map</a></p></section>`;
+}
+
+function showLegal(ctx) {
+  ctx.setTitle("Legal and credits");
+  ctx.root.innerHTML = `<p class="kicker">Credits</p><h1>Legal and credits</h1>
+    <div class="dl-bar" data-dl-scope="legal"><span class="dl-kicker">Download</span><button type="button" class="dl-mini" data-export="html">HTML</button></div>
+    <section class="learn5" id="sec-learn5"><h2>Learn it in 5 minutes</h2>
+      <ol>
+        <li>Code in this repository is MIT.</li>
+        <li>The study prose is CC BY-NC-SA 4.0.</li>
+        <li>Three.js stays under the license in vendor/THREE-LICENSE.txt.</li>
+        <li>Vendor names and marks belong to their owners.</li>
+        <li>This lab does not track you. Progress stays in this browser.</li>
+      </ol>
+    </section>
+    <h2>Copyright</h2><p>© 2026 CypherMonkeyLabs. The lab text and figures are study notes. They are not copies of the Genesys Cloud Resource Center.</p>
+    <h2>Trademark</h2><p>Genesys, Genesys Cloud, Architect, AppFoundry, and other product names belong to their owners. Cisco names belong to Cisco. This project is not affiliated with or endorsed by any of them.</p>
+    <h2>Third-party licences</h2>
+    <ul>
+      <li>MIT for this repository’s code. See the LICENSE file.</li>
+      <li>CC BY-NC-SA 4.0 for the educational prose.</li>
+      <li>Three.js is MIT. The notice is vendor/THREE-LICENSE.txt.</li>
+      <li>Anime.js, D3, Rough.js, canvas-confetti, and Markmap stay under the notices in vendor/LICENSES.txt. Confirm before relying if a bundled file’s header and that list ever disagree.</li>
+    </ul>
+    <h2>Privacy</h2><p>No account, no analytics beacon, and no call to a Genesys organization. Settings, tour state, and quiz scores use localStorage on this device. The optional microphone and speech features use the browser APIs and do not upload audio.</p>
+    <h2>Accessibility</h2><p>Display controls set font size and font colour. A dark theme is optional. The drawer and the tour work from the keyboard. Reduced motion follows the operating system and the Reduce motion control when it is present.</p>
+    <h2>Removal request</h2><p>If a rightsholder wants something removed or corrected, use the contact form at <a href="https://cyphermonkeylabs.com/#contact">https://cyphermonkeylabs.com/#contact</a>. This lab will remove or correct the content. Nothing here is sold.</p>
+    <h2>Worked example</h2><p>A diagram download includes the same disclaimer as this page. The file is a teaching sketch plus the source link, not a pasted vendor document.</p>
+    <h2>Quiz</h2>
+    <form class="panel" data-mini-quiz data-answer="1">
+      <p>Where does quiz progress live?</p>
+      <label><input type="radio" name="lq" value="0"> A Genesys organization</label>
+      <label><input type="radio" name="lq" value="1"> This browser only</label>
+      <button type="button" class="btn" data-quiz-check>Check</button>
+      <p class="muted" data-quiz-note></p>
+    </form>
+    <h2>Sources</h2><ul>
+      <li><a href="https://help.mypurecloud.com/articles/overview-of-genesys-cloud/">Overview of Genesys Cloud</a></li>
+      <li><a href="vendor/LICENSES.txt">vendor/LICENSES.txt</a></li>
+      <li><a href="vendor/THREE-LICENSE.txt">vendor/THREE-LICENSE.txt</a></li>
+    </ul>
+    <section class="eco-panel" id="sec-eco"><h2>Ecosystem</h2><p>Sister technologies in the notes are SIP, RTP, and the documented embeds. Confirm before relying.</p></section>`;
 }
 
 function hostOf(url) {

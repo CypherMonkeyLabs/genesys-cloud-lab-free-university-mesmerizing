@@ -9,14 +9,14 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
 endobj
 4 0 obj
-<< /Length 1920 >>
+<< /Length 3058 >>
 stream
 BT
-/F1 16 Tf
+/F1 14 Tf
 48 760 Td
 (Ports and protocols) Tj
-/F1 10 Tf
-0 -22 Td
+/F1 9 Tf
+0 -20 Td
 (TLS trunks: TCP 5061. UDP or TCP trunks: commonly 5060. Both ends must match. Managed) Tj
 0 -14 Td
 (phones signal on TCP 8061. Unmanaged phones use TCP 5061. Media is UDP 16384-65535, opened) Tj
@@ -31,43 +31,63 @@ BT
 0 -14 Td
 () Tj
 0 -14 Td
-(Sources:) Tj
+(Sources and go deeper) Tj
 0 -14 Td
-(https://help.genesys.cloud/articles/choose-a-trunk-transport-protocol/) Tj
+(Last checked 2026-10) Tj
 0 -14 Td
-(https://help.genesys.cloud/articles/tls-trunk-transport-protocol-specification/) Tj
+(Choose a trunk transport protocol \(Resource Center\) https://help.genesys.cloud/articles/choose-a-trunk-transpo) Tj
 0 -14 Td
-(https://help.genesys.cloud/articles/ports-and-services-for-voip-phones-under-byoc-cloud/) Tj
+(TLS trunk transport for BYOC Cloud \(Resource Center\) https://help.genesys.cloud/articles/tls-trunk-transport-p) Tj
 0 -14 Td
-(https://help.genesys.cloud/faqs/why-does-the-port-range-16384-32767-rtp-media-need-to-be-opened-up-for-genesys-cloud-voice-byoc-cloud/) Tj
+(VoIP phone ports under BYOC Cloud \(Resource Center\) https://help.genesys.cloud/articles/ports-and-services-for) Tj
 0 -14 Td
-(https://help.genesys.cloud/articles/byoc-cloud-public-sip-ip-addresses/) Tj
+(RTP port range FAQ \(Resource Center\) https://help.genesys.cloud/faqs/why-does-the-port-range-16384-32767-rtp-m) Tj
+0 -14 Td
+(BYOC Cloud public SIP IP addresses \(Resource Center\) https://help.genesys.cloud/articles/byoc-cloud-public-sip) Tj
+0 -14 Td
+(Ports and services for your firewall \(Resource Center\) https://help.genesys.cloud/articles/genesys-cloud-ports) Tj
+0 -14 Td
+(RFC 3261 SIP \(RFC\) https://www.rfc-editor.org/rfc/rfc3261 Last checked 2026-10) Tj
+0 -14 Td
+(RFC 3550 RTP \(RFC\) https://www.rfc-editor.org/rfc/rfc3550 Last checked 2026-10) Tj
+0 -14 Td
+(Genesys Cloud Developer Center \(Developer docs\) https://developer.genesys.cloud/ Last checked 2026-10) Tj
+0 -14 Td
+(  General developer docs. This is the Developer Center home, not a page written for this room alone.) Tj
+0 -14 Td
+(Genesys Community \(Community\) https://community.genesys.com/ Last checked 2026-10) Tj
+0 -14 Td
+(  Community home, not a thread about this room.) Tj
+0 -14 Td
+(RFC 3711 SRTP \(RFC\) https://www.rfc-editor.org/rfc/rfc3711 Last checked 2026-10) Tj
+0 -14 Td
+(  Protocol specification.) Tj
+0 -14 Td
+(RFC 4733 DTMF \(RFC\) https://www.rfc-editor.org/rfc/rfc4733 Last checked 2026-10) Tj
+0 -14 Td
+(  Protocol specification.) Tj
+0 -14 Td
+(Session Initiation Protocol \(Wikipedia\) https://en.wikipedia.org/wiki/Session_Initiation_Protocol Last checked) Tj
+0 -14 Td
+(  Background article. It is not a Genesys Cloud product page.) Tj
 0 -14 Td
 () Tj
 0 -14 Td
-(CypherMonkey Labs · Signal Floor) Tj
+(CypherMonkey Labs) Tj
 0 -14 Td
-(© 2026 CypherMonkeyLabs) Tj
-0 -14 Td
-(https://github.com/cipher0x9) Tj
-0 -14 Td
-(https://github.com/CypherMonkeyLabs) Tj
+(© 2026 CypherMonkeyLabs ?) Tj
 0 -14 Td
 (https://cyphermonkeylabs.com) Tj
 0 -14 Td
-(https://x.com/Cypher0x9) Tj
+(https://github.com/CypherMonkeyLabs) Tj
 0 -14 Td
-(https://www.linkedin.com/in/luckylakshmanucwebex) Tj
-0 -14 Td
-(https://huggingface.co/Cypher0x9) Tj
+(https://linktr.ee/cypherMonkey) Tj
 0 -14 Td
 (https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing) Tj
 0 -14 Td
-(Independent educational project. Not affiliated with or endorsed by any vendor.) Tj
+(This is an independent, free, learning-only student project. It respects every company and vendor, and every t) Tj
 0 -14 Td
-(Trademarks belong to their owners. MIT code. CC BY-NC-SA content.) Tj
-0 -14 Td
-(Concerns: https://cyphermonkeylabs.com/#contact) Tj
+(MIT code. CC BY-NC-SA content. No tracking.) Tj
 0 -14 Td
 ET
 endstream
@@ -82,8 +102,8 @@ xref
 0000000058 00000 n 
 0000000115 00000 n 
 0000000241 00000 n 
-0000002213 00000 n 
+0000003351 00000 n 
 trailer << /Size 6 /Root 1 0 R >>
 startxref
-2283
+3421
 %%EOF

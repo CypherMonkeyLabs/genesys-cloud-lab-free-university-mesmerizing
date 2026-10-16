@@ -52,7 +52,9 @@ const FLOW_IDS = new Set([
   "byoc-cloud", "byoc-prem", "edge-fail", "inqueue", "data-action", "bullseye",
   "preferred", "acd-gate", "emergency", "wfm-loop", "sta-pipe", "bot-escape",
   "pe-journey", "pe-qualify", "cutover", "migration", "firewall", "recording",
-  "trouble-tree", "deploy-tree"
+  "trouble-tree", "deploy-tree",
+  "tls-path", "satellite-media", "queue-media", "schedule-gen",
+  "screen-pop", "pkce-grant", "topic-pipe", "action-priority"
 ]);
 
 function row(id, title, caption, citeKey, kind, data) {
@@ -107,7 +109,23 @@ export const DIAGRAMS = [
   row("certs-path", "Two named codes, then specialist names", "GC-GCP and GC-GCD are catalog codes. Specialist rows are names.", "certs", "stack", ["GC-GCP", "GC-GCD", "Architect", "WFM", "QM"]),
   row("firewall", "Open signaling and outbound media", "TCP 5061 for TLS trunks. UDP 16384-65535 outbound for RTP. Read the firewall set before you add a port from memory.", "fw", "split", { left: "Signaling", right: "Media", leftItems: ["TCP 5061 TLS", "TCP/UDP 5060"], rightItems: ["UDP 16384-65535", "Outbound"] }),
   row("trouble-tree", "Troubleshooting tree", "Start with the symptom. A healthy Architect run with no audio is media. An empty Live Now view is tracking.", "fw", "tree", { root: "Symptom", left: "No audio", right: "No offer", leftKids: ["Flow ran?", "RTP outbound"], rightKids: ["Live Now", "Schedule group"] }),
-  row("deploy-tree", "Deployment order", "Region and roles, then the trunk or Edge, then a published flow and a queue. Emergency has an owner before the DID.", "byoc", "tree", { root: "First week", left: "Telephony", right: "Experience", leftKids: ["Location", "Trunk"], rightKids: ["Publish", "Queue"] })
+  row("deploy-tree", "Deployment order", "Region and roles, then the trunk or Edge, then a published flow and a queue. Emergency has an owner before the DID.", "byoc", "tree", { root: "First week", left: "Telephony", right: "Experience", leftKids: ["Location", "Trunk"], rightKids: ["Publish", "Queue"] }),
+  row("tls-path", "TLS trunk path", "Secure BYOC Cloud signaling uses TLS 1.2 on 5061. IPsec is not the secure-trunk method.", "tls", "chain", ["Carrier", "TCP 5061", "TLS 1.2", "Media tier"]),
+  row("satellite-media", "Satellite media path", "The organization is created in one core region. A satellite region carries media. It does not host the org.", "regions", "chain", ["Core org", "Satellite", "Media", "Agent"]),
+  row("queue-media", "Queue medias", "Voice, chat, email, and message are tracked separately. A flow type has to match the media.", "arch", "stack", ["Voice", "Chat", "Email", "Message"]),
+  row("schedule-gen", "Short-term forecast to a schedule", "Short-term can generate a schedule. Long-term is seasonality and cannot.", "forecasts", "chain", ["Short-term", "Forecast", "Schedule", "Agents"]),
+  row("screen-pop", "Salesforce screen pop", "The embed can fail while the queue is healthy. The about page is the source, not this sketch.", "sf", "chain", ["Call", "Embed", "Screen pop", "Log"]),
+  row("pkce-grant", "Authorization code with PKCE", "A user-context grant is a different token from client credentials. Client credentials cannot call users/me.", "oauth", "chain", ["User", "PKCE", "Token", "API"]),
+  row("topic-pipe", "Topics after the transcript", "Speech and text analytics reads the conversation. It is not a second ACD.", "sta", "chain", ["Interaction", "Transcript", "Topics", "Search"]),
+  row("action-priority", "Action map priority", "Qualified is not the same as shown. Priority picks among qualified maps.", "pemap", "chain", ["Trigger", "Qualified", "Priority", "Offer"]),
+  row("home-lock", "Home division stays", "Home cannot be deleted. A role opens objects only where it is paired with a division.", "div", "stack", ["Home", "Cannot delete", "Pair a role", "Objects"]),
+  row("extension-plan", "Default number plans", "Emergency, extension, and 988 exist as defaults. A site can hold 200 plans. Confirm the live list.", "numbers", "stack", ["Emergency", "Extension", "988", "E.164"]),
+  row("site-edge", "Site and Edge", "BYOC Premises puts an Edge on your network. Another site is the exception.", "edge", "chain", ["Site", "Edge", "Phones", "Cloud"]),
+  row("transport-choice", "Trunk transport", "UDP or TCP 5060, or TLS on 5061. Match the far end. Do not invent a port from memory.", "transport", "stack", ["UDP 5060", "TCP 5060", "TLS 5061", "Match the far end"]),
+  row("secure-suppress", "Secure flow and recording", "A secure flow can suppress a segment. It does not replace the recording policy.", "rec", "chain", ["Policy", "Secure flow", "Suppress", "Keep the rest"]),
+  row("common-module", "Common module", "A common module is its own Architect type. It is not a published inbound flow.", "flow", "stack", ["Inbound", "In-queue", "Bot", "Common module"]),
+  row("implicit-grant", "Implicit grant is leaving", "The OAuth article names the grants. Implicit is the one leaving. Confirm before relying on a client you already built.", "oauth", "split", { left: "Use", right: "Leaving", leftItems: ["Client credentials", "Auth code + PKCE"], rightItems: ["Implicit"] }),
+  row("zendesk-embed", "Zendesk embed", "Zendesk has its own about page. Do not paste the Salesforce field list onto it.", "zd", "chain", ["Call", "Zendesk embed", "Ticket", "Log"])
 ];
 
 export const PORTS = [

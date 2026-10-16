@@ -9,14 +9,14 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
 endobj
 4 0 obj
-<< /Length 1724 >>
+<< /Length 2304 >>
 stream
 BT
-/F1 16 Tf
+/F1 14 Tf
 48 760 Td
 (What?s new, 2026) Tj
-/F1 10 Tf
-0 -22 Td
+/F1 9 Tf
+0 -20 Td
 (Journey Outcomes deprecation announced 2026-05-18, planned effective 2026-06-29.) Tj
 0 -14 Td
 (Outcome-only action maps stop qualifying. getJourneyOutcome branches are skipped. A future) Tj
@@ -31,39 +31,47 @@ BT
 0 -14 Td
 () Tj
 0 -14 Td
-(Sources:) Tj
+(Sources and go deeper) Tj
 0 -14 Td
-(https://help.genesys.cloud/announcements/genesys-cloud/deprecation-journey-outcomes/) Tj
+(Last checked 2026-10) Tj
 0 -14 Td
-(https://help.genesys.cloud/announcements/genesys-cloud/predictive-routing-supports-customer-defined-business-outcomes-with-custom-kpis/) Tj
+(Deprecation: Journey Outcomes \(Resource Center\) https://help.genesys.cloud/announcements/genesys-cloud/depreca) Tj
 0 -14 Td
-(https://help.genesys.cloud/articles/create-an-oauth-client/) Tj
+(Predictive Routing customer-defined outcomes \(Resource Center\) https://help.genesys.cloud/announcements/genesy) Tj
+0 -14 Td
+(Create an OAuth client \(Resource Center\) https://help.genesys.cloud/articles/create-an-oauth-client/ Last chec) Tj
+0 -14 Td
+(Migrate from web chat to web messaging \(Resource Center\) https://help.genesys.cloud/articles/migrate-from-web-) Tj
+0 -14 Td
+(Genesys Cloud Developer Center \(Developer docs\) https://developer.genesys.cloud/ Last checked 2026-10) Tj
+0 -14 Td
+(  General developer docs. This is the Developer Center home, not a page written for this room alone.) Tj
+0 -14 Td
+(Genesys Community \(Community\) https://community.genesys.com/ Last checked 2026-10) Tj
+0 -14 Td
+(  Community home, not a thread about this room.) Tj
+0 -14 Td
+(OAuth \(Wikipedia\) https://en.wikipedia.org/wiki/OAuth Last checked 2026-10) Tj
+0 -14 Td
+(  Background article. It is not a Genesys Cloud product page.) Tj
 0 -14 Td
 () Tj
 0 -14 Td
-(CypherMonkey Labs · Signal Floor) Tj
+(CypherMonkey Labs) Tj
 0 -14 Td
-(© 2026 CypherMonkeyLabs) Tj
-0 -14 Td
-(https://github.com/cipher0x9) Tj
-0 -14 Td
-(https://github.com/CypherMonkeyLabs) Tj
+(© 2026 CypherMonkeyLabs ?) Tj
 0 -14 Td
 (https://cyphermonkeylabs.com) Tj
 0 -14 Td
-(https://x.com/Cypher0x9) Tj
+(https://github.com/CypherMonkeyLabs) Tj
 0 -14 Td
-(https://www.linkedin.com/in/luckylakshmanucwebex) Tj
-0 -14 Td
-(https://huggingface.co/Cypher0x9) Tj
+(https://linktr.ee/cypherMonkey) Tj
 0 -14 Td
 (https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing) Tj
 0 -14 Td
-(Independent educational project. Not affiliated with or endorsed by any vendor.) Tj
+(This is an independent, free, learning-only student project. It respects every company and vendor, and every t) Tj
 0 -14 Td
-(Trademarks belong to their owners. MIT code. CC BY-NC-SA content.) Tj
-0 -14 Td
-(Concerns: https://cyphermonkeylabs.com/#contact) Tj
+(MIT code. CC BY-NC-SA content. No tracking.) Tj
 0 -14 Td
 ET
 endstream
@@ -78,8 +86,8 @@ xref
 0000000058 00000 n 
 0000000115 00000 n 
 0000000241 00000 n 
-0000002017 00000 n 
+0000002597 00000 n 
 trailer << /Size 6 /Root 1 0 R >>
 startxref
-2087
+2667
 %%EOF

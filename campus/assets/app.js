@@ -1,4 +1,5 @@
 import { mountMascot } from "./mascot.js";
+import { attachSources } from "./sources.js";
 import { applyLang, pack, LANGS } from "./i18n.js";
 import { isoIcon, iconForTrack } from "./icons3d.js";
 import { heading } from "./headings.js";
@@ -6,8 +7,8 @@ import { ensureLightbox } from "./lightbox.js";
 
 const SETTINGS_KEY = "gccx-settings";
 const PROGRESS_KEY = "gccx-progress";
-const THEMES = ["neon", "holographic", "cyberpunk", "sunset", "light", "futuristic", "gaming", "night", "contrast"];
-const EXTRA = ["atlas", "ports", "game", "map", "sandbox", "daily", "badges", "cheat", "downloads", "flows", "charts", "play", "roadmap", "security", "career", "whats-new", "playbooks", "deploy", "architecture", "reporting", "regions"];
+const THEMES = ["bloom", "neon", "holographic", "cyberpunk", "sunset", "light", "futuristic", "gaming", "night", "contrast"];
+const EXTRA = ["atlas", "ports", "game", "map", "sandbox", "daily", "badges", "cheat", "downloads", "flows", "charts", "play", "roadmap", "security", "career", "whats-new", "playbooks", "deploy", "architecture", "reporting", "regions", "help", "legal"];
 const CRUMB = {
   atlas: "Diagrams",
   flows: "Flows",
@@ -26,6 +27,8 @@ const CRUMB = {
   roadmap: "Roadmap",
   security: "Security",
   "whats-new": "What’s new",
+  help: "Help",
+  legal: "Legal",
   playbooks: "Playbooks",
   deploy: "Deployment",
   architecture: "Architecture",
@@ -50,6 +53,15 @@ const railEl = $("#rail");
 const statusEl = $("#status");
 
 applySettings(state.settings);
+window.gccxSettings = {
+  patch(partial) {
+    Object.assign(state.settings, partial);
+    saveSettings();
+  },
+  get() {
+    return state.settings;
+  }
+};
 bindChrome();
 window.addEventListener("hashchange", () => render());
 init().catch((err) => showFatal(err));
@@ -77,8 +89,10 @@ function fetchJson(url) {
 
 function loadSettings() {
   const base = {
-    theme: document.documentElement.dataset.theme || "neon",
-    darkTheme: "neon",
+    theme: document.documentElement.dataset.theme || "bloom",
+    darkTheme: "night",
+    ink: "",
+    pitch: 1,
     font: document.documentElement.dataset.font || "md",
     lang: "en",
     sound: true,
@@ -89,8 +103,8 @@ function loadSettings() {
   };
   try {
     const saved = Object.assign(base, JSON.parse(localStorage.getItem(SETTINGS_KEY) || "{}"));
-    if (saved.theme === "paper" || saved.theme === "harbor") saved.theme = "neon";
-    if (!THEMES.includes(saved.theme)) saved.theme = "neon";
+    if (saved.theme === "paper" || saved.theme === "harbor") saved.theme = "bloom";
+    if (!THEMES.includes(saved.theme)) saved.theme = "bloom";
     return saved;
   } catch (e) {
     return base;
@@ -116,10 +130,12 @@ function saveProgress() {
 }
 
 function applySettings(s) {
-  const theme = THEMES.includes(s.theme) ? s.theme : "neon";
+  const theme = THEMES.includes(s.theme) ? s.theme : "bloom";
   s.theme = theme;
-  if (theme !== "light") s.darkTheme = theme;
+  if (theme !== "light" && theme !== "bloom") s.darkTheme = theme;
   document.documentElement.dataset.theme = theme;
+  if (s.ink && /^#[0-9a-fA-F]{6}$/.test(s.ink)) document.documentElement.style.setProperty("--cc-ink", s.ink);
+  else document.documentElement.style.removeProperty("--cc-ink");
   document.documentElement.dataset.font = s.font || "md";
   const osReduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   document.documentElement.dataset.reduce = (s.reduce || osReduce) ? "1" : "0";
@@ -137,13 +153,19 @@ function applySettings(s) {
   document.dispatchEvent(new CustomEvent("gccx-theme", { detail: { theme } }));
 }
 
+function setLen(name, px) {
+  const cur = parseFloat(getComputedStyle(document.documentElement).getPropertyValue(name)) || 0;
+  if (Math.abs(cur - px) <= 4) return;
+  document.documentElement.style.setProperty(name, Math.round(px) + "px");
+}
+
 function syncChrome() {
   const chrome = document.querySelector("#chrome");
   const h = chrome ? chrome.offsetHeight : 0;
-  if (h) document.documentElement.style.setProperty("--chrome-h", h + "px");
+  if (h) setLen("--chrome-h", h);
   const bar = document.querySelector(".bottom-nav");
   const shown = bar && getComputedStyle(bar).display !== "none";
-  document.documentElement.style.setProperty("--bar-h", shown ? bar.offsetHeight + "px" : "0px");
+  setLen("--bar-h", shown ? bar.offsetHeight : 0);
 }
 
 function motionReduced() {
@@ -315,6 +337,13 @@ function bindChrome() {
   });
 }
 
+function roomId(route) {
+  const [head, id] = route.parts;
+  if (!head) return "home";
+  if (id && (head === "lesson" || head === "track" || head === "boss" || head === "studio")) return id;
+  return head;
+}
+
 function parseRoute() {
   const raw = (location.hash || "#/").replace(/^#/, "");
   const [path, qs] = raw.split("?");
@@ -345,11 +374,15 @@ let menuPushed = false;
 function openMenu() {
   const menu = $("#floor-menu");
   const backdrop = $("#menu-backdrop");
-  if (!menu || !menu.hidden) return;
+  if (!menu || menu.classList.contains("is-in")) return;
   menu.hidden = false;
-  if (backdrop && window.matchMedia("(min-width: 701px)").matches) backdrop.hidden = false;
+  if (backdrop) backdrop.hidden = false;
   document.body.classList.add("menu-open");
   $("#menu-open")?.setAttribute("aria-expanded", "true");
+  requestAnimationFrame(() => {
+    menu.classList.add("is-in");
+    backdrop?.classList.add("is-in");
+  });
   if (!history.state || !history.state.floorMenu) {
     history.pushState({ floorMenu: 1 }, "");
     menuPushed = true;
@@ -361,10 +394,14 @@ function openMenu() {
 function hideMenu() {
   const menu = $("#floor-menu");
   const backdrop = $("#menu-backdrop");
-  if (menu) menu.hidden = true;
-  if (backdrop) backdrop.hidden = true;
+  menu?.classList.remove("is-in");
+  backdrop?.classList.remove("is-in");
   document.body.classList.remove("menu-open");
   $("#menu-open")?.setAttribute("aria-expanded", "false");
+  window.setTimeout(() => {
+    if (menu && !menu.classList.contains("is-in")) menu.hidden = true;
+    if (backdrop && !backdrop.classList.contains("is-in")) backdrop.hidden = true;
+  }, 280);
   document.dispatchEvent(new CustomEvent("gccx-visibility", { detail: { run: true } }));
 }
 
@@ -446,7 +483,7 @@ function wireMenu() {
 
 function watchTheme(select) {
   if (!select) return;
-  select.value = state.settings.theme || "neon";
+  select.value = state.settings.theme || "bloom";
   select.addEventListener("change", () => {
     state.settings.theme = select.value;
     saveSettings();
@@ -497,7 +534,9 @@ function crumbs(parts) {
 
 async function render() {
   stopRuntime();
+  if (sessionStorage.getItem("gccx-listen") !== "1") window.scrollTo(0, 0);
   const route = parseRoute();
+  document.body.dataset.room = roomId(route);
   const [head, id] = route.parts;
   status("Loading");
   try {
@@ -546,13 +585,16 @@ function showHome() {
     ["#/game", "Port game"]
   ];
   host.innerHTML = `
-    <h2>Wings</h2>
+    <div class="dl-bar" data-dl-scope="home"><span class="dl-kicker">Download</span><button type="button" class="dl-mini" data-export="html">HTML</button><button type="button" class="dl-mini" data-export="svg">SVG</button><button type="button" class="dl-mini" data-export="png">PNG</button><a class="dl-mini" href="downloads/genesys-cx-offline-bundle.zip">Bundle</a></div>
+    <h2 data-dl="1">Wings <button type="button" class="dl-mini" data-export="html">Download</button></h2>
     <div class="chips">${wings.map(([href, label]) => `<a class="btn" href="${href}">${label}</a>`).join("")}</div>
-    <h2>Studios</h2>
+    <h2 data-dl="1">Studios <button type="button" class="dl-mini" data-export="html">Download</button></h2>
     <div class="grid">${studioCards()}</div>
-    <h2>Tracks</h2>
+    <h2 data-dl="1">Tracks <button type="button" class="dl-mini" data-export="html">Download</button></h2>
     <div class="grid">${state.manifest.tracks.map(trackCard).join("")}</div>`;
   mountHomeViz();
+  window.gccxDecorate?.(document.getElementById("home"));
+  attachSources(homeEl);
   armReveal($("#home"));
   if (sessionStorage.getItem("gccx-listen") === "1") {
     sessionStorage.removeItem("gccx-listen");
@@ -610,14 +652,14 @@ function scheduleHomeViz() {
       const picks = DIAGRAMS.filter((item) => item.flow).slice(0, 3);
       const flows = $("#home-flows");
       if (flows) {
-        flows.innerHTML = `<h2>Flows</h2>
+        flows.innerHTML = `<h2 data-dl="1">Flows <button type="button" class="dl-mini" data-export="html">Download</button></h2>
           <p class="muted"><a href="#/flows">All ${flowCount} animated flows</a> · <a href="#/atlas">${DIAGRAMS.length} diagrams</a> · <a href="#/cheat">Cheat codes</a></p>
           <div class="flow-strip">${picks.map((spec) => `<article class="card">${renderDiagram(spec)}<h3>${esc(spec.title)}</h3></article>`).join("")}</div>`;
       }
       const charts = $("#home-charts");
       if (charts && !charts.dataset.drawn) {
         charts.dataset.drawn = "1";
-        charts.innerHTML = `<h2>Charts</h2><div id="home-chart-root" class="chart-hold"></div>`;
+        charts.innerHTML = `<h2 data-dl="1">Charts <button type="button" class="dl-mini" data-export="html">Download</button></h2><div id="home-chart-root" class="chart-hold"></div>`;
         const mod = await import("./floorviz.js");
         if (!homeEl.hidden) await mod.mountFloor($("#home-chart-root"), state.manifest, null);
       }
@@ -643,6 +685,19 @@ async function mountHomeViz() {
   if (homeEl.hidden) return;
   scheduleHero();
   paintIcons($("#home-icons"), null);
+  try {
+    const { DIAGRAMS } = await import("./diagrams.js");
+    if (!homeEl.hidden) {
+      paintIcons($("#home-icons"), null, {
+        diagrams: DIAGRAMS.length,
+        flows: DIAGRAMS.filter((item) => item.flow).length,
+        charts: 6,
+        sheets: 13
+      });
+    }
+  } catch (err) {
+    status(err.message || "Icon counts did not load");
+  }
   scheduleHomeViz();
 }
 
@@ -653,15 +708,24 @@ function paintIcons(host, track, counts = {}) {
   const done = track
     ? track.lessons.filter((lesson) => state.progress.lessons[lesson.id]?.done).length
     : Object.values(state.progress.lessons).filter((item) => item.done).length;
-  const tiles = [
-    ["#/atlas", "Diagrams", counts.diagrams ?? "—", "constellation", "Atlas"],
-    ["#/flows", "Flows", counts.flows ?? "—", "flow", "Animated"],
-    ["#/charts", "Charts", counts.charts ?? 6, "chart", "From this lab"],
-    ["#/cheat", "Cheat codes", counts.sheets ?? 13, "sheet", "HTML PDF PNG"],
-    ["#/tracks", track ? ht(track.id, track.title) : "Lessons", lessons.length, "prism", `${minutes} min`],
-    ["#/tracks", "Finished", done, "star", track ? "This track" : "This browser"]
-  ];
-  host.innerHTML = tiles.map(([href, label, num, kind, note], index) => `<a class="icon-tile" href="${href}">${iconStage(kind, index)}<b data-count="${esc(num)}">${esc(num)}</b><span class="tile-label">${esc(label)}</span><span class="tile-note">${esc(note)}</span></a>`).join("");
+  const tiles = host.id === "home-icons"
+    ? [
+      ["#/atlas", "Diagrams", counts.diagrams ?? "—", "diagram", "Atlas"],
+      ["#/flows", "Flows", counts.flows ?? "—", "flow", "Animated"],
+      ["#/charts", "Charts", counts.charts ?? 6, "chart", "From this lab"],
+      ["#/cheat", "Cheat codes", counts.sheets ?? 13, "cheat", "HTML PDF PNG"],
+      ["#/downloads", "Downloads", "ZIP", "download", "Sheets and bundle"],
+      ["#/play", "Play", "GO", "play", "Games and drills"]
+    ]
+    : [
+      ["#/atlas", "Diagrams", counts.diagrams ?? "—", "diagram", "Atlas"],
+      ["#/flows", "Flows", counts.flows ?? "—", "flow", "Animated"],
+      ["#/charts", "Charts", counts.charts ?? 6, "chart", "From this lab"],
+      ["#/cheat", "Cheat codes", counts.sheets ?? 13, "cheat", "HTML PDF PNG"],
+      ["#/tracks", track ? ht(track.id, track.title) : "Lessons", lessons.length, "prism", `${minutes} min`],
+      ["#/tracks", "Finished", done, "star", track ? "This track" : "This browser"]
+    ];
+  host.innerHTML = tiles.map(([href, label, num, kind, note], index) => `<a class="icon-tile" href="${href}">${iconStage(kind, index)}<span class="tile-copy"><b data-count="${esc(num)}">${esc(num)}</b><span class="tile-label">${esc(label)}</span><span class="tile-note">${esc(note)}</span></span></a>`).join("");
   host.querySelectorAll("[data-count]").forEach((el) => countUp(el, el.dataset.count));
   refreshLive();
 }
@@ -722,9 +786,13 @@ function renderLesson(track, lesson) {
         <p class="kicker"><a href="#/track/${track.id}">${esc(ht(track.id, track.title))}</a> · ${esc(lesson.level)} · ${lesson.minutes} min</p>
         <div class="lesson-head"><h1>${esc(ht(lesson.id, lesson.title))}</h1></div>
         <p class="lede">${esc(lesson.summary)}</p>
+        ${downloadBar(lesson.title)}
+        ${learnFive(lesson)}
         <div id="sec-figure">${figureSvg(lesson.figure)}</div>
         <div id="sec-read">${paras}</div>
         ${uncertainty}
+        <h2 id="sec-worked">Worked example</h2>
+        <div class="panel"><p>${esc(lesson.lab?.title || lesson.summary)}</p><ol>${(lesson.lab?.steps || []).map((step) => `<li>${esc(step)}</li>`).join("")}</ol><p class="muted">${esc(lesson.lab?.success || "Paper lab. Nothing is sent to an organization.")}</p></div>
         <h2 id="sec-sources">Sources</h2>
         <ul>${cites}</ul>
         <h2 id="sec-flow">Step-through</h2>
@@ -737,12 +805,17 @@ function renderLesson(track, lesson) {
         <div class="panel">${labShell(lesson)}</div>
         <h2 id="sec-fault">Fault and fix</h2>
         <div class="panel">${faultShell(lesson)}</div>
+        ${ecosystemBlock()}
         <p><a class="btn" href="#/track/${track.id}">Back to ${esc(ht(track.id, track.title))}</a></p>
       </article>
       <nav class="onpage" aria-label="On this page">
+        <a href="#sec-learn5">5 minutes</a>
         <a href="#sec-figure">Figure</a>
+        <a href="#sec-worked">Example</a>
+        <a href="#sec-eco">Ecosystem</a>
         <a href="#sec-read">Reading</a>
         <a href="#sec-sources">Sources</a>
+        <a href="#sec-sources-deeper">Go deeper</a>
         <a href="#sec-flow">Step-through</a>
         <a href="#sec-quiz">Quiz</a>
         <a href="#sec-cards">Flashcards</a>
@@ -1155,11 +1228,35 @@ function showFatal(err) {
   status(err.message || "Error");
 }
 
+function downloadBar(label) {
+  const name = esc(label || "This room");
+  return `<div class="dl-bar" data-dl-scope="${name}"><span class="dl-kicker">Download</span><button type="button" class="dl-mini" data-export="html">HTML</button><button type="button" class="dl-mini" data-export="svg">SVG</button><button type="button" class="dl-mini" data-export="png">PNG</button><a class="dl-mini" href="downloads/genesys-cx-offline-bundle.zip">Bundle</a></div>`;
+}
+
+function learnFive(lesson) {
+  const bits = [lesson.summary, ...(lesson.paras || []).slice(0, 3)].filter(Boolean);
+  return `<section class="learn5" id="sec-learn5"><h2>Learn it in 5 minutes</h2><ol>${bits.map((bit) => `<li>${esc(bit)}</li>`).join("")}</ol><p class="muted">Confirm before relying on any sentence this lab marks as uncertain. The cited page wins.</p></section>`;
+}
+
+function ecosystemBlock() {
+  return `<section class="eco-panel" id="sec-eco"><h2>Ecosystem</h2>
+    <h3>Glossary</h3><p>Short definitions, each with a source, are on the <a href="#/glossary">glossary</a>.</p>
+    <h3>Mind map</h3><p>Organization, Architect, queues, trunks, the Edge, WEM, and APIs. Open the <a href="#/ecosystem">ecosystem map</a>.</p>
+    <h3>Sister technologies</h3><p>SIP sets up the call. RTP moves the audio. The port table in this lab is only the rows it opened. Confirm the firewall article before you open a range.</p>
+    <h3>Config and troubleshooting</h3><p>Publish the flow. A draft does not answer. No audio after a healthy flow is a media problem. An empty offer is tracking, schedule, or eligibility.</p>
+    <h3>Integration maps</h3><p>Salesforce and Zendesk have their own embed articles. Other products stay on AppFoundry. This lab did not install them.</p>
+    <h3>Cross-platform bridges</h3><p>Engage, PureConnect, and Cisco UCCE / UCCX are rebuild notes, not converters. CUCM appears as a learning bridge with Cisco citations.</p>
+    <h3>Future hooks</h3><p>Journey Outcomes listed a planned effective date of 2026-06-29 on the page read for this lab. If that page moves, the page wins. Confirm before relying.</p>
+  </section>`;
+}
+
 function mount(html) {
   delete document.body.dataset.home;
   homeEl.hidden = true;
   viewEl.hidden = false;
   viewEl.innerHTML = html;
+  window.gccxDecorate?.(viewEl);
+  attachSources(viewEl);
   status("Ready");
   syncChrome();
   refreshLive();

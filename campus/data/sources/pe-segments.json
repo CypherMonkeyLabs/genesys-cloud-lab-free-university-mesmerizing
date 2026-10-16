@@ -1,0 +1,55 @@
+{
+  "id": "pe-segments",
+  "title": "A segment matches visitors who meet every condition you listed",
+  "lastChecked": "2026-10",
+  "sources": [
+    {
+      "title": "Genesys Predictive Engagement",
+      "url": "https://help.genesys.cloud/usecases/genesys-predictive-engagement/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Best practices for segments",
+      "url": "https://help.genesys.cloud/articles/best-practices-for-segments/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Deprecation: Journey Outcomes",
+      "url": "https://help.genesys.cloud/announcements/genesys-cloud/deprecation-journey-outcomes/",
+      "kind": "resource-center",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": ""
+    },
+    {
+      "title": "Genesys Cloud Developer Center",
+      "url": "https://developer.genesys.cloud/",
+      "kind": "developer",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "General developer docs. This is the Developer Center home, not a page written for this room alone."
+    },
+    {
+      "title": "Genesys Community",
+      "url": "https://community.genesys.com/",
+      "kind": "community",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "Community home, not a thread about this room."
+    },
+    {
+      "title": "Genesys (company)",
+      "url": "https://en.wikipedia.org/wiki/Genesys_(company)",
+      "kind": "wikipedia",
+      "lastChecked": "2026-10",
+      "status": "ok",
+      "note": "Background article. It is not a Genesys Cloud product page."
+    }
+  ]
+}

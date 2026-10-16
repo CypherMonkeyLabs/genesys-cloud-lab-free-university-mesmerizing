@@ -54,8 +54,8 @@ Verified by `node scripts/verify.mjs` on 15 October 2026:
 | Glossary entries | 50 |
 | Boss incidents | 8 |
 | Interview questions | 26 |
-| Diagrams in the atlas | 47 |
-| Animated flows | 26 |
+| Diagrams in the atlas | 63 |
+| Animated flows | 34 |
 | Charts | 6 |
 | Mermaid SVGs (build time) | 6 |
 | Cheat sheets | 13 |
@@ -65,7 +65,7 @@ Verified by `node scripts/verify.mjs` on 15 October 2026:
 
 The shell is `campus/index.html`, `campus/assets/app.js`, `campus/data/manifest.json`, and the web manifest. Studios, charts, Markmap, topology, Three.js, track JSON, and `reference.json` stay off that first paint. Three.js loads with the hero wireframe and the topology view. Mermaid is not shipped to the browser; `scripts/build_mermaid.mjs` writes the SVGs.
 
-Lighthouse mobile, captured against `http://127.0.0.1:8741/campus/` on 16 October 2026: before this pass, performance 53, accessibility 100, total blocking time about 82 s, cumulative layout shift 0.016. After deferring the home WebGL, the same run is performance 93, accessibility 100, total blocking time 0 ms, cumulative layout shift still 0.016. The cost was the home-screen WebGL icon loop and the bloomed hero, which never went idle. The 3D floor now waits for an idle desktop moment, or for the mobile “Play the 3D floor” control, caps `devicePixelRatio` at 1 on small screens, skips bloom there, and stays on the flat drawing when `prefers-reduced-motion` is set.
+Lighthouse mobile against `http://127.0.0.1:8741/campus/` on 16 October 2026, gzip server, Lighthouse 12 default mobile emulation: performance 98, accessibility 100, best-practices 100, SEO 100, total blocking time 0 ms, largest contentful paint about 2.1 s. Cumulative layout shift on that run is 0.046, on the home hero. The icon row reserves its phone height so filling the counters does not grow the page.
 
 ## Citations
 
@@ -93,7 +93,13 @@ Code is MIT. Educational prose is CC BY-NC-SA 4.0. See [LICENSE](LICENSE). Three
 
 ## Gaps left on purpose
 
-- This lab did not sign in to an organization. Journey Outcomes list a planned effective date of 2026-06-29. Customer Outcomes and the Predictive Routing custom-KPI framework were still described as upcoming on the pages read 15 October 2026. If those pages move, the pages win.
+- The contact form at `https://cyphermonkeylabs.com/#contact` returned HTTP 500 when this lab last checked it. The link is the removal path. Whether the form works now is unverified.
+- Speech is the browser's own voice. There are no pre-recorded neural clips. The files in `audio/` are placeholders.
+- Diagram PNG downloads are bitmap title cards from the build script, not full illustrations of the live SVG figures. PPTX and DOCX are minimal Office Open XML. They were not opened in PowerPoint or Word here.
+- A Chrome extension, Capacitor iOS/Android projects, and an embed widget script are described in `docs/PUBLISHING.md` as prepared, not built. The PWA (manifest and service worker) is built.
+- There is no business-requirements pack. The downloadable template is a lab checklist.
+- Flashcards PDF is multipage text. It is not a designed card layout.
+- This lab did not sign in to an organization. Journey Outcomes list a planned effective date of 2026-06-29. Customer Outcomes and the Predictive Routing custom-KPI framework were still described as upcoming on the pages read 15 October 2026. If those pages move, the pages win. No named customer story is included.
 - The use case names action-map performance for web chat, content offers, and Architect flow. A web-messaging column was not confirmed on the live report.
 - WebRTC firewall rows stay on the parent ports article. This lab’s table is only the rows it opened.
 - No named customer story is included. Salesforce and Zendesk are the documented embeds. Other CRMs stay on AppFoundry.

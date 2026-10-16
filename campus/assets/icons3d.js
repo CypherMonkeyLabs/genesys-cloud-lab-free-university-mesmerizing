@@ -46,9 +46,8 @@ function wrap(uid, hue, hue2, body) {
         <stop offset="0" stop-color="${hue2}"/>
         <stop offset="1" stop-color="#140814"/>
       </linearGradient>
-      <filter id="${uid}g" x="-50%" y="-50%" width="200%" height="200%">
-        <feGaussianBlur stdDeviation="2.4" result="b"/>
-        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+      <filter id="${uid}g" x="-20%" y="-20%" width="140%" height="140%">
+        <feDropShadow dx="0" dy="6" stdDeviation="1.2" flood-color="#140814" flood-opacity="0.35"/>
       </filter>
     </defs>
     <ellipse cx="80" cy="138" rx="52" ry="8" fill="rgba(0,0,0,.42)"/>
@@ -72,13 +71,12 @@ const SHAPES = {
       + face(uid, hue, hue2, "80,70 116,90 80,110 44,90", "44,90 80,110 80,132 44,112", "116,90 80,110 80,132 116,112");
   },
   flow(uid, hue, hue2) {
-    return `<polygon points="28,78 52,64 76,78 52,92" fill="url(#${uid}t)"/>
-      <polygon points="84,48 112,32 140,48 112,64" fill="${hue2}"/>
-      <polygon points="70,108 98,92 126,108 98,124" fill="${hue}"/>
-      <path d="M76 78 H90 M112 64 L98 92" fill="none" stroke="#fff" stroke-width="3"/>
-      <circle cx="52" cy="78" r="5" fill="#fff"/>
-      <circle cx="112" cy="48" r="5" fill="#fff"/>
-      <circle cx="98" cy="108" r="5" fill="#fff"/>`;
+    return `<polygon points="16,46 78,46 96,64 78,82 16,82 34,64" fill="url(#${uid}t)" stroke="#fff" stroke-width="3"/>
+      <polygon points="16,86 34,104 16,122 78,122 96,104 78,86" fill="${hue}" stroke="#fff" stroke-width="3"/>
+      <polygon points="86,66 148,66 148,102 86,102 70,84 86,66" fill="${hue2}" stroke="#fff" stroke-width="3"/>
+      <path d="M40 82 V90 M40 114" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+      <path d="M96 74 H112" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+      <path d="M32 90 L40 100 L48 90 M104 74 L114 84 L104 94" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>`;
   },
   rings(uid, hue, hue2) {
     return `<ellipse cx="80" cy="88" rx="46" ry="16" fill="none" stroke="${hue}" stroke-width="8"/>
@@ -162,10 +160,14 @@ const SHAPES = {
       <circle cx="116" cy="58" r="6" fill="${hue}"/>`;
   },
   chart(uid, hue, hue2) {
-    return `<polygon points="36,108 52,96 52,124 36,116" fill="${hue}"/>
-      <polygon points="64,78 84,64 84,124 64,112" fill="url(#${uid}t)"/>
-      <polygon points="96,90 116,76 116,124 96,112" fill="${hue2}"/>
-      <path d="M28 124 H136" stroke="#fff" stroke-width="3"/>`;
+    return `<polygon points="22,124 138,124 150,112 34,112" fill="#1e1b4b" stroke="#fff" stroke-width="2"/>
+      <polygon points="36,96 56,84 56,116 36,124" fill="${hue}" stroke="#fff" stroke-width="2"/>
+      <polygon points="56,84 68,76 68,108 56,116" fill="#fff" opacity="0.85"/>
+      <polygon points="70,68 94,52 94,112 70,124" fill="url(#${uid}t)" stroke="#fff" stroke-width="2"/>
+      <polygon points="94,52 108,44 108,104 94,112" fill="#fff" opacity="0.85"/>
+      <polygon points="110,40 136,24 136,108 110,124" fill="${hue2}" stroke="#fff" stroke-width="2"/>
+      <polygon points="136,24 150,16 150,100 136,108" fill="#fff" opacity="0.9"/>
+      <path d="M30 108 L70 78 L104 88 L142 36" fill="none" stroke="#1e1b4b" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>`;
   },
   sheet(uid, hue, hue2) {
     return `<path d="M48 28 H96 L124 56 V128 H48 Z" fill="url(#${uid}t)"/>
@@ -175,5 +177,38 @@ const SHAPES = {
   star(uid, hue, hue2) {
     return `<polygon points="80,24 92,58 128,58 100,80 110,116 80,96 50,116 60,80 32,58 68,58" fill="url(#${uid}t)"/>
       <ellipse cx="80" cy="128" rx="28" ry="8" fill="${hue2}" opacity="0.6"/>`;
+  },
+  diagram(uid, hue, hue2) {
+    return `<polygon points="80,16 142,46 80,76 18,46" fill="#1e1b4b" stroke="#fff" stroke-width="3"/>
+      <circle cx="48" cy="40" r="8" fill="${hue}" stroke="#fff" stroke-width="2"/>
+      <circle cx="80" cy="26" r="8" fill="#fff" stroke="#1e1b4b" stroke-width="2"/>
+      <circle cx="112" cy="40" r="8" fill="${hue2}" stroke="#fff" stroke-width="2"/>
+      <path d="M56 42 L72 30 M88 30 L104 42" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+      <polygon points="28,78 62,94 62,122 28,106" fill="url(#${uid}t)" stroke="#fff" stroke-width="2"/>
+      <polygon points="66,78 100,94 100,122 66,106" fill="${hue2}" stroke="#fff" stroke-width="2"/>
+      <polygon points="104,78 138,94 138,122 104,106" fill="${hue}" stroke="#fff" stroke-width="2"/>
+      <path d="M62 96 H66 M100 96 H104" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+      <path d="M80 76 V86" stroke="#fff" stroke-width="4" stroke-linecap="round"/>`;
+  },
+  cheat(uid, hue, hue2) {
+    return `<path d="M36 18 H92 L128 54 V136 H36 Z" fill="url(#${uid}t)" stroke="#fff" stroke-width="3"/>
+      <path d="M92 18 V54 H128" fill="${hue2}" stroke="#fff" stroke-width="2"/>
+      <path d="M50 72 H108 M50 90 H108 M50 108 H86" stroke="#1e1b4b" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="112" cy="108" r="16" fill="#fde68a" stroke="#1e1b4b" stroke-width="3"/>
+      <path d="M112 98 V118 M102 108 H122" stroke="#1e1b4b" stroke-width="3" stroke-linecap="round"/>`;
+  },
+  download(uid, hue, hue2) {
+    return `<path d="M80 12 V58" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+      <path d="M58 42 L80 66 L102 42" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+      <polygon points="28,86 80,108 132,86 80,64" fill="url(#${uid}t)" stroke="#fff" stroke-width="3"/>
+      <polygon points="28,86 80,108 80,136 28,114" fill="${hue}" stroke="#fff" stroke-width="2"/>
+      <polygon points="132,86 80,108 80,136 132,114" fill="${hue2}" stroke="#fff" stroke-width="2"/>
+      <path d="M48 100 H112" stroke="#fff" stroke-width="4" stroke-linecap="round"/>`;
+  },
+  play(uid, hue, hue2) {
+    return `<polygon points="80,14 132,40 132,104 80,130 28,104 28,40" fill="url(#${uid}t)" stroke="#fff" stroke-width="3"/>
+      <polygon points="68,48 112,74 68,100" fill="#fff"/>
+      <polygon points="68,100 112,74 112,90 68,116" fill="${hue2}" stroke="#fff" stroke-width="2"/>
+      <polygon points="28,40 80,66 80,130 28,104" fill="${hue}" opacity="0.35"/>`;
   }
 };

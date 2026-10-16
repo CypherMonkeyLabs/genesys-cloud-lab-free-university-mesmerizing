@@ -18,7 +18,9 @@ const ALLOW = new Set([
   "www.rfc-editor.org",
   "www.cisco.com",
   "www.genesys.com",
-  "genesys.com"
+  "genesys.com",
+  "community.genesys.com",
+  "en.wikipedia.org"
 ]);
 
 const problems = [];
@@ -86,12 +88,56 @@ if (reference.glossary.length < 40) problems.push("glossary");
 if (reference.bosses.length < 8) problems.push("bosses");
 if (reference.interviews.length < 24) problems.push("interviews");
 const flowDiagrams = DIAGRAMS.filter((item) => item.flow);
-if (DIAGRAMS.length < 25) problems.push(`diagrams ${DIAGRAMS.length}`);
-if (flowDiagrams.length < 12) problems.push(`flows ${flowDiagrams.length}`);
+if (DIAGRAMS.length < 60) problems.push(`diagrams ${DIAGRAMS.length}`);
+if (flowDiagrams.length < 30) problems.push(`flows ${flowDiagrams.length}`);
 if (CHARTS.length < 6) problems.push(`charts ${CHARTS.length}`);
 for (const item of DIAGRAMS) checkUrl(item.url, item.id);
 for (const item of PORTS) checkUrl(item.url, item.name);
 for (const url of PAGE_CITES) checkUrl(url, "page");
+
+const sourceDir = join(root, "campus/data/sources");
+const sourceIndexPath = join(sourceDir, "index.json");
+if (!existsSync(sourceIndexPath)) problems.push("sources index missing");
+else {
+  const sourceIndex = JSON.parse(readFileSync(sourceIndexPath, "utf8"));
+  const sourceRooms = new Set(sourceIndex.rooms || []);
+  const requiredRooms = [
+    "home", "tracks", "studio", "topology", "glossary", "certs", "ecosystem", "boss", "interview", "settings", "search",
+    "atlas", "ports", "game", "map", "sandbox", "daily", "badges", "cheat", "downloads", "flows", "charts", "play",
+    "roadmap", "security", "career", "whats-new", "playbooks", "deploy", "architecture", "reporting", "regions", "help", "legal",
+    "lab-checklist"
+  ];
+  for (const id of ids) requiredRooms.push(id);
+  for (const stub of manifest.tracks) requiredRooms.push(stub.id);
+  for (const studio of manifest.studios || []) requiredRooms.push(studio.id);
+  for (const boss of reference.bosses) requiredRooms.push(boss.id);
+  for (const id of requiredRooms) {
+    if (!sourceRooms.has(id)) problems.push(`sources index missing ${id}`);
+  }
+  for (const id of sourceRooms) {
+    const file = join(sourceDir, `${id}.json`);
+    if (!existsSync(file)) {
+      problems.push(`sources file missing ${id}`);
+      continue;
+    }
+    const data = JSON.parse(readFileSync(file, "utf8"));
+    if (data.id !== id) problems.push(`sources id ${id}`);
+    if (!/^\d{4}-\d{2}$/.test(data.lastChecked || "")) problems.push(`sources lastChecked ${id}`);
+    if (!Array.isArray(data.sources) || data.sources.length < 3) problems.push(`sources short ${id}`);
+    const kinds = new Set((data.sources || []).map((item) => item.kind));
+    if (!kinds.has("community")) problems.push(`${id} community`);
+    if (!kinds.has("wikipedia")) problems.push(`${id} wikipedia`);
+    const urls = (data.sources || []).map((item) => item.url || "");
+    if (!urls.some((url) => url.includes("developer.genesys.cloud"))) problems.push(`${id} developer`);
+    if (!urls.some((url) => url.includes("help.genesys.cloud") || url.includes("help.mypurecloud.com"))) problems.push(`${id} resource center`);
+    for (const src of data.sources || []) {
+      checkUrl(src.url, `sources ${id}`);
+      if (!/^\d{4}-\d{2}$/.test(src.lastChecked || "")) problems.push(`${id} item lastChecked`);
+      if (src.status !== "ok" && src.status !== "confirm") problems.push(`${id} status ${src.status}`);
+      if (!src.title) problems.push(`${id} blank title`);
+    }
+  }
+}
 const seenDiagram = new Set();
 for (const item of DIAGRAMS) {
   if (seenDiagram.has(item.id)) problems.push(`duplicate diagram ${item.id}`);
@@ -101,22 +147,22 @@ for (const item of DIAGRAMS) {
 
 const html = readFileSync(join(root, "campus/index.html"), "utf8");
 const brandLinks = [
-  "https://github.com/cipher0x9",
-  "https://github.com/CypherMonkeyLabs",
   "https://cyphermonkeylabs.com",
-  "https://x.com/Cypher0x9",
-  "https://www.linkedin.com/in/luckylakshmanucwebex",
-  "https://huggingface.co/Cypher0x9",
+  "https://github.com/CypherMonkeyLabs",
+  "https://linktr.ee/cypherMonkey",
 ];
-const retiredShortLink = "link" + "tr.ee";
-for (const needle of [...brandLinks, "https://dev.to/cyphermonkey", "CC BY-NC-SA"]) {
+for (const needle of [...brandLinks, "learning-only", "© 2026 CypherMonkeyLabs", "CC BY-NC-SA"]) {
   if (!html.includes(needle)) problems.push(`chrome missing ${needle}`);
 }
-if (html.includes(retiredShortLink)) problems.push("chrome retired short link");
-if (/linkedin\.com/i.test(html.split("linkedin.com/in/luckylakshmanucwebex").join(""))) problems.push("linkedin");
-if (/mailto:/i.test(html)) problems.push("mailto");
-for (const label of ["Diagrams", "Flows", "Charts", "Cheat Codes", "Play", "Ecosystem", "Downloads", "Careers"]) {
-  if (!html.includes(`>${label}<`)) problems.push(`menu ${label}`);
+const forbidden = ["dev.to", "linkedin.com", "huggingface.co", "x.com/", "mailto:", "github.com/cipher0x9", "twitter.com"];
+for (const needle of forbidden) {
+  if (html.toLowerCase().includes(needle)) problems.push(`chrome forbids ${needle}`);
+}
+for (const id of ["menu-open", "nav-home", "tour-learn", "tour-diagrams", "tour-play", "tour-listen", "tour-downloads", "nav-guide", "font-color", "menu-font-color"]) {
+  if (!html.includes(`id="${id}"`)) problems.push(`missing ${id}`);
+}
+for (const label of ["Diagrams", "Flows", "Charts", "Play", "Ecosystem", "Downloads", "Careers", "Help"]) {
+  if (!html.includes(`>${label}<`) && !html.includes(`>${label} `)) problems.push(`menu ${label}`);
 }
 if (!html.includes("cyphermonkeylabs.com/")) problems.push("github.io strip");
 if (!html.includes('id="theme-switch"')) problems.push("theme switcher");
@@ -139,25 +185,56 @@ else {
     }
     if (sheet.html && existsSync(join(root, "campus", sheet.html))) {
       const text = readFileSync(join(root, "campus", sheet.html), "utf8");
-      for (const needle of ["cyphermonkeylabs.com", "github.com/cipher0x9", "github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing", "linkedin.com/in/luckylakshmanucwebex", "huggingface.co/Cypher0x9", "x.com/Cypher0x9", "Not affiliated"]) {
+      for (const needle of ["learning-only", "https://cyphermonkeylabs.com", "https://github.com/CypherMonkeyLabs", "https://linktr.ee/cypherMonkey"]) {
         if (!text.includes(needle)) problems.push(`${sheet.html} missing ${needle}`);
       }
-      if (text.includes(retiredShortLink)) problems.push(`${sheet.html} retired short link`);
+      for (const needle of forbidden) {
+        if (text.toLowerCase().includes(needle)) problems.push(`${sheet.html} forbids ${needle}`);
+      }
+      if (!text.includes("Sources and go deeper") || !text.includes("Last checked 2026-10")) {
+        problems.push(`${sheet.html} sources block`);
+      }
     }
   }
   const cards = JSON.parse(readFileSync(join(downloadDir, "flashcards.json"), "utf8"));
   if (cards.cards.length < 400) problems.push("flashcards");
-  if (statSync(join(downloadDir, "genesys-cx-offline-bundle.zip")).size < 1000) problems.push("zip");
-  for (const name of readdirSync(downloadDir)) {
-    if (!/\.(html|svg|json|pdf)$/.test(name)) continue;
-    const text = readFileSync(join(downloadDir, name), "utf8");
-    if (text.includes(retiredShortLink)) problems.push(`${name} retired short link`);
-    if (/linkedin\.com/i.test(text.split("linkedin.com/in/luckylakshmanucwebex").join(""))) problems.push(`${name} linkedin`);
-    if (/mailto:/i.test(text)) problems.push(`${name} mailto`);
-    if (text.includes("github.com/cipher0x9/genesys-cloud-lab-free-university-mesmerizing")) problems.push(`${name} old repo`);
-    if (!text.includes("github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing")) problems.push(`${name} repo`);
-    if (!text.includes("cyphermonkeylabs.com")) problems.push(`${name} footer`);
+  for (const extra of ["flashcards.pdf", "genesys-cx-deck.pptx", "test-table.html", "templates/lab-checklist.docx", "templates/lab-checklist.pdf", "templates/lab-checklist.html"]) {
+    if (!existsSync(join(downloadDir, extra))) problems.push(`missing downloads/${extra}`);
   }
+  const diagramDir = join(downloadDir, "diagrams");
+  const diagramHtml = existsSync(diagramDir) ? readdirSync(diagramDir).filter((name) => name.endsWith(".html")) : [];
+  if (diagramHtml.length < 60) problems.push(`diagram html ${diagramHtml.length}`);
+  for (const name of diagramHtml) {
+    for (const ext of [".png", ".svg"]) {
+      if (!existsSync(join(diagramDir, name.replace(/\.html$/, ext)))) problems.push(`diagram missing ${name} ${ext}`);
+    }
+    const text = readFileSync(join(diagramDir, name), "utf8");
+    if (!text.includes("Sources and go deeper") || !text.includes("Last checked 2026-10")) problems.push(`${name} sources block`);
+  }
+  for (const rel of ["flashcards.html", "templates/lab-checklist.html", "test-table.html"]) {
+    const text = readFileSync(join(downloadDir, rel), "utf8");
+    if (!text.includes("Sources and go deeper") || !text.includes("Last checked 2026-10")) problems.push(`${rel} sources block`);
+  }
+  const deck = JSON.parse(readFileSync(join(downloadDir, "flashcards.json"), "utf8"));
+  if (!deck.cards.every((card) => Array.isArray(card.deeper) && card.deeper.length >= 3)) problems.push("flashcard deeper");
+  if (statSync(join(downloadDir, "genesys-cx-offline-bundle.zip")).size < 1000) problems.push("zip");
+  function walkDownloads(dir) {
+    for (const name of readdirSync(dir)) {
+      const file = join(dir, name);
+      if (statSync(file).isDirectory()) {
+        walkDownloads(file);
+        continue;
+      }
+      if (!/\.(html|svg|json)$/.test(name)) continue;
+      const text = readFileSync(file, "utf8");
+      for (const needle of forbidden) {
+        if (text.toLowerCase().includes(needle)) problems.push(`${file} forbids ${needle}`);
+      }
+      if (!text.includes("cyphermonkeylabs.com")) problems.push(`${name} footer`);
+      if (!text.includes("linktr.ee/cypherMonkey")) problems.push(`${name} linktree`);
+    }
+  }
+  walkDownloads(downloadDir);
   const predictive = manifest.tracks.find((track) => track.id === "predictive");
   if (!predictive || predictive.lessons.length < 7) problems.push("predictive track");
 }

@@ -9,14 +9,14 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
 endobj
 4 0 obj
-<< /Length 1478 >>
+<< /Length 3183 >>
 stream
 BT
-/F1 16 Tf
+/F1 14 Tf
 48 760 Td
 (BYOC and PSTN) Tj
-/F1 10 Tf
-0 -22 Td
+/F1 9 Tf
+0 -20 Td
 (BYOC Cloud: your carrier, Genesys media, no customer Edge on that path. Quick start order:) Tj
 0 -14 Td
 (location, trunk, outbound route, number plan. New cloud trunks use Dynamic Cloud Voice.) Tj
@@ -29,39 +29,65 @@ BT
 0 -14 Td
 () Tj
 0 -14 Td
-(Sources:) Tj
+(Sources and go deeper) Tj
 0 -14 Td
-(https://help.genesys.cloud/articles/about-byoc-cloud/) Tj
+(Last checked 2026-10) Tj
 0 -14 Td
-(https://help.genesys.cloud/articles/byoc-cloud-configuration-overview/) Tj
+(BYOC Cloud overview \(Resource Center\) https://help.genesys.cloud/articles/byoc-cloud-overview/ Last checked 20) Tj
 0 -14 Td
-(https://help.genesys.cloud/articles/edge-groups-overview/) Tj
+(About BYOC Cloud \(Resource Center\) https://help.genesys.cloud/articles/about-byoc-cloud/ Last checked 2026-10) Tj
+0 -14 Td
+(Set up emergency services with BYOC \(Resource Center\) https://help.genesys.cloud/articles/set-up-emergency-ser) Tj
+0 -14 Td
+(BYOC Cloud quick start guide \(Resource Center\) https://help.genesys.cloud/articles/byoc-cloud-configuration-ov) Tj
+0 -14 Td
+(Dynamic Cloud Voice platform overview \(Resource Center\) https://help.genesys.cloud/articles/dynamic-cloud-voic) Tj
+0 -14 Td
+(Number plan information \(Resource Center\) https://help.genesys.cloud/articles/number-plan-information/ Last ch) Tj
+0 -14 Td
+(Monitor cloud media resources \(Resource Center\) https://help.genesys.cloud/articles/monitor-cloud-media-resour) Tj
+0 -14 Td
+(RFC 3261 SIP \(RFC\) https://www.rfc-editor.org/rfc/rfc3261 Last checked 2026-10) Tj
+0 -14 Td
+(AWS regions for Genesys Cloud Voice \(Resource Center\) https://help.genesys.cloud/articles/aws-regions-genesys-) Tj
+0 -14 Td
+(Overview of Genesys Cloud \(Resource Center\) https://help.mypurecloud.com/articles/overview-of-genesys-cloud/ L) Tj
+0 -14 Td
+(BYOC Premises Edge groups \(Resource Center\) https://help.genesys.cloud/articles/edge-groups-overview/ Last che) Tj
+0 -14 Td
+(Genesys Cloud Developer Center \(Developer docs\) https://developer.genesys.cloud/ Last checked 2026-10) Tj
+0 -14 Td
+(  General developer docs. This is the Developer Center home, not a page written for this room alone.) Tj
+0 -14 Td
+(Genesys Community \(Community\) https://community.genesys.com/ Last checked 2026-10) Tj
+0 -14 Td
+(  Community home, not a thread about this room.) Tj
+0 -14 Td
+(RFC 3550 RTP \(RFC\) https://www.rfc-editor.org/rfc/rfc3550 Last checked 2026-10) Tj
+0 -14 Td
+(  Protocol specification.) Tj
+0 -14 Td
+(Session Initiation Protocol \(Wikipedia\) https://en.wikipedia.org/wiki/Session_Initiation_Protocol Last checked) Tj
+0 -14 Td
+(  Background article. It is not a Genesys Cloud product page.) Tj
 0 -14 Td
 () Tj
 0 -14 Td
-(CypherMonkey Labs · Signal Floor) Tj
+(CypherMonkey Labs) Tj
 0 -14 Td
-(© 2026 CypherMonkeyLabs) Tj
-0 -14 Td
-(https://github.com/cipher0x9) Tj
-0 -14 Td
-(https://github.com/CypherMonkeyLabs) Tj
+(© 2026 CypherMonkeyLabs ?) Tj
 0 -14 Td
 (https://cyphermonkeylabs.com) Tj
 0 -14 Td
-(https://x.com/Cypher0x9) Tj
+(https://github.com/CypherMonkeyLabs) Tj
 0 -14 Td
-(https://www.linkedin.com/in/luckylakshmanucwebex) Tj
-0 -14 Td
-(https://huggingface.co/Cypher0x9) Tj
+(https://linktr.ee/cypherMonkey) Tj
 0 -14 Td
 (https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing) Tj
 0 -14 Td
-(Independent educational project. Not affiliated with or endorsed by any vendor.) Tj
+(This is an independent, free, learning-only student project. It respects every company and vendor, and every t) Tj
 0 -14 Td
-(Trademarks belong to their owners. MIT code. CC BY-NC-SA content.) Tj
-0 -14 Td
-(Concerns: https://cyphermonkeylabs.com/#contact) Tj
+(MIT code. CC BY-NC-SA content. No tracking.) Tj
 0 -14 Td
 ET
 endstream
@@ -76,8 +102,8 @@ xref
 0000000058 00000 n 
 0000000115 00000 n 
 0000000241 00000 n 
-0000001771 00000 n 
+0000003476 00000 n 
 trailer << /Size 6 /Root 1 0 R >>
 startxref
-1841
+3546
 %%EOF

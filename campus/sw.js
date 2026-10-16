@@ -1,10 +1,21 @@
-const CACHE = "gccx-lab-v8";
+const CACHE = "gccx-lab-v13";
 const SHELL = [
   "./",
   "./index.html",
   "./manifest.webmanifest",
   "./assets/app.js",
   "./assets/university.css",
+  "./assets/css/frame.css",
+  "./assets/css/wow.css",
+  "./assets/css/footer.css",
+  "./assets/round2.css",
+  "./assets/round2.js",
+  "./assets/sources.js",
+  "./assets/js/frame.js",
+  "./assets/js/university.js",
+  "./guide/guide.css",
+  "./guide/guide.js",
+  "./data/guide-kb.json",
   "./assets/mascot.js",
   "./assets/diagrams.js",
   "./assets/pages.js",

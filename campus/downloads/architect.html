@@ -4,10 +4,14 @@
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <title>Architect checklist</title>
 <style>
-body { font: 16px/1.45 Georgia, serif; margin: 32px auto; max-width: 720px; color: #1b140f; background: #f7f4ef; }
-h1 { font-size: 28px; }
-a { color: #8d1d08; }
-footer { margin-top: 28px; border-top: 1px solid #ccc; padding-top: 12px; font-size: 13px; }
+body { font: 16px/1.45 Georgia, serif; margin: 32px auto; max-width: 720px; color: #123528; background: #f4fbf7; }
+h1 { font-size: 28px; color: #123528; }
+a { color: #0f5c4c; }
+.disclaimer-panel { border: 2px solid #1d6b4f; background: #e7f6ee; color: #123528; padding: 14px 16px; border-radius: 12px; margin-top: 28px; }
+.disclaimer-panel h2 { font-size: 18px; margin: 0 0 8px; }
+.sources-deeper { margin-top: 28px; padding: 14px 16px; border: 2px solid #0f766e; border-radius: 12px; background: #f0fdfa; color: #042f2e; }
+.sources-deeper a { color: #08306b; }
+.src-flag { background: #fde68a; color: #422006; font-weight: 800; padding: 0 6px; border-radius: 999px; }
 @media print { body { background: #fff; } }
 </style></head><body>
 <h1>Architect checklist</h1>
@@ -16,20 +20,6 @@ footer { margin-top: 28px; border-top: 1px solid #ccc; padding-top: 12px; font-s
 <p>Call a bot from the inbound flow. Bind no-match, timeout, and error to a queue.</p>
 <p>A secure flow keeps payment audio out of the recording. It is not a place to store the digits.</p>
 <p>Save is a draft. Publish is what answers.</p>
-<h2>Sources</h2>
-<ul><li><a href="https://help.genesys.cloud/articles/create-a-flow/">https://help.genesys.cloud/articles/create-a-flow/</a></li>
-<li><a href="https://help.genesys.cloud/articles/queue-call-flows/">https://help.genesys.cloud/articles/queue-call-flows/</a></li>
-<li><a href="https://help.genesys.cloud/articles/about-genesys-dialog-engine-bot-flows/">https://help.genesys.cloud/articles/about-genesys-dialog-engine-bot-flows/</a></li></ul>
-<footer><p>CypherMonkey Labs · Signal Floor</p>
-<p>© 2026 CypherMonkeyLabs 🐒</p>
-<p>https://github.com/cipher0x9</p>
-<p>https://github.com/CypherMonkeyLabs</p>
-<p>https://cyphermonkeylabs.com</p>
-<p>https://x.com/Cypher0x9</p>
-<p>https://www.linkedin.com/in/luckylakshmanucwebex</p>
-<p>https://huggingface.co/Cypher0x9</p>
-<p>https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing</p>
-<p>Independent educational project. Not affiliated with or endorsed by any vendor.</p>
-<p>Trademarks belong to their owners. MIT code. CC BY-NC-SA content.</p>
-<p>Concerns: https://cyphermonkeylabs.com/#contact</p></footer>
+<section class="sources-deeper" id="sec-sources-deeper"><h2>Sources and go deeper</h2><p>Each link was opened for this lab. Last checked 2026-10. A confirm flag means the lab could not verify that link.</p><ul><li><span class="src-kind">Resource Center</span> <a href="https://help.genesys.cloud/articles/navigate-the-architect-home-page/">Navigate the Architect home page</a> <span class="src-checked">Last checked 2026-10</span></li><li><span class="src-kind">Resource Center</span> <a href="https://help.genesys.cloud/articles/create-a-flow/">Create a flow</a> <span class="src-checked">Last checked 2026-10</span></li><li><span class="src-kind">Resource Center</span> <a href="https://help.genesys.cloud/articles/about-architect/">About Architect</a> <span class="src-checked">Last checked 2026-10</span></li><li><span class="src-kind">Resource Center</span> <a href="https://help.genesys.cloud/articles/use-architect-to-create-a-bot-for-an-inbound-flow/">Use Architect to create a bot for an inbound flow</a> <span class="src-checked">Last checked 2026-10</span></li><li><span class="src-kind">Resource Center</span> <a href="https://help.genesys.cloud/articles/queue-call-flows/">In-queue flows overview</a> <span class="src-checked">Last checked 2026-10</span></li><li><span class="src-kind">Resource Center</span> <a href="https://help.genesys.cloud/articles/salesforce-oauth-client-credentials-flow-migration-guide/">Salesforce OAuth client credentials migration</a> <span class="src-checked">Last checked 2026-10</span></li><li><span class="src-kind">Resource Center</span> <a href="https://help.genesys.cloud/articles/about-genesys-cloud-for-salesforce/">About Genesys Cloud for Salesforce</a> <span class="src-checked">Last checked 2026-10</span></li><li><span class="src-kind">Resource Center</span> <a href="https://help.genesys.cloud/articles/about-genesys-cloud-for-zendesk/">About Genesys Cloud for Zendesk</a> <span class="src-checked">Last checked 2026-10</span></li><li><span class="src-kind">Resource Center</span> <a href="https://help.genesys.cloud/articles/about-recording/">About recording</a> <span class="src-checked">Last checked 2026-10</span></li><li><span class="src-kind">Resource Center</span> <a href="https://help.genesys.cloud/articles/about-genesys-dialog-engine-bot-flows/">About Genesys Dialog Engine Bot Flows</a> <span class="src-checked">Last checked 2026-10</span></li><li><span class="src-kind">Resource Center</span> <a href="https://help.genesys.cloud/articles/about-genesys-digital-bot-flows/">About Genesys Digital Bot Flows</a> <span class="src-checked">Last checked 2026-10</span></li><li><span class="src-kind">Resource Center</span> <a href="https://help.genesys.cloud/articles/divisions-overview/">Divisions overview</a> <span class="src-checked">Last checked 2026-10</span></li><li><span class="src-kind">Developer docs</span> <a href="https://developer.genesys.cloud/">Genesys Cloud Developer Center</a> <span class="src-checked">Last checked 2026-10</span> <span class="src-note">General developer docs. This is the Developer Center home, not a page written for this room alone.</span></li><li><span class="src-kind">Community</span> <a href="https://community.genesys.com/">Genesys Community</a> <span class="src-checked">Last checked 2026-10</span> <span class="src-note">Community home, not a thread about this room.</span></li><li><span class="src-kind">RFC</span> <a href="https://www.rfc-editor.org/rfc/rfc3261">RFC 3261 SIP</a> <span class="src-checked">Last checked 2026-10</span> <span class="src-note">Protocol specification.</span></li><li><span class="src-kind">Wikipedia</span> <a href="https://en.wikipedia.org/wiki/Interactive_voice_response">Interactive voice response</a> <span class="src-checked">Last checked 2026-10</span> <span class="src-note">Background article. It is not a Genesys Cloud product page.</span></li></ul></section>
+<aside class="disclaimer-panel"><h2>A note from the student behind this lab</h2><p>This is an independent, free, learning-only student project. It respects every company and vendor, and every trademark belongs to its owner. It is not affiliated with or endorsed by any of them. If anyone has a concern, the content will be removed or corrected promptly via https://cyphermonkeylabs.com/#contact. Nothing here is sold, and I am happy to volunteer for any organization.</p><p>CypherMonkey Labs</p><p><a href="https://cyphermonkeylabs.com">https://cyphermonkeylabs.com</a></p><p><a href="https://github.com/CypherMonkeyLabs">https://github.com/CypherMonkeyLabs</a></p><p><a href="https://linktr.ee/cypherMonkey">https://linktr.ee/cypherMonkey</a></p><p>© 2026 CypherMonkeyLabs 🐒</p><p><a href="https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing">View repo</a></p></aside>
 </body></html>

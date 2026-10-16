@@ -9,27 +9,33 @@ import time
 import zlib
 from pathlib import Path
 
+from source_lib import html_block, load_checks, normalize, png_tail, text_lines
+
 ROOT = Path(__file__).resolve().parents[1]
 CAMPUS = ROOT / "campus"
 OUT = CAMPUS / "downloads"
 REPO = "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
 COPYRIGHT = "© 2026 CypherMonkeyLabs"
-BRANDS = [
-    "https://github.com/cipher0x9",
-    "https://github.com/CypherMonkeyLabs",
-    "https://cyphermonkeylabs.com",
-    "https://x.com/Cypher0x9",
-    "https://www.linkedin.com/in/luckylakshmanucwebex",
-    "https://huggingface.co/Cypher0x9",
-]
+WEB = "https://cyphermonkeylabs.com"
+ORG = "https://github.com/CypherMonkeyLabs"
+TREE = "https://linktr.ee/cypherMonkey"
+CONTACT = "https://cyphermonkeylabs.com/#contact"
+BRANDS = [WEB, ORG, TREE]
+DISCLAIMER = (
+    "This is an independent, free, learning-only student project. "
+    "It respects every company and vendor, and every trademark belongs to its owner. "
+    "It is not affiliated with or endorsed by any of them. "
+    "If anyone has a concern, the content will be removed or corrected promptly via "
+    + CONTACT
+    + ". Nothing here is sold, and I am happy to volunteer for any organization."
+)
 FOOT = [
-    "CypherMonkey Labs · Signal Floor",
-    COPYRIGHT,
+    "CypherMonkey Labs",
+    COPYRIGHT + " 🐒",
     *BRANDS,
     REPO,
-    "Independent educational project. Not affiliated with or endorsed by any vendor.",
-    "Trademarks belong to their owners. MIT code. CC BY-NC-SA content.",
-    "Concerns: https://cyphermonkeylabs.com/#contact",
+    DISCLAIMER,
+    "MIT code. CC BY-NC-SA content. No tracking.",
 ]
 
 # 5x7 glyphs, each row is 5 bits.
@@ -107,20 +113,31 @@ def wrap(text, width):
 
 
 def write_pdf(path, title, lines):
-    body = ["BT", "/F1 16 Tf", "48 760 Td", f"({pdf_escape(title)}) Tj", "/F1 10 Tf"]
-    y_shift = -22
-    body.append(f"0 {y_shift} Td")
-    for line in lines:
-        body.append(f"({pdf_escape(line)}) Tj")
-        body.append("0 -14 Td")
-    body.append("ET")
-    stream = "\n".join(body).encode("latin-1", "replace")
-    objects = []
-    objects.append(b"<< /Type /Catalog /Pages 2 0 R >>")
-    objects.append(b"<< /Type /Pages /Count 1 /Kids [3 0 R] >>")
-    objects.append(b"<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>")
-    objects.append(b"<< /Length %d >>\nstream\n" % len(stream) + stream + b"\nendstream")
-    objects.append(b"<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>")
+    """Multipage Helvetica PDF. Non-latin-1 characters are replaced."""
+    per_page = 40
+    chunks = [lines[i:i + per_page] for i in range(0, max(len(lines), 1), per_page)] or [[]]
+    page_count = len(chunks)
+    # 1 catalog, 2 pages, then page/content pairs, font last.
+    font_id = 3 + page_count * 2
+    objects = [None] * (font_id)
+    objects[0] = b"<< /Type /Catalog /Pages 2 0 R >>"
+    kids = " ".join(f"{3 + i * 2} 0 R" for i in range(page_count))
+    objects[1] = f"<< /Type /Pages /Count {page_count} /Kids [{kids}] >>".encode()
+    for index, chunk in enumerate(chunks):
+        body = ["BT", "/F1 14 Tf", "48 760 Td", f"({pdf_escape(title)}) Tj", "/F1 9 Tf", "0 -20 Td"]
+        for line in chunk:
+            body.append(f"({pdf_escape(line[:110])}) Tj")
+            body.append("0 -14 Td")
+        body.append("ET")
+        stream = "\n".join(body).encode("latin-1", "replace")
+        page_id = 3 + index * 2
+        content_id = page_id + 1
+        objects[page_id - 1] = (
+            f"<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents {content_id} 0 R "
+            f"/Resources << /Font << /F1 {font_id} 0 R >> >> >>"
+        ).encode()
+        objects[content_id - 1] = b"<< /Length %d >>\nstream\n" % len(stream) + stream + b"\nendstream"
+    objects[font_id - 1] = b"<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>"
     blob = b"%PDF-1.4\n"
     offsets = [0]
     for i, obj in enumerate(objects, start=1):
@@ -139,9 +156,10 @@ def chunk(tag, data):
     return struct.pack(">I", len(data)) + tag + data + struct.pack(">I", zlib.crc32(tag + data) & 0xFFFFFFFF)
 
 
-def write_png(path, title, lines):
-    width, height = 900, 1200
-    scale = 3
+def write_png(path, title, lines, tail=None):
+    width, height = 640, 360
+    tail = tail or ["SOURCES AND GO DEEPER", "LAST CHECKED 2026-10"]
+    scale = 2
     rows = [bytearray([245, 241, 232]) * width for _ in range(height)]
 
     def pix(x, y, rgb):
@@ -156,12 +174,17 @@ def write_png(path, title, lines):
 
     rect(0, 0, width, 70, (7, 16, 28))
     text(rows, 24, 22, title.upper(), 3, (255, 90, 54), width)
+    tail_top = height - 12 - 18 * len(tail)
     y = 100
     for line in lines:
+        if y > tail_top - 18:
+            break
         text(rows, 24, y, line.upper(), 2, (26, 12, 8), width)
         y += 18
-        if y > height - 40:
-            break
+    y = tail_top
+    for line in tail:
+        text(rows, 24, y, line.upper(), 2, (8, 47, 46), width)
+        y += 18
     raw = b"".join(b"\x00" + bytes(row) for row in rows)
     ihdr = struct.pack(">IIBBBBB", width, height, 8, 2, 0, 0, 0)
     png = b"\x89PNG\r\n\x1a\n" + chunk(b"IHDR", ihdr) + chunk(b"IDAT", zlib.compress(raw, 9)) + chunk(b"IEND", b"")
@@ -191,27 +214,44 @@ def visible_foot():
     return lines
 
 
+def disclaimer_html():
+    links = "".join(f'<p><a href="{url}">{xml(url)}</a></p>' for url in BRANDS)
+    return (
+        '<aside class="disclaimer-panel">'
+        "<h2>A note from the student behind this lab</h2>"
+        f"<p>{xml(DISCLAIMER)}</p>"
+        "<p>CypherMonkey Labs</p>"
+        f"{links}"
+        f"<p>{xml(COPYRIGHT)} 🐒</p>"
+        f'<p><a href="{REPO}">View repo</a></p>'
+        "</aside>"
+    )
+
+
 def write_html(path, title, paragraphs, sources):
-    body = "\n".join(f"<p>{p}</p>" for p in paragraphs)
-    links = "\n".join(f'<li><a href="{url}">{url}</a></li>' for url in sources)
-    foot = "\n".join(f"<p>{line}</p>" for line in visible_foot())
+    entries = normalize(sources)
+    body = "\n".join(f"<p>{xml(p)}</p>" for p in paragraphs)
+    icon_prefix = "../" if path.parent == OUT else "../../"
     path.write_text(f"""<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" href="../favicon.ico" sizes="any">
-<link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<title>{title}</title>
+<link rel="icon" href="{icon_prefix}favicon.ico" sizes="any">
+<link rel="icon" href="{icon_prefix}favicon.svg" type="image/svg+xml">
+<title>{xml(title)}</title>
 <style>
-body {{ font: 16px/1.45 Georgia, serif; margin: 32px auto; max-width: 720px; color: #1b140f; background: #f7f4ef; }}
-h1 {{ font-size: 28px; }}
-a {{ color: #8d1d08; }}
-footer {{ margin-top: 28px; border-top: 1px solid #ccc; padding-top: 12px; font-size: 13px; }}
+body {{ font: 16px/1.45 Georgia, serif; margin: 32px auto; max-width: 720px; color: #123528; background: #f4fbf7; }}
+h1 {{ font-size: 28px; color: #123528; }}
+a {{ color: #0f5c4c; }}
+.disclaimer-panel {{ border: 2px solid #1d6b4f; background: #e7f6ee; color: #123528; padding: 14px 16px; border-radius: 12px; margin-top: 28px; }}
+.disclaimer-panel h2 {{ font-size: 18px; margin: 0 0 8px; }}
+.sources-deeper {{ margin-top: 28px; padding: 14px 16px; border: 2px solid #0f766e; border-radius: 12px; background: #f0fdfa; color: #042f2e; }}
+.sources-deeper a {{ color: #08306b; }}
+.src-flag {{ background: #fde68a; color: #422006; font-weight: 800; padding: 0 6px; border-radius: 999px; }}
 @media print {{ body {{ background: #fff; }} }}
 </style></head><body>
-<h1>{title}</h1>
+<h1>{xml(title)}</h1>
 {body}
-<h2>Sources</h2>
-<ul>{links}</ul>
-<footer>{foot}</footer>
+{html_block(entries)}
+{disclaimer_html()}
 </body></html>
 """, encoding="utf-8")
 
@@ -240,25 +280,30 @@ def write_png_from_html(html_path, png_path):
 
 
 def write_svg(path, title, lines, sources):
+    entries = normalize(sources)
     tspans = []
     y = 86
-    for line in lines[:28]:
-        tspans.append(f'<text x="40" y="{y}" font-size="16" fill="#1b140f">{xml(line)}</text>')
+    for line in lines[:24]:
+        tspans.append(f'<text x="40" y="{y}" font-size="16" fill="#1b140f">{xml(line[:90])}</text>')
         y += 22
+    src_lines = []
+    y += 12
+    for line in text_lines(entries):
+        src_lines.append(f'<text x="40" y="{y}" font-size="12" fill="#08306b">{xml(line[:120])}</text>')
+        y += 16
     foot_lines = []
-    fy = 760
-    for line in BRANDS + [REPO]:
-        foot_lines.append(f'<text x="40" y="{fy}" font-size="11" fill="#4d4338">{xml(line)}</text>')
-        fy += 14
-    foot = "".join(foot_lines)
-    src = f'<text x="40" y="{fy}" font-size="12" fill="#8d1d08">{xml(sources[0] if sources else "")}</text>'
-    path.write_text(f"""<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000">
-<rect width="800" height="1000" fill="#f7f4ef"/>
+    y += 12
+    for line in [DISCLAIMER[:180], *BRANDS, REPO, COPYRIGHT]:
+        foot_lines.append(f'<text x="40" y="{y}" font-size="11" fill="#123528">{xml(line[:110])}</text>')
+        y += 16
+    height = y + 24
+    path.write_text(f"""<svg xmlns="http://www.w3.org/2000/svg" width="800" height="{height}" viewBox="0 0 800 {height}">
+<rect width="800" height="{height}" fill="#f7f4ef"/>
 <rect width="800" height="64" fill="#07101c"/>
 <text x="40" y="42" fill="#ff5a36" font-size="24" font-family="Georgia, serif">{xml(title)}</text>
 {''.join(tspans)}
-{foot}
-{src}
+{''.join(src_lines)}
+{''.join(foot_lines)}
 </svg>
 """, encoding="utf-8")
 
@@ -390,18 +435,185 @@ SHEETS = [
 ]
 
 
+def load_diagrams():
+    raw = subprocess.check_output(
+        [
+            "node",
+            "--input-type=module",
+            "-e",
+            "import { DIAGRAMS } from './campus/assets/diagrams.js';"
+            "process.stdout.write(JSON.stringify(DIAGRAMS.map((d) => ({"
+            "id:d.id,title:d.title,caption:d.caption,cite:d.cite,url:d.url,flow:!!d.flow,kind:d.kind}))));",
+        ],
+        cwd=ROOT,
+    )
+    return json.loads(raw)
+
+
+def ooxml_escape(text):
+    return xml(text).replace('"', "&quot;")
+
+
+def write_ooxml(path, parts):
+    import zipfile
+    if path.exists():
+        path.unlink()
+    with zipfile.ZipFile(path, "w", compression=zipfile.ZIP_DEFLATED) as zf:
+        for name, data in parts.items():
+            zf.writestr(name, data)
+
+
+def write_pptx(path, slides):
+    overrides = [
+        '<Override PartName="/ppt/presentation.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.presentation.main+xml"/>'
+    ]
+    rels = []
+    sld_ids = []
+    parts = {}
+    for i, (title, bullets) in enumerate(slides, start=1):
+        overrides.append(
+            f'<Override PartName="/ppt/slides/slide{i}.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.slide+xml"/>'
+        )
+        rels.append(
+            f'<Relationship Id="rId{i}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/slide" Target="slides/slide{i}.xml"/>'
+        )
+        sld_ids.append(f'<p:sldId id="{255 + i}" r:id="rId{i}"/>')
+        paras = [
+            f'<a:p><a:r><a:rPr lang="en-US" sz="2800" b="1"/><a:t>{ooxml_escape(title)}</a:t></a:r></a:p>'
+        ]
+        for bullet in bullets:
+            paras.append(
+                f'<a:p><a:r><a:rPr lang="en-US" sz="1600"/><a:t>{ooxml_escape(bullet)}</a:t></a:r></a:p>'
+            )
+        parts[f"ppt/slides/slide{i}.xml"] = f"""<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<p:sld xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main">
+  <p:cSld><p:spTree>
+    <p:nvGrpSpPr><p:cNvPr id="1" name=""/><p:cNvGrpSpPr/><p:nvPr/></p:nvGrpSpPr>
+    <p:grpSpPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="0" cy="0"/><a:chOff x="0" y="0"/><a:chExt cx="0" cy="0"/></a:xfrm></p:grpSpPr>
+    <p:sp>
+      <p:nvSpPr><p:cNvPr id="2" name="Body"/><p:cNvSpPr/><p:nvPr/></p:nvSpPr>
+      <p:spPr><a:xfrm><a:off x="360000" y="280000"/><a:ext cx="8400000" cy="6200000"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom></p:spPr>
+      <p:txBody><a:bodyPr/><a:lstStyle/>{''.join(paras)}</p:txBody>
+    </p:sp>
+  </p:spTree></p:cSld>
+  <p:clrMapOvr><a:masterClrMapping/></p:clrMapOvr>
+</p:sld>"""
+    parts["[Content_Types].xml"] = (
+        '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+        '<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">'
+        '<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>'
+        '<Default Extension="xml" ContentType="application/xml"/>'
+        + "".join(overrides)
+        + "</Types>"
+    )
+    parts["_rels/.rels"] = (
+        '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+        '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'
+        '<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="ppt/presentation.xml"/>'
+        "</Relationships>"
+    )
+    parts["ppt/presentation.xml"] = (
+        '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+        '<p:presentation xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main">'
+        f"<p:sldIdLst>{''.join(sld_ids)}</p:sldIdLst>"
+        '<p:sldSz cx="9144000" cy="6858000" type="screen4x3"/>'
+        '<p:notesSz cx="6858000" cy="9144000"/>'
+        "</p:presentation>"
+    )
+    parts["ppt/_rels/presentation.xml.rels"] = (
+        '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+        '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'
+        + "".join(rels)
+        + "</Relationships>"
+    )
+    write_ooxml(path, parts)
+
+
+def write_docx(path, title, paragraphs):
+    body = []
+    body.append(
+        f'<w:p><w:r><w:rPr><w:b/></w:rPr><w:t>{ooxml_escape(title)}</w:t></w:r></w:p>'
+    )
+    for para in paragraphs:
+        body.append(f'<w:p><w:r><w:t>{ooxml_escape(para)}</w:t></w:r></w:p>')
+    document = (
+        '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+        '<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">'
+        f"<w:body>{''.join(body)}<w:sectPr/></w:body></w:document>"
+    )
+    write_ooxml(path, {
+        "[Content_Types].xml": (
+            '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+            '<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">'
+            '<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>'
+            '<Default Extension="xml" ContentType="application/xml"/>'
+            '<Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/>'
+            "</Types>"
+        ),
+        "_rels/.rels": (
+            '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+            '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'
+            '<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/>'
+            "</Relationships>"
+        ),
+        "word/document.xml": document,
+        "word/_rels/document.xml.rels": (
+            '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+            '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"></Relationships>'
+        ),
+    })
+
+
+def write_icon(path, size):
+    rows = [bytearray([253, 230, 138]) * size for _ in range(size)]
+    def pix(x, y, rgb):
+        if 0 <= x < size and 0 <= y < size:
+            i = x * 3
+            rows[y][i:i + 3] = bytes(rgb)
+    cx = cy = size // 2
+    r = int(size * 0.28)
+    for y in range(size):
+        for x in range(size):
+            if (x - cx) ** 2 + (y - cy) ** 2 <= r * r:
+                pix(x, y, (217, 119, 6))
+            elif (x - int(size * 0.28)) ** 2 + (y - cy) ** 2 <= (r // 2) ** 2:
+                pix(x, y, (245, 158, 11))
+            elif (x - int(size * 0.72)) ** 2 + (y - cy) ** 2 <= (r // 2) ** 2:
+                pix(x, y, (245, 158, 11))
+    eye = max(2, size // 28)
+    for ex in (int(size * 0.42), int(size * 0.58)):
+        for y in range(cy - eye, cy + eye):
+            for x in range(ex - eye, ex + eye):
+                pix(x, y, (30, 27, 75))
+    raw = b"".join(b"\x00" + bytes(row) for row in rows)
+    ihdr = struct.pack(">IIBBBBB", size, size, 8, 2, 0, 0, 0)
+    path.write_bytes(b"\x89PNG\r\n\x1a\n" + chunk(b"IHDR", ihdr) + chunk(b"IDAT", zlib.compress(raw, 9)) + chunk(b"IEND", b""))
+
+
+def room_sources(room_id, fallback_pairs, blob):
+    path = CAMPUS / "data" / "sources" / f"{room_id}.json"
+    if path.exists():
+        data = json.loads(path.read_text(encoding="utf-8"))
+        if data.get("sources"):
+            return data["sources"]
+    from source_lib import enrich
+    return enrich(
+        [{"title": title, "url": url} for title, url in fallback_pairs],
+        blob,
+        load_checks(),
+    )
+
+
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     catalog = []
     for sid, title, summary, lines, sources in SHEETS:
-        prose = lines + ["Sources: " + " ".join(sources)] + FOOT
+        entries = room_sources(sid, [(url, url) for url in sources], " ".join([title, summary] + lines))
         html_path = OUT / f"{sid}.html"
-        write_html(html_path, title, lines, sources)
-        write_pdf(OUT / f"{sid}.pdf", title, wrap(" ".join(lines), 90) + [""] + ["Sources:"] + sources + [""] + FOOT)
-        png_path = OUT / f"{sid}.png"
-        if not write_png_from_html(html_path, png_path):
-            write_png(png_path, title, lines + [""] + FOOT)
-        write_svg(OUT / f"{sid}.svg", title, lines + FOOT, sources)
+        write_html(html_path, title, lines, entries)
+        write_pdf(OUT / f"{sid}.pdf", title, wrap(" ".join(lines), 90) + [""] + text_lines(entries) + [""] + FOOT)
+        write_png(OUT / f"{sid}.png", title, lines[:8] + ["LEARNING-ONLY"], png_tail(entries))
+        write_svg(OUT / f"{sid}.svg", title, lines, entries)
         catalog.append({
             "id": sid,
             "title": title,
@@ -410,37 +622,153 @@ def main():
             "pdf": f"downloads/{sid}.pdf",
             "png": f"downloads/{sid}.png",
             "svg": f"downloads/{sid}.svg",
-            "sources": sources,
+            "sources": [item["url"] for item in entries],
         })
 
     cards = []
     for path in sorted((CAMPUS / "data" / "tracks").glob("*.json")):
         track = json.loads(path.read_text(encoding="utf-8"))
         for lesson in track["lessons"]:
+            deeper = room_sources(
+                lesson["id"],
+                [(cite.get("title") or cite["url"], cite["url"]) for cite in lesson["cites"]],
+                lesson.get("title") or "",
+            )
             for card in lesson["cards"]:
                 cards.append({
                     "track": track["title"],
                     "lesson": lesson["title"],
+                    "lessonId": lesson["id"],
                     "front": card["front"],
                     "back": card["back"],
                     "sources": [cite["url"] for cite in lesson["cites"]],
+                    "deeper": deeper,
                 })
     deck = {"title": "Signal Floor flashcards", "footer": FOOT, "cards": cards}
     (OUT / "flashcards.json").write_text(json.dumps(deck, indent=2) + "\n", encoding="utf-8")
     blocks = []
     for card in cards:
-        blocks.append(f"<article><h2>{xml(card['front'])}</h2><p>{xml(card['back'])}</p><p>{xml(card['track'])} · {xml(card['lesson'])}</p></article>")
+        blocks.append(
+            f"<article><h2>{xml(card['front'])}</h2><p>{xml(card['back'])}</p>"
+            f"<p>{xml(card['track'])} · {xml(card['lesson'])}</p>{html_block(card['deeper'])}</article>"
+        )
     (OUT / "flashcards.html").write_text(
         "<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'><title>Flashcards</title>"
         "<link rel='icon' href='../favicon.ico' sizes='any'><link rel='icon' href='../favicon.svg' type='image/svg+xml'>"
         "<style>body{font:15px/1.4 Georgia,serif;margin:24px;background:#f7f4ef;color:#1b140f}"
         "article{break-inside:avoid;border:1px solid #ccc;padding:12px;margin:8px 0;background:#fff}"
+        ".sources-deeper{margin-top:12px;padding:10px;border:2px solid #0f766e;background:#f0fdfa;color:#042f2e}"
+        ".sources-deeper a{color:#08306b}.src-flag{background:#fde68a;color:#422006;font-weight:800}"
         "footer{margin-top:24px;font-size:13px}</style></head><body><h1>Signal Floor flashcards</h1>"
         + "\n".join(blocks)
         + "<footer>" + "\n".join(f"<p>{xml(line)}</p>" for line in visible_foot()) + "</footer></body></html>",
         encoding="utf-8",
     )
-    (OUT / "catalog.json").write_text(json.dumps({"sheets": catalog, "cards": len(cards), "footer": FOOT}, indent=2) + "\n", encoding="utf-8")
+    card_lines = []
+    for card in cards:
+        card_lines.append(card["front"][:110])
+        card_lines.append("  " + card["back"][:110])
+        card_lines.extend(text_lines(card["deeper"]))
+        card_lines.append("")
+    write_pdf(OUT / "flashcards.pdf", "Signal Floor flashcards", card_lines + [""] + FOOT)
+
+    diagrams = load_diagrams()
+    diagram_dir = OUT / "diagrams"
+    diagram_dir.mkdir(parents=True, exist_ok=True)
+    for spec in diagrams:
+        lines = [spec["caption"], f"Kind: {spec['kind']}", f"Flow: {'yes' if spec['flow'] else 'no'}", "Confirm before relying. The cited page wins."]
+        entries = room_sources(spec["id"], [(spec["cite"], spec["url"])], spec["title"] + " " + spec["caption"])
+        write_html(diagram_dir / f"{spec['id']}.html", spec["title"], lines, entries)
+        write_svg(diagram_dir / f"{spec['id']}.svg", spec["title"], lines, entries)
+        write_png(diagram_dir / f"{spec['id']}.png", spec["title"], [spec["caption"][:70]], png_tail(entries))
+
+    template_dir = OUT / "templates"
+    template_dir.mkdir(parents=True, exist_ok=True)
+    checklist = [
+        "Location, trunk, and number plan exist before the first DID.",
+        "Transport matches on both ends of the trunk.",
+        "Inbound flow and in-queue flow are published.",
+        "Queue members are On Queue and under utilization.",
+        "Emergency class and route have a named owner. Do not place a surprise live emergency call.",
+        "Confirm before relying. The cited page wins.",
+        DISCLAIMER,
+        WEB,
+        ORG,
+        TREE,
+        REPO,
+    ]
+    checklist_sources = room_sources(
+        "lab-checklist",
+        [("About Architect", "https://help.genesys.cloud/articles/about-architect/")],
+        "checklist architect trunk queue emergency",
+    )
+    write_html(template_dir / "lab-checklist.html", "Lab checklist", checklist, checklist_sources)
+    write_pdf(template_dir / "lab-checklist.pdf", "Lab checklist", checklist + [""] + text_lines(checklist_sources))
+    write_docx(template_dir / "lab-checklist.docx", "Lab checklist", checklist + text_lines(checklist_sources))
+
+    write_pptx(OUT / "genesys-cx-deck.pptx", [
+        ("Genesys Cloud CX Lab", ["Signal Floor", "Independent, free, learning-only", COPYRIGHT, WEB, ORG, TREE]),
+        ("Learn it in 5 minutes", [
+            "Genesys Cloud CX is the contact-center platform. This lab does not sign in.",
+            "SIP sets the call up. RTP moves the audio.",
+            "Publish the Architect flow. A draft does not answer.",
+            "Bullseye, preferred agents, and evaluation methods are separate routing choices.",
+            "Confirm before relying. The cited page wins.",
+        ]),
+        ("Routing", ["On Queue", "Under utilization", "Skill result the evaluation method accepts", "Preferred agents can go first"]),
+        ("Downloads", ["Sheets HTML PDF PNG SVG", "Flashcards HTML JSON PDF", "Checklist DOCX PDF HTML", "Diagram SVG PNG HTML", DISCLAIMER]),
+        ("Sources and go deeper", text_lines(checklist_sources)[:14]),
+    ])
+
+    write_icon(CAMPUS / "icon-192.png", 192)
+    write_icon(CAMPUS / "icon-512.png", 512)
+
+    rows = []
+    checks = []
+    for sheet in catalog:
+        for key in ("html", "pdf", "png", "svg"):
+            rel = sheet[key]
+            file = CAMPUS / rel
+            text = file.read_bytes()
+            ok = file.exists() and file.stat().st_size > 80
+            note = "bitmap card" if key == "png" else "file written"
+            if key in ("html", "svg"):
+                blob = text.decode("utf-8", "replace")
+                ok = ok and "learning-only" in blob and TREE in blob and "dev.to" not in blob
+                note = "disclaimer and three brand links" if ok else "missing disclaimer"
+            checks.append((rel, "pass" if ok else "fail", note))
+    checks.append(("downloads/flashcards.pdf", "pass" if (OUT / "flashcards.pdf").stat().st_size > 1000 else "fail", f"{len(cards)} cards, multipage PDF"))
+    checks.append(("downloads/flashcards.json", "pass" if len(cards) >= 400 else "fail", str(len(cards))))
+    checks.append(("downloads/genesys-cx-deck.pptx", "pass" if (OUT / "genesys-cx-deck.pptx").stat().st_size > 500 else "fail", "minimal OOXML, not opened in PowerPoint here"))
+    checks.append(("downloads/templates/lab-checklist.docx", "pass" if (template_dir / "lab-checklist.docx").exists() else "fail", "minimal OOXML"))
+    checks.append((f"downloads/diagrams ({len(diagrams)})", "pass" if len(diagrams) >= 60 else "fail", "SVG PNG HTML title cards, not full illustrations"))
+    table_rows = "\n".join(
+        f"<tr><td>{xml(name)}</td><td>{xml(status)}</td><td>{xml(note)}</td></tr>" for name, status, note in checks
+    )
+    (OUT / "test-table.html").write_text(
+        "<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'><title>Download test table</title>"
+        "<style>body{font:15px/1.4 Georgia,serif;margin:24px;color:#123528;background:#f4fbf7}"
+        "table{border-collapse:collapse;width:100%}td,th{border:1px solid #1d6b4f;padding:6px 8px;text-align:left}"
+        ".disclaimer-panel{border:2px solid #1d6b4f;background:#e7f6ee;padding:12px;margin-top:20px}</style></head><body>"
+        "<h1>Download test table</h1>"
+        "<p>The build wrote these files and checked the disclaimer text inside HTML and SVG. "
+        "PNG files are bitmap title cards from the build script, not browser screenshots of the live diagrams. "
+        "PPTX and DOCX are minimal Office Open XML. Confirm before relying.</p>"
+        f"<table><thead><tr><th>File</th><th>Result</th><th>Note</th></tr></thead><tbody>{table_rows}</tbody></table>"
+        + html_block(checklist_sources)
+        + disclaimer_html()
+        + "</body></html>",
+        encoding="utf-8",
+    )
+
+    (OUT / "catalog.json").write_text(json.dumps({
+        "sheets": catalog,
+        "cards": len(cards),
+        "diagrams": len(diagrams),
+        "footer": FOOT,
+        "pptx": "downloads/genesys-cx-deck.pptx",
+        "template": "downloads/templates/lab-checklist.html",
+    }, indent=2) + "\n", encoding="utf-8")
 
     import zipfile
     zip_path = OUT / "genesys-cx-offline-bundle.zip"
