@@ -65,7 +65,7 @@ Verified by `node scripts/verify.mjs` on 15 October 2026:
 
 The shell is `campus/index.html`, `campus/assets/app.js`, `campus/data/manifest.json`, and the web manifest. Studios, charts, Markmap, topology, Three.js, track JSON, and `reference.json` stay off that first paint. Three.js loads with the hero wireframe and the topology view. Mermaid is not shipped to the browser; `scripts/build_mermaid.mjs` writes the SVGs.
 
-Lighthouse mobile against `http://127.0.0.1:8741/campus/` on 16 October 2026, gzip server, Lighthouse 12 default mobile emulation: performance 99, accessibility 100, best-practices 100, SEO 100, total blocking time 0 ms, largest contentful paint about 2.1 s. Cumulative layout shift on that run is 0.047, on the home hero. The icon row reserves its phone height so filling the counters does not grow the page.
+Lighthouse mobile against `http://127.0.0.1:8741/campus/` on 16 October 2026, gzip server, Lighthouse 12 default mobile emulation: performance 98, accessibility 100, best-practices 100, SEO 100, total blocking time 0 ms, largest contentful paint about 2.1 s. Cumulative layout shift on that run is 0.046, on the home hero. The icon row reserves its phone height so filling the counters does not grow the page.
 
 ## Citations
 

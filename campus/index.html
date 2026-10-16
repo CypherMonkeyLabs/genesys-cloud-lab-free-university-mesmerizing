@@ -20,7 +20,7 @@ try {
   if (s.reduce || window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.dataset.reduce = '1';
   var narrow = window.matchMedia('(max-width: 700px)').matches;
   document.documentElement.style.setProperty('--chrome-h', narrow ? '56px' : '64px');
-  document.documentElement.style.setProperty('--bar-h', narrow ? '61px' : '0px');
+  document.documentElement.style.setProperty('--bar-h', '64px');
 } catch (e) {}
 </script>
 <style>

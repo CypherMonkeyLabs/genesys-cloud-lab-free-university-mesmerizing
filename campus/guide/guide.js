@@ -93,11 +93,13 @@ root.innerHTML = `
     <button type="button" data-path="down">Just download</button>
   </div>
   <div class="bot-cards" id="bot-cards"></div>
+  <div class="bot-voice-row">
+    <label>Voice <select id="bot-voice" aria-label="Speaking voice"></select></label>
+  </div>
   <div class="bot-log" id="bot-log" role="log" aria-live="polite"></div>
   <details class="bot-more" id="bot-more">
-    <summary>Voice, sound, and read-along</summary>
+    <summary>Rate, pitch, and sound</summary>
     <div class="bot-voice">
-      <label>Voice <select id="bot-voice" aria-label="Speaking voice"></select></label>
       <label>Rate <input id="bot-rate" type="range" min="0.8" max="1.2" step="0.05" value="1" aria-label="Speaking rate"></label>
       <label>Pitch <input id="bot-pitch" type="range" min="0.8" max="1.2" step="0.05" value="1" aria-label="Speaking pitch"></label>
       <button type="button" id="bot-read">Read along</button>
@@ -314,12 +316,26 @@ function glowNav() {
     link.classList.toggle("is-reading", on);
   });
 }
-function highlightSentence(el, sentence) {
+function readingBlock(el) {
+  const block = el.closest(".panel, .learn5, .eco-panel, .worked, .lesson-head, .uncertainty, #sec-figure, #sec-read, .hero-copy, .cheat-banner, .audio-dock, .who-band, .card");
+  if (block) return block;
+  const section = el.closest("section, article");
+  if (section && section.id !== "view" && section.id !== "home" && section.id !== "main") return section;
+  return el;
+}
+function clearSpoken() {
   document.querySelectorAll(".is-spoken").forEach((node) => node.classList.remove("is-spoken"));
+  document.querySelectorAll(".is-reading-sec").forEach((node) => node.classList.remove("is-reading-sec"));
+}
+function highlightSentence(el, sentence) {
+  clearSpoken();
   el.classList.add("is-spoken");
+  readingBlock(el).classList.add("is-reading-sec");
   caption.hidden = false;
   caption.textContent = sentence;
   glowNav();
+  const phone = window.matchMedia("(max-width: 700px)").matches;
+  el.scrollIntoView({ block: phone ? "start" : "center", behavior: reduced() ? "auto" : "smooth" });
 }
 function collectSentences() {
   const scope = document.getElementById("view")?.hidden ? document.getElementById("home") : document.getElementById("view");
@@ -351,7 +367,7 @@ function speakQueue(items) {
       speaking = false;
       pose("idle");
       caption.hidden = true;
-      document.querySelectorAll(".is-spoken").forEach((node) => node.classList.remove("is-spoken"));
+      clearSpoken();
       return;
     }
     const item = items[index];

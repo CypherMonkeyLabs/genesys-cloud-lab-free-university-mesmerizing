@@ -226,6 +226,41 @@ window.addEventListener("beforeinstallprompt", (ev) => {
   window.gccxInstall = ev;
 });
 
+function startAtmosphere() {
+  const hero = document.getElementById("hero-bleed");
+  if (!hero || hero.querySelector(".fx-field")) return;
+  const field = document.createElement("div");
+  field.className = "fx-field";
+  field.setAttribute("aria-hidden", "true");
+  for (let i = 0; i < 16; i += 1) {
+    const dot = document.createElement("i");
+    dot.style.left = (6 + ((i * 17) % 88)) + "%";
+    dot.style.top = (8 + ((i * 23) % 62)) + "%";
+    dot.style.animationDelay = (-(i * 0.7)) + "s";
+    dot.style.animationDuration = (7 + (i % 5)) + "s";
+    field.appendChild(dot);
+  }
+  const stage = document.createElement("div");
+  stage.className = "hero-3d";
+  stage.setAttribute("aria-hidden", "true");
+  stage.innerHTML = '<div class="obj o1"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="obj o2"><i></i><i></i><i></i></div><div class="obj o3"><i></i><i></i><i></i></div>';
+  hero.appendChild(field);
+  hero.appendChild(stage);
+  if (document.documentElement.dataset.reduce === "1" || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  let frame = 0;
+  window.addEventListener("scroll", () => {
+    if (frame) return;
+    frame = requestAnimationFrame(() => {
+      frame = 0;
+      const y = Math.min(window.scrollY, 360);
+      field.style.transform = "translate3d(0," + (y * 0.16) + "px,0)";
+      const canvas = document.getElementById("hero-canvas");
+      if (canvas) canvas.style.transform = "translate3d(0," + (y * 0.07) + "px,0)";
+    });
+  }, { passive: true });
+}
+
 window.gccxDecorate = decorate;
 wireDisplay();
 decorate(document.getElementById("home"));
+startAtmosphere();

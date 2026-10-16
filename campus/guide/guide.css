@@ -106,9 +106,15 @@ body.greet-open .bot-root { visibility: hidden; }
   cursor: pointer;
   color: #1b1230;
 }
+.bot-voice-row { display: flex; margin: 8px 0; }
+.bot-voice-row label { display: flex; align-items: center; gap: 8px; width: 100%; font-weight: 800; color: #1b1230; }
+.bot-voice-row select { flex: 1 1 auto; min-width: 0; }
 .bot-more .bot-voice { padding: 0 12px 12px; }
 .bot-voice label, .bot-panel .muted, .bot-greet-card p { color: #1b1230; }
-.bot-form input[type="text"] { flex: 1 1 140px; }
+.bot-form input[type="text"] { flex: 1 1 140px; min-width: 0; }
+@media (max-width: 700px) {
+  .bot-form input[type="text"] { flex: 1 1 100%; }
+}
 .bot-greet {
   position: fixed;
   inset: 0;
@@ -176,9 +182,13 @@ body.menu-open .bot-panel,
 body.menu-open .bot-greet,
 body.menu-open .bot-nudge { visibility: hidden; }
 @media (max-width: 700px) {
-  .bot-root { width: 64px; height: 72px; top: calc(var(--chrome-h, 56px) + 8px) !important; bottom: auto !important; right: 8px !important; }
+  .bot-root { width: 64px; height: 72px; top: calc(var(--chrome-h, 56px) + 18px) !important; bottom: auto !important; right: 8px !important; }
   .bot-launcher { width: 64px; height: 72px; }
   .bot-root.is-open .bot-launcher { visibility: hidden; }
+  .bot-form { display: grid; grid-template-columns: auto 1fr auto; align-items: center; }
+  .bot-form input[type="text"] { grid-column: 1 / -1; grid-row: 1; }
+  #bot-mic { grid-row: 2; }
+  #bot-form button[type="submit"] { grid-column: 3; grid-row: 2; }
   .sheet-handle {
     display: block;
     width: 52px;
@@ -191,7 +201,7 @@ body.menu-open .bot-nudge { visibility: hidden; }
     position: fixed;
     left: 0;
     right: 0;
-    bottom: var(--bar-h, 72px);
+    bottom: calc(var(--bar-h, 64px) + 16px);
     width: auto;
     max-height: 60vh;
     border-radius: 18px 18px 0 0;

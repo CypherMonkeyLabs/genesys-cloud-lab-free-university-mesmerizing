@@ -1,4 +1,4 @@
-const CACHE = "gccx-lab-v10";
+const CACHE = "gccx-lab-v11";
 const SHELL = [
   "./",
   "./index.html",
