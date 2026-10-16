@@ -91,6 +91,7 @@ root.innerHTML = `
     <button type="button" data-path="ten">Finish in 10 minutes</button>
     <button type="button" data-path="full">Full course</button>
     <button type="button" data-path="down">Just download</button>
+    <button type="button" id="bot-read">Read along</button>
   </div>
   <div class="bot-cards" id="bot-cards"></div>
   <div class="bot-voice-row">
@@ -102,7 +103,6 @@ root.innerHTML = `
     <div class="bot-voice">
       <label>Rate <input id="bot-rate" type="range" min="0.8" max="1.2" step="0.05" value="1" aria-label="Speaking rate"></label>
       <label>Pitch <input id="bot-pitch" type="range" min="0.8" max="1.2" step="0.05" value="1" aria-label="Speaking pitch"></label>
-      <button type="button" id="bot-read">Read along</button>
       <button type="button" id="bot-pause">Pause</button>
       <button type="button" id="bot-stop">Stop</button>
       <label class="check"><input id="bot-ambient" type="checkbox"> Soft sound, off until you turn it on</label>
@@ -247,6 +247,14 @@ function dock() {
   restorePos();
 }
 function restorePos() {
+  const phone = window.matchMedia("(max-width: 700px)").matches;
+  if (phone) {
+    root.style.left = "";
+    root.style.top = "";
+    root.style.right = "";
+    root.style.bottom = "";
+    return;
+  }
   try {
     const saved = JSON.parse(localStorage.getItem(POS_KEY) || "null");
     if (!saved || !saved.left) return;
@@ -255,6 +263,31 @@ function restorePos() {
     root.style.right = "auto";
     root.style.bottom = "auto";
   } catch (err) { /* keep the dock */ }
+}
+function overlaps(a, b) {
+  return !(a.right < b.left + 1 || a.left > b.right - 1 || a.bottom < b.top + 1 || a.top > b.bottom - 1);
+}
+function parkOffTitle() {
+  const phone = window.matchMedia("(max-width: 700px)").matches;
+  if (!phone || !panel.hidden) return;
+  root.style.left = "";
+  root.style.top = "";
+  root.style.right = "";
+  root.style.bottom = "";
+  const box = root.getBoundingClientRect();
+  const guards = document.querySelectorAll("#home h1, #home .kicker, #home .greet, #home .lede, #view h1, #view .lede");
+  let covered = false;
+  let floor = 0;
+  guards.forEach((el) => {
+    const rect = el.getBoundingClientRect();
+    if (rect.width < 8 || rect.height < 8) return;
+    if (rect.top < window.innerHeight && rect.bottom > floor) floor = rect.bottom;
+    if (overlaps(box, rect)) covered = true;
+  });
+  if (!covered) return;
+  const top = Math.min(window.innerHeight - box.height - 8, Math.max(8, floor + 12));
+  root.style.top = Math.round(top) + "px";
+  root.style.bottom = "auto";
 }
 function lift() {
   const phone = window.matchMedia("(max-width: 700px)").matches;
@@ -510,7 +543,11 @@ function wireDrag() {
       window.removeEventListener("pointermove", move);
       window.removeEventListener("pointerup", up);
       if (dragged) {
-        try { localStorage.setItem(POS_KEY, JSON.stringify({ left: root.style.left, top: root.style.top })); } catch (err) { /* storage off */ }
+        const phone = window.matchMedia("(max-width: 700px)").matches;
+        if (phone) parkOffTitle();
+        else {
+          try { localStorage.setItem(POS_KEY, JSON.stringify({ left: root.style.left, top: root.style.top })); } catch (err) { /* storage off */ }
+        }
       } else if (panel.hidden) openPanel();
       else closePanel();
     };
@@ -657,8 +694,8 @@ document.getElementById("tour-back").addEventListener("click", () => {
   showStep();
 });
 document.getElementById("tour-skip").addEventListener("click", () => endTour(true));
-window.addEventListener("resize", () => { if (!tour.hidden) showStep(); lift(); });
-window.addEventListener("scroll", lift, { passive: true });
+window.addEventListener("resize", () => { if (!tour.hidden) showStep(); lift(); parkOffTitle(); });
+window.addEventListener("scroll", () => { lift(); parkOffTitle(); }, { passive: true });
 document.getElementById("nav-guide")?.addEventListener("click", () => { panel.hidden ? openPanel() : closePanel(); });
 document.addEventListener("click", (ev) => {
   if (ev.target.closest("[data-replay-tour]")) {
@@ -677,6 +714,7 @@ if (window.speechSynthesis) {
 window.addEventListener("load", () => {
   restorePos();
   lift();
+  parkOffTitle();
   glowNav();
   if (reduced()) launcher.classList.add("is-still");
   if (!localStorage.getItem(TOUR_KEY)) startTour();

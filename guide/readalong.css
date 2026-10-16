@@ -1,0 +1,95 @@
+/* Talking read-along for the landing page. The closed monkey stays off the title. */
+.bot-dock {
+  position: fixed;
+  z-index: 30;
+  right: 12px;
+  bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: max-content;
+  max-width: calc(100vw - 16px);
+  pointer-events: none;
+}
+.bot-dock > * { pointer-events: auto; }
+.monkey-btn {
+  width: 112px;
+  height: 128px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.35));
+}
+.monkey-btn svg { width: 100%; height: 100%; display: block; }
+.monkey-btn .arm-r { transform-box: fill-box; transform-origin: 30% 70%; }
+.monkey-btn[data-pose="wave"] .arm-r,
+.monkey-btn[data-pose="read"] .arm-r { animation: readalong-wave 1.2s ease-in-out infinite; }
+@keyframes readalong-wave { 50% { transform: rotate(-18deg); } }
+.readalong-panel {
+  width: min(360px, calc(100vw - 16px));
+  max-height: min(46vh, 380px);
+  overflow: auto;
+  margin-bottom: 8px;
+  padding: 12px;
+  border-radius: 18px;
+  border: 2px solid #0891b2;
+  background: #ffffff;
+  color: #1b1340;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+}
+.readalong-panel[hidden] { display: none !important; }
+.readalong-panel p { margin: 0 0 10px; color: #1b1340; }
+.readalong-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.readalong-panel button,
+.readalong-panel input[type="range"] {
+  appearance: none;
+  -webkit-appearance: none;
+  font: inherit;
+  font-weight: 800;
+}
+.readalong-panel button {
+  min-height: 44px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 0;
+  background: linear-gradient(120deg, #22d3ee, #a78bfa 55%, #f472b6);
+  color: #082f49;
+  cursor: pointer;
+}
+.readalong-panel button[data-stop] {
+  background: #ede9fe;
+  color: #3b0764;
+}
+.readalong-panel label {
+  display: grid;
+  gap: 4px;
+  width: 100%;
+  margin-top: 10px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #1e1b4b;
+}
+.readalong-panel input[type="range"] {
+  width: 100%;
+  height: 10px;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #0891b2, #7c3aed);
+  accent-color: #5b21b6;
+}
+.is-spoken {
+  background: #fde047;
+  color: #1c1917;
+  border-radius: 6px;
+  box-shadow: 0 0 0 3px #fde047;
+}
+@media (max-width: 700px) {
+  .bot-dock { right: 8px; bottom: 8px; }
+  .monkey-btn { width: 56px; height: 64px; }
+  .readalong-panel { max-height: min(42vh, 320px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .monkey-btn .arm-r { animation: none; }
+}
