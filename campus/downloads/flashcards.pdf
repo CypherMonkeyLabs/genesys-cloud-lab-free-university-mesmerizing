@@ -1,0 +1,3547 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Count 37 /Kids [3 0 R 5 0 R 7 0 R 9 0 R 11 0 R 13 0 R 15 0 R 17 0 R 19 0 R 21 0 R 23 0 R 25 0 R 27 0 R 29 0 R 31 0 R 33 0 R 35 0 R 37 0 R 39 0 R 41 0 R 43 0 R 45 0 R 47 0 R 49 0 R 51 0 R 53 0 R 55 0 R 57 0 R 59 0 R 61 0 R 63 0 R 65 0 R 67 0 R 69 0 R 71 0 R 73 0 R 75 0 R] >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 77 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 1211 >>
+stream
+BT
+/F1 14 Tf
+48 760 Td
+(Signal Floor flashcards) Tj
+/F1 9 Tf
+0 -20 Td
+(Five) Tj
+0 -14 Td
+(  Standard, predictive, bullseye, preferred, conditional.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Default) Tj
+0 -14 Td
+(  Standard.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Predictive fallback) Tj
+0 -14 Td
+(  Standard.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Preferred fallback) Tj
+0 -14 Td
+(  Standard, bullseye, or conditional.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(All) Tj
+0 -14 Td
+(  Longest idle with every skill.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Best) Tj
+0 -14 Td
+(  Top 100 longest idle, then proficiency.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Disregard) Tj
+0 -14 Td
+(  Skills do not filter.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(7 days) Tj
+0 -14 Td
+(  Inactive agents drop out.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(60,000 ms) Tj
+0 -14 Td
+(  One conversation-score point.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Priority score) Tj
+0 -14 Td
+(  Value first, time second.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Cross queue) Tj
+0 -14 Td
+(  Priority-score queues take precedence.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Do not inflate) Tj
+0 -14 Td
+(  If all priorities match, you bought nothing.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(5 rings) Tj
+0 -14 Td
+(  The cap.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(2 seconds to 72 hours) Tj
+0 -14 Td
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 6 0 R /Resources << /Font << /F1 77 0 R >> >> >>
+endobj
+6 0 obj
+<< /Length 1151 >>
+stream
+BT
+/F1 14 Tf
+48 760 Td
+(Signal Floor flashcards) Tj
+/F1 9 Tf
+0 -20 Td
+(  The delay range.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(50 skills) Tj
+0 -14 Td
+(  The removal cap.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Two styles) Tj
+0 -14 Td
+(  Lower proficiency groups, or remove skills.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Member + On Queue) Tj
+0 -14 Td
+(  Both are required.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Skills) Tj
+0 -14 Td
+(  Not required for a preferred agent.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Utilization) Tj
+0 -14 Td
+(  Full means skip.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Email) Tj
+0 -14 Td
+(  Last-agent routing does not apply.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Three modes) Tj
+0 -14 Td
+(  Comparison, all interactions, 80/20 monitoring.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(80/20) Tj
+0 -14 Td
+(  Fixed.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(30 days) Tj
+0 -14 Td
+(  No traffic disables it.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Fallback) Tj
+0 -14 Td
+(  Standard.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Rule) Tj
+0 -14 Td
+(  KPI plus availability.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Five) Tj
+0 -14 Td
+(  Maximum rules.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Protect the donor) Tj
+0 -14 Td
+(  Do not steal a failing queue?s agents.) Tj
+0 -14 Td
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 8 0 R /Resources << /Font << /F1 77 0 R >> >> >>
+endobj
+8 0 obj
+<< /Length 1141 >>
+stream
+BT
+/F1 14 Tf
+48 760 Td
+(Signal Floor flashcards) Tj
+/F1 9 Tf
+0 -20 Td
+() Tj
+0 -14 Td
+(Still ACD) Tj
+0 -14 Td
+(  On Queue and utilization remain.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Defaults) Tj
+0 -14 Td
+(  1 call, 1 email, 1 callback, 4 chats, 4 messages, 4 workitems.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Alert) Tj
+0 -14 Td
+(  7?59 seconds, then Not Responding.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Auto answer) Tj
+0 -14 Td
+(  No alerting timeout. Audio alert remains.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Non-ACD) Tj
+0 -14 Td
+(  Excluded unless you opt in.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Bot) Tj
+0 -14 Td
+(  Faces the customer.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Copilot) Tj
+0 -14 Td
+(  Faces the agent.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(CX 4) Tj
+0 -14 Td
+(  Where the overview places Copilot.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(QA) Tj
+0 -14 Td
+(  STA plus a form, not a bot.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Example) Tj
+0 -14 Td
+(  Balance or branch.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Action) Tj
+0 -14 Td
+(  Call Bot Flow.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Intent) Tj
+0 -14 Td
+(  A branch in the inbound flow.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Failure) Tj
+0 -14 Td
+(  A queue.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 10 0 R /Resources << /Font << /F1 77 0 R >> >> >>
+endobj
+10 0 obj
+<< /Length 1072 >>
+stream
+BT
+/F1 14 Tf
+48 760 Td
+(Signal Floor flashcards) Tj
+/F1 9 Tf
+0 -20 Td
+(Type) Tj
+0 -14 Td
+(  Digital Bot Flow.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Action) Tj
+0 -14 Td
+(  Call Digital Bot Flow.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Error queue) Tj
+0 -14 Td
+(  Still required.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Human) Tj
+0 -14 Td
+(  Still required.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(No match) Tj
+0 -14 Td
+(  A path.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Timeout) Tj
+0 -14 Td
+(  A path.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Error) Tj
+0 -14 Td
+(  A path.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Vendor) Tj
+0 -14 Td
+(  Confirm in product. Still draw the exit.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Sources) Tj
+0 -14 Td
+(  Knowledge you maintain.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Panel) Tj
+0 -14 Td
+(  Transcript, script, next action.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Notes) Tj
+0 -14 Td
+(  Reason, resolution, possible wrap-up.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Transfer) Tj
+0 -14 Td
+(  Help can remain. Digits still must not.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(30) Tj
+0 -14 Td
+(  Named allotment on the overview.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(39) Tj
+0 -14 Td
+ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 12 0 R /Resources << /Font << /F1 77 0 R >> >> >>
+endobj
+12 0 obj
+<< /Length 1092 >>
+stream
+BT
+/F1 14 Tf
+48 760 Td
+(Signal Floor flashcards) Tj
+/F1 9 Tf
+0 -20 Td
+(  Concurrent allotment.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(20) Tj
+0 -14 Td
+(  FAQ?s evaluations per scoring token. Re-read.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Bots) Tj
+0 -14 Td
+(  No invented token price.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(GPE & GPR) Tj
+0 -14 Td
+(  Course 17671. One exam.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Digital bots) Tj
+0 -14 Td
+(  Course 18174. One exam.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(STA) Tj
+0 -14 Td
+(  A specialist row.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Codes) Tj
+0 -14 Td
+(  No invented GCX- prefix.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Explorer) Tj
+0 -14 Td
+(  Does not send.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Illustration) Tj
+0 -14 Td
+(  Not a capture.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Host) Tj
+0 -14 Td
+(  Only US East is printed here.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Secret) Tj
+0 -14 Td
+(  Never in the browser sample.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Service) Tj
+0 -14 Td
+(  Client credentials.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(User) Tj
+0 -14 Td
+(  Authorization code.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(SSO) Tj
+0 -14 Td
+(  SAML2 Bearer.) Tj
+0 -14 Td
+ET
+endstream
+endobj
+13 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 14 0 R /Resources << /Font << /F1 77 0 R >> >> >>
+endobj
+14 0 obj
+<< /Length 1129 >>
+stream
+BT
+/F1 14 Tf
+48 760 Td
+(Signal Floor flashcards) Tj
+/F1 9 Tf
+0 -20 Td
+() Tj
+0 -14 Td
+(Implicit) Tj
+0 -14 Td
+(  Deprecated after 25 May 2026.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Basic) Tj
+0 -14 Td
+(  Id and secret at the login host.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Bearer) Tj
+0 -14 Td
+(  The API host.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(users/me) Tj
+0 -14 Td
+(  Wrong grant.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Subset) Tj
+0 -14 Td
+(  No privilege escalation.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Date) Tj
+0 -14 Td
+(  25 May 2026 on the article.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(User) Tj
+0 -14 Td
+(  Code and PKCE.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Service) Tj
+0 -14 Td
+(  Client credentials.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Inventory) Tj
+0 -14 Td
+(  Including partners.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(US East) Tj
+0 -14 Td
+(  login.mypurecloud.com / api.mypurecloud.com.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(US West) Tj
+0 -14 Td
+(  login.usw2.pure.cloud. Confirm the API host.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(FedRAMP) Tj
+0 -14 Td
+(  login.use2.us-gov-pure.cloud. Confirm the API host.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Satellite) Tj
+0 -14 Td
+(  Not an org home.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+ET
+endstream
+endobj
+15 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 16 0 R /Resources << /Font << /F1 77 0 R >> >> >>
+endobj
+16 0 obj
+<< /Length 1135 >>
+stream
+BT
+/F1 14 Tf
+48 760 Td
+(Signal Floor flashcards) Tj
+/F1 9 Tf
+0 -20 Td
+(Pair) Tj
+0 -14 Td
+(  Role plus division.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(All) Tj
+0 -14 Td
+(  Org-wide, on purpose.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Home) Tj
+0 -14 Td
+(  Cannot be deleted.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Creator) Tj
+0 -14 Td
+(  Caps the client.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Client) Tj
+0 -14 Td
+(  Its own OAuth client.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Roles) Tj
+0 -14 Td
+(  Provision, not everything.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Secret) Tj
+0 -14 Td
+(  A vault.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(After) Tj
+0 -14 Td
+(  Queues and On Queue.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(200) Tj
+0 -14 Td
+(  Maximum flow name length.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Per type) Tj
+0 -14 Td
+(  Names are unique inside a type only.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Tabs) Tj
+0 -14 Td
+(  Call, message, email, chat, bot, in-queue, secure, workflow, survey, and others.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Refresh) Tj
+0 -14 Td
+(  Creation lag is expected.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Actions) Tj
+0 -14 Td
+(  Play, collect, decide, transfer, dip, disconnect.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Exit) Tj
+0 -14 Td
+ET
+endstream
+endobj
+17 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 18 0 R /Resources << /Font << /F1 77 0 R >> >> >>
+endobj
+18 0 obj
+<< /Length 1323 >>
+stream
+BT
+/F1 14 Tf
+48 760 Td
+(Signal Floor flashcards) Tj
+/F1 9 Tf
+0 -20 Td
+(  Queue, bot, or disconnect.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Secure) Tj
+0 -14 Td
+(  Blind transfer, not consultation VXML.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Data dip) Tj
+0 -14 Td
+(  A first-class Architect idea.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Publish) Tj
+0 -14 Td
+(  The default call flow is inert until then.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(No menus) Tj
+0 -14 Td
+(  In-queue call flows are tasks and states, not menus.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Email) Tj
+0 -14 Td
+(  No built-in default. Inbound response launches it.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Republish) Tj
+0 -14 Td
+(  Edits do not ride the last publish.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Data action) Tj
+0 -14 Td
+(  A call out of the flow.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Participant data) Tj
+0 -14 Td
+(  What the agent is allowed to see.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Salesforce auth) Tj
+0 -14 Td
+(  Client credentials, not username-password.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Failure branch) Tj
+0 -14 Td
+(  Required. The caller will not wait politely.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Type) Tj
+0 -14 Td
+(  Common module is its own tab.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Inputs) Tj
+0 -14 Td
+(  Pass the queue. Do not hide it.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Uniqueness) Tj
+0 -14 Td
+(  Inside the common-module type.) Tj
+0 -14 Td
+ET
+endstream
+endobj
+19 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 20 0 R /Resources << /Font << /F1 77 0 R >> >> >>
+endobj
+20 0 obj
+<< /Length 1176 >>
+stream
+BT
+/F1 14 Tf
+48 760 Td
+(Signal Floor flashcards) Tj
+/F1 9 Tf
+0 -20 Td
+() Tj
+0 -14 Td
+(In-queue) Tj
+0 -14 Td
+(  No reusable tasks there.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Purpose) Tj
+0 -14 Td
+(  Hide a sensitive entry from recording and from the agent.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Blind) Tj
+0 -14 Td
+(  Not a consultation VXML transfer.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Do not log) Tj
+0 -14 Td
+(  Participant data would leak the digits.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Policy) Tj
+0 -14 Td
+(  Still decides whether the rest of the call is recorded.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Two bot types) Tj
+0 -14 Td
+(  Dialog Engine and digital.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Call action) Tj
+0 -14 Td
+(  Match the action to the type.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Failure) Tj
+0 -14 Td
+(  Always a queue.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Insights) Tj
+0 -14 Td
+(  After publish, read what ran.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Save) Tj
+0 -14 Td
+(  Draft.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Publish) Tj
+0 -14 Td
+(  Runtime version.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Route) Tj
+0 -14 Td
+(  What actually invokes it.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Division) Tj
+0 -14 Td
+(  Who is allowed to see it.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+ET
+endstream
+endobj
+21 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 22 0 R /Resources << /Font << /F1 77 0 R >> >> >>
+endobj
+22 0 obj
+<< /Length 1134 >>
+stream
+BT
+/F1 14 Tf
+48 760 Td
+(Signal Floor flashcards) Tj
+/F1 9 Tf
+0 -20 Td
+(You bring) Tj
+0 -14 Td
+(  The carrier contract.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Public) Tj
+0 -14 Td
+(  Address and ports.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(RTP) Tj
+0 -14 Td
+(  Across the internet.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Emergency) Tj
+0 -14 Td
+(  Not copied from GCV.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Two types) Tj
+0 -14 Td
+(  Carrier and PBX.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Three carrier subtypes) Tj
+0 -14 Td
+(  Generic, Verizon, WhatsApp Business Calling.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Base first) Tj
+0 -14 Td
+(  Advanced only when required.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Message flow) Tj
+0 -14 Td
+(  A different object from the WhatsApp calling trunk.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Order) Tj
+0 -14 Td
+(  Location, trunk, route, plans.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(DCVP) Tj
+0 -14 Td
+(  For new trunks.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Assign) Tj
+0 -14 Td
+(  Default routes are not finished.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Location) Tj
+0 -14 Td
+(  Not optional.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Test first) Tj
+0 -14 Td
+(  A new trunk.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(ACL) Tj
+0 -14 Td
+ET
+endstream
+endobj
+23 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 24 0 R /Resources << /Font << /F1 77 0 R >> >> >>
+endobj
+24 0 obj
+<< /Length 1231 >>
+stream
+BT
+/F1 14 Tf
+48 760 Td
+(Signal Floor flashcards) Tj
+/F1 9 Tf
+0 -20 Td
+(  Egress ranges.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Trust) Tj
+0 -14 Td
+(  Amazon root CAs and ciphers.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Then toggle) Tj
+0 -14 Td
+(  High capacity outbound, then ingress targets.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(200) Tj
+0 -14 Td
+(  Plans per site.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(DID) Tj
+0 -14 Td
+(  No custom plan required for basic routing.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(988) Tj
+0 -14 Td
+(  Default plan to +18002738255. Re-read before you depend on it.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Normalize) Tj
+0 -14 Td
+(  Intra-country and inter-country. Not digit length.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(200 OK) Tj
+0 -14 Td
+(  Dialog, not audio.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Monitor page) Tj
+0 -14 Td
+(  Cloud media.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Far end) Tj
+0 -14 Td
+(  ACL, CA, ingress.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Insights) Tj
+0 -14 Td
+(  The flow can be innocent.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(GCV) Tj
+0 -14 Td
+(  Genesys is the carrier. Read the region and country tables.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(BYOC) Tj
+0 -14 Td
+(  You are the carrier?s customer.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Emergency) Tj
+0 -14 Td
+(  Does not cross over by itself.) Tj
+0 -14 Td
+ET
+endstream
+endobj
+25 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 26 0 R /Resources << /Font << /F1 77 0 R >> >> >>
+endobj
+26 0 obj
+<< /Length 1074 >>
+stream
+BT
+/F1 14 Tf
+48 760 Td
+(Signal Floor flashcards) Tj
+/F1 9 Tf
+0 -20 Td
+() Tj
+0 -14 Td
+(Features) Tj
+0 -14 Td
+(  CX voice features are not the same decision as the trunk.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Listing) Tj
+0 -14 Td
+(  A candidate.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Install) Tj
+0 -14 Td
+(  The moment it exists.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Client) Tj
+0 -14 Td
+(  Scope it.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Unknown CRM) Tj
+0 -14 Td
+(  Marketplace, not fiction.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Embed) Tj
+0 -14 Td
+(  Pop, dial, log.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Assist) Tj
+0 -14 Td
+(  As the page states.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Data action) Tj
+0 -14 Td
+(  Separate OAuth.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Schema) Tj
+0 -14 Td
+(  Yours to map.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Leave) Tj
+0 -14 Td
+(  Username and password.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Bring) Tj
+0 -14 Td
+(  Key, secret, My Domain.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Keep) Tj
+0 -14 Td
+(  The action body, then re-test.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Other page) Tj
+0 -14 Td
+(  CX Cloud OAuth settings.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+ET
+endstream
+endobj
+27 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 28 0 R /Resources << /Font << /F1 77 0 R >> >> >>
+endobj
+28 0 obj
+<< /Length 1034 >>
+stream
+BT
+/F1 14 Tf
+48 760 Td
+(Signal Floor flashcards) Tj
+/F1 9 Tf
+0 -20 Td
+(Source) Tj
+0 -14 Td
+(  The Zendesk article.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Not) Tj
+0 -14 Td
+(  The Salesforce My Domain steps.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Client) Tj
+0 -14 Td
+(  If it calls the API.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Gap) Tj
+0 -14 Td
+(  Say unconfirmed.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Unknown) Tj
+0 -14 Td
+(  No invented list.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Build) Tj
+0 -14 Td
+(  OAuth and data actions.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Timeout) Tj
+0 -14 Td
+(  The call continues.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Cite) Tj
+0 -14 Td
+(  A page you opened.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Timeout) Tj
+0 -14 Td
+(  Then queue.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Status) Tj
+0 -14 Td
+(  Name the CRM.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(403) Tj
+0 -14 Td
+(  Check the division pair.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Pop) Tj
+0 -14 Td
+(  Can fail while ACD works.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Path) Tj
+0 -14 Td
+(  Entry, flow, queue, agent.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Neighbors) Tj
+0 -14 Td
+ET
+endstream
+endobj
+29 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 30 0 R /Resources << /Font << /F1 77 0 R >> >> >>
+endobj
+30 0 obj
+<< /Length 1055 >>
+stream
+BT
+/F1 14 Tf
+48 760 Td
+(Signal Floor flashcards) Tj
+/F1 9 Tf
+0 -20 Td
+(  WEM, CRM, AI.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Packages) Tj
+0 -14 Td
+(  CX 1 through CX 4.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Toggles) Tj
+0 -14 Td
+(  A picture, not a switch on your org.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(WFM) Tj
+0 -14 Td
+(  Schedules.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(QM) Tj
+0 -14 Td
+(  Forms and recordings.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(E911) Tj
+0 -14 Td
+(  A tested route.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Glossary) Tj
+0 -14 Td
+(  A pointer, not the law.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Two links) Tj
+0 -14 Td
+(  Cisco and Genesys.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Caps) Tj
+0 -14 Td
+(  Stay on their own page.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Webex) Tj
+0 -14 Td
+(  Attach or abstain.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(CUCM) Tj
+0 -14 Td
+(  Still the PBX.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(GC-GCP) Tj
+0 -14 Td
+(  Professional. One exam.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(GC-GCD) Tj
+0 -14 Td
+(  Developer. One exam.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Specialists) Tj
+0 -14 Td
+(  Names, not invented codes.) Tj
+0 -14 Td
+ET
+endstream
+endobj
+31 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 32 0 R /Resources << /Font << /F1 77 0 R >> >> >>
+endobj
+32 0 obj
+<< /Length 1073 >>
+stream
+BT
+/F1 14 Tf
+48 760 Td
+(Signal Floor flashcards) Tj
+/F1 9 Tf
+0 -20 Td
+() Tj
+0 -14 Td
+(Announcement) Tj
+0 -14 Td
+(  Webcam and practice. Re-read.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Object) Tj
+0 -14 Td
+(  Name it.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Limit) Tj
+0 -14 Td
+(  Or look it up.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Cite) Tj
+0 -14 Td
+(  A real article.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Abstain) Tj
+0 -14 Td
+(  EOL, unconfirmed CRMs, Webex.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Prices) Tj
+0 -14 Td
+(  Link only.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(IPs) Tj
+0 -14 Td
+(  Current article only.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Codes) Tj
+0 -14 Td
+(  Catalog only.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Conflict) Tj
+0 -14 Td
+(  The live page wins.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Group) Tj
+0 -14 Td
+(  Share phones and trunks.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Inherit) Tj
+0 -14 Td
+(  The Edge takes the group?s phone trunks.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Cloud vs premises) Tj
+0 -14 Td
+(  AWS versus an Edge.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Emergency) Tj
+0 -14 Td
+(  Still your carrier if the trunk is BYOC.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+ET
+endstream
+endobj
+33 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 34 0 R /Resources << /Font << /F1 77 0 R >> >> >>
+endobj
+34 0 obj
+<< /Length 1122 >>
+stream
+BT
+/F1 14 Tf
+48 760 Td
+(Signal Floor flashcards) Tj
+/F1 9 Tf
+0 -20 Td
+(Same site) Tj
+0 -14 Td
+(  The preferred path.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Three exceptions) Tj
+0 -14 Td
+(  Offline, capacity, missing resource.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Low latency) Tj
+0 -14 Td
+(  What a group is for.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Plans) Tj
+0 -14 Td
+(  Live on the site.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Inherit) Tj
+0 -14 Td
+(  Confirm it.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Pin) Tj
+0 -14 Td
+(  An override with a reason.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(WebRTC) Tj
+0 -14 Td
+(  A phone trunk.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Test) Tj
+0 -14 Td
+(  Both Edges.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Three exceptions) Tj
+0 -14 Td
+(  Offline, capacity, missing resource.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Cloud path) Tj
+0 -14 Td
+(  Independent of the Edge.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Nowhere to go) Tj
+0 -14 Td
+(  The other site must hold the resource.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Steady state) Tj
+0 -14 Td
+(  Overflow should not be normal.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Per number) Tj
+0 -14 Td
+(  Name the model.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Cloud) Tj
+0 -14 Td
+ET
+endstream
+endobj
+35 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 36 0 R /Resources << /Font << /F1 77 0 R >> >> >>
+endobj
+36 0 obj
+<< /Length 1143 >>
+stream
+BT
+/F1 14 Tf
+48 760 Td
+(Signal Floor flashcards) Tj
+/F1 9 Tf
+0 -20 Td
+(  Public carrier, internet RTP.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Premises) Tj
+0 -14 Td
+(  Edge, local trunks.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(GCV) Tj
+0 -14 Td
+(  Genesys is the carrier.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(WebRTC) Tj
+0 -14 Td
+(  A phone trunk.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Path) Tj
+0 -14 Td
+(  VPN, split, or local. Choose.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Console) Tj
+0 -14 Td
+(  Edge or cloud media.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Flow last) Tj
+0 -14 Td
+(  If signaling is already fine.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Group) Tj
+0 -14 Td
+(  Low latency.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Inherit) Tj
+0 -14 Td
+(  Every Edge.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Site) Tj
+0 -14 Td
+(  Trunk, plans, location.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Two tests) Tj
+0 -14 Td
+(  Edge down, and a cloud DID.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Warning) Tj
+0 -14 Td
+(  BYOC emergency is not Genesys? service.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(No copy) Tj
+0 -14 Td
+(  GCV records do not move to the BYOC carrier.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Internet) Tj
+0 -14 Td
+(  Power and broadband can remove the path.) Tj
+0 -14 Td
+ET
+endstream
+endobj
+37 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 38 0 R /Resources << /Font << /F1 77 0 R >> >> >>
+endobj
+38 0 obj
+<< /Length 1106 >>
+stream
+BT
+/F1 14 Tf
+48 760 Td
+(Signal Floor flashcards) Tj
+/F1 9 Tf
+0 -20 Td
+() Tj
+0 -14 Td
+(Configure) Tj
+0 -14 Td
+(  Number plan and emergency route.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(911 and 933) Tj
+0 -14 Td
+(  US and Canada defaults.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(142) Tj
+0 -14 Td
+(  Swiss example.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Route) Tj
+0 -14 Td
+(  Still required.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(988) Tj
+0 -14 Td
+(  Default destination is documented. Re-read it.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Physical) Tj
+0 -14 Td
+(  Not a nickname.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Carrier) Tj
+0 -14 Td
+(  You send it for BYOC.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Site) Tj
+0 -14 Td
+(  Attaches the location.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Door test) Tj
+0 -14 Td
+(  Could someone find it.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Row) Tj
+0 -14 Td
+(  DID, toll-free, domestic, international.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(FedRAMP) Tj
+0 -14 Td
+(  US voice services.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(ESR) Tj
+0 -14 Td
+(  Boundary is the commitment.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Coming) Tj
+0 -14 Td
+(  Stay coming until the page changes.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+ET
+endstream
+endobj
+39 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 40 0 R /Resources << /Font << /F1 77 0 R >> >> >>
+endobj
+40 0 obj
+<< /Length 1319 >>
+stream
+BT
+/F1 14 Tf
+48 760 Td
+(Signal Floor flashcards) Tj
+/F1 9 Tf
+0 -20 Td
+(Intra-country) Tj
+0 -14 Td
+(  Adds the country code.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Extension) Tj
+0 -14 Td
+(  No rewrite.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(E.164 list) Tj
+0 -14 Td
+(  Plus required, no rewrite.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Twice) Tj
+0 -14 Td
+(  Possible, and often a bug.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Simulator) Tj
+0 -14 Td
+(  First.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Carrier) Tj
+0 -14 Td
+(  Owns the live method.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Outage) Tj
+0 -14 Td
+(  Write the broadband-down action.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Log) Tj
+0 -14 Td
+(  Model, route, result.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(CX 1) Tj
+0 -14 Td
+(  Voice package: inbound and outbound voice, secure IVR, callbacks, campaigns.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(CX 3) Tj
+0 -14 Td
+(  Adds WEM and voice transcription minutes on top of CX 1 and CX 2.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(CX 4 tokens) Tj
+0 -14 Td
+(  30 named, 39 concurrent, as published on the overview.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Old matrix) Tj
+0 -14 Td
+(  A dated PDF is not the source for the current CX 4 description.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Core vs satellite) Tj
+0 -14 Td
+(  Core hosts the org. Satellite hosts media paths and cannot be the org region.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(US East login) Tj
+0 -14 Td
+ET
+endstream
+endobj
+41 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 42 0 R /Resources << /Font << /F1 77 0 R >> >> >>
+endobj
+42 0 obj
+<< /Length 1481 >>
+stream
+BT
+/F1 14 Tf
+48 760 Td
+(Signal Floor flashcards) Tj
+/F1 9 Tf
+0 -20 Td
+(  https://login.mypurecloud.com for us-east-1.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(US West login) Tj
+0 -14 Td
+(  https://login.usw2.pure.cloud for us-west-2.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Voice coverage) Tj
+0 -14 Td
+(  Read the Genesys Cloud Voice region article before you promise numbers.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(SIP) Tj
+0 -14 Td
+(  RFC 3261. Session setup, not the audio packets.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(RTP) Tj
+0 -14 Td
+(  RFC 3550. The audio stream.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(SRTP) Tj
+0 -14 Td
+(  RFC 3711. Encrypted RTP.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(DTMF) Tj
+0 -14 Td
+(  RFC 4733 telephone events, when digits must not depend on in-band audio.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Queue) Tj
+0 -14 Td
+(  The waiting line. Unique name, no special characters, 5,000 members.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(On Queue) Tj
+0 -14 Td
+(  The status that makes an agent eligible for ACD work.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Routing method) Tj
+0 -14 Td
+(  Standard, predictive, bullseye, preferred, or conditional group.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Alerting) Tj
+0 -14 Td
+(  7 to 59 seconds on voice, then Not Responding.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(In-queue call) Tj
+0 -14 Td
+(  A default exists. It does nothing until you publish it.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(In-queue email) Tj
+0 -14 Td
+(  No built-in default. Create the flow.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Default voice cap) Tj
+0 -14 Td
+(  One call.) Tj
+0 -14 Td
+ET
+endstream
+endobj
+43 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 44 0 R /Resources << /Font << /F1 77 0 R >> >> >>
+endobj
+44 0 obj
+<< /Length 1435 >>
+stream
+BT
+/F1 14 Tf
+48 760 Td
+(Signal Floor flashcards) Tj
+/F1 9 Tf
+0 -20 Td
+() Tj
+0 -14 Td
+(Default message cap) Tj
+0 -14 Td
+(  Up to four messages.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Home) Tj
+0 -14 Td
+(  Always present. Cannot be deleted. Objects can move.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Move, not copy) Tj
+0 -14 Td
+(  A queue belongs to one division.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Role + division) Tj
+0 -14 Td
+(  That pair is what lets a user see the objects.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Transactional) Tj
+0 -14 Td
+(  Conversations and recordings carry division context too.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Catalog header) Tj
+0 -14 Td
+(  GC-GCP professional, GC-GCD developer.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Do not invent codes) Tj
+0 -14 Td
+(  Specialist names are cited. Extra codes are not.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Client credentials) Tj
+0 -14 Td
+(  Not a user. /api/v2/users/me is out of scope for that token.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Fair use) Tj
+0 -14 Td
+(  Link the policy. Do not freeze a price in a lesson.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Order) Tj
+0 -14 Td
+(  Location, trunk, outbound route, number plan.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(DCVP) Tj
+0 -14 Td
+(  Use it for new BYOC Cloud trunks.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Public address) Tj
+0 -14 Td
+(  The carrier or PBX must be reachable.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Emergency warning) Tj
+0 -14 Td
+(  BYOC emergency is your carrier?s service, not Genesys?.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+ET
+endstream
+endobj
+45 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 46 0 R /Resources << /Font << /F1 77 0 R >> >> >>
+endobj
+46 0 obj
+<< /Length 1031 >>
+stream
+BT
+/F1 14 Tf
+48 760 Td
+(Signal Floor flashcards) Tj
+/F1 9 Tf
+0 -20 Td
+(Rebuild) Tj
+0 -14 Td
+(  The default.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Studio) Tj
+0 -14 Td
+(  A map, not a converter.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Journey) Tj
+0 -14 Td
+(  Sentences first.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Publish) Tj
+0 -14 Td
+(  Or it does not run.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Strategy) Tj
+0 -14 Td
+(  Behavior, not a file format.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Queues) Tj
+0 -14 Td
+(  Recreated.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Date) Tj
+0 -14 Td
+(  A Genesys notice.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(WEM) Tj
+0 -14 Td
+(  Its own workstream.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Menu) Tj
+0 -14 Td
+(  Architect tasks.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Hold) Tj
+0 -14 Td
+(  Published in-queue flow.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Dip) Tj
+0 -14 Td
+(  Data action plus failure.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Cisco) Tj
+0 -14 Td
+(  Source of the old behavior only.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Members) Tj
+0 -14 Td
+(  Who may answer.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Skills) Tj
+0 -14 Td
+ET
+endstream
+endobj
+47 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 48 0 R /Resources << /Font << /F1 77 0 R >> >> >>
+endobj
+48 0 obj
+<< /Length 1012 >>
+stream
+BT
+/F1 14 Tf
+48 760 Td
+(Signal Floor flashcards) Tj
+/F1 9 Tf
+0 -20 Td
+(  What they must match.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Rings) Tj
+0 -14 Td
+(  Up to five.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Analogy) Tj
+0 -14 Td
+(  Not a converter.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Script) Tj
+0 -14 Td
+(  Architect.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(CSQ) Tj
+0 -14 Td
+(  Queue.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Desktop) Tj
+0 -14 Td
+(  Workspace or a cited embed.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Test) Tj
+0 -14 Td
+(  Before the trunk cut.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Cluster) Tj
+0 -14 Td
+(  Stays until you remove it.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Cloud) Tj
+0 -14 Td
+(  BYOC and DCVP.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Edge) Tj
+0 -14 Td
+(  If phones are local.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Emergency) Tj
+0 -14 Td
+(  A real test, not a guess.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Blank) Tj
+0 -14 Td
+(  Better than a bad link.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Door) Tj
+0 -14 Td
+(  BYOC or Edge.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Flows) Tj
+0 -14 Td
+(  Rebuilt.) Tj
+0 -14 Td
+ET
+endstream
+endobj
+49 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 50 0 R /Resources << /Font << /F1 77 0 R >> >> >>
+endobj
+50 0 obj
+<< /Length 1149 >>
+stream
+BT
+/F1 14 Tf
+48 760 Td
+(Signal Floor flashcards) Tj
+/F1 9 Tf
+0 -20 Td
+() Tj
+0 -14 Td
+(Week) Tj
+0 -14 Td
+(  Re-read both sides.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Lab) Tj
+0 -14 Td
+(  First call.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Emergency) Tj
+0 -14 Td
+(  Before the DID.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(One number) Tj
+0 -14 Td
+(  Then the rest.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Rollback) Tj
+0 -14 Td
+(  A person and a clock.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Org home) Tj
+0 -14 Td
+(  One core region and its login URL.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Satellite) Tj
+0 -14 Td
+(  Media and recordings, not the org.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(GCV) Tj
+0 -14 Td
+(  Separate availability table.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(FedRAMP) Tj
+0 -14 Td
+(  A different login host and US-only voice.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Pair) Tj
+0 -14 Td
+(  Role plus division, not role alone.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Subset) Tj
+0 -14 Td
+(  An OAuth client cannot exceed its creator.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(/users/me) Tj
+0 -14 Td
+(  Needs a user token.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Implicit) Tj
+0 -14 Td
+(  Deprecated after 25 May 2026 in the OAuth article.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+ET
+endstream
+endobj
+51 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 52 0 R /Resources << /Font << /F1 77 0 R >> >> >>
+endobj
+52 0 obj
+<< /Length 1217 >>
+stream
+BT
+/F1 14 Tf
+48 760 Td
+(Signal Floor flashcards) Tj
+/F1 9 Tf
+0 -20 Td
+(30 minutes) Tj
+0 -14 Td
+(  Shorter peaks are ignored.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(One org) Tj
+0 -14 Td
+(  Do not sum peaks across orgs.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Highest level) Tj
+0 -14 Td
+(  The priciest assignment in the period wins.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Fair use) Tj
+0 -14 Td
+(  Monthly pool, no rollover. Read the live table.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(CX 1) Tj
+0 -14 Td
+(  Voice.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(CX 2) Tj
+0 -14 Td
+(  Digital and quality.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(CX 3) Tj
+0 -14 Td
+(  WEM and transcription minutes.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Copilot) Tj
+0 -14 Td
+(  Knowledge, transcript, scripts, next best action, forms, notes.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(5,000) Tj
+0 -14 Td
+(  Members per queue.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Three joins) Tj
+0 -14 Td
+(  User, division grant, queue membership.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Name) Tj
+0 -14 Td
+(  Unique, no special characters.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Phones) Tj
+0 -14 Td
+(  Edge group work, not the first org task.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Pool) Tj
+0 -14 Td
+(  Monthly, across users, no rollover.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Meters) Tj
+0 -14 Td
+ET
+endstream
+endobj
+53 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 54 0 R /Resources << /Font << /F1 77 0 R >> >> >>
+endobj
+54 0 obj
+<< /Length 1231 >>
+stream
+BT
+/F1 14 Tf
+48 760 Td
+(Signal Floor flashcards) Tj
+/F1 9 Tf
+0 -20 Td
+(  IVR, API, storage, BYOC, transcription, SMS, and others.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Do not copy rates) Tj
+0 -14 Td
+(  The policy page is the quote.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(API) Tj
+0 -14 Td
+(  Client-credentials calls still count.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Publish) Tj
+0 -14 Td
+(  Or the hold experience does not exist.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Narrow client) Tj
+0 -14 Td
+(  Subset of the creator, one division.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Package) Tj
+0 -14 Td
+(  Match CX 1?4 to the scope.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Home) Tj
+0 -14 Td
+(  Keep it.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Site) Tj
+0 -14 Td
+(  Visitor behavior.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Not ACD) Tj
+0 -14 Td
+(  Predictive routing is the queue method.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Offers) Tj
+0 -14 Td
+(  Messaging, chat, content, flow.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Outcomes) Tj
+0 -14 Td
+(  On a published deprecation.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Messaging) Tj
+0 -14 Td
+(  Messenger snippet.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Web chat) Tj
+0 -14 Td
+(  Legacy tracking snippet.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(One of them) Tj
+0 -14 Td
+(  Remove the snippet when Messenger tracks.) Tj
+0 -14 Td
+ET
+endstream
+endobj
+55 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 56 0 R /Resources << /Font << /F1 77 0 R >> >> >>
+endobj
+56 0 obj
+<< /Length 1127 >>
+stream
+BT
+/F1 14 Tf
+48 760 Td
+(Signal Floor flashcards) Tj
+/F1 9 Tf
+0 -20 Td
+() Tj
+0 -14 Td
+(Live Now) Tj
+0 -14 Td
+(  Proof that events arrived.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(One condition) Tj
+0 -14 Td
+(  Minimum.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(More conditions) Tj
+0 -14 Td
+(  Fewer visitors.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Not shared) Tj
+0 -14 Td
+(  Copy what you need.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Examples) Tj
+0 -14 Td
+(  Not a complete attribute list.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Action) Tj
+0 -14 Td
+(  Messaging, chat, content, or flow.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Trigger) Tj
+0 -14 Td
+(  Segment, activity, or outcome.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Priority) Tj
+0 -14 Td
+(  Chooses among qualified maps.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Queue) Tj
+0 -14 Td
+(  Optional, for chat and messaging offers.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Announced) Tj
+0 -14 Td
+(  2026-05-18.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Planned end) Tj
+0 -14 Td
+(  2026-06-29.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Scoring) Tj
+0 -14 Td
+(  Not in Customer Outcomes.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Unverified live) Tj
+0 -14 Td
+(  This lab did not open an org.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+ET
+endstream
+endobj
+57 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 58 0 R /Resources << /Font << /F1 77 0 R >> >> >>
+endobj
+58 0 obj
+<< /Length 1101 >>
+stream
+BT
+/F1 14 Tf
+48 760 Td
+(Signal Floor flashcards) Tj
+/F1 9 Tf
+0 -20 Td
+(Four actions) Tj
+0 -14 Td
+(  Messaging, chat, content, flow.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(No field list) Tj
+0 -14 Td
+(  Open the Salesforce topic.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Skipped branch) Tj
+0 -14 Td
+(  getJourneyOutcome.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Fallback) Tj
+0 -14 Td
+(  Queue or another offer.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Live Now) Tj
+0 -14 Td
+(  Events are arriving.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Activity) Tj
+0 -14 Td
+(  Devices, segments.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Map report) Tj
+0 -14 Td
+(  Did the offer run.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Outcomes) Tj
+0 -14 Td
+(  Export, then let them go.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Forms) Tj
+0 -14 Td
+(  The score.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Policy) Tj
+0 -14 Td
+(  What gets recorded.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Coach) Tj
+0 -14 Td
+(  What you do with the score.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Package) Tj
+0 -14 Td
+(  QM from CX 2. WFM from CX 3.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Weight) Tj
+0 -14 Td
+(  What moves the score.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Calibrate) Tj
+0 -14 Td
+ET
+endstream
+endobj
+59 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 60 0 R /Resources << /Font << /F1 77 0 R >> >> >>
+endobj
+60 0 obj
+<< /Length 1153 >>
+stream
+BT
+/F1 14 Tf
+48 760 Td
+(Signal Floor flashcards) Tj
+/F1 9 Tf
+0 -20 Td
+(  Graders must agree.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Observable) Tj
+0 -14 Td
+(  If it is not in the interaction, do not score it.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(AI) Tj
+0 -14 Td
+(  Does not replace the rubric.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Policy) Tj
+0 -14 Td
+(  Which calls, how long.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Screen) Tj
+0 -14 Td
+(  Agent screen, ACD.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Secure) Tj
+0 -14 Td
+(  A segment, not the policy.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Storage) Tj
+0 -14 Td
+(  A fair-use meter.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Show the score) Tj
+0 -14 Td
+(  Or it does not coach.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Appointment) Tj
+0 -14 Td
+(  A real meeting.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Dispute) Tj
+0 -14 Td
+(  A path, not a threat.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(In progress) Tj
+0 -14 Td
+(  Allowed.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Three gates) Tj
+0 -14 Td
+(  STA, QM, tokens.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Ratio) Tj
+0 -14 Td
+(  See the FAQ. Do not freeze it blindly.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(No double bill) Tj
+0 -14 Td
+(  Copilot summary reused by Virtual Supervisor.) Tj
+0 -14 Td
+ET
+endstream
+endobj
+61 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 62 0 R /Resources << /Font << /F1 77 0 R >> >> >>
+endobj
+62 0 obj
+<< /Length 1144 >>
+stream
+BT
+/F1 14 Tf
+48 760 Td
+(Signal Floor flashcards) Tj
+/F1 9 Tf
+0 -20 Td
+() Tj
+0 -14 Td
+(Rubric) Tj
+0 -14 Td
+(  Still yours.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Reason) Tj
+0 -14 Td
+(  Why the copy exists.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Lifecycle) Tj
+0 -14 Td
+(  When the copy dies.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Meter) Tj
+0 -14 Td
+(  Storage still counts.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Lab) Tj
+0 -14 Td
+(  Synthetic here. Real audio stays in the org.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Name) Tj
+0 -14 Td
+(  Unique, no special characters.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(5,000) Tj
+0 -14 Td
+(  Member cap.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Division) Tj
+0 -14 Td
+(  Chosen at create.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Copy) Tj
+0 -14 Td
+(  Review routing after.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Tag vs number) Tj
+0 -14 Td
+(  All-skills cares about the tag. Best-available cares about the number.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(7 days) Tj
+0 -14 Td
+(  Inactive agents drop out.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(WEM style) Tj
+0 -14 Td
+(  Lower proficiency, same skill.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Extra skills) Tj
+0 -14 Td
+(  Do not impersonate the required one.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+ET
+endstream
+endobj
+63 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 64 0 R /Resources << /Font << /F1 77 0 R >> >> >>
+endobj
+64 0 obj
+<< /Length 1075 >>
+stream
+BT
+/F1 14 Tf
+48 760 Td
+(Signal Floor flashcards) Tj
+/F1 9 Tf
+0 -20 Td
+(Optional) Tj
+0 -14 Td
+(  Agent may skip.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(TIMEOUT) Tj
+0 -14 Td
+(  Timer won.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(LOGOUT) Tj
+0 -14 Td
+(  Logoff setting won.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Callbacks) Tj
+0 -14 Td
+(  Always need a code.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Same division) Tj
+0 -14 Td
+(  Queue and codes.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Role) Tj
+0 -14 Td
+(  Limits the picker.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(On behalf) Tj
+0 -14 Td
+(  Inherits ACW.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Direct internal) Tj
+0 -14 Td
+(  The documented escape.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Pair) Tj
+0 -14 Td
+(  Percentage and seconds.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Per media) Tj
+0 -14 Td
+(  Voice is not email.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Routing) Tj
+0 -14 Td
+(  Conditional rules need the KPI.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(WEM) Tj
+0 -14 Td
+(  Templates should agree with the queue.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Slot) Tj
+0 -14 Td
+(  One callback by default.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(No interrupt) Tj
+0 -14 Td
+ET
+endstream
+endobj
+65 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 66 0 R /Resources << /Font << /F1 77 0 R >> >> >>
+endobj
+66 0 obj
+<< /Length 1107 >>
+stream
+BT
+/F1 14 Tf
+48 760 Td
+(Signal Floor flashcards) Tj
+/F1 9 Tf
+0 -20 Td
+(  Calls and callbacks stay apart.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Code) Tj
+0 -14 Td
+(  Required even if ACW is Optional.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Last agent) Tj
+0 -14 Td
+(  Do not promise it for inbound callbacks.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Copy) Tj
+0 -14 Td
+(  Review routing immediately.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(On Queue) Tj
+0 -14 Td
+(  The door.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(5,000) Tj
+0 -14 Td
+(  Still the cap.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Test) Tj
+0 -14 Td
+(  Before the DID.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Voice scope) Tj
+0 -14 Td
+(  IVR through voicemail, as the page lists it.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Digital) Tj
+0 -14 Td
+(  Email, message, chat.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Package) Tj
+0 -14 Td
+(  Transcription minutes at CX 3.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Tables) Tj
+0 -14 Td
+(  Re-read dialects and prices.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Label) Tj
+0 -14 Td
+(  Not a verdict.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Listen) Tj
+0 -14 Td
+(  Then coach.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Form) Tj
+0 -14 Td
+(  Still QM.) Tj
+0 -14 Td
+ET
+endstream
+endobj
+67 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 68 0 R /Resources << /Font << /F1 77 0 R >> >> >>
+endobj
+68 0 obj
+<< /Length 1059 >>
+stream
+BT
+/F1 14 Tf
+48 760 Td
+(Signal Floor flashcards) Tj
+/F1 9 Tf
+0 -20 Td
+() Tj
+0 -14 Td
+(Scope) Tj
+0 -14 Td
+(  Only queues you will read.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Phrase) Tj
+0 -14 Td
+(  The words.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Topic) Tj
+0 -14 Td
+(  One intent.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Program) Tj
+0 -14 Td
+(  The dictionary for a queue.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Test) Tj
+0 -14 Td
+(  Search before you trust a chart.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Model) Tj
+0 -14 Td
+(  Flags language.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Form) Tj
+0 -14 Td
+(  Defines the behavior.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Calibrate) Tj
+0 -14 Td
+(  Humans agree.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Automate) Tj
+0 -14 Td
+(  Only with a documented filter.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Search) Tj
+0 -14 Td
+(  Did the words exist?) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Topic) Tj
+0 -14 Td
+(  Did the dictionary include them?) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Leg) Tj
+0 -14 Td
+(  IVR, agent, voicemail.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Privacy) Tj
+0 -14 Td
+(  Transcripts stay in the org.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+ET
+endstream
+endobj
+69 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 70 0 R /Resources << /Font << /F1 77 0 R >> >> >>
+endobj
+70 0 obj
+<< /Length 1199 >>
+stream
+BT
+/F1 14 Tf
+48 760 Td
+(Signal Floor flashcards) Tj
+/F1 9 Tf
+0 -20 Td
+(Final) Tj
+0 -14 Td
+(  After the interaction.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Sooner) Tj
+0 -14 Td
+(  Notifications API.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Triggers) Tj
+0 -14 Td
+(  Only listed filters.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Streaming) Tj
+0 -14 Td
+(  Confirm the connector. Do not invent one.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(CX 3) Tj
+0 -14 Td
+(  Where WEM starts.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(WFM objects) Tj
+0 -14 Td
+(  Business units, management units, goals, plans, schedules, adherence, time off.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Sibling) Tj
+0 -14 Td
+(  QM and STA are not the schedule.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Cert) Tj
+0 -14 Td
+(  Workforce Management, with the listed course.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Business unit) Tj
+0 -14 Td
+(  Planning container.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Management unit) Tj
+0 -14 Td
+(  People you schedule.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Queue) Tj
+0 -14 Td
+(  People who can be offered work.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Align skills) Tj
+0 -14 Td
+(  Forecast what you route.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Template) Tj
+0 -14 Td
+(  The planning promise.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Queue) Tj
+0 -14 Td
+ET
+endstream
+endobj
+71 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 72 0 R /Resources << /Font << /F1 77 0 R >> >> >>
+endobj
+72 0 obj
+<< /Length 1083 >>
+stream
+BT
+/F1 14 Tf
+48 760 Td
+(Signal Floor flashcards) Tj
+/F1 9 Tf
+0 -20 Td
+(  The reported promise.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Match them) Tj
+0 -14 Td
+(  Or you staff the wrong target.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Erlang) Tj
+0 -14 Td
+(  Not claimed as the Genesys engine.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Activity) Tj
+0 -14 Td
+(  What they should be doing.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(On Queue) Tj
+0 -14 Td
+(  What ACD requires.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Membership) Tj
+0 -14 Td
+(  Still separate.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Schedule) Tj
+0 -14 Td
+(  Does not edit rings.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Intraday) Tj
+0 -14 Td
+(  Today.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Adherence) Tj
+0 -14 Td
+(  Plan versus actual.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Count On Queue) Tj
+0 -14 Td
+(  Before you edit routing.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Historical) Tj
+0 -14 Td
+(  Also documented.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Request) Tj
+0 -14 Td
+(  In WFM.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Schedule) Tj
+0 -14 Td
+(  Must show the absence.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Status) Tj
+0 -14 Td
+(  Not On Queue.) Tj
+0 -14 Td
+ET
+endstream
+endobj
+73 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 74 0 R /Resources << /Font << /F1 77 0 R >> >> >>
+endobj
+74 0 obj
+<< /Length 1169 >>
+stream
+BT
+/F1 14 Tf
+48 760 Td
+(Signal Floor flashcards) Tj
+/F1 9 Tf
+0 -20 Td
+() Tj
+0 -14 Td
+(Membership) Tj
+0 -14 Td
+(  Unchanged.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Name) Tj
+0 -14 Td
+(  Workforce Management Certification.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Prep) Tj
+0 -14 Td
+(  WEM ? Workforce Management.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Not GC-GCP) Tj
+0 -14 Td
+(  Different exam.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Practice) Tj
+0 -14 Td
+(  Genesys? own, 25?30, no voucher.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Short-term) Tj
+0 -14 Td
+(  Up to six weeks, can schedule.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Long-term) Tj
+0 -14 Td
+(  Seasonality, cannot schedule.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(AHT) Tj
+0 -14 Td
+(  Talk, hold, ACW.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Volume) Tj
+0 -14 Td
+(  Interactions offered.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Three methods) Tj
+0 -14 Td
+(  With forecast, without, or blank.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Cover the dates) Tj
+0 -14 Td
+(  Short-term weeks must include the schedule.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(One at a time) Tj
+0 -14 Td
+(  Per business unit.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Reschedule) Tj
+0 -14 Td
+(  A forecast swap does not move shifts by itself.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+ET
+endstream
+endobj
+75 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 76 0 R /Resources << /Font << /F1 77 0 R >> >> >>
+endobj
+76 0 obj
+<< /Length 576 >>
+stream
+BT
+/F1 14 Tf
+48 760 Td
+(Signal Floor flashcards) Tj
+/F1 9 Tf
+0 -20 Td
+() Tj
+0 -14 Td
+(CypherMonkey Labs) Tj
+0 -14 Td
+(© 2026 CypherMonkeyLabs ?) Tj
+0 -14 Td
+(https://cyphermonkeylabs.com) Tj
+0 -14 Td
+(https://github.com/CypherMonkeyLabs) Tj
+0 -14 Td
+(https://linktr.ee/cypherMonkey) Tj
+0 -14 Td
+(https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing) Tj
+0 -14 Td
+(This is an independent, free, learning-only student project. It respects every company and vendor, and every t) Tj
+0 -14 Td
+(MIT code. CC BY-NC-SA content. No tracking.) Tj
+0 -14 Td
+ET
+endstream
+endobj
+77 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 78
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000365 00000 n 
+0000000492 00000 n 
+0000001755 00000 n 
+0000001882 00000 n 
+0000003085 00000 n 
+0000003212 00000 n 
+0000004405 00000 n 
+0000004533 00000 n 
+0000005658 00000 n 
+0000005787 00000 n 
+0000006932 00000 n 
+0000007061 00000 n 
+0000008243 00000 n 
+0000008372 00000 n 
+0000009560 00000 n 
+0000009689 00000 n 
+0000011065 00000 n 
+0000011194 00000 n 
+0000012423 00000 n 
+0000012552 00000 n 
+0000013739 00000 n 
+0000013868 00000 n 
+0000015152 00000 n 
+0000015281 00000 n 
+0000016408 00000 n 
+0000016537 00000 n 
+0000017624 00000 n 
+0000017753 00000 n 
+0000018861 00000 n 
+0000018990 00000 n 
+0000020116 00000 n 
+0000020245 00000 n 
+0000021420 00000 n 
+0000021549 00000 n 
+0000022745 00000 n 
+0000022874 00000 n 
+0000024033 00000 n 
+0000024162 00000 n 
+0000025534 00000 n 
+0000025663 00000 n 
+0000027197 00000 n 
+0000027326 00000 n 
+0000028814 00000 n 
+0000028943 00000 n 
+0000030027 00000 n 
+0000030156 00000 n 
+0000031221 00000 n 
+0000031350 00000 n 
+0000032552 00000 n 
+0000032681 00000 n 
+0000033951 00000 n 
+0000034080 00000 n 
+0000035364 00000 n 
+0000035493 00000 n 
+0000036673 00000 n 
+0000036802 00000 n 
+0000037956 00000 n 
+0000038085 00000 n 
+0000039291 00000 n 
+0000039420 00000 n 
+0000040617 00000 n 
+0000040746 00000 n 
+0000041874 00000 n 
+0000042003 00000 n 
+0000043163 00000 n 
+0000043292 00000 n 
+0000044404 00000 n 
+0000044533 00000 n 
+0000045785 00000 n 
+0000045914 00000 n 
+0000047050 00000 n 
+0000047179 00000 n 
+0000048401 00000 n 
+0000048530 00000 n 
+0000049158 00000 n 
+trailer << /Size 78 /Root 1 0 R >>
+startxref
+49229
+%%EOF

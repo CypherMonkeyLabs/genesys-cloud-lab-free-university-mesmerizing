@@ -1957,16 +1957,16 @@
       "href": "#/",
       "keywords": [
         "github",
-        "huggingface",
-        "twitter",
-        "linkedin"
+        "website",
+        "linktree",
+        "contact"
       ],
       "synonyms": [
-        "x.com",
         "labs org",
-        "cyphermonkeylabs"
+        "cyphermonkeylabs",
+        "where are the links"
       ],
-      "answer": "Visit my GitHub is https://github.com/cipher0x9. Visit the Labs org is https://github.com/CypherMonkeyLabs. Visit Cypher Monkey Labs is https://cyphermonkeylabs.com. X is https://x.com/Cypher0x9. LinkedIn is https://www.linkedin.com/in/luckylakshmanucwebex. Hugging Face is https://huggingface.co/Cypher0x9.",
+      "answer": "Three links: the website https://cyphermonkeylabs.com, the GitHub organization https://github.com/CypherMonkeyLabs, and https://linktr.ee/cypherMonkey. Contact is the website contact section https://cyphermonkeylabs.com/#contact.",
       "source": "https://cyphermonkeylabs.com"
     },
     {

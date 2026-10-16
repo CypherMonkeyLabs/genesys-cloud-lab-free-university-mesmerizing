@@ -181,18 +181,17 @@
     }
   ],
   "cards": 480,
+  "diagrams": 63,
   "footer": [
-    "CypherMonkey Labs \u00b7 Signal Floor",
-    "\u00a9 2026 CypherMonkeyLabs",
-    "https://github.com/cipher0x9",
-    "https://github.com/CypherMonkeyLabs",
+    "CypherMonkey Labs",
+    "\u00a9 2026 CypherMonkeyLabs \ud83d\udc12",
     "https://cyphermonkeylabs.com",
-    "https://x.com/Cypher0x9",
-    "https://www.linkedin.com/in/luckylakshmanucwebex",
-    "https://huggingface.co/Cypher0x9",
+    "https://github.com/CypherMonkeyLabs",
+    "https://linktr.ee/cypherMonkey",
     "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing",
-    "Independent educational project. Not affiliated with or endorsed by any vendor.",
-    "Trademarks belong to their owners. MIT code. CC BY-NC-SA content.",
-    "Concerns: https://cyphermonkeylabs.com/#contact"
-  ]
+    "This is an independent, free, learning-only student project. It respects every company and vendor, and every trademark belongs to its owner. It is not affiliated with or endorsed by any of them. If anyone has a concern, the content will be removed or corrected promptly via https://cyphermonkeylabs.com/#contact. Nothing here is sold, and I am happy to volunteer for any organization.",
+    "MIT code. CC BY-NC-SA content. No tracking."
+  ],
+  "pptx": "downloads/genesys-cx-deck.pptx",
+  "template": "downloads/templates/lab-checklist.html"
 }

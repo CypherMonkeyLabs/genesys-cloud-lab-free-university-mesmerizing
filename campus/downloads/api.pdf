@@ -9,14 +9,14 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
 endobj
 4 0 obj
-<< /Length 1341 >>
+<< /Length 1128 >>
 stream
 BT
-/F1 16 Tf
+/F1 14 Tf
 48 760 Td
 (API and security) Tj
-/F1 10 Tf
-0 -22 Td
+/F1 9 Tf
+0 -20 Td
 (Client credentials are for a service. The token cannot call /api/v2/users/me. User-facing) Tj
 0 -14 Td
 (apps use authorization code with PKCE. Token Implicit Grant is documented as deprecated) Tj
@@ -35,29 +35,21 @@ BT
 0 -14 Td
 () Tj
 0 -14 Td
-(CypherMonkey Labs · Signal Floor) Tj
+(CypherMonkey Labs) Tj
 0 -14 Td
-(© 2026 CypherMonkeyLabs) Tj
-0 -14 Td
-(https://github.com/cipher0x9) Tj
-0 -14 Td
-(https://github.com/CypherMonkeyLabs) Tj
+(© 2026 CypherMonkeyLabs ?) Tj
 0 -14 Td
 (https://cyphermonkeylabs.com) Tj
 0 -14 Td
-(https://x.com/Cypher0x9) Tj
+(https://github.com/CypherMonkeyLabs) Tj
 0 -14 Td
-(https://www.linkedin.com/in/luckylakshmanucwebex) Tj
-0 -14 Td
-(https://huggingface.co/Cypher0x9) Tj
+(https://linktr.ee/cypherMonkey) Tj
 0 -14 Td
 (https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing) Tj
 0 -14 Td
-(Independent educational project. Not affiliated with or endorsed by any vendor.) Tj
+(This is an independent, free, learning-only student project. It respects every company and vendor, and every t) Tj
 0 -14 Td
-(Trademarks belong to their owners. MIT code. CC BY-NC-SA content.) Tj
-0 -14 Td
-(Concerns: https://cyphermonkeylabs.com/#contact) Tj
+(MIT code. CC BY-NC-SA content. No tracking.) Tj
 0 -14 Td
 ET
 endstream
@@ -72,8 +64,8 @@ xref
 0000000058 00000 n 
 0000000115 00000 n 
 0000000241 00000 n 
-0000001634 00000 n 
+0000001421 00000 n 
 trailer << /Size 6 /Root 1 0 R >>
 startxref
-1704
+1491
 %%EOF

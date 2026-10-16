@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "python3 scripts/build_curriculum.py && python3 scripts/build_downloads.py",
-    "verify": "node scripts/verify.mjs"
+    "verify": "node scripts/verify.mjs",
+    "serve": "node scripts/gzip-static.mjs"
   }
 }
