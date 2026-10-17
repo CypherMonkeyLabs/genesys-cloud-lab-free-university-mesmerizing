@@ -93,3 +93,20 @@
 @media (prefers-reduced-motion: reduce) {
   .monkey-btn .arm-r { animation: none; }
 }
+
+/* Draggable bot: bounce snap, lift, reset button, hidden under the full-screen menu. */
+.bot-dock.is-snapping { transition: left .5s cubic-bezier(.34,1.56,.64,1), top .5s cubic-bezier(.34,1.56,.64,1) !important; }
+.bot-reset {
+  position: fixed; z-index: 2147483000; width: 32px; height: 32px; min-height: 32px; padding: 0; border-radius: 50%;
+  border: 2px solid #22d3ee; background: #fff; color: #1b1340; font: 800 16px/1 system-ui, sans-serif; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,.3);
+}
+.bot-reset[hidden] { display: none; }
+.bot-reset:focus-visible { outline: 3px solid #082f49; outline-offset: 2px; }
+@media (max-width: 800px) { .bot-reset { width: 36px; height: 36px; min-height: 36px; } }
+@media (prefers-reduced-motion: reduce) { .bot-dock.is-snapping { transition: none !important; } }
+html[data-motion="reduce"] .bot-dock.is-snapping { transition: none !important; }
+.monkey-btn { touch-action: none; user-select: none; -webkit-user-select: none; }
+.bot-dock.is-moved .readalong-panel { position: absolute; right: 0; bottom: calc(100% + 8px); margin: 0; }
+.bot-dock.is-moved[data-x="left"] .readalong-panel { right: auto; left: 0; }
+.bot-dock.is-moved[data-y="top"] .readalong-panel { bottom: auto; top: calc(100% + 8px); }

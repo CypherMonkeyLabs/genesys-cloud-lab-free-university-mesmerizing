@@ -162,34 +162,12 @@
     return nodes;
   }
 
-  function park() {
-    dock.style.top = "";
-    dock.style.bottom = "";
-    var box = dock.getBoundingClientRect();
-    var covered = false;
-    var floor = 0;
-    guards().forEach(function (el) {
-      var rect = el.getBoundingClientRect();
-      if (rect.width < 8 || rect.height < 8) return;
-      if (rect.top < window.innerHeight && rect.bottom > floor) floor = rect.bottom;
-      if (overlaps(box, rect)) covered = true;
-    });
-    if (!covered) return;
-    var top = Math.round(Math.min(window.innerHeight - box.height - 8, Math.max(8, floor + 12)));
-    dock.style.top = top + "px";
-    dock.style.bottom = "auto";
-    box = dock.getBoundingClientRect();
-    var still = false;
-    guards().forEach(function (el) {
-      var rect = el.getBoundingClientRect();
-      if (rect.width < 8 || rect.height < 8) return;
-      if (overlaps(box, rect)) still = true;
-    });
-    if (still) {
-      dock.style.top = "";
-      dock.style.bottom = "8px";
-    }
-  }
+  function park() { /* dragbot.js keeps the default spot clear of headings */ }
+  // Drag, edge snap, tilt and reset live in guide/dragbot.js.
+  var tag = document.querySelector('script[src$="guide/readalong.js"]');
+  var botScript = document.createElement("script");
+  botScript.src = tag ? tag.src.replace(/readalong\.js(\?.*)?$/, "dragbot.js") : "guide/dragbot.js";
+  document.body.appendChild(botScript);
 
   window.addEventListener("resize", park);
   window.addEventListener("scroll", park, { passive: true });
