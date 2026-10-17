@@ -246,53 +246,14 @@ function dock() {
   pose("idle");
   restorePos();
 }
-function restorePos() {
-  const phone = window.matchMedia("(max-width: 700px)").matches;
-  if (phone) {
-    root.style.left = "";
-    root.style.top = "";
-    root.style.right = "";
-    root.style.bottom = "";
-    return;
-  }
-  try {
-    const saved = JSON.parse(localStorage.getItem(POS_KEY) || "null");
-    if (!saved || !saved.left) return;
-    root.style.left = saved.left;
-    root.style.top = saved.top;
-    root.style.right = "auto";
-    root.style.bottom = "auto";
-  } catch (err) { /* keep the dock */ }
-}
+function restorePos() { /* position is applied by dragbot.js */ }
 function overlaps(a, b) {
   return !(a.right < b.left + 1 || a.left > b.right - 1 || a.bottom < b.top + 1 || a.top > b.bottom - 1);
 }
-function parkOffTitle() {
-  const phone = window.matchMedia("(max-width: 700px)").matches;
-  if (!phone || !panel.hidden) return;
-  root.style.left = "";
-  root.style.top = "";
-  root.style.right = "";
-  root.style.bottom = "";
-  const box = root.getBoundingClientRect();
-  const guards = document.querySelectorAll("#home h1, #home .kicker, #home .greet, #home .lede, #view h1, #view .lede");
-  let covered = false;
-  let floor = 0;
-  guards.forEach((el) => {
-    const rect = el.getBoundingClientRect();
-    if (rect.width < 8 || rect.height < 8) return;
-    if (rect.top < window.innerHeight && rect.bottom > floor) floor = rect.bottom;
-    if (overlaps(box, rect)) covered = true;
-  });
-  if (!covered) return;
-  const top = Math.min(window.innerHeight - box.height - 8, Math.max(8, floor + 12));
-  root.style.top = Math.round(top) + "px";
-  root.style.bottom = "auto";
-}
+function parkOffTitle() { /* dragbot.js keeps the default spot clear of headings */ }
 function lift() {
   const phone = window.matchMedia("(max-width: 700px)").matches;
   const bar = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--bar-h")) || (phone ? 72 : 0);
-  if (!root.style.left && !phone) root.style.bottom = (bar + 10) + "px";
   const footer = document.querySelector(".site-footer");
   const docked = launcher.getBoundingClientRect();
   let cover = false;
@@ -513,47 +474,11 @@ function goPath(kind) {
   openPanel();
 }
 function wireDrag() {
-  let startX = 0;
-  let startY = 0;
-  let baseL = 0;
-  let baseT = 0;
-  let dragged = false;
-  launcher.addEventListener("pointerdown", (ev) => {
-    if (ev.button !== 0) return;
-    const rect = root.getBoundingClientRect();
-    startX = ev.clientX;
-    startY = ev.clientY;
-    baseL = rect.left;
-    baseT = rect.top;
-    dragged = false;
-    const move = (e) => {
-      const dx = e.clientX - startX;
-      const dy = e.clientY - startY;
-      if (Math.abs(dx) + Math.abs(dy) < 8) return;
-      dragged = true;
-      const phone = window.matchMedia("(max-width: 700px)").matches;
-      const bar = phone ? (parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--bar-h")) || 72) : 0;
-      const tall = phone ? 72 : 168;
-      root.style.left = Math.max(8, Math.min(window.innerWidth - (phone ? 72 : 148), baseL + dx)) + "px";
-      root.style.top = Math.max(8, Math.min(window.innerHeight - tall - bar - 8, baseT + dy)) + "px";
-      root.style.right = "auto";
-      root.style.bottom = "auto";
-    };
-    const up = () => {
-      window.removeEventListener("pointermove", move);
-      window.removeEventListener("pointerup", up);
-      if (dragged) {
-        const phone = window.matchMedia("(max-width: 700px)").matches;
-        if (phone) parkOffTitle();
-        else {
-          try { localStorage.setItem(POS_KEY, JSON.stringify({ left: root.style.left, top: root.style.top })); } catch (err) { /* storage off */ }
-        }
-      } else if (panel.hidden) openPanel();
-      else closePanel();
-    };
-    window.addEventListener("pointermove", move);
-    window.addEventListener("pointerup", up);
-  });
+  // Drag, edge snap, tilt and reset live in guide/dragbot.js. A tap opens or closes the panel.
+  launcher.addEventListener("click", () => { if (panel.hidden) openPanel(); else closePanel(); });
+  const botScript = document.createElement("script");
+  botScript.src = new URL("dragbot.js", import.meta.url).href;
+  document.body.appendChild(botScript);
 }
 function wireMic() {
   const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
