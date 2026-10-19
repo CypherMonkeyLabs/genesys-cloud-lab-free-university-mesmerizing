@@ -996,7 +996,7 @@
       "summary": "Predictive routing can run for everyone, in a comparison test, or at a fixed 80/20 split you cannot edit.",
       "paras": [
         "The queue article describes three modes. Comparison test mode measures predictive routing against a baseline. Use for all interactions sends everything through the model. Ongoing value monitoring keeps an 80 percent predictive and 20 percent baseline split, and the article says you cannot change that ratio. Genesys recommends leaving monitoring in place for months. The timeout still falls back to standard routing. If the queue has no interactions for 30 continuous days, predictive routing turns itself off and standard routing returns.",
-        "The model needs history. A queue you created this morning does not have a KPI story yet. Comparison mode is how you earn the right to turn it on for everyone. The AI certification catalog treats predictive routing and predictive engagement as a study path of their own. Turning the feature on is not the same as passing that exam, and it is not the same as bullseye."
+        "The model needs history. A queue you created this morning does not have a KPI story yet. Comparison mode is how you unlock the right to turn it on for everyone. The AI certification catalog treats predictive routing and predictive engagement as a study path of their own. Turning the feature on is not the same as passing that exam, and it is not the same as bullseye."
       ],
       "cites": [
         {

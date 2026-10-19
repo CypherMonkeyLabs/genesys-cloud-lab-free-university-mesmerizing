@@ -314,6 +314,9 @@ function injection(raw) {
 
 const AMBIGUOUS = new Set("set list time key name file type open read match pass break call run end add new get use make home world page level course value data text line number item code help start show play count group say says said want need look come take give know think tell tell".split(" "));
 const STRONG_WORDS = new Set("genesys architect acd queue skill bullseye byoc sip rtp srtp trunk edge ivr callback campaign division oauth region license licence concurrent package wfm forecast adherence quality recording coaching speech analytics sentiment topic phrase copilot dialog bot webrtc dtmf emergency e911 did e164 dialplan scim appfoundry salesforce zendesk pureconnect ucce uccx cisco messenger actionmap inqueue wrapup utilization ivrflow sta wem premise premises carrier pbx dcvp pkce grant token webhook notification gamification intraday schedule businessunit managementunit numberplan sentiment empathy transcript journey predictive engagement copilot virtualagent dialogengine architectflow inqueueflow dataaction commonmodule secureflow flowinsights bullseye ring preferred agentassist knowledgebase".split(" "));
+/* Indexed words that also appear in ordinary English. One of these is not
+   enough to treat a question as in-lab; a real Genesys term has to sit beside it. */
+const GENERIC_CARRIERS = new Set("best contact center centre api apis available".split(" "));
 const GENERIC_ENGLISH = new Set("time life home world page course help start people person spanish tokyo poem sea thank thanks meaning telephone calorie calories banana capital hiking restaurant population colour color breakfast winter rainfall lullaby haiku mango egg moon landing movie pizza weather flight story dragon cricket tire cake president bitcoin joke french goodbye python pandas numpy django flask pyodide decorator tuple integer boolean syntax indent pip venv recipe pasta carbonara lisbon portugal mona painter amazon five9 avaya twilio zoom talkdesk dialpad flex aura connect mining sourdough decorator".split(" "));
 
 function buildDomain(df, seeds) {
@@ -357,6 +360,21 @@ function typoKind(word, domain, syn, pool, freq) {
   return kind;
 }
 
+function isGenericCarrier(word, syn) {
+  const forms = [word, stem(word)];
+  const canonical = canon(word, syn);
+  if (canonical) forms.push(canonical);
+  return forms.some((form) => GENERIC_CARRIERS.has(form));
+}
+
+function realStrongHit(word, domain, syn) {
+  const forms = [word, stem(word), canon(word, syn)].filter(Boolean);
+  return forms.some((form) => {
+    if (!domain.strong.has(form)) return false;
+    return form.length >= 4 || STRONG_WORDS.has(form);
+  });
+}
+
 function hasDomainTerm(text, domain, syn, pool, freq) {
   const parts = normalize(text).split(" ").filter((word) => word && word.length >= 2 && !STOP.has(word) && !FILLER.has(word));
   if (!parts.length) return false;
@@ -365,19 +383,28 @@ function hasDomainTerm(text, domain, syn, pool, freq) {
   let foreign = 0;
   let typoStrong = 0;
   for (const word of parts) {
-    const rawKind = domainKind(word, domain, syn);
-    if (rawKind === "strong") {
+    if (isGenericCarrier(word, syn)) continue;
+    if (realStrongHit(word, domain, syn)) {
       strong += 1;
       continue;
     }
+    const rawKind = domainKind(word, domain, syn);
     if (rawKind === "weak") {
       weak += 1;
       continue;
     }
+    if (rawKind === "strong") {
+      if (word.length > 3) foreign += 1;
+      continue;
+    }
     const kind = typoKind(word, domain, syn, pool, freq);
     if (kind === "stop") continue;
-    if (kind === "strong") typoStrong += 1;
-    else if (kind === "weak") weak += 1;
+    if (kind === "strong") {
+      const fix = fuzzy(word, pool, word.length >= 7 ? 2 : 1, freq);
+      if (!fix || isGenericCarrier(fix, syn)) continue;
+      if (fix.length < 4 && !STRONG_WORDS.has(fix)) continue;
+      typoStrong += 1;
+    } else if (kind === "weak") weak += 1;
     else if (word.length <= 3 || STOP.has(stem(word))) continue;
     else foreign += 1;
   }

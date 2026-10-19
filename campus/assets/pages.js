@@ -194,7 +194,7 @@ function showGame(ctx) {
       ctx.state.progress.gameBest = best;
       ctx.saveProgress();
       root.innerHTML = `<p class="kicker">Port game</p><h1>${correct} of ${bank.length}</h1>
-        <p>Best in this browser: ${best}. Seven or more earns the Port ace badge.</p>
+        <p>Best in this browser: ${best}. Seven or more unlocks the Port ace badge.</p>
         <div class="toolbar"><button class="btn primary" type="button" id="again">Play again</button><button class="btn" type="button" id="share">Download result card</button></div>
         <p><a href="#/ports">Back to the table</a></p>`;
       root.querySelector("#again").addEventListener("click", () => { index = 0; correct = 0; draw(); });

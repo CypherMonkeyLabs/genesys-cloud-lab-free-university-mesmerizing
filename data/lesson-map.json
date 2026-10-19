@@ -218,7 +218,7 @@
       "level": 4,
       "minutes": 11,
       "outcomes": [
-        "Read the public docs. Do not point a tutorial at a production org."
+        "It is the front door for the Platform API. Read the public docs. Do not point a tutorial at a production org."
       ],
       "sources": [
         "p-center"

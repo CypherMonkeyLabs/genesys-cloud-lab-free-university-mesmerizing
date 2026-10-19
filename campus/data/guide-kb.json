@@ -1398,7 +1398,7 @@
         "core",
         "platform apis"
       ],
-      "answer": "The Developer Center is the map. This lab is not a client. (Core, 11 min): Read the public docs. Do not point a tutorial at a production org.",
+      "answer": "The Developer Center is the map. This lab is not a client. (Core, 11 min): It is the front door for the Platform API. Read the public docs. Do not point a tutorial at a production org.",
       "source": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing"
     },
     {
