@@ -2,6 +2,7 @@
 <html lang="en" data-theme="bloom" data-font="md">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' blob: data:; font-src 'self' data:; connect-src 'self'; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Genesys Cloud CX Lab</title>
 <meta name="description" content="A free operations lab for Genesys Cloud CX: Architect flows, skills and ACD, workforce forecasting, quality and speech analytics, BYOC, the Edge, and Platform APIs.">
@@ -12,19 +13,7 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="canonical" href="https://cyphermonkeylabs.com/genesys-cloud-lab-free-university-mesmerizing/campus/">
-<script>
-try {
-  var s = JSON.parse(localStorage.getItem('gccx-settings') || '{}');
-  var theme = s.theme || "bloom";
-  if (theme === "paper" || theme === "harbor") theme = "bloom";
-  document.documentElement.dataset.theme = theme;
-  if (s.font) document.documentElement.dataset.font = s.font;
-  if (s.reduce || window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.dataset.reduce = '1';
-  var narrow = window.matchMedia('(max-width: 700px)').matches;
-  document.documentElement.style.setProperty('--chrome-h', narrow ? '56px' : '64px');
-  document.documentElement.style.setProperty('--bar-h', '64px');
-} catch (e) {}
-</script>
+<script src="assets/boot-settings.js"></script>
 <style>
 :root, [data-theme="night"] {
   --cc-bg: #071018;

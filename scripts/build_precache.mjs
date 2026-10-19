@@ -9,6 +9,7 @@ const budget = 3_500_000;
 const required = [
   "index.html",
   "offline.html",
+  "assets/boot-settings.js",
   "manifest.webmanifest",
   "favicon.svg",
   "icon-192.png",
@@ -73,6 +74,6 @@ if (!sw.includes("const SHELL = [")) {
   process.exit(1);
 }
 sw = sw.replace(/const SHELL = \[[\s\S]*?\];/, `const SHELL = [\n  "./",\n${body}\n];`);
-sw = sw.replace(/gccx-lab-v\d+/, "gccx-lab-v21");
+sw = sw.replace(/gccx-lab-v\d+/, "gccx-lab-v22");
 fs.writeFileSync(swPath, sw);
 console.log(`precache ${chosen.length + 1} files, ${total} bytes, budget ${budget}`);

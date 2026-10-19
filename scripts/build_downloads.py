@@ -21,6 +21,12 @@ WEB = "https://cyphermonkeylabs.com"
 ORG = "https://github.com/CypherMonkeyLabs"
 TREE = "https://linktr.ee/cypherMonkey"
 CONTACT = "https://cyphermonkeylabs.com/#contact"
+CSP_META = (
+    '<meta http-equiv="Content-Security-Policy" content="default-src \'self\'; script-src \'self\'; '
+    "style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' blob: data:; "
+    "font-src 'self' data:; connect-src 'self'; worker-src 'self' blob:; object-src 'none'; "
+    "base-uri 'self'; form-action 'self'\">"
+)
 BRANDS = [WEB, ORG, TREE]
 DISCLAIMER = (
     "This is an independent, free, learning-only student project. "
@@ -236,7 +242,7 @@ def write_html(path, title, paragraphs, sources):
     index_prefix = icon_prefix
     css_href = "lab-menu.css" if path.parent == OUT else "../lab-menu.css"
     path.write_text(f"""<!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en"><head><meta charset="utf-8">{CSP_META}<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="{icon_prefix}favicon.ico" sizes="any">
 <link rel="icon" href="{icon_prefix}favicon.svg" type="image/svg+xml">
 <title>{xml(title)}</title>
@@ -659,7 +665,7 @@ def main():
             f"<p>{xml(card['track'])} · {xml(card['lesson'])}</p>{html_block(card['deeper'])}</article>"
         )
     (OUT / "flashcards.html").write_text(
-        "<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'><title>Flashcards</title>"
+        "<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'>" + CSP_META + "<title>Flashcards</title>"
         "<link rel='icon' href='../favicon.ico' sizes='any'><link rel='icon' href='../favicon.svg' type='image/svg+xml'>"
         "<style>body{font:15px/1.4 Georgia,serif;margin:24px;background:#f7f4ef;color:#1b140f}"
         "article{break-inside:avoid;border:1px solid #ccc;padding:12px;margin:8px 0;background:#fff}"
@@ -756,7 +762,7 @@ def main():
         f"<tr><td>{xml(name)}</td><td>{xml(status)}</td><td>{xml(note)}</td></tr>" for name, status, note in checks
     )
     (OUT / "test-table.html").write_text(
-        "<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>Download test table</title>"
+        "<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'>" + CSP_META + "<meta name='viewport' content='width=device-width, initial-scale=1'><title>Download test table</title>"
         "<link rel='icon' href='../favicon.ico' sizes='any'><link rel='icon' href='../favicon.svg' type='image/svg+xml'>"
         "<style>body{font:15px/1.4 Georgia,serif;margin:24px auto;max-width:1120px;color:#123528;background:#f4fbf7}"
         "table{border-collapse:collapse;width:100%}td,th{border:1px solid #1d6b4f;padding:6px 8px;text-align:left;overflow-wrap:anywhere}"
