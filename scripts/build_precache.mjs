@@ -44,8 +44,10 @@ const required = [
   "data/reference.json",
 ];
 
-for (const name of fs.readdirSync(path.join(campus, "data/tracks"))) {
-  if (name.endsWith(".json")) required.push(`data/tracks/${name}`);
+for (const folder of ["data/tracks", "data/sources"]) {
+  for (const name of fs.readdirSync(path.join(campus, folder))) {
+    if (name.endsWith(".json")) required.push(`${folder}/${name}`);
+  }
 }
 
 const chosen = [];
@@ -71,6 +73,6 @@ if (!sw.includes("const SHELL = [")) {
   process.exit(1);
 }
 sw = sw.replace(/const SHELL = \[[\s\S]*?\];/, `const SHELL = [\n  "./",\n${body}\n];`);
-sw = sw.replace(/gccx-lab-v\d+/, "gccx-lab-v15");
+sw = sw.replace(/gccx-lab-v\d+/, "gccx-lab-v17");
 fs.writeFileSync(swPath, sw);
 console.log(`precache ${chosen.length + 1} files, ${total} bytes, budget ${budget}`);

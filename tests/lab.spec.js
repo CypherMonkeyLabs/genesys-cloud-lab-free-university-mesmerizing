@@ -26,13 +26,15 @@ test("home, bot, and a lesson at desktop and phone", async ({ page }) => {
   await page.goto("/campus/#/lesson/f-sip");
   await expect(page.getByRole("heading", { name: /SIP, RTP/ })).toBeVisible();
   await page.screenshot({ path: path.join(shotDir, "wave-lesson-1440.png"), fullPage: false });
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.screenshot({ path: path.join(shotDir, "wave-lesson-390.png"), fullPage: false });
+
+  await page.setViewportSize({ width: 1440, height: 900 });
   await page.locator("#bot-launcher").click();
   await expect(page.locator("#bot-panel")).toBeVisible();
   await expect(page.locator("#py-chat-input")).toBeVisible();
   await page.screenshot({ path: path.join(shotDir, "wave-bot-1440.png"), fullPage: false });
-
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.screenshot({ path: path.join(shotDir, "wave-lesson-390.png"), fullPage: false });
   await page.screenshot({ path: path.join(shotDir, "wave-bot-390.png"), fullPage: false });
   await page.locator("[data-py-ask='What is Architect?']").click();
   await expect(page.locator(".py-chat-log")).toContainText(/Architect/i);
@@ -47,6 +49,7 @@ test("offline reload still opens a lesson and the guide", async ({ page, context
   await page.reload();
   await page.waitForFunction(() => navigator.serviceWorker.controller);
   await context.setOffline(true);
+  expect(await page.evaluate(() => navigator.onLine)).toBe(false);
   await page.reload();
   await expect(page.getByRole("heading", { level: 1 }).first()).toBeVisible();
   await page.goto("/campus/#/lesson/f-sip");
