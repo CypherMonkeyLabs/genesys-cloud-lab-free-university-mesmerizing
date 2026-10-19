@@ -1,0 +1,1994 @@
+{
+  "lab": "genesys-cloud-cx",
+  "note": "Levels: Foundation 0, Core 4, Advanced 8. last_verified is null because source files record YYYY-MM, not a full day. Outcomes are the lesson summaries.",
+  "lessons": [
+    {
+      "key": "acd/r-methods",
+      "title": "Five routing methods",
+      "level": 4,
+      "minutes": 12,
+      "outcomes": [
+        "Standard, predictive, bullseye, preferred agent, and conditional group routing are the methods on a queue."
+      ],
+      "sources": [
+        "r-methods"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "acd/r-eval",
+      "title": "All skills, best available, or disregard",
+      "level": 4,
+      "minutes": 13,
+      "outcomes": [
+        "The evaluation method is how standard and bullseye decide that an agent \u201chas the skills.\u201d"
+      ],
+      "sources": [
+        "r-eval"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "acd/r-score",
+      "title": "Conversation score and priority score",
+      "level": 4,
+      "minutes": 12,
+      "outcomes": [
+        "One priority point on conversation score is worth 60,000 milliseconds of arrival time."
+      ],
+      "sources": [
+        "r-score"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "acd/r-bullseye",
+      "title": "Bullseye rings widen the target",
+      "level": 4,
+      "minutes": 14,
+      "outcomes": [
+        "Up to five rings. A delay from 2 seconds to 72 hours. Up to 50 skills removed on a ring."
+      ],
+      "sources": [
+        "r-bullseye"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "acd/r-preferred",
+      "title": "Preferred agents are tried first",
+      "level": 4,
+      "minutes": 13,
+      "outcomes": [
+        "A preferred agent is considered even without the required skills, and only if they are a member of the queue and On Queue."
+      ],
+      "sources": [
+        "r-preferred"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "acd/r-predict",
+      "title": "Predictive routing is a KPI model with a timeout",
+      "level": 8,
+      "minutes": 14,
+      "outcomes": [
+        "Predictive routing can run for everyone, in a comparison test, or at a fixed 80/20 split you cannot edit."
+      ],
+      "sources": [
+        "r-predict"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "acd/r-conditional",
+      "title": "Conditional group routing borrows agents carefully",
+      "level": 8,
+      "minutes": 12,
+      "outcomes": [
+        "A rule is a KPI plus agent availability. The other queue must be able to spare the people."
+      ],
+      "sources": [
+        "r-conditional"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "acd/r-util",
+      "title": "Utilization and Not Responding",
+      "level": 4,
+      "minutes": 13,
+      "outcomes": [
+        "A fully utilized agent is skipped. An agent who ignores an alert becomes Not Responding."
+      ],
+      "sources": [
+        "r-util"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "ai/g-kinds",
+      "title": "Two Architect bot types, plus Copilot beside the agent",
+      "level": 4,
+      "minutes": 12,
+      "outcomes": [
+        "A bot flow talks to the customer. Agent Copilot talks to the agent. They are different products on different pages."
+      ],
+      "sources": [
+        "g-kinds"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "ai/g-dialog",
+      "title": "Dialog Engine bot flows are voice and digital intents",
+      "level": 4,
+      "minutes": 12,
+      "outcomes": [
+        "You build the bot in Architect, then the inbound flow calls it."
+      ],
+      "sources": [
+        "g-dialog"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "ai/g-digital",
+      "title": "Digital bot flows are a different call",
+      "level": 4,
+      "minutes": 11,
+      "outcomes": [
+        "Message experiences use Digital Bot Flows and Call Digital Bot Flow."
+      ],
+      "sources": [
+        "g-digital"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "ai/g-fail",
+      "title": "Every bot has a failure output to a queue",
+      "level": 4,
+      "minutes": 11,
+      "outcomes": [
+        "No-match, timeout, and error are normal. The queue is the design."
+      ],
+      "sources": [
+        "g-fail"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "ai/g-copilot",
+      "title": "Agent Copilot assists the person who stayed on the interaction",
+      "level": 4,
+      "minutes": 12,
+      "outcomes": [
+        "Knowledge, transcripts, scripts, next best action, and notes. The benefit is described as surviving a blind transfer."
+      ],
+      "sources": [
+        "g-copilot"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "ai/g-tokens",
+      "title": "Tokens are a published allotment, and a FAQ ratio you re-read",
+      "level": 8,
+      "minutes": 12,
+      "outcomes": [
+        "The overview publishes CX 4 token counts. The STA FAQ publishes how AI scoring spends them."
+      ],
+      "sources": [
+        "g-tokens"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "ai/g-cert",
+      "title": "The AI exams are named on the catalog, one exam each",
+      "level": 4,
+      "minutes": 10,
+      "outcomes": [
+        "Two AI certifications. No invented exam codes."
+      ],
+      "sources": [
+        "g-cert"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "api/p-center",
+      "title": "The Developer Center is the map. This lab is not a client.",
+      "level": 4,
+      "minutes": 11,
+      "outcomes": [
+        "It is the front door for the Platform API. Read the public docs. Do not point a tutorial at a production org."
+      ],
+      "sources": [
+        "p-center"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "api/p-grants",
+      "title": "Pick the grant that matches who the call runs as",
+      "level": 4,
+      "minutes": 12,
+      "outcomes": [
+        "Client credentials, authorization code with PKCE, and SAML2 Bearer are the grants to learn. Implicit is the one leaving."
+      ],
+      "sources": [
+        "p-grants"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "api/p-cc",
+      "title": "Client credentials have no user, so users/me is the wrong call",
+      "level": 4,
+      "minutes": 12,
+      "outcomes": [
+        "The token is the client. The guide shows that limit on purpose."
+      ],
+      "sources": [
+        "p-cc"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "api/p-implicit",
+      "title": "Implicit grant is a migration, not a new design",
+      "level": 4,
+      "minutes": 11,
+      "outcomes": [
+        "The OAuth article dates the deprecation: after 25 May 2026."
+      ],
+      "sources": [
+        "p-implicit"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "api/p-hosts",
+      "title": "Login host and API host are a pair you look up",
+      "level": 4,
+      "minutes": 12,
+      "outcomes": [
+        "US East is the pair this lab will quote in full. Other rows stay on the regions article."
+      ],
+      "sources": [
+        "p-hosts"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "api/p-roles",
+      "title": "Role and division pairs are the real permission",
+      "level": 4,
+      "minutes": 12,
+      "outcomes": [
+        "A token opens the door the role allows, in the division the pair names."
+      ],
+      "sources": [
+        "p-roles"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "api/p-scim",
+      "title": "SCIM and other directory sync still start with an OAuth client",
+      "level": 4,
+      "minutes": 11,
+      "outcomes": [
+        "The OAuth article points SCIM at a client. The client still has roles and a grant."
+      ],
+      "sources": [
+        "p-scim"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "architect/a-types",
+      "title": "The flow types on the Architect home page",
+      "level": 4,
+      "minutes": 13,
+      "outcomes": [
+        "Architect is a list of flow types. Picking the wrong tab is the first defect."
+      ],
+      "sources": [
+        "a-types"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "architect/a-task",
+      "title": "Tasks, menus, and a way out",
+      "level": 4,
+      "minutes": 13,
+      "outcomes": [
+        "An inbound call flow plays audio, collects input, and must transfer, hand off, or disconnect."
+      ],
+      "sources": [
+        "a-task"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "architect/a-inqueue",
+      "title": "In-queue flows are the hold experience",
+      "level": 4,
+      "minutes": 12,
+      "outcomes": [
+        "The caller is already queued. The in-queue flow is what they hear or read while ACD looks for an agent."
+      ],
+      "sources": [
+        "a-inqueue"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "architect/a-data",
+      "title": "Data actions and participant data",
+      "level": 4,
+      "minutes": 12,
+      "outcomes": [
+        "A data action calls a system outside the flow. Participant data carries a value to the agent."
+      ],
+      "sources": [
+        "a-data"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "architect/a-common",
+      "title": "Common modules are how you stop copying tasks",
+      "level": 4,
+      "minutes": 11,
+      "outcomes": [
+        "A common module is a flow type you call from other flows. The name is still unique inside that type."
+      ],
+      "sources": [
+        "a-common"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "architect/a-secure",
+      "title": "Secure call flows keep digits away from the recording",
+      "level": 4,
+      "minutes": 12,
+      "outcomes": [
+        "A secure flow is how a caller enters a card number without that audio being recorded or shown to the agent."
+      ],
+      "sources": [
+        "a-secure"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "architect/a-botcall",
+      "title": "Call a bot from the inbound flow",
+      "level": 4,
+      "minutes": 13,
+      "outcomes": [
+        "Dialog Engine bot flows and digital bot flows are Architect flow types. The inbound flow calls them. It does not become them."
+      ],
+      "sources": [
+        "a-botcall"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "architect/a-publish",
+      "title": "Publish, division, and Flow Insights",
+      "level": 4,
+      "minutes": 12,
+      "outcomes": [
+        "A saved flow is a draft. The runtime uses the published version. Insights tell you whether anyone hit it."
+      ],
+      "sources": [
+        "a-publish"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "byoc/b-what",
+      "title": "BYOC Cloud is your carrier, Genesys\u2019 media",
+      "level": 4,
+      "minutes": 12,
+      "outcomes": [
+        "You bring the carrier contract. Genesys terminates a SIP trunk on the AWS media tier. Audio is RTP on the internet."
+      ],
+      "sources": [
+        "b-what"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "byoc/b-types",
+      "title": "Carrier trunks and PBX trunks",
+      "level": 4,
+      "minutes": 12,
+      "outcomes": [
+        "BYOC Carrier and BYOC PBX are the two types. Carrier has subtypes. PBX has one."
+      ],
+      "sources": [
+        "b-types"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "byoc/b-order",
+      "title": "The quick-start order",
+      "level": 4,
+      "minutes": 12,
+      "outcomes": [
+        "Location, trunk, outbound route, number plan. The product on the subscription comes before all of that."
+      ],
+      "sources": [
+        "b-order"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "byoc/b-dcvp",
+      "title": "Dynamic Cloud Voice is the current platform",
+      "level": 8,
+      "minutes": 13,
+      "outcomes": [
+        "New trunks start there. Moving an old trunk means allow lists, Amazon root CAs, TLS ciphers, and a toggle."
+      ],
+      "sources": [
+        "b-dcvp"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "byoc/b-plans",
+      "title": "Number plans classify what people dial",
+      "level": 4,
+      "minutes": 13,
+      "outcomes": [
+        "A site can hold 200 plans. DIDs do not need one for basic routing. Emergency, extension, and 988 already exist as defaults."
+      ],
+      "sources": [
+        "b-plans"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "byoc/b-monitor",
+      "title": "Watch the trunk, not only the flow",
+      "level": 4,
+      "minutes": 11,
+      "outcomes": [
+        "When audio fails and Architect Insights still shows runs, the trunk is the next object."
+      ],
+      "sources": [
+        "b-monitor"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "byoc/b-gcv",
+      "title": "Genesys Cloud Voice is the other door",
+      "level": 4,
+      "minutes": 12,
+      "outcomes": [
+        "If Genesys is the carrier, you buy numbers in a region that offers voice, and emergency is part of that product story rather than your trunk."
+      ],
+      "sources": [
+        "b-gcv"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "crm/i-market",
+      "title": "AppFoundry is the marketplace, not a feature you assume is installed",
+      "level": 4,
+      "minutes": 11,
+      "outcomes": [
+        "An app is present only after someone installs it into the org."
+      ],
+      "sources": [
+        "i-market"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "crm/i-sf",
+      "title": "Genesys Cloud for Salesforce is a documented embed",
+      "level": 4,
+      "minutes": 12,
+      "outcomes": [
+        "Screen pop, click-to-dial, logging, and the assist features that page names."
+      ],
+      "sources": [
+        "i-sf"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "crm/i-sf-oauth",
+      "title": "Salesforce data actions move to OAuth client credentials",
+      "level": 4,
+      "minutes": 12,
+      "outcomes": [
+        "Consumer key, secret, and My Domain URL. The request body of the action stays."
+      ],
+      "sources": [
+        "i-sf-oauth"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "crm/i-zd",
+      "title": "Zendesk has its own about page, with a similar embed idea",
+      "level": 4,
+      "minutes": 11,
+      "outcomes": [
+        "Do not copy the Salesforce field list onto Zendesk."
+      ],
+      "sources": [
+        "i-zd"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "crm/i-other",
+      "title": "Dynamics, ServiceNow, and the rest stay on the marketplace",
+      "level": 4,
+      "minutes": 11,
+      "outcomes": [
+        "No invented feature lists for CRMs this lab did not open."
+      ],
+      "sources": [
+        "i-other"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "crm/i-fail",
+      "title": "A CRM failure is not an ACD failure",
+      "level": 4,
+      "minutes": 11,
+      "outcomes": [
+        "Screen pop can die while the queue is healthy."
+      ],
+      "sources": [
+        "i-fail"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "ecosystem/z-map",
+      "title": "The conversation crosses a short list of systems",
+      "level": 0,
+      "minutes": 12,
+      "outcomes": [
+        "Carrier, trunk or Edge, Architect, queue, agent, then the systems beside the agent."
+      ],
+      "sources": [
+        "z-map"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "ecosystem/z-sisters",
+      "title": "WFM, QM, E911, analytics, CRM, and bots are sisters",
+      "level": 4,
+      "minutes": 12,
+      "outcomes": [
+        "Each sister has a track and a page. None of them is a setting on the queue tab alone."
+      ],
+      "sources": [
+        "z-sisters"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "ecosystem/z-bridge",
+      "title": "The Cisco bridge is a translation, with both citations showing",
+      "level": 4,
+      "minutes": 11,
+      "outcomes": [
+        "UCCE, UCCX, CUCM, and Webex are named so a Cisco engineer can find the door."
+      ],
+      "sources": [
+        "z-bridge"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "ecosystem/z-certs",
+      "title": "Read the catalog by name, then the announcement",
+      "level": 4,
+      "minutes": 11,
+      "outcomes": [
+        "GC-GCP and GC-GCD are catalog codes. Specialist rows are names. AI rows are two exams."
+      ],
+      "sources": [
+        "z-certs"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "ecosystem/z-interview",
+      "title": "Interview answers cite a page, not a vibe",
+      "level": 4,
+      "minutes": 11,
+      "outcomes": [
+        "The drill in this lab is a set of questions with a model answer and a link."
+      ],
+      "sources": [
+        "z-interview"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "ecosystem/z-refuse",
+      "title": "What this lab will not invent",
+      "level": 0,
+      "minutes": 10,
+      "outcomes": [
+        "Prices, unconfirmed hosts, exam codes, lifecycle dates, and CRM feature lists stay off the page."
+      ],
+      "sources": [
+        "z-refuse"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "ecosystem/z-cpaas",
+      "title": "The telephony door this lab can cite is BYOC, not a word the page did not use",
+      "level": 0,
+      "minutes": 12,
+      "outcomes": [
+        "CPaaS is the classroom name for a communications API you bring. The opened page is About BYOC Cloud."
+      ],
+      "sources": [
+        "z-cpaas"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "ecosystem/z-crm",
+      "title": "Salesforce and Zendesk are the embeds this lab opened",
+      "level": 4,
+      "minutes": 13,
+      "outcomes": [
+        "Salesforce Open CTI is in maintenance and has a later retirement date. Zendesk\u2019s page does not say that."
+      ],
+      "sources": [
+        "z-crm"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "ecosystem/z-agents",
+      "title": "A bot, a Virtual Agent, and Copilot are three assists",
+      "level": 4,
+      "minutes": 12,
+      "outcomes": [
+        "Dialog Engine builds the bot. Virtual Agent adds Genesys AI. Copilot sits with the person."
+      ],
+      "sources": [
+        "z-agents"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "ecosystem/z-hooks",
+      "title": "Future hooks are dates on announcements, not a roadmap this lab invented",
+      "level": 8,
+      "minutes": 12,
+      "outcomes": [
+        "Journey Outcomes, Salesforce Open CTI, and Customer Outcomes are three different sentences."
+      ],
+      "sources": [
+        "z-hooks"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "edge/e-role",
+      "title": "The premises Edge is the local media hop",
+      "level": 4,
+      "minutes": 12,
+      "outcomes": [
+        "BYOC Premises puts an Edge on your network. Phones and trunks registered there do not need a public address the way BYOC Cloud does."
+      ],
+      "sources": [
+        "e-role"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "edge/e-site",
+      "title": "Local site routing stays home until it cannot",
+      "level": 4,
+      "minutes": 12,
+      "outcomes": [
+        "Genesys uses Edges in the same site when it can. Another site is the exception."
+      ],
+      "sources": [
+        "e-site"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "edge/e-phone",
+      "title": "Phone trunks, WebRTC, and inherit",
+      "level": 4,
+      "minutes": 11,
+      "outcomes": [
+        "WebRTC and SIP phones are phone trunks on the Edge group. Inherit is the default you should verify."
+      ],
+      "sources": [
+        "e-phone"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "edge/e-fail",
+      "title": "When the local Edge is offline",
+      "level": 4,
+      "minutes": 12,
+      "outcomes": [
+        "The documented failover is another site, if that site actually has the resource."
+      ],
+      "sources": [
+        "e-fail"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "edge/e-compare",
+      "title": "Choose Cloud, Premises, or both",
+      "level": 4,
+      "minutes": 12,
+      "outcomes": [
+        "Use premises when the phones and the carrier are on your network. Use cloud when they are not. Use both only where each number has an owner."
+      ],
+      "sources": [
+        "e-compare"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "edge/e-webrtc-net",
+      "title": "A browser phone is still a network endpoint",
+      "level": 4,
+      "minutes": 11,
+      "outcomes": [
+        "WebRTC removes the desk set. It does not remove media engineering."
+      ],
+      "sources": [
+        "e-webrtc-net"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "edge/e-checklist",
+      "title": "Premises turn-up checklist",
+      "level": 4,
+      "minutes": 12,
+      "outcomes": [
+        "Group, inherit, site, trunk, failover test, emergency owner."
+      ],
+      "sources": [
+        "e-checklist"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "emergency/n-owner",
+      "title": "Name the emergency owner before the DID",
+      "level": 4,
+      "minutes": 12,
+      "outcomes": [
+        "Genesys is not responsible for emergency calls that ride a BYOC trunk. That sentence belongs in the design, not in the postmortem."
+      ],
+      "sources": [
+        "n-owner"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "emergency/n-plan",
+      "title": "Emergency is a classification and a route",
+      "level": 4,
+      "minutes": 12,
+      "outcomes": [
+        "The default Emergency plan matches 911 and 933 in the US and Canada, and 142 in Switzerland. It still needs a route."
+      ],
+      "sources": [
+        "n-plan"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "emergency/n-location",
+      "title": "The location is a physical place",
+      "level": 4,
+      "minutes": 11,
+      "outcomes": [
+        "The quick start adds a location because services, including emergency, need a real site."
+      ],
+      "sources": [
+        "n-location"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "emergency/n-gcv-limits",
+      "title": "Voice coverage is a table, not a promise",
+      "level": 8,
+      "minutes": 12,
+      "outcomes": [
+        "Country rows decide DID, toll-free, domestic, and international. FedRAMP and the sovereign region add harder edges."
+      ],
+      "sources": [
+        "n-gcv-limits"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "emergency/n-e164",
+      "title": "Normalize toward E.164 on purpose",
+      "level": 4,
+      "minutes": 11,
+      "outcomes": [
+        "Intra-country and inter-country plans normalize. Digit-length extensions and E.164 lists do not."
+      ],
+      "sources": [
+        "n-e164"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "emergency/n-test",
+      "title": "Test emergency like a change, not like a demo",
+      "level": 4,
+      "minutes": 12,
+      "outcomes": [
+        "A live emergency test is a carrier and public-safety conversation. The call simulator is the part you can do alone."
+      ],
+      "sources": [
+        "n-test"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "forecast/n-place",
+      "title": "A forecast is a WFM plan for interactions, not a routing method",
+      "level": 0,
+      "minutes": 12,
+      "outcomes": [
+        "Workforce management is one WEM product. The forecast article names the metrics and the permissions."
+      ],
+      "sources": [
+        "n-place"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "forecast/n-views",
+      "title": "Short-term weeks can schedule. Long-term weeks cannot",
+      "level": 0,
+      "minutes": 12,
+      "outcomes": [
+        "Six weeks of intervals on one side. Up to two years of days and weeks on the other."
+      ],
+      "sources": [
+        "n-views"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "forecast/n-methods",
+      "title": "Four creation methods, and a 130-week outer limit",
+      "level": 4,
+      "minutes": 13,
+      "outcomes": [
+        "Automatic best method, weighted history, imported source days, or a finished short-term file."
+      ],
+      "sources": [
+        "n-methods"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "forecast/n-editor",
+      "title": "The editor shows history as read-only lines",
+      "level": 4,
+      "minutes": 11,
+      "outcomes": [
+        "Short-term granularity is 15, 30, or 60 minutes. Long-term granularity is daily or weekly."
+      ],
+      "sources": [
+        "n-editor"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "forecast/n-cover",
+      "title": "The schedule has to sit inside the short-term weeks",
+      "level": 8,
+      "minutes": 13,
+      "outcomes": [
+        "Generation offers a forecast only when those weeks cover the schedule, and only one schedule is generated at a time."
+      ],
+      "sources": [
+        "n-cover"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "forecast/n-use",
+      "title": "Use the forecast, then go back to the floor",
+      "level": 8,
+      "minutes": 11,
+      "outcomes": [
+        "Intraday compares the plan with what happened. Adherence is a different WFM page."
+      ],
+      "sources": [
+        "n-use"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "foundations/f-platform",
+      "title": "What Genesys Cloud CX is",
+      "level": 0,
+      "minutes": 14,
+      "outcomes": [
+        "Genesys Cloud CX is a subscription contact-center platform with four nested packages, not a single feature switch."
+      ],
+      "sources": [
+        "f-platform"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "foundations/f-regions",
+      "title": "Core regions and satellite media",
+      "level": 0,
+      "minutes": 16,
+      "outcomes": [
+        "An organization is born in one core AWS region. Satellite regions carry media. They do not host the org."
+      ],
+      "sources": [
+        "f-regions"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "foundations/f-sip",
+      "title": "SIP, RTP, and what the trunk is doing",
+      "level": 0,
+      "minutes": 15,
+      "outcomes": [
+        "SIP sets the call up. RTP moves the audio. They are different protocols, and Genesys trunks speak both."
+      ],
+      "sources": [
+        "f-sip"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "foundations/f-acd-idea",
+      "title": "What ACD is before you name a queue",
+      "level": 0,
+      "minutes": 12,
+      "outcomes": [
+        "ACD picks an agent for a waiting interaction. The queue is the waiting line. Skills, utilization, and On Queue decide who is eligible."
+      ],
+      "sources": [
+        "f-acd-idea"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "foundations/f-digital",
+      "title": "Digital conversations beside voice",
+      "level": 0,
+      "minutes": 12,
+      "outcomes": [
+        "Voice is one media. Architect also has inbound message, email, and chat flows, and queues track those medias separately."
+      ],
+      "sources": [
+        "f-digital"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "foundations/f-access",
+      "title": "Divisions, before roles get complicated",
+      "level": 0,
+      "minutes": 13,
+      "outcomes": [
+        "A division groups objects inside one organization. It is not a second org, and the Home division cannot be deleted."
+      ],
+      "sources": [
+        "f-access"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "foundations/f-read",
+      "title": "How to read a Genesys page without inventing the rest",
+      "level": 0,
+      "minutes": 11,
+      "outcomes": [
+        "This lab cites the Resource Center, the Developer Center, Genesys Education, and RFCs. The page wins when they differ."
+      ],
+      "sources": [
+        "f-read"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "foundations/f-prereq",
+      "title": "Prerequisites before the first trunk",
+      "level": 0,
+      "minutes": 13,
+      "outcomes": [
+        "BYOC Cloud needs a public carrier address, an open port plan, and a real location. The org subscription has to include the telephony product you intend to use."
+      ],
+      "sources": [
+        "f-prereq"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "migration/x-rebuild",
+      "title": "Nothing imports your old routing by magic",
+      "level": 4,
+      "minutes": 12,
+      "outcomes": [
+        "You rebuild flows, queues, and trunks. You do not flip a converter this lab has not found."
+      ],
+      "sources": [
+        "x-rebuild"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "migration/x-engage",
+      "title": "Engage and PureConnect become flows and queues",
+      "level": 4,
+      "minutes": 12,
+      "outcomes": [
+        "Strategies, IRDs, and handlers are read as behavior, then redrawn."
+      ],
+      "sources": [
+        "x-engage"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "migration/x-ivr",
+      "title": "IVR becomes Architect tasks, menus, and audio",
+      "level": 4,
+      "minutes": 12,
+      "outcomes": [
+        "CVP, UCCX prompts, and Engage voice all become the same kind of flow."
+      ],
+      "sources": [
+        "x-ivr"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "migration/x-ucce",
+      "title": "UCCE skill groups and precision queues are not Genesys queues",
+      "level": 4,
+      "minutes": 13,
+      "outcomes": [
+        "Membership, skills, and bullseye are three ideas you reassemble."
+      ],
+      "sources": [
+        "x-ucce"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "migration/x-uccx",
+      "title": "UCCX is a smaller center with the same rebuild rule",
+      "level": 4,
+      "minutes": 11,
+      "outcomes": [
+        "Scripts, CSQs, and the Finesse desktop do not move as files."
+      ],
+      "sources": [
+        "x-uccx"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "migration/x-cucm",
+      "title": "CUCM stays. BYOC is the door, not a replacement cluster.",
+      "level": 4,
+      "minutes": 12,
+      "outcomes": [
+        "A dial plan and a trunk are Genesys number plans and a BYOC trunk. CUCM is still yours."
+      ],
+      "sources": [
+        "x-cucm"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "migration/x-webex",
+      "title": "Webex is a neighbor, not a page this lab pretends to summarize",
+      "level": 4,
+      "minutes": 10,
+      "outcomes": [
+        "Use Cisco\u2019s product pages. Do not cite a Webex help URL this lab did not confirm."
+      ],
+      "sources": [
+        "x-webex"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "migration/x-cut",
+      "title": "Cut over one number, then the queue, then the people",
+      "level": 4,
+      "minutes": 12,
+      "outcomes": [
+        "A weekend big-bang is how untested emergency routes meet a full staff."
+      ],
+      "sources": [
+        "x-cut"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "org/o-place",
+      "title": "Place the organization in a core region",
+      "level": 4,
+      "minutes": 12,
+      "outcomes": [
+        "You do not move an org between regions as a setting. You create it in a core region and live with that login host."
+      ],
+      "sources": [
+        "o-place"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "org/o-roles",
+      "title": "Roles are permission lists paired with divisions",
+      "level": 4,
+      "minutes": 13,
+      "outcomes": [
+        "A role without a division grant does not open objects. An OAuth client inherits only a subset of its creator\u2019s pairs."
+      ],
+      "sources": [
+        "o-roles"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "org/o-concurrent",
+      "title": "Named licenses and the concurrent peak",
+      "level": 4,
+      "minutes": 12,
+      "outcomes": [
+        "Concurrent billing charges the peak of simultaneous users, and it ignores peaks shorter than 30 minutes."
+      ],
+      "sources": [
+        "o-concurrent"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "org/o-packages",
+      "title": "Pick CX 1, CX 2, CX 3, or CX 4 on purpose",
+      "level": 4,
+      "minutes": 12,
+      "outcomes": [
+        "Match the package to the job. Do not buy CX 1 and then design a WFM project."
+      ],
+      "sources": [
+        "o-packages"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "org/o-people",
+      "title": "People, queues, and the 5,000 member line",
+      "level": 4,
+      "minutes": 11,
+      "outcomes": [
+        "Users live in the org. Queue membership is not the same thing as a division, and it has a hard cap."
+      ],
+      "sources": [
+        "o-people"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "org/o-fair",
+      "title": "Fair use is a pool, not a mystery invoice",
+      "level": 4,
+      "minutes": 12,
+      "outcomes": [
+        "Licenses include monthly allowances. Overage is priced on the policy page. Copying the numbers into a design doc freezes them wrong."
+      ],
+      "sources": [
+        "o-fair"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "org/o-bootstrap",
+      "title": "A first-week admin checklist",
+      "level": 4,
+      "minutes": 14,
+      "outcomes": [
+        "Week one is region, divisions, roles, packages, one queue, and a published in-queue flow. Telephony can follow."
+      ],
+      "sources": [
+        "o-bootstrap"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "predictive/pe-what",
+      "title": "Predictive Engagement watches the site, not the queue math",
+      "level": 4,
+      "minutes": 13,
+      "outcomes": [
+        "It predicts what a visitor is trying to do and offers a message, a chat, content, or a flow. Predictive routing is a different feature on the queue."
+      ],
+      "sources": [
+        "pe-what"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "predictive/pe-track",
+      "title": "Messenger tracks web messaging. The old snippet tracks web chat.",
+      "level": 4,
+      "minutes": 14,
+      "outcomes": [
+        "Genesys tells Genesys Cloud CX customers to use web messaging. Leaving both snippets on the page double-counts the visit."
+      ],
+      "sources": [
+        "pe-track"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "predictive/pe-segments",
+      "title": "A segment matches visitors who meet every condition you listed",
+      "level": 4,
+      "minutes": 12,
+      "outcomes": [
+        "At least one condition. More conditions, fewer visitors. Conditions are not shared with the next segment."
+      ],
+      "sources": [
+        "pe-segments"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "predictive/pe-map",
+      "title": "An action map is qualified before it is offered",
+      "level": 4,
+      "minutes": 14,
+      "outcomes": [
+        "Segment, visitor activity, and outcome probability are the trigger kinds. Priority breaks a tie. Web chat is the legacy action."
+      ],
+      "sources": [
+        "pe-map"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "predictive/pe-outcomes",
+      "title": "Journey Outcomes have a published end date",
+      "level": 8,
+      "minutes": 14,
+      "outcomes": [
+        "Announced 18 May 2026. Planned effective date 29 June 2026. Outcome scoring is not part of the Customer Outcomes replacement."
+      ],
+      "sources": [
+        "pe-outcomes"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "predictive/pe-flow",
+      "title": "An Architect flow can be the action, and it can also be the thing you must edit",
+      "level": 8,
+      "minutes": 12,
+      "outcomes": [
+        "Advanced orchestration is an action type. Flows that still call getJourneyOutcome need a path that does not depend on it."
+      ],
+      "sources": [
+        "pe-flow"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "predictive/pe-report",
+      "title": "Prove the map with Live Now and the performance reports",
+      "level": 4,
+      "minutes": 12,
+      "outcomes": [
+        "Visitor activity and action-map performance are the Predictive Engagement reports. Outcome columns age out with the deprecation."
+      ],
+      "sources": [
+        "pe-report"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "qm/m-overview",
+      "title": "Quality management evaluates the conversation",
+      "level": 4,
+      "minutes": 11,
+      "outcomes": [
+        "QM records and scores interactions, and it can coach. It is not the schedule."
+      ],
+      "sources": [
+        "m-overview"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "qm/m-form",
+      "title": "Forms have questions and weights",
+      "level": 4,
+      "minutes": 11,
+      "outcomes": [
+        "The form is the rubric. Weights decide which questions move the score."
+      ],
+      "sources": [
+        "m-form"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "qm/m-policy",
+      "title": "Recording policies choose calls and retention",
+      "level": 4,
+      "minutes": 11,
+      "outcomes": [
+        "A policy decides which ACD calls are recorded and how long they are kept. A secure flow is a hole in a segment, not a substitute for the policy."
+      ],
+      "sources": [
+        "m-policy"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "qm/m-coach",
+      "title": "Coaching and disputes close the loop",
+      "level": 4,
+      "minutes": 11,
+      "outcomes": [
+        "A score that the agent cannot see and cannot dispute is not a quality program."
+      ],
+      "sources": [
+        "m-coach"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "qm/m-ai",
+      "title": "AI scoring needs STA, QM, and tokens",
+      "level": 8,
+      "minutes": 12,
+      "outcomes": [
+        "The FAQ is blunt: AI scoring requires Speech and Text Analytics, Quality Management, and AI Experience Tokens."
+      ],
+      "sources": [
+        "m-ai"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "qm/m-export",
+      "title": "Retention, export, and the reason you recorded",
+      "level": 8,
+      "minutes": 11,
+      "outcomes": [
+        "Export and AWS recording paths exist so a recording can leave the platform under a policy, not as a side copy."
+      ],
+      "sources": [
+        "m-export"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "quality/y-qm",
+      "title": "Quality evaluates the interaction. Speech analytics reads it",
+      "level": 0,
+      "minutes": 12,
+      "outcomes": [
+        "The quality article says speech and text analytics runs on 100 percent of interactions. That is a claim to re-open, not a sample size you invent."
+      ],
+      "sources": [
+        "y-qm"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "quality/y-form",
+      "title": "A question is human, AI scored, or assisted by topics",
+      "level": 0,
+      "minutes": 12,
+      "outcomes": [
+        "The form article names three automation choices. Evaluation focus is Full Interaction or Evaluated Agent."
+      ],
+      "sources": [
+        "y-form"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "quality/y-ai",
+      "title": "AI scoring waits for history, and a low week hides the answer",
+      "level": 4,
+      "minutes": 14,
+      "outcomes": [
+        "A rolling window of 25 submissions. Below 75 percent, the answer is hidden. The transcript needs 300 characters."
+      ],
+      "sources": [
+        "y-ai"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "quality/y-topics",
+      "title": "Phrases make a topic. Topics make a program",
+      "level": 4,
+      "minutes": 12,
+      "outcomes": [
+        "A program is mapped to queues or flows, and it can turn sentiment and empathy on or off."
+      ],
+      "sources": [
+        "y-topics"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "quality/y-limits",
+      "title": "Programs have counts, and the organization switch wins",
+      "level": 8,
+      "minutes": 14,
+      "outcomes": [
+        "One hundred programs. Five hundred topics per dialect. Twenty scoring rules. Sentiment off at the org turns it off everywhere."
+      ],
+      "sources": [
+        "y-limits"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "quality/y-score",
+      "title": "Agent scoring picks which agent receives the evaluation",
+      "level": 8,
+      "minutes": 12,
+      "outcomes": [
+        "Each, first, or last matched agent. The article also says the last participant is the evaluated agent."
+      ],
+      "sources": [
+        "y-score"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "queues/q-create",
+      "title": "Create the queue in a division",
+      "level": 4,
+      "minutes": 11,
+      "outcomes": [
+        "The queue is a named waiting line in one division, with at most 5,000 members."
+      ],
+      "sources": [
+        "q-create"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "queues/q-skills",
+      "title": "Skills and proficiency are on the agent",
+      "level": 4,
+      "minutes": 12,
+      "outcomes": [
+        "The queue asks for skills. The agent profile holds them. Evaluation decides whether proficiency matters."
+      ],
+      "sources": [
+        "q-skills"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "queues/q-acw",
+      "title": "After call work and the system wrap-up codes",
+      "level": 4,
+      "minutes": 13,
+      "outcomes": [
+        "ACW is optional, discretionary, or time-boxed. The platform has its own codes when agents do not finish."
+      ],
+      "sources": [
+        "q-acw"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "queues/q-wrapdiv",
+      "title": "Wrap-up codes live in divisions too",
+      "level": 4,
+      "minutes": 11,
+      "outcomes": [
+        "The codes an agent sees are the codes their role can see, and Genesys wants them in the queue\u2019s division."
+      ],
+      "sources": [
+        "q-wrapdiv"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "queues/q-sl",
+      "title": "Service level is a percentage and a target in seconds",
+      "level": 4,
+      "minutes": 11,
+      "outcomes": [
+        "Each media has a service level percentage and a target duration. That pair is what conditional routing and WFM both mean by \u201cthe goal.\u201d"
+      ],
+      "sources": [
+        "q-sl"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "queues/q-callback",
+      "title": "Callbacks are interactions with their own rules",
+      "level": 4,
+      "minutes": 12,
+      "outcomes": [
+        "A callback is queued work. It still needs a wrap-up code, and it counts as its own utilization slot."
+      ],
+      "sources": [
+        "q-callback"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "queues/q-members",
+      "title": "Membership, On Queue, and the copy trap",
+      "level": 4,
+      "minutes": 11,
+      "outcomes": [
+        "A copied queue can duplicate a bullseye you did not mean to clone."
+      ],
+      "sources": [
+        "q-members"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "skills/k-what",
+      "title": "ACD is the match, and skills are one way to make it",
+      "level": 0,
+      "minutes": 12,
+      "outcomes": [
+        "Wikipedia describes an ACD as a distributor. Genesys Cloud puts that job on the queue\u2019s routing method."
+      ],
+      "sources": [
+        "k-what"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "skills/k-eval",
+      "title": "Three evaluation methods, and a seven-day lookback",
+      "level": 0,
+      "minutes": 13,
+      "outcomes": [
+        "All skills matching, best available skills, and disregard skills do different jobs. Proficiency covers ACD skills and language skills together."
+      ],
+      "sources": [
+        "k-eval"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "skills/k-rings",
+      "title": "Bullseye widens the pool in two documented ways",
+      "level": 4,
+      "minutes": 14,
+      "outcomes": [
+        "One way adds skill-expression groups. The other removes skills. The ring count is not the same sentence on every page."
+      ],
+      "sources": [
+        "k-rings"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "skills/k-filter",
+      "title": "A skill expression filter replaces the queue\u2019s skill list",
+      "level": 4,
+      "minutes": 13,
+      "outcomes": [
+        "It works for standard and predictive routing when evaluation is All skills matching. Other methods ignore it."
+      ],
+      "sources": [
+        "k-filter"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "skills/k-direct",
+      "title": "Direct routing still uses a queue",
+      "level": 8,
+      "minutes": 13,
+      "outcomes": [
+        "The customer reaches a dedicated person. Wrap-up still exists, because the interaction is ACD."
+      ],
+      "sources": [
+        "k-direct"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "skills/k-scores",
+      "title": "Preferred scores are 0 to 100, and the list has a size",
+      "level": 8,
+      "minutes": 13,
+      "outcomes": [
+        "Architect\u2019s agent-score collection supports 20 pairs unless Customer Care raises it. More than 20 fails a call flow."
+      ],
+      "sources": [
+        "k-scores"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "sta/s-scope",
+      "title": "STA reads the conversation after the channel has it",
+      "level": 4,
+      "minutes": 12,
+      "outcomes": [
+        "Speech and text analytics covers voice and digital interactions. It is not a second ACD."
+      ],
+      "sources": [
+        "s-scope"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "sta/s-sentiment",
+      "title": "Sentiment is a label on the text, not a mood you can argue with",
+      "level": 4,
+      "minutes": 11,
+      "outcomes": [
+        "Sentiment scores the customer\u2019s language. Use it as a filter, then listen."
+      ],
+      "sources": [
+        "s-sentiment"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "sta/s-topics",
+      "title": "Topics, programs, and phrases are the dictionary",
+      "level": 4,
+      "minutes": 12,
+      "outcomes": [
+        "A program groups topics. A topic is phrases you expect to hear or read."
+      ],
+      "sources": [
+        "s-topics"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "sta/s-empathy",
+      "title": "Agent empathy is a detected behavior, still a form question",
+      "level": 4,
+      "minutes": 11,
+      "outcomes": [
+        "Empathy detection points at calls. Calibration still decides what empathy means for your company."
+      ],
+      "sources": [
+        "s-empathy"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "sta/s-search",
+      "title": "Content search is how you test the dictionary",
+      "level": 4,
+      "minutes": 11,
+      "outcomes": [
+        "Search the transcript before you trust a topic count."
+      ],
+      "sources": [
+        "s-search"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "sta/s-timing",
+      "title": "Full analysis and a faster transcript are different clocks",
+      "level": 8,
+      "minutes": 12,
+      "outcomes": [
+        "Some views wait until the interaction is complete. A lower-latency transcript path is a different API."
+      ],
+      "sources": [
+        "s-timing"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "wfm/w-map",
+      "title": "WEM is a set of products, and WFM is one of them",
+      "level": 4,
+      "minutes": 12,
+      "outcomes": [
+        "Recording, screen recording, quality, performance, speech and text analytics, and workforce management are the WEM list."
+      ],
+      "sources": [
+        "w-map"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "wfm/w-bu",
+      "title": "Business units and management units",
+      "level": 4,
+      "minutes": 12,
+      "outcomes": [
+        "A business unit is the planning container. A management unit is the group of agents you actually schedule."
+      ],
+      "sources": [
+        "w-bu"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "wfm/w-goal",
+      "title": "Service goal templates are the planning target",
+      "level": 4,
+      "minutes": 11,
+      "outcomes": [
+        "The queue\u2019s service level and the WFM template should describe the same promise."
+      ],
+      "sources": [
+        "w-goal"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "wfm/w-sched",
+      "title": "Schedules are the plan agents work",
+      "level": 4,
+      "minutes": 11,
+      "outcomes": [
+        "A schedule is built from the management unit, the goals, and activity codes. It is not a routing method."
+      ],
+      "sources": [
+        "w-sched"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "wfm/w-intra",
+      "title": "Intraday and adherence compare the plan to the floor",
+      "level": 4,
+      "minutes": 12,
+      "outcomes": [
+        "Adherence is the gap between the activity you scheduled and the status the agent is actually in."
+      ],
+      "sources": [
+        "w-intra"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "wfm/w-off",
+      "title": "Time off is a schedule change with a rule",
+      "level": 4,
+      "minutes": 11,
+      "outcomes": [
+        "Time-off requests are part of WFM. An approved request that nobody reflects on the schedule is a rumor."
+      ],
+      "sources": [
+        "w-off"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "wfm/w-cert",
+      "title": "The workforce certification is a named exam",
+      "level": 4,
+      "minutes": 10,
+      "outcomes": [
+        "The catalog lists a Workforce Management specialist certification and a preparation course. It does not list a code this lab is willing to invent."
+      ],
+      "sources": [
+        "w-cert"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "wfm/w-forecast",
+      "title": "A forecast has a short view and a long view",
+      "level": 8,
+      "minutes": 13,
+      "outcomes": [
+        "Short-term data can build a schedule. The long-term view is for seasonality and does not generate one."
+      ],
+      "sources": [
+        "w-forecast"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    },
+    {
+      "key": "wfm/w-generate",
+      "title": "Generate one schedule from a forecast that covers it",
+      "level": 8,
+      "minutes": 13,
+      "outcomes": [
+        "The schedule period has to sit inside the short-term forecast, and a business unit generates one schedule at a time."
+      ],
+      "sources": [
+        "w-generate"
+      ],
+      "has_exercise": true,
+      "last_verified": null
+    }
+  ]
+}

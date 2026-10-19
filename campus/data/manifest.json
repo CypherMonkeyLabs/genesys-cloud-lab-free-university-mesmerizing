@@ -894,7 +894,7 @@
           "title": "The Developer Center is the map. This lab is not a client.",
           "level": "Core",
           "minutes": 11,
-          "summary": "Read the public docs. Do not point a tutorial at a production org."
+          "summary": "It is the front door for the Platform API. Read the public docs. Do not point a tutorial at a production org."
         },
         {
           "id": "p-grants",

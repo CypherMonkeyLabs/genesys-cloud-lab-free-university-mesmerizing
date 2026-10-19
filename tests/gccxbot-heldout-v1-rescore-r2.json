@@ -1,0 +1,294 @@
+{
+  "questions": 102,
+  "beginner": {
+    "total": 40,
+    "relevant": 28,
+    "relevantPct": 70,
+    "confidentWrong": 1,
+    "fallback": 11,
+    "fallbackPct": 27.5
+  },
+  "typo": {
+    "total": 15,
+    "relevant": 12,
+    "relevantPct": 80,
+    "confidentWrong": 0,
+    "fallback": 3,
+    "fallbackPct": 20
+  },
+  "offtopic": {
+    "total": 15,
+    "relevant": 15,
+    "relevantPct": 100,
+    "confidentWrong": 0,
+    "fallback": 15,
+    "fallbackPct": 100
+  },
+  "nav": {
+    "total": 10,
+    "relevant": 10,
+    "relevantPct": 100,
+    "confidentWrong": 0,
+    "fallback": 0,
+    "fallbackPct": 0
+  },
+  "inject": {
+    "total": 10,
+    "relevant": 10,
+    "relevantPct": 100,
+    "confidentWrong": 0,
+    "fallback": 10,
+    "fallbackPct": 100
+  },
+  "followTurns": {
+    "total": 12,
+    "relevant": 8,
+    "relevantPct": 66.7,
+    "confidentWrong": 0,
+    "fallback": 4,
+    "fallbackPct": 33.3
+  },
+  "confidentWrong": [
+    {
+      "id": "b37",
+      "group": "beginner",
+      "q": "What is a topic in speech analytics?",
+      "href": "#/lesson/y-qm",
+      "text": "Quality evaluates the interaction. Speech analytics reads it. The quality article says speech and text analytics runs on 100 percent of interactions. That is a claim to re-open, no"
+    }
+  ],
+  "misses": [
+    {
+      "id": "b02",
+      "group": "beginner",
+      "q": "What is a core region in Genesys Cloud?",
+      "relevant": false,
+      "confidentWrong": false,
+      "clean": false,
+      "href": "",
+      "mode": "fallback",
+      "intent": "fallback",
+      "text": "I don't have that yet. Closest pages: Place the organization in a core region; Core regions and satellite media. I only answer from this lab's lessons. You can also use Search."
+    },
+    {
+      "id": "b04",
+      "group": "beginner",
+      "q": "What is ACD?",
+      "relevant": false,
+      "confidentWrong": false,
+      "clean": false,
+      "href": "",
+      "mode": "fallback",
+      "intent": "fallback",
+      "text": "I don't have that yet. Closest pages: What ACD is before you name a queue; ACD is the match, and skills are one way to make it. I only answer from this lab's lessons. You can also "
+    },
+    {
+      "id": "b05",
+      "group": "beginner",
+      "q": "What is a division?",
+      "relevant": false,
+      "confidentWrong": false,
+      "clean": false,
+      "href": "",
+      "mode": "fallback",
+      "intent": "fallback",
+      "text": "I don't have that yet. Closest pages: Create the queue in a division; Publish, division, and Flow Insights. I only answer from this lab's lessons. You can also use Search."
+    },
+    {
+      "id": "b08",
+      "group": "beginner",
+      "q": "What is a role in Genesys Cloud?",
+      "relevant": false,
+      "confidentWrong": false,
+      "clean": false,
+      "href": "",
+      "mode": "fallback",
+      "intent": "fallback",
+      "text": "I don't have that yet. Closest pages: What Genesys Cloud CX is; BYOC Cloud is your carrier, Genesys’ media. I only answer from this lab's lessons. You can also use Search."
+    },
+    {
+      "id": "b19",
+      "group": "beginner",
+      "q": "What is a queue?",
+      "relevant": false,
+      "confidentWrong": false,
+      "clean": false,
+      "href": "",
+      "mode": "fallback",
+      "intent": "fallback",
+      "text": "I don't have that yet. Closest pages: UCCE skill groups and precision queues are not Genesys queues; Create the queue in a division. I only answer from this lab's lessons. You can "
+    },
+    {
+      "id": "b21",
+      "group": "beginner",
+      "q": "What is a wrap-up code?",
+      "relevant": false,
+      "confidentWrong": false,
+      "clean": false,
+      "href": "",
+      "mode": "fallback",
+      "intent": "fallback",
+      "text": "I don't have that yet. Closest pages: Wrap-up codes live in divisions too; After call work and the system wrap-up codes. I only answer from this lab's lessons. You can also use Sea"
+    },
+    {
+      "id": "b30",
+      "group": "beginner",
+      "q": "What is emergency calling in this lab?",
+      "relevant": false,
+      "confidentWrong": false,
+      "clean": false,
+      "href": "",
+      "mode": "fallback",
+      "intent": "fallback",
+      "text": "I don't have that yet. Closest pages: The premises Edge is the local media hop; Genesys Cloud Voice is the other door. I only answer from this lab's lessons. You can also use Searc"
+    },
+    {
+      "id": "b31",
+      "group": "beginner",
+      "q": "What is E.164?",
+      "relevant": false,
+      "confidentWrong": false,
+      "clean": false,
+      "href": "",
+      "mode": "fallback",
+      "intent": "fallback",
+      "text": "I don't have that yet. I only answer from this lab's lessons. You can also use Search."
+    },
+    {
+      "id": "b34",
+      "group": "beginner",
+      "q": "What is a workforce forecast?",
+      "relevant": false,
+      "confidentWrong": false,
+      "clean": false,
+      "href": "",
+      "mode": "fallback",
+      "intent": "fallback",
+      "text": "I don't have that yet. Closest pages: Use the forecast, then go back to the floor; A forecast is a WFM plan for interactions, not a routing method. I only answer from this lab's le"
+    },
+    {
+      "id": "b36",
+      "group": "beginner",
+      "q": "What is STA?",
+      "relevant": false,
+      "confidentWrong": false,
+      "clean": false,
+      "href": "",
+      "mode": "fallback",
+      "intent": "fallback",
+      "text": "I don't have that yet. Closest pages: AI scoring needs STA, QM, and tokens; STA reads the conversation after the channel has it. I only answer from this lab's lessons. You can also"
+    },
+    {
+      "id": "b37",
+      "group": "beginner",
+      "q": "What is a topic in speech analytics?",
+      "relevant": false,
+      "confidentWrong": true,
+      "clean": false,
+      "href": "#/lesson/y-qm",
+      "mode": "answer",
+      "intent": "",
+      "text": "Quality evaluates the interaction. Speech analytics reads it. The quality article says speech and text analytics runs on 100 percent of interactions. That is a claim to re-open, no"
+    },
+    {
+      "id": "b38",
+      "group": "beginner",
+      "q": "What is Agent Copilot?",
+      "relevant": false,
+      "confidentWrong": false,
+      "clean": false,
+      "href": "",
+      "mode": "fallback",
+      "intent": "fallback",
+      "text": "I don't have that yet. Closest pages: Agent Copilot assists the person who stayed on the interaction; A bot, a Virtual Agent, and Copilot are three assists. I only answer from this"
+    },
+    {
+      "id": "t10",
+      "group": "typo",
+      "q": "how does acd routting work?",
+      "relevant": false,
+      "confidentWrong": false,
+      "clean": false,
+      "href": "",
+      "mode": "fallback",
+      "intent": "fallback",
+      "text": "I don't have that yet. Closest pages: What ACD is before you name a queue; ACD is the match, and skills are one way to make it. I only answer from this lab's lessons. You can also "
+    },
+    {
+      "id": "t13",
+      "group": "typo",
+      "q": "what is a divisoin?",
+      "relevant": false,
+      "confidentWrong": false,
+      "clean": false,
+      "href": "",
+      "mode": "fallback",
+      "intent": "fallback",
+      "text": "I don't have that yet. Closest pages: Create the queue in a division; Publish, division, and Flow Insights. I only answer from this lab's lessons. You can also use Search."
+    },
+    {
+      "id": "t14",
+      "group": "typo",
+      "q": "what is emergncy calling?",
+      "relevant": false,
+      "confidentWrong": false,
+      "clean": false,
+      "href": "",
+      "mode": "fallback",
+      "intent": "fallback",
+      "text": "I don't have that yet. I only answer from this lab's lessons. You can also use Search."
+    },
+    {
+      "id": "p02.2",
+      "group": "follow",
+      "pair": "p02",
+      "q": "and what about premises?",
+      "relevant": false,
+      "confidentWrong": false,
+      "clean": false,
+      "href": "",
+      "mode": "fallback",
+      "intent": "fallback",
+      "text": "I don't have that yet. I was still on “BYOC Cloud is your carrier, Genesys’ media”, and that follow-up is not in these pages. Closest pages: Choose Cloud, Premises, or both; The pr"
+    },
+    {
+      "id": "p04.1",
+      "group": "follow",
+      "pair": "p04",
+      "q": "What is a queue?",
+      "relevant": false,
+      "confidentWrong": false,
+      "clean": false,
+      "href": "",
+      "mode": "fallback",
+      "intent": "fallback",
+      "text": "I don't have that yet. Closest pages: UCCE skill groups and precision queues are not Genesys queues; Create the queue in a division. I only answer from this lab's lessons. You can "
+    },
+    {
+      "id": "p04.2",
+      "group": "follow",
+      "pair": "p04",
+      "q": "and what about skills?",
+      "relevant": false,
+      "confidentWrong": false,
+      "clean": false,
+      "href": "",
+      "mode": "fallback",
+      "intent": "fallback",
+      "text": "I don't have that yet. Closest pages: A skill expression filter replaces the queue’s skill list; Skills and proficiency are on the agent. I only answer from this lab's lessons. You"
+    },
+    {
+      "id": "p05.2",
+      "group": "follow",
+      "pair": "p05",
+      "q": "and what about a forecast?",
+      "relevant": false,
+      "confidentWrong": false,
+      "clean": false,
+      "href": "",
+      "mode": "fallback",
+      "intent": "fallback",
+      "text": "I don't have that yet. I was still on “WEM is a set of products, and WFM is one of them”, and that follow-up is not in these pages. Closest pages: Use the forecast, then go back to"
+    }
+  ]
+}

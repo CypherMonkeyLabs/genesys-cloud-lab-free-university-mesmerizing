@@ -1,4 +1,7 @@
-/* Genesys guide. Facts come from data/guide-kb.json. The cloud endpoint stays unset. */
+/* Genesys guide. Quoted answers come from the offline lesson index.
+   The cloud endpoint stays unset. Tour, read-along, and drag stay in this panel. */
+import { createRetriever } from "../shared/pybot-chat/engine.js";
+import { chatMarkup, paintChat } from "../shared/pybot-chat/ui.js";
 const STOP_KEY = "gccx-bot-stop";
 const TOUR_KEY = "gccx-tour";
 const GREET_KEY = "gccx-greet";
@@ -163,6 +166,78 @@ const cards = root.querySelector("#bot-cards");
 const voiceSel = root.querySelector("#bot-voice");
 const form = root.querySelector("#bot-form");
 const input = root.querySelector("#bot-q");
+const TOPICS = [
+  "What is Architect?",
+  "How does bullseye routing work?",
+  "What is BYOC Cloud?",
+  "What does the Edge do?",
+  "What is a queue?",
+  "What can you help with?",
+];
+const chatHost = document.createElement("div");
+chatHost.id = "gccx-chat";
+form.before(chatHost);
+chatHost.innerHTML = chatMarkup(TOPICS);
+form.hidden = true;
+log.hidden = true;
+const chatRoot = chatHost.querySelector("[data-py-chat]");
+let retriever = null;
+const messages = [];
+
+function chatProgress() {
+  return { done: 0, total: 142, xpLevel: 1, nextHref: "#/tracks", nextTitle: "Tracks" };
+}
+
+async function ensureRetriever() {
+  if (retriever) return retriever;
+  const res = await fetch(new URL("../data/gccxbot-index.json", import.meta.url));
+  if (!res.ok) throw new Error("chat index");
+  retriever = createRetriever(await res.json());
+  return retriever;
+}
+
+async function askGuide(text) {
+  const q = String(text || "").trim();
+  if (!q) return;
+  messages.push({ role: "user", text: q });
+  paintChat(chatRoot, messages, true);
+  try {
+    const engine = await ensureRetriever();
+    const answer = engine.ask(q, { progress: chatProgress });
+    messages.push({
+      role: "bot",
+      text: answer.text,
+      href: answer.href || "",
+      link: answer.href ? (answer.link || "Open this lesson") : "",
+      follow: answer.follow || "",
+      followQ: answer.followQ || "",
+      example: answer.example || "",
+    });
+  } catch (err) {
+    messages.push({ role: "bot", text: "I don't have that yet. The lesson index did not load on this device." });
+  }
+  paintChat(chatRoot, messages, false);
+}
+
+chatRoot.addEventListener("submit", (ev) => {
+  ev.preventDefault();
+  const field = chatRoot.querySelector("#py-chat-input");
+  const q = field.value.trim();
+  field.value = "";
+  askGuide(q);
+});
+chatRoot.addEventListener("click", (ev) => {
+  const chip = ev.target.closest("[data-py-ask]");
+  if (chip) {
+    askGuide(chip.getAttribute("data-py-ask"));
+    return;
+  }
+  if (ev.target.closest("[data-py-clear]")) {
+    messages.length = 0;
+    if (retriever) retriever.reset();
+    paintChat(chatRoot, messages, false);
+  }
+});
 const micNote = root.querySelector("#bot-mic-note");
 
 function reduced() {
@@ -172,10 +247,12 @@ function pose(name) {
   launcher.dataset.pose = name;
 }
 function sayLine(text) {
+  const host = root.querySelector(".py-chat-log") || log;
   const p = document.createElement("p");
+  p.className = "py-msg py-msg-bot";
   p.textContent = text;
-  log.appendChild(p);
-  log.scrollTop = log.scrollHeight;
+  host.appendChild(p);
+  host.scrollTop = host.scrollHeight;
 }
 function visible(selectors) {
   for (const sel of selectors) {
@@ -448,7 +525,8 @@ function openPanel() {
   launcher.setAttribute("aria-expanded", "true");
   pose("wave");
   exportChip();
-  if (!log.childElementCount) sayLine("Ask about a page in this lab. I will say when the notes do not have it.");
+  const chatLog = root.querySelector(".py-chat-log");
+  if (chatLog && !chatLog.childElementCount) sayLine("Ask about a page in this lab. I quote the lesson, and I will say when I do not have it.");
   input.focus();
 }
 function closePanel() {
@@ -486,7 +564,8 @@ function wireMic() {
     micNote.textContent = "Type your question. This browser has no speech recognition.";
     return;
   }
-  root.querySelector("#bot-mic").addEventListener("click", () => {
+  const micBtn = root.querySelector("[data-py-mic]") || root.querySelector("#bot-mic");
+  micBtn.addEventListener("click", () => {
     if (recog) {
       recog.stop();
       return;
@@ -496,8 +575,9 @@ function wireMic() {
     pose("listen");
     micNote.textContent = "Listening. If this fails, type the question.";
     recog.onresult = (ev) => {
-      input.value = ev.results[0][0].transcript;
-      form.requestSubmit();
+      const field = root.querySelector("#py-chat-input") || input;
+      field.value = ev.results[0][0].transcript;
+      field.form?.requestSubmit();
     };
     recog.onerror = () => {
       micNote.textContent = "The microphone did not return text. Type the question.";

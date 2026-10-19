@@ -1,0 +1,79 @@
+{
+  "questions": 42,
+  "beginner": {
+    "total": 15,
+    "relevant": 14,
+    "relevantPct": 93.3,
+    "confidentWrong": 0,
+    "fallback": 1,
+    "fallbackPct": 6.7
+  },
+  "typo": {
+    "total": 5,
+    "relevant": 5,
+    "relevantPct": 100,
+    "confidentWrong": 0,
+    "fallback": 0,
+    "fallbackPct": 0
+  },
+  "offtopic": {
+    "total": 10,
+    "relevant": 10,
+    "relevantPct": 100,
+    "confidentWrong": 0,
+    "fallback": 10,
+    "fallbackPct": 100
+  },
+  "nav": {
+    "total": 4,
+    "relevant": 4,
+    "relevantPct": 100,
+    "confidentWrong": 0,
+    "fallback": 0,
+    "fallbackPct": 0
+  },
+  "inject": {
+    "total": 4,
+    "relevant": 4,
+    "relevantPct": 100,
+    "confidentWrong": 0,
+    "fallback": 4,
+    "fallbackPct": 100
+  },
+  "followTurns": {
+    "total": 4,
+    "relevant": 3,
+    "relevantPct": 75,
+    "confidentWrong": 0,
+    "fallback": 1,
+    "fallbackPct": 25
+  },
+  "confidentWrong": [],
+  "misses": [
+    {
+      "id": "b15",
+      "group": "beginner",
+      "q": "What is a queue?",
+      "relevant": false,
+      "confidentWrong": false,
+      "clean": false,
+      "href": "",
+      "mode": "fallback",
+      "intent": "fallback",
+      "text": "I don't have that yet. Closest pages: UCCE skill groups and precision queues are not Genesys queues; Create the queue in a division. I only answer from this lab's lessons. You can "
+    },
+    {
+      "id": "p02.2",
+      "group": "follow",
+      "pair": "p02",
+      "q": "and what about a forecast?",
+      "relevant": false,
+      "confidentWrong": false,
+      "clean": false,
+      "href": "",
+      "mode": "fallback",
+      "intent": "fallback",
+      "text": "I don't have that yet. I was still on “WEM is a set of products, and WFM is one of them”, and that follow-up is not in these pages. Closest pages: Use the forecast, then go back to"
+    }
+  ]
+}

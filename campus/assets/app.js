@@ -68,7 +68,7 @@ init().catch((err) => showFatal(err));
 
 async function init() {
   if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("./sw.js").catch(() => {});
+    navigator.serviceWorker.register("./sw.js", { scope: "./" }).catch(() => {});
   }
   state.manifest = await fetchJson("data/manifest.json");
   ensureLightbox();

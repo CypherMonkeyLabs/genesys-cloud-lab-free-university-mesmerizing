@@ -17,7 +17,7 @@ def add(item):
 
 add(lesson(
     "p-center", "The Developer Center is the map. This lab is not a client.", "Core", 11,
-    "Read the public docs. Do not point a tutorial at a production org.",
+    "It is the front door for the Platform API. Read the public docs. Do not point a tutorial at a production org.",
     [
         "The Genesys Cloud Developer Center is the front door for the Platform API. The API explorer in this lab shows sample JSON shaped from the client-credentials guide and from admin limits such as queue alerting. It does not call login or API hosts. A sample with labIllustration set to true is a teaching body, not a captured response.",
         "When you do build a client, the region’s login host and API host must match the organization. This lab treats only the US East API host from the client-credentials guide, api.mypurecloud.com, as a host it is willing to print. Other regions: confirm the API host on the regions article.",

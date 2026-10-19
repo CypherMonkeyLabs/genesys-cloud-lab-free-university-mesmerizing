@@ -1,0 +1,137 @@
+{
+  "lab": "genesys-cloud-cx",
+  "note": "Hashes cover every file under campus/vendor. Versions match campus/vendor/LICENSES.txt. No fonts are vendored; the lab uses system fonts.",
+  "components": [
+    {
+      "name": "three.js",
+      "version": "r186",
+      "licence": "MIT",
+      "url": "https://github.com/mrdoob/three.js/tree/r186",
+      "licence_file": "campus/vendor/THREE-LICENSE.txt",
+      "files": [
+        {
+          "path": "campus/vendor/THREE-LICENSE.txt",
+          "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+        },
+        {
+          "path": "campus/vendor/three-post/postprocessing/EffectComposer.js",
+          "sha256": "af78417adddaa482b742ddcfdf551ca0b35d77d58493f2e96439fdc219905ef0"
+        },
+        {
+          "path": "campus/vendor/three-post/postprocessing/MaskPass.js",
+          "sha256": "7cd08eee9d5d6f5578beaddbdcbe9c384f6873810af27f22ab7db3ceeb127aa3"
+        },
+        {
+          "path": "campus/vendor/three-post/postprocessing/Pass.js",
+          "sha256": "ac015c53e4a491b4f071535d003e6208ec56e00cfbb74942d93556dd53c45673"
+        },
+        {
+          "path": "campus/vendor/three-post/postprocessing/RenderPass.js",
+          "sha256": "11d4309065ed205241291a6e1e3f6d54acd11ee16a753313a2b4b33a5ce4b189"
+        },
+        {
+          "path": "campus/vendor/three-post/postprocessing/ShaderPass.js",
+          "sha256": "1a07592b97c68fec70b9ece4ee32522878c9e71e8364c10f359480b8cd676ef2"
+        },
+        {
+          "path": "campus/vendor/three-post/postprocessing/UnrealBloomPass.js",
+          "sha256": "246ded822cd0fc5643b5bdc53e9542deeae168d2550c010891264920abb4bca2"
+        },
+        {
+          "path": "campus/vendor/three-post/shaders/CopyShader.js",
+          "sha256": "a33057d5ac91c43304c186ac0e8816e62bb2ed471d3a00ff3018dfd5c0389718"
+        },
+        {
+          "path": "campus/vendor/three-post/shaders/LuminosityHighPassShader.js",
+          "sha256": "123c9d8c4155fa296822eb3325574e82a6c5f4cb30eed065c6cc073ba7ca3bbe"
+        },
+        {
+          "path": "campus/vendor/three.core.js",
+          "sha256": "9edde002b066a9a05676a6127f67735b62baf399bdea529f2f7e31657da769e6"
+        },
+        {
+          "path": "campus/vendor/three.module.js",
+          "sha256": "9052042d676cb0fdc1ddfefe193053f34b7ac0513a616fdac4535d49987812ea"
+        }
+      ]
+    },
+    {
+      "name": "d3",
+      "version": "7.9.0",
+      "licence": "ISC",
+      "url": "https://github.com/d3/d3",
+      "licence_file": "campus/vendor/LICENSES.txt",
+      "files": [
+        {
+          "path": "campus/vendor/d3.js",
+          "sha256": "ff850375b68f39d5233ba8b6b9224f1a9c538fbdfa30baf8b8358fb459ef6fd8"
+        }
+      ]
+    },
+    {
+      "name": "anime.js",
+      "version": "4.5.0",
+      "licence": "MIT",
+      "url": "https://github.com/juliangarnier/anime",
+      "licence_file": "campus/vendor/LICENSES.txt",
+      "files": [
+        {
+          "path": "campus/vendor/anime.js",
+          "sha256": "e10faf70c5d00263fbdc73dcf89ecf29f1b7559e3ea0c2a9e6b32b44dad9390f"
+        }
+      ]
+    },
+    {
+      "name": "rough.js",
+      "version": "4.6.6",
+      "licence": "MIT",
+      "url": "https://github.com/rough-stuff/rough",
+      "licence_file": "campus/vendor/LICENSES.txt",
+      "files": [
+        {
+          "path": "campus/vendor/rough.js",
+          "sha256": "3b0cb9631f8cf7c2ce345ee9a7fb86eaf21672b61fadfb84c735ec6b340c4a11"
+        }
+      ]
+    },
+    {
+      "name": "canvas-confetti",
+      "version": "1.9.3",
+      "licence": "ISC",
+      "url": "https://github.com/catdad/canvas-confetti",
+      "licence_file": "campus/vendor/LICENSES.txt",
+      "files": [
+        {
+          "path": "campus/vendor/confetti.js",
+          "sha256": "8a8848cd6fc93a68ab15319f6be0613778ad740622b42a9037ade8fb1cd5410a"
+        }
+      ]
+    },
+    {
+      "name": "markmap",
+      "version": "0.18.12",
+      "licence": "MIT",
+      "url": "https://github.com/markmap/markmap",
+      "licence_file": "campus/vendor/LICENSES.txt",
+      "files": [
+        {
+          "path": "campus/vendor/markmap.js",
+          "sha256": "993ec8761b9352d27a4a0d99c8571ae891a59b93f93501b1acf42c75f5f65d5f"
+        }
+      ]
+    },
+    {
+      "name": "Vendor folder notes",
+      "version": "2026-10",
+      "licence": "MIT",
+      "url": "https://github.com/CypherMonkeyLabs/genesys-cloud-lab-free-university-mesmerizing",
+      "licence_file": "LICENSE",
+      "files": [
+        {
+          "path": "campus/vendor/LICENSES.txt",
+          "sha256": "d7fbb54b3f94401bc6937698f655548725f2802299acd20a69803b94888ea67f"
+        }
+      ]
+    }
+  ]
+}

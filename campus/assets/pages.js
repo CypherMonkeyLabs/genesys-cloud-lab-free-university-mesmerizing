@@ -194,7 +194,7 @@ function showGame(ctx) {
       ctx.state.progress.gameBest = best;
       ctx.saveProgress();
       root.innerHTML = `<p class="kicker">Port game</p><h1>${correct} of ${bank.length}</h1>
-        <p>Best in this browser: ${best}. Seven or more earns the Port ace badge.</p>
+        <p>Best in this browser: ${best}. Seven or more unlocks the Port ace badge.</p>
         <div class="toolbar"><button class="btn primary" type="button" id="again">Play again</button><button class="btn" type="button" id="share">Download result card</button></div>
         <p><a href="#/ports">Back to the table</a></p>`;
       root.querySelector("#again").addEventListener("click", () => { index = 0; correct = 0; draw(); });
@@ -425,7 +425,7 @@ function showCareer(ctx) {
       <article class="card"><h3>Developer</h3><p>Grants, the API explorer, AppFoundry. GC-GCD is the developer exam the catalog names.</p><p><a href="#/track/api">APIs</a> · <a href="#/studio/api">API studio</a></p></article>
     </div>
     <p><a class="btn primary" href="#/interview">Interview drill</a></p>
-    <p class="muted">Nothing here promises an interview, a salary, or that a package includes a product. Read the overview and the catalog.</p>`;
+    <p class="muted">Nothing here promises a role, a certificate, or that a package includes a product. Read the overview and the catalog.</p>`;
 }
 
 function showNews(ctx) {

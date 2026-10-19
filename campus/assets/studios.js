@@ -312,7 +312,20 @@ function numbers(root, ctx) {
       <button class="btn primary" type="submit">Classify</button>
     </form>
     <pre id="num-out"></pre>
-    <p><a href="https://help.genesys.cloud/articles/number-plan-information/">Number plan information</a></p>`;
+    <p><a href="https://help.genesys.cloud/articles/number-plan-information/">Number plan information</a></p>
+    <section class="panel" id="sip-ladder" aria-label="SIP dialog ladder simulation">
+      <h2>SIP dialog ladder</h2>
+      <p><strong>Simulation.</strong> This desk does not send SIP to a carrier, an Edge, or Genesys Cloud. It shows the usual successful dialog order from RFC 3261 so you can click each step.</p>
+      <label>Transport
+        <select id="sip-transport">
+          <option>UDP</option>
+          <option>TCP</option>
+          <option>TLS</option>
+        </select>
+      </label>
+      <div id="sip-steps"></div>
+      <pre id="sip-out"></pre>
+    </section>`;
   const form = root.querySelector("#num-form");
   const run = () => {
     const raw = form.digits.value.trim();
@@ -320,6 +333,54 @@ function numbers(root, ctx) {
   };
   form.addEventListener("submit", (ev) => { ev.preventDefault(); run(); });
   run();
+  mountSipLadder(root);
+}
+
+const SIP_STEPS = [
+  { id: "invite", from: "Caller", to: "Trunk", title: "INVITE", detail: "The caller asks to open a dialog. The request line names the target. The Via header records the transport you picked." },
+  { id: "trying", from: "Trunk", to: "Caller", title: "100 Trying", detail: "A provisional response. The dialog is not up yet. Hop-by-hop, so a later proxy may not repeat it." },
+  { id: "ringing", from: "Trunk", to: "Caller", title: "180 Ringing", detail: "The far end is alerting. Still provisional. Early media, if any, is a separate RTP path." },
+  { id: "ok", from: "Trunk", to: "Caller", title: "200 OK", detail: "The dialog is accepted. A Contact header names where later requests in this dialog should go." },
+  { id: "ack", from: "Caller", to: "Trunk", title: "ACK", detail: "The caller confirms the 200. For a 200 OK, the ACK is end to end." },
+  { id: "bye", from: "Caller", to: "Trunk", title: "BYE", detail: "Either side can end the dialog. This simulation sends BYE from the caller." },
+  { id: "byeok", from: "Trunk", to: "Caller", title: "200 OK", detail: "The BYE is accepted. The dialog is gone. RTP should stop with it." }
+];
+
+function mountSipLadder(root) {
+  const host = root.querySelector("#sip-steps");
+  const out = root.querySelector("#sip-out");
+  const transport = root.querySelector("#sip-transport");
+  if (!host || !out || !transport) return;
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let step = 0;
+  const draw = () => {
+    host.replaceChildren();
+    SIP_STEPS.forEach((item, index) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "btn";
+      button.textContent = `${index + 1}. ${item.title}`;
+      button.setAttribute("aria-pressed", index === step ? "true" : "false");
+      if (index === step) button.classList.add("primary");
+      button.addEventListener("click", () => {
+        step = index;
+        draw();
+      });
+      host.appendChild(button);
+    });
+    const item = SIP_STEPS[step];
+    const via = `SIP/2.0/${transport.value}`;
+    out.textContent = [
+      "Simulation only. Nothing was sent.",
+      `${item.from} -> ${item.to}: ${item.title}`,
+      `Via: ${via} lab.invalid;branch=z9hG4bK-sim`,
+      item.detail,
+      "RTP is not this request. SIP sets the dialog up. The audio is a different path.",
+      reduce ? "Motion is reduced. The step changes without a slide." : "Click the next step to walk the dialog."
+    ].join("\n");
+  };
+  transport.addEventListener("change", draw);
+  draw();
 }
 
 function classify(raw) {
