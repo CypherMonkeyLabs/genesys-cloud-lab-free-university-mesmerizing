@@ -145,6 +145,91 @@ for (const rule of SEED_RULES) {
   });
 }
 
-const index = { v: 2, syn: SYN, seeds, docs };
+/* Ordinary words that also show up in titles. They do not unlock search. */
+const LEXICON_DENY = new Set(`best available phone phones call calls calling user users time work right new method methods type types home page first last name names list set open flat tire smart smartphone output back change off request rule approved plan floor using make need before after both choose cloud score scores priority conversation direct secure common digital virtual engine grant implicit client fair snippet map action goal service template group number numbers voice text data point points based within without during another same different real true false next high low long short small large big full empty start started starting ended ending help article guide sample browser organization interaction created morning everyone history public address location product claim catalog course exam today tomorrow please thanks hello world series flight laptop battery hiking boot capital japan spanish calorie mango faucet diaper stock apple photosynthesis hospital travel photos bake sourdough necktie oslo bread won cheapest recommend nearest painted starry night leaky fix translate calories many who how what when where why the and for with from into over under again still just like this that have been was are not can will your their them only other per via own such than then while about across around through between against email emails chat chats message messages inbound outbound local media pair pairs limit limits wrong defect every normal error queueing center centres centre contact contacts audio people person human thing things question questions which doing answer answers become becomes cannot nothing inside until three seven tried smaller similar showing weeks toward stayed stays watches waits picks reads reason order current system systems create created compare match matches listed documented offered promise prove people person human thing magic mystery disregard pretends widen widens clocks close complicated argue assume beside copying dates faster future hides invent invented inventing invoice lookback neighbor outer owner purpose qualified quick ratio search seconds table target tasks thing three timeout tried units until visitors waits watch weeks weights which`.split(/\s+/));
+const KEEP_SHORT = new Set("acd sip rtp ivr wfm wem sta did pbx cx bot e164".split(" "));
+const PRODUCT = new Set(`${[...KEEP_SHORT].join(" ")} genesys architect byoc srtp bullseye trunk trunks queue queues skill skills edge division divisions forecast adherence dialog wrap wrapup predictive engagement salesforce zendesk appfoundry scim e911 oauth copilot webrtc callback campaign region regions license licence licenses messenger gamification intraday schedule schedules utilization sentiment empathy transcript journey webhook notification credential credentials premise premises finesse cucm webex pureconnect uccx ucce routing rout ring rings flow flows chat email analytics speech quality coaching recording token tokens host hosts developer platform pkce dtmf sta wem ivrflow numberplan dialplan actionmap inqueue architectflow cisco workforce role`.split(/\s+/));
+
+const words = new Set();
+const phrases = new Set();
+const glossaryWords = new Set();
+const titleCount = new Map();
+function stemLoose(word) {
+  if (!word || word.length < 4) return word;
+  if (word.length === 4) {
+    if (word.endsWith("s") && !word.endsWith("ss")) return word.slice(0, -1);
+    return word;
+  }
+  if (word.endsWith("ies") && word.length > 5 && word !== "series") return `${word.slice(0, -3)}y`;
+  if (word.endsWith("ing") && word.length > 6) {
+    let base = word.slice(0, -3);
+    if (base.length > 3 && base.at(-1) === base.at(-2)) base = base.slice(0, -1);
+    return base;
+  }
+  if (word.endsWith("ed") && word.length > 5) return word.slice(0, -2);
+  if (/(ches|shes|sses|xes|zes|oes)$/.test(word)) return word.slice(0, -2);
+  if (word.endsWith("s") && !word.endsWith("ss") && !word.endsWith("us") && !word.endsWith("is")) return word.slice(0, -1);
+  return word;
+}
+function normalize(raw) {
+  return String(raw || "").toLowerCase().replace(/[^a-z0-9+]+/g, " ").replace(/\s+/g, " ").trim();
+}
+function acceptWord(cleaned) {
+  if (!cleaned || LEXICON_DENY.has(cleaned) || LEXICON_DENY.has(stemLoose(cleaned))) return false;
+  if (cleaned.length < 3 && !KEEP_SHORT.has(cleaned)) return false;
+  if (cleaned.length < 5 && !PRODUCT.has(cleaned) && !KEEP_SHORT.has(cleaned)) return false;
+  return true;
+}
+const addWord = (raw, bucket) => {
+  const cleaned = normalize(raw);
+  if (!acceptWord(cleaned)) return;
+  bucket.add(cleaned);
+  const stemmed = stemLoose(cleaned);
+  if (stemmed !== cleaned && acceptWord(stemmed)) bucket.add(stemmed);
+};
+const addText = (raw, asPhrase, bucket) => {
+  const phrase = normalize(raw);
+  if (!phrase) return;
+  const parts = phrase.split(" ").filter(Boolean);
+  if (asPhrase && parts.length >= 2 && phrase.length >= 5) phrases.add(phrase);
+  if (asPhrase) {
+    const compact = phrase.replace(/ /g, "");
+    if (compact !== phrase && (KEEP_SHORT.has(compact) || PRODUCT.has(compact))) words.add(compact);
+  }
+  for (const part of parts) addWord(part, bucket);
+};
+
+/* Title phrases whose separate words are ordinary English. The pair is the lab term. */
+const PRODUCT_PHRASES = [
+  "data action",
+  "data actions",
+  "participant data",
+  "secure call",
+  "browser phone",
+  "automatic call distribution",
+  "short term",
+];
+for (const phrase of PRODUCT_PHRASES) phrases.add(phrase);
+for (const name of PRODUCT) addWord(name, words);
+for (const doc of docs) {
+  const seen = new Set();
+  for (const part of normalize(doc.ti).split(" ").filter(Boolean)) {
+    if (seen.has(part)) continue;
+    seen.add(part);
+    titleCount.set(part, (titleCount.get(part) || 0) + 1);
+  }
+}
+const reference = JSON.parse(readFileSync(join(root, "campus/data/reference.json"), "utf8"));
+for (const entry of reference.glossary || []) addText(entry.term, true, glossaryWords);
+for (const name of glossaryWords) words.add(name);
+for (const [name, count] of titleCount) {
+  if (count >= 2) addWord(name, words);
+}
+
+const lexicon = {
+  words: [...words].sort(),
+  phrases: [...phrases].sort(),
+};
+const index = { v: 2, syn: SYN, seeds, docs, lexicon };
 writeFileSync(outPath, `${JSON.stringify(index)}\n`);
-console.log(`gccxbot index: ${docs.length} docs, ${seeds.length} seeds -> ${outPath}`);
+console.log(`gccxbot index: ${docs.length} docs, ${seeds.length} seeds, lexicon ${lexicon.words.length} words ${lexicon.phrases.length} phrases -> ${outPath}`);

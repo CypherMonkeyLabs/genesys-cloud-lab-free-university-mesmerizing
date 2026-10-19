@@ -308,6 +308,9 @@ function injection(raw) {
     /\bunrestricted assistant\b/,
     /\bhidden instructions\b/,
     /\byour prompt\b/,
+    /\breply with\b/,
+    /^(?:please\s+)?(?:say|repeat|print|output)\b/,
+    /\b(?:say|repeat|print|output)\s+(?:pwned|pawned)\b/,
   ];
   return patterns.some((pattern) => pattern.test(q) || pattern.test(original));
 }
@@ -374,6 +377,21 @@ function coreBesideLifestyle(text, syn) {
     const forms = [word, stem(word), canon(word, syn)].filter(Boolean);
     if (forms.some((form) => LIFESTYLE_BRAND.has(form))) continue;
     if (forms.some((form) => STRONG_WORDS.has(form))) return true;
+  }
+  return false;
+}
+
+function hasLexiconHit(text, lexicon, syn) {
+  if (!lexicon || !Array.isArray(lexicon.words) || !lexicon.words.length) return false;
+  const words = new Set(lexicon.words);
+  const q = normalize(text);
+  for (const phrase of lexicon.phrases || []) {
+    if (phrase && phrase.length >= 5 && q.includes(phrase)) return true;
+  }
+  for (const word of q.split(" ")) {
+    if (!word) continue;
+    const forms = [word, stem(word), canon(word, syn)].filter(Boolean);
+    if (forms.some((form) => words.has(form))) return true;
   }
   return false;
 }
@@ -551,6 +569,7 @@ export function createRetriever(index) {
   tdf.forEach((count, term) => freq.set(term, (freq.get(term) || 0) + count));
   const domain = buildDomain(df, index && index.seeds);
   const seeds = Array.isArray(index && index.seeds) ? index.seeds : [];
+  const lexicon = index && index.lexicon ? index.lexicon : { words: [], phrases: [] };
   const seedPool = [];
   const seedSeen = new Set();
   const addSeed = (term) => {
@@ -1072,6 +1091,9 @@ export function createRetriever(index) {
     if (!routed.searchText) return routed;
     const neighbour = /\b(?:zoom|amazon|five9|avaya|twilio|talkdesk|dialpad|cxone|incontact|ringcentral|8x8)\b/;
     if (neighbour.test(normalize(limited)) || neighbour.test(normalize(routed.searchText))) {
+      return fallbackAnswer([], routed.followMode, true);
+    }
+    if (!hasLexiconHit(limited, lexicon, syn) && !hasLexiconHit(routed.searchText || "", lexicon, syn)) {
       return fallbackAnswer([], routed.followMode, true);
     }
     if (!hasDomainTerm(routed.searchText, domain, syn, pool, freq)) return fallbackAnswer([], routed.followMode, true);

@@ -1,0 +1,272 @@
+{
+  "questions": 102,
+  "beginner": {
+    "total": 40,
+    "relevant": 34,
+    "relevantPct": 85,
+    "confidentWrong": 2,
+    "fallback": 4,
+    "fallbackPct": 10
+  },
+  "typo": {
+    "total": 15,
+    "relevant": 9,
+    "relevantPct": 60,
+    "confidentWrong": 0,
+    "fallback": 6,
+    "fallbackPct": 40
+  },
+  "offtopic": {
+    "total": 15,
+    "relevant": 15,
+    "relevantPct": 100,
+    "confidentWrong": 0,
+    "fallback": 15,
+    "fallbackPct": 100
+  },
+  "nav": {
+    "total": 10,
+    "relevant": 10,
+    "relevantPct": 100,
+    "confidentWrong": 0,
+    "fallback": 0,
+    "fallbackPct": 0
+  },
+  "inject": {
+    "total": 10,
+    "relevant": 10,
+    "relevantPct": 100,
+    "confidentWrong": 0,
+    "fallback": 10,
+    "fallbackPct": 100
+  },
+  "followTurns": {
+    "total": 12,
+    "relevant": 8,
+    "relevantPct": 66.7,
+    "confidentWrong": 1,
+    "fallback": 3,
+    "fallbackPct": 25
+  },
+  "confidentWrong": [
+    {
+      "id": "b15",
+      "group": "beginner",
+      "q": "Who is tried before the rest of the queue?",
+      "href": "#/lesson/f-acd-idea",
+      "text": "What ACD is before you name a queue. ACD picks an agent for a waiting interaction. The queue is the waiting line. Skills, utilization, and On Queue decide who is eligible. Last che"
+    },
+    {
+      "id": "b30",
+      "group": "beginner",
+      "q": "What has to exist before emergency calling works?",
+      "href": "#/lesson/f-prereq",
+      "text": "Prerequisites before the first trunk. BYOC Cloud needs a public carrier address, an open port plan, and a real location. The org subscription has to include the telephony product y"
+    },
+    {
+      "id": "p03.2",
+      "group": "follow",
+      "q": "and what about the audio path?",
+      "href": "#/",
+      "text": "Listen is the audio desk on the lab home. The clips stay on this device."
+    }
+  ],
+  "misses": [
+    {
+      "id": "b08",
+      "group": "beginner",
+      "q": "How is a role paired with a division?",
+      "relevant": false,
+      "confidentWrong": false,
+      "clean": false,
+      "href": "",
+      "mode": "fallback",
+      "intent": "fallback",
+      "text": "I don't have that yet. Closest pages: Role and division pairs are the real permission; Roles are permission lists paired with divisions. I only answer from this lab's lessons. You "
+    },
+    {
+      "id": "b15",
+      "group": "beginner",
+      "q": "Who is tried before the rest of the queue?",
+      "relevant": false,
+      "confidentWrong": true,
+      "clean": false,
+      "href": "#/lesson/f-acd-idea",
+      "mode": "answer",
+      "intent": "",
+      "text": "What ACD is before you name a queue. ACD picks an agent for a waiting interaction. The queue is the waiting line. Skills, utilization, and On Queue decide who is eligible. Last che"
+    },
+    {
+      "id": "b19",
+      "group": "beginner",
+      "q": "What object is the waiting line?",
+      "relevant": false,
+      "confidentWrong": false,
+      "clean": false,
+      "href": "",
+      "mode": "fallback",
+      "intent": "fallback",
+      "text": "I don't have that yet. I only answer from this lab's lessons. You can also use Search."
+    },
+    {
+      "id": "b20",
+      "group": "beginner",
+      "q": "What happens in after call work?",
+      "relevant": false,
+      "confidentWrong": false,
+      "clean": false,
+      "href": "",
+      "mode": "fallback",
+      "intent": "fallback",
+      "text": "I don't have that yet. Closest pages: After call work and the system wrap-up codes; SCIM and other directory sync still start with an OAuth client. I only answer from this lab's le"
+    },
+    {
+      "id": "b30",
+      "group": "beginner",
+      "q": "What has to exist before emergency calling works?",
+      "relevant": false,
+      "confidentWrong": true,
+      "clean": false,
+      "href": "#/lesson/f-prereq",
+      "mode": "answer",
+      "intent": "",
+      "text": "Prerequisites before the first trunk. BYOC Cloud needs a public carrier address, an open port plan, and a real location. The org subscription has to include the telephony product y"
+    },
+    {
+      "id": "b38",
+      "group": "beginner",
+      "q": "Who does Agent Copilot assist?",
+      "relevant": false,
+      "confidentWrong": false,
+      "clean": false,
+      "href": "",
+      "mode": "fallback",
+      "intent": "fallback",
+      "text": "I don't have that yet. Closest pages: A bot, a Virtual Agent, and Copilot are three assists; Agent Copilot assists the person who stayed on the interaction. I only answer from this"
+    },
+    {
+      "id": "t01",
+      "group": "typo",
+      "q": "wat is arcitecht used for?",
+      "relevant": false,
+      "confidentWrong": false,
+      "clean": false,
+      "href": "",
+      "mode": "fallback",
+      "intent": "fallback",
+      "text": "I don't have that yet. I only answer from this lab's lessons. You can also use Search."
+    },
+    {
+      "id": "t08",
+      "group": "typo",
+      "q": "predicitve engagament on a site",
+      "relevant": false,
+      "confidentWrong": false,
+      "clean": false,
+      "href": "",
+      "mode": "fallback",
+      "intent": "fallback",
+      "text": "I don't have that yet. I only answer from this lab's lessons. You can also use Search."
+    },
+    {
+      "id": "t10",
+      "group": "typo",
+      "q": "acd routting methods",
+      "relevant": false,
+      "confidentWrong": false,
+      "clean": false,
+      "href": "",
+      "mode": "fallback",
+      "intent": "fallback",
+      "text": "I don't have that yet. Closest pages: What ACD is before you name a queue; ACD is the match, and skills are one way to make it. I only answer from this lab's lessons. You can also "
+    },
+    {
+      "id": "t11",
+      "group": "typo",
+      "q": "client credentails grant",
+      "relevant": false,
+      "confidentWrong": false,
+      "clean": false,
+      "href": "",
+      "mode": "fallback",
+      "intent": "fallback",
+      "text": "I don't have that yet. I only answer from this lab's lessons. You can also use Search."
+    },
+    {
+      "id": "t12",
+      "group": "typo",
+      "q": "speach and text analtyics",
+      "relevant": false,
+      "confidentWrong": false,
+      "clean": false,
+      "href": "",
+      "mode": "fallback",
+      "intent": "fallback",
+      "text": "I don't have that yet. I only answer from this lab's lessons. You can also use Search."
+    },
+    {
+      "id": "t13",
+      "group": "typo",
+      "q": "a divisoin inside the org",
+      "relevant": false,
+      "confidentWrong": false,
+      "clean": false,
+      "href": "",
+      "mode": "fallback",
+      "intent": "fallback",
+      "text": "I don't have that yet. I only answer from this lab's lessons. You can also use Search."
+    },
+    {
+      "id": "p01.2",
+      "group": "follow",
+      "pair": "p01",
+      "q": "and what about the delay?",
+      "relevant": false,
+      "confidentWrong": false,
+      "clean": false,
+      "href": "",
+      "mode": "fallback",
+      "intent": "fallback",
+      "text": "I don't have that yet. I was still on “Bullseye rings widen the target”, and that follow-up is not in these pages. I only answer from this lab's lessons. You can also use Search."
+    },
+    {
+      "id": "p03.2",
+      "group": "follow",
+      "pair": "p03",
+      "q": "and what about the audio path?",
+      "relevant": false,
+      "confidentWrong": true,
+      "clean": false,
+      "href": "#/",
+      "mode": "intent",
+      "intent": "audio",
+      "text": "Listen is the audio desk on the lab home. The clips stay on this device."
+    },
+    {
+      "id": "p04.1",
+      "group": "follow",
+      "pair": "p04",
+      "q": "What object is the waiting line?",
+      "relevant": false,
+      "confidentWrong": false,
+      "clean": false,
+      "href": "",
+      "mode": "fallback",
+      "intent": "fallback",
+      "text": "I don't have that yet. I only answer from this lab's lessons. You can also use Search."
+    },
+    {
+      "id": "p04.2",
+      "group": "follow",
+      "pair": "p04",
+      "q": "and what about proficiency?",
+      "relevant": false,
+      "confidentWrong": false,
+      "clean": false,
+      "href": "",
+      "mode": "fallback",
+      "intent": "fallback",
+      "text": "I don't have that yet. I only answer from this lab's lessons. You can also use Search."
+    }
+  ]
+}
