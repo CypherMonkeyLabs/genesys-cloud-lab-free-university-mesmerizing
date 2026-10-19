@@ -40,6 +40,22 @@ test("home, bot, and a lesson at desktop and phone", async ({ page }) => {
   await expect(page.locator(".py-chat-log")).toContainText(/Architect/i);
 });
 
+test("chat answer log stays readable on a phone", async ({ page }) => {
+  await quiet(page);
+  for (const height of [844, 430]) {
+    await page.setViewportSize({ width: 390, height });
+    await page.goto("/campus/");
+    await page.locator("#bot-launcher").click();
+    await page.locator("#py-chat-input").fill("What is Architect?");
+    await page.locator(".py-chat-form button[type='submit']").click();
+    const log = page.locator(".py-chat-log");
+    await expect(log).toContainText(/Architect/i);
+    const box = await log.boundingBox();
+    expect(box).toBeTruthy();
+    expect(box.height).toBeGreaterThanOrEqual(120);
+  }
+});
+
 test("chat input fills the phone sheet", async ({ page }) => {
   await quiet(page);
   for (const height of [844, 430]) {

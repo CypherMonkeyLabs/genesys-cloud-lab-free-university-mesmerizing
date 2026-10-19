@@ -100,7 +100,7 @@ Recorded voices in Python Lab are fixed clips. Read aloud uses the browser voice
 
 ## Short screens
 
-`chat.css` lays the panel out as a column. The lesson scroller shrinks. The text field does not. Under 560px of viewport height the header, quick actions, and suggestion chips collapse, and the answer log keeps a 48px minimum with its own scrollbar so the reply can be read. Clear stays available. The host should position the panel with `visualViewport` (width, height, offsetTop) and `dvh`, and listen to `visualViewport` resize and scroll, so a phone keyboard does not cover the field.
+`chat.css` lays the panel out as a column. The lesson scroller shrinks. The text field does not. On a phone the answer log keeps a 140px minimum and no fixed max-height, so a reply stays readable while the sheet scrolls. Suggestion chips are shorter there. Under 560px of viewport height the header, quick actions, and suggestion chips collapse, and the answer log still keeps that 140px minimum with its own scrollbar. Clear stays available. The host should position the panel with `visualViewport` (width, height, offsetTop) and `dvh`, and listen to `visualViewport` resize and scroll, so a phone keyboard does not cover the field.
 
 ## Licence
 

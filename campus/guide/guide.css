@@ -272,6 +272,9 @@ body.menu-open .bot-nudge { visibility: hidden; }
   .bot-log { max-height: 16vh; overflow: auto; }
   .bot-nudge { bottom: calc(var(--bar-h, 72px) + 92px); }
 }
+@media (max-width: 700px) and (max-height: 560px) {
+  .bot-panel { max-height: calc(100svh - var(--bar-h, 64px) - 8px); }
+}
 
 /* Draggable bot: bounce snap, lift, reset button, hidden under the full-screen menu. */
 .bot-root.is-snapping { transition: left .5s cubic-bezier(.34,1.56,.64,1), top .5s cubic-bezier(.34,1.56,.64,1) !important; }
