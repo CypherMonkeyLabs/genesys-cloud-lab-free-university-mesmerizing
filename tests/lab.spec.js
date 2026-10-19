@@ -40,6 +40,20 @@ test("home, bot, and a lesson at desktop and phone", async ({ page }) => {
   await expect(page.locator(".py-chat-log")).toContainText(/Architect/i);
 });
 
+test("chat input fills the phone sheet", async ({ page }) => {
+  await quiet(page);
+  for (const height of [844, 430]) {
+    await page.setViewportSize({ width: 390, height });
+    await page.goto("/campus/");
+    await page.locator("#bot-launcher").click();
+    const input = page.locator("#py-chat-input");
+    await expect(input).toBeVisible();
+    const box = await input.boundingBox();
+    expect(box).toBeTruthy();
+    expect(box.width).toBeGreaterThanOrEqual(180);
+  }
+});
+
 test("offline reload still opens a lesson and the guide", async ({ page, context }) => {
   await quiet(page);
   await page.goto("/campus/");

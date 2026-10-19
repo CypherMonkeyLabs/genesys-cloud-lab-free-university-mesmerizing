@@ -317,6 +317,10 @@ const STRONG_WORDS = new Set("genesys architect acd queue skill bullseye byoc si
 /* Indexed words that also appear in ordinary English. One of these is not
    enough to treat a question as in-lab; a real Genesys term has to sit beside it. */
 const GENERIC_CARRIERS = new Set("best contact center centre api apis available".split(" "));
+/* Sports and clothing words show up in ordinary questions. They never count
+   as a lab term. Cisco alone does not rescue a shirt question. */
+const LIFESTYLE = new Set("marathon shirt shirts tshirt tee jersey jerseys sneaker sneakers soccer football basketball tennis golf yoga hoodie jacket pants shoe shoes sock socks cap hat olympic olympics race racing sprint triathlon cycling jeans skirt dress stadium trophy medal kit".split(" "));
+const LIFESTYLE_BRAND = new Set(["cisco"]);
 const GENERIC_ENGLISH = new Set("time life home world page course help start people person spanish tokyo poem sea thank thanks meaning telephone calorie calories banana capital hiking restaurant population colour color breakfast winter rainfall lullaby haiku mango egg moon landing movie pizza weather flight story dragon cricket tire cake president bitcoin joke french goodbye python pandas numpy django flask pyodide decorator tuple integer boolean syntax indent pip venv recipe pasta carbonara lisbon portugal mona painter amazon five9 avaya twilio zoom talkdesk dialpad flex aura connect mining sourdough decorator".split(" "));
 
 function buildDomain(df, seeds) {
@@ -358,6 +362,20 @@ function typoKind(word, domain, syn, pool, freq) {
   if (kind === "weak" && sharedPrefix(word, fix) < 2) return "";
   if (word.length >= 6 && sharedPrefix(word, fix) < 2) return "";
   return kind;
+}
+
+function hasLifestyle(text) {
+  return normalize(text).split(" ").some((word) => LIFESTYLE.has(word) || LIFESTYLE.has(stem(word)));
+}
+
+function coreBesideLifestyle(text, syn) {
+  for (const word of normalize(text).split(" ")) {
+    if (!word || hasLifestyle(word)) continue;
+    const forms = [word, stem(word), canon(word, syn)].filter(Boolean);
+    if (forms.some((form) => LIFESTYLE_BRAND.has(form))) continue;
+    if (forms.some((form) => STRONG_WORDS.has(form))) return true;
+  }
+  return false;
 }
 
 function isGenericCarrier(word, syn) {
@@ -1047,6 +1065,10 @@ export function createRetriever(index) {
   function ask(raw, host) {
     const limited = String(raw || "").slice(0, 400);
     const routed = route(limited, host || {});
+    const blob = `${limited} ${routed.searchText || ""}`;
+    if (routed.intent !== "injection" && hasLifestyle(blob) && !coreBesideLifestyle(blob, syn)) {
+      return fallbackAnswer([], Boolean(routed.followMode), true);
+    }
     if (!routed.searchText) return routed;
     const neighbour = /\b(?:zoom|amazon|five9|avaya|twilio|talkdesk|dialpad|cxone|incontact|ringcentral|8x8)\b/;
     if (neighbour.test(normalize(limited)) || neighbour.test(normalize(routed.searchText))) {
