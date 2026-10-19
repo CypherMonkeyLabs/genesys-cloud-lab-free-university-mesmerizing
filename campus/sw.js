@@ -1,10 +1,11 @@
 /* Scope is the campus directory that contains this file.
    The page registers it with { scope: "./" }. */
-const CACHE = "gccx-lab-v21";
+const CACHE = "gccx-lab-v22";
 const SHELL = [
   "./",
   "./index.html",
   "./offline.html",
+  "./assets/boot-settings.js",
   "./manifest.webmanifest",
   "./favicon.svg",
   "./icon-192.png",
