@@ -1,0 +1,14 @@
+{
+  "$comment": "Front matter for Genesys Cloud CX Lab lessons. Lesson bodies stay in campus/data/tracks/*.json. data/lesson-map.json is the checked front matter. scripts/validate_lessons.mjs exits 1 on any problem.",
+  "required": ["key", "title", "level", "minutes", "outcomes", "sources", "has_exercise", "last_verified"],
+  "properties": {
+    "key": "string, '<track id>/<lesson id>', must match campus/data/tracks",
+    "title": "string, must equal the lesson title",
+    "level": "integer 0-10. Foundation is 0, Core is 4, Advanced is 8. A recommendation, never a lock.",
+    "minutes": "integer, as in the lesson file",
+    "outcomes": "array of at least one phrase from the lesson summary",
+    "sources": "array of at least one id that exists as campus/data/sources/<id>.json",
+    "has_exercise": "boolean, true when the lesson has a lab checklist",
+    "last_verified": "null or YYYY-MM-DD. Null means the source file only records a month (YYYY-MM), not a full day."
+  }
+}

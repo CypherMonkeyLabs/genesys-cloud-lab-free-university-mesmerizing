@@ -5,6 +5,12 @@
   "scripts": {
     "build": "python3 scripts/build_curriculum.py && python3 scripts/build_sources.py && python3 scripts/build_downloads.py",
     "verify": "node scripts/verify.mjs",
-    "serve": "node scripts/gzip-static.mjs"
+    "serve": "node scripts/gzip-static.mjs",
+    "index": "node pipeline/build_gccxbot_index.mjs",
+    "precache": "node scripts/build_precache.mjs",
+    "test:bot": "node tests/gccxbot-eval.mjs && node tests/gccxbot-heldout.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.56.1"
   }
 }

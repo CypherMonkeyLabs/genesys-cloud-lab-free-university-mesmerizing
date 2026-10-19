@@ -1,8 +1,15 @@
-const CACHE = "gccx-lab-v14";
+/* Scope is the campus directory that contains this file.
+   The page registers it with { scope: "./" }. */
+const CACHE = "gccx-lab-v16";
 const SHELL = [
   "./",
   "./index.html",
+  "./offline.html",
   "./manifest.webmanifest",
+  "./favicon.svg",
+  "./icon-192.png",
+  "./icon-512.png",
+  "./icon-maskable-512.png",
   "./assets/app.js",
   "./assets/university.css",
   "./assets/css/frame.css",
@@ -13,25 +20,44 @@ const SHELL = [
   "./assets/sources.js",
   "./assets/js/frame.js",
   "./assets/js/university.js",
-  "./guide/guide.css",
-  "./guide/guide.js",
-  "./guide/dragbot.js",
-  "./data/guide-kb.json",
   "./assets/mascot.js",
   "./assets/diagrams.js",
   "./assets/pages.js",
-  "./assets/floorviz.js",
-  "./assets/hero3d.js",
-  "./assets/icons3d.js",
-  "./assets/liveicons.js",
-  "./assets/headings.js",
   "./assets/i18n.js",
+  "./assets/icons3d.js",
+  "./assets/headings.js",
   "./assets/lightbox.js",
   "./assets/studios.js",
-  "./assets/topology.js",
   "./assets/routing-model.js",
+  "./guide/guide.css",
+  "./guide/guide.js",
+  "./guide/dragbot.js",
+  "./shared/pybot-chat/engine.js",
+  "./shared/pybot-chat/ui.js",
+  "./shared/pybot-chat/chat.css",
+  "./data/gccxbot-index.json",
   "./data/manifest.json",
-  "./data/reference.json"
+  "./data/reference.json",
+  "./data/tracks/acd.json",
+  "./data/tracks/ai.json",
+  "./data/tracks/api.json",
+  "./data/tracks/architect.json",
+  "./data/tracks/byoc.json",
+  "./data/tracks/crm.json",
+  "./data/tracks/ecosystem.json",
+  "./data/tracks/edge.json",
+  "./data/tracks/emergency.json",
+  "./data/tracks/forecast.json",
+  "./data/tracks/foundations.json",
+  "./data/tracks/migration.json",
+  "./data/tracks/org.json",
+  "./data/tracks/predictive.json",
+  "./data/tracks/qm.json",
+  "./data/tracks/quality.json",
+  "./data/tracks/queues.json",
+  "./data/tracks/skills.json",
+  "./data/tracks/sta.json",
+  "./data/tracks/wfm.json",
 ];
 
 self.addEventListener("install", (event) => {
@@ -49,16 +75,23 @@ self.addEventListener("fetch", (event) => {
   if (request.method !== "GET") return;
   const url = new URL(request.url);
   if (url.origin !== self.location.origin) return;
-  event.respondWith(
-    caches.match(request).then((cached) => {
-      const network = fetch(request).then((response) => {
-        if (response && response.ok) {
-          const copy = response.clone();
-          caches.open(CACHE).then((cache) => cache.put(request, copy));
-        }
-        return response;
-      }).catch(() => cached);
-      return network || cached;
-    })
-  );
+  event.respondWith((async () => {
+    const cached = await caches.match(request);
+    try {
+      const response = await fetch(request);
+      if (response && response.ok) {
+        const copy = response.clone();
+        const cache = await caches.open(CACHE);
+        await cache.put(request, copy);
+      }
+      return response;
+    } catch (err) {
+      if (cached) return cached;
+      if (request.mode === "navigate") {
+        const fallback = await caches.match("./offline.html");
+        if (fallback) return fallback;
+      }
+      return new Response("offline", { status: 503, headers: { "Content-Type": "text/plain" } });
+    }
+  })());
 });

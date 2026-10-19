@@ -425,7 +425,7 @@ function showCareer(ctx) {
       <article class="card"><h3>Developer</h3><p>Grants, the API explorer, AppFoundry. GC-GCD is the developer exam the catalog names.</p><p><a href="#/track/api">APIs</a> · <a href="#/studio/api">API studio</a></p></article>
     </div>
     <p><a class="btn primary" href="#/interview">Interview drill</a></p>
-    <p class="muted">Nothing here promises an interview, a salary, or that a package includes a product. Read the overview and the catalog.</p>`;
+    <p class="muted">Nothing here promises a role, a certificate, or that a package includes a product. Read the overview and the catalog.</p>`;
 }
 
 function showNews(ctx) {
